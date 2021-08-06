@@ -69,6 +69,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/single_service/cooperProcess",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle":"custom" 
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
