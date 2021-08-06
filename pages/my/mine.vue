@@ -1,5 +1,5 @@
 <template>
-	<view>优惠券页面</view>
+	<view>我的页面</view>
 </template>
 
 <script>
