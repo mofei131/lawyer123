@@ -29,7 +29,47 @@
 						}
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/single_service/cooperDownload",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle":"custom" 
+            }
+            
+        }
+        ,{
+            "path" : "pages/list/cooperModuleList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle":"custom" 
+            }
+            
+        }
+        ,{
+            "path" : "pages/detail/cooperDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle":"custom" 
+            }
+            
+        }
+        ,{
+            "path" : "pages/single_service/cooperCheck",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle":"custom" 
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"backgroundColor": "#40A9FF",
