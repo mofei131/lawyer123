@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "search": "/pages/components/search/search",
+    "iconlist": "/pages/components/iconlist/iconlist",
+    "lawyercard": "/pages/components/lawyercard/lawyercard"
+  }
+}

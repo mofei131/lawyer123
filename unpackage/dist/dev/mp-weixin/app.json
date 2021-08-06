@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/zhaolvshi/zhaolvshi",
+    "pages/youhuiquan/youhuiquan",
+    "pages/my/mine"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#40A9FF",
+    "navigationBarBackgroundColor": "#40A9FF"
+  },
+  "tabBar": {
+    "color": "#2F3034",
+    "selectedColor": "#40A9FF",
+    "font-size": "17rpx",
+    "box-shadow": "0px -1px 4px 0px rgba(224, 224, 224, 0.5)",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/fotbar1.png",
+        "selectedIconPath": "static/images/fotbar11.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/zhaolvshi/zhaolvshi",
+        "iconPath": "static/images/fotbar2.png",
+        "selectedIconPath": "static/images/fotbar21.png",
+        "text": "找律师"
+      },
+      {
+        "pagePath": "pages/youhuiquan/youhuiquan",
+        "iconPath": "static/images/fotbar3.png",
+        "selectedIconPath": "static/images/fotbar31.png",
+        "text": "优惠券"
+      },
+      {
+        "pagePath": "pages/my/mine",
+        "iconPath": "static/images/fotbar4.png",
+        "selectedIconPath": "static/images/fotbar41.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}
