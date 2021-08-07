@@ -1,0 +1,1 @@
+<view><view class="contractdet"><rich-text nodes="{{content}}"></rich-text></view></view>

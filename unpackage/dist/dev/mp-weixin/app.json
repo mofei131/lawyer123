@@ -3,7 +3,16 @@
     "pages/index/index",
     "pages/zhaolvshi/zhaolvshi",
     "pages/youhuiquan/youhuiquan",
-    "pages/my/mine"
+    "pages/my/mine",
+    "pages/single_service/cooperDownload",
+    "pages/list/cooperModuleList",
+    "pages/detail/cooperDetail",
+    "pages/single_service/cooperCheck",
+    "pages/single_service/cooperProcess",
+    "pages/my/contractList",
+    "pages/my/contractDet",
+    "pages/my/orderList",
+    "pages/my/serviceList"
   ],
   "subPackages": [],
   "window": {
@@ -43,6 +52,7 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {
+    "fa-icon": "/components/fa-icon/fa-icon"
+  }
 }

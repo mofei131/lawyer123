@@ -1,0 +1,42 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "我的",
+          "pathName": "pages/my/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "合同",
+          "pathName": "pages/my/contractList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "交易订单",
+          "pathName": "pages/my/orderList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "服务交易",
+          "pathName": "pages/my/serviceList",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

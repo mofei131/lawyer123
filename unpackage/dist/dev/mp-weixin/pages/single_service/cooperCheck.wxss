@@ -1,0 +1,14 @@
+
+.list-item {
+	padding: 20rpx;
+	
+	-webkit-box-flex: 0;
+	
+	-webkit-flex: 0 0 264rpx;
+	
+	        flex: 0 0 264rpx;
+	background-color: #FFFFFF;
+	border-radius: 20rpx;
+	margin-bottom: 20rpx;
+}
+
