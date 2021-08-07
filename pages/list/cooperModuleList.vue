@@ -1,0 +1,64 @@
+<template>
+	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
+		<view class="">
+			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="合同模板" color="#333333"
+				background-color="#FFFFFF" @clickLeft="back">
+				<!-- <block slot="right">
+					<view class="city">
+						<view><text class="uni-nav-bar-text">123</text></view>
+						<uni-icons type="arrowdown" color="#333333" size="22" />
+					</view>
+				</block> -->
+
+			</uni-nav-bar>
+		</view>
+
+		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;">
+			<view class="flex-column mx-evenly sx-stretch"
+				style="flex: 0 0 200rpx;background-color: #FFFFFF;border-radius: 20rpx;padding: 20rpx;">
+				<view class="ellipsis" style="flex:0 0 auto;width: 30px;">
+					<text>海外货物合同范文</text>
+				</view>
+				<view class="ellipsis-3" style="flex: 1 1 auto;font-size: 22rpx;margin:16rpx 0;" @click="toDetail()">
+					神鼎飞丹砂水电费水电费水电费胜多鼎飞丹砂水电费水电费胜多鼎飞丹砂水电费水电费水电费水电费水电费胜多负少电风扇电风扇地方水电负少电风扇电风扇地方水电费胜多负少对方水电费水电费水电费胜多负少地方是
+				</view>
+				<view class="flex-row mx-between sx-center" style="flex: 0 0 auto;">
+					<text style="color: #FF4D4F;">￥89</text>
+					<view style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">立即购买</view>
+				</view>
+			</view>
+		</view>
+
+
+
+	</view>
+</template>
+
+<script>
+	export default {
+		onLoad(p) {
+			console.log(p);
+		},
+		data() {
+			return {
+
+			}
+		},
+		methods: {
+			back() {
+				uni.navigateBack({
+					delta: 1
+				})
+			},
+			toDetail(){
+				uni.navigateTo({
+					url:"../detail/cooperDetail?id=1"
+				})
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

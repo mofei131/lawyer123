@@ -1,0 +1,132 @@
+<template>
+	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
+		<view class="">
+			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="合同审核" color="#333333"
+				background-color="#FFFFFF" @clickLeft="back">
+				<!-- <block slot="right">
+					<view class="city">
+						<view><text class="uni-nav-bar-text">123</text></view>
+						<uni-icons type="arrowdown" color="#333333" size="22" />
+					</view>
+				</block> -->
+
+			</uni-nav-bar>
+		</view>
+		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;">
+
+			<view class="flex-row mx-center sx-center"
+				style="padding: 20rpx;flex: 0 0 160rpx;background-color: #C0DDFF;border-radius: 20rpx;">
+				<view class="backImgCenter"
+					style="margin-right: 10rpx;flex: 0 0 116rpx;height: 116rpx;background-image: url('https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngcc45ec5b7b7b444f2fdf3a0bc5827a42e8cb391a2f82af6ce064d4e82315144b');">
+				</view>
+				<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;" @click="goToPage">
+					<view>合同审核</view>
+					<view class="ellipsis" style="width: 512rpx;font-size: 26rpx;color: rgba(102,102,102,1);">
+						399元/每千字以内，专业律师帮您奥凯合同的坑</view>
+				</view>
+				<fa-icon type="angle-right" color="gray"></fa-icon>
+			</view>
+
+			<cooperTabar @searchChange="searchChange"></cooperTabar>
+
+			<view class="flex-column mx-start sx-stretch">
+				<view v-for="(item,index) in [6,2,3]" class="flex-row mx-start sx-stretch list-item"
+					:style="{order:item}">
+					<view class="backImgCenter"
+						style="border-radius: 50%;margin-right: 10rpx;flex: 0 0 125rpx;height:125rpx;background-image: url('https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngcc45ec5b7b7b444f2fdf3a0bc5827a42e8cb391a2f82af6ce064d4e82315144b');">
+					</view>
+					<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;">
+						<view class="flex-row mx-start sx-center">
+							<text>平台自营律师{{item}}</text>
+							<view class="flex-txt-center"
+								style="margin-left: 10rpx;width: 80rpx;background-color: #FF4D4F;">
+								<text lines="1" style="color: #FFFFFF;font-size: 17rpx;">自营</text>
+							</view>
+							<view class="flex-row mx-end sx-center" style="flex:1 1 auto">
+								<view
+									style="width: 14rpx;height: 14rpx;background-color: rgba(255,77,79,1);border-radius: 50%">
+								</view>
+								<text style="margin-left:8rpx;color: red;font-size: 20rpx;">开庭</text>
+							</view>
+						</view>
+						<view class="ellipsis" style="width: 512rpx;font-size: 26rpx;color: rgba(102,102,102,1);">
+							399元/每千字以内，专业律师帮您奥凯合同的坑</view>
+						<view class="flex-row mx-start sx-center">
+							<view class="flex-txt-center"
+								style="margin-left: 10rpx;width: 80rpx;background-color: #FF4D4F;">
+								<text lines="1" style="color: #FFFFFF;font-size: 17rpx;">自营</text>
+							</view>
+							<view class="flex-txt-center"
+								style="margin-left: 10rpx;width: 80rpx;background-color: #FF4D4F;">
+								<text lines="1" style="color: #FFFFFF;font-size: 17rpx;">自营</text>
+							</view>
+							<view class="flex-txt-center"
+								style="margin-left: 10rpx;width: 80rpx;background-color: #FF4D4F;">
+								<text lines="1" style="color: #FFFFFF;font-size: 17rpx;">自营</text>
+							</view>
+						</view>
+						<view class="flex-row mx-evenly sx-center"
+							style="flex: 0 0 auto;font-size: 20rpx;color: rgba(153,153,153,1);">
+							<view class="flex-row">职业年限：9年</view>
+							<view class="flex-row">案例：<text style="color: red;">1545</text>件</view>
+							<view class="flex-row">好评：<text style="color: red;">1545</text>次</view>
+						</view>
+
+						<view class="flex-row mx-between sx-center" style="flex: 0 0 auto;">
+							<text style="color: #FF4D4F;">￥89</text>
+							<view
+								style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
+								立即购买</view>
+						</view>
+					</view>
+				</view>
+			</view>
+
+
+		</view>
+
+
+	</view>
+</template>
+
+<script>
+	import cooperTabar from '@/pages/components/cooperTabar/cooperTabar.vue'
+	export default {
+		components: {
+			cooperTabar
+		},
+		data() {
+			return {
+
+			}
+		},
+		methods: {
+			back() {
+				uni.navigateBack({
+					delta: 1
+				})
+			},
+			searchChange(e) {
+				console.log(e);
+			},
+			goToPage() {
+				uni.navigateTo({
+					url: './cooperProcess'
+				})
+			}
+
+
+		}
+	}
+</script>
+
+<style>
+	.list-item {
+		padding: 20rpx;
+		;
+		flex: 0 0 264rpx;
+		background-color: #FFFFFF;
+		border-radius: 20rpx;
+		margin-bottom: 20rpx;
+	}
+</style>

@@ -1,9 +1,25 @@
 <template>
-	<view>我的页面</view>
+	<!-- <view>优惠券页面</view> -->
+
+	<view>
+		<text>你好50</text>
+	</view>
+	
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				
+			};
+		},
+		methods: {
+			
+		}
+	};
 </script>
 
 <style>
+	
 </style>
