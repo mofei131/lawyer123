@@ -3,7 +3,24 @@
     "pages/index/index",
     "pages/zhaolvshi/zhaolvshi",
     "pages/youhuiquan/youhuiquan",
-    "pages/my/mine"
+    "pages/my/mine",
+    "pages/single_service/cooperDownload",
+    "pages/list/cooperModuleList",
+    "pages/detail/cooperDetail",
+    "pages/single_service/cooperCheck",
+    "pages/single_service/cooperProcess",
+    "pages/single_service/otherService",
+    "pages/service_zhixun/tuwen",
+    "pages/service_zhixun/jianmian",
+    "pages/service_zhixun/dianhua",
+    "pages/service_zhixun/pinglvshi",
+    "pages/list/zixun",
+    "pages/detail/lawyerDetail",
+    "pages/components/anli/anli",
+    "pages/list/moreAnli",
+    "pages/chat/chat",
+    "pages/list/moreStudy",
+    "pages/detail/studyDetail"
   ],
   "subPackages": [],
   "window": {
@@ -43,6 +60,13 @@
       }
     ]
   },
-  "usingComponents": {},
+  "permission": {
+    "scope.userLocation": {
+      "desc": ""
+    }
+  },
+  "usingComponents": {
+    "fa-icon": "/components/fa-icon/fa-icon"
+  },
   "sitemapLocation": "sitemap.json"
 }

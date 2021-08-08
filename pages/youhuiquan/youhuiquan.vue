@@ -1,349 +1,138 @@
 <template>
-    <view class="body-view">
-        <!-- 头部 -->
-        <scroll-view class="top-menu-view" scroll-x="true" :scroll-left="scrollLeft">
-            <block v-for="(menuTab,index) in menuTabs" :key="index">
-                <view class="menu-topic-view" v-bind:id="'tabNum'+index" @click="swichMenu(index)">
-                    <view :class="[currentTab==index ? 'menu-topic-act' : 'menu-topic']">
-                        <view class="menu-topic-txt">{{menuTab.title}}</view>
-                        <view class="menu-topic-bottom">
-                            <view class="menu-topic-bottom-color"></view>
-                        </view>
-                    </view>    
-                </view>
-            </block>
-        </scroll-view>
-        <!-- 右边小箭头 -->
-        <!-- <view class="right-arrow"><text class="iconfont icon-arrow-right-o"></text> </view> -->
-        <!-- 显示区域 -->
-        <swiper :current="currentTab" class="swiper-box-list" duration="300" @change="swiperChange">
-            <block v-for="(swiperDate,index1) in swiperDateList" :key="index1">
-                <swiper-item>
-                    <scroll-view class="swiper-topic-list" scroll-y="true" @scrolltolower="loadMore(index1)">
-                        <block v-for="(swiperDate2,index2) in swiperDate" :key="index2">
-                            <view class="tabContent">
-                                <!-- 展示列表内容 -->
-								{{swiperDate2.title}}
-                            </view>
-                        </block>
-                    </scroll-view>
-                </swiper-item>
-            </block>
-        </swiper>
-    </view>
+	<view class="flex-column mx-start sx-stretch" style="padding: 20rpx;min-height: 1000rpx;">
+		<view class="flex-row mx-start sx-center">
+			<view style="flex: 0 0 auto;" >
+				<picker @change="anjianChange" :value="index1" :range="array1" range-key="name">
+					<view class="flex-row">
+						<text style="color: gray;">{{array1[index1].name}}</text>
+						<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
+					</view>
+				</picker>
+			</view>
+			<uni-search-bar style="flex:1 1 auto;" border="1rpx solid rgba(244,244,244,1)" placeholder="请输入模板名称" bgColor="rgba(244,244,244,1)"
+				:cancel-text="closeText" radius="100" @confirm="search" :focus="true" v-model="searchValue"
+				@input="input" @clear="clear">
+			</uni-search-bar>
+		</view>
+
+		<view class="flex-row mx-center sx-center" style="margin: 20rpx;">
+			<view :class="{quan_on:flag==1,quan_off:flag!=1}" style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 30rpx 0 0 30rpx;" @tap="flag=1">未使用</view>
+			<view :class="{quan_on:flag==2,quan_off:flag!=2}" style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 0 30rpx 30rpx 0;" @tap="flag=2">不可用</view>
+		</view>
+		<view v-for="(item,index) in [1,2,3]" :key='index' class="flex-row mx-start sx-stretch backImgFull youhuiquan"
+			style="background-image: url(../../static/images/youhuiquan.png);">
+			<view class="flex-column mx-center sx-center" style="flex: 0 0 218rpx;">
+				<view class="flex-row mx-center sx-center" style="color: rgba(255,255,255,1);">
+					<text style="font-size: 32rpx;">￥</text>
+					<text style="font-size: 57rpx;">1388</text>
+				</view>
+				<text style="color: rgba(255,255,255,0.5);font-size: 24rpx;">满40元可用</text>
+			</view>
+			<view class="flex-column mx-end sx-stretch" style="padding-left: 40rpx;flex: 1 1 auto;line-height: 36rpx;">
+
+				<view class="flex-row mx-between sx-end" style="flex:1 1 auto;">
+					<view class="flex-column mx-end sx-stretch">
+						<view class="ellipsis quan_title">
+							老王家肉火腿
+						</view>
+						<text style="color: rgba(255,255,255,0.5);font-size: 24rpx;">{{usertime('2020-2020')}}</text>
+
+					</view>
+					<view class="flex-row mx-center sx-center" style="align-self: center;margin-right: 20rpx;">
+						<view class="flex-txt-center lingqu" style="background-color: rgba(182,100,247,1);">
+							<text style="color: rgba(255,255,255,1);font-size: 24rpx;">立即领取</text>
+						</view>
+					</view>
+				</view>
+				<text lines="1" class="ellipsis" style="width:400rpx;color: rgba(255,255,255,0.5);margin-bottom: 20rpx;
+										font-size: 24rpx;"> 贵州省毕节地区金沙县桃园路904号</text>
+
+			</view>
+
+
+		</view>
+
+
+
+
+	</view>
 
 </template>
 
 <script>
 	export default {
-	        data() {
-	            return {
-	                scrollLeft: 0,
-	                isClickChange: false,
-	                currentTab: 0,
-	                // Tab分类标题
-	                menuTabs: [
-						{id:0,title:"婚姻家庭"},
-						{id:1,title:"交通事故"},
-						{id:2,title:"劳动纠纷"},
-						{id:3,title:"合同纠纷"},
-						{id:4,title:"婚姻家庭"},
-						{id:5,title:"交通事故"},
-						{id:6,title:"劳动纠纷"},
-						{id:7,title:"合同纠纷"},
-						{id:8,title:"婚姻家庭"},
-						{id:9,title:"交通事故"},
-						{id:10,title:"劳动纠纷"},
-						{id:11,title:"合同纠纷"},
-						],
-	                // Tab切换内容
-	                swiperDateList: [
-	                    [
-							{
-							        title: "2019“中国最好学科排名” 四川3所高校各有1个学科点入",
-							        hot: "热",
-							        type: "教育",
-							        time: "2016.11.21"
-							    },
-							    {
-							        title: "BW成都站2019有哪些b站up主嘉宾(时间+地点+门票)",
-							        hot: "",
-							        type: "民生热点",
-							        time: "2016.11.21"
-							    },
-							    {
-							        title: "成都：公积金贷款系统升级 最快15个工作日左右到账  最快15个工作日左右到账",
-							        hot: "",
-							        type: "住房",
-							        time: "2016.11.21"
-							    },
-							    {
-							        title: "成灌线刷天府通坐高铁预计 明年5月可实现",
-							        hot: "",
-							        type: "名生热点",
-							        time: "2016.11.21"
-							    },
-							    {
-							        title: "成都车主朋友注意!未安装ETC走成都绕城、成温邛...",
-							        hot: "",
-							        type: "交通",
-							        time: "2016.11.21"
-							    }
-						],
-	                    [
-							{
-							        title: "2019“中国最好学科排名” 四川3所高校各有1个学科点入",
-							        hot: "热",
-							        type: "教育",
-							        time: "2016.11.21"
-							    },
-							    {
-							        title: "BW成都站2019有哪些b站up主嘉宾(时间+地点+门票)",
-							        hot: "",
-							        type: "民生热点",
-							        time: "2016.11.21"
-							    },
-							    {
-							        title: "成都：公积金贷款系统升级 最快15个工作日左右到账  最快15个工作日左右到账",
-							        hot: "",
-							        type: "住房",
-							        time: "2016.11.21"
-							    },
-							    {
-							        title: "成灌线刷天府通坐高铁预计 明年5月可实现",
-							        hot: "",
-							        type: "名生热点",
-							        time: "2016.11.21"
-							    },
-							    {
-							        title: "成都车主朋友注意!未安装ETC走成都绕城、成温邛...",
-							        hot: "",
-							        type: "交通",
-							        time: "2016.11.21"
-							    }
-						],
-	                    [],
-	                    [],
-	                    [],
-	                    [],
-	                    []
-	                ],
-	                // 接口列表模拟数据
-	                list: [{
-	                        title: "2019“中国最好学科排名” 四川3所高校各有1个学科点入",
-	                        hot: "热",
-	                        type: "教育",
-	                        time: "2016.11.21"
-	                    },
-	                    {
-	                        title: "BW成都站2019有哪些b站up主嘉宾(时间+地点+门票)",
-	                        hot: "",
-	                        type: "民生热点",
-	                        time: "2016.11.21"
-	                    },
-	                    {
-	                        title: "成都：公积金贷款系统升级 最快15个工作日左右到账  最快15个工作日左右到账",
-	                        hot: "",
-	                        type: "住房",
-	                        time: "2016.11.21"
-	                    },
-	                    {
-	                        title: "成灌线刷天府通坐高铁预计 明年5月可实现",
-	                        hot: "",
-	                        type: "名生热点",
-	                        time: "2016.11.21"
-	                    },
-	                    {
-	                        title: "成都车主朋友注意!未安装ETC走成都绕城、成温邛...",
-	                        hot: "",
-	                        type: "交通",
-	                        time: "2016.11.21"
-	                    }
-	                ],
-	            }
-	        },
-	        onLoad: function() {
-	            //初始化数据
-	            for (var i = 0; i < this.swiperDateList.length; i++) {
-	                this.getDateList(i);
-	            }
-	        },
-	        methods: {
-	            swichMenu: async function(current) { //点击其中一个 menu
-	                if (this.currentTab == current) {
-	                    return false;
-	                } else {
-	                    this.currentTab = current;
-	                    this.setScrollLeft(current);
-	                }
-	            },
-	            swiperChange: async function(e) {
-	                let index = e.target.current;
-	                this.setScrollLeft(index);
-	                this.currentTab = index;
-	            },
-	            setScrollLeft: async function(tabIndex) {
-	                let leftWidthSum = 0;
-	                for (var i = 0; i <= tabIndex; i++) {
-	                    let nowElement = await this.getWidth('tabNum' + i);
-	                    leftWidthSum = leftWidthSum + nowElement.width;
-	                }
-	                let winWidth = uni.getSystemInfoSync().windowWidth;
-	                this.scrollLeft = leftWidthSum > winWidth ? (leftWidthSum - winWidth) : 0
-	            },
-	            getWidth: function(id) { //得到元素的宽高
-	                return new Promise((res, rej) => {
-	                    uni.createSelectorQuery().select("#" + id).fields({
-	                        size: true,
-	                        scrollOffset: true
-	                    }, (data) => {
-	                        res(data);
-	                    }).exec();
-	                })
-	            },
-	            loadMore: function(tabIndex) {
-	                console.log('正在加载更多数据。。。')
-	            },
-	            getDateList: function(tabIndex) {
-	                for (var i = 0; i < 1; i++) {
-	                    var entity = this.menuTabs[tabIndex].name + (this.swiperDateList[tabIndex].length);
-	                    this.swiperDateList[tabIndex].push(entity);
-	                }
-	            },
-	            
-	        },
-	    }
+		components: {
+
+		},
+		data() {
+			return {
+				flag:1,
+				array1: [{
+					name: '北京',
+				}, {
+					name: '上海',
+				}],
+				index1: 0,
+		
+				closeText: '',
+				searchValue: ''
+			}
+		},
+		onLoad: function() {
+
+		},
+		methods: {
+			input(e) {
+				console.log(e);
+			},
+			clear(e) {
+				console.log(e);
+			},
+			search(e) {
+
+			},
+			anjianChange: function(e) {
+				//返回选择的数组下标
+				this.index1 = e.detail.value;
+				
+			},
+		},
+		computed: {
+			usertime(e) {
+				return (e) => {
+					console.log(this);
+					console.log(e);
+					return '2020.10.10 - 2020.20.20'
+				}
+			}
+		}
+	}
 </script>
 
 <style>
-	 /* Tab切换 */
-	    .body-view {
-	        height: 100%;
-	        width: 100%;
-	        display: flex;
-	        flex: 1;
-	        flex-direction: column;
-	        overflow: hidden;
-	        align-items: flex-start;
-	        justify-content: center;
-			border-radius: 14px 14px 0px 0px;
-			height: 80rpx;
-			width: 710rpx;
-			margin: auto;
-	    }
-		.top-menu-view{
-			background: rgb(9,109,217,.1)!important;
-			border: 0!important;
-		}
-	    .body-view .right-arrow{
-	        position: absolute;
-	        top: 22rpx;
-	        right: 0rpx;
-	        padding-left: 60rpx;
-	        padding-right: 20rpx;
-	        line-height: 42rpx;
-	        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 60%);
-	    }
-	    .body-view .right-arrow .iconfont{
-	       font-size: 24rpx;
-	       font-family: iconfont;
-	       color: #909399;
-	    }
-	    .top-menu-view {
-	        display: flex;
-	        white-space: nowrap;
-	        width: 100%;
-	        background-color: #FFFFFF;
-	        height: 86rpx;
-	        border-top: 1px solid #d8dbe6;
-	        border-bottom: 1px solid #d8dbe6;
-	    }
-	
-	    .top-menu-view .menu-topic-view {
-	        display: inline-block;
-	        white-space: nowrap;
-	        height:86rpx ;
-	        position: relative;
-	    }
-	    
-	    .top-menu-view .menu-topic-view .menu-topic {
-	        margin-left: 30rpx;
-	        margin-right: 10rpx;
-	        position: relative;
-	        height: 100%;
-	        display: flex;
-	        align-items: center;
-	        justify-content: center;
-	    }
-	    .top-menu-view .menu-topic-view .menu-topic:first-child{
-	        margin-left: 30rpx;
-	    }
-	    /* .top-menu-view .menu-topic-view:last-child  .menu-topic{
-	        margin-right: 80rpx;
-	    } */
-	   
-	    .top-menu-view .menu-topic-view .menu-topic .menu-topic-txt {
-	        font-size: 30rpx;
-	        color:#303133;
-	    }
-	
-	    .top-menu-view .menu-topic-view .menu-topic .menu-topic-bottom {
-	        position: absolute;
-	        bottom: 0;
-	        width: 100%;
-	    }
-	
-	    .top-menu-view .menu-topic-view .menu-topic .menu-topic-bottom .menu-topic-bottom-color {
-	        width: 88rpx;
-	        height: 6rpx;
-	    }
-	
-	    .top-menu-view .menu-topic-view .menu-topic-act {
-	        margin-left: 30rpx;
-	        margin-right: 10rpx;
-	        position: relative;
-	        height: 90%;
-	        display: flex;
-	        align-items: center;
-	        justify-content: center;
-	    }
-	   .top-menu-view .menu-topic-view:last-child  .menu-topic-act{
-	        margin-right: 80rpx;
-	    }
-	   
-	    .top-menu-view .menu-topic-view .menu-topic-act .menu-topic-txt {
-	        font-size: 30rpx;
-	        color: #40A9FF;
-	        font-weight: 600;
-	    }
-	
-	    .top-menu-view .menu-topic-view .menu-topic-act .menu-topic-bottom {
-	        position: absolute;
-	        bottom: 0;
-	        width: 100%;
-	        display: flex;
-	        justify-content: center;
-	    }
-	
-	    .top-menu-view .menu-topic-view .menu-topic-act .menu-topic-bottom .menu-topic-bottom-color {
-	        width: 88rpx;
-	        height: 6rpx;
-	        background: #40A9FF;
-	    }
-	    
-	    .swiper-box-list {
-	        flex: 1;
-	        width: 100%;
-	        height: auto;
-	        background-color: #FFFFFF;
-	    }
-	
-	    .swiper-topic-list {
-	        height: 100%;
-	        width: 100%;
-	    }
-		/* .tabContent{
-			color: #000;
-			font-size: 140rpx;
-		} */
+	.quan_on{
+		border:2rpx solid #65ADF6;background-color: #65ADF6;color: #FFFFFF;
+	}
+	.quan_off{
+		border:2rpx solid #65ADF6;background-color: #FFFFFF;color: gray;
+		
+	}
+
+	.youhuiquan {
+		flex: 0 0 173rpx;
+		margin-bottom: 20rpx;
+	}
+
+	.quan_title {
+		width: 270rpx;
+		color: #FFFFFF;
+		font-size: 26rpx;
+		margin-bottom: 10rpx;
+	}
+
+	.lingqu {
+		height: 48rpx;
+		border-radius: 24rpx;
+		width: 139rpx;
+	}
 </style>

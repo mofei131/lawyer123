@@ -2,7 +2,9 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "search": "/pages/components/search/search",
+    "study": "/pages/components/study/study",
     "iconlist": "/pages/components/iconlist/iconlist",
+    "anli": "/pages/components/anli/anli",
     "lawyercard": "/pages/components/lawyercard/lawyercard"
   }
 }

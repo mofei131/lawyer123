@@ -1,7 +1,7 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
 		<view class="">
-			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="合同审核" color="#333333"
+			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" :title="typeData && typeData.name" color="#333333"
 				background-color="#FFFFFF" @clickLeft="back">
 				<!-- <block slot="right">
 					<view class="city">
@@ -15,20 +15,50 @@
 
 		<view class="page">
 			<view class="mod1">
-				<view class="block1">
+				<view style="z-index: 78;
+		height: 379rpx;
+		overflow: hidden;
+		background-image: url(../../static/icon/cooper_back.png);
+		background-size: 100%;
+		background-repeat: no-repeat;
+		width: 750rpx;
+		position: relative;
+		display: flex;
+		flex-direction: column;">
 
 					<view class="group3">
-						<text lines="1" class="info3">合同审核</text>
+						<text lines="1" class="info3">{{typeData && typeData.name}}</text>
 					</view>
 					<view class="group4">
 						<text lines="1" class="paragraph1">专业律师为您审查合同,最大限度保障您的利益</text>
 					</view>
-					<view class="group5"></view>
-					<view class="group6">
-						<view class="mod2"></view>
-						<image
-							src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng53c3c8d4efbef4637bdf028ec6682e067b6e9b6b7a237a232bb8829fa03b742d"
-							class="pic2"></image>
+					<view  style="z-index: 79;
+		position: absolute;
+		left: -45rpx;
+		top: 48rpx;
+		width: 826rpx;
+		height: 261rpx;
+		background: url(../../static/icon/cooper_group5.png) 46rpx 0rpx no-repeat;
+		background-size: 750rpx 262rpx;
+		display: flex;
+		flex-direction: column;"></view>
+					<view  style="z-index: 80;
+		height: 332rpx;
+		background: url(../../static/icon/cooper_group6.png) 100% no-repeat;
+		width: 750rpx;
+		justify-content: flex-end;
+		position: absolute;
+		left: 0rpx;
+		top: 47rpx;
+		display: flex;
+		flex-direction: column;">
+						<view  style="z-index: 81;
+		width: 750rpx;
+		height: 156rpx;
+		background: url(../../static/icon/cooper_mod2.png) 100% no-repeat;
+		display: flex;
+		flex-direction: column;"></view>
+						<image src="/static/icon/cooper_back1.png" class="pic2"></image>
 					</view>
 				</view>
 				<view class="block2">
@@ -73,21 +103,13 @@
 						<text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
 						<view class="mod4"></view>
 						<view class="mod5">
-							<image
-								src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng5cd1242150afb34d831b5c365da3ea83cbfeb02f1eff3973a645f3cbe6edecae"
-								class="img1"></image>
+							<image src="/static/icon/cooper_p3.png" class="img1"></image>
 							<view class="group9"></view>
-							<image
-								src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng54cb0732c42fac3e6cf1c48c5898f48c0db3023e7f4dbf6892249c967103b372"
-								class="pic3"></image>
+							<image src="/static/icon/cooper_p1.png" class="pic3"></image>
 							<view class="group10"></view>
-							<image
-								src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng6a5a1c5a19f779987619f46fb8dbcea2b576cb01726d7629d72170ebca655851"
-								class="img2"></image>
+							<image src="/static/icon/cooper_p2.png" class="img2"></image>
 							<view class="group11"></view>
-							<image
-								src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng0e6b709cb17bd469bbfcafdba2b630c0f33fc896a8648584551e762a1317c848"
-								class="img3"></image>
+							<image src="/static/icon/cooper_p5.png" class="img3"></image>
 						</view>
 						<view class="mod6">
 							<text lines="1" class="word6">下单购买</text>
@@ -122,7 +144,7 @@
 					<view class="mod9">
 						<view class="mod10">
 							<image
-								src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng5c5f35acd048af456603aae637fdc3f5574c5383e49609eb72fecef25668ebcb"
+								src="/static/icon/cooper_p4.png"
 								class="icon2"></image>
 							<text lines="1" class="word10">客服</text>
 						</view>
@@ -143,10 +165,27 @@
 	export default {
 		onLoad(p) {
 			console.log(p);
+			console.log(p);
+			this.id = p && p.id;
+			let obj = this.list.find(item=>item.id==this.id);
+			if(obj){
+				this.typeData = obj;
+			}
 		},
 		data() {
 			return {
-				content: "双方都"
+				content: "双方都",
+				id:'',
+				list:[
+					{id:5,name:"合同审核",url:"/static/icon/icon6.png"},
+					{id:6,name:"律师函",url:"/static/icon/icon7.png"},
+					{id:7,name:"债务催收指导",url:"/static/icon/icon8.png"},
+					{id:8,name:"起诉状/答辩状",url:"/static/icon/icon9.png"},
+					{id:9,name:"代写借/欠条",url:"/static/icon/icon10.png"},
+					{id:10,name:"刑事会见",url:"/static/icon/icon11.png"},
+				
+				],
+				typeData:'',
 			}
 		},
 		methods: {
@@ -196,16 +235,7 @@
 		flex-direction: column;
 	}
 
-	.block1 {
-		z-index: 78;
-		height: 379rpx;
-		overflow: hidden;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng640935906dc60aedf639f3b7ff801331b84de94b10ee1d5b31f9d9b9f5b1cbae) 100% no-repeat;
-		width: 750rpx;
-		position: relative;
-		display: flex;
-		flex-direction: column;
-	}
+	.block1 {}
 
 	.group1 {
 		z-index: auto;
@@ -240,8 +270,7 @@
 		z-index: 106;
 		width: 29rpx;
 		height: 20rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngad3a870b68934eb34d94172b3b4366f1c667fa63cad9db81fb735df4da271432) -1rpx 0rpx no-repeat;
-		background-size: 30rpx 20rpx;
+		background-color: #FFFFFF;
 		display: flex;
 		flex-direction: column;
 		margin: 3rpx 0 0 80rpx;
@@ -265,8 +294,7 @@
 		z-index: 97;
 		width: 12rpx;
 		height: 20rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng55524bf3a9f199c0b4a11aa293e9f175526a82e7a0a0a9864cd92ed04603c603) -1rpx -3rpx no-repeat;
-		background-size: 15rpx 26rpx;
+		background-color: #FFFFFF;
 		display: flex;
 		flex-direction: column;
 		margin: 2rpx 0 0 177rpx;
@@ -369,39 +397,10 @@
 		text-overflow: ellipsis;
 	}
 
-	.group5 {
-		z-index: 79;
-		position: absolute;
-		left: -45rpx;
-		top: 48rpx;
-		width: 826rpx;
-		height: 261rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng46445f2c0d9d5474bcf80cf719ba47144edaec582805efac579f601613af9e77) 46rpx 0rpx no-repeat;
-		background-size: 750rpx 262rpx;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.group6 {
-		z-index: 80;
-		height: 332rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngd25b06f3c1d7559eb636a76d4733e691f22b662551a012422faf33f7655f96a4) 100% no-repeat;
-		width: 750rpx;
-		justify-content: flex-end;
-		position: absolute;
-		left: 0rpx;
-		top: 47rpx;
-		display: flex;
-		flex-direction: column;
-	}
+	
 
 	.mod2 {
-		z-index: 81;
-		width: 750rpx;
-		height: 156rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPnge42e7677d1549b00066b10703c294c8e2cfa395bebf256b866337131332d7875) 100% no-repeat;
-		display: flex;
-		flex-direction: column;
+		
 	}
 
 	.pic2 {
@@ -416,7 +415,7 @@
 	.block2 {
 		z-index: 4;
 		height: 318rpx;
-		border-radius: NaNrpx;
+		border-radius: 20rpx;
 		background-color: rgba(255, 255, 255, 1);
 		box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 		align-self: center;
@@ -455,8 +454,7 @@
 		z-index: 6;
 		width: 664rpx;
 		height: 1rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng05bec8694b71fbd17a805bb005169da5878eadb32d2d68a945b5d2f57e023ffc) -1rpx -1rpx no-repeat;
-		background-size: 666rpx 3rpx;
+		border-bottom: 1rpx solid #CCCCCC;
 		margin-top: 12rpx;
 		display: flex;
 		flex-direction: column;
@@ -481,7 +479,7 @@
 	.block3 {
 		z-index: 10;
 		height: 223rpx;
-		border-radius: NaNrpx;
+		border-radius: 20rpx;
 		background-color: rgba(255, 255, 255, 1);
 		box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 		align-self: center;
@@ -520,8 +518,7 @@
 		z-index: 12;
 		width: 664rpx;
 		height: 1rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng05bec8694b71fbd17a805bb005169da5878eadb32d2d68a945b5d2f57e023ffc) -1rpx -1rpx no-repeat;
-		background-size: 666rpx 3rpx;
+		border-bottom: 1rpx solid #CCCCCC;
 		margin-top: 12rpx;
 		display: flex;
 		flex-direction: column;
@@ -638,7 +635,7 @@
 	.block4 {
 		z-index: 30;
 		height: 242rpx;
-		border-radius: NaNrpx;
+		border-radius: 20rpx;
 		background-color: rgba(255, 255, 255, 1);
 		box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 		align-self: center;
@@ -677,8 +674,7 @@
 		z-index: 32;
 		width: 664rpx;
 		height: 1rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng05bec8694b71fbd17a805bb005169da5878eadb32d2d68a945b5d2f57e023ffc) -1rpx -1rpx no-repeat;
-		background-size: 666rpx 3rpx;
+		border-bottom: 1rpx solid #CCCCCC;
 		margin-top: 12rpx;
 		display: flex;
 		flex-direction: column;
@@ -704,7 +700,7 @@
 		z-index: 68;
 		width: 44rpx;
 		height: 26rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng375a6cfd7b08bc2bff53d035725837ae53ba4e1a79154f949692a037dc31c67e) 0rpx 0rpx no-repeat;
+		background: url(../../static/icon/cooper_right.png) 0rpx 0rpx no-repeat;
 		background-size: 44rpx 26rpx;
 		margin-top: 16rpx;
 		display: flex;
@@ -721,7 +717,7 @@
 		z-index: 71;
 		width: 44rpx;
 		height: 26rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng375a6cfd7b08bc2bff53d035725837ae53ba4e1a79154f949692a037dc31c67e) 0rpx 0rpx no-repeat;
+		background: url(../../static/icon/cooper_right.png) 0rpx 0rpx no-repeat;
 		background-size: 44rpx 26rpx;
 		margin-top: 16rpx;
 		display: flex;
@@ -738,7 +734,7 @@
 		z-index: 74;
 		width: 44rpx;
 		height: 26rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng375a6cfd7b08bc2bff53d035725837ae53ba4e1a79154f949692a037dc31c67e) 0rpx 0rpx no-repeat;
+		background: url(../../static/icon/cooper_right.png) 0rpx 0rpx no-repeat;
 		background-size: 44rpx 26rpx;
 		margin-top: 16rpx;
 		display: flex;
@@ -816,7 +812,7 @@
 	.block5 {
 		z-index: 20;
 		height: 352rpx;
-		border-radius: NaNrpx;
+		border-radius: 20rpx;
 		background-color: rgba(255, 255, 255, 1);
 		box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 		align-self: center;
@@ -855,8 +851,7 @@
 		z-index: 22;
 		width: 664rpx;
 		height: 1rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng05bec8694b71fbd17a805bb005169da5878eadb32d2d68a945b5d2f57e023ffc) -1rpx -1rpx no-repeat;
-		background-size: 666rpx 3rpx;
+		border-bottom: 1rpx solid #CCCCCC;
 		margin-top: 12rpx;
 		display: flex;
 		flex-direction: column;
@@ -955,7 +950,7 @@
 	.mod8 {
 		z-index: 111;
 		height: 151rpx;
-		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng172a177e7f9dbcb8331c029f356d524ab5513e347271902b644bba892f6b6b48) 100% no-repeat;
+		background-color: #FFFFFF;
 		width: 750rpx;
 		justify-content: flex-start;
 		padding-top: 34rpx;

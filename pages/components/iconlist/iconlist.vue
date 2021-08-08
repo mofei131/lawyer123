@@ -22,34 +22,53 @@
 				let url = "";
 				switch (item.id) {
 					case 0:
-						url = "";
+						url = "../zhaolvshi/zhaolvshi?id=0";
 						break;
 					case 1:
-						url = "";
+						url = "../zhaolvshi/zhaolvshi?id=1";
 						break;
 					case 2:
-						url = "";
+						url = "../zhaolvshi/zhaolvshi?id=2";
 						break;
 					case 3:
-						url = "";
+						url = "../zhaolvshi/zhaolvshi?id=3";
 						break;
 					case 4:
 						url = "../single_service/cooperDownload";
 						break;
 					case 5:
-						url = "../single_service/cooperCheck";
+						url = "../single_service/cooperCheck?id=5";
 						break;
 					case 6:
-						url = "";
+						url = "../single_service/cooperCheck?id=6";
 						break;
 					case 7:
-						url = "";
+						url = "../single_service/cooperCheck?id=7";
+						break;
+					case 8:
+						url = "../single_service/cooperCheck?id=8";
+						break;
+					case 9:
+						url = "../single_service/cooperCheck?id=9";
+						break;
+					case 10:
+						url = "../single_service/cooperCheck?id=10";
+						break;
+					case 11:
+						url = "../single_service/otherService?id=11";
 						break;
 				}
 				if (!url) return;
-				uni.navigateTo({
-					url: url
-				})
+				if (item.id < 4) {
+					uni.switchTab({
+						url:url
+					})
+				} else {
+					uni.navigateTo({
+						url: url
+					})
+				}
+
 			}
 		}
 	}

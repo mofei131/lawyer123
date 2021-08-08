@@ -1,4 +1,7 @@
 {
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "cooper-tabar": "/pages/components/cooperTabar/cooperTabar",
+    "lawyercard1": "/pages/components/lawyercard1/lawyercard1"
+  }
 }
