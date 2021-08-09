@@ -2,13 +2,8 @@
 	 <view>
 		 <view class="dropDown">
 		 	<view class="uni-form-item uni-column">
-		 		<picker mode=selector :range="diqu" :value="index">
-		 			<label class="">{{diqu[index]}}</label>
-		 		</picker>
+		 		<pickcity @getcity="getCity"></pickcity>
 		 	</view>
-			<view class="downicon">
-				<image src="@/static/images/back.png"></image>
-			</view>
 			<view class="search">
 				<image src="@/static/images/search.png"></image>
 				<input type="text" v-model="input" placeholder="请输入搜索内容" placeholder-style="color:#fff;font-size:28rpx;"/>
@@ -18,7 +13,17 @@
 </template>
 
 <script>
+	import pickcity from '@/pages/components/pickcity/pickcity.vue'
+	
 	export default{
+		components:{
+			pickcity
+		},
+		methods:{
+			getCity(e){
+				console.log(e);
+			}
+		},
 		data(){
 			return{
 				diqu:["奎文区","高新区","潍城区"],

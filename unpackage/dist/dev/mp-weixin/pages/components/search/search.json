@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "pickcity": "/pages/components/pickcity/pickcity"
+  },
   "component": true
 }

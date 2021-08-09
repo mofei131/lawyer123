@@ -1,9 +1,13 @@
 
-.quan_on{
-	border:2rpx solid #65ADF6;background-color: #65ADF6;color: #FFFFFF;
+.quan_on {
+	border: 2rpx solid #65ADF6;
+	background-color: #65ADF6;
+	color: #FFFFFF;
 }
-.quan_off{
-	border:2rpx solid #65ADF6;background-color: #FFFFFF;color: gray;
+.quan_off {
+	border: 2rpx solid #65ADF6;
+	background-color: #FFFFFF;
+	color: gray;
 }
 .youhuiquan {
 	-webkit-box-flex: 0;

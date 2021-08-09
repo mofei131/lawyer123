@@ -1,23 +1,22 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="padding: 20rpx;min-height: 1000rpx;">
 		<view class="flex-row mx-start sx-center">
-			<view style="flex: 0 0 auto;" >
-				<picker @change="anjianChange" :value="index1" :range="array1" range-key="name">
-					<view class="flex-row">
-						<text style="color: gray;">{{array1[index1].name}}</text>
-						<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
-					</view>
-				</picker>
+			<view style="flex: 0 0 auto;">
+				<pickcity @getcity="getCity"></pickcity>
 			</view>
-			<uni-search-bar style="flex:1 1 auto;" border="1rpx solid rgba(244,244,244,1)" placeholder="请输入模板名称" bgColor="rgba(244,244,244,1)"
-				:cancel-text="closeText" radius="100" @confirm="search" :focus="true" v-model="searchValue"
-				@input="input" @clear="clear">
+			<uni-search-bar style="flex:1 1 auto;" border="1rpx solid rgba(244,244,244,1)" placeholder="请输入模板名称"
+				bgColor="rgba(244,244,244,1)" :cancel-text="closeText" radius="100" @confirm="search" :focus="true"
+				v-model="searchValue" @input="input" @clear="clear">
 			</uni-search-bar>
 		</view>
 
 		<view class="flex-row mx-center sx-center" style="margin: 20rpx;">
-			<view :class="{quan_on:flag==1,quan_off:flag!=1}" style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 30rpx 0 0 30rpx;" @tap="flag=1">未使用</view>
-			<view :class="{quan_on:flag==2,quan_off:flag!=2}" style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 0 30rpx 30rpx 0;" @tap="flag=2">不可用</view>
+			<view :class="{quan_on:flag==1,quan_off:flag!=1}"
+				style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 30rpx 0 0 30rpx;"
+				@tap="flag=1">未使用</view>
+			<view :class="{quan_on:flag==2,quan_off:flag!=2}"
+				style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 0 30rpx 30rpx 0;"
+				@tap="flag=2">不可用</view>
 		</view>
 		<view v-for="(item,index) in [1,2,3]" :key='index' class="flex-row mx-start sx-stretch backImgFull youhuiquan"
 			style="background-image: url(../../static/images/youhuiquan.png);">
@@ -60,28 +59,33 @@
 </template>
 
 <script>
+	import pickcity from '@/pages/components/pickcity/pickcity.vue'
+
 	export default {
 		components: {
-
+			pickcity
 		},
 		data() {
 			return {
-				flag:1,
+				flag: 1,
 				array1: [{
 					name: '北京',
 				}, {
 					name: '上海',
 				}],
 				index1: 0,
-		
+
 				closeText: '',
 				searchValue: ''
 			}
 		},
 		onLoad: function() {
-
+			console.log(this.$store.state);
 		},
 		methods: {
+			getCity(e){
+				
+			},
 			input(e) {
 				console.log(e);
 			},
@@ -94,7 +98,7 @@
 			anjianChange: function(e) {
 				//返回选择的数组下标
 				this.index1 = e.detail.value;
-				
+
 			},
 		},
 		computed: {
@@ -110,12 +114,17 @@
 </script>
 
 <style>
-	.quan_on{
-		border:2rpx solid #65ADF6;background-color: #65ADF6;color: #FFFFFF;
+	.quan_on {
+		border: 2rpx solid #65ADF6;
+		background-color: #65ADF6;
+		color: #FFFFFF;
 	}
-	.quan_off{
-		border:2rpx solid #65ADF6;background-color: #FFFFFF;color: gray;
-		
+
+	.quan_off {
+		border: 2rpx solid #65ADF6;
+		background-color: #FFFFFF;
+		color: gray;
+
 	}
 
 	.youhuiquan {
