@@ -33,6 +33,6 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
-  background-color: #ffffff;
+  background-color: #F4F7F7;
 }
 

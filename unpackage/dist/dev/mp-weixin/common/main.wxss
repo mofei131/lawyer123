@@ -241,4 +241,9 @@
 	background-repeat: no-repeat;
 	background-size: contain;
 }
+.backImgFull{
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
 

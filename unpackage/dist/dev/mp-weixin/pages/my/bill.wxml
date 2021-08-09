@@ -1,0 +1,1 @@
+<view><view class="billlist"><block wx:for="{{bill}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view class="billitem"><view class="itemleft"><view>{{item.title}}</view><view>{{item.time}}</view></view><view class="itemright"><view>{{item.rae}}</view></view></view></block></view></view>

@@ -32,7 +32,7 @@
 			},
 			todeal(){
 				uni.navigateTo({
-					
+					url:'./dealList'
 				})
 			}
 		}

@@ -21,8 +21,8 @@
 				<view>{{user.balance}}</view>
 				<view>余额</view>
 			</view>
-			<view class="darwbtn">立即提现</view>
-			<view class="with">
+			<view class="darwbtn" @click="takeOut(user.balance)">立即提现</view>
+			<view class="with" @tap="bill()">
 				<view>余额明细</view>
 				<image src="../../static/images/back.png"></image>
 			</view>
@@ -33,7 +33,7 @@
 				<view>开通即尊享20+项专属特权</view>
 			</view>
 			<view class="vipname" v-else >{{user.vipname}}</view>
-			<view class="kaitongbtn">立即开通</view>
+			<view class="kaitongbtn" @tap="open()">立即开通</view>
 		</view>
 	</view>
 	<iconlist :item='iconlist'></iconlist>
@@ -42,7 +42,7 @@
 		<iconlist :item='iconlist2'></iconlist>
 	</view>
 	<view class="functionlist">
-		<view class="functionitem" v-for="(item,index) in funct">
+		<view class="functionitem" v-for="(item,index) in funct" :key="index">
 			<view class="itemleft">
 				<image :src="item.icon"></image>
 				<view>{{item.title}}</view>
@@ -122,6 +122,21 @@
 			// toUrl(e){
 				
 			// }
+			takeOut(e){
+				uni.navigateTo({
+					url:'./takeOut?balance='+e
+				})
+			},
+			bill(){
+				uni.navigateTo({
+					url:'./bill'
+				})
+			},
+			open(){
+				uni.navigateTo({
+					url:'../single_service/otherService'
+				})
+			}
 		}
 	};
 </script>

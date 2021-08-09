@@ -1,11 +1,12 @@
 <template>
 	<view>
 		<view class="orderlist">
-			<view class="orderitem" v-for="(item,index) in list">
+			<view class="orderitem" v-for="(item,index) in list" :key="index">
 				<view class="top">
 					<view>订单号:{{item.code}}</view>
 					<view class="state" v-if="item.state == 0">已付款</view>
 					<view class="state" v-if="item.state == 1">已完成</view>
+					<view class="state" v-if="item.state == -1">已完成</view>
 				</view>
 				<view class="cont">
 					<view class="contleft">
@@ -13,12 +14,13 @@
 					</view>
 					<view class="contright">
 						<view>{{item.name}}</view>
-						<view>{{item.service}}</view>
+						<view v-if="item.state == -1">时限:{{item.service}}年</view>
+						<view v-else>{{item.service}}</view>
 						<view>￥{{item.price}}</view>
 					</view>
 				</view>
+				<view v-if="item.state != -1">
 				<view class="bottom">
-					<view v-if="item.state != -1">
 						<view class="btn" v-if="item.state == 0">
 							<view>联系律师</view>
 						</view>
@@ -39,4 +41,78 @@
 </script>
 
 <style>
+	.orderitem{
+		width: 720rpx;
+		background: #FFFFFF;
+		box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
+		border-radius: 14rpx;
+		margin: 20rpx auto;
+	}
+	.contleft image{
+		width: 153rpx;
+		height: 153rpx;
+		border-radius: 11rpx;
+	}
+	.top{
+		display: flex;
+		justify-content: space-between;
+		padding: 21rpx 37rpx 21rpx 40rpx;
+		box-sizing: border-box;
+	}
+	.top view:nth-child(1){
+		font-size: 24rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #8C8C8C;
+	}
+	.top view:nth-child(2){
+		font-size: 24rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #059EFF;
+	}
+	.cont{
+		display: flex;
+		width: 644rpx;
+		margin: auto;
+		padding-bottom: 22rpx;
+	}
+	.contright{
+		margin-left: 23rpx;
+	}
+	.contright view{
+		font-size: 26rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #333333;
+		margin-bottom: 8rpx;
+	}
+	.contright view:last-child{
+		font-size: 33rpx;
+		font-family: PingFangSC-Medium, PingFang SC;
+		font-weight: 500;
+		color: #E46367;
+		margin-top: 14rpx;
+	}
+	.bottom{
+		width: 644rpx;
+		margin: auto;
+		height: 90rpx;
+		padding-top: 21rpx;
+		box-sizing: border-box;
+		border-top: 1px solid #DFDFDF;
+	}
+	.btn{
+		width: 150rpx;
+		height: 40rpx;
+		background: #40A9FF;
+		border-radius: 39rpx;
+		font-size: 24rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #FFFFFF;
+		text-align: center;
+		line-height: 43rpx;
+		float: right;
+	}
 </style>

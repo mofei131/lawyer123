@@ -1,9 +1,9 @@
 <template>
 
 
-	<view class="uni-list flex-row mx-evenly sx-center"
-		style="margin: 20rpx 0;background-color: #FFFFFF;padding: 20rpx;border-radius: 10rpx;">
-		<view class="uni-list-cell" style="margin-right: 40rpx;">
+	<view class="uni-list flex-row mx-between sx-center"
+		style="margin-bottom: 20rpx;background-color: #FFFFFF;padding: 20rpx;border-radius: 10rpx;font-size: 28rpx;">
+		<view class="uni-list-cell" >
 
 
 			<picker mode="multiSelector" @columnchange="bindMultiPickerColumnChange" :value="multiIndex"
@@ -18,28 +18,26 @@
 
 
 		</view>
-		<view class="uni-list-cell" style="margin-right: 40rpx;">
-
-			<picker @change="bindPickerChange" :value="index" :range="array" range-key="name">
+		<view class="uni-list-cell" >
+			<picker @change="anjianChange" :value="index1" :range="array1" range-key="name">
 				<view class="uni-input flex-row">
-					<text>{{array[index].name}}</text>
-					<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
-				</view>
-			</picker>
-
-		</view>
-		<view class="uni-list-cell" style="margin-right: 40rpx;">
-			<picker @change="bindPickerChange" :value="index" :range="array" range-key="name">
-				<view class="uni-input flex-row">
-					<text>{{array[index].name}}</text>
+					<text>{{array1[index1].name}}</text>
 					<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
 				</view>
 			</picker>
 		</view>
-		<view class="uni-list-cell" style="margin-right: 40rpx;">
-			<picker @change="bindPickerChange" :value="index" :range="array" range-key="name">
+		<view class="uni-list-cell" >
+			<picker @change="lvshiChange" :value="index2" :range="array2" range-key="name">
 				<view class="uni-input flex-row">
-					<text>{{array[index].name}}</text>
+					<text>{{array2[index2].name}}</text>
+					<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
+				</view>
+			</picker>
+		</view>
+		<view class="uni-list-cell" >
+			<picker @change="workAgeChange" :value="index3" :range="array3" range-key="name">
+				<view class="uni-input flex-row">
+					<text>{{array3[index3].name}}</text>
 					<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
 				</view>
 			</picker>
@@ -54,16 +52,24 @@
 		data() {
 			return {
 
-				array: [{
-					name: '中国'
+				array1: [{
+					name: '刑事纠纷',
 				}, {
-					name: '美国'
-				}, {
-					name: '巴西'
-				}, {
-					name: '日本'
+					name: '交通事故',
 				}],
-				index: 0,
+				index1: 0,
+				array2: [{
+					name: '初级',
+				}, {
+					name: '中级',
+				}],
+				index2: 0,
+				array3: [{
+					name: '5年',
+				}, {
+					name: '10年',
+				}],
+				index3: 0,
 				multiArray: [
 					['亚洲', '欧洲'],
 					['中国', '日本'],
@@ -75,10 +81,21 @@
 			}
 		},
 		methods: {
-			back() {
-				uni.navigateBack({
-					delta: 1
-				})
+
+			anjianChange: function(e) {
+				//返回选择的数组下标
+				this.index1 = e.detail.value;
+				this.$emit("searchChange", 1)
+			},
+			lvshiChange: function(e) {
+				console.log('picker发送选择改变，携带值为：' + e.detail.value)
+				this.index2 = e.detail.value;
+				this.$emit("searchChange", 1)
+			},
+			workAgeChange: function(e) {
+				console.log('picker发送选择改变，携带值为：' + e.detail.value)
+				this.index3 = e.detail.value;
+				this.$emit("searchChange", 1)
 			},
 			bindPickerChange: function(e) {
 				console.log('picker发送选择改变，携带值为：' + e.detail.value)
@@ -139,4 +156,7 @@
 </script>
 
 <style>
+	.uni-list-cell{
+		flex: 0 0 auto;
+	}
 </style>

@@ -12,7 +12,30 @@
     "pages/my/contractList",
     "pages/my/contractDet",
     "pages/my/orderList",
-    "pages/my/serviceList"
+    "pages/my/serviceList",
+    "pages/single_service/otherService",
+    "pages/service_zhixun/tuwen",
+    "pages/service_zhixun/jianmian",
+    "pages/service_zhixun/dianhua",
+    "pages/service_zhixun/pinglvshi",
+    "pages/list/zixun",
+    "pages/detail/lawyerDetail",
+    "pages/components/anli/anli",
+    "pages/list/moreAnli",
+    "pages/chat/chat",
+    "pages/list/moreStudy",
+    "pages/detail/studyDetail",
+    "pages/my/dealList",
+    "pages/my/takeOut",
+    "pages/my/bill",
+    "pages/my/fenxiao",
+    "pages/my/guide",
+    "pages/renzheng/classify",
+    "pages/renzheng/privateNotice",
+    "pages/renzheng/commonNotice",
+    "pages/renzheng/classifyDet1",
+    "pages/renzheng/classifyDet2",
+    "pages/renzheng/classifyDet3"
   ],
   "subPackages": [],
   "window": {
@@ -52,6 +75,7 @@
       }
     ]
   },
+  "permission": {},
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
   }

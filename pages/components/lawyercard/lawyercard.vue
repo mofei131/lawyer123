@@ -1,6 +1,6 @@
 <template>
 	<view class="fourcard">
-		<view class="cardone" v-for="(item,index) in lawyerlist">
+		<view class="cardone" v-for="(item,index) in lawyerlist" :key="index" @tap='todetail(item)'>
 			<view class="cardoneleft">
 				<image :src="item.portrait"></image>
 			</view>
@@ -18,7 +18,14 @@
 
 <script>
 	export default{
-		props:["lawyerlist"]
+		props:["lawyerlist"],
+		methods:{
+			todetail(){
+				uni.navigateTo({
+					url:'../detail/lawyerDetail?id='
+				})
+			}
+		}
 	}
 </script>
 

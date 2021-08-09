@@ -30,21 +30,7 @@
 	-webkit-flex-direction: column;
 	        flex-direction: column;
 }
-.block1 {
-	z-index: 78;
-	height: 379rpx;
-	overflow: hidden;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng640935906dc60aedf639f3b7ff801331b84de94b10ee1d5b31f9d9b9f5b1cbae) 100% no-repeat;
-	width: 750rpx;
-	position: relative;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	        flex-direction: column;
-}
+.block1 {}
 .group1 {
 	z-index: auto;
 	width: 727rpx;
@@ -80,8 +66,7 @@
 	z-index: 106;
 	width: 29rpx;
 	height: 20rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngad3a870b68934eb34d94172b3b4366f1c667fa63cad9db81fb735df4da271432) -1rpx 0rpx no-repeat;
-	background-size: 30rpx 20rpx;
+	background-color: #FFFFFF;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -108,8 +93,7 @@
 	z-index: 97;
 	width: 12rpx;
 	height: 20rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng55524bf3a9f199c0b4a11aa293e9f175526a82e7a0a0a9864cd92ed04603c603) -1rpx -3rpx no-repeat;
-	background-size: 15rpx 26rpx;
+	background-color: #FFFFFF;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -224,54 +208,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-.group5 {
-	z-index: 79;
-	position: absolute;
-	left: -45rpx;
-	top: 48rpx;
-	width: 826rpx;
-	height: 261rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng46445f2c0d9d5474bcf80cf719ba47144edaec582805efac579f601613af9e77) 46rpx 0rpx no-repeat;
-	background-size: 750rpx 262rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	        flex-direction: column;
-}
-.group6 {
-	z-index: 80;
-	height: 332rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngd25b06f3c1d7559eb636a76d4733e691f22b662551a012422faf33f7655f96a4) 100% no-repeat;
-	width: 750rpx;
-	-webkit-box-pack: end;
-	-webkit-justify-content: flex-end;
-	        justify-content: flex-end;
-	position: absolute;
-	left: 0rpx;
-	top: 47rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	        flex-direction: column;
-}
 .mod2 {
-	z-index: 81;
-	width: 750rpx;
-	height: 156rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPnge42e7677d1549b00066b10703c294c8e2cfa395bebf256b866337131332d7875) 100% no-repeat;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	        flex-direction: column;
 }
 .pic2 {
 	z-index: 82;
@@ -284,7 +221,7 @@
 .block2 {
 	z-index: 4;
 	height: 318rpx;
-	border-radius: NaNrpx;
+	border-radius: 20rpx;
 	background-color: rgba(255, 255, 255, 1);
 	-webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 	        box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
@@ -337,8 +274,7 @@
 	z-index: 6;
 	width: 664rpx;
 	height: 1rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng05bec8694b71fbd17a805bb005169da5878eadb32d2d68a945b5d2f57e023ffc) -1rpx -1rpx no-repeat;
-	background-size: 666rpx 3rpx;
+	border-bottom: 1rpx solid #CCCCCC;
 	margin-top: 12rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -366,7 +302,7 @@
 .block3 {
 	z-index: 10;
 	height: 223rpx;
-	border-radius: NaNrpx;
+	border-radius: 20rpx;
 	background-color: rgba(255, 255, 255, 1);
 	-webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 	        box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
@@ -419,8 +355,7 @@
 	z-index: 12;
 	width: 664rpx;
 	height: 1rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng05bec8694b71fbd17a805bb005169da5878eadb32d2d68a945b5d2f57e023ffc) -1rpx -1rpx no-repeat;
-	background-size: 666rpx 3rpx;
+	border-bottom: 1rpx solid #CCCCCC;
 	margin-top: 12rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -553,7 +488,7 @@
 .block4 {
 	z-index: 30;
 	height: 242rpx;
-	border-radius: NaNrpx;
+	border-radius: 20rpx;
 	background-color: rgba(255, 255, 255, 1);
 	-webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 	        box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
@@ -606,8 +541,7 @@
 	z-index: 32;
 	width: 664rpx;
 	height: 1rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng05bec8694b71fbd17a805bb005169da5878eadb32d2d68a945b5d2f57e023ffc) -1rpx -1rpx no-repeat;
-	background-size: 666rpx 3rpx;
+	border-bottom: 1rpx solid #CCCCCC;
 	margin-top: 12rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -642,7 +576,7 @@
 	z-index: 68;
 	width: 44rpx;
 	height: 26rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng375a6cfd7b08bc2bff53d035725837ae53ba4e1a79154f949692a037dc31c67e) 0rpx 0rpx no-repeat;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAaCAYAAADMp76xAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAALKADAAQAAAABAAAAGgAAAADSD6qFAAAC5klEQVRYCcWWXUhUQRTH/+e2mopGpfkUQUREEr3Ue3eVHiTtoWg1hKzI6qESCqQvSHqLsF6kt7IiQV0hStI+yJYgCKMokMr3XoIKI/ze3el/1Suz92MrYmcHdmfO/8y95zezc86sIA/NjitbFA4rYLUAI4VA55OY/PgbFM432+wetQWCTk/UL8um0fq8Wb57dJ9p+ZQcCyLYGRBibXo5ru/qVqsCfBmSceCM6JqhBOsmCnDN7lIrNdk3NA6sFJ75KFxBYb2UoKP2nlrhSt7eOHCiUUaZODe8IK7NRNwwVYCO3TdVmavpvfGkc4Mz+ZqYfC2u7e1ZRcYKZnH66QGZ0H3Gd9gNzp3u5rjLtb09z/SmuUJcrR9QJbovb8AORKJB7vAnvqsD6WNCV/2awpV9farY1ZeOhFJK2HiEsjdnXiyOouyz/s37TaGFgfeEPiV4jwmcTRySaWEZKUIJTnByDc9U0lJ4WC64FY9JSn+B3a4i2Iwj1Or4KdV9Jsas328rgHMRlpGjXJ0DAXCQBpq44p+0+ua1xS+rCvvTCo26ZnLMcriN12CzxXNS7Q1Mbp/Ghfg073O5th0Gi7uaDAjk19LIOCIBz5iQUg7wY28knpchnwYMejXTNrkGI/iM20ymOQZ3/pQkLcGD4Zg88sIMN+B+NA5ngXVMzkqv/z9t4XuXSlfIu14w6XqXylrIpJzLTpmM9qGNgWrDghHypfqEy4l2SeYVeBH2DEEXqlQAMQFfqUpcSkRlPq+sgDnGpGgvWrPB0vd64zjaXVgHLG87XN2jTqYFex2IkPZmjeACL7BZ3Z+XHbZ71fFssNzFd8VfcdEL64AbB7b71XbGDb0xCftBTeL80CmZ0XfWHRsH5vWzww0e0I9WyMKfnADfvBQJc+RMF8yw5voaL4WPpcVoi9fLlM+pCcZ3ODKHQf7sGdc8Yce4hraBepnU2AKHeakSNf1qazqFgyQqJ+hI2Ti6Bo79GdZZwW9AxszQQczpZQAAAABJRU5ErkJggg==) 0rpx 0rpx no-repeat;
 	background-size: 44rpx 26rpx;
 	margin-top: 16rpx;
 	display: -webkit-box;
@@ -662,7 +596,7 @@
 	z-index: 71;
 	width: 44rpx;
 	height: 26rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng375a6cfd7b08bc2bff53d035725837ae53ba4e1a79154f949692a037dc31c67e) 0rpx 0rpx no-repeat;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAaCAYAAADMp76xAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAALKADAAQAAAABAAAAGgAAAADSD6qFAAAC5klEQVRYCcWWXUhUQRTH/+e2mopGpfkUQUREEr3Ue3eVHiTtoWg1hKzI6qESCqQvSHqLsF6kt7IiQV0hStI+yJYgCKMokMr3XoIKI/ze3el/1Suz92MrYmcHdmfO/8y95zezc86sIA/NjitbFA4rYLUAI4VA55OY/PgbFM432+wetQWCTk/UL8um0fq8Wb57dJ9p+ZQcCyLYGRBibXo5ru/qVqsCfBmSceCM6JqhBOsmCnDN7lIrNdk3NA6sFJ75KFxBYb2UoKP2nlrhSt7eOHCiUUaZODe8IK7NRNwwVYCO3TdVmavpvfGkc4Mz+ZqYfC2u7e1ZRcYKZnH66QGZ0H3Gd9gNzp3u5rjLtb09z/SmuUJcrR9QJbovb8AORKJB7vAnvqsD6WNCV/2awpV9farY1ZeOhFJK2HiEsjdnXiyOouyz/s37TaGFgfeEPiV4jwmcTRySaWEZKUIJTnByDc9U0lJ4WC64FY9JSn+B3a4i2Iwj1Or4KdV9Jsas328rgHMRlpGjXJ0DAXCQBpq44p+0+ua1xS+rCvvTCo26ZnLMcriN12CzxXNS7Q1Mbp/Ghfg073O5th0Gi7uaDAjk19LIOCIBz5iQUg7wY28knpchnwYMejXTNrkGI/iM20ymOQZ3/pQkLcGD4Zg88sIMN+B+NA5ngXVMzkqv/z9t4XuXSlfIu14w6XqXylrIpJzLTpmM9qGNgWrDghHypfqEy4l2SeYVeBH2DEEXqlQAMQFfqUpcSkRlPq+sgDnGpGgvWrPB0vd64zjaXVgHLG87XN2jTqYFex2IkPZmjeACL7BZ3Z+XHbZ71fFssNzFd8VfcdEL64AbB7b71XbGDb0xCftBTeL80CmZ0XfWHRsH5vWzww0e0I9WyMKfnADfvBQJc+RMF8yw5voaL4WPpcVoi9fLlM+pCcZ3ODKHQf7sGdc8Yce4hraBepnU2AKHeakSNf1qazqFgyQqJ+hI2Ti6Bo79GdZZwW9AxszQQczpZQAAAABJRU5ErkJggg==) 0rpx 0rpx no-repeat;
 	background-size: 44rpx 26rpx;
 	margin-top: 16rpx;
 	display: -webkit-box;
@@ -682,7 +616,7 @@
 	z-index: 74;
 	width: 44rpx;
 	height: 26rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng375a6cfd7b08bc2bff53d035725837ae53ba4e1a79154f949692a037dc31c67e) 0rpx 0rpx no-repeat;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAaCAYAAADMp76xAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAALKADAAQAAAABAAAAGgAAAADSD6qFAAAC5klEQVRYCcWWXUhUQRTH/+e2mopGpfkUQUREEr3Ue3eVHiTtoWg1hKzI6qESCqQvSHqLsF6kt7IiQV0hStI+yJYgCKMokMr3XoIKI/ze3el/1Suz92MrYmcHdmfO/8y95zezc86sIA/NjitbFA4rYLUAI4VA55OY/PgbFM432+wetQWCTk/UL8um0fq8Wb57dJ9p+ZQcCyLYGRBibXo5ru/qVqsCfBmSceCM6JqhBOsmCnDN7lIrNdk3NA6sFJ75KFxBYb2UoKP2nlrhSt7eOHCiUUaZODe8IK7NRNwwVYCO3TdVmavpvfGkc4Mz+ZqYfC2u7e1ZRcYKZnH66QGZ0H3Gd9gNzp3u5rjLtb09z/SmuUJcrR9QJbovb8AORKJB7vAnvqsD6WNCV/2awpV9farY1ZeOhFJK2HiEsjdnXiyOouyz/s37TaGFgfeEPiV4jwmcTRySaWEZKUIJTnByDc9U0lJ4WC64FY9JSn+B3a4i2Iwj1Or4KdV9Jsas328rgHMRlpGjXJ0DAXCQBpq44p+0+ua1xS+rCvvTCo26ZnLMcriN12CzxXNS7Q1Mbp/Ghfg073O5th0Gi7uaDAjk19LIOCIBz5iQUg7wY28knpchnwYMejXTNrkGI/iM20ymOQZ3/pQkLcGD4Zg88sIMN+B+NA5ngXVMzkqv/z9t4XuXSlfIu14w6XqXylrIpJzLTpmM9qGNgWrDghHypfqEy4l2SeYVeBH2DEEXqlQAMQFfqUpcSkRlPq+sgDnGpGgvWrPB0vd64zjaXVgHLG87XN2jTqYFex2IkPZmjeACL7BZ3Z+XHbZ71fFssNzFd8VfcdEL64AbB7b71XbGDb0xCftBTeL80CmZ0XfWHRsH5vWzww0e0I9WyMKfnADfvBQJc+RMF8yw5voaL4WPpcVoi9fLlM+pCcZ3ODKHQf7sGdc8Yce4hraBepnU2AKHeakSNf1qazqFgyQqJ+hI2Ti6Bo79GdZZwW9AxszQQczpZQAAAABJRU5ErkJggg==) 0rpx 0rpx no-repeat;
 	background-size: 44rpx 26rpx;
 	margin-top: 16rpx;
 	display: -webkit-box;
@@ -765,7 +699,7 @@
 .block5 {
 	z-index: 20;
 	height: 352rpx;
-	border-radius: NaNrpx;
+	border-radius: 20rpx;
 	background-color: rgba(255, 255, 255, 1);
 	-webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 	        box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
@@ -818,8 +752,7 @@
 	z-index: 22;
 	width: 664rpx;
 	height: 1rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng05bec8694b71fbd17a805bb005169da5878eadb32d2d68a945b5d2f57e023ffc) -1rpx -1rpx no-repeat;
-	background-size: 666rpx 3rpx;
+	border-bottom: 1rpx solid #CCCCCC;
 	margin-top: 12rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -922,7 +855,7 @@
 .mod8 {
 	z-index: 111;
 	height: 151rpx;
-	background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng172a177e7f9dbcb8331c029f356d524ab5513e347271902b644bba892f6b6b48) 100% no-repeat;
+	background-color: #FFFFFF;
 	width: 750rpx;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;

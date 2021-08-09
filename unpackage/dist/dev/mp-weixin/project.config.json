@@ -4,11 +4,12 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false
+    "urlCheck": false,
+    "es6": true
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "wx4fb1e00eeb10c2ea",
+  "appid": "wx79abd178a6e41f79",
   "projectname": "lawyer123",
   "condition": {
     "search": {
