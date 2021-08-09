@@ -1,6 +1,7 @@
 {
+  "component": true,
   "usingComponents": {
-    "fa-icon": "/components/fa-icon/fa-icon"
-  },
-  "component": true
+    "fa-icon": "/components/fa-icon/fa-icon",
+    "pickcity": "/pages/components/pickcity/pickcity"
+  }
 }

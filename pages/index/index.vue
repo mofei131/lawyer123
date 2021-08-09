@@ -2,19 +2,21 @@
 	<view>
 		<search></search>
 
-		<swiper class="swiper flex-column mx-start sx-stretch" circular :indicator-dots="true" :autoplay="true" interval="3000" duration="500">
+		<swiper class="swiper flex-column mx-start sx-stretch" circular :indicator-dots="true" :autoplay="true"
+			interval="3000" duration="500">
 			<swiper-item class="flex-column mx-start sx-stretch">
-				<view class="swiper-item backImgFull" :style="{backgroundImage: 'url(/static/images/banner.png)'}"></view>
+				<view class="swiper-item backImgFull" :style="{backgroundImage: 'url(/static/images/banner.png)'}">
+				</view>
 			</swiper-item>
 			<swiper-item class="flex-column mx-start sx-stretch">
 				<view class="swiper-item backImgFull" style="background-image: url(/static/images/banner.png)"></view>
 			</swiper-item>
 		</swiper>
-		
+
 		<iconlist :item='item1'></iconlist>
 		<iconlist :item='item2'></iconlist>
 		<view class="modtitle" @tap="toYouxuan">
-			<view class="modleft" >
+			<view class="modleft">
 				<view class="blue"></view>
 				<view class="modone">优选律师</view>
 			</view>
@@ -69,9 +71,9 @@
 				</navigator>
 			</view>
 		</view>
-		<study  :learn="learn"></study>
-		
-		
+		<study :learn="learn"></study>
+
+
 	</view>
 </template>
 
@@ -81,7 +83,13 @@
 	import lawyercard from '../components/lawyercard/lawyercard.vue'
 	import anli from '../components/anli/anli.vue'
 	import study from '../components/study/study.vue'
-	
+
+	import {
+		mapState,
+		mapGetters,
+		mapMutations,
+		mapActions
+	} from 'vuex'
 	export default {
 		components: {
 			search,
@@ -128,7 +136,7 @@
 						id: 7,
 						title: "其他"
 					},
-					
+
 				],
 				item1: {
 					title: '咨询律师',
@@ -351,9 +359,65 @@
 			}
 		},
 		onLoad() {
+			// this.$store.commit('increment',1000);
+
+			this.getProvinceAndCity();
+
+		},
+		computed: {
+			// 使用对象展开运算符将 getter 混入 computed 对象中
+			// ...mapGetters([
+			// 	'doneTodos',
+			// 	'doneTodosCount',
+			// 	"getTodoById",
+			// ]),
+			// ...mapState('module1', {
+			// 	module1State: state => state
+			// }),
+			// ...mapGetters('module1', {
+			// 	getNameA: 'getNameA',
+			// 	getModuleA: 'getModuleA'
+			// }),
+			// ...mapGetters('module2', {
+			// 	getName2: 'getNameA',
+			// 	getModule2: 'getModule2'
+			// }),
 
 		},
 		methods: {
+			...mapMutations(['getProvince', 'getCity']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
+			// ...mapActions([
+			// 	'getCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+
+			// ]),
+			// ...mapActions("module1",{
+			// 	udpateNameByAction:"udpateNameByAction"
+			// }),
+			
+			//这一步放到登录那里做
+			getProvinceAndCity() {
+				let res = this.$myRequest({
+					url: '/index/getProvince',
+					method: 'GET',
+					data: {}
+				})
+				res.then(data => {
+					if (data && data.data) {
+						this.getProvince(data.data)
+					}
+
+				})
+				let res1 = this.$myRequest({
+					url: '/index/getCity',
+					method: 'GET',
+					data: {}
+				})
+				res1.then(data => {
+					if (data && data.data) {
+						this.getCity(data.data)
+					}
+				})
+			},
 			swichMenu: async function(current) { //点击其中一个 menu
 				console.log(current);
 				if (this.currentTab == current) {
@@ -364,9 +428,9 @@
 					// this.lawyercard = ''
 				}
 			},
-			toYouxuan(){
+			toYouxuan() {
 				uni.switchTab({
-					url:'../zhaolvshi/zhaolvshi'
+					url: '../zhaolvshi/zhaolvshi'
 				})
 			}
 		}
@@ -374,12 +438,14 @@
 </script>
 
 <style>
-	.swiper{
+	.swiper {
 		height: 400rpx;
 	}
-	.swiper-item{
+
+	.swiper-item {
 		flex: 1 1 auto;
 	}
+
 	.banner image {
 		width: 750rpx;
 	}
@@ -461,107 +527,111 @@
 		margin-top: 50rpx;
 	}
 
-	
-	
-	
+
+
+
 	.body-view {
-	     height: 100%;
-	     width: 100%;
-	     display: flex;
-	     flex: 1;
-	     flex-direction: column;
-	     overflow: hidden;
-	     align-items: flex-start;
-	     justify-content: center;
-				border-radius: 14px 14px 0px 0px;
-				height: 80rpx;
-				width: 710rpx;
-				margin: auto;
-	 }
-			.top-menu-view{
-				background: rgb(9,109,217,.1)!important;
-				border: 0!important;
-			}
-	
-	 .top-menu-view {
-	     display: flex;
-	     white-space: nowrap;
-	     width: 100%;
-	     background-color: #FFFFFF;
-	     height: 86rpx;
-	     border-top: 1px solid #d8dbe6;
-	     border-bottom: 1px solid #d8dbe6;
-	 }
-		
-	 .top-menu-view .menu-topic-view {
-	     display: inline-block;
-	     white-space: nowrap;
-	     height:86rpx ;
-	     position: relative;
-	 }
-	 
-	 .top-menu-view .menu-topic-view .menu-topic {
-	     margin-left: 30rpx;
-	     margin-right: 10rpx;
-	     position: relative;
-	     height: 100%;
-	     display: flex;
-	     align-items: center;
-	     justify-content: center;
-	 }
-	 .top-menu-view .menu-topic-view .menu-topic:first-child{
-	     margin-left: 30rpx;
-	 }
-	 /* .top-menu-view .menu-topic-view:last-child  .menu-topic{
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		overflow: hidden;
+		align-items: flex-start;
+		justify-content: center;
+		border-radius: 14px 14px 0px 0px;
+		height: 80rpx;
+		width: 710rpx;
+		margin: auto;
+	}
+
+	.top-menu-view {
+		background: rgb(9, 109, 217, .1) !important;
+		border: 0 !important;
+	}
+
+	.top-menu-view {
+		display: flex;
+		white-space: nowrap;
+		width: 100%;
+		background-color: #FFFFFF;
+		height: 86rpx;
+		border-top: 1px solid #d8dbe6;
+		border-bottom: 1px solid #d8dbe6;
+	}
+
+	.top-menu-view .menu-topic-view {
+		display: inline-block;
+		white-space: nowrap;
+		height: 86rpx;
+		position: relative;
+	}
+
+	.top-menu-view .menu-topic-view .menu-topic {
+		margin-left: 30rpx;
+		margin-right: 10rpx;
+		position: relative;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.top-menu-view .menu-topic-view .menu-topic:first-child {
+		margin-left: 30rpx;
+	}
+
+	/* .top-menu-view .menu-topic-view:last-child  .menu-topic{
 	     margin-right: 80rpx;
 	 } */
-	
-	 .top-menu-view .menu-topic-view .menu-topic .menu-topic-txt {
-	     font-size: 30rpx;
-	     color:#303133;
-	 }
-		
-	 .top-menu-view .menu-topic-view .menu-topic .menu-topic-bottom {
-	     position: absolute;
-	     bottom: 0;
-	     width: 100%;
-	 }
-		
-	 .top-menu-view .menu-topic-view .menu-topic .menu-topic-bottom .menu-topic-bottom-color {
-	     width: 88rpx;
-	     height: 6rpx;
-	 }
-		
-	 .top-menu-view .menu-topic-view .menu-topic-act {
-	     margin-left: 30rpx;
-	     margin-right: 10rpx;
-	     position: relative;
-	     height: 90%;
-	     display: flex;
-	     align-items: center;
-	     justify-content: center;
-	 }
-	.top-menu-view .menu-topic-view:last-child  .menu-topic-act{
-	     margin-right: 80rpx;
-	 }
-	
-	 .top-menu-view .menu-topic-view .menu-topic-act .menu-topic-txt {
-	     font-size: 30rpx;
-	     color: #40A9FF;
-	     font-weight: 600;
-	 }
-		
-	 .top-menu-view .menu-topic-view .menu-topic-act .menu-topic-bottom {
-	     position: absolute;
-	     bottom: 0;
-	     width: 100%;
-	     display: flex;
-	     justify-content: center;
-	 }
-		
-	 .top-menu-view .menu-topic-view .menu-topic-act .menu-topic-bottom .menu-topic-bottom-color {
-	     width: 88rpx;
-	     height: 6rpx;
-	     background: #40A9FF;
-	 }
+
+	.top-menu-view .menu-topic-view .menu-topic .menu-topic-txt {
+		font-size: 30rpx;
+		color: #303133;
+	}
+
+	.top-menu-view .menu-topic-view .menu-topic .menu-topic-bottom {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+	}
+
+	.top-menu-view .menu-topic-view .menu-topic .menu-topic-bottom .menu-topic-bottom-color {
+		width: 88rpx;
+		height: 6rpx;
+	}
+
+	.top-menu-view .menu-topic-view .menu-topic-act {
+		margin-left: 30rpx;
+		margin-right: 10rpx;
+		position: relative;
+		height: 90%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.top-menu-view .menu-topic-view:last-child .menu-topic-act {
+		margin-right: 80rpx;
+	}
+
+	.top-menu-view .menu-topic-view .menu-topic-act .menu-topic-txt {
+		font-size: 30rpx;
+		color: #40A9FF;
+		font-weight: 600;
+	}
+
+	.top-menu-view .menu-topic-view .menu-topic-act .menu-topic-bottom {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.top-menu-view .menu-topic-view .menu-topic-act .menu-topic-bottom .menu-topic-bottom-color {
+		width: 88rpx;
+		height: 6rpx;
+		background: #40A9FF;
+	}
 </style>
