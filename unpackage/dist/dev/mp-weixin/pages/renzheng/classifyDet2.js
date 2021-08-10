@@ -93,6 +93,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    faIcon: function() {
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 291))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -176,21 +199,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
     return {
-      name: '',
+      zhenghao: '',
       phone: '',
       array1: [{
-        sex: '男' },
+        years: '1~3' },
       {
-        sex: '女' }],
+        years: '3~6' }],
+
+      array2: [{
+        level: '高级律师' },
+      {
+        level: '专家级律师' }],
 
       index1: 0,
-      zipai: '',
-      zheng: '',
-      fan: '' };
+      index2: 0,
+      zhiname: '',
+      zhiyear: '' };
 
   },
   methods: {
@@ -205,8 +234,6 @@ var _default =
             that.zipai = res.tempFilePaths[0];
           } else if (e == 2) {
             that.zheng = res.tempFilePaths[0];
-          } else {
-            that.fan = res.tempFilePaths[0];
           }
         } });
 
@@ -214,9 +241,12 @@ var _default =
     anjianChange: function anjianChange(e) {
       this.index1 = e.detail.value;
     },
+    anjianChange2: function anjianChange2(e) {
+      this.index2 = e.detail.value;
+    },
     toUrl: function toUrl() {
       uni.navigateTo({
-        url: './classifyDet2' });
+        url: './classifyDet3' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

@@ -56,7 +56,25 @@
         },
         {
           "name": "律师认证",
-          "pathName": "pages/renzheng/classifyDet1",
+          "pathName": "pages/renzheng/classifyDet3",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的订单",
+          "pathName": "pages/my/serviceList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "服务设置",
+          "pathName": "pages/my/serviceSet",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "服务评价",
+          "pathName": "pages/my/score",
           "query": "",
           "scene": null
         }

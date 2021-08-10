@@ -36,7 +36,7 @@
 			</view>
 			<view class="imgitem">
 				<view class="imgtitle">请上传身份证国徽面</view>
-				<image class="classfiyimg" src="../../static/images/classfiyimg2.png" v-if="fan == ''" @click="chooseImage(3)"></image>
+				<image class="classfiyimg" src="../../static/images/classfiyimg3.png" v-if="fan == ''" @click="chooseImage(3)"></image>
 				<image class="classfiyimg" :src="fan" v-else @click="chooseImage(3)"></image>
 			</view>
 	</view>

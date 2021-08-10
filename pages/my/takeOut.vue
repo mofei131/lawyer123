@@ -153,7 +153,7 @@
 		font-family: PingFangSC-Medium, PingFang SC;
 		font-weight: 500;
 		color: #FF3223;
-		margin-top: 15rpx;
+		margin-top: 10rpx;
 	}
 	.entry input{
 		height: 75rpx;

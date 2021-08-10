@@ -1,0 +1,377 @@
+<template>
+	<view>
+		<view class="modtitle">
+			<view class="blue"></view>
+			<view>服务设置</view>
+		</view>
+		<view class="collect">
+			<view class="intitem">
+				<view class="tips">图文资讯：</view>
+				<input class="gather" type="number" value="" placeholder="请手动输入图文咨询价格" v-model="chat" placeholder-style="color: #C1C2C3;"/>
+			</view>
+		<view class="boder"></view>
+		<view class="intitem">
+				<view class="tips">电话咨询：</view>
+				<input class="gather" type="number" value="" placeholder="请手动输入电话咨询价格" v-model="phone" placeholder-style="color: #C1C2C3;"/>
+			</view>
+		<view class="boder"></view>
+		<view class="intitem">
+				<view class="tips">见面资讯：</view>
+				<input class="gather" type="number" value="" placeholder="请手动输入见面咨询价格" v-model="meet" placeholder-style="color: #C1C2C3;"/>
+			</view>
+		<view class="boder"></view>
+		<view class="intitem">
+				<view class="tips">聘请律师：</view>
+				<input class="gather" type="number" value="" placeholder="请手动输入受聘价格" v-model="employ" placeholder-style="color: #C1C2C3;"/>
+			</view>
+			<view class="boder" style="margin-bottom: 10rpx;"></view>
+			<view class="boder"></view>
+			<view class="intitem">
+					<view class="tips2">擅长领域：</view>
+					<view class="tipint">请手动输入擅长领域</view>
+				</view>
+			<view class="labellist">
+				<view class="labelitem" v-for="(item,index) in type" :key="index" :class="{ clever: cardlist.indexOf(index) != -1 }" @tap="select(index)">
+					{{item}}
+				</view>
+			</view>
+			<view class="boder"></view>
+			<view class="servicepirce" v-for="(item,index) in sevedata" :key="index">
+				<view>{{item.service}}：</view>
+				<input type="number" value="" class="serviceinp" placeholder="请手动输入服务价格" placeholder-style="color: #C1C2C3;"/>
+				<image src="../../static/icon/deleteicon.png"></image>
+			</view>
+			<view class="addmore" @tap="cancel()">
+				<image src="../../static/icon/addicon.png"></image>
+				<view>添加更多服务项目</view>
+			</view>
+	</view>
+	<view class="molde" v-if="molde">
+		<view class="eject">
+			<view class="ejtitle">是否添加新的案件聘请服务</view>
+			<picker class="gather" @change="anjianChange1" :value="index1" :range="array1" range-key="record">
+				<view class="flex-row">
+					<text>{{array1[index1].record}}</text>
+					<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
+				</view>
+			</picker>
+			<view class="twobtn">
+				<view @tap="cancel()">取消</view>
+				<view @tap="press()">确定</view>
+			</view>
+		</view>
+	</view>
+	<view class="next" @tap="toUrl()">保存</view>
+	</view>
+</template>
+
+<script>
+	export default{
+		data(){
+			return{
+				chat:'',
+				phone:'',
+				meet:'',
+				emplay:'',
+				type:["婚姻家庭","财产纠纷","交通肇事","土地房产","劳动人事","婚姻家庭","财产纠纷","交通肇事","土地房产","劳动人事","婚姻家庭","财产纠纷","交通肇事","土地房产","劳动人事","婚姻家庭","财产纠纷","交通肇事","土地房产","劳动人事"],
+				cardlist:[],
+				raw:false,
+				ji:'',
+				array1: [{
+					id:0,
+					record: '婚姻家庭',
+				},{
+					id:1,
+					record: '财产纠纷',
+				},{
+					id:2,
+					record: '交通肇事',
+				}],
+				index1: 0,
+				molde:false,
+				sevedata:[
+					{service:'私人律师(7天)',price:''},
+					{service:'私人律师(120天)',price:''},
+					{service:'私人律师',price:''}
+				],
+				zancun:''
+			}
+		},
+		methods:{
+			toUrl(){
+				// uni.navigateTo({
+				// 	url:'./classifyDet2'
+				// })
+				console.log(this.cardlist)
+			},
+			select(index) {
+		let that = this;
+		if (that.cardlist.indexOf(index) == -1) {
+			// console.log(index); //打印下标
+			that.cardlist.push(index); //选中添加到数组里
+		} else {
+			that.cardlist.splice(that.cardlist.indexOf(index), 1); //取消
+				}
+			},
+			anjianChange1(e) {
+				this.index1 = e.detail.value;
+				this.zancun = this.array1[e.detail.value].record
+			},
+			cancel(){
+				this.molde = !this.molde
+			},
+			press(){
+				this.sevedata.push({
+					service:this.zancun
+				})
+				this.molde = !this.molde
+			}
+		}
+	}
+</script>
+
+<style>
+	.servicepirce{
+		height: 60rpx;
+		display: flex;
+		justify-content: space-between;
+		width: 680rpx;
+		margin: auto;
+		margin-top: 13rpx;
+	}
+	.servicepirce view{
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+		margin-top: 10rpx;
+		width: 240rpx;
+	}
+	.servicepirce input{
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #C1C2C3;
+	}
+	.servicepirce image{
+		width: 60rpx;
+		height: 60rpx;
+	}
+	.twobtn view:nth-child(1){
+		width: 334rpx;
+		height: 76rpx;
+		border-radius: 39rpx;
+		border: 1px solid #1890FF;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #1890FF;
+		text-align: center;
+		padding-top: 18rpx;
+		box-sizing: border-box;
+	}
+	.twobtn view:nth-child(2){
+		width: 334rpx;
+		height: 76rpx;
+		border-radius: 39rpx;
+		border: 1px solid #1890FF;
+		background: #1890FF;;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #fff;
+		text-align: center;
+		padding-top: 18rpx;
+		box-sizing: border-box;
+	}
+	.twobtn{
+		display: flex;
+		justify-content: space-around;
+		margin-top: 78rpx;
+	}
+	.gather{
+		margin: auto;
+	}
+	.flex-row{
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+		margin: auto;
+		text-align: center;
+		justify-content: center;
+	}
+	.ejtitle{
+		font-size: 30rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+		text-align: center;
+		margin-bottom: 44rpx;
+	}
+	.eject{
+		width: 720rpx;
+		height: 368rpx;
+		background: #FFFFFF;
+		border-radius: 14rpx;
+		position: fixed;
+		top: 25%;
+		margin-left: 15rpx;
+		padding-top: 68rpx;
+		box-sizing: border-box;
+	}
+	.molde{
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: rgb(0,0,0,.5);
+		z-index: 5;
+	}
+	page{
+		background: #F4F7F7;
+	}
+	.modtitle{
+		width: 680rpx;
+		margin: 20rpx auto;
+		display: flex;
+	}
+	.blue{
+		width: 6rpx;
+		height: 28rpx;
+		background: #40a9ff;
+		margin-top: 6rpx;
+	}
+	.modtitle view{
+		font-size: 28rpx;
+		font-family: Helvetica;
+		color: #51565D;
+		margin-left: 9rpx;
+	}
+	.collect{
+		width: 720rpx;
+		background: #FFFFFF;
+		border-radius: 14rpx;
+		margin: auto;
+		padding-bottom: 45rpx;
+	}
+	.intitem{
+		display: flex;
+		height: 108rpx;
+		width: 680rpx;
+		margin: auto;
+		padding-top: 35rpx;
+		box-sizing: border-box;
+	}
+	.tips{
+		width: 170rpx;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+		margin-top: 15rpx;
+	}
+	.tips2{
+		width: 170rpx;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+	}
+	.tipint{
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #c1c2c3;
+	}
+	.gather{
+		width: 510rpx;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #5D6168;
+	}
+	.boder{
+		height: 1rpx;
+		width: 680rpx;
+		margin: auto;
+		background: #E8E8E8;
+	}
+	.intitem picker{
+		width: ;
+	}
+	.kong{
+		width: 680rpx;
+		height: 12rpx;
+		background: #FAFAFA;
+		margin: auto;
+	}
+	.imgtitle{
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+		width: 680rpx;
+		margin: auto;
+		margin-top: 30rpx;
+		margin-bottom: 10rpx;
+	}
+	.classfiyimg{
+		width: 680rpx;
+		margin: auto;
+		display: block;
+	}
+	.next{
+		width: 680rpx;
+		height: 76rpx;
+		background: #40A9FF;
+		border-radius: 39rpx;
+		font-size: 28rpx;
+		font-family: Helvetica;
+		color: #FFFFFF;
+		margin: 53rpx auto;
+		text-align: center;
+		padding-top: 20rpx;
+		box-sizing: border-box;
+	}
+	.labellist{
+		width: 680rpx;
+		margin: auto;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	.labelitem{
+		width: 116rpx;
+		height: 32rpx;
+		border-radius: 2rpx;
+		border: 1px solid #999999;
+		font-size: 20rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #51565D;
+		text-align: center;
+		margin-bottom: 20rpx;
+	}
+	.clever{
+		color: #40A9FF;
+		border: 1rpx solid #40A9FF;
+	}
+	.addmore{
+		display: flex;
+		margin: auto;
+		justify-content: space-around;
+		width: 305rpx;
+		margin-top: 40rpx;
+	}
+	.addmore image{
+		width: 48rpx;
+		height:48rpx;
+	}
+	.addmore view{
+		font-size: 32rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #40A9FF;
+	}
+</style>

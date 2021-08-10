@@ -81,5 +81,6 @@
 	text-align: center;
 	line-height: 43rpx;
 	float: right;
+	margin-left: 20rpx;
 }
 

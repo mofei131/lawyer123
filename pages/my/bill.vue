@@ -1,6 +1,17 @@
 <template>
 	<view>
-		<view class="billlist">
+		<view class="billlist" v-if="page == 2">
+			<view class="billitem" v-for="(item,index) in bill2" :key="index">
+				<view class="itemleft">
+					<view>{{item.title}}</view>
+					<view>{{item.time}}</view>
+				</view>
+				<view class="itemright">
+					<view>{{item.rae}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="billlist" v-else>
 			<view class="billitem" v-for="(item,index) in bill" :key="index">
 				<view class="itemleft">
 					<view>{{item.title}}</view>
@@ -18,6 +29,7 @@
 	export default{
 		data(){
 			return{
+				page:'',
 				bill:[
 					{
 						title:'余额提现',
@@ -28,8 +40,22 @@
 						time:'2021-08-07 15:06:55',
 						rae:'+664.00'
 					}
+				],
+				bill2:[
+					{
+						title:'分销购买商品',
+						time:'2021-08-09 13:22:21',
+						rae:'+64.00'
+					},{
+						title:'分销购买服务',
+						time:'2021-08-07 15:06:55',
+						rae:'+664.00'
+					}
 				]
 			}
+		},
+		onLoad(p) {
+			this.page = p.page
 		}
 	}
 </script>

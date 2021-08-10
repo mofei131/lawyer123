@@ -6,38 +6,39 @@
 		</view>
 		<view class="collect">
 			<view class="intitem">
-				<view class="tips">姓名：</view>
-				<input class="gather" type="text" value="" placeholder="请输入姓名" v-model="name" placeholder-style="color: #C1C2C3;"/>
+				<view class="tips">执业证号：</view>
+				<input class="gather" type="number" value="" placeholder="请输入号码" v-model="zhenghao" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 			<view class="intitem">
-				<view class="tips">联系电话：</view>
-				<input class="gather" type="number" value="" placeholder="请输入手机号" v-model="phone" placeholder-style="color: #C1C2C3;"/>
-			</view>
-		<view class="boder"></view>
-			<view class="intitem">
-				<view class="tips">性别：</view>
-				<picker class="gather" @change="anjianChange" :value="index1" :range="array1" range-key="sex">
+				<view class="tips">执业年限：</view>
+				<picker class="gather" @change="anjianChange" :value="index1" :range="array1" range-key="years">
 					<view class="flex-row">
-						<text>{{array1[index1].sex}}</text>
+						<text>{{array1[index1].years}}</text>
+						<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
+					</view>
+				</picker>
+			</view>
+		<view class="boder"></view>
+			<view class="intitem">
+				<view class="tips">律师级别：</view>
+				<picker class="gather" @change="anjianChange2" :value="index2" :range="array2" range-key="level">
+					<view class="flex-row">
+						<text>{{array2[index2].level}}</text>
+						<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
 					</view>
 				</picker>
 			</view>
 			<view class="kong"></view>
 			<view class="imgitem">
-				<view class="imgtitle">请上传自拍或两寸照片</view>
-				<image class="classfiyimg" src="../../static/images/classfiyimg1.png" v-if="zipai == ''" @click="chooseImage(1)"></image>
-				<image class="classfiyimg" :src="zipai" v-else @click="chooseImage(1)"></image>
+				<view class="imgtitle">请上传执业证书姓名页</view>
+				<image class="classfiyimg" src="../../static/images/classfiyimg2.png" v-if="zhiname == ''" @click="chooseImage(1)"></image>
+				<image class="classfiyimg" :src="zhiname" v-else @click="chooseImage(1)"></image>
 			</view>
 			<view class="imgitem">
-				<view class="imgtitle">请上传身份证人像面</view>
-				<image class="classfiyimg" src="../../static/images/classfiyimg2.png" v-if="zheng == ''" @click="chooseImage(2)"></image>
-				<image class="classfiyimg" :src="zheng" v-else @click="chooseImage(2)"></image>
-			</view>
-			<view class="imgitem">
-				<view class="imgtitle">请上传身份证国徽面</view>
-				<image class="classfiyimg" src="../../static/images/classfiyimg2.png" v-if="fan == ''" @click="chooseImage(3)"></image>
-				<image class="classfiyimg" :src="fan" v-else @click="chooseImage(3)"></image>
+				<view class="imgtitle">请上传执业证书年检页</view>
+				<image class="classfiyimg" src="../../static/images/classfiyimg3.png" v-if="zhiyear == ''" @click="chooseImage(2)"></image>
+				<image class="classfiyimg" :src="zhiyear" v-else @click="chooseImage(2)"></image>
 			</view>
 	</view>
 	<view class="next" @tap="toUrl()">下一步</view>
@@ -48,17 +49,22 @@
 	export default{
 		data(){
 			return{
-				name:'',
+				zhenghao:'',
 				phone:'',
 				array1: [{
-					sex: '男',
+					years: '1~3',
 				}, {
-					sex: '女',
+					years: '3~6',
+				}],
+				array2: [{
+					level: '高级律师',
+				}, {
+					level: '专家级律师',
 				}],
 				index1: 0,
-				zipai:'',
-				zheng:'',
-				fan:''
+				index2: 0,
+				zhiname:'',
+				zhiyear:'',
 			}
 		},
 		methods:{
@@ -73,8 +79,6 @@
 										that.zipai = res.tempFilePaths[0]
 									}else if(e == 2){
 										that.zheng = res.tempFilePaths[0]
-									}else{
-										that.fan = res.tempFilePaths[0]
 									}
 								},
 							});
@@ -82,9 +86,12 @@
 			anjianChange(e) {
 				this.index1 = e.detail.value;
 			},
+			anjianChange2(e) {
+				this.index2 = e.detail.value;
+			},
 			toUrl(){
 				uni.navigateTo({
-					url:'./classifyDet2'
+					url:'./classifyDet3'
 				})
 			}
 		}
@@ -182,5 +189,12 @@
 		text-align: center;
 		padding-top: 20rpx;
 		box-sizing: border-box;
+	}
+	fa-icon{
+		margin-right: 20rpx;
+	}
+	.flex-row{
+		display: flex;
+		justify-content: space-between;
 	}
 </style>

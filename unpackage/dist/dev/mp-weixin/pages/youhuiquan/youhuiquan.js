@@ -95,6 +95,9 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    faIcon: function() {
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 291))
+    },
     uniSearchBar: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */ "uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 340))
     }
@@ -173,72 +176,71 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 347));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default =
 {
-  components: {
-    pickcity: pickcity },
+  components: {},
+
 
   data: function data() {
     return {
@@ -255,12 +257,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   },
   onLoad: function onLoad() {
-    console.log(this.$store.state);
+
   },
   methods: {
-    getCity: function getCity(e) {
-
-    },
     input: function input(e) {
       console.log(e);
     },

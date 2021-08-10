@@ -35,7 +35,12 @@
     "pages/renzheng/commonNotice",
     "pages/renzheng/classifyDet1",
     "pages/renzheng/classifyDet2",
-    "pages/renzheng/classifyDet3"
+    "pages/renzheng/classifyDet3",
+    "pages/my/about",
+    "pages/my/xieyi",
+    "pages/my/serviceSet",
+    "pages/my/score",
+    "pages/my/problem"
   ],
   "subPackages": [],
   "window": {

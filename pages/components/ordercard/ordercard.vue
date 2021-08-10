@@ -4,9 +4,13 @@
 			<view class="orderitem" v-for="(item,index) in list" :key="index">
 				<view class="top">
 					<view>订单号:{{item.code}}</view>
+					<!-- 服务订单 -->
 					<view class="state" v-if="item.state == 0">已付款</view>
 					<view class="state" v-if="item.state == 1">已完成</view>
+					<!-- 交易订单 -->
 					<view class="state" v-if="item.state == -1">已完成</view>
+					<!-- 律师身份 -->
+					<view class="state" v-if="item.state == 2">进行中</view>
 				</view>
 				<view class="cont">
 					<view class="contleft">
@@ -21,11 +25,20 @@
 				</view>
 				<view v-if="item.state != -1">
 				<view class="bottom">
-						<view class="btn" v-if="item.state == 0">
+						<view class="btn" v-if="item.state == 0 && type == 1">
 							<view>联系律师</view>
 						</view>
-						<view class="btn" v-if="item.state == 1">
+						<view class="btn" v-if="item.state == 0 && type == 2">
+							<view>联系客户</view>
+						</view>
+						<view class="btn" v-if="item.state == 2 && type == 2">
+							<view>联系客户</view>
+						</view>
+						<view class="btn" v-if="item.state == 1 && type == 1">
 							<view>评价</view>
+						</view>
+						<view class="btn" v-if="item.state == 2 && type == 2">
+							<view>结束服务</view>
 						</view>
 					</view>
 				</view>
@@ -37,6 +50,11 @@
 <script>
 	export default{
 		props:['list'],
+		data(){
+			return{
+				type:2
+			}
+		}
 	}
 </script>
 
@@ -114,5 +132,6 @@
 		text-align: center;
 		line-height: 43rpx;
 		float: right;
+		margin-left: 20rpx;
 	}
 </style>

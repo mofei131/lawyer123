@@ -269,6 +269,31 @@
             "style": {
             	"navigationBarTitleText": "律师认证"
           }
+        },{
+            "path" : "pages/my/about",
+            "style": {
+            	"navigationBarTitleText": "关于我们"
+          }
+        },{
+            "path" : "pages/my/xieyi",
+            "style": {
+            	"navigationBarTitleText": "服务协议"
+          }
+        },{
+            "path" : "pages/my/serviceSet",
+            "style": {
+            	"navigationBarTitleText": "服务设置"
+          }
+        },{
+            "path" : "pages/my/score",
+            "style": {
+            	"navigationBarTitleText": "服务评价"
+          }
+        },{
+            "path" : "pages/my/problem",
+            "style": {
+            	"navigationBarTitleText": "常见问题"
+          }
         }
     ],
 	"globalStyle": {

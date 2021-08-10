@@ -96,4 +96,15 @@ page{
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
+fa-icon{
+	margin-right: 20rpx;
+}
+.flex-row{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
 

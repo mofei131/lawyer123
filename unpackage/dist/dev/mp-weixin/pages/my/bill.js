@@ -146,10 +146,22 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      page: '',
       bill: [
       {
         title: '余额提现',
@@ -158,10 +170,24 @@ var _default =
       {
         title: '余额充值',
         time: '2021-08-07 15:06:55',
+        rae: '+664.00' }],
+
+
+      bill2: [
+      {
+        title: '分销购买商品',
+        time: '2021-08-09 13:22:21',
+        rae: '+64.00' },
+      {
+        title: '分销购买服务',
+        time: '2021-08-07 15:06:55',
         rae: '+664.00' }] };
 
 
 
+  },
+  onLoad: function onLoad(p) {
+    this.page = p.page;
   } };exports.default = _default;
 
 /***/ }),

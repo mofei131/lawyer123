@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "优惠券",
   "usingComponents": {
-    "uni-search-bar": "/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar",
-    "pickcity": "/pages/components/pickcity/pickcity"
+    "fa-icon": "/components/fa-icon/fa-icon",
+    "uni-search-bar": "/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar"
   }
 }

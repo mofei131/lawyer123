@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ordercard = function ordercard() {__webpack_require__.e(/*! require.ensure | pages/components/ordercard/ordercard */ "pages/components/ordercard/ordercard").then((function () {return resolve(__webpack_require__(/*! ../components/ordercard/ordercard.vue */ 373));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ordercard = function ordercard() {__webpack_require__.e(/*! require.ensure | pages/components/ordercard/ordercard */ "pages/components/ordercard/ordercard").then((function () {return resolve(__webpack_require__(/*! ../components/ordercard/ordercard.vue */ 368));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -142,6 +142,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   data: function data() {
     return {
+      type: 2,
       list: [
       {
         code: '12408372859', //订单号
@@ -154,6 +155,30 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         code: '12408372860', //订单号
         state: 1, //是否完成(0已完成，1已付款,-1没有事件按钮)
         name: '王长田',
+        service: '图文咨询服务',
+        headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
+        price: '1698.00' }],
+
+
+      list2: [
+      {
+        code: '12408372859', //订单号
+        state: 0, //是否完成(0已完成，1已付款,-1没有事件按钮,2律师身份)
+        name: '闷三',
+        service: '电话咨询服务',
+        headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
+        price: '1398.00' },
+      {
+        code: '12408372859', //订单号
+        state: 1, //是否完成(0已完成，1已付款,-1没有事件按钮,2律师身份)
+        name: '闷三',
+        service: '电话咨询服务',
+        headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
+        price: '1398.00' },
+      {
+        code: '12408372860', //订单号
+        state: 2, //是否完成(0已完成，1已付款,-1没有事件按钮)
+        name: '闷三闷三',
         service: '图文咨询服务',
         headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
         price: '1698.00' }] };
