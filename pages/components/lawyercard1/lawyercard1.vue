@@ -1,6 +1,6 @@
 <template>
 	<view class="flex-column mx-start sx-stretch">
-		<view class="flex-column mx-start sx-stretch  list-item" v-for="(item,index) in lawyerlist" :key="item"
+		<view class="flex-column mx-start sx-stretch  list-item" v-for="(item,index) in lawyerlist" :key="index"
 			:style="{flex:'0 0 auto',order:item}">
 			<view class="flex-row mx-start sx-stretch" @tap="todetail(item)">
 
@@ -9,38 +9,43 @@
 				</view>
 				<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;line-height: 40rpx;">
 					<view class="flex-row mx-start sx-center">
-						<text style="font-size: 26rpx;">平台自营律师</text>
+						<text
+							style="font-size: 26rpx;">{{item.name}}</text>
 						<view class="flex-txt-center"
 							style="margin-left: 10rpx;width: 52rpx;background-color: #FF4D4F;">
-							<text lines="1" style="color: #FFFFFF;height: 26rpx;line-height: 26rpx;text-align: center;font-size: 17rpx;">自营</text>
+							<text lines="1"
+								style="color: #FFFFFF;height: 26rpx;line-height: 26rpx;text-align: center;font-size: 17rpx;">{{item.type_text&& item.type_text.name}}</text>
 						</view>
-						<view class="flex-row mx-end sx-center" style="flex:1 1 auto">
-							<view
-								style="width: 14rpx;height: 14rpx;background-color: rgba(255,77,79,1);border-radius: 50%">
+						<view v-if="item.busy_text" class="flex-row mx-end sx-center" style="flex:1 1 auto">
+							<view class="statuSDot"
+								:style="{backgroundColor: item.busy_text.id==1?'green': 'rgba(255,77,79,1)'}">
 							</view>
-							<text style="margin-left:8rpx;color: red;font-size: 20rpx;">开庭</text>
+							<text v-if="item.busy_text.id==1"
+								style="margin-left:8rpx;color: green;font-size: 20rpx;">{{item.busy_text.name}}</text>
+							<text v-else
+								style="margin-left:8rpx;color: red;font-size: 20rpx;">{{item.busy_text.name}}</text>
 						</view>
 					</view>
 					<view class="ellipsis" style="width: 512rpx;font-size: 22rpx;color: rgba(102,102,102,1);">
-						399元/每千字以内，专业律师帮您奥凯合同的坑</view>
+						{{item.jianjie}}</view>
 
 					<view class="field">
-						<view class="label" v-for="(list,index1) in item.field" :key="index1" :class="list.class">
-							{{list.name}}
+						<view class="label" v-for="(ct,index1) in item.case_type" :key="ct.id" :class="[caseClass(ct)]">
+							{{ct.name && ct.name.substr(0,2)}}
 						</view>
 					</view>
 					<view class="flex-row mx-between sx-center"
 						style="flex: 0 0 auto;font-size: 20rpx;color: rgba(153,153,153,1);">
-						<view class="flex-row">职业年限：9年</view>
-						<view class="flex-row">案例：<text style="color: red;">1545</text>件</view>
-						<view class="flex-row">好评：<text style="color: red;">1545</text>次</view>
+						<view class="flex-row">职业年限：{{item.zhiyenianxian && item.zhiyenianxian.name}}</view>
+						<view class="flex-row">案例：<text style="color: red;">{{item.case_num}}</text>件</view>
+						<view class="flex-row">好评：<text style="color: red;">{{praise||0}}</text>次</view>
 					</view>
 
 					<view v-if="isbuy" class="flex-row mx-between sx-center" style="flex: 0 0 auto;">
-						<text style="color: #FF4D4F;">￥89</text>
+						<text style="color: #FF4D4F;">￥{{item.price && item.price.tuwen}}</text>
 						<view
 							style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;"
-							@tap.stop="toPay">
+							@tap.stop="toPay(item.price)">
 							立即购买</view>
 					</view>
 				</view>
@@ -49,18 +54,19 @@
 			<view v-if="zixun" class="flex-row mx-between sx-center" style="flex: 0 0 auto;margin-top: 20rpx;">
 				<view class="serviceBtn flex-txt-center" @tap="tuwen(item)">
 					<text>图文咨询</text>
-					<text style="color: red;">￥89</text>
+					<text style="color: red;">￥{{item.price && item.price.tuwen}}</text>
 				</view>
 				<view class="serviceBtn flex-txt-center" @tap="dianhua(item)">
 					<text>电话咨询</text>
-					<text style="color: red;">￥89</text>
+					<text style="color: red;">￥{{item.price && item.price.dianhua}}</text>
 				</view>
 				<view class="serviceBtn flex-txt-center" @tap="jianmian(item)">
 					<text>见面咨询</text>
-					<text style="color: red;">￥89</text>
+					<text style="color: red;">￥{{item.price && item.price.jianmian}}</text>
 				</view>
 				<view class="serviceBtn flex-txt-center" @tap="pinglvshi(item)">
 					<text>聘请律师</text>
+					<text style="color: red;">￥{{item.price && item.price.pinqing}}</text>
 				</view>
 			</view>
 		</view>
@@ -71,12 +77,37 @@
 <script>
 	export default {
 		components: {},
-		props: ['lawyerlist', 'zixun','isbuy'],
+		props: ['lawyerlist', 'zixun', 'isbuy'],
 		data() {
 			return {
 
 
-
+			}
+		},
+		computed:{
+			caseClass(e){
+				return (e)=>{
+					let clazz = 'green';
+					switch(e.id){
+						case 1:
+						clazz ='blue';
+						break;
+						case 2:
+						clazz ='green';
+						break;
+						case 3:
+						clazz ='pink';
+						break;
+						case 4:
+						clazz ='purple';
+						break;
+						case 5:
+						clazz ='yellow';
+						break;
+						default: clazz ="red"
+					}
+					return clazz;
+				}
 			}
 		},
 		methods: {
@@ -127,7 +158,9 @@
 		border-radius: 20rpx;
 		margin-bottom: 20rpx;
 	}
-
+	.statuSDot{
+		width: 14rpx;height: 14rpx;border-radius: 50%
+	}
 	.serviceBtn {
 		border: 2rpx solid #4CA2FF;
 		padding: 0 5rpx;
@@ -171,6 +204,4 @@
 	.yellow {
 		background: #E1B12F;
 	}
-
-	
 </style>

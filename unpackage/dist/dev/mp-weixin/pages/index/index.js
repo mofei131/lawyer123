@@ -501,9 +501,14 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(
 
   },
   onLoad: function onLoad() {
-    // this.$store.commit('increment',1000);
+    uni.navigateTo({
+      url: '../login/login' });
 
-    this.getProvinceAndCity();
+    // let userInfo
+    this.getProvinceCity();
+    this.getBussinessTypes();
+    this.getLawyerLevels();
+    this.getWorkAges();
 
   },
   computed: {
@@ -527,39 +532,19 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(
   },
 
   methods: _objectSpread(_objectSpread({},
-  (0, _vuex.mapMutations)(['getProvince', 'getCity'])), {}, { // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
-    // ...mapActions([
-    // 	'getCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
 
-    // ]),
+  (0, _vuex.mapActions)([
+  'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+  'getBussinessTypes',
+  'getLawyerLevels', 'getWorkAges'])), {}, {
+
     // ...mapActions("module1",{
     // 	udpateNameByAction:"udpateNameByAction"
     // }),
 
+
     //这一步放到登录那里做
-    getProvinceAndCity: function getProvinceAndCity() {var _this = this;
-      var res = this.$myRequest({
-        url: '/index/getProvince',
-        method: 'GET',
-        data: {} });
 
-      res.then(function (data) {
-        if (data && data.data) {
-          _this.getProvince(data.data);
-        }
-
-      });
-      var res1 = this.$myRequest({
-        url: '/index/getCity',
-        method: 'GET',
-        data: {} });
-
-      res1.then(function (data) {
-        if (data && data.data) {
-          _this.getCity(data.data);
-        }
-      });
-    },
     swichMenu: function () {var _swichMenu = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(current) {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0: //点击其中一个 menu
                 console.log(current);if (!(
                 this.currentTab == current)) {_context.next = 5;break;}return _context.abrupt("return",

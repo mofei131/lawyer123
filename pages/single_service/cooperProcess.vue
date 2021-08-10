@@ -1,8 +1,8 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
 		<view class="">
-			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" :title="typeData && typeData.name" color="#333333"
-				background-color="#FFFFFF" @clickLeft="back">
+			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" :title="typeData && typeData.name"
+				color="#333333" background-color="#FFFFFF" @clickLeft="back">
 				<!-- <block slot="right">
 					<view class="city">
 						<view><text class="uni-nav-bar-text">123</text></view>
@@ -32,7 +32,7 @@
 					<view class="group4">
 						<text lines="1" class="paragraph1">专业律师为您审查合同,最大限度保障您的利益</text>
 					</view>
-					<view  style="z-index: 79;
+					<view style="z-index: 79;
 		position: absolute;
 		left: -45rpx;
 		top: 48rpx;
@@ -42,7 +42,7 @@
 		background-size: 750rpx 262rpx;
 		display: flex;
 		flex-direction: column;"></view>
-					<view  style="z-index: 80;
+					<view style="z-index: 80;
 		height: 332rpx;
 		background: url(../../static/icon/cooper_group6.png) 100% no-repeat;
 		width: 750rpx;
@@ -52,7 +52,7 @@
 		top: 47rpx;
 		display: flex;
 		flex-direction: column;">
-						<view  style="z-index: 81;
+						<view style="z-index: 81;
 		width: 750rpx;
 		height: 156rpx;
 		background: url(../../static/icon/cooper_mod2.png) 100% no-repeat;
@@ -66,15 +66,16 @@
 						<text lines="1" decode="true" class="info4">～&nbsp;产品介绍&nbsp;～</text>
 						<view class="bd1"></view>
 						<text lines="1"
-							class="info5">压维铁响时些持口商名与教场动单和起手克叫火政律开际六音院出运么验证可完院群部级每意系保须族儿为想数属等题回展铁们路两种加或说记事音比次元业习列向效后因特龙。装六产状进没本日三教用算收百消走公委力日容应话引空眼传按了专议五理部机信不离花制形候重身专图入程路不维阶情程。为安极究说量或太经因不维其法则听多工出声际你车众由委此格出还向型不目派于本须号论连音论团积先南美准存部高拉军名们选主。</text>
+							class="info5">{{dataSource.intro}}</text>
 					</view>
 				</view>
 				<view class="block3">
 					<view class="group8">
 						<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 						<view class="bd2"></view>
-						<view class="flex-column" style="overflow: auto;">
-							<view class="bd3">
+						<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;">
+							{{dataSource.service}}
+							<!-- <view class="bd3">
 								<text lines="1" class="txt2">服务说明：</text>
 								<text lines="1" class="txt3">不限制见面咨询时间，把问题分析咨询清楚</text>
 							</view>
@@ -93,7 +94,7 @@
 							<view class="bd5">
 								<text lines="1" class="word4">服务时限：</text>
 								<text lines="1" class="word5">下单付款后，，专属客服马上联系您</text>
-							</view>
+							</view> -->
 						</view>
 
 					</view>
@@ -143,13 +144,11 @@
 				<view class="box3">
 					<view class="mod9">
 						<view class="mod10">
-							<image
-								src="/static/icon/cooper_p4.png"
-								class="icon2"></image>
+							<image src="/static/icon/cooper_p4.png" class="icon2"></image>
 							<text lines="1" class="word10">客服</text>
 						</view>
 					</view>
-					<button bindtap="onClick" class="mod11">
+					<button bindtap="toPay" class="mod11">
 						<text lines="1" class="word11">立即购买</text>
 					</button>
 				</view>
@@ -167,25 +166,50 @@
 			console.log(p);
 			console.log(p);
 			this.id = p && p.id;
-			let obj = this.list.find(item=>item.id==this.id);
-			if(obj){
+			let obj = this.list.find(item => item.id == this.id);
+			if (obj) {
 				this.typeData = obj;
 			}
+
 		},
 		data() {
 			return {
 				content: "双方都",
-				id:'',
-				list:[
-					{id:5,name:"合同审核",url:"/static/icon/icon6.png"},
-					{id:6,name:"律师函",url:"/static/icon/icon7.png"},
-					{id:7,name:"债务催收指导",url:"/static/icon/icon8.png"},
-					{id:8,name:"起诉状/答辩状",url:"/static/icon/icon9.png"},
-					{id:9,name:"代写借/欠条",url:"/static/icon/icon10.png"},
-					{id:10,name:"刑事会见",url:"/static/icon/icon11.png"},
-				
+				dataSource:{},
+				id: '',
+				list: [{
+						id: 5,
+						name: "合同审核",
+						url: "/static/icon/icon6.png"
+					},
+					{
+						id: 6,
+						name: "律师函",
+						url: "/static/icon/icon7.png"
+					},
+					{
+						id: 7,
+						name: "债务催收指导",
+						url: "/static/icon/icon8.png"
+					},
+					{
+						id: 8,
+						name: "起诉状/答辩状",
+						url: "/static/icon/icon9.png"
+					},
+					{
+						id: 9,
+						name: "代写借/欠条",
+						url: "/static/icon/icon10.png"
+					},
+					{
+						id: 10,
+						name: "刑事会见",
+						url: "/static/icon/icon11.png"
+					},
+
 				],
-				typeData:'',
+				typeData: '',
 			}
 		},
 		methods: {
@@ -194,10 +218,38 @@
 					delta: 1
 				})
 			},
+			async getContent() {
+				let res = await this.$myRequest({
+					url: 'service/detail',
+					data: {
+						id: this.id
+					}
+				});
+				if (res && res.data) {
+					console.log(res);
+					this.dataSource = res.data;
+				}
+			},
 			toDetail() {
 				uni.navigateTo({
 					url: "../detail/cooperDetail?id=1"
 				})
+			},
+			async toPay(){
+				
+			},
+			async commitService(){
+				let res = await this.$myRequest({
+				url: 'service/danxiang',
+				data: {
+					layer_id:null,
+					user_id:null,
+					service_id:this.id,
+				}
+				});
+				if (res && res.data) {
+					console.log(res);
+				}
 			},
 			download() {
 				uni.downloadFile({
@@ -397,11 +449,9 @@
 		text-overflow: ellipsis;
 	}
 
-	
 
-	.mod2 {
-		
-	}
+
+	.mod2 {}
 
 	.pic2 {
 		z-index: 82;

@@ -1,5 +1,7 @@
 {
   "navigationStyle": "custom",
+  "onReachBottomDistance": 50,
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "cooper-tabar": "/pages/components/cooperTabar/cooperTabar",
     "lawyercard1": "/pages/components/lawyercard1/lawyercard1"

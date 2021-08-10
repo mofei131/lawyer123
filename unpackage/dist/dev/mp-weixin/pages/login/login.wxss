@@ -1,0 +1,36 @@
+
+.login-logo {
+	width: 180rpx;
+	height: 180rpx;
+	font-size: 80rpx;
+	text-align: center;
+	line-height: 120rpx;
+	padding: 30rpx;
+	border-radius: 18rpx;
+}
+.other-login-icons {
+	width: 88rpx;
+	height: 88rpx;
+	text-align: center;
+	font-size: 70rpx;
+	margin: 20rpx;
+}
+.denglu {
+	margin-top: 96rpx;
+	background-color: #F53B6C;
+	width: 436rpx;
+	height: 96rpx;
+	border-radius: 16rpx;
+}
+.create {
+	background-color: #FA4D7B;
+	width: 436rpx;
+	height: 84rpx;
+	border-radius: 16rpx;
+	margin-top: 20rpx;
+}
+.title-img {
+	width: 228rpx;
+	height: 348rpx;
+}
+

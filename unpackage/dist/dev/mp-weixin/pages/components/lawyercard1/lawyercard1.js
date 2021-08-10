@@ -81,6 +81,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l1 = _vm.__map(_vm.lawyerlist, function(item, index) {
+    var $orig = _vm.__get_orig(item)
+
+    var l0 = _vm.__map(item.case_type, function(ct, index1) {
+      var $orig = _vm.__get_orig(ct)
+
+      var m0 = _vm.caseClass(ct)
+      var g0 = ct.name.substr(0, 2)
+      return {
+        $orig: $orig,
+        m0: m0,
+        g0: g0
+      }
+    })
+
+    return {
+      $orig: $orig,
+      l0: l0
+    }
+  })
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l1: l1
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -184,6 +213,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default =
 {
   components: {},
@@ -193,8 +228,33 @@ var _default =
 
 
 
-
   },
+  computed: {
+    caseClass: function caseClass(e) {
+      return function (e) {
+        var clazz = 'green';
+        switch (e.id) {
+          case 1:
+            clazz = 'blue';
+            break;
+          case 2:
+            clazz = 'green';
+            break;
+          case 3:
+            clazz = 'pink';
+            break;
+          case 4:
+            clazz = 'purple';
+            break;
+          case 5:
+            clazz = 'yellow';
+            break;
+          default:clazz = "red";}
+
+        return clazz;
+      };
+    } },
+
   methods: {
     toPay: function toPay() {
       this.$emit('buy', 123);

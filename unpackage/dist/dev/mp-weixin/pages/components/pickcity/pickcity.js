@@ -146,36 +146,55 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 var _default =
+
 {
   components: {},
 
 
   props: ['getcity'],
-  mounted: function mounted() {
+  mounted: function mounted() {var _this = this;
 
-    var temp = this.$store.state.provinces;
+    this.$amapPlugin.getRegeo({
+      success: function success(data) {
+        // console.log(data)
+        var _data$0$regeocodeData =
 
-    console.log(temp);
-    console.log('-------');
-    var provinces = temp.map(function (item) {return item.province;});
-    var p = temp[0];
-    if (p) {
-      var cities = this.getCity(p.provinceid);
-      this.currentProvinceid = p.provinceid;
-      console.log(cities[0]);
-      this.currentCityId = cities[0] && cities[0].cityid;
-      this.currentCityName = cities[0] && cities[0].city;
-      if (/^市辖区$/.test(this.currentCityName) || /^县$/.test(this.currentCityName) || /^市$/.test(this.
-      currentCityName)) {
-        this.currentCityName = p.province;
-      }
-      this.multiArray = [provinces, cities.map(function (item) {return item.city;})];
 
-    }
+
+
+        data[0].regeocodeData.addressComponent,citycode = _data$0$regeocodeData.citycode,adcode = _data$0$regeocodeData.adcode,city = _data$0$regeocodeData.city,province = _data$0$regeocodeData.province;
+        // console.log({
+        // 	citycode,adcode,city
+        // });
+        _this.currentCityName = city;
+        var c = _this.$store.state.cities.find(function (item) {return item.city == city;});
+        // console.log(c);
+        _this.currentCityId = c && c.cityid;
+        _this.currentProvinceid = c && c.provinceid;
+
+        var temp = _this.$store.state.provinces;
+        var provinces = temp.map(function (item) {return item.province;});
+        var pIndex = provinces.findIndex(function (item) {return item == province;});
+
+        if (pIndex != -1) {
+          var cities = _this.getCity(c.provinceid).map(function (item) {return item.city;});
+          var cIndex = cities.findIndex(function (item) {return item == city;});
+          _this.multiIndex = [pIndex, Math.max(0, cIndex)];
+          _this.multiArray = [provinces, cities];
+          _this.$emit("getcity", {
+            cityid: _this.currentCityId });
+
+        }
+
+
+      } });
+
+
 
   },
   data: function data() {
     return {
+      addressName: '',
       currentProvinceid: null,
       currentCityId: null,
       currentCityName: '北京',
@@ -203,9 +222,8 @@ var _default =
       if (p) {
         this.currentProvinceid = p.provinceid;
         var c = this.getCity(p.provinceid);
-        console.log(c);
         if (c && c.length > 0) {
-          console.log(c);
+          console.log(v[1]);
           this.currentCityId = c[v[1]].cityid;
           this.currentCityName = c[v[1]].city;
           if (/^市辖区$/.test(this.currentCityName) || /^县$/.test(this.currentCityName) || /^市$/.test(this.
@@ -213,9 +231,9 @@ var _default =
             this.currentCityName = p.province;
           }
         }
+        console.log(c);
         this.$emit("getcity", {
           cityid: this.currentCityId });
-
 
       }
 

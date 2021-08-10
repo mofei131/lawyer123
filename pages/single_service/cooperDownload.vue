@@ -1,38 +1,37 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
-	
+
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;">
 
 			<view class="flex-row mx-center sx-center">
 				<uni-search-bar style="flex:0 0 600rpx;" border="1rpx solid #fff" placeholder="请输入模板名称"
-					bgColor="#ffffff" :cancel-text="text" radius="100" @confirm="search" :focus="true" v-model="searchValue"
-					@input="input" @cancel="cancel" @change="change" @clear="clear">
+					bgColor="#ffffff" :cancel-text="text" radius="100" @confirm="search" :focus="true"
+					v-model="searchValue" @input="input" @cancel="cancel" @change="change" @clear="clear">
 				</uni-search-bar>
 			</view>
 
 
-			<uni-collapse :accordion="true"  @change="change">
+			<uni-collapse :accordion="true" @change="change">
 				<!-- 因为list默认带一条分隔线，所以使用 titleBorder="none" 取消面板的分隔线 -->
-		
-					<uni-collapse-item class="collapse-item"  title-border="none" :border="false">
-						<template v-slot:title>
-							<view
-								:class="['flex-row','mx-between', 'sx-center','collapse-line',currentIndex!='' && currentIndex==0?'current':'']">
-								<view>储存保管</view>
-								<view>123</view>
-							</view>
-					
-						</template>
-						<view class="content flex-column">
-							<navigator url="../list/cooperModuleList?id=1" class="collapse-content flex-txt-left-center">折叠内容主体，可自定义内容及样式</navigator>
-							<view class="collapse-content flex-txt-left-center">折叠内容主体，可自定义内容及样式</view>
-							<view class="collapse-content flex-txt-left-center">折叠内容主体，可自定义内容及样式</view>
-						</view>
-					</uni-collapse-item>
-		
-				
 
-				<uni-collapse-item class="collapse-item" title-border="none" :border="false">
+				<uni-collapse-item v-for="(item,index) in dataSource" :key="item.id" class="collapse-item" title-border="none" :border="false">
+					<template v-slot:title>
+						<view
+							:class="['flex-row','mx-between', 'sx-center','collapse-line',currentIndex!='' && currentIndex==0?'current':'']">
+							<view>{{item.name}}</view>
+							<!-- <view>{{item.value}}</view> -->
+						</view>
+
+					</template>
+					<view class="content flex-column">
+						<view @tap="todetail(item1)"  v-for="(item1,index1) in item.child" :key="item1.id" class="collapse-content flex-txt-left-center">
+							{{item1.name}}</view>
+					</view>
+				</uni-collapse-item>
+
+
+
+				<!-- <uni-collapse-item class="collapse-item" title-border="none" :border="false">
 					<template v-slot:title>
 						<view
 							:class="['flex-row ','mx-between', 'sx-center','collapse-line',currentIndex==1?'current':'']">
@@ -76,7 +75,7 @@
 						<view class="collapse-content flex-txt-left-center">折叠内容主体，可自定义内容及样式</view>
 						<view class="collapse-content flex-txt-left-center">折叠内容主体，可自定义内容及样式</view>
 					</view>
-				</uni-collapse-item>
+				</uni-collapse-item> -->
 			</uni-collapse>
 
 		</view>
@@ -88,15 +87,30 @@
 <script>
 	export default {
 		components: {},
+		onLoad() {
+			this.getModelLevel1();
+		},
 		data() {
 			return {
-				text:'',
+				text: '',
 				currentIndex: '',
 				searchValue: '',
+				dataSource: []
 
 			}
 		},
 		methods: {
+			async getModelLevel1() {
+				let res = await this.$myRequest({
+					url: 'agreement/getClassify',
+					data: {}
+				});
+				if (res && res.data) {
+					console.log(res);
+					this.dataSource =  res.data
+				}
+			},
+			
 			back() {
 				uni.navigateBack({
 					delta: 1
@@ -132,6 +146,11 @@
 			change(e) {
 				console.log(e);
 				this.currentIndex = e;
+			},
+			todetail(item1){
+				uni.navigateTo({
+					url:`../list/cooperModuleList?cid=${item1.id}&name=${item1.name}`
+				})
 			}
 
 		}
@@ -161,3 +180,5 @@
 		color: #40A9FF;
 	}
 </style>
+
+

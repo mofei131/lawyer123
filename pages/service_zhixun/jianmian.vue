@@ -20,7 +20,7 @@
 					<view class="group4">
 						<text lines="1" class="paragraph1">自由约定见面的时间和地点</text>
 					</view>
-					<view  style="z-index: 79;
+					<view style="z-index: 79;
 		position: absolute;
 		left: -45rpx;
 		top: 48rpx;
@@ -30,7 +30,7 @@
 		background-size: 750rpx 262rpx;
 		display: flex;
 		flex-direction: column;"></view>
-					<view  style="z-index: 80;
+					<view style="z-index: 80;
 		height: 332rpx;
 		background: url(../../static/icon/cooper_group6.png) 100% no-repeat;
 		width: 750rpx;
@@ -40,7 +40,7 @@
 		top: 47rpx;
 		display: flex;
 		flex-direction: column;">
-						<view  style="z-index: 81;
+						<view style="z-index: 81;
 		width: 750rpx;
 		height: 156rpx;
 		background: url(../../static/icon/cooper_mod2.png) 100% no-repeat;
@@ -127,7 +127,8 @@
 					</view>
 				</view> -->
 				<view class="flex-row mx-center sx-center">
-					<view class="flex-txt-center" @tap="commit" style="flex: 1 1 auto;margin: 20rpx;height: 60rpx;border-radius:30rpx;background-color: #57A9FF;color: #FFFFFF;">
+					<view class="flex-txt-center" @tap="commit"
+						style="flex: 1 1 auto;margin: 20rpx;height: 60rpx;border-radius:30rpx;background-color: #57A9FF;color: #FFFFFF;">
 						立即购买
 					</view>
 				</view>
@@ -142,24 +143,62 @@
 
 <script>
 	export default {
-		onLoad(p) {
-			console.log(p);
-		
+		onLoad(param) {
+
+			let userInfo = this.$store.state.userInfo;
+			// if(!userInfo){
+			// 	uni.navigateTo({
+			// 		url:'../login/login'
+			// 	})
+			// 	return
+			// }
+			// this.layer_id = param.layer_id;
+			// this.user_id = userInfo.user_id;
+
 		},
 		data() {
 			return {
-			
+				layer_id: '',
+				user_id: '',
 			}
 		},
 		methods: {
-			
-			toDetail() {
-				uni.navigateTo({
-					url: "../detail/cooperDetail?id=1"
+			async commit() {
+				//跳转支付页面
+				let {
+					layer_id,
+					user_id,
+				} = this.$data;
+				if (!layer_id || !user_id) {
+					uni.showToast({
+						title: '用户数据异常，请重新登录',
+						icon: 'none'
+					})
+					return;
+				}
+				let data = {
+					layer_id,
+					user_id,
+				}
+				console.log(data);
+				uni.showLoading({
+					title: '正在提交...'
 				})
-			},
+				let res = await this.$myRequest({
+					url: 'service/pinqing',
+					data
+				});
+				if (res && res.data) {
+					uni.hideLoading();
+					uni.showToast({
+						title: "提交成功" + res.data.service_id
+					})
 			
-		}
+				}
+			},
+
+		},
+		
 	}
 </script>
 
@@ -347,11 +386,9 @@
 		text-overflow: ellipsis;
 	}
 
-	
 
-	.mod2 {
-		
-	}
+
+	.mod2 {}
 
 	.pic2 {
 		z-index: 82;
@@ -896,6 +933,4 @@
 		align-self: flex-start;
 		margin-top: 10rpx;
 	}
-
-	
 </style>

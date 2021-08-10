@@ -179,67 +179,65 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   components: {
     pickcity: pickcity },
 
-  props: ['searchChange'],
-  mounted: function mounted() {
+  props: [],
+  mounted: function mounted() {var _this$$store$state =
+
+    this.$store.state,bussinessTypes = _this$$store$state.bussinessTypes,lawyerLevels = _this$$store$state.lawyerLevels,workAges = _this$$store$state.workAges;
+    this.byinfo = bussinessTypes || [];
+    this.lyinfo = lawyerLevels || [];
+    this.wkinfo = workAges || [];
 
   },
   data: function data() {
     return {
-
-      array1: [{
-        name: '刑事纠纷' },
-      {
-        name: '交通事故' }],
-
-      index1: 0,
-      array2: [{
-        name: '初级' },
-      {
-        name: '中级' }],
-
-      index2: 0,
-      array3: [{
-        name: '5年' },
-      {
-        name: '10年' }],
-
-      index3: 0 };
+      cityId: 110100,
+      byinfo: [],
+      wkinfo: [],
+      lyinfo: [],
+      index1: null,
+      index2: null,
+      index3: null };
 
 
   },
-  computed: {
-    // citiesArr(){
-    // 	console.log('===========');
-    // 	let temp = this.$store.state.provinces;
-    // 	let provinces = temp.map(item => item.province);
-    // 	let cities = this.getCity(temp[0].provinceid);
-    // 	return [provinces,cities]
-    // }
-  },
+  computed: {},
+
+
   methods: {
     getCity: function getCity(e) {
       console.log(e);
-      this.$emit("searchChange", e);
+      this.cityId = e.cityid;
+      this.getCurrentSearchId();
     },
     anjianChange: function anjianChange(e) {
       //返回选择的数组下标
       this.index1 = e.detail.value;
-      this.$emit("searchChange", 1);
+      this.getCurrentSearchId();
     },
     lvshiChange: function lvshiChange(e) {
-      console.log('picker发送选择改变，携带值为：' + e.detail.value);
       this.index2 = e.detail.value;
-      this.$emit("searchChange", 1);
+      this.getCurrentSearchId();
     },
     workAgeChange: function workAgeChange(e) {
-      console.log('picker发送选择改变，携带值为：' + e.detail.value);
       this.index3 = e.detail.value;
-      this.$emit("searchChange", 1);
     },
     bindPickerChange: function bindPickerChange(e) {
-      console.log('picker发送选择改变，携带值为：' + e.detail.value);
       this.index = e.detail.value;
-      this.$emit("searchChange", 1);
+      this.getCurrentSearchId();
+    },
+    getCurrentSearchId: function getCurrentSearchId() {
+      console.log('===>');
+      var currBy = this.index1 === null ? {} : this.byinfo[this.index1];
+      var currLy = this.index2 === null ? {} : this.lyinfo[this.index2];
+      var currWk = this.index3 === null ? {} : this.wkinfo[this.index3];
+      console.log({ currBy: currBy, currLy: currLy, currWk: currWk });
+      this.$emit("searchChange", {
+        cityid: this.cityId,
+        case_type: currBy.id || '',
+        level: currLy.id || '',
+        age: currWk.id || '' });
+
+
     } } };exports.default = _default;
 
 /***/ }),

@@ -130,7 +130,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
+//
 //
 //
 //
@@ -274,21 +275,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
-  onLoad: function onLoad(p) {
-    console.log(p);
+  onLoad: function onLoad(param) {
+
+    var userInfo = this.$store.state.userInfo;
+    // if(!userInfo){
+    // 	uni.navigateTo({
+    // 		url:'../login/login'
+    // 	})
+    // 	return
+    // }
+    // this.layer_id = param.layer_id;
+    // this.user_id = userInfo.user_id;
 
   },
   data: function data() {
-    return {};
-
+    return {
+      layer_id: '',
+      user_id: '' };
 
   },
   methods: {
+    commit: function commit() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this$$data, layer_id, user_id, data, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                //跳转支付页面
+                _this$$data =
 
-    toDetail: function toDetail() {
-      uni.navigateTo({
-        url: "../detail/cooperDetail?id=1" });
 
+                _this.$data, layer_id = _this$$data.layer_id, user_id = _this$$data.user_id;if (!(
+                !layer_id || !user_id)) {_context.next = 4;break;}
+                uni.showToast({
+                  title: '用户数据异常，请重新登录',
+                  icon: 'none' });return _context.abrupt("return");case 4:
+
+
+
+                data = {
+                  layer_id: layer_id,
+                  user_id: user_id };
+
+                console.log(data);
+                uni.showLoading({
+                  title: '正在提交...' });_context.next = 9;return (
+
+                  _this.$myRequest({
+                    url: 'service/pinqing',
+                    data: data }));case 9:res = _context.sent;
+
+                if (res && res.data) {
+                  uni.hideLoading();
+                  uni.showToast({
+                    title: "提交成功" + res.data.service_id });
+
+
+                }case 11:case "end":return _context.stop();}}}, _callee);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

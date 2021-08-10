@@ -25,6 +25,7 @@
     "pages/chat/chat",
     "pages/list/moreStudy",
     "pages/detail/studyDetail",
+<<<<<<< HEAD
     "pages/my/dealList",
     "pages/my/takeOut",
     "pages/my/bill",
@@ -41,6 +42,11 @@
     "pages/my/serviceSet",
     "pages/my/score",
     "pages/my/problem"
+=======
+    "pages/login/login",
+    "pages/login/forget",
+    "pages/login/registe"
+>>>>>>> 5c20bde702de9ed63efbc9431f324b69b074936e
   ],
   "subPackages": [],
   "window": {
@@ -80,8 +86,17 @@
       }
     ]
   },
+<<<<<<< HEAD
   "permission": {},
+=======
+  "permission": {
+    "scope.userLocation": {
+      "desc": "定位您的所在的城市"
+    }
+  },
+>>>>>>> 5c20bde702de9ed63efbc9431f324b69b074936e
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

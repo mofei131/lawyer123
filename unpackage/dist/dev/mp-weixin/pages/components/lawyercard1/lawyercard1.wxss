@@ -11,6 +11,9 @@
 	border-radius: 20rpx;
 	margin-bottom: 20rpx;
 }
+.statuSDot{
+	width: 14rpx;height: 14rpx;border-radius: 50%
+}
 .serviceBtn {
 	border: 2rpx solid #4CA2FF;
 	padding: 0 5rpx;
@@ -49,6 +52,4 @@
 .yellow {
 	background: #E1B12F;
 }
-
-
 

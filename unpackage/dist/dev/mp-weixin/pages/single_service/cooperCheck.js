@@ -156,7 +156,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var cooperTabar = function cooperTabar() {__webpack_require__.e(/*! require.ensure | pages/components/cooperTabar/cooperTabar */ "pages/components/cooperTabar/cooperTabar").then((function () {return resolve(__webpack_require__(/*! @/pages/components/cooperTabar/cooperTabar.vue */ 326));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard1 = function lawyercard1() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */ "pages/components/lawyercard1/lawyercard1").then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 333));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var cooperTabar = function cooperTabar() {__webpack_require__.e(/*! require.ensure | pages/components/cooperTabar/cooperTabar */ "pages/components/cooperTabar/cooperTabar").then((function () {return resolve(__webpack_require__(/*! @/pages/components/cooperTabar/cooperTabar.vue */ 326));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard1 = function lawyercard1() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */ "pages/components/lawyercard1/lawyercard1").then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 333));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -228,8 +228,25 @@ __webpack_require__.r(__webpack_exports__);
         delta: 1 });
 
     },
-    searchChange: function searchChange(e) {
-      console.log(e);
+    searchChange: function searchChange(e) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                console.log('----请求律师列表的信息 ------>');
+                console.log(_objectSpread({
+                  page: _this2.page,
+                  limit: _this2.limit },
+                e));_context.next = 4;return (
+
+                  _this2.$myRequest({
+                    url: 'layer/list',
+                    data: _objectSpread({
+                      page: _this2.page,
+                      limit: _this2.limit },
+                    e) }));case 4:res = _context.sent;
+
+
+                if (res && res.data) {
+                  console.log(res);
+                  // this.lawyerList = res.data;
+                }case 6:case "end":return _context.stop();}}}, _callee);}))();
     },
     buy: function buy(e) {
       console.log(e);

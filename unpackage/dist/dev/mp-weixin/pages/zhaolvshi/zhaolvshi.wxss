@@ -1,5 +1,5 @@
 
-.head{
+.head {
 	width: 750rpx;
 	height: 156rpx;
 	background: #40A9FF;
@@ -7,9 +7,9 @@
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
-.search{
+.search {
 	width: 500rpx;
-	background: rgb(255,255,255,.34);
+	background: rgb(255, 255, 255, .34);
 	border-radius: 32rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -22,18 +22,18 @@
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.search image{
+.search image {
 	width: 26rpx;
 	height: 26rpx;
-	margin:  0 16rpx;
+	margin: 0 16rpx;
 }
-.search input{
+.search input {
 	font-size: 26rpx;
 	color: #fff;
 	width: 400rpx;
-	-webkit-box-flex:1;
-	-webkit-flex:1 1 auto;
-	        flex:1 1 auto;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 auto;
+	        flex: 1 1 auto;
 }
 .cooper_check_icon {
 	margin-right: 10rpx;

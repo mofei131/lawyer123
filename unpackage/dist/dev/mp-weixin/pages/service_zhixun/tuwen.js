@@ -93,43 +93,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    faIcon: function() {
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 291))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  if (!_vm._isMounted) {
-    _vm.e0 = function($event) {
-      _vm.id = 1
-    }
-
-    _vm.e1 = function($event) {
-      _vm.id = 2
-    }
-
-    _vm.e2 = function($event) {
-      _vm.id = 3
-    }
-
-    _vm.e3 = function($event) {
-      _vm.id = 4
-    }
-
-    _vm.e4 = function($event) {
-      _vm.id = 5
-    }
-
-    _vm.e5 = function($event) {
-      _vm.id = 6
-    }
-
-    _vm.e6 = function($event) {
-      _vm.id = 7
-    }
-
-    _vm.e7 = function($event) {
-      _vm.id = 8
-    }
-  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -163,7 +153,27 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 22));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -205,17 +215,183 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 var _default =
 {
-  data: function data() {
-    return {
-      question: '',
-      id: '',
-      address: '' };
+  onLoad: function onLoad(param) {
+
+    var userInfo = this.$store.state.userInfo;
+    this.bussinessTypes = this.$store.state.bussinessTypes;
+    console.log(this.bussinessTypes);
+    // if(!userInfo){
+    // 	uni.navigateTo({
+    // 		url:'../login/login'
+    // 	})
+    // 	return
+    // }
+    // this.userInfo = userInfo;
+    // this.layer_id = param.layer_id;
+    // this.user_id = userInfo.user_id;
+
+    // uni.getLocation({
+    // 	type: 'wgs84',
+    // 	geocode: true,
+    // 	success: (res) => {
+    // 		this.latitude = res.latitude;
+    // 		this.longitude = res.longitude;
+    // 		this.markers[0].latitude = res.latitude;
+    // 		this.markers[0].longitude = res.longitude;
+    // 		//地图跳转到 指定经纬度 的页面，有导航按钮，切换到高德地图app
+    // 		// uni.openLocation({   
+    // 		//             latitude: res.latitude,
+    // 		//             longitude: res.longitude,
+    // 		//             success: function (res) {
+    // 		// 				console.log(JSON.stringify(res));
+    // 		//                 console.log('success');
+    // 		//             }
+    // 		//         });
+    // 	},
+    // 	fail(res) {
+    // 		console.log(res);
+    // 	}
+    // });
+
+
 
   },
+  data: function data() {
+    return {
+      layer_id: '',
+      userInfo: null,
+      user_id: null,
+      bussinessTypes: [],
+      content: '',
+      case_type: '',
+      address: '',
+      lng: '',
+      lat: ''
+
+
+
+      // searchAddress: '',
+      // title: 'map',
+      // markers: [{
+      // 		id: 1,
+      // 		title: '123',
+      // 		latitude: 23.043594,
+      // 		longitude: 113.160704,
+      // 		iconPath: '/static/icon/icon1.png'
+      // 	},
+
+      // ],
+    };
+  },
   methods: {
-    commit: function commit() {
-      //跳转支付页面
-    } } };exports.default = _default;
+    caseTypeChange: function caseTypeChange(e) {
+      this.case_type = e.id;
+    },
+    commit: function commit() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this$$data, layer_id, user_id, content, case_type, address, lng, lat, data, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                //跳转支付页面
+                _this$$data =
+
+
+
+
+
+
+
+                _this.$data, layer_id = _this$$data.layer_id, user_id = _this$$data.user_id, content = _this$$data.content, case_type = _this$$data.case_type, address = _this$$data.address, lng = _this$$data.lng, lat = _this$$data.lat;
+                // if (!layer_id || !user_id) {
+                // 	uni.showToast({
+                // 		title: '用户数据异常，请重新登录',
+                // 		icon: 'none'
+                // 	})
+                // 	return;
+                // }
+                if (!(!content || (content + '').trim() == '')) {_context.next = 4;break;}
+                uni.showToast({
+                  title: '请输入咨询内容',
+                  icon: 'none' });return _context.abrupt("return");case 4:if (
+
+
+
+                case_type) {_context.next = 7;break;}
+                uni.showToast({
+                  title: '请选择案件类型',
+                  icon: 'none' });return _context.abrupt("return");case 7:if (!(
+
+
+
+                !address || !lng || !lat)) {_context.next = 10;break;}
+                uni.showToast({
+                  title: '请选择事发地址！',
+                  icon: 'none' });return _context.abrupt("return");case 10:
+
+
+
+                data = {
+                  layer_id: 2,
+                  user_id: 43,
+                  content: content,
+                  case_type: case_type,
+                  address: address,
+                  lng: lng,
+                  lat: lat };
+
+                console.log(data);
+
+                uni.showLoading({
+                  title: '正在提交...' });_context.next = 15;return (
+
+                  _this.$myRequest({
+                    url: 'service/tuwen',
+                    data: data }));case 15:res = _context.sent;
+
+                console.log(res);
+                uni.hideLoading();
+                if (res && res.data) {
+                  uni.showToast({
+                    title: "提交成功" + res.data.service_id });
+
+                } else {
+                  uni.showToast({
+                    title: res.message,
+                    icon: 'none' });
+
+                }case 19:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    searchKeyWord: function searchKeyWord() {var _this2 = this;
+      console.log('---' + this.searchAddress);
+      var mapContext = uni.createMapContext("map1");
+      uni.chooseLocation({
+        keyword: this.searchAddress,
+        success: function success(res) {
+          console.log(res); //name address  latitude  longitude
+          _this2.address = res.address;
+          _this2.lng = res.longitude;
+          _this2.lat = res.latitude;
+          // mapContext.moveToLocation({
+          // 	longitude: res.longitude,
+          // 	latitude: res.latitude,
+          // 	success: (e) => {
+          // 		console.log(JSON.stringify(e));
+          // 		this.markers[0].longitude = res.longitude;
+          // 		this.markers[0].latitude = res.latitude;
+          // 	}
+          // })
+        } });
+
+
+
+
+
+    }
+
+    // tap(e) {
+    // 	console.log(e);
+    // 	this.markers[0].latitude = e.detail.latitude;
+    // 	this.markers[0].longitude = e.detail.longitude;
+
+    // }
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

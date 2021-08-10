@@ -68,7 +68,11 @@
             "es6" : true
         },
         "usingComponents" : true,
-        "permission" : {}
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "定位您的所在的城市"
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true

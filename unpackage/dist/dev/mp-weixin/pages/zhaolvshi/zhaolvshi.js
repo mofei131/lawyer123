@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var cooperTabar = function cooperTabar() {__webpack_require__.e(/*! require.ensure | pages/components/cooperTabar/cooperTabar */ "pages/components/cooperTabar/cooperTabar").then((function () {return resolve(__webpack_require__(/*! @/pages/components/cooperTabar/cooperTabar.vue */ 326));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard1 = function lawyercard1() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */ "pages/components/lawyercard1/lawyercard1").then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 333));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 22));var _methods;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var cooperTabar = function cooperTabar() {__webpack_require__.e(/*! require.ensure | pages/components/cooperTabar/cooperTabar */ "pages/components/cooperTabar/cooperTabar").then((function () {return resolve(__webpack_require__(/*! @/pages/components/cooperTabar/cooperTabar.vue */ 326));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard1 = function lawyercard1() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */ "pages/components/lawyercard1/lawyercard1").then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 333));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -171,30 +171,14 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
-      lawyerList: [
-      {
-        field: [{ name: "交通", class: 'green' },
-        { name: "婚姻", class: 'blue' },
-        { name: "合同", class: 'pink' },
-        { name: "审核", class: 'purple' },
-        { name: "诉状", class: 'yellow' }] },
-
-      {
-        field: [{ name: "交通", class: 'green' },
-        { name: "婚姻", class: 'blue' },
-        { name: "合同", class: 'pink' },
-        { name: "审核", class: 'purple' },
-        { name: "诉状", class: 'yellow' }] },
-
-      {
-        field: [{ name: "交通", class: 'green' },
-        { name: "婚姻", class: 'blue' },
-        { name: "合同", class: 'pink' },
-        { name: "审核", class: 'purple' },
-        { name: "诉状", class: 'yellow' }] }],
-
-
+      page: 1,
+      limit: 10,
+      lawyerList: [],
       id: '',
+      name: '',
+      case_type: '',
+      cityid: '',
+      level: '',
       list: [{
         id: 0,
         name: "图文咨询",
@@ -217,21 +201,88 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-      typeData: null };
+      typeData: null,
+      ttt: null };
 
   },
-  methods: {
+  methods: (_methods = {
     back: function back() {
       uni.navigateBack({
         delta: 1 });
 
     },
-    searchChange: function searchChange(e) {
-      console.log(e);
+    onReachBottom: function onReachBottom() {
+      uni.showToast({
+        title: '触发上拉加载' });
+
     },
-    buy: function buy(e) {
-      console.log(e);
-    } } };exports.default = _default;
+    // onPageScroll(e) {
+    // 	//兼容iOS端下拉时顶部漂移
+    // 	this.headerPosition = e.scrollTop>=0?"fixed":"absolute";
+    // 	this.headerTop = e.scrollTop>=0?null:0;
+    // 	this.statusTop = e.scrollTop>=0?null:-this.statusHeight+'px';
+    // },
+    //下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
+    onPullDownRefresh: function onPullDownRefresh() {
+      // setTimeout(function() {
+      // 	uni.stopPullDownRefresh();
+      // }, 1000);
+    } }, _defineProperty(_methods, "onReachBottom", function onReachBottom()
+
+  {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+              uni.showToast({
+                title: '触发上拉加载' });
+
+              // let len = this.productList.length;
+              // if (len >= 40) {
+              // 	this.loadingText = '到底了';
+              // 	return false;
+              // }
+              // // 加入商品,生成环境请替换为ajax请求
+              // let result = await myRequest('/business/page',{}, "GET");
+              // console.log(result)
+
+              //  let list = result.data.records;
+              // if (Array.isArray(list) && list.length > 0) {
+              // this.productList = list;
+              // }
+              // this.productList.push();
+            case 1:case "end":return _context.stop();}}}, _callee);}))();}), _defineProperty(_methods, "searchName", function searchName()
+  {var _this2 = this;
+    if (this.ttt) {
+      clearTimeout(this.ttt);
+    }
+    this.ttt = setTimeout(function (item) {
+      _this2.searchChange();
+    }, 1000);
+  }), _defineProperty(_methods, "searchChange", function searchChange(
+  e) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+              console.log('----请求律师列表的信息 ------>');
+              if (e) {
+                _this3.case_type = e.case_type;
+                _this3.cityid = e.cityid;
+                _this3.level = e.level;
+              }_context2.next = 4;return (
+
+                _this3.$myRequest({
+                  url: 'layer/list',
+                  data: {
+                    page: _this3.page,
+                    limit: _this3.limit,
+                    name: _this3.name,
+                    case_type: _this3.case_type,
+                    cityid: _this3.cityid,
+                    level: _this3.level } }));case 4:res = _context2.sent;
+
+
+              if (res && res.data) {
+                console.log(res);
+                _this3.lawyerList = res.data;
+              }case 6:case "end":return _context2.stop();}}}, _callee2);}))();
+  }), _defineProperty(_methods, "buy", function buy(
+  e) {
+    console.log(e);
+  }), _methods) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

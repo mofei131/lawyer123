@@ -5,6 +5,7 @@
   },
   "setting": {
     "urlCheck": false,
+<<<<<<< HEAD
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -37,6 +38,9 @@
     "packNpmRelationList": [],
     "minifyWXSS": true,
     "showES6CompileOption": false
+=======
+    "es6": true
+>>>>>>> 5c20bde702de9ed63efbc9431f324b69b074936e
   },
   "compileType": "miniprogram",
   "libVersion": "",
