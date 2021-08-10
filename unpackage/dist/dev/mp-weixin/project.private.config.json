@@ -77,6 +77,12 @@
           "pathName": "pages/my/score",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "支付",
+          "pathName": "pages/my/pay",
+          "query": "",
+          "scene": null
         }
       ]
     }

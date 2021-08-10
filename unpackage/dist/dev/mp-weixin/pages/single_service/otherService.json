@@ -1,6 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "其他服务",
   "enablePullDownRefresh": false,
-  "navigationStyle": "custom",
   "usingComponents": {}
 }

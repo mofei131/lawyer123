@@ -319,9 +319,13 @@
             {
                 "navigationBarTitleText": "注册",
                 "enablePullDownRefresh": false
-            }
-            
-        }
+            } 
+        },{
+            "path" : "pages/my/pay",
+            "style": {
+            	"navigationBarTitleText": "支付"
+          }
+					}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
