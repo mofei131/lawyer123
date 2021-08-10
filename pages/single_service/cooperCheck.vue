@@ -70,8 +70,25 @@
 					delta: 1
 				})
 			},
-			searchChange(e) {
-				console.log(e);
+			async searchChange(e) {
+				console.log('----请求律师列表的信息 ------>');
+				console.log({
+						page:this.page,
+						limit:this.limit,
+						...e
+					});
+				let res = await this.$myRequest({
+					url: 'layer/list',
+					data: {
+						page:this.page,
+						limit:this.limit,
+						...e
+					}
+				});
+				if (res && res.data) {
+					console.log(res);
+					// this.lawyerList = res.data;
+				}
 			},
 			buy(e){
 				console.log(e);

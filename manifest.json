@@ -62,7 +62,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wx294996ceba9ef1c5",
+        "appid" : "wx79abd178a6e41f79",
         "setting" : {
             "urlCheck" : false,
             "es6" : true
@@ -70,7 +70,7 @@
         "usingComponents" : true,
         "permission" : {
             "scope.userLocation" : {
-                "desc" : ""
+                "desc" : "定位您的所在的城市"
             }
         }
     },

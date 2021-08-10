@@ -208,8 +208,7 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-.mod2 {
-}
+.mod2 {}
 .pic2 {
 	z-index: 82;
 	position: absolute;

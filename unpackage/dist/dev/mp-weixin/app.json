@@ -20,7 +20,10 @@
     "pages/list/moreAnli",
     "pages/chat/chat",
     "pages/list/moreStudy",
-    "pages/detail/studyDetail"
+    "pages/detail/studyDetail",
+    "pages/login/login",
+    "pages/login/forget",
+    "pages/login/registe"
   ],
   "subPackages": [],
   "window": {
@@ -62,10 +65,11 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": ""
+      "desc": "定位您的所在的城市"
     }
   },
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

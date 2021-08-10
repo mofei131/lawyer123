@@ -1,17 +1,5 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
-		<view class="">
-			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="其他服务" color="#333333"
-				background-color="#FFFFFF" @clickLeft="back">
-				<!-- <block slot="right">
-					<view class="city">
-						<view><text class="uni-nav-bar-text">123</text></view>
-						<uni-icons type="arrowdown" color="#333333" size="22" />
-					</view>
-				</block> -->
-
-			</uni-nav-bar>
-		</view>
 
 		<view class="page">
 			<view class="mod1">

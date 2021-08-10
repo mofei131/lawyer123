@@ -12,6 +12,8 @@
 			"path": "pages/zhaolvshi/zhaolvshi",
 			"style": {
 				"navigationStyle":"custom",
+				"onReachBottomDistance":50,
+				"enablePullDownRefresh": true,
 				"app-plus":{
 							"titleNView":false
 						}
@@ -83,9 +85,8 @@
             "path" : "pages/single_service/otherService",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"navigationStyle":"custom" 
+                "navigationBarTitleText": "其他服务",
+                "enablePullDownRefresh": false
             }
             
         }
@@ -186,6 +187,32 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "每日学法",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/login/forget",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "忘记密码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/login/registe",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册",
                 "enablePullDownRefresh": false
             }
             

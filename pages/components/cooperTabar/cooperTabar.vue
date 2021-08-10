@@ -7,25 +7,25 @@
 			<pickcity @getcity="getCity"></pickcity>
 		</view>
 		<view class="uni-list-cell">
-			<picker @change="anjianChange" :value="index1" :range="array1" range-key="name">
+			<picker @change="anjianChange"  :value="index1" :range="byinfo" range-key="name">
 				<view class=" flex-row mx-center sx-center">
-					<text>{{array1[index1].name}}</text>
+					<text>{{index1===null?'案件类型': byinfo[index1].name}}</text>
 					<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
 				</view>
 			</picker>
 		</view>
 		<view class="uni-list-cell">
-			<picker @change="lvshiChange" :value="index2" :range="array2" range-key="name">
+			<picker @change="lvshiChange" :value="index2" :range="lyinfo" range-key="name">
 				<view class=" flex-row mx-center sx-center">
-					<text>{{array2[index2].name}}</text>
+					<text>{{index2===null?'律师级别': lyinfo[index2].name}}</text>
 					<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
 				</view>
 			</picker>
 		</view>
 		<view class="uni-list-cell">
-			<picker @change="workAgeChange" :value="index3" :range="array3" range-key="name">
-				<view class=" flex-row mx-center sx-center">
-					<text>{{array3[index3].name}}</text>
+			<picker @change="workAgeChange" :value="index3" :range="wkinfo" range-key="name">
+				<view class="flex-row mx-center sx-center">
+					<text>{{index3===null?'工作年限': wkinfo[index3].name}}</text>
 					<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
 				</view>
 			</picker>
@@ -40,69 +40,67 @@
 		components: {
 			pickcity
 		},
-		props: ['searchChange'],
+		props: [],
 		mounted() {
-
+			
+			let {bussinessTypes,lawyerLevels,workAges} = this.$store.state;
+			this.byinfo = bussinessTypes || [];
+			this.lyinfo = lawyerLevels || [];
+			this.wkinfo = workAges || [];
+			
 		},
 		data() {
 			return {
-				
-				array1: [{
-					name: '刑事纠纷',
-				}, {
-					name: '交通事故',
-				}],
-				index1: 0,
-				array2: [{
-					name: '初级',
-				}, {
-					name: '中级',
-				}],
-				index2: 0,
-				array3: [{
-					name: '5年',
-				}, {
-					name: '10年',
-				}],
-				index3: 0,
+				cityId:110100,
+				byinfo:[],
+				wkinfo:[],
+				lyinfo:[],
+				index1: null,
+				index2: null,
+				index3: null,
 
 			}
 		},
 		computed: {
-			// citiesArr(){
-			// 	console.log('===========');
-			// 	let temp = this.$store.state.provinces;
-			// 	let provinces = temp.map(item => item.province);
-			// 	let cities = this.getCity(temp[0].provinceid);
-			// 	return [provinces,cities]
-			// }
+
 		},
 		methods: {
-			getCity(e){
+			getCity(e) {
 				console.log(e);
-				this.$emit("searchChange", e)
+				this.cityId = e.cityid;
+				this.getCurrentSearchId();
 			},
 			anjianChange: function(e) {
 				//返回选择的数组下标
 				this.index1 = e.detail.value;
-				this.$emit("searchChange", 1)
+				this.getCurrentSearchId();
 			},
 			lvshiChange: function(e) {
-				console.log('picker发送选择改变，携带值为：' + e.detail.value)
 				this.index2 = e.detail.value;
-				this.$emit("searchChange", 1)
+				this.getCurrentSearchId();
 			},
 			workAgeChange: function(e) {
-				console.log('picker发送选择改变，携带值为：' + e.detail.value)
 				this.index3 = e.detail.value;
-				this.$emit("searchChange", 1)
 			},
 			bindPickerChange: function(e) {
-				console.log('picker发送选择改变，携带值为：' + e.detail.value)
 				this.index = e.detail.value;
-				this.$emit("searchChange", 1)
+				this.getCurrentSearchId();
 			},
-			
+			getCurrentSearchId() {
+				console.log('===>');
+				let currBy = this.index1===null?{}: this.byinfo[this.index1];
+				let currLy = this.index2===null?{}:this.lyinfo[this.index2];
+				let currWk = this.index3===null?{}:this.wkinfo[this.index3];
+				console.log({currBy,currLy,currWk});
+				this.$emit("searchChange", {
+					cityid: this.cityId,
+					case_type: currBy.id||'',
+					level: currLy.id||'',
+					age: currWk.id||'',
+				})
+
+			}
+
 
 		}
 	}

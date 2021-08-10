@@ -359,9 +359,14 @@
 			}
 		},
 		onLoad() {
-			// this.$store.commit('increment',1000);
-
-			this.getProvinceAndCity();
+			uni.navigateTo({
+				url:'../login/login'
+			})
+			// let userInfo
+			this.getProvinceCity();
+			this.getBussinessTypes();
+			this.getLawyerLevels();
+			this.getWorkAges();
 
 		},
 		computed: {
@@ -385,39 +390,19 @@
 
 		},
 		methods: {
-			...mapMutations(['getProvince', 'getCity']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
-			// ...mapActions([
-			// 	'getCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
-
-			// ]),
+			// ...mapMutations(['getProvince', 'getCity']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
+			...mapActions([
+				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+				'getBussinessTypes',
+				'getLawyerLevels','getWorkAges'
+			]),
 			// ...mapActions("module1",{
 			// 	udpateNameByAction:"udpateNameByAction"
 			// }),
 			
+			
 			//这一步放到登录那里做
-			getProvinceAndCity() {
-				let res = this.$myRequest({
-					url: '/index/getProvince',
-					method: 'GET',
-					data: {}
-				})
-				res.then(data => {
-					if (data && data.data) {
-						this.getProvince(data.data)
-					}
-
-				})
-				let res1 = this.$myRequest({
-					url: '/index/getCity',
-					method: 'GET',
-					data: {}
-				})
-				res1.then(data => {
-					if (data && data.data) {
-						this.getCity(data.data)
-					}
-				})
-			},
+			
 			swichMenu: async function(current) { //点击其中一个 menu
 				console.log(current);
 				if (this.currentTab == current) {

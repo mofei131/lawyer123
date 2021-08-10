@@ -14,17 +14,20 @@
 		</view>
 
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;">
-			<view class="flex-column mx-evenly sx-stretch"
+			<view class="flex-column mx-evenly sx-stretch" v-for="(item,index) in dataSource"
 				style="flex: 0 0 200rpx;background-color: #FFFFFF;border-radius: 20rpx;padding: 20rpx;">
-				<view class="ellipsis" style="flex:0 0 auto;width: 30px;">
-					<text>海外货物合同范文</text>
+				<view class="ellipsis" style="flex:0 0 auto;width: 200rpx;">
+					<text>{{item.name}}</text>
 				</view>
-				<view class="ellipsis-3" style="flex: 1 1 auto;font-size: 22rpx;margin:16rpx 0;" @click="toDetail()">
-					神鼎飞丹砂水电费水电费水电费胜多鼎飞丹砂水电费水电费胜多鼎飞丹砂水电费水电费水电费水电费水电费胜多负少电风扇电风扇地方水电负少电风扇电风扇地方水电费胜多负少对方水电费水电费水电费胜多负少地方是
+				<view class="ellipsis-3" style="flex: 1 1 auto;font-size: 22rpx;margin:16rpx 0;"
+					@click="toDetail(item)">
+					{{item.intro}}
 				</view>
 				<view class="flex-row mx-between sx-center" style="flex: 0 0 auto;">
-					<text style="color: #FF4D4F;">￥89</text>
-					<view style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">立即购买</view>
+					<text style="color: #FF4D4F;">￥{{item.buy}}</text>
+					<view
+						style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
+						立即购买</view>
 				</view>
 			</view>
 		</view>
@@ -38,21 +41,64 @@
 	export default {
 		onLoad(p) {
 			console.log(p);
+			let userInfo = this.$store.state.userInfo;
+
+			if (!p || !p.cid || !p.name || !userInfo) {
+				uni.showToast({
+					title: '参数有误！',
+					icon: 'none'
+				})
+				return;
+			}
+			this.id = p.cid;
+			this.user_id = userInfo.user_id;
+			this.drawInit(p.cid, p.name);
 		},
 		data() {
 			return {
-
+				id: null,
+				user_id: null,
+				dataSource: [],
+				isPay: false,
 			}
 		},
 		methods: {
+			async drawInit(cid, name) {
+				let res = await this.$myRequest({
+					url: 'agreement/list',
+					data: {
+						cid,
+						name,
+						user_id: this.$store.state.userInfo.user_id
+					}
+				});
+				if (res && res.data) {
+					console.log(res);
+					this.dataSource = res.data
+				}
+			},
 			back() {
 				uni.navigateBack({
 					delta: 1
 				})
 			},
-			toDetail(){
+			async toDetail(item) {
+				let res = await this.$myRequest({
+					url: 'agreement/detail',
+					data: {
+						id: this.id,
+						user_id: this.user_id
+					}
+				});
+				if (res && res.code==-1) {
+					uni.showToast({
+						title:res.message,
+						icon:'none'
+					})
+					return;
+				}
 				uni.navigateTo({
-					url:"../detail/cooperDetail?id=1"
+					url: "../detail/cooperDetail?url="+item.link
 				})
 			}
 		}
