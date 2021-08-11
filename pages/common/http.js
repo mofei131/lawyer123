@@ -1,5 +1,5 @@
-const baseUrl = '#';
-const imgUrl = '#';
+const baseUrl = 'https://layer.boyaokj.cn/api/';
+const imgUrl = 'https://layer.boyaokj.cn/api/';
 /* 封装ajax函数
  * @param {string}opt.type http连接的方式，包括POST和GET两种方式
  * @param {string}opt.url 发送请求的url

@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "优惠券",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon",
     "uni-search-bar": "/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar"

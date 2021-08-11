@@ -158,11 +158,19 @@ var _default =
   },
   methods: {
     toservice: function toservice() {
+      uni.setStorage({
+        key: 'type',
+        data: 1 });
+
       uni.navigateTo({
         url: './privateNotice' });
 
     },
     todeal: function todeal() {
+      uni.setStorage({
+        key: 'type',
+        data: 2 });
+
       uni.navigateTo({
         url: './commonNotice' });
 

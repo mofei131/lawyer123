@@ -23,17 +23,47 @@ var _default =
 {
   data: function data() {
     return {
-      contract: [
-      { id: 0, name: '合同1' },
-      { id: 1, name: '合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2' },
-      { id: 2, name: '合同3合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2' }] };
+      page: 1,
+      contract: [] };
 
+  },
+  onLoad: function onLoad() {
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/agreement/myDownload',
+      method: 'GET',
+      data: {
+        user_id: uni.getStorageSync('userInfo').id,
+        page: that.page,
+        limit: 10 },
+
+      success: function success(res) {
+        that.contract = res.data.data;
+      } });
 
   },
   methods: {
     toUrl: function toUrl(e) {
       uni.navigateTo({
         url: './contractDet?id=' + e });
+
+    },
+    onReachBottom: function onReachBottom(e) {
+      var that = this;
+      uni.request({
+        url: 'https://layer.boyaokj.cn/api/agreement/myDownload',
+        method: 'GET',
+        data: {
+          user_id: 42,
+          page: that.page++,
+          limit: 10 },
+
+        success: function success(res) {
+          for (var i in res.data.data) {
+            that.contract.push(res.data.data[i]);
+          }
+          console.log("触底加载");
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

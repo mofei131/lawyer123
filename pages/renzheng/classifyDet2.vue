@@ -12,9 +12,9 @@
 		<view class="boder"></view>
 			<view class="intitem">
 				<view class="tips">执业年限：</view>
-				<picker class="gather" @change="anjianChange" :value="index1" :range="array1" range-key="years">
+				<picker class="gather" @change="anjianChange" :value="index1" :range="array1" range-key="name">
 					<view class="flex-row">
-						<text>{{array1[index1].years}}</text>
+						<text>{{array1[index1].name}}</text>
 						<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
 					</view>
 				</picker>
@@ -22,9 +22,9 @@
 		<view class="boder"></view>
 			<view class="intitem">
 				<view class="tips">律师级别：</view>
-				<picker class="gather" @change="anjianChange2" :value="index2" :range="array2" range-key="level">
+				<picker class="gather" @change="anjianChange2" :value="index2" :range="array2" range-key="name">
 					<view class="flex-row">
-						<text>{{array2[index2].level}}</text>
+						<text>{{array2[index2].name}}</text>
 						<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
 					</view>
 				</picker>
@@ -50,22 +50,28 @@
 		data(){
 			return{
 				zhenghao:'',
-				phone:'',
-				array1: [{
-					years: '1~3',
-				}, {
-					years: '3~6',
-				}],
-				array2: [{
-					level: '高级律师',
-				}, {
-					level: '专家级律师',
-				}],
+				array1: [],
+				array2: [],
 				index1: 0,
 				index2: 0,
 				zhiname:'',
 				zhiyear:'',
 			}
+		},
+		onLoad(){
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/layer/level',
+				success(res) {
+					that.array2 = res.data.data
+				}
+			})
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/layer/LayerAge',
+				success(res) {
+					that.array1 = res.data.data
+				}
+			})
 		},
 		methods:{
 			chooseImage(e) {
@@ -76,9 +82,9 @@
 								sourceType: ['album','camera'], //从相册选择、摄像头
 								success: function(res) {
 									if(e == 1){
-										that.zipai = res.tempFilePaths[0]
+										that.zhiname = res.tempFilePaths[0]
 									}else if(e == 2){
-										that.zheng = res.tempFilePaths[0]
+										that.zhiyear = res.tempFilePaths[0]
 									}
 								},
 							});
@@ -90,6 +96,39 @@
 				this.index2 = e.detail.value;
 			},
 			toUrl(){
+				if (!this.zhenghao) {
+					uni.showToast({
+						title: '请输入执业证号',
+						icon: 'none',
+					})
+					return
+				}
+				if (!this.zhiname) {
+					uni.showToast({
+						title: '请上传执业证书姓名页',
+						icon: 'none',
+					})
+					return
+				}
+				if (!this.zhiyear) {
+					uni.showToast({
+						title: '请上传执业证书年限页',
+						icon: 'none',
+					})
+					return
+				}
+				uni.setStorage(
+				{
+					key:'cache2',
+					data:{
+						zhiyezhenghao:this.zhenghao,
+						zhiyenianxian:this.array1[this.index1].id,
+						shehuizhiwu:this.array2[this.index2].id,
+						zhiyezhengshu_xingming:this.zhiname,
+						zheyezhengshu_nianjian:this.zhiyear,
+					}
+				}
+				)
 				uni.navigateTo({
 					url:'./classifyDet3'
 				})

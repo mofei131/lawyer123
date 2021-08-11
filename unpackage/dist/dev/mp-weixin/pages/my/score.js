@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uniRate: function() {
-      return __webpack_require__.e(/*! import() | components/uni-rate/uni-rate */ "components/uni-rate/uni-rate").then(__webpack_require__.bind(null, /*! @/components/uni-rate/uni-rate.vue */ 446))
+      return __webpack_require__.e(/*! import() | components/uni-rate/uni-rate */ "components/uni-rate/uni-rate").then(__webpack_require__.bind(null, /*! @/components/uni-rate/uni-rate.vue */ 454))
     }
   }
 } catch (e) {
@@ -153,7 +153,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniRate = function uniRate() {__webpack_require__.e(/*! require.ensure | components/uni-rate/uni-rate */ "components/uni-rate/uni-rate").then((function () {return resolve(__webpack_require__(/*! @/components/uni-rate/uni-rate.vue */ 446));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniRate = function uniRate() {__webpack_require__.e(/*! require.ensure | components/uni-rate/uni-rate */ "components/uni-rate/uni-rate").then((function () {return resolve(__webpack_require__(/*! @/components/uni-rate/uni-rate.vue */ 454));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

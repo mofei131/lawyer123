@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -150,17 +150,17 @@ var _default =
     return {
       decide: false,
       ji: '',
-      article: [
-      {
-        title: '赚钱标题1' },
-      {
-        title: '赚钱标题2' },
-      {
-        title: '赚钱标题3' },
-      {
-        title: '赚钱标题4' }] };
+      article: [] };
 
-
+  },
+  onLoad: function onLoad() {
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/commission/notice',
+      method: 'POST',
+      success: function success(res) {
+        that.article = res.data.data;
+      } });
 
   },
   methods: {
@@ -168,6 +168,7 @@ var _default =
       // console.log(e)
       this.ji = e;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

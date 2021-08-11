@@ -5,18 +5,9 @@
 			<view>第三步:资料设置</view>
 		</view>
 		<view class="collect">
-			<!-- <view class="intitem">
-				<view class="tips">执业证号：</view>
-				<input class="gather" type="number" value="" placeholder="请输入号码" v-model="zhenghao" placeholder-style="color: #C1C2C3;"/>
-			</view> -->
 			<view class="intitem">
 				<view class="tips">所属城市：</view>
-				<picker class="gather" @change="anjianChange" :value="index" :range="array" range-key="years">
-					<view class="flex-row">
-						<text>{{array1[index1].years}}</text>
-						<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
-					</view>
-				</picker>
+				<pickcity @getcity="getCity"></pickcity>
 			</view>
 		<view class="boder"></view>
 			<view class="intitem">
@@ -56,28 +47,169 @@
 </template>
 
 <script>
+	import pickcity from '@/pages/components/pickcity/pickcity.vue'
 	export default{
+		components:{
+			pickcity,
+		},
 		data(){
 			return{
+				city:'',
 				unit:'',
 				college:'',
 				array1: [{
+					record: '无',
+				}, {
+					record: '小学',
+				}, {
+					record: '中学',
+				}, {
+					record: '专科',
+				}, {
 					record: '本科',
 				}, {
-					record: '大专',
+					record: '硕士',
+				}, {
+					record: '博士',
 				}],
 				index1: 0,
 				major:'',
-				mark:''
+				mark:'',
+				type:'',
+				name:'',
+				mobile:'',
+				gender:'',
+				photo:'',
+				idcard:'',
+				idcard_fan:'',
+				zhiyezhenghao:'',
+				zhiyenianxian:'',
+				shehuizhiwu:'',
+				zhiyezhengshu_xingming:'',
+				zheyezhengshu_nianjian:''
 			}
 		},
+		onLoad(){
+			let that = this
+			uni.getStorage({
+			key:"type",
+			success(e){
+				that.type = e.data
+			}
+			}) 
+				uni.getStorage({
+				key:'cache1',
+				success(e){
+				that.name = e.data.name
+				that.mobile = e.data.mobile
+				that.gender = e.data.gender
+				that.photo = e.data.photo
+				that.idcard = e.data.idcard
+				that.idcard_fan = e.data.idcard_fan
+				}
+				})
+				 uni.getStorage({
+					key:'cache2',
+					success(e){
+						console.log(e.data.shehuizhiwu)
+						that.zhiyezhenghao = e.data.zhiyezhenghao
+						that.zhiyenianxian = e.data.zhiyenianxian
+						that.shehuizhiwu = e.data.shehuizhiwu
+						that.zhiyezhengshu_xingming = e.data.zhiyezhengshu_xingming
+						that.zheyezhengshu_nianjian = e.data.zheyezhengshu_nianjian
+					}
+				})
+		},
 		methods:{
+			getCity(e){
+				this.city = e.cityid
+			},
 			anjianChange1(e) {
 				this.index1 = e.detail.value;
 			},
 			submit(){
-				
-			}
+				if (!this.unit) {
+					uni.showToast({
+						title: '请输入所属律所',
+						icon: 'none',
+					})
+					return
+				}
+				if (!this.college) {
+					uni.showToast({
+						title: '请输入毕业院校',
+						icon: 'none',
+					})
+					return
+				}
+				if (!this.major) {
+					uni.showToast({
+						title: '请输入所属专业',
+						icon: 'none',
+					})
+					return
+				}
+				if (!this.mark) {
+					uni.showToast({
+						title: '请输入简介',
+						icon: 'none',
+					})
+					return
+				}
+				let that = this
+				uni.request({
+					url: 'https://layer.boyaokj.cn/api/layer/auth',
+					method: 'POST',
+					data: {
+						user_id: uni.getStorageSync('userInfo').id,
+						type:that.type,
+						name:that.name,
+						mobile:that.mobile,
+						gender:that.gender,
+						photo:that.photo,
+						idcard:that.idcard,
+						idcard_fan:that.idcard_fan,
+						zhiyezhenghao:that.zhiyezhenghao,
+						zhiyenianxian:that.zhiyenianxian,
+						shehuizhiwu:that.shehuizhiwu,
+						zhiyezhengshu_xingming:that.zhiyezhengshu_xingming,
+						zheyezhengshu_nianjian:that.zheyezhengshu_nianjian,
+						city:that.city,
+						lvsuo:that.unit,
+						school:that.college,
+						xueli:that.index1,
+						zhuanye:that.major,
+						jianjie:that.mark
+					},
+					success(res){
+						if(res.data.code == 200){
+							uni.showToast({
+								title: '提交成功',
+							})
+							uni.removeStorage({key: 'type',})
+							uni.removeStorage({key: 'cache1',})
+							uni.removeStorage({key: 'cache2'})
+						}else if(res.data.message == '您已经申请过,请勿重复申请'){
+							uni.showToast({
+								title: '请勿重复认证',
+								icon:'error'
+							})
+							uni.removeStorage({key: 'type',})
+							uni.removeStorage({key: 'cache1',})
+							uni.removeStorage({key: 'cache2'})
+						}else{
+							uni.showToast({
+								title: '请确保信息完整',
+								icon:'error'
+							})
+						}
+					},fail(res){
+						uni.showToast({
+							title: '提交失败',
+						})
+					}
+			})
+		}
 		}
 	}
 </script>
@@ -85,6 +217,13 @@
 <style>
 	page{
 		background: #F4F7F7;
+	}
+	.flex-row{
+		width: 510rpx;
+		justify-content: space-between!important;
+	}
+	.fa-angle-down{
+		transform:rotate(-90deg);
 	}
 	.modtitle{
 		width: 680rpx;

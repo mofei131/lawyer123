@@ -10,7 +10,7 @@
 		methods:{
 			toUrl(){
 				uni.navigateTo({
-					url:'./classifyDet1'
+					url:'./classifyDet1?type=1'
 				})
 			}
 		}

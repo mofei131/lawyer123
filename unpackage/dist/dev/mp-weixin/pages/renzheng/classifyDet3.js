@@ -96,7 +96,7 @@ var components
 try {
   components = {
     faIcon: function() {
-      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 348))
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 356))
     }
   }
 } catch (e) {
@@ -153,86 +153,219 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 461));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    pickcity: pickcity },
+
   data: function data() {
     return {
+      city: '',
       unit: '',
       college: '',
       array1: [{
+        record: '无' },
+      {
+        record: '小学' },
+      {
+        record: '中学' },
+      {
+        record: '专科' },
+      {
         record: '本科' },
       {
-        record: '大专' }],
+        record: '硕士' },
+      {
+        record: '博士' }],
 
       index1: 0,
       major: '',
-      mark: '' };
+      mark: '',
+      type: '',
+      name: '',
+      mobile: '',
+      gender: '',
+      photo: '',
+      idcard: '',
+      idcard_fan: '',
+      zhiyezhenghao: '',
+      zhiyenianxian: '',
+      shehuizhiwu: '',
+      zhiyezhengshu_xingming: '',
+      zheyezhengshu_nianjian: '' };
+
+  },
+  onLoad: function onLoad() {
+    var that = this;
+    uni.getStorage({
+      key: "type",
+      success: function success(e) {
+        that.type = e.data;
+      } });
+
+    uni.getStorage({
+      key: 'cache1',
+      success: function success(e) {
+        that.name = e.data.name;
+        that.mobile = e.data.mobile;
+        that.gender = e.data.gender;
+        that.photo = e.data.photo;
+        that.idcard = e.data.idcard;
+        that.idcard_fan = e.data.idcard_fan;
+      } });
+
+    uni.getStorage({
+      key: 'cache2',
+      success: function success(e) {
+        console.log(e.data.shehuizhiwu);
+        that.zhiyezhenghao = e.data.zhiyezhenghao;
+        that.zhiyenianxian = e.data.zhiyenianxian;
+        that.shehuizhiwu = e.data.shehuizhiwu;
+        that.zhiyezhengshu_xingming = e.data.zhiyezhengshu_xingming;
+        that.zheyezhengshu_nianjian = e.data.zheyezhengshu_nianjian;
+      } });
 
   },
   methods: {
+    getCity: function getCity(e) {
+      this.city = e.cityid;
+    },
     anjianChange1: function anjianChange1(e) {
       this.index1 = e.detail.value;
     },
     submit: function submit() {
+      if (!this.unit) {
+        uni.showToast({
+          title: '请输入所属律所',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.college) {
+        uni.showToast({
+          title: '请输入毕业院校',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.major) {
+        uni.showToast({
+          title: '请输入所属专业',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.mark) {
+        uni.showToast({
+          title: '请输入简介',
+          icon: 'none' });
+
+        return;
+      }
+      var that = this;
+      uni.request({
+        url: 'https://layer.boyaokj.cn/api/layer/auth',
+        method: 'POST',
+        data: {
+          user_id: uni.getStorageSync('userInfo').id,
+          type: that.type,
+          name: that.name,
+          mobile: that.mobile,
+          gender: that.gender,
+          photo: that.photo,
+          idcard: that.idcard,
+          idcard_fan: that.idcard_fan,
+          zhiyezhenghao: that.zhiyezhenghao,
+          zhiyenianxian: that.zhiyenianxian,
+          shehuizhiwu: that.shehuizhiwu,
+          zhiyezhengshu_xingming: that.zhiyezhengshu_xingming,
+          zheyezhengshu_nianjian: that.zheyezhengshu_nianjian,
+          city: that.city,
+          lvsuo: that.unit,
+          school: that.college,
+          xueli: that.index1,
+          zhuanye: that.major,
+          jianjie: that.mark },
+
+        success: function success(res) {
+          if (res.data.code == 200) {
+            uni.showToast({
+              title: '提交成功' });
+
+            uni.removeStorage({ key: 'type' });
+            uni.removeStorage({ key: 'cache1' });
+            uni.removeStorage({ key: 'cache2' });
+          } else if (res.data.message == '您已经申请过,请勿重复申请') {
+            uni.showToast({
+              title: '请勿重复认证',
+              icon: 'error' });
+
+            uni.removeStorage({ key: 'type' });
+            uni.removeStorage({ key: 'cache1' });
+            uni.removeStorage({ key: 'cache2' });
+          } else {
+            uni.showToast({
+              title: '请确保信息完整',
+              icon: 'error' });
+
+          }
+        }, fail: function fail(res) {
+          uni.showToast({
+            title: '提交失败' });
+
+        } });
 
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

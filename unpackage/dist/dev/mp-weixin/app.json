@@ -44,7 +44,8 @@
     "pages/login/login",
     "pages/login/forget",
     "pages/login/registe",
-    "pages/my/pay"
+    "pages/my/pay",
+    "pages/my/follow"
   ],
   "subPackages": [],
   "window": {

@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -156,19 +156,33 @@ var _default =
   data: function data() {
     return {
       judge: true,
-      direct: [
-      { id: 0, name: '怎么肥四', headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg' },
-      { id: 1, name: '怎么肥五', headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg' },
-      { id: 2, name: '怎么肥六', headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg' },
-      { id: 3, name: '怎么肥七', headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg' }],
+      direct: [],
+      indirect: [] };
 
-      indirect: [
-      { id: 0, name: '怎么肥零', headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg' },
-      { id: 1, name: '怎么肥一', headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg' },
-      { id: 2, name: '怎么肥二', headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg' },
-      { id: 3, name: '怎么肥三', headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg' },
-      { id: 3, name: '怎么肥肥', headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg' }] };
+  },
+  onLoad: function onLoad() {
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/commission/getList',
+      method: 'GET',
+      data: {
+        user_id: uni.getStorageSync('userInfo').id,
+        type: 1 },
 
+      success: function success(res) {
+        that.direct = res.data.data.list;
+      } });
+
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/commission/getList',
+      method: 'GET',
+      data: {
+        user_id: uni.getStorageSync('userInfo').id,
+        type: 2 },
+
+      success: function success(res) {
+        that.indirect = res.data.data.list;
+      } });
 
   },
   methods: {
@@ -180,6 +194,7 @@ var _default =
         this.judge = true;
       }
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

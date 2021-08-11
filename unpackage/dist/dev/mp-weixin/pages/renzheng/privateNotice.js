@@ -142,7 +142,7 @@ var _default =
   methods: {
     toUrl: function toUrl() {
       uni.navigateTo({
-        url: './classifyDet1' });
+        url: './classifyDet1?type=1' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

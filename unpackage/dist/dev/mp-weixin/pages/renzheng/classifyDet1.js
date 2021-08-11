@@ -183,11 +183,11 @@ var _default =
       name: '',
       phone: '',
       array1: [{
-        sex: '男' },
+        sex: '女' },
       {
-        sex: '女' }],
+        sex: '男' }],
 
-      index1: 0,
+      index1: 1,
       zipai: '',
       zheng: '',
       fan: '' };
@@ -215,6 +215,54 @@ var _default =
       this.index1 = e.detail.value;
     },
     toUrl: function toUrl() {
+      if (!this.name) {
+        uni.showToast({
+          title: '请输入您的姓名',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.phone) {
+        uni.showToast({
+          title: '请输入您的手机号',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.zipai) {
+        uni.showToast({
+          title: '请上传头像照片',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.zheng) {
+        uni.showToast({
+          title: '请上传身份证正面照片',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.fan) {
+        uni.showToast({
+          title: '请上传身份证反面照片',
+          icon: 'none' });
+
+        return;
+      }
+      uni.setStorage(
+      {
+        key: 'cache1',
+        data: {
+          name: this.name,
+          mobile: this.phone,
+          gender: this.index1,
+          photo: this.zipai,
+          idcard: this.zheng,
+          idcard_fan: this.fan } });
+
+
+
       uni.navigateTo({
         url: './classifyDet2' });
 

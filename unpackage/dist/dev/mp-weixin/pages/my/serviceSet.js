@@ -96,7 +96,7 @@ var components
 try {
   components = {
     faIcon: function() {
-      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 348))
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 356))
     }
   }
 } catch (e) {
@@ -123,7 +123,7 @@ var render = function() {
   var l0 = _vm.__map(_vm.type, function(item, index) {
     var $orig = _vm.__get_orig(item)
 
-    var g0 = _vm.cardlist.indexOf(index)
+    var g0 = _vm.cardlist.indexOf(item.id)
     return {
       $orig: $orig,
       g0: g0
@@ -171,7 +171,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -246,36 +246,104 @@ var _default =
       phone: '',
       meet: '',
       emplay: '',
-      type: ["婚姻家庭", "财产纠纷", "交通肇事", "土地房产", "劳动人事", "婚姻家庭", "财产纠纷", "交通肇事", "土地房产", "劳动人事", "婚姻家庭", "财产纠纷", "交通肇事", "土地房产", "劳动人事", "婚姻家庭", "财产纠纷", "交通肇事", "土地房产", "劳动人事"],
+      type: [],
       cardlist: [],
       raw: false,
       ji: '',
-      array1: [{
-        id: 0,
-        record: '婚姻家庭' },
-      {
-        id: 1,
-        record: '财产纠纷' },
-      {
-        id: 2,
-        record: '交通肇事' }],
-
+      array1: [],
       index1: 0,
       molde: false,
-      sevedata: [
-      { service: '私人律师(7天)', price: '' },
-      { service: '私人律师(120天)', price: '' },
-      { service: '私人律师', price: '' }],
+      sevedata: [],
+      zancun: '',
+      zancunid: '' };
 
-      zancun: '' };
+  },
+  onLoad: function onLoad() {
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/layer/getCaseType',
+      success: function success(res) {
+        that.type = res.data.data;
+      } });
+
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/service/getOtherService',
+      success: function success(res) {
+        that.array1 = res.data.data;
+      } });
 
   },
   methods: {
+    delect: function delect(id) {
+      console.log(id);
+      this.sevedata = this.sevedata.filter(function (item) {return item.id !== id;});
+    },
     toUrl: function toUrl() {
+      if (!this.chat) {
+        uni.showToast({
+          title: '请输入图文咨询价格',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.phone) {
+        uni.showToast({
+          title: '请输入电话咨询价格',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.meet) {
+        uni.showToast({
+          title: '请输入见面咨询价格',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.emplay) {
+        uni.showToast({
+          title: '请输入受聘价格',
+          icon: 'none' });
+
+        return;
+      }
+      var that = this;
       // uni.navigateTo({
       // 	url:'./classifyDet2'
       // })
-      console.log(this.cardlist);
+      var setting = [
+      { id: 1, price: that.chat },
+      { id: 2, price: that.phone },
+      { id: 3, price: that.meet },
+      { id: 10, price: that.emplay }];
+
+      for (var i in that.sevedata) {
+        if (!that.sevedata[i].price) {
+          uni.showToast({
+            title: '请输入自定义服务价格',
+            icon: 'none' });
+
+          return;
+        }
+        setting.push({
+          id: that.sevedata[i].id,
+          price: that.sevedata[i].price });
+
+      }
+      var paramsJson = JSON.stringify(setting);
+      console.log(paramsJson);
+      uni.request({
+        url: 'https://layer.boyaokj.cn/api/layer/setting',
+        method: 'POST',
+        data: {
+          user_id: uni.getStorageSync('userInfo').id,
+          setting: paramsJson,
+          area: that.cardlist },
+
+        success: function success(res) {
+          console.log(res);
+        } });
+
     },
     select: function select(index) {
       var that = this;
@@ -288,17 +356,20 @@ var _default =
     },
     anjianChange1: function anjianChange1(e) {
       this.index1 = e.detail.value;
-      this.zancun = this.array1[e.detail.value].record;
+      this.zancun = this.array1[e.detail.value].name;
+      this.zancunid = this.array1[e.detail.value].id;
     },
     cancel: function cancel() {
       this.molde = !this.molde;
     },
     press: function press() {
       this.sevedata.push({
-        service: this.zancun });
+        service: this.zancun,
+        id: this.zancunid });
 
       this.molde = !this.molde;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

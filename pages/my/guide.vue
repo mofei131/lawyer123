@@ -6,7 +6,7 @@
 			<image :src="ji == index?'../../static/icon/downzd.png':'../../static/icon/rightzd.png'"></image>
 		</view>
 		<view class="box" v-show="ji == index">
-		<view class="guidecot" :nodes="item.content"></view>
+		<view class="guidecot" v-html="item.content"></view>
 		</view>
 		</view>
 	</view>
@@ -18,18 +18,18 @@
 			return{
 				decide:false,
 				ji:'',
-				article:[
-					{
-						title:'赚钱标题1',
-					},{
-						title:'赚钱标题2',
-					},{
-						title:'赚钱标题3',
-					},{
-						title:'赚钱标题4',
-					}
-				]
+				article:[]
 			}
+		},
+		onLoad() {
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/commission/notice',
+				method:'POST',
+				success(res) {
+					that.article = res.data.data
+				}
+			})
 		},
 		methods:{
 			pandaun(e){
@@ -68,6 +68,10 @@
 	.guidecot{
 		width: 640rpx;
 		margin: auto;
+		font-size: 26rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #666666;
 	}
 	.box{
 		width: 710rpx;
@@ -75,5 +79,6 @@
 		border-radius: 14rpx;
 		padding-top: 100rpx;
 		margin-top: -80rpx;
+		background: #fff;
 	}
 </style>
