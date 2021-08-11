@@ -73,7 +73,7 @@
 	.option{
 		width: 480rpx;
 		height: 63rpx;
-		border-radius: 32rpx;
+		border-radius: 34rpx;
 		border: 1px solid #40A9FF;
 		display: flex;
 		margin: 25rpx auto;
@@ -93,7 +93,7 @@
 		font-weight: 500;
 		color: #464646;
 		text-align: center;
-		padding-top: 15rpx;
+		padding-top: 13rpx;
 		box-sizing: border-box;
 	}
 	.empty{
@@ -107,7 +107,7 @@
 		font-weight: 500;
 		color: #464646;
 		text-align: center;
-		padding-top: 15rpx;
+		padding-top: 13rpx;
 		box-sizing: border-box;
 	}
 	.directitem{

@@ -35,7 +35,7 @@
 				<image src="../../static/images/back.png"></image>
 			</view>
 		</view>
-		<view class="vip" v-if="user.type == 1">
+		<view class="vip" v-if="user.type == ''">
 			<view class="vipdet" v-if="user.vip == 0">
 				<view>123法律VIP</view>
 				<view>开通即尊享20+项专属特权</view>
@@ -46,20 +46,20 @@
 	</view>
 	<!-- <iconlist :item='user.type == 1?iconlist:iconlist1'></iconlist> -->
 	<view class="iconlist">
-		<view class="zixun" v-if="user.type == 1">
+		<view class="zixun" v-if="user.type == ''">
 			<view v-for="(item,index) in iconlist.zixun" class="zixunitem" @click="toPage(item.tourl)" :key="index">
 				<image :src='item.url' class="zixunitemimage"></image>
 				<view class="zixunitemview">{{item.name}}</view>
 			</view>
 		</view>
-		<view class="zixun" v-if="user.type == 2">
+		<view class="zixun" v-if="user.type != ''">
 			<view v-for="(item,index) in iconlist1.zixun" class="zixunitem" @click="toPage(item.tourl)" :key="index">
 				<image :src='item.url' class="zixunitemimage"></image>
 				<view class="zixunitemview">{{item.name}}</view>
 			</view>
 		</view>
 	</view>
-	<view class="tuigaung" v-if="user.type == 1">
+	<view class="tuigaung" v-if="user.type == ''">
 		<view class="tgtext">我的推广</view>
 		<!-- <iconlist :item='iconlist2'></iconlist> -->
 		<view class="zixun">
@@ -99,7 +99,7 @@
 			return {
 				user:{
 					uid:1,
-					type:1,//(1是用户,2是律师)
+					lawyer:'',//(1是用户,2是律师)
 					name:'',
 					headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
 					balance:0,//余额
@@ -169,6 +169,17 @@
 		      }
 		    },
 				onLoad(){
+					// uni.request({
+					// 	url:'https://layer.boyaokj.cn/api/wechat/login',
+					// 	method:'GET',
+					// 	data:{
+					// 		code:111,
+					// 		pid:1
+					// 	},
+					// 	success(res) {
+					// 		console.log(res)
+					// 	}
+					// })
 					let that = this
 					// console.log(this.$store.state.userInfo)
 					let user = uni.getStorageSync('userInfo');
@@ -180,9 +191,9 @@
 							user_id:user.user_id
 						},
 						success(res) {
-							console.log(res)
 							that.user.headimg = res.data.data.avater
 							that.user.balance = res.data.data.wallet
+							that.user.lawyer = res.data.data.layer
 						}
 					})
 				},
@@ -206,7 +217,6 @@
 				})
 			},
 			toUrl(url,kefu){
-				console.log(kefu)
 				uni.navigateTo({
 					url:url
 				})
@@ -215,7 +225,6 @@
 				})
 			},
 			toPage(url){
-				console.log(url)
 				uni.navigateTo({
 					url:url
 				})

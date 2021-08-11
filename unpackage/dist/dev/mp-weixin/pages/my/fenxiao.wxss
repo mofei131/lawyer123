@@ -5,7 +5,7 @@ page{
 .option{
 	width: 480rpx;
 	height: 63rpx;
-	border-radius: 32rpx;
+	border-radius: 34rpx;
 	border: 1px solid #40A9FF;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -27,7 +27,7 @@ page{
 	font-weight: 500;
 	color: #464646;
 	text-align: center;
-	padding-top: 15rpx;
+	padding-top: 13rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
@@ -42,7 +42,7 @@ page{
 	font-weight: 500;
 	color: #464646;
 	text-align: center;
-	padding-top: 15rpx;
+	padding-top: 13rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }

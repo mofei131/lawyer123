@@ -172,25 +172,60 @@ var _default =
 
   },
   onLoad: function onLoad(p) {
-    this.balance = p.balance;
+    // this.balance = p.balance
+    this.balance = 500;
   },
   methods: {
     agreementSuccess: function agreementSuccess() {
       this.agreement = !this.agreement;
     },
     pay: function pay() {
+      if (!this.value) {
+        uni.showToast({
+          title: '请输入提现金额',
+          icon: 'none' });
+
+        return;
+      }
+      if (this.value == 0) {
+        uni.showToast({
+          title: '提现金额不能为0',
+          icon: 'none' });
+
+        return;
+      }
       if (this.agreement == false) {
         uni.showToast({
           title: "请勾选支付方式",
           icon: 'none' });
 
-      } else if (this.value > this.total) {
+      } else if (this.value > this.balance) {
         uni.showToast({
           title: '余额不足，请重新输入',
           icon: 'none' });
 
       } else {
-        console.log("支付");
+        // console.log("支付")
+        var that = this;
+        uni.request({
+          url: 'https://layer.boyaokj.cn/api/wechat/withdraw',
+          method: 'GET',
+          data: {
+            user_id: 42,
+            money: that.value },
+
+          success: function success(res) {
+            uni.showToast({
+              title: '提现成功' });
+
+            uni.redirectTo({
+              url: './mine' });
+
+            //  uni.navigateTo({
+            // 		url: '/pages/info/index?name=1',
+            // });
+          } });
+
       }
 
     } } };exports.default = _default;

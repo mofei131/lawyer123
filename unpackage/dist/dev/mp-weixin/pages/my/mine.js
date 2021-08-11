@@ -231,7 +231,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       user: {
         uid: 1,
-        type: 1, //(1是用户,2是律师)
+        lawyer: '', //(1是用户,2是律师)
         name: '',
         headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
         balance: 0, //余额
@@ -301,6 +301,17 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onLoad: function onLoad() {
+    // uni.request({
+    // 	url:'https://layer.boyaokj.cn/api/wechat/login',
+    // 	method:'GET',
+    // 	data:{
+    // 		code:111,
+    // 		pid:1
+    // 	},
+    // 	success(res) {
+    // 		console.log(res)
+    // 	}
+    // })
     var that = this;
     // console.log(this.$store.state.userInfo)
     var user = uni.getStorageSync('userInfo');
@@ -312,9 +323,9 @@ __webpack_require__.r(__webpack_exports__);
         user_id: user.user_id },
 
       success: function success(res) {
-        console.log(res);
         that.user.headimg = res.data.data.avater;
         that.user.balance = res.data.data.wallet;
+        that.user.lawyer = res.data.data.layer;
       } });
 
   },
@@ -338,7 +349,6 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     toUrl: function toUrl(url, kefu) {
-      console.log(kefu);
       uni.navigateTo({
         url: url });
 
@@ -347,7 +357,6 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     toPage: function toPage(url) {
-      console.log(url);
       uni.navigateTo({
         url: url });
 
