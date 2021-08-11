@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 278));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 285));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 266));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 273));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

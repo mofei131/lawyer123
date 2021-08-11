@@ -96,7 +96,7 @@ var components
 try {
   components = {
     faIcon: function() {
-      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 196))
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 184))
     }
   }
 } catch (e) {
@@ -297,38 +297,38 @@ var _default =
 
 
 
-                _this.$data, layer_id = _this$$data.layer_id, user_id = _this$$data.user_id, content = _this$$data.content, case_type = _this$$data.case_type, address = _this$$data.address, lng = _this$$data.lng, lat = _this$$data.lat;
-                // if (!layer_id || !user_id) {
-                // 	uni.showToast({
-                // 		title: '用户数据异常，请重新登录',
-                // 		icon: 'none'
-                // 	})
-                // 	return;
-                // }
-                if (!(!content || (content + '').trim() == '')) {_context.next = 4;break;}
+                _this.$data, layer_id = _this$$data.layer_id, user_id = _this$$data.user_id, content = _this$$data.content, case_type = _this$$data.case_type, address = _this$$data.address, lng = _this$$data.lng, lat = _this$$data.lat;if (!(
+                !layer_id || !user_id)) {_context.next = 4;break;}
+                uni.showToast({
+                  title: '用户数据异常，请重新登录',
+                  icon: 'none' });return _context.abrupt("return");case 4:if (!(
+
+
+
+                !content || (content + '').trim() == '')) {_context.next = 7;break;}
                 uni.showToast({
                   title: '请输入咨询内容',
-                  icon: 'none' });return _context.abrupt("return");case 4:if (
+                  icon: 'none' });return _context.abrupt("return");case 7:if (
 
 
 
-                case_type) {_context.next = 7;break;}
+                case_type) {_context.next = 10;break;}
                 uni.showToast({
                   title: '请选择案件类型',
-                  icon: 'none' });return _context.abrupt("return");case 7:if (!(
+                  icon: 'none' });return _context.abrupt("return");case 10:if (!(
 
 
 
-                !address || !lng || !lat)) {_context.next = 10;break;}
+                !address || !lng || !lat)) {_context.next = 13;break;}
                 uni.showToast({
                   title: '请选择事发地址！',
-                  icon: 'none' });return _context.abrupt("return");case 10:
+                  icon: 'none' });return _context.abrupt("return");case 13:
 
 
 
                 data = {
-                  layer_id: 2,
-                  user_id: 43,
+                  layer_id: layer_id,
+                  user_id: user_id,
                   content: content,
                   case_type: case_type,
                   address: address,
@@ -338,11 +338,11 @@ var _default =
                 console.log(data);
 
                 uni.showLoading({
-                  title: '正在提交...' });_context.next = 15;return (
+                  title: '正在提交...' });_context.next = 18;return (
 
                   _this.$myRequest({
                     url: 'service/tuwen',
-                    data: data }));case 15:res = _context.sent;
+                    data: data }));case 18:res = _context.sent;
 
                 console.log(res);
                 uni.hideLoading();
@@ -355,7 +355,7 @@ var _default =
                     title: res.message,
                     icon: 'none' });
 
-                }case 19:case "end":return _context.stop();}}}, _callee);}))();
+                }case 22:case "end":return _context.stop();}}}, _callee);}))();
     },
     searchKeyWord: function searchKeyWord() {var _this2 = this;
       console.log('---' + this.searchAddress);

@@ -121,11 +121,49 @@
 					url: '../service_zhixun/tuwen?id='
 				})
 			},
-			dianhua(item) {
+			async dianhua(item) {
 				console.log(item);
-				uni.navigateTo({
-					url: '../service_zhixun/dianhua?id='
+				let layer_id = item.id;
+				// let user_id = this.$store.state.userInfo.user_id;
+				// if (!layer_id || !user_id) {
+				// 	uni.showToast({
+				// 		title: '用户数据异常，请重新登录',
+				// 		icon: 'none'
+				// 	})
+				// 	return;
+				// }
+				let data = {
+					layer_id,
+					user_id:43,
+				}
+				console.log(data);
+				uni.showLoading({
+					title: '请稍等'
 				})
+				let res = await this.$myRequest({
+					url: 'service/dianhua',
+					method:'GET',
+					data
+				});
+				uni.hideLoading();
+				if(res && res.code==-1){
+					uni.showToast({
+						title: 	res.message,
+						icon:'none'
+					})
+				}else{
+					if (res && res.data) {
+						let service_id = res.data.service_id;
+						//跳转收银台
+						// uni.navigateTo({
+						// 	url: '../service_zhixun/dianhua?id='
+						// })		
+					}
+				}
+				
+				
+				
+				
 			},
 			jianmian(item) {
 				console.log(item);

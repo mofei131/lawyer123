@@ -21,9 +21,7 @@
     "pages/chat/chat",
     "pages/list/moreStudy",
     "pages/detail/studyDetail",
-    "pages/login/login",
-    "pages/login/forget",
-    "pages/login/registe"
+    "pages/login/login"
   ],
   "subPackages": [],
   "window": {

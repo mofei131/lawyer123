@@ -22,7 +22,7 @@
 			</view>
 
 			<cooperTabar @searchChange="searchChange"></cooperTabar>
-			<lawyercard1 :zixun="true" :datalist="lawyerList" @buy="buy"></lawyercard1>
+			<lawyercard1 :zixun="true" :isbuy="true" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
 			
 
 
@@ -50,7 +50,7 @@
 		},
 		data() {
 			return {
-				lawyerList:[1,2,3],
+				lawyerList:[],
 				id:'',
 				list:[
 					{id:5,name:"合同审核",url:"/static/icon/icon6.png"},
@@ -87,7 +87,7 @@
 				});
 				if (res && res.data) {
 					console.log(res);
-					// this.lawyerList = res.data;
+					this.lawyerList = res.data;
 				}
 			},
 			buy(e){

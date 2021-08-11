@@ -254,25 +254,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   onLoad: function onLoad(param) {
@@ -286,25 +267,47 @@ var _default =
     // }
     // this.layer_id = param.layer_id;
     // this.user_id = userInfo.user_id;
-
+    this.init();
   },
   data: function data() {
     return {
       layer_id: '',
-      user_id: '' };
+      user_id: '',
+      dataSource: {} };
 
   },
   methods: {
-    commit: function commit() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this$$data, layer_id, user_id, data, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    init: function init() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.$myRequest({
+                    url: 'service/detail',
+                    method: 'GET',
+                    data: {
+                      id: 3 } }));case 2:res = _context.sent;
+
+
+
+                if (res && res.code == -1) {
+                  uni.showToast({
+                    title: res.message,
+                    icon: 'none' });
+
+                } else {
+                  if (res && res.data) {
+                    console.log(res);
+                    _this.dataSource = res.data;
+                  }
+                }case 4:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    commit: function commit() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _this2$$data, layer_id, user_id, data, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
                 //跳转支付页面
-                _this$$data =
+                _this2$$data =
 
 
-                _this.$data, layer_id = _this$$data.layer_id, user_id = _this$$data.user_id;if (!(
-                !layer_id || !user_id)) {_context.next = 4;break;}
+                _this2.$data, layer_id = _this2$$data.layer_id, user_id = _this2$$data.user_id;if (!(
+                !layer_id || !user_id)) {_context2.next = 4;break;}
                 uni.showToast({
                   title: '用户数据异常，请重新登录',
-                  icon: 'none' });return _context.abrupt("return");case 4:
+                  icon: 'none' });return _context2.abrupt("return");case 4:
 
 
 
@@ -314,19 +317,27 @@ var _default =
 
                 console.log(data);
                 uni.showLoading({
-                  title: '正在提交...' });_context.next = 9;return (
+                  title: '正在提交...' });_context2.next = 9;return (
 
-                  _this.$myRequest({
-                    url: 'service/pinqing',
-                    data: data }));case 9:res = _context.sent;
+                  _this2.$myRequest({
+                    url: 'service/jianmian',
+                    method: 'GET',
+                    data: data }));case 9:res = _context2.sent;
 
-                if (res && res.data) {
-                  uni.hideLoading();
+                if (res && res.code == -1) {
                   uni.showToast({
-                    title: "提交成功" + res.data.service_id });
+                    title: res.message,
+                    icon: 'none' });
 
+                } else {
+                  if (res && res.data) {
+                    console.log(res);
+                    uni.showToast({
+                      title: "返回service_id" + res.data.service_id });
 
-                }case 11:case "end":return _context.stop();}}}, _callee);}))();
+                  }
+                }case 11:case "end":return _context2.stop();}}}, _callee2);}))();
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

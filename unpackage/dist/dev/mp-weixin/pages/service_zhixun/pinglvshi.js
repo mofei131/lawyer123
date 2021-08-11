@@ -94,7 +94,7 @@ var components
 try {
   components = {
     faIcon: function() {
-      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 196))
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 184))
     }
   }
 } catch (e) {
@@ -264,13 +264,20 @@ var _default =
                     url: 'service/pinqing',
                     data: data }));case 18:res = _context.sent;
 
-                if (res && res.data) {
-                  uni.hideLoading();
+                uni.hideLoading();
+                if (res && res.code == -1) {
                   uni.showToast({
-                    title: "提交成功" + res.data.service_id });
+                    title: res.message,
+                    icon: 'none' });
 
+                } else {
+                  if (res && res.data) {
+                    console.log(res);
+                    uni.showToast({
+                      title: "返回service_id" + res.data.service_id });
 
-                }case 20:case "end":return _context.stop();}}}, _callee);}))();
+                  }
+                }case 21:case "end":return _context.stop();}}}, _callee);}))();
     },
     searchKeyWord: function searchKeyWord() {var _this2 = this;
       console.log('---' + this.searchAddress);

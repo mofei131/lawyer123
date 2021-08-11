@@ -43,15 +43,15 @@
 			console.log(p);
 			let userInfo = this.$store.state.userInfo;
 
-			if (!p || !p.cid || !p.name || !userInfo) {
-				uni.showToast({
-					title: '参数有误！',
-					icon: 'none'
-				})
-				return;
-			}
+			// if (!p || !p.cid || !p.name || !userInfo) {
+			// 	uni.showToast({
+			// 		title: '参数有误！',
+			// 		icon: 'none'
+			// 	})
+			// 	return;
+			// }
 			this.id = p.cid;
-			this.user_id = userInfo.user_id;
+			// this.user_id = userInfo.user_id;
 			this.drawInit(p.cid, p.name);
 		},
 		data() {
@@ -69,7 +69,7 @@
 					data: {
 						cid,
 						name,
-						user_id: this.$store.state.userInfo.user_id
+						user_id: 43
 					}
 				});
 				if (res && res.data) {

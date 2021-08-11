@@ -231,14 +231,10 @@
 
 
 			forgetPwd: function() {
-				uni.redirectTo({
-					url: '/pages/login/forget'
-				});
+				
 			},
 			tozhuce: function() {
-				uni.redirectTo({
-					url: '/pages/login/registe'
-				});
+				
 			},
 			async submit(e) {
 				// 表单数据

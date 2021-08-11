@@ -94,7 +94,7 @@ var components
 try {
   components = {
     uniNavBar: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue */ 271))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue */ 259))
     }
   }
 } catch (e) {
@@ -196,15 +196,15 @@ var _default =
     console.log(p);
     var userInfo = this.$store.state.userInfo;
 
-    if (!p || !p.cid || !p.name || !userInfo) {
-      uni.showToast({
-        title: '参数有误！',
-        icon: 'none' });
-
-      return;
-    }
+    // if (!p || !p.cid || !p.name || !userInfo) {
+    // 	uni.showToast({
+    // 		title: '参数有误！',
+    // 		icon: 'none'
+    // 	})
+    // 	return;
+    // }
     this.id = p.cid;
-    this.user_id = userInfo.user_id;
+    // this.user_id = userInfo.user_id;
     this.drawInit(p.cid, p.name);
   },
   data: function data() {
@@ -222,7 +222,7 @@ var _default =
                     data: {
                       cid: cid,
                       name: name,
-                      user_id: _this.$store.state.userInfo.user_id } }));case 2:res = _context.sent;
+                      user_id: 43 } }));case 2:res = _context.sent;
 
 
                 if (res && res.data) {

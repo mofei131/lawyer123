@@ -199,23 +199,6 @@
                 "enablePullDownRefresh": false
             }
             
-        },{
-            "path" : "pages/login/forget",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "忘记密码",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/login/registe",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "注册",
-                "enablePullDownRefresh": false
-            }
-            
         }
     ],
 	"globalStyle": {

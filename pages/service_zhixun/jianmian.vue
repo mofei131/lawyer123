@@ -54,34 +54,15 @@
 						<text lines="1" decode="true" class="info4">～&nbsp;产品介绍&nbsp;～</text>
 						<view class="bd1"></view>
 						<text lines="1"
-							class="info5">压维铁响时些持口商名与教场动单和起手克叫火政律开际六音院出运么验证可完院群部级每意系保须族儿为想数属等题回展铁们路两种加或说记事音比次元业习列向效后因特龙。装六产状进没本日三教用算收百消走公委力日容应话引空眼传按了专议五理部机信不离花制形候重身专图入程路不维阶情程。为安极究说量或太经因不维其法则听多工出声际你车众由委此格出还向型不目派于本须号论连音论团积先南美准存部高拉军名们选主。</text>
+							class="info5">{{dataSource.intro}}</text>
 					</view>
 				</view>
 				<view class="block3">
 					<view class="group8">
 						<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 						<view class="bd2"></view>
-						<view class="flex-column" style="overflow: auto;">
-							<view class="bd3">
-								<text lines="1" class="txt2">服务说明：</text>
-								<text lines="1" class="txt3">不限制见面咨询时间，把问题分析咨询清楚</text>
-							</view>
-							<view class="bd4">
-								<text lines="1" class="word3">售后服务：</text>
-								<text lines="1" class="info6">下单付款后，，专属客服马上联系您</text>
-							</view>
-							<view class="bd5">
-								<text lines="1" class="word4">服务时限：</text>
-								<text lines="1" class="word5">下单付款后，，专属客服马上联系您</text>
-							</view>
-							<view class="bd5">
-								<text lines="1" class="word4">服务时限：</text>
-								<text lines="1" class="word5">下单付款后，，专属客服马上联系您</text>
-							</view>
-							<view class="bd5">
-								<text lines="1" class="word4">服务时限：</text>
-								<text lines="1" class="word5">下单付款后，，专属客服马上联系您</text>
-							</view>
+						<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;">
+							{{dataSource.service}}
 						</view>
 
 					</view>
@@ -154,15 +135,37 @@
 			// }
 			// this.layer_id = param.layer_id;
 			// this.user_id = userInfo.user_id;
-
+			this.init();
 		},
 		data() {
 			return {
 				layer_id: '',
 				user_id: '',
+				dataSource:{},
 			}
 		},
 		methods: {
+			async init() {
+				let res = await this.$myRequest({
+					url: 'service/detail',
+					method: 'GET',
+					data: {
+						id: 3
+					},
+
+				});
+				if(res && res.code==-1){
+					uni.showToast({
+						title:res.message,
+						icon:'none'
+					})
+				}else{
+					if(res && res.data){
+						console.log(res);
+						this.dataSource = res.data;
+					}
+				}
+			},
 			async commit() {
 				//跳转支付页面
 				let {
@@ -185,20 +188,28 @@
 					title: '正在提交...'
 				})
 				let res = await this.$myRequest({
-					url: 'service/pinqing',
+					url: 'service/jianmian',
+					method:'GET',
 					data
 				});
-				if (res && res.data) {
-					uni.hideLoading();
+				if(res && res.code==-1){
 					uni.showToast({
-						title: "提交成功" + res.data.service_id
+						title:res.message,
+						icon:'none'
 					})
-			
+				}else{
+					if(res && res.data){
+						console.log(res);
+						uni.showToast({
+							title: "返回service_id" + res.data.service_id
+						})
+					}
 				}
+				
 			},
 
 		},
-		
+
 	}
 </script>
 

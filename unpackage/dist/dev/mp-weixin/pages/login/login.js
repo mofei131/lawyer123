@@ -363,13 +363,9 @@ var _default =
 
 
     forgetPwd: function forgetPwd() {
-      uni.redirectTo({
-        url: '/pages/login/forget' });
 
     },
     tozhuce: function tozhuce() {
-      uni.redirectTo({
-        url: '/pages/login/registe' });
 
     },
     submit: function submit(e) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var formData, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:

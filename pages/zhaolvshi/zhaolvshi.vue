@@ -47,6 +47,7 @@
 				case_type: '',
 				cityid: '',
 				level: '',
+				age:'',
 				list: [{
 						id: 0,
 						name: "图文咨询",
@@ -130,6 +131,7 @@
 					this.case_type = e.case_type;
 					this.cityid = e.cityid;
 					this.level = e.level;
+					this.age = e.age;
 				}
 				
 				let res = await this.$myRequest({
@@ -140,7 +142,8 @@
 						name: this.name,
 						case_type: this.case_type,
 						cityid: this.cityid,
-						level: this.level
+						level: this.level,
+						age: this.age
 					}
 				});
 				if (res && res.data) {
