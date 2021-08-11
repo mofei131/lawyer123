@@ -42,6 +42,7 @@
 			let obj = this.list.find(item=>item.id==this.id);
 			if(obj){
 				this.typeData = obj;
+				this.detailId = obj.detailId;
 			}
 		},
 		components: {
@@ -53,12 +54,12 @@
 				lawyerList:[],
 				id:'',
 				list:[
-					{id:5,name:"合同审核",url:"/static/icon/icon6.png"},
-					{id:6,name:"律师函",url:"/static/icon/icon7.png"},
-					{id:7,name:"债务催收指导",url:"/static/icon/icon8.png"},
-					{id:8,name:"起诉状/答辩状",url:"/static/icon/icon9.png"},
-					{id:9,name:"代写借/欠条",url:"/static/icon/icon10.png"},
-					{id:10,name:"刑事会见",url:"/static/icon/icon11.png"},
+					{id:5,name:"合同审核",url:"/static/icon/icon6.png",detailId:4},
+					{id:6,name:"律师函",url:"/static/icon/icon7.png",detailId:5},
+					{id:7,name:"债务催收指导",url:"/static/icon/icon8.png",detailId:6},
+					{id:8,name:"起诉状/答辩状",url:"/static/icon/icon9.png",detailId:7},
+					{id:9,name:"代写借/欠条",url:"/static/icon/icon10.png",detailId:8},
+					{id:10,name:"刑事会见",url:"/static/icon/icon11.png",detailId:9},
 				
 				],
 				typeData:null
@@ -82,6 +83,7 @@
 					data: {
 						page:this.page,
 						limit:this.limit,
+						service_id:this.detailId,
 						...e
 					}
 				});

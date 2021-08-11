@@ -49,17 +49,19 @@
 						<image src="/static/icon/cooper_back1.png" class="pic2"></image>
 					</view>
 				</view>
-				<view class="block2" v-for="(item,index) in [1,2,3,4]" :key="index">
+				<view class="block2" v-for="(item,index) in dataSource" :key="index">
 					<view class="group7">
 						<text lines="1" decode="true" class="info4">～&nbsp;套餐{{index+1}}&nbsp;～</text>
 						<view class="bd1"></view>
-						<view class="ellipsis" style="width: 500rpx;margin: 10rpx 0;">企业常年法律顾问基础版</view>
-						<text class="ellipsis-3 info5" 
-							>压维铁响时些持口商名与教场动单和起手克叫火政律开际六音院出运么验证可完院群部级每意系保须族儿为想数属等题回展铁们路两种加或说记事音比次元业习列向效后因特龙。装六产状进没本日三教用算收百消走公委力日容应话引空眼传按了专议五理部机信不离花制形候重身专图入程路不维阶情程。为安极究说量或太经因不维其法则听多工出声际你车众由委此格出还向型不目派于本须号论连音论团积先南美准存部高拉军名们选主。</text>
+						<view class="ellipsis" style="width: 500rpx;margin: 10rpx 0;">{{item.name}}</view>
+						<view
+							class="ellipsis-3 info5">
+							<rich-text :nodes="item.intro"></rich-text>
+							</view>
 					</view>
 					<view class="flex-row mx-between sx-center" style="width: 664rpx;;padding: 10rpx 20rpx;">
-						<text style="color: #FF4D4F;">￥89</text>
-						<view
+						<text style="color: #FF4D4F;">￥{{item.price}}</text>
+						<view @tap="toPay(item)"
 							style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
 							立即购买</view>
 					</view>
@@ -76,12 +78,12 @@
 	export default {
 		onLoad(p) {
 			console.log(p.id);
-
+			this.drawInit();
 
 		},
 		data() {
 			return {
-
+				dataSource:[]
 			}
 		},
 		methods: {
@@ -90,20 +92,41 @@
 					delta: 1
 				})
 			},
+			async drawInit() {
+				let res = await this.$myRequest({
+					url: 'service/packageList',
+					methods: 'GET',
+					data: {}
+				});
+				if (res && res.code==200) {
+					console.log(res);
+					this.dataSource = res.data;
+				}else{
+					uni.showToast({
+						title:res.message,
+						icon:'none'
+					})
+				}
+			},
 			toDetail() {
 				uni.navigateTo({
 					url: "../detail/cooperDetail?id=1"
 				})
 			},
-			download() {
-				uni.downloadFile({
-					url: 'https://www.example.com/file/test', //仅为示例，并非真实的资源
-					success: (res) => {
-						if (res.statusCode === 200) {
-							console.log('下载成功');
-						}
-					}
+			async toPay(item){
+				//先去付款页面====然后
+				let res = await this.$myRequest({
+				url: 'service/buyPackage',
+				methods: 'GET',
+				data: {
+					package_id:item.id,
+					user_id:this.$store.state.userInfo.user_id
+				}
 				});
+				if (res && res.code==200) {
+				console.log(res.data.servic_id);//只有指个参数
+				
+				}
 			}
 		}
 	}

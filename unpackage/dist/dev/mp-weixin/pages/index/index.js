@@ -210,7 +210,7 @@ __webpack_require__.r(__webpack_exports__);
 var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));
 
 
-var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var search = function search() {__webpack_require__.e(/*! require.ensure | pages/components/search/search */ "pages/components/search/search").then((function () {return resolve(__webpack_require__(/*! ../components/search/search.vue */ 191));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 198));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard = function lawyercard() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard/lawyercard */ "pages/components/lawyercard/lawyercard").then((function () {return resolve(__webpack_require__(/*! ../components/lawyercard/lawyercard.vue */ 205));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var study = function study() {__webpack_require__.e(/*! require.ensure | pages/components/study/study */ "pages/components/study/study").then((function () {return resolve(__webpack_require__(/*! ../components/study/study.vue */ 212));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var search = function search() {__webpack_require__.e(/*! require.ensure | pages/components/search/search */ "pages/components/search/search").then((function () {return resolve(__webpack_require__(/*! ../components/search/search.vue */ 351));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 358));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard = function lawyercard() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard/lawyercard */ "pages/components/lawyercard/lawyercard").then((function () {return resolve(__webpack_require__(/*! ../components/lawyercard/lawyercard.vue */ 365));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var study = function study() {__webpack_require__.e(/*! require.ensure | pages/components/study/study */ "pages/components/study/study").then((function () {return resolve(__webpack_require__(/*! ../components/study/study.vue */ 372));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -226,44 +226,10 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
   data: function data() {
     return {
+      youXuanList: [],
       scrollLeft: 0,
       isClickChange: false,
       currentTab: 0,
-      // Tab分类标题
-      menuTabs: [{
-        id: 0,
-        title: "婚姻家庭" },
-
-      {
-        id: 1,
-        title: "买卖合同" },
-
-      {
-        id: 2,
-        title: "土地房地产" },
-
-      {
-        id: 3,
-        title: "劳动人事" },
-
-      {
-        id: 4,
-        title: "刑事" },
-
-      {
-        id: 5,
-        title: "交通事故" },
-
-      {
-        id: 6,
-        title: "欠款纠纷" },
-
-      {
-        id: 7,
-        title: "其他" }],
-
-
-
       item1: {
         title: '咨询律师',
         zixun: [{
@@ -381,39 +347,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
         title: "合同纠纷" }],
 
 
-      lawyercard: [{
-        id: 0,
-        name: "张三",
-        workyer: 5,
-        address: '辽宁沈阳',
-        begood: '婚姻家庭、交通事故、刑事案件、劳动仲裁、债权债务',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg' },
-
-      {
-        id: 1,
-        name: "李四",
-        workyer: 12,
-        address: '北京朝阳',
-        begood: '婚姻家庭、交通事故、刑事案件、劳动仲裁、债权债务',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg' },
-
-      {
-        id: 2,
-        name: "王五",
-        workyer: 2,
-        address: '山东菏泽',
-        begood: '婚姻家庭、交通事故、刑事案件、劳动仲裁、债权债务',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg' },
-
-      {
-        id: 3,
-        name: "赵六",
-        workyer: 45,
-        address: '云南镇江',
-        begood: '婚姻家庭、交通事故、刑事案件、劳动仲裁、债权债务',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg' }],
-
-
+      lawyercard: [],
       anli: [{
         id: 0,
         sort: '买卖合同',
@@ -451,76 +385,52 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
         read: '6' }],
 
 
-      learn: [{
-        id: 0,
-        cover: 'https://www.51sphere.com/upload/content/2021/04/25/39131619344825.jpg',
-        title: '南方只要不被沃尔玛收购',
-        content: '南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购',
-        name: '朱海滨',
-        status: '安心首席律师',
-        stage: '69',
-        price: 0 },
-
-      {
-        id: 1,
-        cover: 'https://www.51sphere.com/upload/content/2021/04/25/39131619344825.jpg',
-        title: '南方只要不被沃尔玛收购',
-        content: '南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购',
-        name: '朱海滨',
-        status: '安心首席律师',
-        stage: '5',
-        price: 0 },
-
-      {
-        id: 2,
-        cover: 'https://www.51sphere.com/upload/content/2021/04/25/39131619344825.jpg',
-        title: '南方只要不被沃尔玛收购',
-        content: '南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购',
-        name: '朱海滨',
-        status: '安心首席律师',
-        stage: '15',
-        price: 192.00 }] };
-
-
+      learn: [] };
 
   },
-  onLoad: function onLoad() {
-    uni.navigateTo({
-      url: '../login/login' });
+  onLoad: function onLoad() {var _this = this;
 
-    // let userInfo
+    if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id) {
+      this.getWxCode();
+    }
+
     this.getProvinceCity();
     this.getBussinessTypes();
     this.getLawyerLevels();
     this.getWorkAges();
+    this.getYouXuanLvshi();
+    this.getLearn();
+    uni.getSystemInfo({
+      success: function success(res) {
+        console.log(res);
+        _this.commitWindowHeight(res.windowHeight);
+      } });
 
   },
-  computed: {
-    // 使用对象展开运算符将 getter 混入 computed 对象中
-    // ...mapGetters([
-    // 	'doneTodos',
-    // 	'doneTodosCount',
-    // 	"getTodoById",
-    // ]),
-    // ...mapState('module1', {
-    // 	module1State: state => state
-    // }),
-    // ...mapGetters('module1', {
-    // 	getNameA: 'getNameA',
-    // 	getModuleA: 'getModuleA'
-    // }),
-    // ...mapGetters('module2', {
-    // 	getName2: 'getNameA',
-    // 	getModule2: 'getModule2'
-    // }),
-  },
+  computed: _objectSpread({},
 
-  methods: _objectSpread(_objectSpread({},
+  (0, _vuex.mapGetters)([
+  'getWindowHeight'])),
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  methods: _objectSpread(_objectSpread(_objectSpread({},
+  (0, _vuex.mapMutations)(['commitWindowHeight'])),
   (0, _vuex.mapActions)([
   'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
   'getBussinessTypes',
-  'getLawyerLevels', 'getWorkAges'])), {}, {
+  'getLawyerLevels', 'getWorkAges', 'getWxCode'])), {}, {
 
     // ...mapActions("module1",{
     // 	udpateNameByAction:"udpateNameByAction"
@@ -529,20 +439,58 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
     //这一步放到登录那里做
 
-    swichMenu: function () {var _swichMenu = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(current) {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0: //点击其中一个 menu
-                console.log(current);if (!(
-                this.currentTab == current)) {_context.next = 5;break;}return _context.abrupt("return",
-                false);case 5:
+    swichMenu: function () {var _swichMenu = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(current) {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+
+                this.currentTab == current)) {_context.next = 4;break;}return _context.abrupt("return",
+                false);case 4:
 
                 this.currentTab = current;
                 //更新card
-                // this.lawyercard = ''
-              case 6:case "end":return _context.stop();}}}, _callee, this);}));function swichMenu(_x) {return _swichMenu.apply(this, arguments);}return swichMenu;}(),
+
+                this.lawyercard = this.youXuanList[this.currentTab].layer || [];case 6:case "end":return _context.stop();}}}, _callee, this);}));function swichMenu(_x) {return _swichMenu.apply(this, arguments);}return swichMenu;}(),
+
 
     toYouxuan: function toYouxuan() {
       uni.switchTab({
         url: '../zhaolvshi/zhaolvshi' });
 
+    },
+    getYouXuanLvshi: function getYouXuanLvshi() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this2.$myRequest({
+                    url: 'layer/getCaseTypeLayer',
+                    methods: 'GET',
+                    data: {} }));case 2:res = _context2.sent;
+
+                if (res && res.code == 200) {
+                  console.log(res.data);
+                  _this2.youXuanList = res.data;
+                  _this2.lawyercard = res.data[_this2.currentTab].layer || [];
+                } else {
+                  uni.showToast({
+                    title: '优选律师请求数据失败',
+                    icon: 'none' });
+
+                }case 4:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    getLearn: function getLearn() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  _this3.$myRequest({
+                    url: 'article/list',
+                    methods: 'GET',
+                    data: {
+                      page: 1,
+                      limit: 5,
+                      user_id: _this3.$store.state.userInfo.user_id } }));case 2:res = _context3.sent;
+
+
+                if (res && res.code == 200) {
+                  console.log(res.data);
+                  _this3.learn = res.data;
+                } else {
+                  uni.showToast({
+                    title: '每日学法数据获取异常',
+                    icon: 'none' });
+
+                }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

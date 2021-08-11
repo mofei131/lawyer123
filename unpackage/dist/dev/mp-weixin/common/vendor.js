@@ -2081,13 +2081,16 @@ var store = new _vuex.default.Store({
     module2: _m.default },
 
   state: {
-    isLogin: uni.getStorageSync('isLogin') ? uni.getStorageSync('isLogin') : false,
+    // isLogin: uni.getStorageSync('isLogin') ? uni.getStorageSync('isLogin') : false,
     userInfo: uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : null,
     cities: [],
     provinces: [],
     bussinessTypes: [],
     lawyerLevels: [],
-    workAges: [] },
+    workAges: [],
+    wxCode: null,
+    windowHeight: '750' },
+
 
   mutations: {
     commitProvince: function commitProvince(state, params) {
@@ -2104,14 +2107,22 @@ var store = new _vuex.default.Store({
     },
     commitWorkAges: function commitWorkAges(state, params) {
       state.workAges = params;
+    },
+    commitUserInfo: function commitUserInfo(state, params) {
+      state.userInfo = params;
+    },
+    commitWindowHeight: function commitWindowHeight(state, params) {
+      state.windowHeight = params;
     } },
+
 
 
   getters: {
 
-    // doneTodos: state => {
-    // 	return state.todos.filter(todo => todo.done)
-    // },
+    getWindowHeight: function getWindowHeight(state) {
+      console.log(state.windowHeight);
+      return state.windowHeight + 'px';
+    }
     // doneTodosCount: (state, getters) => { //此getter即store的getter
     // 	return getters.doneTodos.length
     // },
@@ -2180,8 +2191,107 @@ var store = new _vuex.default.Store({
                   context.commit('commitWorkAges', res.data);
 
                 }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
-    } } });var _default =
+    },
+    getWxCode: function getWxCode(context) {
 
+      console.log(context.state.userInfo);
+      return new Promise(function (resolve, feject) {
+        if (context.state.userInfo && context.state.userInfo.user_id) {
+          resolve({ hasUserInfo: true });
+        };
+        uni.login({
+          provider: 'weixin',
+          success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(res) {var code, res1;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
+                      console.log(res);if (!
+                      res.code) {_context4.next = 12;break;}
+                      code = res.code;_context4.next = 5;return (
+                        _http.default.ajax({
+                          url: 'wechat/login',
+                          data: {
+                            pid: 0,
+                            code: code } }));case 5:res1 = _context4.sent;
+
+
+                      console.log('==================================');
+                      console.log(res1);
+                      if (res1.code == -1) {
+                        uni.showToast({
+                          title: res1.message,
+                          icon: 'none' });
+
+                        reject(res1);
+                      }
+                      if (res1 && res1.data) {
+                        uni.setStorageSync('userInfo', res1.data);
+                        resolve({ hasUserInfo: true });
+                      }_context4.next = 14;break;case 12:
+
+
+                      uni.showToast({
+                        title: '获取数据失败',
+                        icon: 'none',
+                        duration: 2000 });
+
+                      resolve({ hasUserInfo: false });case 14:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
+
+
+
+      });
+
+    },
+    updateUserInfo: function updateUserInfo(context) {
+      return new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(resolve, reject) {var pass, result;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:
+                  pass = true;if (
+                  context.state.userInfo) {_context6.next = 6;break;}_context6.next = 4;return (
+                    context.dispatch('getWxCode'));case 4:result = _context6.sent;
+                  if (!result.hasUserInfo) {
+                    pass = false;
+                  }case 6:
+
+                  if (!pass) {
+                    resolve(false);
+                  }
+                  uni.getUserProfile({
+                    desc: '获取用户头像等信息',
+                    success: function () {var _success2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(res) {var _res$userInfo, avatarUrl, city, country, gender, language, nickName, province, data, res1;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:
+                                console.log('----------');
+                                console.log(res.userInfo);_res$userInfo =
+                                res.userInfo, avatarUrl = _res$userInfo.avatarUrl, city = _res$userInfo.city, country = _res$userInfo.country, gender = _res$userInfo.gender, language = _res$userInfo.language, nickName = _res$userInfo.nickName, province = _res$userInfo.province;
+                                data = {
+                                  nickname: nickName,
+                                  avater: avatarUrl,
+                                  country: country,
+                                  gender: gender,
+                                  province: province,
+                                  city: city,
+                                  user_id: context.state.userInfo.user_id };_context5.next = 6;return (
+
+                                  _http.default.ajax({
+                                    url: 'wechat/setUserinfo',
+                                    method: 'GET',
+                                    data: data }));case 6:res1 = _context5.sent;
+
+                                if (res1.code == 200) {
+                                  data.token = context.state.userInfo.token;
+                                  data.isAuthor = true;
+                                  uni.setStorageSync('userInfo', data);
+                                  resolve(true);
+                                } else {
+                                  uni.showToast({
+                                    title: res1.message,
+                                    icon: 'none' });
+
+                                  reject(res1);
+                                }case 8:case "end":return _context5.stop();}}}, _callee5);}));function success(_x4) {return _success2.apply(this, arguments);}return success;}(),
+
+                    fail: function fail(res) {
+                      reject(res);
+                    } });case 8:case "end":return _context6.stop();}}}, _callee6);}));return function (_x2, _x3) {return _ref.apply(this, arguments);};}());
+
+
+
+
+    } } });var _default =
 
 
 
@@ -10382,7 +10492,49 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 285:
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 4:
+/*!*****************************************!*\
+  !*** D:/咸鱼/20210806律师uniapp/pages.json ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 464:
 /*!**********************************************************************************!*\
   !*** D:/咸鱼/20210806律师uniapp/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \**********************************************************************************/
@@ -10524,45 +10676,126 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
+/***/ 525:
+/*!*********************************************!*\
+  !*** D:/咸鱼/20210806律师uniapp/common/math.js ***!
+  \*********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-var g;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //除法函数，用来得到精确的除法结果
+//说明：javascript的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。
+//调用：$h.Div(arg1,arg2)
+//返回值：arg1除以arg2的精确结果
+var Div = function Div(arg1, arg2) {
+  arg1 = parseFloat(arg1);
+  arg2 = parseFloat(arg2);
+  var t1 = 0,
+  t2 = 0,
+  r1,r2;
+  try {
+    t1 = arg1.toString().split(".")[1].length;
+  } catch (e) {}
+  try {
+    t2 = arg2.toString().split(".")[1].length;
+  } catch (e) {}
+  r1 = Number(arg1.toString().replace(".", ""));
+  r2 = Number(arg2.toString().replace(".", ""));
+  return this.Mul(r1 / r2, Math.pow(10, t2 - t1));
+};
+//加法函数，用来得到精确的加法结果
+//说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。
+//调用：$h.Add(arg1,arg2)
+//返回值：arg1加上arg2的精确结果
+var Add = function Add(arg1, arg2) {
+  arg2 = parseFloat(arg2);
+  var r1, r2, m;
+  try {
+    r1 = arg1.toString().split(".")[1].length;
+  } catch (e) {
+    r1 = 0;
+  }
+  try {
+    r2 = arg2.toString().split(".")[1].length;
+  } catch (e) {
+    r2 = 0;
+  }
+  m = Math.pow(100, Math.max(r1, r2));
+  return (this.Mul(arg1, m) + this.Mul(arg2, m)) / m;
+};
+//减法函数，用来得到精确的减法结果
+//说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的减法结果。
+//调用：$h.Sub(arg1,arg2)
+//返回值：arg1减去arg2的精确结果
+var Sub = function Sub(arg1, arg2) {
+  arg1 = parseFloat(arg1);
+  arg2 = parseFloat(arg2);
+  var r1, r2, m, n;
+  try {
+    r1 = arg1.toString().split(".")[1].length;
+  } catch (e) {
+    r1 = 0;
+  }
+  try {
+    r2 = arg2.toString().split(".")[1].length;
+  } catch (e) {
+    r2 = 0;
+  }
+  m = Math.pow(10, Math.max(r1, r2));
+  //动态控制精度长度
+  n = r1 >= r2 ? r1 : r2;
+  return ((this.Mul(arg1, m) - this.Mul(arg2, m)) / m).toFixed(n);
+};
+//乘法函数，用来得到精确的乘法结果
+//说明：javascript的乘法结果会有误差，在两个浮点数相乘的时候会比较明显。这个函数返回较为精确的乘法结果。
+//调用：$h.Mul(arg1,arg2)
+//返回值：arg1乘以arg2的精确结果
+var Mul = function Mul(arg1, arg2) {
+  arg1 = parseFloat(arg1);
+  arg2 = parseFloat(arg2);
+  var m = 0,
+  s1 = arg1.toString(),
+  s2 = arg2.toString();
+  try {
+    m += s1.split(".")[1].length;
+  } catch (e) {}
+  try {
+    m += s2.split(".")[1].length;
+  } catch (e) {}
+  return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+};
 
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
+function formatNumber(n) {
+  n = n.toString();
+  return n[1] ? n : '0' + n;
 }
 
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
+var formatTime = function formatTime(number, format) {
+  var formateArr = ['Y', 'M', 'D', 'h', 'm', 's'];
+  var returnArr = [];
 
-module.exports = g;
+  var date = new Date(number * 1000);
+  returnArr.push(date.getFullYear());
+  returnArr.push(formatNumber(date.getMonth() + 1));
+  returnArr.push(formatNumber(date.getDate()));
 
+  returnArr.push(formatNumber(date.getHours()));
+  returnArr.push(formatNumber(date.getMinutes()));
+  returnArr.push(formatNumber(date.getSeconds()));
 
-/***/ }),
+  for (var i in returnArr) {
+    format = format.replace(formateArr[i], returnArr[i]);
+  }
+  return format;
+};var _default =
 
-/***/ 4:
-/*!*****************************************!*\
-  !*** D:/咸鱼/20210806律师uniapp/pages.json ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
+{
+  Add: Add,
+  Mul: Mul,
+  Div: Div,
+  Sub: Sub,
+  formatTime: formatTime };exports.default = _default;
 
 /***/ })
 

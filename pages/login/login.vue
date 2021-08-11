@@ -130,10 +130,11 @@
 					uni.getUserProfile({
 						desc: '登录',
 						success: (res) => {
+							console.log('----------');
 							console.log(res);
 							_this.userInfo = res.userInfo;
 							try {
-								_this.login();
+								// _this.login();
 							} catch (e) {}
 						},
 						fail: (res) => {

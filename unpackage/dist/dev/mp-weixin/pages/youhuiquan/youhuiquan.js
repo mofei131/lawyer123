@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uniSearchBar: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */ "uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 233))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */ "uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 398))
     }
   }
 } catch (e) {
@@ -120,23 +120,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var m0 = _vm.usertime("2020-2020")
+  var l0 = _vm.__map(_vm.dataSource, function(item, index) {
+    var $orig = _vm.__get_orig(item)
 
-  if (!_vm._isMounted) {
-    _vm.e0 = function($event) {
-      _vm.flag = 1
+    var m0 = _vm.usertime(item.starttime, item.endtime)
+    return {
+      $orig: $orig,
+      m0: m0
     }
-
-    _vm.e1 = function($event) {
-      _vm.flag = 2
-    }
-  }
+  })
 
   _vm.$mp.data = Object.assign(
     {},
     {
       $root: {
-        m0: m0
+        l0: l0
       }
     }
   )
@@ -173,7 +171,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 240));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));
 
 
 
@@ -231,6 +229,19 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+var _math = _interopRequireDefault(__webpack_require__(/*! @/common/math.js */ 525));
+var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var authMode = function authMode() {__webpack_require__.e(/*! require.ensure | pages/components/authMode/authMode */ "pages/components/authMode/authMode").then((function () {return resolve(__webpack_require__(/*! @/pages/components/authMode/authMode.vue */ 393));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 454));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -238,31 +249,58 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 {
   components: {
+    authMode: authMode,
     pickcity: pickcity },
 
   data: function data() {
     return {
       flag: 1,
-      array1: [{
-        name: '北京' },
-      {
-        name: '上海' }],
-
-      index1: 0,
-
       closeText: '',
-      searchValue: '' };
+      searchValue: '',
+      city_id: '',
+      dataSource: [] };
 
   },
   onLoad: function onLoad() {
-    console.log(this.$store.state);
+
   },
-  methods: {
-    getCity: function getCity(e) {
+  onShow: function onShow() {
+    if (!this.$store.state.userInfo) {
+      this.$refs.authMode.open();
+      this.getWxCode();
+    }
+  },
+  methods: _objectSpread(_objectSpread({},
+
+  (0, _vuex.mapActions)([
+  'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+  'getBussinessTypes',
+  'getLawyerLevels', 'getWorkAges', 'getWxCode', 'updateUserInfo'])), {}, {
+
+    changeFlage: function changeFlage(flag) {
+      this.flag = flag;
+      this.getYouhuiquan();
+    },
+    authorTap: function authorTap() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var isSuccess;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+                !_this.$store.state.userInfo || !_this.$store.state.userInfo.user_id || !_this.$store.state.userInfo.
+                isAuthor)) {_context.next = 5;break;}_context.next = 3;return (
+                  _this.updateUserInfo());case 3:isSuccess = _context.sent;
+                if (isSuccess) {
+                  uni.showToast({
+                    title: '授权成功！' });
+
+                  _this.$refs.authMode.open();
+                }case 5:case "end":return _context.stop();}}}, _callee);}))();
 
     },
-    input: function input(e) {
-      console.log(e);
+    input: function input(e) {var _this2 = this;
+      this.searchValue = e;
+      if (this.ttt) {
+        clearTimeout(this.ttt);
+      }
+      this.ttt = setTimeout(function () {
+        _this2.getYouhuiquan();
+      }, 1500);
     },
     clear: function clear(e) {
       console.log(e);
@@ -270,20 +308,102 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     search: function search(e) {
 
     },
-    anjianChange: function anjianChange(e) {
-      //返回选择的数组下标
-      this.index1 = e.detail.value;
+    getYouhuiquan: function getYouhuiquan() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
 
-    } },
+
+                  _this3.$myRequest({
+                    url: 'coupon/list',
+                    methods: 'GET',
+                    data: {
+                      city_id: _this3.city_id,
+                      type: _this3.flag,
+                      user_id: _this3.$store.state.userInfo.user_id,
+                      name: _this3.searchValue } }));case 2:res = _context2.sent;
+
+
+                if (res && res.code == 200) {
+                  console.log(res.data);
+                  _this3.dataSource = res.data;
+                } else {
+                  uni.showToast({
+                    title: '每日学法数据获取异常',
+                    icon: 'none' });
+
+                }case 4:case "end":return _context2.stop();}}}, _callee2);}))();
+
+    },
+    lingqu: function lingqu(item) {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  _this4.$myRequest({
+                    url: 'coupon/getCoupon',
+                    methods: 'GET',
+                    data: {
+                      coupon_id: item.id,
+                      user_id: _this4.$store.state.userInfo.user_id } }));case 2:res = _context3.sent;
+
+
+                if (res && res.code == 200) {
+                  _this4.getYouhuiquan();
+                } else {
+                  uni.showToast({
+                    title: '服务器异常',
+                    icon: 'none' });
+
+                }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
+    },
+    shiyong: function shiyong(item) {var _this5 = this;
+      uni.showModal({
+        cancelText: "取消", // 取消按钮的文字  
+        confirmText: "确认", // 确认按钮文字 
+        title: '提示',
+        content: '确定使用优惠券吗?',
+        confirmColor: '#3B8BFF',
+        cancelColor: '#222222',
+        success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(res) {var result;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:if (!
+                    res.confirm) {_context4.next = 7;break;}_context4.next = 3;return (
+
+                      _this5.$myRequest({
+                        url: 'coupon/useCoupon',
+                        methods: 'GET',
+                        data: {
+                          coupon_id: item.id,
+                          user_id: _this5.$store.state.userInfo.user_id } }));case 3:result = _context4.sent;
+
+
+                    if (result && result.code == 200) {
+                      _this5.getYouhuiquan();
+                    } else {
+                      uni.showToast({
+                        title: '服务器异常',
+                        icon: 'none' });
+
+                    }_context4.next = 8;break;case 7:
+
+
+                    if (res.cancel) {
+                      // 取消
+                      console.log('cancel');
+                    }case 8:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
+
+
+
+    },
+    getCity: function getCity(e) {
+      this.city_id = e.cityid;
+      this.getYouhuiquan();
+
+    } }),
 
   computed: {
-    usertime: function usertime(e) {var _this = this;
-      return function (e) {
-        console.log(_this);
-        console.log(e);
-        return '2020.10.10 - 2020.20.20';
+    usertime: function usertime(sdt, edt) {
+      return function (sdt, edt) {
+        var sdtStr = _math.default.formatTime(sdt, 'Y.M.D');
+        var edtStr = _math.default.formatTime(edt, 'Y.M.D');
+        console.log(sdtStr);
+        console.log(edtStr);
+        return "".concat(sdtStr, "-").concat(edtStr);
       };
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

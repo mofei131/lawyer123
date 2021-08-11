@@ -14,7 +14,7 @@
 		</view>
 
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;">
-			<view v-html="content" style=""></view>
+			<view v-html="dataSource.content" style=""></view>
 			<view class="flex-txt-center" style="margin-top: 40rpx;border-radius: 40rpx;flex:0 0 80rpx;background-color: #6CA5FF; color: #FFFFFF;" @click="download">立即下载</view>
 		</view>
 
@@ -25,12 +25,28 @@
 
 <script>
 	export default {
-		onLoad(p) {
+		async onLoad(p) {
 			console.log(p);
+			let res = await this.$myRequest({
+				url: 'agreement/detail',
+				data: {
+					id: p.coopid,
+					user_id: this.$store.state.userInfo.user_id
+				}
+			});
+			if (res && res.code == -1) {
+				uni.showToast({
+					title: res.message,
+					icon: 'none'
+				})
+				return;
+			}else{
+				this.dataSource = res.data;
+			}
 		},
 		data() {
 			return {
-				content:"双方都"
+				dataSource:{}
 			}
 		},
 		methods: {
@@ -46,10 +62,13 @@
 			},
 			download(){
 				uni.downloadFile({
-				    url: 'https://www.example.com/file/test', //仅为示例，并非真实的资源
+				    url: this.dataSource.link, //仅为示例，并非真实的资源
 				    success: (res) => {
+						console.log(res);
 				        if (res.statusCode === 200) {
-				            console.log('下载成功');
+				            uni.showToast({
+				            	title:'下载成功'
+				            })
 				        }
 				    }
 				});

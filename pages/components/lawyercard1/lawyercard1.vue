@@ -4,8 +4,8 @@
 			:style="{flex:'0 0 auto',order:item}">
 			<view class="flex-row mx-start sx-stretch" @tap="todetail(item)">
 
-				<view class="backImgCenter"
-					style="border-radius: 50%;margin-right: 10rpx;flex: 0 0 125rpx;height:125rpx;background-image: url('/static/icon/girl.png');">
+				<view class="backImgCenter avator"
+					:style="{backgroundImage: `url(${item.photo||'/static/icon/girl.png'})`}">
 				</view>
 				<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;line-height: 40rpx;">
 					<view class="flex-row mx-start sx-center">
@@ -42,10 +42,10 @@
 					</view>
 
 					<view v-if="isbuy" class="flex-row mx-between sx-center" style="flex: 0 0 auto;">
-						<text style="color: #FF4D4F;">￥{{item.price && item.price.tuwen}}</text>
+						<text style="color: #FF4D4F;">￥{{item.service_price}}</text>
 						<view
 							style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;"
-							@tap.stop="toPay(item.price)">
+							@tap.stop="toPay(item.service_price)">
 							立即购买</view>
 					</view>
 				</view>
@@ -168,19 +168,19 @@
 			jianmian(item) {
 				console.log(item);
 				uni.navigateTo({
-					url: '../service_zhixun/jianmian?id='
+					url: '../service_zhixun/jianmian?id='+item.id
 				})
 			},
 			pinglvshi(item) {
 				console.log(item);
 				uni.navigateTo({
-					url: '../service_zhixun/pinglvshi?id='
+					url: '../service_zhixun/pinglvshi?id='+item.id
 				})
 			},
 			todetail(item) {
 				console.log(item);
 				uni.navigateTo({
-					url: '../detail/lawyerDetail?id=1'
+					url: '../detail/lawyerDetail?id=1'+item.id
 				})
 			}
 		}
@@ -241,5 +241,8 @@
 
 	.yellow {
 		background: #E1B12F;
+	}
+	.avator{
+		border-radius: 50%;margin-right: 10rpx;flex: 0 0 125rpx;height:125rpx;
 	}
 </style>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "服务设置",
+  "usingComponents": {
+    "fa-icon": "/components/fa-icon/fa-icon"
+  }
+}

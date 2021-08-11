@@ -12,13 +12,16 @@ const store = new Vuex.Store({
 		module2
 	},
 	state: {
-		isLogin: uni.getStorageSync('isLogin') ? uni.getStorageSync('isLogin') : false,
+		// isLogin: uni.getStorageSync('isLogin') ? uni.getStorageSync('isLogin') : false,
 		userInfo: uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : null,
 		cities: [],
 		provinces: [],
 		bussinessTypes: [],
 		lawyerLevels: [],
-		workAges: []
+		workAges: [],
+		wxCode: null,
+		windowHeight:'750'
+
 	},
 	mutations: {
 		commitProvince(state, params) {
@@ -36,13 +39,21 @@ const store = new Vuex.Store({
 		commitWorkAges(state, params) {
 			state.workAges = params;
 		},
+		commitUserInfo(state, params) {
+			state.userInfo = params;
+		},
+		commitWindowHeight(state, params){
+			state.windowHeight = params;
+		}
+		
 
 	},
 	getters: {
 
-		// doneTodos: state => {
-		// 	return state.todos.filter(todo => todo.done)
-		// },
+		getWindowHeight: state => {
+			console.log(state.windowHeight);
+			return state.windowHeight+'px'
+		},
 		// doneTodosCount: (state, getters) => { //此getter即store的getter
 		// 	return getters.doneTodos.length
 		// },
@@ -112,7 +123,106 @@ const store = new Vuex.Store({
 
 			}
 		},
-
+		getWxCode(context) {
+			
+			console.log(context.state.userInfo );
+			return new Promise((resolve,feject)=>{
+				if(context.state.userInfo &&context.state.userInfo.user_id){
+					resolve({hasUserInfo:true});
+				};
+				uni.login({
+					provider: 'weixin',
+					success: async function(res) {
+						console.log(res);
+						if (res.code) {
+							let code = res.code;
+							let res1 = await http.ajax({
+								url: 'wechat/login',
+								data: {
+									pid: 0,
+									code
+								}
+							});
+							console.log('==================================');
+							console.log(res1);
+							if(res1.code==-1){
+								uni.showToast({
+									title:res1.message,
+									icon:'none'
+								})
+								reject(res1)
+							}
+							if (res1 && res1.data) {
+								uni.setStorageSync('userInfo',res1.data);
+								resolve({hasUserInfo:true});
+							}
+				
+						} else {
+							uni.showToast({
+								title: '获取数据失败',
+								icon:'none',
+								duration: 2000
+							});
+							resolve({hasUserInfo:false})
+						}
+					},
+				});
+			})
+			
+		},
+		updateUserInfo(context){
+			return new Promise(async (resolve,reject)=>{
+				let pass =true;
+				if(!context.state.userInfo){
+						let result = await context.dispatch('getWxCode');
+						if(!result.hasUserInfo){
+							pass =false;
+						}
+				}
+				if(!pass){
+					resolve(false);
+				}
+				uni.getUserProfile({
+					desc: '获取用户头像等信息',
+					success: async (res) => {
+						console.log('----------');
+						console.log(res.userInfo);
+						let {avatarUrl,city,country,gender,language,nickName,province} = res.userInfo;
+						let data =  {
+								nickname:nickName,
+								avater:avatarUrl,
+								country:country,
+								gender:gender,
+								province:province,
+								city:city,
+								user_id:context.state.userInfo.user_id
+							}
+						let res1 = await http.ajax({
+							url: 'wechat/setUserinfo',
+							method:'GET',
+							data
+						});
+						if(res1.code==200){
+							data.token = context.state.userInfo.token;
+							data.isAuthor = true;
+							uni.setStorageSync('userInfo',data);
+							resolve(true);
+						}else{
+							uni.showToast({
+								title:res1.message,
+								icon:'none'
+							})
+							reject(res1)
+						}
+					},
+					fail: (res) => {
+						reject(res)
+					}
+				});
+			});
+			
+			
+		}
 	}
 
 })

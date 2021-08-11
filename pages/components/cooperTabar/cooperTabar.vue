@@ -38,7 +38,9 @@
 
 	export default {
 		components: {
-			pickcity
+			
+			pickcity,
+
 		},
 		props: [],
 		mounted() {

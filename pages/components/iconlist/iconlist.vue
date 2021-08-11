@@ -5,7 +5,7 @@
 			<view>{{item.title}}</view>
 		</view>
 		<view class="zixun">
-			<view v-for="(item,index) in item.zixun" class="zixunitem" @click="toPage(item)">
+			<view v-for="(item,index) in item.zixun" class="zixunitem" @click="toPage(item)" :key="index">
 				<image :src='item.url' class="zixunitemimage"></image>
 				<view class="zixunitemview">{{item.name}}</view>
 			</view>

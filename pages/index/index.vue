@@ -32,10 +32,10 @@
 			
 		</swiper> -->
 		<scroll-view class="top-menu-view" scroll-x="true" :scroll-left="scrollLeft">
-			<block v-for="(menuTab,index) in menuTabs" :key="index">
+			<block v-for="(menuTab,index) in youXuanList" :key="index">
 				<view class="menu-topic-view" v-bind:id="'tabNum'+index" @click="swichMenu(index)">
 					<view :class="[currentTab==index ? 'menu-topic-act' : 'menu-topic']">
-						<view class="menu-topic-txt">{{menuTab.title}}</view>
+						<view class="menu-topic-txt">{{menuTab.name}}</view>
 						<view class="menu-topic-bottom">
 							<view class="menu-topic-bottom-color"></view>
 						</view>
@@ -100,44 +100,10 @@
 		},
 		data() {
 			return {
+				youXuanList: [],
 				scrollLeft: 0,
 				isClickChange: false,
 				currentTab: 0,
-				// Tab分类标题
-				menuTabs: [{
-						id: 0,
-						title: "婚姻家庭"
-					},
-					{
-						id: 1,
-						title: "买卖合同"
-					},
-					{
-						id: 2,
-						title: "土地房地产"
-					},
-					{
-						id: 3,
-						title: "劳动人事"
-					},
-					{
-						id: 4,
-						title: "刑事"
-					},
-					{
-						id: 5,
-						title: "交通事故"
-					},
-					{
-						id: 6,
-						title: "欠款纠纷"
-					},
-					{
-						id: 7,
-						title: "其他"
-					},
-
-				],
 				item1: {
 					title: '咨询律师',
 					zixun: [{
@@ -255,39 +221,7 @@
 						title: "合同纠纷"
 					},
 				],
-				lawyercard: [{
-						id: 0,
-						name: "张三",
-						workyer: 5,
-						address: '辽宁沈阳',
-						begood: '婚姻家庭、交通事故、刑事案件、劳动仲裁、债权债务',
-						portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg'
-					},
-					{
-						id: 1,
-						name: "李四",
-						workyer: 12,
-						address: '北京朝阳',
-						begood: '婚姻家庭、交通事故、刑事案件、劳动仲裁、债权债务',
-						portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg'
-					},
-					{
-						id: 2,
-						name: "王五",
-						workyer: 2,
-						address: '山东菏泽',
-						begood: '婚姻家庭、交通事故、刑事案件、劳动仲裁、债权债务',
-						portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg'
-					},
-					{
-						id: 3,
-						name: "赵六",
-						workyer: 45,
-						address: '云南镇江',
-						begood: '婚姻家庭、交通事故、刑事案件、劳动仲裁、债权债务',
-						portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg'
-					},
-				],
+				lawyercard: [],
 				anli: [{
 						id: 0,
 						sort: '买卖合同',
@@ -325,57 +259,33 @@
 						read: '6'
 					},
 				],
-				learn: [{
-						id: 0,
-						cover: 'https://www.51sphere.com/upload/content/2021/04/25/39131619344825.jpg',
-						title: '南方只要不被沃尔玛收购',
-						content: '南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购',
-						name: '朱海滨',
-						status: '安心首席律师',
-						stage: '69',
-						price: 0
-					},
-					{
-						id: 1,
-						cover: 'https://www.51sphere.com/upload/content/2021/04/25/39131619344825.jpg',
-						title: '南方只要不被沃尔玛收购',
-						content: '南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购',
-						name: '朱海滨',
-						status: '安心首席律师',
-						stage: '5',
-						price: 0
-					},
-					{
-						id: 2,
-						cover: 'https://www.51sphere.com/upload/content/2021/04/25/39131619344825.jpg',
-						title: '南方只要不被沃尔玛收购',
-						content: '南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购南方只要不被沃尔玛收购',
-						name: '朱海滨',
-						status: '安心首席律师',
-						stage: '15',
-						price: 192.00
-					}
-				]
+				learn: []
 			}
 		},
 		onLoad() {
-			uni.navigateTo({
-				url:'../login/login'
-			})
-			// let userInfo
+
+			if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id) {
+				this.getWxCode();
+			}
+
 			this.getProvinceCity();
 			this.getBussinessTypes();
 			this.getLawyerLevels();
 			this.getWorkAges();
-
+			this.getYouXuanLvshi();
+			this.getLearn();
+			uni.getSystemInfo({
+				success:(res)=> {
+					console.log(res);
+					this.commitWindowHeight(res.windowHeight);
+				}
+			})
 		},
 		computed: {
 			// 使用对象展开运算符将 getter 混入 computed 对象中
-			// ...mapGetters([
-			// 	'doneTodos',
-			// 	'doneTodosCount',
-			// 	"getTodoById",
-			// ]),
+			...mapGetters([
+				'getWindowHeight',
+			]),
 			// ...mapState('module1', {
 			// 	module1State: state => state
 			// }),
@@ -390,33 +300,71 @@
 
 		},
 		methods: {
-			// ...mapMutations(['getProvince', 'getCity']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
+			...mapMutations(['commitWindowHeight']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
 			...mapActions([
 				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
 				'getBussinessTypes',
-				'getLawyerLevels','getWorkAges'
+				'getLawyerLevels', 'getWorkAges', 'getWxCode'
 			]),
 			// ...mapActions("module1",{
 			// 	udpateNameByAction:"udpateNameByAction"
 			// }),
-			
-			
+
+
 			//这一步放到登录那里做
-			
+
 			swichMenu: async function(current) { //点击其中一个 menu
-				console.log(current);
+
 				if (this.currentTab == current) {
 					return false;
 				} else {
 					this.currentTab = current;
 					//更新card
-					// this.lawyercard = ''
+
+					this.lawyercard = this.youXuanList[this.currentTab].layer || [];
 				}
 			},
 			toYouxuan() {
 				uni.switchTab({
 					url: '../zhaolvshi/zhaolvshi'
 				})
+			},
+			async getYouXuanLvshi() {
+				let res = await this.$myRequest({
+					url: 'layer/getCaseTypeLayer',
+					methods: 'GET',
+					data: {}
+				});
+				if (res && res.code == 200) {
+					console.log(res.data);
+					this.youXuanList = res.data;
+					this.lawyercard = res.data[this.currentTab].layer || [];
+				} else {
+					uni.showToast({
+						title: '优选律师请求数据失败',
+						icon: 'none'
+					})
+				}
+			},
+			async getLearn() {
+				let res = await this.$myRequest({
+					url: 'article/list',
+					methods: 'GET',
+					data: {
+						page: 1,
+						limit: 5,
+						user_id: this.$store.state.userInfo.user_id
+					}
+				});
+				if (res && res.code == 200) {
+					console.log(res.data);
+					this.learn = res.data;
+				} else {
+					uni.showToast({
+						title: '每日学法数据获取异常',
+						icon: 'none'
+					})
+				}
 			}
 		}
 	}
