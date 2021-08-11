@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="contractlist">
-			<view class="contractitem" v-for="(item,index) in contract" @click="toUrl(item.id)" :key="index">
+			<view class="contractitem" v-for="(item,index) in contract" @click="toUrl(item.agreement_id)" :key="index">
 				<view>{{item.name}}</view>
 				<image src="../../static/icon/myrighticon.png"></image>
 			</view>
@@ -23,7 +23,7 @@
 				url:'https://layer.boyaokj.cn/api/agreement/myDownload',
 				method:'GET',
 				data:{
-					user_id:uni.getStorageSync('userInfo').id,
+					user_id:42,
 					page:that.page,
 					limit:10
 				},

@@ -161,7 +161,7 @@
 					url: 'https://layer.boyaokj.cn/api/layer/auth',
 					method: 'POST',
 					data: {
-						user_id: uni.getStorageSync('userInfo').id,
+						user_id: uni.getStorageSync('userInfo').user_id,
 						type:that.type,
 						name:that.name,
 						mobile:that.mobile,

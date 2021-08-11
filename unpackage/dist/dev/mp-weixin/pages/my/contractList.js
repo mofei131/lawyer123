@@ -33,7 +33,7 @@ var _default =
       url: 'https://layer.boyaokj.cn/api/agreement/myDownload',
       method: 'GET',
       data: {
-        user_id: uni.getStorageSync('userInfo').id,
+        user_id: 42,
         page: that.page,
         limit: 10 },
 

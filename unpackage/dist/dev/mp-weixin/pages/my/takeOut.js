@@ -167,7 +167,7 @@ var _default =
     return {
       agreement: true,
       balance: 0,
-      total: 500.00,
+      // total:500.00,
       value: '' };
 
   },

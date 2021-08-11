@@ -266,6 +266,15 @@ var _default =
             _this.userInfo = res.userInfo;
             try {
               _this.login();
+
+              uni.setStorageSync('userInfo', {
+                user_id: 43,
+                nickName: res.userInfo.nickName,
+                avatarUrl: res.userInfo.avatarUrl });
+
+              uni.switchTab({
+                url: '/pages/index/index' });
+
             } catch (e) {}
           },
           fail: function fail(res) {
@@ -277,11 +286,12 @@ var _default =
         if (e.detail.userInfo) {
           //用户按了允许授权按钮
           //console.log('手动');
-          console.log(e.detail.userInfo);
+          // console.log(e.detail.userInfo);
           _this.userInfo = e.detail.userInfo;
           try {
             _this.login();
-          } catch (e) {}
+          } catch (e) {
+          }
         } else {
           console.log('用户拒绝了授权');
           //用户按了拒绝按钮
@@ -303,7 +313,7 @@ var _default =
                       _this.$myRequest({
                         url: 'wechat/login',
                         data: {
-                          pid: 0,
+                          pid: 1,
                           code: code } }));case 4:res1 = _context.sent;
 
 

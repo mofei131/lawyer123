@@ -22,7 +22,7 @@
 					<view>￥</view>
 					<input type="number" v-model="value" placeholder="请输入提现金额" placeholder-style="font-size: 36rpx;color: #999999;" />
 				</view>
-				<view class="tips">钱包余额：{{total}}(可提现{{total}}元钱包需保留0.0元)</view>
+				<view class="tips">钱包余额：{{balance}}(可提现{{balance}}元钱包需保留0.0元)</view>
 			</view>
 			</view>
 			<view class="btn" @tap="pay()">立即提现</view>
@@ -35,7 +35,7 @@
 			return{
 				agreement:true,
 				balance:0,
-				total:500.00,
+				// total:500.00,
 				value:''
 			}
 		},

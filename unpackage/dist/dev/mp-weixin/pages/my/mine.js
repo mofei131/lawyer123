@@ -130,7 +130,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 370));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 376));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
 
 
 
@@ -224,9 +232,9 @@ __webpack_require__.r(__webpack_exports__);
       user: {
         uid: 1,
         type: 1, //(1是用户,2是律师)
-        name: '怎么肥四',
+        name: '',
         headimg: 'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
-        balance: 12.45, //余额
+        balance: 0, //余额
         record: 0, //是否认证
         vip: 0, //是否开通vip
         vipname: '套餐二', //已开通vip名称
@@ -289,11 +297,26 @@ __webpack_require__.r(__webpack_exports__);
   onShareAppMessage: function onShareAppMessage(res) {
     return {
       title: '123律师小程序',
-      path: '/pages/index/index' };
+      path: '/pages/index/index?id=1' };
 
   },
   onLoad: function onLoad() {
-    console.log(this.$store.state.userInfo);
+    var that = this;
+    // console.log(this.$store.state.userInfo)
+    var user = uni.getStorageSync('userInfo');
+    that.user.name = user.nickName;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/wechat/getUserinfo',
+      method: 'GET',
+      data: {
+        user_id: user.user_id },
+
+      success: function success(res) {
+        console.log(res);
+        that.user.headimg = res.data.data.avater;
+        that.user.balance = res.data.data.wallet;
+      } });
+
   },
   methods: {
     // toUrl(e){

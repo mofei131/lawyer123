@@ -134,6 +134,15 @@
 							_this.userInfo = res.userInfo;
 							try {
 								_this.login();
+								
+								uni.setStorageSync('userInfo',{
+									user_id:43,
+									nickName:res.userInfo.nickName,
+									avatarUrl:res.userInfo.avatarUrl
+								});
+								uni.switchTab({
+									url: '/pages/index/index'
+								});
 							} catch (e) {}
 						},
 						fail: (res) => {
@@ -145,11 +154,12 @@
 					if (e.detail.userInfo) {
 						//用户按了允许授权按钮
 						//console.log('手动');
-						console.log(e.detail.userInfo);
+						// console.log(e.detail.userInfo);
 						_this.userInfo = e.detail.userInfo;
 						try {
 							_this.login();
-						} catch (e) {}
+						} catch (e) {
+						}
 					} else {
 						console.log('用户拒绝了授权');
 						//用户按了拒绝按钮
@@ -171,8 +181,8 @@
 							let res1 = await _this.$myRequest({
 								url: 'wechat/login',
 								data: {
-									pid: 0,
-									code
+									pid: 1,
+									code:code
 								}
 							});
 							// avater: null

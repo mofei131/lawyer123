@@ -4,7 +4,7 @@
 		<view class="back">
 			<image src="../../static/images/back.png"></image>
 		</view>
-		<view class="userifom">
+		<view class="userifom" v-if="name != ''">
 			<view class="headimg">
 				<image  :src='user.headimg'></image>
 			</view>
@@ -14,6 +14,14 @@
 					<view v-if="user.record == 0">立即认证享更多权益</view>
 					<view v-else>已认证</view>
 				</view>
+			</view>
+		</view>
+		<view class="userifom" v-else>
+			<view class="headimg">
+				<image  src='../../static/icon/loginicon.png'></image>
+			</view>
+			<view class="username">
+				<view class="name" style="font-size: 40rpx;font-weight: 700;">请授权</view>
 			</view>
 		</view>
 		<view class="withdraw">
@@ -92,9 +100,9 @@
 				user:{
 					uid:1,
 					type:1,//(1是用户,2是律师)
-					name:'怎么肥四',
+					name:'',
 					headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
-					balance:12.45,//余额
+					balance:0,//余额
 					record:0,//是否认证
 					vip:0,//是否开通vip
 					vipname:'套餐二',//已开通vip名称
@@ -157,11 +165,26 @@
 		onShareAppMessage(res) {
 		      return {
 		        title: '123律师小程序',
-		        path: '/pages/index/index'
+		        path: '/pages/index/index?id=1'
 		      }
 		    },
 				onLoad(){
-					console.log(this.$store.state.userInfo)
+					let that = this
+					// console.log(this.$store.state.userInfo)
+					let user = uni.getStorageSync('userInfo');
+					that.user.name = user.nickName
+					uni.request({
+						url:'https://layer.boyaokj.cn/api/wechat/getUserinfo',
+						method:'GET',
+						data:{
+							user_id:user.user_id
+						},
+						success(res) {
+							console.log(res)
+							that.user.headimg = res.data.data.avater
+							that.user.balance = res.data.data.wallet
+						}
+					})
 				},
 		methods: {
 			// toUrl(e){

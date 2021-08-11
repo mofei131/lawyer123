@@ -166,7 +166,7 @@ var _default =
       url: 'https://layer.boyaokj.cn/api/commission/getList',
       method: 'GET',
       data: {
-        user_id: uni.getStorageSync('userInfo').id,
+        user_id: uni.getStorageSync('userInfo').user_id,
         type: 1 },
 
       success: function success(res) {
@@ -177,7 +177,7 @@ var _default =
       url: 'https://layer.boyaokj.cn/api/commission/getList',
       method: 'GET',
       data: {
-        user_id: uni.getStorageSync('userInfo').id,
+        user_id: uni.getStorageSync('userInfo').user_id,
         type: 2 },
 
       success: function success(res) {

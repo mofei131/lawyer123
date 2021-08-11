@@ -164,9 +164,9 @@ var _default =
 
   },
   onLoad: function onLoad(options) {
-    // this.arr.id = options.id
+    this.arr.id = options.id;
     // this.arr.chapter = options.chapter
-    // this.arr.price = options.price
+    this.arr.price = options.price;
   },
   computed: {},
 
@@ -176,6 +176,7 @@ var _default =
       this.agreement = !this.agreement;
     },
     pay: function pay() {
+      var that = this;
       if (this.agreement == false) {
         uni.showToast({
           title: "请勾选支付方式",
@@ -183,6 +184,17 @@ var _default =
 
       } else {
         console.log("支付");
+        uni.request({
+          url: 'https://layer.boyaokj.cn/api/wechat/payCenter',
+          method: 'GET',
+          data: {
+            user_id: 42,
+            source_id: that.id },
+
+          success: function success(res) {
+            console.log(res);
+          } });
+
       }
 
     } } };exports.default = _default;
