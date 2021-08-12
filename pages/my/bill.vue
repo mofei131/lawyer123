@@ -1,24 +1,14 @@
 <template>
 	<view>
-		<view class="billlist" v-if="page == 2">
-			<view class="billitem" v-for="(item,index) in bill2" :key="index">
-				<view class="itemleft">
-					<view>{{item.title}}</view>
-					<view>{{item.time}}</view>
-				</view>
-				<view class="itemright">
-					<view>{{item.rae}}</view>
-				</view>
-			</view>
-		</view>
-		<view class="billlist" v-else>
+		<view class="billlist">
 			<view class="billitem" v-for="(item,index) in bill" :key="index">
 				<view class="itemleft">
-					<view>{{item.title}}</view>
-					<view>{{item.time}}</view>
+					<view>{{item.type.name}}</view>
+					<view v-if="item.create_time">{{item.create_time}}</view>
+					<view v-else>0000-00-00 00:00:00</view>
 				</view>
 				<view class="itemright">
-					<view>{{item.rae}}</view>
+					<view>{{item.log}}</view>
 				</view>
 			</view>
 		</view>
@@ -29,38 +19,59 @@
 	export default{
 		data(){
 			return{
-				page:'',
-				bill:[
-					{
-						title:'余额提现',
-						time:'2021-08-09 13:22:21',
-						rae:'-64.00'
-					},{
-						title:'余额充值',
-						time:'2021-08-07 15:06:55',
-						rae:'+664.00'
-					}
-				],
-				bill2:[
-					{
-						title:'分销购买商品',
-						time:'2021-08-09 13:22:21',
-						rae:'+64.00'
-					},{
-						title:'分销购买服务',
-						time:'2021-08-07 15:06:55',
-						rae:'+664.00'
-					}
-				]
+				bill:[],
+				page:1,
+				limit:10,
 			}
 		},
 		onLoad(p) {
-			this.page = p.page
+			this.lei = p.page
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/wechat/moneyLog',
+				method:'GET',
+				data:{
+					page:that.page,
+					limit:that.limit,
+					user_id:uni.getStorageSync('userInfo').user_id
+				},
+				success(res) {
+					console.log(res.data.data)
+					that.bill = res.data.data
+				}
+			})
+		},
+		//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
+		onReachBottom() {
+				this.searchChange()
+		},
+		methods:{
+			searchChange() {
+						let that = this
+						that.page++
+						uni.request({
+							url:'https://layer.boyaokj.cn/api/wechat/moneyLog',
+							method:'GET',
+							data:{
+								page:that.page,
+								limit:that.limit,
+								user_id:uni.getStorageSync('userInfo').user_id
+							},
+							success(res) {
+								for(let i in res.data.data){
+									that.boll.push(res.data.data[i])
+								}
+							}
+						})
+					},
 		}
 	}
 </script>
 
 <style>
+	page{
+		height: 100%;
+	}
 	.billlist{
 		width: 100%;
 		background: #fff;

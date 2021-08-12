@@ -3,42 +3,41 @@
 		<view class="orderlist">
 			<view class="orderitem" v-for="(item,index) in list" :key="index">
 				<view class="top">
-					<view>订单号:{{item.code}}</view>
+					<view>订单号:{{item.orderno}}</view>
 					<!-- 服务订单 -->
-					<view class="state" v-if="item.state == 0">已付款</view>
-					<view class="state" v-if="item.state == 1">已完成</view>
-					<!-- 交易订单 -->
-					<view class="state" v-if="item.state == -1">已完成</view>
-					<!-- 律师身份 -->
-					<view class="state" v-if="item.state == 2">进行中</view>
+					<view class="state" v-if="item.status== 0">未付款</view>
+					<view class="state" v-else-if="item.status == 1">进行中</view>
+					<view class="state" v-else-if="item.status == 2">服务结束</view>
+					<view class="state" v-else>已完成</view>
 				</view>
 				<view class="cont">
-					<view class="contleft">
-						<image :src="item.headimg"></image>
+					<view class="contleft" v-if="item.type == 2">
+						<image src="@/static/icon/icon5.png"></image>
+					</view>
+					<view class="contleft" v-else>
+						<image :src="item.layer_photo"></image>
 					</view>
 					<view class="contright">
-						<view>{{item.name}}</view>
+						<view>{{item.layer_name}}</view>
 						<view v-if="item.state == -1">时限:{{item.service}}年</view>
-						<view v-else>{{item.service}}</view>
-						<view>￥{{item.price}}</view>
+						<view v-else>{{item.service_name}}</view>
+						<view v-if="item.type == 2">{{item.realprice}}</view>
+						<view v-else>￥{{item.service_price}}</view>
 					</view>
 				</view>
-				<view v-if="item.state != -1">
+				<view v-if="item.status == 0 || item.status == 1 || item.status == 2">
 				<view class="bottom">
-						<view class="btn" v-if="item.state == 0 && type == 1">
+					<view class="btn" @tap="topay(item.service_id)" v-if="item.status== 0">
+						<view>去付款</view>
+					</view>
+						<view class="btn"  v-if="item.status == 1 && item.service_type == 1" @tap="tuwen(item)">
 							<view>联系律师</view>
 						</view>
-						<view class="btn" v-if="item.state == 0 && type == 2">
-							<view>联系客户</view>
+						<view class="btn"  v-if="item.status == 1 && item.service_type != 1" @tap="dianhua(item)">
+							<view>联系律师</view>
 						</view>
-						<view class="btn" v-if="item.state == 2 && type == 2">
-							<view>联系客户</view>
-						</view>
-						<view class="btn" v-if="item.state == 1 && type == 1">
-							<view>评价</view>
-						</view>
-						<view class="btn" v-if="item.state == 2 && type == 2">
-							<view>结束服务</view>
+						<view class="btn" @tap="score(item)" v-if="item.status == 2">
+							<view>去评价</view>
 						</view>
 					</view>
 				</view>
@@ -52,13 +51,46 @@
 		props:['list'],
 		data(){
 			return{
-				type:2
+				type:2,
+				id:0
+			}
+		},
+		methods:{
+			topay(id){
+				uni.navigateTo({
+					url:'./pay?id='+id
+				})
+			},
+			score(item){
+				if(item){
+					uni.showToast({
+						title:'已评价',
+						icon:'none'
+					})
+				}else{
+					uni.navigateTo({
+						url:'./score?id='+item.service_id+"&code="+item.orderno
+					})
+				}
+			},
+			tuwen(item){
+				uni.navigateTo({
+					url:'../service_zhixun/tuwen?layer_id='+item.layer_id
+				})
+			},
+			dianhua(item){
+				uni.makePhoneCall({
+					 phoneNumber: item.mobile, 
+				})
 			}
 		}
 	}
 </script>
 
 <style>
+	page{
+		height: 100%;
+	}
 	.orderitem{
 		width: 720rpx;
 		background: #FFFFFF;

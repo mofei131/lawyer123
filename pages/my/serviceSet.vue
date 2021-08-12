@@ -7,22 +7,22 @@
 		<view class="collect">
 			<view class="intitem">
 				<view class="tips">图文资讯：</view>
-				<input class="gather" type="number" value="" placeholder="请手动输入图文咨询价格" v-model="chat" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" placeholder="请手动输入图文咨询价格" v-model="chat" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 		<view class="intitem">
 				<view class="tips">电话咨询：</view>
-				<input class="gather" type="number" value="" placeholder="请手动输入电话咨询价格" v-model="phone" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" placeholder="请手动输入电话咨询价格" v-model="phone" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 		<view class="intitem">
 				<view class="tips">见面资讯：</view>
-				<input class="gather" type="number" value="" placeholder="请手动输入见面咨询价格" v-model="meet" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" placeholder="请手动输入见面咨询价格" v-model="meet" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 		<view class="intitem">
 				<view class="tips">聘请律师：</view>
-				<input class="gather" type="number" value="" placeholder="请手动输入受聘价格" v-model="emplay" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" placeholder="请手动输入受聘价格" v-model="emplay" placeholder-style="color: #C1C2C3;"/>
 			</view>
 			<view class="boder" style="margin-bottom: 10rpx;"></view>
 			<view class="boder"></view>
@@ -37,8 +37,8 @@
 			</view>
 			<view class="boder"></view>
 			<view class="servicepirce" v-for="(item,index) in sevedata" :key="index">
-				<view>{{item.service}}：</view>
-				<input type="number" value="" class="serviceinp" placeholder="请手动输入服务价格" v-model="item.price" placeholder-style="color: #C1C2C3;"/>
+				<view class="sevname">{{item.service}}：</view>
+				<input type="digit" value="" class="serviceinp" placeholder="请手动输入服务价格" v-model="item.price" placeholder-style="color: #C1C2C3;"/>
 				<image src="../../static/icon/deleteicon.png" @tap="delect(item.id)"></image>
 			</view>
 			<view class="addmore" @tap="cancel()">
@@ -444,4 +444,9 @@
 		font-weight: 400;
 		color: #40A9FF;
 	}
+	.sevname{
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		}
 </style>

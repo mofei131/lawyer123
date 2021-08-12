@@ -159,12 +159,12 @@ var _default =
   methods: {
     toservice: function toservice() {
       uni.navigateTo({
-        url: './serviceList' });
+        url: './serviceList?id = 1' });
 
     },
     todeal: function todeal() {
       uni.navigateTo({
-        url: './dealList' });
+        url: './dealList?id = 1' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

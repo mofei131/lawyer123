@@ -10,7 +10,7 @@
 		</view>
 		<view class="boder"></view>
 		</view>
-		<view class="btn">发布</view>
+		<view class="btn" @tap="btn()">发布</view>
 	</view>
 </template>
 
@@ -20,12 +20,44 @@
        components: {uniRate},
 			 data(){
 				 return{
-					 num:'1357924680'
+					 num:'',
+					 id:'',
+					 value:''
 				 }
+			 },
+			 onLoad(p) {
+			 	console.log(p)
+				this.num = p.code
+				this.id = p.id
 			 },
 			 methods:{
 				 starvalue(e){
 					 console.log(e.value)
+					 this.value = e.value
+					 
+				 },
+				 btn(){
+					 let that = this
+					 uni.request({
+					 	url:'https://layer.boyaokj.cn/api/order/judgeOrder',
+					 						method:'GET',
+					 						data:{
+					 							user_id:43,
+					 							service_id:that.id,
+					 							star:that.value
+					 						},
+					 						success() {
+												uni.showToast({
+													title:'评价成功',
+													duration:1000
+												})
+												setTimeout(function() {
+												uni.navigateBack({
+												
+												},1000);
+												},1000)
+					 						}
+					 })
 				 }
 			 }
    }

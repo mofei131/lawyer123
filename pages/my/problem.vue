@@ -1,7 +1,7 @@
 <template>
 	<view class="about">
 		<!-- <view v-html="content"></view> -->
-		<rich-text  :nodes = 'content'></rich-text>
+		<rich-text  v-html = 'content'></rich-text>
 	</view>
 </template>
 
@@ -13,20 +13,31 @@
 			}
 		},
 		onLoad() {
-			// let that = this
-			// this.http.ajax({
-			// 	url: 'index/xieyi',
-			// 	method: 'GET',
-			// 	data: {
-			// 		name: 'guanyu',
-			// 	},
-			// 	success: function(res) {
-			// 		that.content = res.data.value
-			// 	}
-			// });
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/index/setting',
+				method:'GET',
+				data:{
+					key:'wenti'
+				},
+				success(res) {
+					// console.log(res.data.data.data)
+					that.content = res.data.data.data
+				}
+			})
 		},
 	}
 </script>
 
 <style>
+	page{
+		background: #F4F7F7;
+	}
+	.about{
+		width: 720rpx;
+		margin: auto;
+		border-radius: 10rpx;
+		background: #fff;
+		padding: 20rpx;
+	}
 </style>

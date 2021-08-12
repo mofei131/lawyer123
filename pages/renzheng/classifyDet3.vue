@@ -162,7 +162,7 @@
 					method: 'POST',
 					data: {
 						// user_id: uni.getStorageSync('userInfo').id,
-						user_id: 60,
+						user_id: uni.getStorageSync('userInfo').user_id,
 						type:that.type,
 						name:that.name,
 						mobile:that.mobile,
@@ -192,7 +192,7 @@
 							uni.removeStorage({key: 'cache2'})
 						}else if(res.data.message == '您已经申请过,请勿重复申请'){
 							uni.showToast({
-								title: '请勿重复认证',
+								title: '您已认证，请勿重复认证',
 								icon:'error'
 							})
 							uni.removeStorage({key: 'type',})

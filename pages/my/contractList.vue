@@ -14,7 +14,8 @@
 		data(){
 			return{
 				page:1,
-				contract:[]
+				contract:[],
+				limit:10
 			}
 		},
 		onLoad(){
@@ -23,7 +24,7 @@
 				url:'https://layer.boyaokj.cn/api/agreement/myDownload',
 				method:'GET',
 				data:{
-					user_id:42,
+					user_id:uni.getStorageSync('userInfo').user_id,
 					page:that.page,
 					limit:10
 				},
@@ -32,27 +33,30 @@
 				}
 			})
 		},
+		onReachBottom() {
+				this.searchChange()
+		},
 		methods:{
 			toUrl(e){
 				uni.navigateTo({
 					url:'./contractDet?id='+e
 				})
 			},
-			onReachBottom(e) {
+			searchChange(e) {
 						let that = this
+						that.page++
 						uni.request({
 							url:'https://layer.boyaokj.cn/api/agreement/myDownload',
 							method:'GET',
 							data:{
-								user_id:42,
-								page:that.page++,
-								limit:10
+								user_id:uni.getStorageSync('userInfo').user_id,
+								page:that.page,
+								limit:that.limit
 							},
 							success(res) {
 								for(let i in res.data.data){
 									that.contract.push(res.data.data[i])
 								}
-								console.log("触底加载")
 							}
 						})
 					}
@@ -63,6 +67,7 @@
 <style>
 	page{
 		background: #F4F7F7;
+		height: 100%;
 	}
 	.contractitem{
 		width: 720rpx;

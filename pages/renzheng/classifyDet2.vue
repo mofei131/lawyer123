@@ -7,7 +7,7 @@
 		<view class="collect">
 			<view class="intitem">
 				<view class="tips">执业证号：</view>
-				<input class="gather" type="number" value="" placeholder="请输入号码" v-model="zhenghao" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" placeholder="请输入号码" v-model="zhenghao" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 			<view class="intitem">
@@ -82,9 +82,23 @@
 								sourceType: ['album','camera'], //从相册选择、摄像头
 								success: function(res) {
 									if(e == 1){
-										that.zhiname = res.tempFilePaths[0]
+										uni.uploadFile({
+											url:'https://layer.boyaokj.cn/api/file/upload',
+											filePath: res.tempFilePaths[0],
+											name: 'file',
+											success(res) {
+												that.zhiname = JSON.parse(res.data).data.url
+											}
+										})
 									}else if(e == 2){
-										that.zhiyear = res.tempFilePaths[0]
+										uni.uploadFile({
+											url:'https://layer.boyaokj.cn/api/file/upload',
+											filePath: res.tempFilePaths[0],
+											name: 'file',
+											success(res) {
+												that.zhiyear = JSON.parse(res.data).data.url
+											}
+										})
 									}
 								},
 							});

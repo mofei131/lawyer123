@@ -2,6 +2,10 @@
 page{
 	background: #F8F8F8;
 }
+.vipname{
+	color: #fff;
+	margin: 20rpx 0 0 40rpx;
+}
 .yqbtn{
 	background: #fff;
 	border: 0;
@@ -16,7 +20,7 @@ page{
 	width: 100%;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
-	padding-top: 74rpx;
+	padding-top: 124rpx;
 	background-size: 100%;
 }
 .back{
@@ -112,8 +116,17 @@ page{
 	font-weight: 400;
 	color: #FFFFFF;
 	text-align: center;
-	line-height: 43rpx;
+	/* line-height: 43rpx; */
 	margin-top: 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
 }
 .with{
 	display: -webkit-box;
@@ -170,9 +183,18 @@ page{
 	font-family: PingFangSC-Regular, PingFang SC;
 	font-weight: 400;
 	color: #FFFFFF;
-	line-height: 33rpx;
+	/* line-height: 33rpx; */
 	text-align: center;
 	margin: 25rpx 30rpx 0 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
 }
 .tuigaung{
 	width: 710rpx;
