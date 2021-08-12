@@ -45,7 +45,7 @@
 						<text style="color: #FF4D4F;">￥{{item.service_price}}</text>
 						<view
 							style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;"
-							@tap.stop="toPay(item.service_price)">
+							@tap.stop="toPay(item)">
 							立即购买</view>
 					</view>
 				</view>
@@ -111,30 +111,30 @@
 			}
 		},
 		methods: {
-			toPay() {
-				this.$emit('buy', 123)
+			toPay(item) {
+				this.$emit('buy', item)
 			},
 
 			tuwen(item) {
 				console.log(item);
 				uni.navigateTo({
-					url: '../service_zhixun/tuwen?id='
+					url: '../service_zhixun/tuwen?layer_id='+item.id+'&price='+item.price.tuwen+'&typeId=1'
 				})
 			},
 			async dianhua(item) {
 				console.log(item);
 				let layer_id = item.id;
-				// let user_id = this.$store.state.userInfo.user_id;
-				// if (!layer_id || !user_id) {
-				// 	uni.showToast({
-				// 		title: '用户数据异常，请重新登录',
-				// 		icon: 'none'
-				// 	})
-				// 	return;
-				// }
+				let user_id = this.$store.state.userInfo.user_id;
+				if (!layer_id || !user_id) {
+					uni.showToast({
+						title: '用户数据异常，请重新登录',
+						icon: 'none'
+					})
+					return;
+				}
 				let data = {
 					layer_id,
-					user_id:43,
+					user_id,
 				}
 				console.log(data);
 				uni.showLoading({
@@ -145,20 +145,21 @@
 					method:'GET',
 					data
 				});
+				console.log(res);
 				uni.hideLoading();
 				if(res && res.code==-1){
 					uni.showToast({
-						title: 	res.message,
+						title: res.message,
 						icon:'none'
 					})
 				}else{
-					if (res && res.data) {
+					
 						let service_id = res.data.service_id;
 						//跳转收银台
-						// uni.navigateTo({
-						// 	url: '../service_zhixun/dianhua?id='
-						// })		
-					}
+						uni.navigateTo({
+							url: '../my/pay?id='+res.data.service_id+'&price='+item.price.dianhua+'&typeId=2'
+						})		
+					
 				}
 				
 				
@@ -168,13 +169,13 @@
 			jianmian(item) {
 				console.log(item);
 				uni.navigateTo({
-					url: '../service_zhixun/jianmian?id='+item.id
+					url: '../service_zhixun/jianmian?layer_id='+item.id+'&price='+item.price.jianmian+'&typeId=3'
 				})
 			},
 			pinglvshi(item) {
 				console.log(item);
 				uni.navigateTo({
-					url: '../service_zhixun/pinglvshi?id='+item.id
+					url: '../service_zhixun/pinglvshi?layer_id='+item.id+'&price='+item.price.pinqing+'&typeId=10'
 				})
 			},
 			todetail(item) {

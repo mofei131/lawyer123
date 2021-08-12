@@ -63,13 +63,37 @@
 					url:'../detail/studyDetail?id='+item.id
 				})
 			},
-			toPay(item){
-				uni.showToast({
-					title:'购买接口对接'
-				})
-				// uni.navigateTo({
-				// 	url:'../detail/studyDetail'
-				// })
+			async toPay(item){
+				console.log(item);
+				//跳转到支付页面；支付成功，请求
+				let res = await this.$myRequest({
+					url: 'service/article',
+					methods: 'GET',
+					data: {
+						user_id: this.$store.state.userInfo.user_id,
+						article_id: item.id
+					}
+				});
+				if (res.code == 200) {
+					console.log(res);
+				
+					uni.navigateTo({
+						url: '../my/pay?id=' + res.data.service_id + '&price=' + item.price + '&typeId=12'+"&emitName=goCoodetail"
+					})
+					uni.$on('goCoodetail', res => {
+						uni.navigateTo({
+							url: '@/pages/detail/detail?detail=' + item.id
+						})
+					});
+				
+				
+				} else {
+					uni.showToast({
+						title: res.message,
+						icon: 'none'
+					})
+				}
+				
 			}
 		}
 	}

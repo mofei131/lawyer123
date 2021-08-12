@@ -125,20 +125,15 @@
 <script>
 	export default {
 		onLoad(param) {
-
+			this.price = param.price;
 			let userInfo = this.$store.state.userInfo;
-			// if(!userInfo){
-			// 	uni.navigateTo({
-			// 		url:'../login/login'
-			// 	})
-			// 	return
-			// }
-			// this.layer_id = param.layer_id;
-			// this.user_id = userInfo.user_id;
+			this.layer_id = param.layer_id;
+			this.user_id = userInfo.user_id;
 			this.init();
 		},
 		data() {
 			return {
+				price:'',
 				layer_id: '',
 				user_id: '',
 				dataSource:{},
@@ -198,10 +193,15 @@
 						icon:'none'
 					})
 				}else{
-					if(res && res.data){
+					if(res && res.code==200){
 						console.log(res);
+						uni.navigateTo({
+							url:'../my/pay?id='+res.data.service_id+'&price='+this.price+'&typeId=3'
+						})
+					}else{
 						uni.showToast({
-							title: "返回service_id" + res.data.service_id
+							title:res.message,
+							icon:'none'
 						})
 					}
 				}

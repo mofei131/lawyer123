@@ -28,14 +28,14 @@
 				<view class="flex-row mx-start sx-start" style="margin-top: 20rpx;">
 					<view style="flex: 0 0 140rpx;">个人简介：</view>
 					<view style="flex: 1 1 auto ;height: 200rpx;overflow: auto;">
-						 {{lawyerList[0] && lawyerList[0].jianjie}}
+						{{lawyerList[0] && lawyerList[0].jianjie}}
 					</view>
 				</view>
 
 			</view>
 		</view>
 		<view class="flex-row mx-start sx-center" style="flex: 0 0 auto;margin: 40rpx 0; color: gray;">
-			<view class="flex-row mx-start sx-center"
+			<view @tap="tuTuwenPage" class="flex-row mx-start sx-center"
 				style="flex: 1 1 auto;padding: 10rpx;background-color: #FFFFFF;margin-right: 20rpx;border-radius: 10rpx;">
 				<view class="backImgCenter"
 					style="background-image: url(../../static/icon/icon1.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
@@ -46,12 +46,12 @@
 				</view>
 				<fa-icon type="angle-right" color="gray"></fa-icon>
 			</view>
-			<view class="flex-row mx-start sx-center"
+			<view @tap="toDianhuaPage" class="flex-row mx-start sx-center"
 				style="flex: 1 1 auto;padding: 10rpx;background-color: #FFFFFF;border-radius: 10rpx">
 				<view class="backImgCenter"
 					style="background-image: url(../../static/icon/icon2.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
 				</view>
-				<view class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
+				<view  class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
 					<text>电话沟通</text>
 					<text>{{lawyerList[0] && lawyerList[0].price && lawyerList[0] && lawyerList[0].price.dianhua}}元</text>
 				</view>
@@ -87,7 +87,7 @@
 	import lawyercard1 from '@/pages/components/lawyercard1/lawyercard1.vue'
 	export default {
 		onLoad(p) {
-			console.log(p.id+"======="+ this.$store.state.userInfo.user_id );
+			console.log(p.id + "=======" + this.$store.state.userInfo.user_id);
 			this.lawyerid = p.id;
 			let res = this.$myRequest({
 				url: 'layer/detail',
@@ -98,13 +98,13 @@
 				}
 			});
 			res.then(data => {
-				if (data.code==200) {
+				if (data.code == 200) {
 					console.log(data);
 					this.lawyerList.push(data.data)
-				}else{
+				} else {
 					uni.showToast({
-						title:data.message,
-						icon:'none'
+						title: data.message,
+						icon: 'none'
 					})
 				}
 			})
@@ -115,7 +115,7 @@
 		},
 		data() {
 			return {
-				lawyerid:null,
+				lawyerid: null,
 				lawyerList: [],
 				anli: [{
 						id: 0,
@@ -158,24 +158,28 @@
 		},
 		methods: {
 			tuTuwenPage() {
+				let lawyer = this.lawyerList[0];
+				if (!lawyer) return;
 				uni.navigateTo({
-					url: '../service_zhixun/tuwen?id='+this.lawyerid
+					url: '../service_zhixun/tuwen?layer_id=' + lawyer.id + '&price=' + lawyer.price.tuwen +
+						'&typeId=1'
 				})
 			},
 			async toDianhuaPage() {
-			
-				let layer_id = this.lawyerid;
-				// let user_id = this.$store.state.userInfo.user_id;
-				// if (!layer_id || !user_id) {
-				// 	uni.showToast({
-				// 		title: '用户数据异常，请重新登录',
-				// 		icon: 'none'
-				// 	})
-				// 	return;
-				// }
+				let lawyer = this.lawyerList[0];
+				if (!lawyer) return;
+				let layer_id = lawyer.id;
+				let user_id = this.$store.state.userInfo.user_id;
+				if (!layer_id || !user_id) {
+					uni.showToast({
+						title: '用户数据异常，请重新登录',
+						icon: 'none'
+					})
+					return;
+				}
 				let data = {
 					layer_id,
-					user_id:this.$store.state.userInfo.user_id,
+					user_id: this.$store.state.userInfo.user_id,
 				}
 				console.log(data);
 				uni.showLoading({
@@ -183,23 +187,23 @@
 				})
 				let res = await this.$myRequest({
 					url: 'service/dianhua',
-					method:'GET',
+					method: 'GET',
 					data
 				});
 				uni.hideLoading();
-				if(res && res.code==-1){
+				if (res && res.code == -1) {
 					uni.showToast({
-						title: 	res.message,
-						icon:'none'
+						title: res.message,
+						icon: 'none'
 					})
-				}else{
-					if (res && res.data) {
-						let service_id = res.data.service_id;
-						//跳转收银台
-						// uni.navigateTo({
-						// 	url: '../service_zhixun/dianhua?id='
-						// })		
-					}
+				} else {
+
+					//跳转收银台
+					uni.navigateTo({
+						url: '../my/pay?id=' + res.data.service_id + '&price=' + lawyer.price.dianhua +
+							'&typeId=2'
+					})
+
 				}
 			}
 		}

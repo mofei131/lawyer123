@@ -49,10 +49,11 @@
 			authMode
 		},
 		onShow() {
-			if (!this.$store.state.userInfo) {
-				this.$refs.authMode.open()
-				this.getWxCode();
-			}
+			this.$refs.authMode.open()
+			this.getWxCode();
+			// if (!this.$store.state.userInfo) {
+				
+			// }
 		},
 		computed: {
 			...mapGetters([

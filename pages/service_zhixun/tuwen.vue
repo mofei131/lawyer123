@@ -14,13 +14,7 @@
 			<view class="flex-row mx-evenly sx-start wrap" style="align-items: flex-start;">
 				<view v-for="(item,index) in bussinessTypes" :class="{choose_item:true,item_on:item.id==case_type}"
 					@tap="caseTypeChange(item)">{{item.name}}</view>
-				<!-- <view :class="{choose_item:true,item_on:id==2}" @tap="id=2">买卖合同</view>
-				<view :class="{choose_item:true,item_on:id==3}" @tap="id=3">土地房地产</view>
-				<view :class="{choose_item:true,item_on:id==4}" @tap="id=4">劳动人事</view>
-				<view :class="{choose_item:true,item_on:id==5}" @tap="id=5">刑事</view>
-				<view :class="{choose_item:true,item_on:id==6}" @tap="id=6">交通事故</view>
-				<view :class="{choose_item:true,item_on:id==7}" @tap="id=7">欠款纠纷</view>
-				<view :class="{choose_item:true,item_on:id==8}" @tap="id=8">其他</view> -->
+
 			</view>
 
 		</view>
@@ -61,19 +55,13 @@
 <script>
 	export default {
 		onLoad(param) {
-
+			this.price = param.price;
 			let userInfo = this.$store.state.userInfo;
 			this.bussinessTypes = this.$store.state.bussinessTypes;
 			console.log(this.bussinessTypes);
-			// if(!userInfo){
-			// 	uni.navigateTo({
-			// 		url:'../login/login'
-			// 	})
-			// 	return
-			// }
-			// this.userInfo = userInfo;
-			// this.layer_id = param.layer_id;
-			// this.user_id = userInfo.user_id;
+			this.userInfo = userInfo;
+			this.layer_id = param.layer_id;
+			this.user_id = userInfo.user_id;
 
 			// uni.getLocation({
 			// 	type: 'wgs84',
@@ -112,7 +100,7 @@
 				address: '',
 				lng: '',
 				lat: '',
-
+				price:''
 
 
 				// searchAddress: '',
@@ -134,6 +122,7 @@
 			},
 			async commit() {
 				//跳转支付页面
+
 				let {
 					layer_id,
 					user_id,
@@ -191,10 +180,12 @@
 				});
 				console.log(res);
 				uni.hideLoading();
-				if (res && res.data) {
-					uni.showToast({
-						title:"提交成功"+res.data.service_id
+				if (res && res.code==200) {
+		
+					uni.navigateTo({
+						url:'../my/pay?id='+res.data.service_id+'&price='+this.price+'&typeId=1'
 					})
+				
 				}else{
 					uni.showToast({
 						title:res.message,

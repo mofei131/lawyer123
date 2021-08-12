@@ -41,14 +41,6 @@
 			}
 
 		}, {
-			"path": "pages/list/cooperModuleList",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom"
-			}
-
-		}, {
 			"path": "pages/detail/cooperDetail",
 			"style": {
 				"navigationBarTitleText": "",
@@ -62,20 +54,6 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
-			}
-
-		}, {
-			"path": "pages/single_service/cooperProcess",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom"
-			}
-
-		}, {
-			"path": "pages/my/contractList",
-			"style": {
-				"navigationBarTitleText": "合同模板"
 			}
 
 		}, {
@@ -263,18 +241,47 @@
 			"style": {
 				"navigationBarTitleText": "常见问题"
 			}
-		}, {
-			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": "登录",
-				"enablePullDownRefresh": false
-			}
-
-
-		}, {
+		}
+		, {
 			"path": "pages/my/pay",
 			"style": {
 				"navigationBarTitleText": "支付"
+			}
+		}
+
+
+		, {
+			"path": "pages/list/cooperModuleList",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}
+
+
+		, {
+			"path": "pages/single_service/cooperProcess",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/my/contractList",
+			"style": {
+				"navigationBarTitleText": "合同模板"
+			}
+
+		}
+
+		
+		, {
+			"path": "pages/my/follow",
+			"style": {
+				"navigationBarTitleText": "我的关注"
 			}
 		}
 	],
