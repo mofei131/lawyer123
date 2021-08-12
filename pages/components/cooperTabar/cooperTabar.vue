@@ -38,7 +38,9 @@
 
 	export default {
 		components: {
-			pickcity
+			
+			pickcity,
+
 		},
 		props: [],
 		mounted() {
@@ -81,11 +83,12 @@
 			},
 			workAgeChange: function(e) {
 				this.index3 = e.detail.value;
-			},
-			bindPickerChange: function(e) {
-				this.index = e.detail.value;
 				this.getCurrentSearchId();
 			},
+			// bindPickerChange: function(e) {
+			// 	this.index = e.detail.value;
+			// 	this.getCurrentSearchId();
+			// },
 			getCurrentSearchId() {
 				console.log('===>');
 				let currBy = this.index1===null?{}: this.byinfo[this.index1];

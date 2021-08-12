@@ -1,1 +1,0 @@
-<view><lawyercard1 vue-id="44455b1b-1" zixun="{{true}}" lawyerlist="{{lawyerList}}" data-event-opts="{{[['^buy',[['buy']]]]}}" bind:buy="__e" bind:__l="__l"></lawyercard1></view>

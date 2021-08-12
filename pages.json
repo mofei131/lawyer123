@@ -3,367 +3,312 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationStyle":"custom",
-				"app-plus":{
-							"titleNView":false
-						}
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
 			}
-		},{
+		}, {
 			"path": "pages/zhaolvshi/zhaolvshi",
 			"style": {
-				"navigationStyle":"custom",
-				"onReachBottomDistance":50,
+				"navigationStyle": "custom",
+				"onReachBottomDistance": 50,
 				"enablePullDownRefresh": true,
-				"app-plus":{
-							"titleNView":false
-						}
+				"app-plus": {
+					"titleNView": false
+				}
 			}
-		},{
+		}, {
 			"path": "pages/youhuiquan/youhuiquan",
 			"style": {
 				"navigationBarTitleText": "优惠券",
 				"enablePullDownRefresh": true
 			}
-		},{
+		}, {
 			"path": "pages/my/mine",
 			"style": {
-				"navigationStyle":"custom",
-				"app-plus":{
-							"titleNView":false
-						}
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		}, {
+			"path": "pages/single_service/cooperDownload",
+			"style": {
+				"navigationBarTitleText": "合同下载",
+				"enablePullDownRefresh": false
+
+			}
+
+		}, {
+			"path": "pages/list/cooperModuleList",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/detail/cooperDetail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/single_service/cooperCheck",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/single_service/cooperProcess",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/my/contractList",
+			"style": {
+				"navigationBarTitleText": "合同模板"
+			}
+
+		}, {
+			"path": "pages/my/contractDet",
+			"style": {
+				"navigationBarTitleText": "合同详情"
+			}
+
+		}, {
+			"path": "pages/my/orderList",
+			"style": {
+				"navigationBarTitleText": "交易订单"
+			}
+
+		}, {
+			"path": "pages/my/serviceList",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+
+		}, {
+			"path": "pages/single_service/otherService",
+			"style": {
+				"navigationBarTitleText": "其他服务",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/service_zhixun/tuwen",
+			"style": {
+				"navigationBarTitleText": "图文咨询",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/service_zhixun/jianmian",
+			"style": {
+				"navigationBarTitleText": "见面咨询",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/service_zhixun/dianhua",
+			"style": {
+				"navigationBarTitleText": "电话咨询",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/service_zhixun/pinglvshi",
+			"style": {
+				"navigationBarTitleText": "聘请律师",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/list/zixun",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/detail/lawyerDetail",
+			"style": {
+				"navigationBarTitleText": "律师详情",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/components/anli/anli",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/list/moreAnli",
+			"style": {
+				"navigationBarTitleText": "更多案例",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/chat/chat",
+			"style": {
+				"navigationBarTitleText": "聊天",
+				"enablePullDownRefresh": false
+			}
+
+		}
+
+		, {
+			"path": "pages/list/moreStudy",
+			"style": {
+				"navigationBarTitleText": "每日学法",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/detail/studyDetail",
+			"style": {
+				"navigationBarTitleText": "每日学法",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/my/dealList",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		}, {
+			"path": "pages/my/takeOut",
+			"style": {
+				"navigationBarTitleText": "申请提现"
+			}
+		}, {
+			"path": "pages/my/bill",
+			"style": {
+				"navigationBarTitleText": "余额明细"
+			}
+		}, {
+			"path": "pages/my/fenxiao",
+			"style": {
+				"navigationBarTitleText": "我的分销"
+			}
+		}, {
+			"path": "pages/my/guide",
+			"style": {
+				"navigationBarTitleText": "赚钱攻略"
+			}
+		}, {
+			"path": "pages/renzheng/classify",
+			"style": {
+				"navigationBarTitleText": "律师认证"
+			}
+		}, {
+			"path": "pages/renzheng/privateNotice",
+			"style": {
+				"navigationBarTitleText": "自有律师"
+			}
+		}, {
+			"path": "pages/renzheng/commonNotice",
+			"style": {
+				"navigationBarTitleText": "平台律师"
+			}
+		}, {
+			"path": "pages/renzheng/classifyDet1",
+			"style": {
+				"navigationBarTitleText": "律师认证"
+			}
+		}, {
+			"path": "pages/renzheng/classifyDet2",
+			"style": {
+				"navigationBarTitleText": "律师认证"
+			}
+		}, {
+			"path": "pages/renzheng/classifyDet3",
+			"style": {
+				"navigationBarTitleText": "律师认证"
+			}
+		}, {
+			"path": "pages/my/about",
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		}, {
+			"path": "pages/my/xieyi",
+			"style": {
+				"navigationBarTitleText": "服务协议"
+			}
+		}, {
+			"path": "pages/my/serviceSet",
+			"style": {
+				"navigationBarTitleText": "服务设置"
+			}
+		}, {
+			"path": "pages/my/score",
+			"style": {
+				"navigationBarTitleText": "服务评价"
+			}
+		}, {
+			"path": "pages/my/problem",
+			"style": {
+				"navigationBarTitleText": "常见问题"
+			}
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false
+			}
+
+
+		}, {
+			"path": "pages/my/pay",
+			"style": {
+				"navigationBarTitleText": "支付"
 			}
 		}
-	    ,{
-            "path" : "pages/single_service/cooperDownload",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "合同下载",
-                "enablePullDownRefresh": false
-	
-            }
-            
-        }
-        ,{
-            "path" : "pages/list/cooperModuleList",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"navigationStyle":"custom" 
-            }
-            
-        }
-        ,{
-            "path" : "pages/detail/cooperDetail",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"navigationStyle":"custom" 
-            }
-            
-        }
-        ,{
-            "path" : "pages/single_service/cooperCheck",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"navigationStyle":"custom" 
-            }
-            
-        }
-        ,{
-            "path" : "pages/single_service/cooperProcess",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"navigationStyle":"custom" 
-            }
-            
-        },{
-            "path" : "pages/my/contractList",
-            "style": {
-            	"navigationBarTitleText": "合同模板"
-            }
-            
-        },{
-            "path" : "pages/my/contractDet",
-            "style": {
-            	"navigationBarTitleText": "合同详情"
-            }
-            
-        },{
-            "path" : "pages/my/orderList",
-            "style": {
-            	"navigationBarTitleText": "交易订单"
-            }
-            
-        },{
-            "path" : "pages/my/serviceList",
-            "style": {
-            	"navigationBarTitleText": "我的订单"
-            }
-            
-        }
-        ,{
-            "path" : "pages/single_service/otherService",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "其他服务",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/service_zhixun/tuwen",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "图文咨询",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/service_zhixun/jianmian",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "见面咨询",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/service_zhixun/dianhua",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "电话咨询",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/service_zhixun/pinglvshi",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "聘请律师",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/list/zixun",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
-				"navigationStyle":"custom" 
-            }
-            
-        }
-        ,{
-            "path" : "pages/detail/lawyerDetail",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "律师详情",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/components/anli/anli",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/list/moreAnli",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "更多案例",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/chat/chat",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "聊天",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        
-        ,{
-            "path" : "pages/list/moreStudy",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "每日学法",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/detail/studyDetail",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "每日学法",
-                "enablePullDownRefresh": false
-            }
-            
-        },{
-            "path" : "pages/my/dealList",
-            "style": {
-            	"navigationBarTitleText": "我的订单"
-            }
-        },{
-            "path" : "pages/my/takeOut",
-            "style": {
-            	"navigationBarTitleText": "申请提现"
-            }
-        },{
-            "path" : "pages/my/bill",
-            "style": {
-            	"navigationBarTitleText": "余额明细"
-          }
-        },{
-            "path" : "pages/my/fenxiao",
-            "style": {
-            	"navigationBarTitleText": "我的分销"
-          }
-        },{
-            "path" : "pages/my/guide",
-            "style": {
-            	"navigationBarTitleText": "赚钱攻略"
-          }
-        },{
-            "path" : "pages/renzheng/classify",
-            "style": {
-            	"navigationBarTitleText": "律师认证"
-          }
-        },{
-            "path" : "pages/renzheng/privateNotice",
-            "style": {
-            	"navigationBarTitleText": "自有律师"
-          }
-        },{
-            "path" : "pages/renzheng/commonNotice",
-            "style": {
-            	"navigationBarTitleText": "平台律师"
-          }
-        },{
-            "path" : "pages/renzheng/classifyDet1",
-            "style": {
-            	"navigationBarTitleText": "律师认证"
-          }
-        },{
-            "path" : "pages/renzheng/classifyDet2",
-            "style": {
-            	"navigationBarTitleText": "律师认证"
-          }
-        },{
-            "path" : "pages/renzheng/classifyDet3",
-            "style": {
-            	"navigationBarTitleText": "律师认证"
-          }
-        },{
-            "path" : "pages/my/about",
-            "style": {
-            	"navigationBarTitleText": "关于我们"
-          }
-        },{
-            "path" : "pages/my/xieyi",
-            "style": {
-            	"navigationBarTitleText": "服务协议"
-          }
-        },{
-            "path" : "pages/my/serviceSet",
-            "style": {
-            	"navigationBarTitleText": "服务设置"
-          }
-        },{
-            "path" : "pages/my/score",
-            "style": {
-            	"navigationBarTitleText": "服务评价"
-          }
-        },{
-            "path" : "pages/my/problem",
-            "style": {
-            	"navigationBarTitleText": "常见问题"
-          }
-        }
-        ,{
-            "path" : "pages/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "登录",
-                "enablePullDownRefresh": false
-            }
-            
-        },{
-            "path" : "pages/login/forget",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "忘记密码",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/login/registe",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "注册",
-                "enablePullDownRefresh": false
-            } 
-        },{
-            "path" : "pages/my/pay",
-            "style": {
-            	"navigationBarTitleText": "支付"
-          }
-					},{
-            "path" : "pages/my/follow",
-            "style": {
-            	"navigationBarTitleText": "我的关注"
-          }
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"backgroundColor": "#40A9FF",
-		"navigationBarBackgroundColor":"#40A9FF"
-		
+		"navigationBarBackgroundColor": "#40A9FF"
+
 	},
 	"tabBar": {
-		"color": "#2F3034", 
+		"color": "#2F3034",
 		"selectedColor": "#40A9FF",
-		"font-size":"17rpx",
+		"font-size": "17rpx",
 		"box-shadow": "0px -1px 4px 0px rgba(224, 224, 224, 0.5)",
-	    "list": [{
-	        "pagePath": "pages/index/index",
-	        "iconPath": "static/images/fotbar1.png",
-	        "selectedIconPath": "static/images/fotbar11.png",
-	        "text": "首页"
-	    },{
-	        "pagePath": "pages/zhaolvshi/zhaolvshi",
-	        "iconPath": "static/images/fotbar2.png",
-	        "selectedIconPath": "static/images/fotbar21.png",
-	        "text": "找律师"
-	    }, {
-	        "pagePath": "pages/youhuiquan/youhuiquan",
-	        "iconPath": "static/images/fotbar3.png",
-	        "selectedIconPath": "static/images/fotbar31.png",
-	        "text": "优惠券"
-	    }, {
-	        "pagePath": "pages/my/mine",
-	        "iconPath": "static/images/fotbar4.png",
-	        "selectedIconPath": "static/images/fotbar41.png",
-	        "text": "我的"
-	    }]
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/images/fotbar1.png",
+			"selectedIconPath": "static/images/fotbar11.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/zhaolvshi/zhaolvshi",
+			"iconPath": "static/images/fotbar2.png",
+			"selectedIconPath": "static/images/fotbar21.png",
+			"text": "找律师"
+		}, {
+			"pagePath": "pages/youhuiquan/youhuiquan",
+			"iconPath": "static/images/fotbar3.png",
+			"selectedIconPath": "static/images/fotbar31.png",
+			"text": "优惠券"
+		}, {
+			"pagePath": "pages/my/mine",
+			"iconPath": "static/images/fotbar4.png",
+			"selectedIconPath": "static/images/fotbar41.png",
+			"text": "我的"
+		}]
 	}
 }

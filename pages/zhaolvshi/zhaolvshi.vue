@@ -1,21 +1,24 @@
 <template>
-	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
-		<view class="head">
+	<view class="flex-column mx-start sx-stretch" :style="{backgroundColor: '#F4F7F7',height: getWindowHeight}">
+		<view class="head" style="">
 			<view class="search">
 				<image src="@/static/images/search.png"></image>
 				<input type="text" v-model="name" @input="searchName" placeholder="请输入搜索内容"
 					placeholder-style="color:#fff;font-size:20rpx;" />
 			</view>
 		</view>
-		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;">
+		<cooperTabar @searchChange="searchChange"></cooperTabar>
+		<view class="flex-column mx-start sx-stretch" style="flex: 1 1 auto;padding: 20rpx;overflow: auto;">
 
 
-			<cooperTabar @searchChange="searchChange"></cooperTabar>
 			<lawyercard1 :zixun="true" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
 
-
+			<view v-if="!isMore" style="text-align: center;font-size: 36rpx;color: gray;margin-top: 20rpx;">
+				没有数据了，切换选择试试!</view>
 
 		</view>
+		<authMode @confirm="authorTap" ref="authMode"></authMode>
+
 
 
 	</view>
@@ -24,9 +27,16 @@
 <script>
 	import cooperTabar from '@/pages/components/cooperTabar/cooperTabar.vue'
 	import lawyercard1 from '@/pages/components/lawyercard1/lawyercard1.vue'
+	import authMode from '@/pages/components/authMode/authMode.vue'
+	import {
+		mapState,
+		mapGetters,
+		mapMutations,
+		mapActions
+	} from 'vuex'
 	export default {
 		onLoad(p) {
-			console.log(p);
+
 			this.id = p && p.id;
 			let obj = this.list.find(item => item.id == this.id);
 			if (obj) {
@@ -35,10 +45,23 @@
 		},
 		components: {
 			cooperTabar,
-			lawyercard1
+			lawyercard1,
+			authMode
+		},
+		onShow() {
+			if (!this.$store.state.userInfo) {
+				this.$refs.authMode.open()
+				this.getWxCode();
+			}
+		},
+		computed: {
+			...mapGetters([
+				'getWindowHeight',
+			]),
 		},
 		data() {
 			return {
+				isMore: true,
 				page: 1,
 				limit: 10,
 				lawyerList: [],
@@ -47,6 +70,7 @@
 				case_type: '',
 				cityid: '',
 				level: '',
+				age: '',
 				list: [{
 						id: 0,
 						name: "图文咨询",
@@ -74,16 +98,32 @@
 			}
 		},
 		methods: {
+			...mapActions([
+				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+				'getBussinessTypes',
+				'getLawyerLevels', 'getWorkAges', 'getWxCode', 'updateUserInfo'
+			]),
 			back() {
 				uni.navigateBack({
 					delta: 1
 				})
 			},
-			onReachBottom() {
-				uni.showToast({
-					title: '触发上拉加载'
-				});
+			change(e) {
+				console.log(e);
 			},
+			async authorTap() {
+				if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id || !this.$store.state.userInfo
+					.isAuthor) {
+					let isSuccess = await this.updateUserInfo();
+					if (isSuccess) {
+						uni.showToast({
+							title: '授权成功！'
+						})
+						this.$refs.authMode.open();
+					}
+				}
+			},
+
 			// onPageScroll(e) {
 			// 	//兼容iOS端下拉时顶部漂移
 			// 	this.headerPosition = e.scrollTop>=0?"fixed":"absolute";
@@ -92,31 +132,26 @@
 			// },
 			//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
 			onPullDownRefresh() {
-				// setTimeout(function() {
-				// 	uni.stopPullDownRefresh();
-				// }, 1000);
+				uni.showToast({
+					title: '刷新',
+					icon:'none'
+				});
+				this.isMore = true;
+				this.searchChange()
+				setTimeout(function() {
+					uni.stopPullDownRefresh();
+				}, 1000);
 			},
 			//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
 			async onReachBottom() {
-				uni.showToast({
-					title: '触发上拉加载'
-				});
-				// let len = this.productList.length;
-				// if (len >= 40) {
-				// 	this.loadingText = '到底了';
-				// 	return false;
-				// }
-				// // 加入商品,生成环境请替换为ajax请求
-				// let result = await myRequest('/business/page',{}, "GET");
-				// console.log(result)
-
-				//  let list = result.data.records;
-				// if (Array.isArray(list) && list.length > 0) {
-				// this.productList = list;
-				// }
-				// this.productList.push();
+				if (this.isMore) {
+					this.page = this.page + 1;
+					this.limit = this.limit + 10;
+					this.searchChange()
+				}
 			},
 			searchName() {
+				this.isMore = true;
 				if (this.ttt) {
 					clearTimeout(this.ttt);
 				}
@@ -126,12 +161,16 @@
 			},
 			async searchChange(e) {
 				console.log('----请求律师列表的信息 ------>');
-				if(e){
+				if (e) {
+					this.isMore = true;
 					this.case_type = e.case_type;
 					this.cityid = e.cityid;
 					this.level = e.level;
+					this.age = e.age;
 				}
-				
+				uni.showLoading({
+					title:'加载中'
+				})
 				let res = await this.$myRequest({
 					url: 'layer/list',
 					data: {
@@ -140,12 +179,26 @@
 						name: this.name,
 						case_type: this.case_type,
 						cityid: this.cityid,
-						level: this.level
+						level: this.level,
+						age: this.age
 					}
 				});
+				uni.hideLoading();
 				if (res && res.data) {
-					console.log(res);
-					this.lawyerList = res.data;
+
+					// this.lawyerList = res.data;
+					if (res.data.length > 0) {
+						for (let s of res.data) {
+							console.log(s.id);
+							let f = this.lawyerList.find(item2=>item2.id==s.id);
+							if(!f){
+								this.lawyerList.push(s)
+							}
+						}
+
+					} else {
+						this.isMore = false;
+					}
 				}
 			},
 			buy(e) {
@@ -158,6 +211,16 @@
 </script>
 
 <style>
+	@keyframes mymove {
+		from {
+			height: 0px
+		}
+
+		to {
+			height: 200rpx;
+		}
+	}
+
 	.head {
 		width: 750rpx;
 		height: 156rpx;

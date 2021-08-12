@@ -1,4 +1,20 @@
 
+@-webkit-keyframes mymove {
+from {
+		height: 0px
+}
+to {
+		height: 200rpx;
+}
+}
+@keyframes mymove {
+from {
+		height: 0px
+}
+to {
+		height: 200rpx;
+}
+}
 .head {
 	width: 750rpx;
 	height: 156rpx;

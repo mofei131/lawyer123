@@ -65,8 +65,9 @@
 					<view class="group7">
 						<text lines="1" decode="true" class="info4">～&nbsp;产品介绍&nbsp;～</text>
 						<view class="bd1"></view>
-						<text lines="1"
-							class="info5">{{dataSource.intro}}</text>
+						<view lines="1" class="info5">
+							<rich-text :nodes="dataSource.intro"></rich-text>
+						</view>
 					</view>
 				</view>
 				<view class="block3">
@@ -74,27 +75,8 @@
 						<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 						<view class="bd2"></view>
 						<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;">
-							{{dataSource.service}}
-							<!-- <view class="bd3">
-								<text lines="1" class="txt2">服务说明：</text>
-								<text lines="1" class="txt3">不限制见面咨询时间，把问题分析咨询清楚</text>
-							</view>
-							<view class="bd4">
-								<text lines="1" class="word3">售后服务：</text>
-								<text lines="1" class="info6">下单付款后，，专属客服马上联系您</text>
-							</view>
-							<view class="bd5">
-								<text lines="1" class="word4">服务时限：</text>
-								<text lines="1" class="word5">下单付款后，，专属客服马上联系您</text>
-							</view>
-							<view class="bd5">
-								<text lines="1" class="word4">服务时限：</text>
-								<text lines="1" class="word5">下单付款后，，专属客服马上联系您</text>
-							</view>
-							<view class="bd5">
-								<text lines="1" class="word4">服务时限：</text>
-								<text lines="1" class="word5">下单付款后，，专属客服马上联系您</text>
-							</view> -->
+							<rich-text :nodes="dataSource.service"></rich-text>
+
 						</view>
 
 					</view>
@@ -164,48 +146,58 @@
 	export default {
 		onLoad(p) {
 			console.log(p);
-			console.log(p);
+			
 			this.id = p && p.id;
 			let obj = this.list.find(item => item.id == this.id);
 			if (obj) {
 				this.typeData = obj;
+
+				this.getContent(obj.detailId);
+
 			}
 
 		},
 		data() {
 			return {
+
 				content: "双方都",
-				dataSource:{},
+				dataSource: {},
 				id: '',
 				list: [{
 						id: 5,
 						name: "合同审核",
-						url: "/static/icon/icon6.png"
+						url: "/static/icon/icon6.png",
+						detailId: 4
 					},
 					{
 						id: 6,
 						name: "律师函",
-						url: "/static/icon/icon7.png"
+						url: "/static/icon/icon7.png",
+						detailId: 5
 					},
 					{
 						id: 7,
 						name: "债务催收指导",
-						url: "/static/icon/icon8.png"
+						url: "/static/icon/icon8.png",
+						detailId: 6
 					},
 					{
 						id: 8,
 						name: "起诉状/答辩状",
-						url: "/static/icon/icon9.png"
+						url: "/static/icon/icon9.png",
+						detailId: 7
 					},
 					{
 						id: 9,
 						name: "代写借/欠条",
-						url: "/static/icon/icon10.png"
+						url: "/static/icon/icon10.png",
+						detailId: 8
 					},
 					{
 						id: 10,
 						name: "刑事会见",
-						url: "/static/icon/icon11.png"
+						url: "/static/icon/icon11.png",
+						detailId: 9
 					},
 
 				],
@@ -218,15 +210,15 @@
 					delta: 1
 				})
 			},
-			async getContent() {
+			async getContent(id) {
 				let res = await this.$myRequest({
 					url: 'service/detail',
 					data: {
-						id: this.id
+						id
 					}
 				});
-				if (res && res.data) {
-					console.log(res);
+				if (res && res.code == 200) {
+					console.log(res.data);
 					this.dataSource = res.data;
 				}
 			},
@@ -235,17 +227,17 @@
 					url: "../detail/cooperDetail?id=1"
 				})
 			},
-			async toPay(){
-				
+			async toPay() {
+
 			},
-			async commitService(){
+			async commitService() {
 				let res = await this.$myRequest({
-				url: 'service/danxiang',
-				data: {
-					layer_id:null,
-					user_id:null,
-					service_id:this.id,
-				}
+					url: 'service/danxiang',
+					data: {
+						layer_id: null,
+						user_id: null,
+						service_id: this.id,
+					}
 				});
 				if (res && res.data) {
 					console.log(res);

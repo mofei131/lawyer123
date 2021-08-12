@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));var _methods;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var cooperTabar = function cooperTabar() {__webpack_require__.e(/*! require.ensure | pages/components/cooperTabar/cooperTabar */ "pages/components/cooperTabar/cooperTabar").then((function () {return resolve(__webpack_require__(/*! @/pages/components/cooperTabar/cooperTabar.vue */ 397));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard1 = function lawyercard1() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */ "pages/components/lawyercard1/lawyercard1").then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 404));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));
 
 
 
@@ -151,6 +151,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var cooperTabar = function cooperTabar() {__webpack_require__.e(/*! require.ensure | pages/components/cooperTabar/cooperTabar */ "pages/components/cooperTabar/cooperTabar").then((function () {return resolve(__webpack_require__(/*! @/pages/components/cooperTabar/cooperTabar.vue */ 380));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard1 = function lawyercard1() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */ "pages/components/lawyercard1/lawyercard1").then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 387));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var authMode = function authMode() {__webpack_require__.e(/*! require.ensure | pages/components/authMode/authMode */ "pages/components/authMode/authMode").then((function () {return resolve(__webpack_require__(/*! @/pages/components/authMode/authMode.vue */ 394));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -158,7 +168,7 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   onLoad: function onLoad(p) {var _this = this;
-    console.log(p);
+
     this.id = p && p.id;
     var obj = this.list.find(function (item) {return item.id == _this.id;});
     if (obj) {
@@ -167,10 +177,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     cooperTabar: cooperTabar,
-    lawyercard1: lawyercard1 },
+    lawyercard1: lawyercard1,
+    authMode: authMode },
+
+  onShow: function onShow() {
+    if (!this.$store.state.userInfo) {
+      this.$refs.authMode.open();
+      this.getWxCode();
+    }
+  },
+  computed: _objectSpread({},
+  (0, _vuex.mapGetters)([
+  'getWindowHeight'])),
+
 
   data: function data() {
     return {
+      isMore: true,
       page: 1,
       limit: 10,
       lawyerList: [],
@@ -179,6 +202,7 @@ __webpack_require__.r(__webpack_exports__);
       case_type: '',
       cityid: '',
       level: '',
+      age: '',
       list: [{
         id: 0,
         name: "图文咨询",
@@ -205,17 +229,33 @@ __webpack_require__.r(__webpack_exports__);
       ttt: null };
 
   },
-  methods: (_methods = {
+  methods: _objectSpread(_objectSpread({},
+  (0, _vuex.mapActions)([
+  'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+  'getBussinessTypes',
+  'getLawyerLevels', 'getWorkAges', 'getWxCode', 'updateUserInfo'])), {}, {
+
     back: function back() {
       uni.navigateBack({
         delta: 1 });
 
     },
-    onReachBottom: function onReachBottom() {
-      uni.showToast({
-        title: '触发上拉加载' });
+    change: function change(e) {
+      console.log(e);
+    },
+    authorTap: function authorTap() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var isSuccess;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
+                !_this2.$store.state.userInfo || !_this2.$store.state.userInfo.user_id || !_this2.$store.state.userInfo.
+                isAuthor)) {_context.next = 5;break;}_context.next = 3;return (
+                  _this2.updateUserInfo());case 3:isSuccess = _context.sent;
+                if (isSuccess) {
+                  uni.showToast({
+                    title: '授权成功！' });
+
+                  _this2.$refs.authMode.open();
+                }case 5:case "end":return _context.stop();}}}, _callee);}))();
 
     },
+
     // onPageScroll(e) {
     // 	//兼容iOS端下拉时顶部漂移
     // 	this.headerPosition = e.scrollTop>=0?"fixed":"absolute";
@@ -224,65 +264,78 @@ __webpack_require__.r(__webpack_exports__);
     // },
     //下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
     onPullDownRefresh: function onPullDownRefresh() {
-      // setTimeout(function() {
-      // 	uni.stopPullDownRefresh();
-      // }, 1000);
-    } }, _defineProperty(_methods, "onReachBottom", function onReachBottom()
+      uni.showToast({
+        title: '刷新',
+        icon: 'none' });
 
-  {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-              uni.showToast({
-                title: '触发上拉加载' });
+      this.isMore = true;
+      this.searchChange();
+      setTimeout(function () {
+        uni.stopPullDownRefresh();
+      }, 1000);
+    },
+    //上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
+    onReachBottom: function onReachBottom() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                if (_this3.isMore) {
+                  _this3.page = _this3.page + 1;
+                  _this3.limit = _this3.limit + 10;
+                  _this3.searchChange();
+                }case 1:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    searchName: function searchName() {var _this4 = this;
+      this.isMore = true;
+      if (this.ttt) {
+        clearTimeout(this.ttt);
+      }
+      this.ttt = setTimeout(function (item) {
+        _this4.searchChange();
+      }, 1000);
+    },
+    searchChange: function searchChange(e) {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res, _iterator, _step, _loop;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                console.log('----请求律师列表的信息 ------>');
+                if (e) {
+                  _this5.isMore = true;
+                  _this5.case_type = e.case_type;
+                  _this5.cityid = e.cityid;
+                  _this5.level = e.level;
+                  _this5.age = e.age;
+                }
+                uni.showLoading({
+                  title: '加载中' });_context3.next = 5;return (
 
-              // let len = this.productList.length;
-              // if (len >= 40) {
-              // 	this.loadingText = '到底了';
-              // 	return false;
-              // }
-              // // 加入商品,生成环境请替换为ajax请求
-              // let result = await myRequest('/business/page',{}, "GET");
-              // console.log(result)
-
-              //  let list = result.data.records;
-              // if (Array.isArray(list) && list.length > 0) {
-              // this.productList = list;
-              // }
-              // this.productList.push();
-            case 1:case "end":return _context.stop();}}}, _callee);}))();}), _defineProperty(_methods, "searchName", function searchName()
-  {var _this2 = this;
-    if (this.ttt) {
-      clearTimeout(this.ttt);
-    }
-    this.ttt = setTimeout(function (item) {
-      _this2.searchChange();
-    }, 1000);
-  }), _defineProperty(_methods, "searchChange", function searchChange(
-  e) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-              console.log('----请求律师列表的信息 ------>');
-              if (e) {
-                _this3.case_type = e.case_type;
-                _this3.cityid = e.cityid;
-                _this3.level = e.level;
-              }_context2.next = 4;return (
-
-                _this3.$myRequest({
-                  url: 'layer/list',
-                  data: {
-                    page: _this3.page,
-                    limit: _this3.limit,
-                    name: _this3.name,
-                    case_type: _this3.case_type,
-                    cityid: _this3.cityid,
-                    level: _this3.level } }));case 4:res = _context2.sent;
+                  _this5.$myRequest({
+                    url: 'layer/list',
+                    data: {
+                      page: _this5.page,
+                      limit: _this5.limit,
+                      name: _this5.name,
+                      case_type: _this5.case_type,
+                      cityid: _this5.cityid,
+                      level: _this5.level,
+                      age: _this5.age } }));case 5:res = _context3.sent;
 
 
-              if (res && res.data) {
-                console.log(res);
-                _this3.lawyerList = res.data;
-              }case 6:case "end":return _context2.stop();}}}, _callee2);}))();
-  }), _defineProperty(_methods, "buy", function buy(
-  e) {
-    console.log(e);
-  }), _methods) };exports.default = _default;
+                uni.hideLoading();
+                if (res && res.data) {
+
+                  // this.lawyerList = res.data;
+                  if (res.data.length > 0) {_iterator = _createForOfIteratorHelper(
+                    res.data);try {_loop = function _loop() {var s = _step.value;
+                        console.log(s.id);
+                        var f = _this5.lawyerList.find(function (item2) {return item2.id == s.id;});
+                        if (!f) {
+                          _this5.lawyerList.push(s);
+                        }};for (_iterator.s(); !(_step = _iterator.n()).done;) {_loop();
+                      }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
+
+                  } else {
+                    _this5.isMore = false;
+                  }
+                }case 8:case "end":return _context3.stop();}}}, _callee3);}))();
+    },
+    buy: function buy(e) {
+      console.log(e);
+    } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

@@ -143,13 +143,13 @@
 					lng,
 					lat
 				} = this.$data;
-				// if (!layer_id || !user_id) {
-				// 	uni.showToast({
-				// 		title: '用户数据异常，请重新登录',
-				// 		icon: 'none'
-				// 	})
-				// 	return;
-				// }
+				if (!layer_id || !user_id) {
+					uni.showToast({
+						title: '用户数据异常，请重新登录',
+						icon: 'none'
+					})
+					return;
+				}
 				if (!content || (content + '').trim() == '') {
 					uni.showToast({
 						title: '请输入咨询内容',
@@ -172,8 +172,8 @@
 					return;
 				}
 				let data = {
-					layer_id:2,
-					user_id:43,
+					layer_id,
+					user_id,
 					content,
 					case_type,
 					address,

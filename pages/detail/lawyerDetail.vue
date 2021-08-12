@@ -1,6 +1,6 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="padding: 20rpx;background-color: #F8F8F8;">
-		<lawyercard1  :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
+		<lawyercard1 :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
 
 		<view class="flex-column mx-start sx-stretch" style="border-radius: 20rpx;background-color: #FFFFFF;">
 			<view class="flex-row mx-start sx-center ld_title_wrap">
@@ -10,25 +10,25 @@
 			<view class="flex-column mx-start sx-stretch"
 				style="flex: 0 0 400rpx;padding: 20rpx;line-height: 36rpx;font-size: 25rpx ;color: rgba(153,153,153,1);">
 				<view class="flex-row mx-start sx-center">
-					<view style="flex: 0 0 120rpx;">毕业院校：</view>
-					<view style="flex: 1 1 auto"> xx学校</view>
+					<view style="flex: 0 0 140rpx;">毕业院校：</view>
+					<view style="flex: 1 1 auto"> {{lawyerList[0] && lawyerList[0].school}}</view>
 				</view>
 				<view class="flex-row mx-start sx-center">
-					<view style="flex: 0 0 120rpx;">学历：</view>
-					<view style="flex: 1 1 auto"> 硕士</view>
+					<view style="flex: 0 0 140rpx;">学历：</view>
+					<view style="flex: 1 1 auto"> {{lawyerList[0] && lawyerList[0].xueli}}</view>
 				</view>
 				<view class="flex-row mx-start sx-center">
-					<view style="flex: 0 0 120rpx;">就读专业：</view>
-					<view style="flex: 1 1 auto"> 法学</view>
+					<view style="flex: 0 0 140rpx;">就读专业：</view>
+					<view style="flex: 1 1 auto"> {{lawyerList[0] && lawyerList[0].zhuanye}}</view>
 				</view>
 				<view class="flex-row mx-start sx-center">
-					<view style="flex: 0 0 120rpx;">就职律所：</view>
-					<view style="flex: 1 1 auto"> 潍坊事务所所</view>
+					<view style="flex: 0 0 140rpx;">就职律所：</view>
+					<view style="flex: 1 1 auto"> {{lawyerList[0] && lawyerList[0].lvsuo}}</view>
 				</view>
 				<view class="flex-row mx-start sx-start" style="margin-top: 20rpx;">
-					<view style="flex: 0 0 120rpx;">个人简介：</view>
+					<view style="flex: 0 0 140rpx;">个人简介：</view>
 					<view style="flex: 1 1 auto ;height: 200rpx;overflow: auto;">
-						精法以专业、勤勉以敬业。张律师待人以诚，立世以信，法律专业知识扎实、办事认真负责、办案经验丰富，成功代理了多起劳动争议仲裁诉讼及其他民事纠纷案件。精通国家劳动人事法规政策,&nbsp;能够防范企业经营风险和用工风险。致力于企业法律服务的研究与开发，积极的拓展企业法律顾问服务,真正做到急企业之所急，想企业之所想。
+						 {{lawyerList[0] && lawyerList[0].jianjie}}
 					</view>
 				</view>
 
@@ -42,7 +42,7 @@
 				</view>
 				<view class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
 					<text>图文详情</text>
-					<text>￥28元/30分钟</text>
+					<text>￥{{lawyerList[0] && lawyerList[0].price && lawyerList[0] && lawyerList[0].price.tuwen}}元</text>
 				</view>
 				<fa-icon type="angle-right" color="gray"></fa-icon>
 			</view>
@@ -52,8 +52,8 @@
 					style="background-image: url(../../static/icon/icon2.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
 				</view>
 				<view class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
-					<text>图文详情</text>
-					<text>￥28元/30分钟</text>
+					<text>电话沟通</text>
+					<text>{{lawyerList[0] && lawyerList[0].price && lawyerList[0] && lawyerList[0].price.dianhua}}元</text>
 				</view>
 				<fa-icon type="angle-right" color="gray"></fa-icon>
 			</view>
@@ -86,35 +86,37 @@
 	import anli from '../components/anli/anli.vue'
 	import lawyercard1 from '@/pages/components/lawyercard1/lawyercard1.vue'
 	export default {
+		onLoad(p) {
+			console.log(p.id+"======="+ this.$store.state.userInfo.user_id );
+			this.lawyerid = p.id;
+			let res = this.$myRequest({
+				url: 'layer/detail',
+				methods: 'GET',
+				data: {
+					layer_id: p.id,
+					user_id: this.$store.state.userInfo.user_id
+				}
+			});
+			res.then(data => {
+				if (data.code==200) {
+					console.log(data);
+					this.lawyerList.push(data.data)
+				}else{
+					uni.showToast({
+						title:data.message,
+						icon:'none'
+					})
+				}
+			})
+		},
 		components: {
 			anli,
 			lawyercard1
 		},
 		data() {
 			return {
-				lawyerList: [{
-					field: [{
-							name: "交通",
-							class: 'green'
-						},
-						{
-							name: "婚姻",
-							class: 'blue'
-						},
-						{
-							name: "合同",
-							class: 'pink'
-						},
-						{
-							name: "审核",
-							class: 'purple'
-						},
-						{
-							name: "诉状",
-							class: 'yellow'
-						}
-					],
-				}, ],
+				lawyerid:null,
+				lawyerList: [],
 				anli: [{
 						id: 0,
 						sort: '买卖合同',
@@ -155,15 +157,50 @@
 			}
 		},
 		methods: {
-			tuTuwenPage(){
+			tuTuwenPage() {
 				uni.navigateTo({
-					url:'../service_zhixun/tuwen'
+					url: '../service_zhixun/tuwen?id='+this.lawyerid
 				})
 			},
-			toDianhuaPage(){
-				uni.navigateTo({
-					url:'../service_zhixun/dianhua'
+			async toDianhuaPage() {
+			
+				let layer_id = this.lawyerid;
+				// let user_id = this.$store.state.userInfo.user_id;
+				// if (!layer_id || !user_id) {
+				// 	uni.showToast({
+				// 		title: '用户数据异常，请重新登录',
+				// 		icon: 'none'
+				// 	})
+				// 	return;
+				// }
+				let data = {
+					layer_id,
+					user_id:this.$store.state.userInfo.user_id,
+				}
+				console.log(data);
+				uni.showLoading({
+					title: '请稍等'
 				})
+				let res = await this.$myRequest({
+					url: 'service/dianhua',
+					method:'GET',
+					data
+				});
+				uni.hideLoading();
+				if(res && res.code==-1){
+					uni.showToast({
+						title: 	res.message,
+						icon:'none'
+					})
+				}else{
+					if (res && res.data) {
+						let service_id = res.data.service_id;
+						//跳转收银台
+						// uni.navigateTo({
+						// 	url: '../service_zhixun/dianhua?id='
+						// })		
+					}
+				}
 			}
 		}
 	}

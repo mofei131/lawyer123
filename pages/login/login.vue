@@ -130,19 +130,21 @@
 					uni.getUserProfile({
 						desc: '登录',
 						success: (res) => {
+							console.log('----------');
 							console.log(res);
 							_this.userInfo = res.userInfo;
 							try {
-								_this.login();
+// 								_this.login();
 								
-								uni.setStorageSync('userInfo',{
-									user_id:43,
-									nickName:res.userInfo.nickName,
-									avatarUrl:res.userInfo.avatarUrl
-								});
-								uni.switchTab({
-									url: '/pages/index/index'
-								});
+// 								uni.setStorageSync('userInfo',{
+// 									user_id:43,
+// 									nickName:res.userInfo.nickName,
+// 									avatarUrl:res.userInfo.avatarUrl
+// 								});
+// 								uni.switchTab({
+// 									url: '/pages/index/index'
+// 								});
+								// _this.login();
 							} catch (e) {}
 						},
 						fail: (res) => {
@@ -241,14 +243,10 @@
 
 
 			forgetPwd: function() {
-				uni.redirectTo({
-					url: '/pages/login/forget'
-				});
+				
 			},
 			tozhuce: function() {
-				uni.redirectTo({
-					url: '/pages/login/registe'
-				});
+				
 			},
 			async submit(e) {
 				// 表单数据

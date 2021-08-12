@@ -20,6 +20,8 @@
 	display: flex;
 	position: relative;
 	margin-bottom: 34rpx;
+	
+	/* border: 1px solid; */
 }
 .studytitle {
 	color: #323232;
@@ -52,6 +54,9 @@
 }
 .studyitemright {
 	margin-left: 18rpx;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 auto;
+	        flex: 1 1 auto;
 }
 .cost {
 	color: #FF4D4F !important;

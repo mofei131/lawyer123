@@ -2,15 +2,15 @@
 	<view class="fourcard">
 		<view class="cardone" v-for="(item,index) in lawyerlist" :key="index" @tap='todetail(item)'>
 			<view class="cardoneleft">
-				<image :src="item.portrait"></image>
+				<image :src="item.photo||'@/static/icon/icon1.png'"></image>
 			</view>
 			<view class="cardoneright">
 				<view class="head">
 					<view class="name">{{item.name}}</view>
-					<view class="workyer">执业{{item.workyer}}年</view>
+					<view class="workyer">执业{{item.zhiyenianxian}}年</view>
 				</view>
-				<view class="address">{{item.address}}</view>
-				<view class="begood">{{item.begood}}</view>
+				<view class="address">{{item.city}}</view>
+				<view class="begood">{{item.case_type}}</view>
 			</view>
 		</view>
 	</view>
@@ -20,9 +20,9 @@
 	export default{
 		props:["lawyerlist"],
 		methods:{
-			todetail(){
+			todetail(item){
 				uni.navigateTo({
-					url:'../detail/lawyerDetail?id='
+					url:'../detail/lawyerDetail?id='+item.id
 				})
 			}
 		}

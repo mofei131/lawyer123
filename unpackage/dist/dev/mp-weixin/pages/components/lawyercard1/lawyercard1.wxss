@@ -52,4 +52,7 @@
 .yellow {
 	background: #E1B12F;
 }
+.avator{
+	border-radius: 50%;margin-right: 10rpx;-webkit-box-flex: 0;-webkit-flex: 0 0 125rpx;flex: 0 0 125rpx;height:125rpx;
+}
 

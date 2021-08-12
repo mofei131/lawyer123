@@ -111,12 +111,19 @@
 					url: 'service/pinqing',
 					data
 				});
-				if (res && res.data) {
-					uni.hideLoading();
+				uni.hideLoading()
+				if(res && res.code==-1){
 					uni.showToast({
-						title:"提交成功"+res.data.service_id
+						title:res.message,
+						icon:'none'
 					})
-				
+				}else{
+					if(res && res.data){
+						console.log(res);
+						uni.showToast({
+							title: "返回service_id" + res.data.service_id
+						})
+					}
 				}
 			},
 			searchKeyWord() {

@@ -42,10 +42,7 @@
     "pages/my/score",
     "pages/my/problem",
     "pages/login/login",
-    "pages/login/forget",
-    "pages/login/registe",
-    "pages/my/pay",
-    "pages/my/follow"
+    "pages/my/pay"
   ],
   "subPackages": [],
   "window": {
@@ -92,6 +89,5 @@
   },
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

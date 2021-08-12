@@ -24,10 +24,11 @@
 					{{item.intro}}
 				</view>
 				<view class="flex-row mx-between sx-center" style="flex: 0 0 auto;">
-					<text style="color: #FF4D4F;">￥{{item.buy}}</text>
-					<view
+					<text style="color: #FF4D4F;">￥{{item.price}}</text>
+					<view v-if="item.buy" @tap="toPay"
 						style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
 						立即购买</view>
+						
 				</view>
 			</view>
 		</view>
@@ -42,34 +43,35 @@
 		onLoad(p) {
 			console.log(p);
 			let userInfo = this.$store.state.userInfo;
-
-			if (!p || !p.cid || !p.name || !userInfo) {
-				uni.showToast({
-					title: '参数有误！',
-					icon: 'none'
-				})
-				return;
-			}
-			this.id = p.cid;
+			console.log(userInfo);
+			// if (!p || !p.cid || !p.name || !userInfo) {
+			// 	uni.showToast({
+			// 		title: '参数有误！',
+			// 		icon: 'none'
+			// 	})
+			// 	return;
+			// }
+			// this.id = p.cid;
 			this.user_id = userInfo.user_id;
 			this.drawInit(p.cid, p.name);
 		},
 		data() {
 			return {
-				id: null,
+				// id: null,
 				user_id: null,
 				dataSource: [],
-				isPay: false,
+				// isPay: false,
 			}
 		},
 		methods: {
 			async drawInit(cid, name) {
 				let res = await this.$myRequest({
 					url: 'agreement/list',
+					method: 'GET',
 					data: {
 						cid,
 						name,
-						user_id: this.$store.state.userInfo.user_id
+						user_id: this.user_id
 					}
 				});
 				if (res && res.data) {
@@ -83,23 +85,40 @@
 				})
 			},
 			async toDetail(item) {
+				if(item.buy){
+					
+						uni.navigateTo({
+							url: '../detail/cooperDetail?coopid=' + item.id
+						})
+					
+				}else{
+					uni.showToast({
+						title: '请先购买',
+						icon: 'none'
+					})
+				}
+				
+			},
+			async toPay(item) {
+				//跳转到支付页面；支付成功，请求
 				let res = await this.$myRequest({
-					url: 'agreement/detail',
+					url: 'service/agreement',
+					methods: 'GET',
 					data: {
-						id: this.id,
-						user_id: this.user_id
+						user_id: this.$store.state.userInfo.user_id,
+						agreement_id: item.id
 					}
 				});
-				if (res && res.code==-1) {
-					uni.showToast({
-						title:res.message,
-						icon:'none'
+				if (res.code == 200) {
+					uni.navigateTo({
+						url: '../detail/cooperDetail?coopid=' + item.id
 					})
-					return;
+				} else {
+					uni.showToast({
+						title: res.message,
+						icon: 'none'
+					})
 				}
-				uni.navigateTo({
-					url: "../detail/cooperDetail?url="+item.link
-				})
 			}
 		}
 	}
