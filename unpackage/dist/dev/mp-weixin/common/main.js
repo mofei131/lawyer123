@@ -15,10 +15,10 @@ var _amapWx = _interopRequireDefault(__webpack_require__(/*! @/common/SDK/amap-w
 _vue.default.prototype.$amapPlugin = new _amapWx.default.AMapWX({ key: "9ef3f1159ac3b62ed6cb47fd15bac9df" });
 _vue.default.prototype.$store = _index.default;
 _vue.default.prototype.$myRequest = _http.default.ajax;
-_vue.default.config.productionTip = false;
 
+_vue.default.config.productionTip = false;
 // 图标组件
-var faicon = function faicon() {__webpack_require__.e(/*! require.ensure | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then((function () {return resolve(__webpack_require__(/*! @/components/fa-icon/fa-icon.vue */ 344));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var faicon = function faicon() {__webpack_require__.e(/*! require.ensure | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then((function () {return resolve(__webpack_require__(/*! @/components/fa-icon/fa-icon.vue */ 343));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 _vue.default.component('fa-icon', faicon);
 _App.default.mpType = 'app';
 

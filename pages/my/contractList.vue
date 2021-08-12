@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="contractlist">
-			<view class="contractitem" v-for="(item,index) in contract" @click="toUrl(item.id)">
+			<view class="contractitem" v-for="(item,index) in contract" @click="toUrl(item.agreement_id)" :key="index">
 				<view>{{item.name}}</view>
 				<image src="../../static/icon/myrighticon.png"></image>
 			</view>
@@ -13,19 +13,49 @@
 	export default{
 		data(){
 			return{
-				contract:[
-					{id:0,name:'合同1'},
-					{id:1,name:'合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2'},
-					{id:2,name:'合同3合同2合同2合同2合同2合同2合同2合同2合同2合同2合同2'},
-				]
+				page:1,
+				contract:[]
 			}
+		},
+		onLoad(){
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/agreement/myDownload',
+				method:'GET',
+				data:{
+					user_id:42,
+					page:that.page,
+					limit:10
+				},
+				success(res) {
+					that.contract = res.data.data
+				}
+			})
 		},
 		methods:{
 			toUrl(e){
 				uni.navigateTo({
 					url:'./contractDet?id='+e
 				})
-			}
+			},
+			onReachBottom(e) {
+						let that = this
+						uni.request({
+							url:'https://layer.boyaokj.cn/api/agreement/myDownload',
+							method:'GET',
+							data:{
+								user_id:42,
+								page:that.page++,
+								limit:10
+							},
+							success(res) {
+								for(let i in res.data.data){
+									that.contract.push(res.data.data[i])
+								}
+								console.log("触底加载")
+							}
+						})
+					}
 		}
 	}
 </script>

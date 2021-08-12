@@ -1,16 +1,19 @@
 <template>
 	<view>
 		<view class="itemlist">
-			<view class="listitem">
-				<!-- <view>{{arr.chapter}}</view> -->
+			<view class="listitem flex-row mx-start sx-center">
+				<view v-if="typeInfo[arr.typeId]" class="backImgCenter imggg"
+					:style="{backgroundImage: `url(${typeInfo[arr.typeId].url})`}"></view>
+				<view v-if="typeInfo[arr.typeId]" style="margin: 0 20rpx;flex:1 1 auto">{{typeInfo[arr.typeId].name}}</view>
 				<view>￥{{arr.price}}</view>
 			</view>
 			<view class="paylist">
-			<view class="wxpay">
-				<image src="@/static/icon/wxicon.png"></image>
-				<view>微信支付</view>
-			</view>	
-			<image @tap="agreementSuccess" class="fix" :src="agreement==true?'../../static/icon/ty1.png':'../../static/icon/ty0.png'"></image>
+				<view class="wxpay">
+					<image src="@/static/icon/wxicon.png"></image>
+					<view>微信支付</view>
+				</view>
+				<image @tap="agreementSuccess" class="fix"
+					:src="agreement==true?'../../static/icon/ty1.png':'../../static/icon/ty0.png'"></image>
 			</view>
 			<view class="nowpay">
 				<button @tap="pay()">立即支付</button>
@@ -19,86 +22,226 @@
 	</view>
 </template>
 
+
+
 <script>
-	export default{
-		data(){
-			return{
-				arr:{
-					id:'',
-					chapter:'',
-					price:'',
+	export default {
+		data() {
+			return {
+				emitName:'',
+				typeInfo: {
+					1: {
+						name: '图文咨询',
+						url: '/static/icon/icon1.png'
 					},
+					2: {
+						name: '电话咨询',
+						url: '/static/icon/icon2.png'
+					},
+					3: {
+						name: '见面咨询',
+						url: '/static/icon/icon3.png'
+					},
+					4: {
+						name: '合同审核',
+						url: '/static/icon/icon6.png'
+					},
+					5: {
+						name: '律师函',
+						url: '/static/icon/icon7.png'
+					},
+					6: {
+						name: '债务催收指导',
+						url: '/static/icon/icon8.png'
+					},
+					7: {
+						name: '代写起诉状/答辩状',
+						url: '/static/icon/icon9.png'
+					},
+					8: {
+						name: '代写借/欠条',
+						url: '/static/icon/icon10.png'
+					},
+					9: {
+						name: '刑事会见',
+						url: '/static/icon/icon11.png'
+					},
+					10: {
+						name: '聘请律师',
+						url: '/static/icon/icon4.png'
+					},
+					11: {
+						name: '合同模板',
+						url: '/static/icon/icon5.png'
+					},
+					12: {
+						name: '每日学法',
+						url: '/static/icon/icon7.png'
+					},
+					13: {
+						name: '套餐1',
+						url: '/static/icon/icon7.png'
+					},
+					14: {
+						name: '套餐2',
+						url: '/static/icon/icon7.png'
+					},
+					15: {
+						name: '套餐3',
+						url: '/static/icon/icon7.png'
+					},
+					16: {
+						name: '套餐4',
+						url: '/static/icon/icon7.png'
+					},
+				},
+				arr: {
+					id: '',
+					chapter: '',
+					price: '',
+					typeId: ''
+				},
 				agreement: true,
 			}
 		},
-		onLoad(options){
-			// this.arr.id = options.id
+		onLoad(options) {
+			this.arr.id = options.id
 			// this.arr.chapter = options.chapter
-			// this.arr.price = options.price
+			this.arr.typeId = options.typeId || ''
+			console.log(this.arr.typeId);
+			this.arr.price = options.price;
+			this.emitName = options.emitName;
 		},
-		computed:{
-			
+		computed: {
+
 		},
-		methods:{
+		methods: {
 			agreementSuccess() {
-			  this.agreement = !this.agreement;
+				this.agreement = !this.agreement;
 			},
-			pay(){
-				if(this.agreement == false){
+			async pay() {
+				let emitName = this.emitName;
+				if (this.agreement == false) {
 					uni.showToast({
-						title:"请勾选支付方式",
-						icon:'none'
+						title: "请勾选支付方式",
+						icon: 'none'
 					})
-				}else{
-					console.log("支付")
+				} else {
+					console.log("支付---------")
+					console.log({
+						user_id: this.$store.state.userInfo.user_id,
+						source_id: this.arr.id
+					});
+					let res = await this.$myRequest({
+						url: 'wechat/payCenter',
+						methods: 'GET',
+						data: {
+							user_id: this.$store.state.userInfo.user_id,
+							source_id: this.arr.id
+						}
+					});
+					if (res.code == -1) {
+						uni.showToast({
+							title: res.message,
+							icon: 'none'
+						})
+					} else {
+						console.log(res);
+						let {appId,nonceStr,package:pp,paySign,signType,timeStamp,timestamp,orderno} = res.data;
+	
+						uni.getProvider({
+							service:'payment',
+							success:(res)=> {
+								uni.requestPayment({
+									timeStamp,
+									provider:res.provider[0],
+									orderInfo:{orderno:orderno},
+									nonceStr,
+									package:pp,
+									signType,
+									paySign,
+									success: (res) => {
+										console.log(res);
+										uni.showToast({
+											title:'支付成功'
+										})
+										if(emitName){
+											uni.$emit(emitName,{ispay:true});
+										}
+									},fail(res) {
+										console.log(res);
+										uni.showToast({
+											title:'支付失败:'+res.errMsg,
+											icon:'none'
+										})
+									}
+								})
+							},fail(res) {
+								uni.showToast({
+									title:'支付失败:'+res.errMsg,
+									icon:'none'
+								})
+							}
+						})
+						
+					}
+
 				}
-				
+
 			}
 		}
 	}
 </script>
 
 <style>
-	.itemlist{
+	.itemlist {
 		width: 710rpx;
 		margin: auto;
 	}
-	.listitem{
+
+	.listitem {
 		display: flex;
 		height: 147rpx;
 		justify-content: space-between;
 		padding-top: 54rpx;
 		box-sizing: border-box;
 	}
+
 	/* .listitem view:nth-child(1){
 		margin: auto;
 	} */
-	.listitem view:nth-child(1){
+	.listitem view:nth-child(1) {
 		color: #FF4D4F;
 		font-size: 36rpx;
 	}
-	.wxpay{
+
+	.wxpay {
 		display: flex;
 	}
-	.wxpay image{
+
+	.wxpay image {
 		width: 84rpx;
 		height: 84rpx;
 	}
-	.wxpay view{
+
+	.wxpay view {
 		margin: 24rpx 0 0 13rpx;
 	}
-	.fix{
+
+	.fix {
 		width: 40rpx;
 		height: 40rpx;
 		/* padding-top: 24rpx; */
 		margin-top: 24rpx;
 		box-sizing: border-box;
 	}
-	.paylist{
+
+	.paylist {
 		display: flex;
 		justify-content: space-between;
 	}
-	.nowpay button{
+
+	.nowpay button {
 		width: 680rpx;
 		height: 76rpx;
 		background: #1890FF;
@@ -110,5 +253,10 @@
 		line-height: 70rpx;
 		color: #fff;
 		margin-top: 154rpx;
+	}
+
+	.imggg {
+		width: 80rpx;
+		height: 80rpx;
 	}
 </style>

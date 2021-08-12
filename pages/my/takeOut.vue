@@ -22,7 +22,7 @@
 					<view>￥</view>
 					<input type="number" v-model="value" placeholder="请输入提现金额" placeholder-style="font-size: 36rpx;color: #999999;" />
 				</view>
-				<view class="tips">钱包余额：{{total}}(可提现{{total}}元钱包需保留0.0元)</view>
+				<view class="tips">钱包余额：{{balance}}(可提现{{balance}}元钱包需保留0.0元)</view>
 			</view>
 			</view>
 			<view class="btn" @tap="pay()">立即提现</view>
@@ -35,30 +35,65 @@
 			return{
 				agreement:true,
 				balance:0,
-				total:500.00,
+				// total:500.00,
 				value:''
 			}
 		},
 		onLoad(p){
-			this.balance = p.balance
+			// this.balance = p.balance
+			this.balance = 500
 		},
 		methods:{
 			agreementSuccess() {
 			  this.agreement = !this.agreement;
 			},
 			pay(){
+				if (!this.value) {
+					uni.showToast({
+						title: '请输入提现金额',
+						icon: 'none',
+					})
+					return
+				}
+				if (this.value == 0) {
+					uni.showToast({
+						title: '提现金额不能为0',
+						icon: 'none',
+					})
+					return
+				}
 				if(this.agreement == false){
 					uni.showToast({
 						title:"请勾选支付方式",
 						icon:'none'
 					})
-				}else if(this.value > this.total){
+				}else if(this.value > this.balance){
 					uni.showToast({
 						title:'余额不足，请重新输入',
 						icon:'none'
 					})
 				}else{
-					console.log("支付")
+					// console.log("支付")
+					let that = this
+					uni.request({
+						url:'https://layer.boyaokj.cn/api/wechat/withdraw',
+						method:'GET',
+						data:{
+							user_id:42,
+							money:that.value
+						},
+						success(res) {
+							uni.showToast({
+								title:'提现成功',
+							})
+							uni.redirectTo({
+								url:'./mine'
+							})
+							//  uni.navigateTo({
+							// 		url: '/pages/info/index?name=1',
+							// });
+						}
+					})
 				}
 				
 			}

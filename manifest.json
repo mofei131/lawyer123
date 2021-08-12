@@ -18,7 +18,9 @@
         },
         /* 模块配置 */
         "modules" : {
-            "OAuth" : {}
+            "OAuth" : {},
+            "Payment" : {},
+            "Share" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -49,12 +51,25 @@
             "sdkConfigs" : {
                 "oauth" : {
                     "weixin" : {
-                        "appid" : "wx294996ceba9ef1c5",
-                        "appsecret" : "75ba3645c25db6bef01e198c075dc8ae",
+                        "appid" : "wx79abd178a6e41f79",
+                        "appsecret" : "",
                         "UniversalLinks" : ""
                     }
                 },
-                "maps" : {}
+                "maps" : {},
+                "payment" : {
+                    "weixin" : {
+                        "__platform__" : [ "android" ],
+                        "appid" : "wx79abd178a6e41f79",
+                        "UniversalLinks" : ""
+                    }
+                },
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wx79abd178a6e41f79",
+                        "UniversalLinks" : ""
+                    }
+                }
             }
         }
     },

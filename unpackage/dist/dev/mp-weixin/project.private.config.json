@@ -55,8 +55,8 @@
           "scene": null
         },
         {
-          "name": "律师认证",
-          "pathName": "pages/renzheng/classifyDet3",
+          "name": "pages/renzheng/classifyDet2",
+          "pathName": "pages/renzheng/classifyDet2",
           "query": "",
           "scene": null
         },

@@ -16,14 +16,14 @@
 	font-family: PingFangSC-Regular, PingFang SC;
 	font-weight: 400;
 	color: #51565D;
-	margin-top: 10rpx;
+	/* margin-top: 10rpx; */
 	width: 240rpx;
 }
 .servicepirce input{
 	font-size: 28rpx;
 	font-family: PingFangSC-Regular, PingFang SC;
 	font-weight: 400;
-	color: #C1C2C3;
+	color: #51565D;
 }
 .servicepirce image{
 	width: 60rpx;

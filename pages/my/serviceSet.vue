@@ -22,7 +22,7 @@
 		<view class="boder"></view>
 		<view class="intitem">
 				<view class="tips">聘请律师：</view>
-				<input class="gather" type="number" value="" placeholder="请手动输入受聘价格" v-model="employ" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="number" value="" placeholder="请手动输入受聘价格" v-model="emplay" placeholder-style="color: #C1C2C3;"/>
 			</view>
 			<view class="boder" style="margin-bottom: 10rpx;"></view>
 			<view class="boder"></view>
@@ -31,15 +31,15 @@
 					<view class="tipint">请手动输入擅长领域</view>
 				</view>
 			<view class="labellist">
-				<view class="labelitem" v-for="(item,index) in type" :key="index" :class="{ clever: cardlist.indexOf(index) != -1 }" @tap="select(index)">
-					{{item}}
+				<view class="labelitem" v-for="(item,index) in type" :key="index" :class="{ clever: cardlist.indexOf(item.id) != -1 }" @tap="select(item.id)">
+					{{item.name}}
 				</view>
 			</view>
 			<view class="boder"></view>
 			<view class="servicepirce" v-for="(item,index) in sevedata" :key="index">
 				<view>{{item.service}}：</view>
-				<input type="number" value="" class="serviceinp" placeholder="请手动输入服务价格" placeholder-style="color: #C1C2C3;"/>
-				<image src="../../static/icon/deleteicon.png"></image>
+				<input type="number" value="" class="serviceinp" placeholder="请手动输入服务价格" v-model="item.price" placeholder-style="color: #C1C2C3;"/>
+				<image src="../../static/icon/deleteicon.png" @tap="delect(item.id)"></image>
 			</view>
 			<view class="addmore" @tap="cancel()">
 				<image src="../../static/icon/addicon.png"></image>
@@ -49,9 +49,9 @@
 	<view class="molde" v-if="molde">
 		<view class="eject">
 			<view class="ejtitle">是否添加新的案件聘请服务</view>
-			<picker class="gather" @change="anjianChange1" :value="index1" :range="array1" range-key="record">
+			<picker class="gather" @change="anjianChange1" :value="index1" :range="array1" range-key="name">
 				<view class="flex-row">
-					<text>{{array1[index1].record}}</text>
+					<text>{{array1[index1].name}}</text>
 					<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
 				</view>
 			</picker>
@@ -73,36 +73,104 @@
 				phone:'',
 				meet:'',
 				emplay:'',
-				type:["婚姻家庭","财产纠纷","交通肇事","土地房产","劳动人事","婚姻家庭","财产纠纷","交通肇事","土地房产","劳动人事","婚姻家庭","财产纠纷","交通肇事","土地房产","劳动人事","婚姻家庭","财产纠纷","交通肇事","土地房产","劳动人事"],
+				type:[],
 				cardlist:[],
 				raw:false,
 				ji:'',
-				array1: [{
-					id:0,
-					record: '婚姻家庭',
-				},{
-					id:1,
-					record: '财产纠纷',
-				},{
-					id:2,
-					record: '交通肇事',
-				}],
+				array1: [],
 				index1: 0,
 				molde:false,
-				sevedata:[
-					{service:'私人律师(7天)',price:''},
-					{service:'私人律师(120天)',price:''},
-					{service:'私人律师',price:''}
-				],
-				zancun:''
+				sevedata:[],
+				zancun:'',
+				zancunid:''
 			}
 		},
+		onLoad(){
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/layer/getCaseType',
+				success(res) {
+					that.type = res.data.data
+				}
+			})
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/service/getOtherService',
+				success(res) {
+					that.array1 = res.data.data
+				}
+			})
+		},
 		methods:{
+			delect(id){
+				console.log(id)
+				this.sevedata = this.sevedata.filter(item => item.id !== id)
+			},
 			toUrl(){
+				if (!this.chat) {
+					uni.showToast({
+						title: '请输入图文咨询价格',
+						icon: 'none',
+					})
+					return
+				}
+				if (!this.phone) {
+					uni.showToast({
+						title: '请输入电话咨询价格',
+						icon: 'none',
+					})
+					return
+				}
+				if (!this.meet) {
+					uni.showToast({
+						title: '请输入见面咨询价格',
+						icon: 'none',
+					})
+					return
+				}
+				if (!this.emplay) {
+					uni.showToast({
+						title: '请输入受聘价格',
+						icon: 'none',
+					})
+					return
+					}
+				let that = this
 				// uni.navigateTo({
 				// 	url:'./classifyDet2'
 				// })
-				console.log(this.cardlist)
+				let setting =[
+					{id:1,price:that.chat},
+					{id:2,price:that.phone},
+					{id:3,price:that.meet},
+					{id:10,price:that.emplay},
+				]
+				for(let i in that.sevedata){
+					if (!that.sevedata[i].price) {
+						uni.showToast({
+							title: '请输入自定义服务价格',
+							icon: 'none',
+						})
+						return
+						}
+					setting.push({
+						id:that.sevedata[i].id,
+						price:that.sevedata[i].price
+					})
+				}
+				let paramsJson = JSON.stringify(setting);
+				console.log(paramsJson)
+				uni.request({
+					url:'https://layer.boyaokj.cn/api/layer/setting',
+					method: 'POST',
+					data:{
+						user_id:uni.getStorageSync('userInfo').id,
+						setting:paramsJson,
+						area:that.cardlist
+					},
+					success(res) {
+						console.log(res)
+					},
+				})
 			},
 			select(index) {
 		let that = this;
@@ -115,18 +183,20 @@
 			},
 			anjianChange1(e) {
 				this.index1 = e.detail.value;
-				this.zancun = this.array1[e.detail.value].record
+				this.zancun = this.array1[e.detail.value].name
+				this.zancunid = this.array1[e.detail.value].id
 			},
 			cancel(){
 				this.molde = !this.molde
 			},
 			press(){
 				this.sevedata.push({
-					service:this.zancun
+					service:this.zancun,
+					id:this.zancunid,
 				})
 				this.molde = !this.molde
 			}
-		}
+	},
 	}
 </script>
 
@@ -144,14 +214,14 @@
 		font-family: PingFangSC-Regular, PingFang SC;
 		font-weight: 400;
 		color: #51565D;
-		margin-top: 10rpx;
+		/* margin-top: 10rpx; */
 		width: 240rpx;
 	}
 	.servicepirce input{
 		font-size: 28rpx;
 		font-family: PingFangSC-Regular, PingFang SC;
 		font-weight: 400;
-		color: #C1C2C3;
+		color: #51565D;
 	}
 	.servicepirce image{
 		width: 60rpx;

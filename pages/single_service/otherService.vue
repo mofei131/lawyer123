@@ -114,7 +114,7 @@
 				})
 			},
 			async toPay(item){
-				//先去付款页面====然后
+			
 				let res = await this.$myRequest({
 				url: 'service/buyPackage',
 				methods: 'GET',
@@ -123,9 +123,17 @@
 					user_id:this.$store.state.userInfo.user_id
 				}
 				});
-				if (res && res.code==200) {
-				console.log(res.data.servic_id);//只有指个参数
 				
+				if (res && res.code==200) {
+				console.log(res.data.service_id);//只有指个参数
+					uni.navigateTo({
+						url: '../my/pay?id=' + res.data.service_id + '&price=' + item.price + '&typeId=' + item.id
+					})
+				}else{
+					uni.showToast({
+						title: res.message,
+						icon:'none'
+					})
 				}
 			}
 		}

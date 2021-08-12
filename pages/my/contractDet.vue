@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="contractdet">
-			<rich-text  :nodes = 'content'></rich-text>
+			<view  v-index = 'content'></view>
 		</view>
 	</view>
 </template>
@@ -14,7 +14,19 @@
 			}
 		},
 		onLoad(p){
-			console.log(p)
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/agreement/detail',
+				method:'GET',
+				data:{
+					id:p.id,
+					user_id:uni.getStorageSync('userInfo').user_id
+				},
+				success(res) {
+					console.log(res.data.data.content)
+					that.content = res.data.data.content
+				}
+			})
 		}
 	}
 </script>
@@ -23,5 +35,6 @@
 .contractdet{
 	width: 710rpx;
 	margin: auto;
+	
 }
 </style>

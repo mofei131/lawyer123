@@ -13,14 +13,8 @@
 		onLoad(param) {
 		
 			let userInfo = this.$store.state.userInfo;
-			// if(!userInfo){
-			// 	uni.navigateTo({
-			// 		url:'../login/login'
-			// 	})
-			// 	return
-			// }
-			// this.layer_id = param.layer_id;
-			// this.user_id = userInfo.user_id;
+			this.layer_id = param.layer_id;
+			this.user_id = userInfo.user_id;
 		
 		},
 		data() {

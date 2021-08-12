@@ -2,6 +2,16 @@
 page{
 	background: #F4F7F7;
 }
+.flex-row{
+	width: 510rpx;
+	-webkit-box-pack: justify!important;
+	-webkit-justify-content: space-between!important;
+	        justify-content: space-between!important;
+}
+.fa-angle-down{
+	-webkit-transform:rotate(-90deg);
+	        transform:rotate(-90deg);
+}
 .modtitle{
 	width: 680rpx;
 	margin: 20rpx auto;

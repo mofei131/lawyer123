@@ -6,14 +6,14 @@
 		</view>
 		<view class="direct" v-if="judge">
 			<view class="directitem" v-for="(item,index) in direct" :key='index'>
-				<image :src="item.headimg"></image>
-				<view>{{item.name}}</view>
+				<image :src="item.avater"></image>
+				<view>{{item.nickname}}</view>
 			</view>
 		</view>
 		<view class="direct" v-if="!judge">
 			<view class="directitem" v-for="(item,index) in indirect" :key='index'>
-				<image :src="item.headimg"></image>
-				<view>{{item.name}}</view>
+				<image :src="item.avater"></image>
+				<view>{{item.nickname}}</view>
 			</view>
 		</view>
 	</view>
@@ -24,20 +24,34 @@
 		data(){
 			return{
 				judge:true,
-				direct:[
-					{id:0,name:'怎么肥四',headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg'},
-					{id:1,name:'怎么肥五',headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg'},
-					{id:2,name:'怎么肥六',headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg'},
-					{id:3,name:'怎么肥七',headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg'}
-				],
-				indirect:[
-					{id:0,name:'怎么肥零',headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg'},
-					{id:1,name:'怎么肥一',headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg'},
-					{id:2,name:'怎么肥二',headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg'},
-					{id:3,name:'怎么肥三',headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg'},
-					{id:3,name:'怎么肥肥',headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg'}
-				]
+				direct:[],
+				indirect:[]
 			}
+		},
+		onLoad() {
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/commission/getList',
+				method:'GET',
+				data:{
+					user_id:uni.getStorageSync('userInfo').user_id,
+					type:1
+				},
+				success(res) {
+					that.direct = res.data.data.list
+				}
+			})
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/commission/getList',
+				method:'GET',
+				data:{
+					user_id:uni.getStorageSync('userInfo').user_id,
+					type:2
+				},
+				success(res) {
+					that.indirect = res.data.data.list
+				}
+			})
 		},
 		methods:{
 			decide(){
@@ -59,7 +73,7 @@
 	.option{
 		width: 480rpx;
 		height: 63rpx;
-		border-radius: 32rpx;
+		border-radius: 34rpx;
 		border: 1px solid #40A9FF;
 		display: flex;
 		margin: 25rpx auto;
@@ -79,7 +93,7 @@
 		font-weight: 500;
 		color: #464646;
 		text-align: center;
-		padding-top: 15rpx;
+		padding-top: 13rpx;
 		box-sizing: border-box;
 	}
 	.empty{
@@ -93,7 +107,7 @@
 		font-weight: 500;
 		color: #464646;
 		text-align: center;
-		padding-top: 15rpx;
+		padding-top: 13rpx;
 		box-sizing: border-box;
 	}
 	.directitem{

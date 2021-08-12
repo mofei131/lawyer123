@@ -1,9 +1,9 @@
 
-.itemlist{
+.itemlist {
 	width: 710rpx;
 	margin: auto;
 }
-.listitem{
+.listitem {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -15,26 +15,27 @@
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
+
 /* .listitem view:nth-child(1){
 	margin: auto;
 } */
-.listitem view:nth-child(1){
+.listitem view:nth-child(1) {
 	color: #FF4D4F;
 	font-size: 36rpx;
 }
-.wxpay{
+.wxpay {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
 }
-.wxpay image{
+.wxpay image {
 	width: 84rpx;
 	height: 84rpx;
 }
-.wxpay view{
+.wxpay view {
 	margin: 24rpx 0 0 13rpx;
 }
-.fix{
+.fix {
 	width: 40rpx;
 	height: 40rpx;
 	/* padding-top: 24rpx; */
@@ -42,7 +43,7 @@
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
-.paylist{
+.paylist {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -50,7 +51,7 @@
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 }
-.nowpay button{
+.nowpay button {
 	width: 680rpx;
 	height: 76rpx;
 	background: #1890FF;
@@ -62,5 +63,9 @@
 	line-height: 70rpx;
 	color: #fff;
 	margin-top: 154rpx;
+}
+.imggg {
+	width: 80rpx;
+	height: 80rpx;
 }
 

@@ -262,12 +262,12 @@
 				learn: []
 			}
 		},
-		onLoad() {
+		async onLoad() {
 
 			if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id) {
-				this.getWxCode();
+				await this.getWxCode();
 			}
-
+			
 			this.getProvinceCity();
 			this.getBussinessTypes();
 			this.getLawyerLevels();

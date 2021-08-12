@@ -5,11 +5,8 @@
     "pages/youhuiquan/youhuiquan",
     "pages/my/mine",
     "pages/single_service/cooperDownload",
-    "pages/list/cooperModuleList",
     "pages/detail/cooperDetail",
     "pages/single_service/cooperCheck",
-    "pages/single_service/cooperProcess",
-    "pages/my/contractList",
     "pages/my/contractDet",
     "pages/my/orderList",
     "pages/my/serviceList",
@@ -41,8 +38,11 @@
     "pages/my/serviceSet",
     "pages/my/score",
     "pages/my/problem",
-    "pages/login/login",
-    "pages/my/pay"
+    "pages/my/pay",
+    "pages/list/cooperModuleList",
+    "pages/single_service/cooperProcess",
+    "pages/my/contractList",
+    "pages/my/follow"
   ],
   "subPackages": [],
   "window": {
