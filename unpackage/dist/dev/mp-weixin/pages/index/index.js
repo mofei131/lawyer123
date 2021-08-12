@@ -354,9 +354,9 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
   },
   onLoad: function onLoad() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
 
-              !_this.$store.state.userInfo || !_this.$store.state.userInfo.user_id)) {_context.next = 3;break;}_context.next = 3;return (
+              !_this.$store.state.userInfo || !_this.$store.state.userInfo.user_id)) {_context.next = 4;break;}_context.next = 3;return (
                 _this.getWxCode());case 3:
-
+              console.log(_this.$store.state);case 4:
 
               _this.getProvinceCity();
               _this.getBussinessTypes();
@@ -365,11 +365,13 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
               _this.getYouXuanLvshi();
               _this.getLearn();
               _this.getAnli();
+
+
               uni.getSystemInfo({
                 success: function success(res) {
                   console.log(res);
                   _this.commitWindowHeight(res.windowHeight);
-                } });case 11:case "end":return _context.stop();}}}, _callee);}))();
+                } });case 12:case "end":return _context.stop();}}}, _callee);}))();
 
   },
   computed: _objectSpread({},
@@ -437,14 +439,16 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
                 }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
     },
-    getLearn: function getLearn() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
+    getLearn: function getLearn() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
+                console.log('------------->>>>>');
+                console.log(_this3.$store.state);_context4.next = 4;return (
                   _this3.$myRequest({
                     url: 'article/list',
                     methods: 'GET',
                     data: {
                       page: 1,
                       limit: 5,
-                      user_id: _this3.$store.state.userInfo.user_id } }));case 2:res = _context4.sent;
+                      user_id: _this3.$store.state.userInfo.user_id } }));case 4:res = _context4.sent;
 
 
                 if (res && res.code == 200) {
@@ -455,7 +459,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                     title: '每日学法数据获取异常',
                     icon: 'none' });
 
-                }case 4:case "end":return _context4.stop();}}}, _callee4);}))();
+                }case 6:case "end":return _context4.stop();}}}, _callee4);}))();
     },
     getAnli: function getAnli() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {var res;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
                   _this4.$myRequest({
@@ -634,8 +638,9 @@ var _default =
   },
   methods: {
     tochat: function tochat(item) {
+      console.log(item);
       uni.navigateTo({
-        url: '../chat/chat?source_id=' + item.source_id + "&layer_id=" + item.layer_id + "&user_id=" + item.user_id });
+        url: '../anjianDetail/anjianDetail?source_id=' + item.id + "&layer_id=" + item.layer.id + "&user_id=" + item.user_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

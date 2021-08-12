@@ -152,7 +152,7 @@ var _default =
       method: 'GET',
       data: {
         id: p.id,
-        user_id: uni.getStorageSync('userInfo').user_id },
+        user_id: uni.getStorageSync('userInfo').id },
 
       success: function success(res) {
         console.log(res.data.data.content);

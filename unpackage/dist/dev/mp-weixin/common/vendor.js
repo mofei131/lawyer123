@@ -2093,6 +2093,7 @@ var store = new _vuex.default.Store({
 
 
   mutations: {
+
     commitProvince: function commitProvince(state, params) {
       state.provinces = params;
     },
@@ -2203,7 +2204,7 @@ var store = new _vuex.default.Store({
           provider: 'weixin',
           success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(res) {var code, res1;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
                       console.log(res);if (!
-                      res.code) {_context4.next = 12;break;}
+                      res.code) {_context4.next = 11;break;}
                       code = res.code;_context4.next = 5;return (
                         _http.default.ajax({
                           url: 'wechat/login',
@@ -2212,8 +2213,7 @@ var store = new _vuex.default.Store({
                             code: code } }));case 5:res1 = _context4.sent;
 
 
-                      console.log('==================================');
-                      console.log(res1);
+                      console.log('===========getwxcode=======================');
                       if (res1.code == -1) {
                         uni.showToast({
                           title: res1.message,
@@ -2222,9 +2222,12 @@ var store = new _vuex.default.Store({
                         reject(res1);
                       }
                       if (res1 && res1.data) {
+                        console.log('===========缓存userInfo=======================');
+                        console.log(res1.data);
+                        context.commit('commitUserInfo', res1.data);
                         uni.setStorageSync('userInfo', res1.data);
                         resolve({ hasUserInfo: true });
-                      }_context4.next = 14;break;case 12:
+                      }_context4.next = 13;break;case 11:
 
 
                       uni.showToast({
@@ -2232,7 +2235,7 @@ var store = new _vuex.default.Store({
                         icon: 'none',
                         duration: 2000 });
 
-                      resolve({ hasUserInfo: false });case 14:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
+                      resolve({ hasUserInfo: false });case 13:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
 
 
 
@@ -2240,6 +2243,7 @@ var store = new _vuex.default.Store({
 
     },
     updateUserInfo: function updateUserInfo(context) {
+      console.log(111);
       return new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(resolve, reject) {var pass, result;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:
                   pass = true;if (
                   context.state.userInfo) {_context6.next = 6;break;}_context6.next = 4;return (
@@ -2251,42 +2255,64 @@ var store = new _vuex.default.Store({
                   if (!pass) {
                     resolve(false);
                   }
-                  uni.getUserProfile({
-                    desc: '获取用户头像等信息',
-                    success: function () {var _success2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(res) {var _res$userInfo, avatarUrl, city, country, gender, language, nickName, province, data, res1;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:
-                                console.log('----------');
-                                console.log(res.userInfo);_res$userInfo =
-                                res.userInfo, avatarUrl = _res$userInfo.avatarUrl, city = _res$userInfo.city, country = _res$userInfo.country, gender = _res$userInfo.gender, language = _res$userInfo.language, nickName = _res$userInfo.nickName, province = _res$userInfo.province;
-                                data = {
-                                  nickname: nickName,
-                                  avater: avatarUrl,
-                                  country: country,
-                                  gender: gender,
-                                  province: province,
-                                  city: city,
-                                  user_id: context.state.userInfo.user_id };_context5.next = 6;return (
+                  uni.showModal({
+                    title: '温馨提示',
+                    content: '亲，授权微信登录后才能正常使用小程序功能',
+                    success: function success(res) {
+                      if (res.confirm) {
+                        uni.getUserProfile({
+                          desc: '获取用户头像等信息',
+                          success: function () {var _success2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(res) {var _res$userInfo, avatarUrl, city, country, gender, language, nickName, province, userInfo, data, res1;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_res$userInfo =
+                                      res.userInfo, avatarUrl = _res$userInfo.avatarUrl, city = _res$userInfo.city, country = _res$userInfo.country, gender = _res$userInfo.gender, language = _res$userInfo.language, nickName = _res$userInfo.nickName, province = _res$userInfo.province;
+                                      userInfo = uni.getStorageSync('userInfo');
+                                      if (!userInfo) {
+                                        uni.showToast({
+                                          title: '用户信息缓存为空',
+                                          icon: 'none' });
 
-                                  _http.default.ajax({
-                                    url: 'wechat/setUserinfo',
-                                    method: 'GET',
-                                    data: data }));case 6:res1 = _context5.sent;
+                                        reject(false);
+                                      }
+                                      data = {
+                                        nickname: nickName,
+                                        avater: avatarUrl,
+                                        country: country,
+                                        gender: gender,
+                                        province: province,
+                                        city: city,
+                                        user_id: userInfo && userInfo.user_id };_context5.next = 6;return (
 
-                                if (res1.code == 200) {
-                                  data.token = context.state.userInfo.token;
-                                  data.isAuthor = true;
-                                  uni.setStorageSync('userInfo', data);
-                                  resolve(true);
-                                } else {
-                                  uni.showToast({
-                                    title: res1.message,
-                                    icon: 'none' });
 
-                                  reject(res1);
-                                }case 8:case "end":return _context5.stop();}}}, _callee5);}));function success(_x4) {return _success2.apply(this, arguments);}return success;}(),
+                                        _http.default.ajax({
+                                          url: 'wechat/setUserinfo',
+                                          method: 'GET',
+                                          data: data }));case 6:res1 = _context5.sent;
 
-                    fail: function fail(res) {
-                      reject(res);
+                                      if (res1.code == 200) {
+                                        userInfo.isAuthor = true;
+                                        userInfo.nickname = nickName;
+                                        userInfo.avater = avatarUrl;
+                                        userInfo.country = country;
+                                        userInfo.gender = gender;
+                                        userInfo.province = province;
+                                        userInfo.city = city;
+
+                                        uni.setStorageSync('userInfo', userInfo);
+                                        resolve(true);
+                                      } else {
+                                        uni.showToast({
+                                          title: res1.message,
+                                          icon: 'none' });
+
+                                        reject(res1);
+                                      }case 8:case "end":return _context5.stop();}}}, _callee5);}));function success(_x4) {return _success2.apply(this, arguments);}return success;}(),
+
+                          fail: function fail(res) {
+                            reject(res);
+                          } });
+
+                      }
                     } });case 8:case "end":return _context6.stop();}}}, _callee6);}));return function (_x2, _x3) {return _ref.apply(this, arguments);};}());
+
 
 
 
@@ -10534,7 +10560,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 463:
+/***/ 465:
 /*!**********************************************************************************!*\
   !*** D:/咸鱼/20210806律师uniapp/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \**********************************************************************************/

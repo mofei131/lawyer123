@@ -230,8 +230,8 @@
 
 			if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id) {
 				await this.getWxCode();
+				console.log(this.$store.state);
 			}
-			
 			this.getProvinceCity();
 			this.getBussinessTypes();
 			this.getLawyerLevels();
@@ -239,8 +239,10 @@
 			this.getYouXuanLvshi();
 			this.getLearn();
 			this.getAnli();
+
+
 			uni.getSystemInfo({
-				success:(res)=> {
+				success: (res) => {
 					console.log(res);
 					this.commitWindowHeight(res.windowHeight);
 				}
@@ -312,6 +314,8 @@
 				}
 			},
 			async getLearn() {
+				console.log('------------->>>>>');
+				console.log(this.$store.state);
 				let res = await this.$myRequest({
 					url: 'article/list',
 					methods: 'GET',
@@ -338,7 +342,7 @@
 					data: {
 						page: 1,
 						limit: 5,
-						layer_id:'',
+						layer_id: '',
 					}
 				});
 				if (res && res.code == 200) {

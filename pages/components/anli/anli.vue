@@ -3,16 +3,16 @@
 		<view class="anlilistitem" v-for="(item,index) in anli" :key="index" :style="{marginBottom: marginBottom}"
 			@tap="tochat(item)">
 			<view class="floor1">
-				<view>【{{item.type}}】</view>
+				<view>{{item.type}}</view>
 				<view>{{item.title}}</view>
 			</view>
 			<view class="floor2">
 				<view class="mine">
-					<image src="https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg"></image>
+					<image :src="item.layer.photo"></image>
+					<view>{{item.layer.name}}</view>
 					<view>{{item.address}}</view>
-					<view>{{item.create_time}}</view>
 				</view>
-				<view class="read">{{item.read}}人查看</view>
+				<view class="read">{{item.view}}人查看</view>
 			</view>
 			<view class="anliborder" v-if="index<3 && showBottomBorder"></view>
 		</view>
@@ -42,8 +42,9 @@
 		},
 		methods: {
 			tochat(item) {
+				console.log(item);
 				uni.navigateTo({
-					url:'../chat/chat?source_id='+item.source_id+"&layer_id="+item.layer_id+"&user_id="+item.user_id
+					url:'../anjianDetail/anjianDetail?source_id='+item.id+"&layer_id="+item.layer.id+"&user_id="+item.user_id
 				})
 			}
 		}

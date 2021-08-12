@@ -12,7 +12,7 @@
 				请选择事类型
 			</view>
 			<view class="flex-row mx-evenly sx-start wrap" style="align-items: flex-start;">
-				<view v-for="(item,index) in bussinessTypes" :class="{choose_item:true,item_on:item.id==case_type}"
+				<view v-for="(item,index) in bussinessTypes" :key="index" :class="{choose_item:true,item_on:item.id==case_type}"
 					@tap="caseTypeChange(item)">{{item.name}}</view>
 
 			</view>
@@ -183,7 +183,15 @@
 				if (res && res.code==200) {
 		
 					uni.navigateTo({
-						url:'../my/pay?id='+res.data.service_id+'&price='+this.price+'&typeId=1'
+						url:'../my/pay?id='+res.data.service_id+'&price='+this.price+'&typeId=1' +'&emitName='+'tochat'
+					})
+
+					uni.$on('tochat',()=>{
+						console.log('--------------------------');
+						console.log('--------------------------'+res.data.service_id+'&layer_id='+this.layer_id+'&user_id='+this.user_id);
+						uni.navigateTo({
+							url:'../chat/chat?source_id='+res.data.service_id+'&layer_id='+this.layer_id+'&user_id='+this.user_id
+						})
 					})
 				
 				}else{

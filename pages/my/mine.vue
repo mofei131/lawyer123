@@ -11,7 +11,7 @@
 			<view class="username">
 				<view class="name">{{user.name}}</view>
 				<view class="record">
-					<view v-if="user.record == 0">立即认证享更多权益</view>
+					<view v-if="user.type == ''">立即认证享更多权益</view>
 					<view v-else>已认证</view>
 				</view>
 			</view>
@@ -80,7 +80,8 @@
 				<view>{{item.title}}</view>
 			</view>
 			<view class="itemright">
-				<view class="renzheng" v-if="item.rightxt">{{item.rightxt}}</view>
+				<view class="renzheng" v-if="user.type == ''">{{item.rightxt2}}</view>
+				<view class="renzheng" v-if="user.type != ''">{{item.rightxt}}</view>
 				<view class="kefu" v-if="item.kefu">{{item.kefu}}</view>
 				<image src="../../static/icon/myrighticon.png" mode=""></image>
 			</view>
@@ -106,7 +107,7 @@
 					record:0,//是否认证
 					vip:0,//是否开通vip
 					vipname:'套餐二',//已开通vip名称
-					krfu:'400-8263-5078'
+					kefu:'400-8263-5078'
 				},
 				iconlist:{
 					zixun:[
@@ -141,6 +142,7 @@
 						icon:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAqVJREFUOE+tlEtIVFEYx393Xs6Mjq9QCSPTTUVSKhUptOgFYgZJuggjohBEqEUWWtgigoiMCqIooogEoaAgQVB70MJEsywqfJREQSIppjKj49x755449zJjk7oIOpvDOXzf7/t/j3MUIYTgPyxlKVAgBCOTMKuCYQg8LliRAokeZdGwC0AzIej+Ct8mQIrVwwJNA1WXuyA7DYo32EnyxgJjQON+6OiHoCowDNB0gaqJKETC5NllhyPbnWSl2aLqoiCZypP3FmQhAFTNQNXm4W6H4EyFm1SfBYuCng8IhsdkxIix5RhJSSrJTFVITVB4NaARDAkKcuyc2OuZB/nnoKnLMJ10XVC83ka6T+H2C43JgAQKtq51UFHoNJ1uts3R3qeZyu8eSyA92WYp+vRD0P7RcticY6NglUJKgsLjHo1nH3SzyDJIRZGL0o1OrrYEaXurmva1ZR52b4qzQJ1DBi/7w6YxQuCwQcO+OF5/0bnVHoqmd+Ggl6x0G5WX/IxOSHs4vMtNVbHHAklIxx+RZW1q97iw2+BUU9AEbct1cLTUQ2tviPMPZ001MrXqEg/VJV4L1DscprlTi2lzeaGLkgIHB64EWOZTaDwUz2xIsP/iNOPTBnrY6vzZynjKitwWaDIgON0cJKTKNluR8rPt1Jd7eDOsszrTbk52zQ0/PUOazN7qFNB2Lpnlqfb59l9rnaNrUI8OoCKg+aSPBLdi3jXcD9DWp8Y8j515Li5X+WLnaMJvcPzOjCk7Ms25Kx3k5zho6Znj+5gRA5Hz9KA+iYwUeyxInj6PhKm7F2Bsyoi23Fjkb5CQ6zWJrMtyLHwikRsJaXw0w9N3Kn9DZE125LmoK/dGlUT8lvxGRn+F6R7U+DllpZSRbGPLGqdZ2MXWkqB//et+A3mVv9qZdL9bAAAAAElFTkSuQmCC',
 						title:'律师认证',
 						rightxt:'已认证',
+						rightxt2:'未认证',
 						url:'../renzheng/classify'
 					},{
 						icon:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAApxJREFUOE+tlE1IVFEUx8954yRN+S0EhRUtAjdFuaiIomUmIhFEDuZSCUqKBCuKJigRpJRARatFRUoUIWJhEISELaIgMnIRSEGFSFDjx5u599x7Trz3nNHRZhF0N+/79/+f8z/vIvynhdk4XaNSluvAAUQoU4bJkPMpNwkvG6vR/ds3K0C3x2QTCnSIQI2IOGQENAkER4wrZTsdXNUaO4p6KTADdGdM9gjDkIiUWgYgCiB6Aeaf+1AYdbVb09dYHE/B0iDPCTC8ZZZSX91IghnPETmDSa0LFUGL0hxNwRTB07tNkWoAFA+WBt16JU+M4cOeuufEGqxP5IUG1BTVJixOdtaFx070JZ4p4srAKYMyTnTw/NqBNKjruZRJiL9oI86CYpKLwnlz33WLNXxVkVjXUrkkw9u0tY/TJVp4PRIr2JsGdYyY42Tlnqek/J6AKC09xsgRTbxOGxTRvH1O8xayMOg7Cvpm51cX5r+LoeuX1jpkLxDZaymlVHkqKFMZxqb+M2v6Dl2J9xsrtX7DPVEjYDhn6/ubBZ990KWH1EzGti9Px7u21rnIbyJt8fKZdmvltCbGVJLGAhgMbZ7oKvrqg5rvJ6s0yXAQLYMmCGL3rhn2zbuykZkfpObJS5W9rARmx3+WFMEjtD6ooVciwskfWtuClXMDU9pIhIjzfYecMYYD490l0Yz4667Px5Tly4tTHDgjlqhOwkGyXO8PzOIyIk7Fx57iDxmgil4Jr5+efaGI96fLClLsFoGdgLA7AyN4dryn5MaKyfZuVMYkfy7xu19rrgoa7bVh+UIDAi1LIRmOFl8X3HHq1zFj5SSC7BKAkP9MYBYRh1mwLVVO1p92uXZFg0RcnNkAOawnpgu/eelk23ay7kf/ut/9AZ3sEjGcc4UwAAAAAElFTkSuQmCC',

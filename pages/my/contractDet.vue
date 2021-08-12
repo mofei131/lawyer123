@@ -20,7 +20,7 @@
 				method:'GET',
 				data:{
 					id:p.id,
-					user_id:uni.getStorageSync('userInfo').user_id
+					user_id:uni.getStorageSync('userInfo').id
 				},
 				success(res) {
 					console.log(res.data.data.content)

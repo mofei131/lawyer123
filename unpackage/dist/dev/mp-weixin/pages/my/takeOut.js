@@ -172,8 +172,8 @@ var _default =
 
   },
   onLoad: function onLoad(p) {
-    // this.balance = p.balance
-    this.balance = 500;
+    this.balance = p.balance;
+    // this.balance = 500
   },
   methods: {
     agreementSuccess: function agreementSuccess() {
@@ -211,19 +211,19 @@ var _default =
           url: 'https://layer.boyaokj.cn/api/wechat/withdraw',
           method: 'GET',
           data: {
-            user_id: 42,
+            user_id: uni.getStorageSync('userInfo').id,
             money: that.value },
 
           success: function success(res) {
             uni.showToast({
-              title: '提现成功' });
+              title: '提现成功',
+              duration: 1000 });
 
-            uni.redirectTo({
-              url: './mine' });
+            setTimeout(function () {
+              uni.switchTab({
+                url: './mine' });
 
-            //  uni.navigateTo({
-            // 		url: '/pages/info/index?name=1',
-            // });
+            }, 1000);
           } });
 
       }

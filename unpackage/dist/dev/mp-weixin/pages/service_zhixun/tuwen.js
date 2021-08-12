@@ -338,8 +338,16 @@ var _default =
                 if (res && res.code == 200) {
 
                   uni.navigateTo({
-                    url: '../my/pay?id=' + res.data.service_id + '&price=' + _this.price + '&typeId=1' });
+                    url: '../my/pay?id=' + res.data.service_id + '&price=' + _this.price + '&typeId=1' + '&emitName=' + 'tochat' });
 
+
+                  uni.$on('tochat', function () {
+                    console.log('--------------------------');
+                    console.log('--------------------------' + res.data.service_id + '&layer_id=' + _this.layer_id + '&user_id=' + _this.user_id);
+                    uni.navigateTo({
+                      url: '../chat/chat?source_id=' + res.data.service_id + '&layer_id=' + _this.layer_id + '&user_id=' + _this.user_id });
+
+                  });
 
                 } else {
                   uni.showToast({

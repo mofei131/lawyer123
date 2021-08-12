@@ -108,7 +108,7 @@
 			this.arr.id = options.id
 			// this.arr.chapter = options.chapter
 			this.arr.typeId = options.typeId || ''
-			console.log(this.arr.typeId);
+			console.log(options);
 			this.arr.price = options.price;
 			this.emitName = options.emitName;
 		},
@@ -121,6 +121,7 @@
 			},
 			async pay() {
 				let emitName = this.emitName;
+				console.log(emitName);
 				if (this.agreement == false) {
 					uni.showToast({
 						title: "请勾选支付方式",
@@ -170,6 +171,11 @@
 										}
 									},fail(res) {
 										console.log(res);
+										console.log(emitName);
+										if(emitName){
+											console.log('---'+emitName);
+											uni.$emit(emitName,{ispay:true});
+										}
 										uni.showToast({
 											title:'支付失败:'+res.errMsg,
 											icon:'none'
@@ -177,6 +183,7 @@
 									}
 								})
 							},fail(res) {
+							
 								uni.showToast({
 									title:'支付失败:'+res.errMsg,
 									icon:'none'

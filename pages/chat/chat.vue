@@ -10,7 +10,7 @@
 				<gui-im-message background="#F7F7F7" :msgs="msgs" group="group1" :userid="user_id">
 				</gui-im-message>
 				<!-- 底部提交区 -->
-				<gui-im-input @sendText="sendText"></gui-im-input>
+				<gui-im-input  @sendText="sendText"></gui-im-input>
 			</view>
 
 		</view>
@@ -24,7 +24,8 @@
 		onLoad(p) {
 			this.source_id = p.source_id;
 			this.layer_id = p.layer_id;
-			this.user_id = p.user_id || this.$store.state.userInfo.user_id;
+			this.user_id = p.user_id;
+			this.isSelf = this.user_id == this.$store.state.userInfo.user_id;
 		},
 		onShow() {
 			this.getMessage(this.source_id);
@@ -35,6 +36,7 @@
 		},
 		data() {
 			return {
+				isSelf:true,
 				page: 1,
 				limit: 10,
 				user_id: '',
@@ -64,7 +66,7 @@
 			async sendText(msg) {
 				//提交给 IM 服务返回消息数据，添加到消息列表中
 				//模拟IM 服务端返回消息
-
+				console.log('-----发送消息-----');
 				var item = {
 					group: 'group1',
 					uindex: this.$store.state.userInfo.user_id,
@@ -76,12 +78,16 @@
 				url: 'message/sendMessage',
 				methods: 'GET',
 				data: {
-					source_id:this.source_id,
-					user_id:this.$store.state.userInfo.user_id,
+					// source_id:this.source_id,
+					// user_id:this.$store.state.userInfo.user_id,
+					// message:msg
+					source_id:60,
+					user_id:45,
 					message:msg
 				}
 				});
 				if (res && res.code==200) {
+					console.log(res);
 					this.getMessage();
 				}else{
 					uni.showToast({
@@ -103,12 +109,10 @@
 			},
 			async getMessage() {
 				let res = await this.$myRequest({
-					url: 'service/selectCase',
+					url: 'service/selectCaseDetail',
 					methods: 'GET',
 					data: {
-						layer_id: this.layer_id,
-						page: this.page,
-						limit: this.limit
+						source_id:60
 					}
 				});
 				if (res && res.code == 200) {

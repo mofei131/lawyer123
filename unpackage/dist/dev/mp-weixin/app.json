@@ -42,7 +42,8 @@
     "pages/list/cooperModuleList",
     "pages/single_service/cooperProcess",
     "pages/my/contractList",
-    "pages/my/follow"
+    "pages/my/follow",
+    "pages/anjianDetail/anjianDetail"
   ],
   "subPackages": [],
   "window": {
@@ -89,6 +90,5 @@
   },
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }
