@@ -1,16 +1,16 @@
 <template>
 	<view class="anlilist">
 		<view class="anlilistitem" v-for="(item,index) in anli" :key="index" :style="{marginBottom: marginBottom}"
-			@tap="tochat">
+			@tap="tochat(item)">
 			<view class="floor1">
-				<view>【{{item.sort}}】</view>
+				<view>【{{item.type}}】</view>
 				<view>{{item.title}}</view>
 			</view>
 			<view class="floor2">
 				<view class="mine">
-					<image :src="item.portrait"></image>
+					<image src="https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg"></image>
 					<view>{{item.address}}</view>
-					<view>{{item.name}}</view>
+					<view>{{item.create_time}}</view>
 				</view>
 				<view class="read">{{item.read}}人查看</view>
 			</view>
@@ -41,9 +41,9 @@
 			}
 		},
 		methods: {
-			tochat() {
+			tochat(item) {
 				uni.navigateTo({
-					url:'../chat/chat'
+					url:'../chat/chat?source_id='+item.source_id+"&layer_id="+item.layer_id+"&user_id="+item.user_id
 				})
 			}
 		}
@@ -107,7 +107,7 @@
 	}
 
 	.read {
-		width: 105rpx;
+		/* width: 105rpx; */
 		height: 26rpx;
 		background: #D4E5F8;
 		border-radius: 1rpx;

@@ -54,7 +54,7 @@
 	padding-top: 25rpx;
 }
 .read {
-	width: 105rpx;
+	/* width: 105rpx; */
 	height: 26rpx;
 	background: #D4E5F8;
 	border-radius: 1rpx;

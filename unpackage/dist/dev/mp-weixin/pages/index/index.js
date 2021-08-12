@@ -348,43 +348,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
 
       lawyercard: [],
-      anli: [{
-        id: 0,
-        sort: '买卖合同',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东青岛',
-        name: '张三',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '1783' },
-
-      {
-        id: 1,
-        sort: '婚姻家庭',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东潍坊',
-        name: '李四',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '32' },
-
-      {
-        id: 2,
-        sort: '为高质量',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东烟台',
-        name: '王五',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '544' },
-
-      {
-        id: 3,
-        sort: '为高质量',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东日照',
-        name: '赵六',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '6' }],
-
-
+      anli: [],
       learn: [] };
 
   },
@@ -400,11 +364,12 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
               _this.getWorkAges();
               _this.getYouXuanLvshi();
               _this.getLearn();
+              _this.getAnli();
               uni.getSystemInfo({
                 success: function success(res) {
                   console.log(res);
                   _this.commitWindowHeight(res.windowHeight);
-                } });case 10:case "end":return _context.stop();}}}, _callee);}))();
+                } });case 11:case "end":return _context.stop();}}}, _callee);}))();
 
   },
   computed: _objectSpread({},
@@ -491,6 +456,26 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                     icon: 'none' });
 
                 }case 4:case "end":return _context4.stop();}}}, _callee4);}))();
+    },
+    getAnli: function getAnli() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {var res;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
+                  _this4.$myRequest({
+                    url: 'service/selectCase',
+                    methods: 'GET',
+                    data: {
+                      page: 1,
+                      limit: 5,
+                      layer_id: '' } }));case 2:res = _context5.sent;
+
+
+                if (res && res.code == 200) {
+                  console.log(res.data);
+                  _this4.anli = res.data;
+                } else {
+                  uni.showToast({
+                    title: '每日学法数据获取异常',
+                    icon: 'none' });
+
+                }case 4:case "end":return _context5.stop();}}}, _callee5);}))();
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
@@ -648,9 +633,9 @@ var _default =
 
   },
   methods: {
-    tochat: function tochat() {
+    tochat: function tochat(item) {
       uni.navigateTo({
-        url: '../chat/chat' });
+        url: '../chat/chat?source_id=' + item.source_id + "&layer_id=" + item.layer_id + "&user_id=" + item.user_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

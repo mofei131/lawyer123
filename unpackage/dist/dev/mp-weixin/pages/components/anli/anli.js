@@ -173,9 +173,9 @@ var _default =
 
   },
   methods: {
-    tochat: function tochat() {
+    tochat: function tochat(item) {
       uni.navigateTo({
-        url: '../chat/chat' });
+        url: '../chat/chat?source_id=' + item.source_id + "&layer_id=" + item.layer_id + "&user_id=" + item.user_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
