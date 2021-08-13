@@ -188,7 +188,7 @@
 							that.user.name = res.data.data.nickname
 							that.user.headimg = res.data.data.avater
 							that.user.balance = res.data.data.wallet
-							// that.user.lawyer = res.data.data.layer
+							that.user.lawyer = res.data.data.layer
 							that.user.package = res.data.data.package
 						}
 					})

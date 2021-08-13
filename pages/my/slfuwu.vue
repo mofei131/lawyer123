@@ -29,7 +29,7 @@
 					limit:that.limit
 				},
 				success(res) {
-					console.log(res.data.data)
+					// console.log(res.data.data)
 					that.list = res.data.data
 				}
 			})
@@ -42,8 +42,7 @@
 		methods:{
 			getnewsList(){
 				let that = this
-				let page = that.page+1
-				let limit = that.limit+10
+				that.page++
 				uni.request({
 					url:'https://layer.boyaokj.cn/api/order/shouli_dingdan_list',
 					method:'GET',

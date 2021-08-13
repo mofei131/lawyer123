@@ -27,12 +27,12 @@
 		methods:{
 			toservice(){
 				uni.navigateTo({
-					url:'./serviceList?id = 1'
+					url:'./serviceList'
 				})
 			},
 			todeal(){
 				uni.navigateTo({
-					url:'./dealList?id = 1'
+					url:'./dealList'
 				})
 			}
 		}

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "uni-nav-bar": "/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar",
+    "fa-icon": "/components/fa-icon/fa-icon",
+    "cooper-tabar": "/pages/components/cooperTabar/cooperTabar",
+    "lawyercard1": "/pages/components/lawyercard1/lawyercard1"
+  }
+}
