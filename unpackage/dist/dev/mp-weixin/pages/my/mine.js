@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 397));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 403));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
 
 
@@ -225,10 +225,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-{
+
+// import authMode from '@/pages/components/authMode/authMode.vue'
+var _default = {
   components: {
-    iconlist: iconlist },
+    iconlist: iconlist
+    // authMode
+  },
+  // async onShow() {
+  // 	if (!this.$store.state.userInfo) {
 
+  // 		await this.getWxCode();
+  // 		this.$refs.authMode.open()
+  // 	}
+  // },
   data: function data() {
     return {
       user: {
@@ -366,7 +376,26 @@ __webpack_require__.r(__webpack_exports__);
       uni.navigateTo({
         url: url });
 
-    } } };exports.default = _default;
+    }
+    // async authorTap() {
+    // 	if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id || !this.$store.state.userInfo
+    // 		.isAuthor) {
+    // 		let isSuccess = await this.updateUserInfo();
+    // 		if (isSuccess) {
+    // 			uni.showToast({
+    // 				title: '授权成功！'
+    // 			})
+    // 			this.$refs.authMode.setDialogFalse();
+    // 		}
+
+    // 	}
+    // },
+    // backIndex(){
+    // 	uni.switchTab({
+    // 		url:'../index/index'
+    // 	})
+    // },
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

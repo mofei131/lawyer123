@@ -173,9 +173,10 @@ var _default =
 
   },
   methods: {
-    tochat: function tochat() {
+    tochat: function tochat(item) {
+      console.log(item);
       uni.navigateTo({
-        url: '../chat/chat' });
+        url: '../anjianDetail/anjianDetail?source_id=' + item.id + "&layer_id=" + item.layer.id + "&user_id=" + item.user_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

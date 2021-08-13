@@ -27,7 +27,7 @@
 				</view>
 				<view v-if="item.status == 0 || item.status == 1 || item.status == 2">
 				<view class="bottom">
-					<view class="btn" @tap="topay(item.service_id)" v-if="item.status== 0">
+					<view class="btn" @tap="topay(item)" v-if="item.status== 0">
 						<view>去付款</view>
 					</view>
 						<view class="btn"  v-if="item.status == 1 && item.service_type == 1" @tap="tuwen(item)">
@@ -56,9 +56,9 @@
 			}
 		},
 		methods:{
-			topay(id){
+			topay(item){
 				uni.navigateTo({
-					url:'./pay?id='+id
+					url:'./pay?id='+item.service_id+"&price="+item.service_price
 				})
 			},
 			score(item){

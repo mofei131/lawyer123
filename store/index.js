@@ -20,10 +20,13 @@ const store = new Vuex.Store({
 		lawyerLevels: [],
 		workAges: [],
 		wxCode: null,
-		windowHeight:'750'
+		windowHeight:'750',
+		websocketConnect:false,
+		socketInfo:[]
 
 	},
 	mutations: {
+
 		commitProvince(state, params) {
 			state.provinces = params;
 		},
@@ -44,8 +47,16 @@ const store = new Vuex.Store({
 		},
 		commitWindowHeight(state, params){
 			state.windowHeight = params;
+		},
+		commitWebsocketConnect(state, params){
+			state.websocketConnect = params;
+		},
+		commitSocketInfo(state, params){
+			let c = state.socketInfo;
+			
+			c.push(params);
+			state.socketInfo = c;
 		}
-		
 
 	},
 	getters: {
@@ -143,8 +154,7 @@ const store = new Vuex.Store({
 									code
 								}
 							});
-							console.log('==================================');
-							console.log(res1);
+							console.log('===========getwxcode=======================');
 							if(res1.code==-1){
 								uni.showToast({
 									title:res1.message,
@@ -153,6 +163,9 @@ const store = new Vuex.Store({
 								reject(res1)
 							}
 							if (res1 && res1.data) {
+								console.log('===========缓存userInfo=======================');
+								console.log(res1.data);
+								context.commit('commitUserInfo',res1.data);
 								uni.setStorageSync('userInfo',res1.data);
 								resolve({hasUserInfo:true});
 							}
@@ -171,6 +184,7 @@ const store = new Vuex.Store({
 			
 		},
 		updateUserInfo(context){
+			console.log(111)
 			return new Promise(async (resolve,reject)=>{
 				let pass =true;
 				if(!context.state.userInfo){
@@ -182,43 +196,65 @@ const store = new Vuex.Store({
 				if(!pass){
 					resolve(false);
 				}
-				uni.getUserProfile({
-					desc: '获取用户头像等信息',
-					success: async (res) => {
-						console.log('----------');
-						console.log(res.userInfo);
-						let {avatarUrl,city,country,gender,language,nickName,province} = res.userInfo;
-						let data =  {
-								nickname:nickName,
-								avater:avatarUrl,
-								country:country,
-								gender:gender,
-								province:province,
-								city:city,
-								user_id:context.state.userInfo.user_id
-							}
-						let res1 = await http.ajax({
-							url: 'wechat/setUserinfo',
-							method:'GET',
-							data
-						});
-						if(res1.code==200){
-							data.token = context.state.userInfo.token;
-							data.isAuthor = true;
-							uni.setStorageSync('userInfo',data);
-							resolve(true);
-						}else{
-							uni.showToast({
-								title:res1.message,
-								icon:'none'
-							})
-							reject(res1)
+				uni.showModal({
+					title: '温馨提示',
+					content: '亲，授权微信登录后才能正常使用小程序功能',
+					success(res) {
+						if(res.confirm) {
+							uni.getUserProfile({
+								desc: '获取用户头像等信息',
+								success: async (res) => {
+									let {avatarUrl,city,country,gender,language,nickName,province} = res.userInfo;
+									let userInfo = uni.getStorageSync('userInfo');
+									if(!userInfo){
+										uni.showToast({
+											title:'用户信息缓存为空',
+											icon:'none'
+										})
+										reject(false);
+									}
+									let data =  {
+											nickname:nickName,
+											avater:avatarUrl,
+											country:country,
+											gender:gender,
+											province:province,
+											city:city,
+											user_id:userInfo && userInfo.user_id
+										}
+										
+									let res1 = await http.ajax({
+										url: 'wechat/setUserinfo',
+										method:'GET',
+										data
+									});
+									if(res1.code==200){
+										userInfo.isAuthor = true;
+										userInfo.nickname = nickName;
+										userInfo.avater = avatarUrl;
+										userInfo.country = country;
+										userInfo.gender = gender;
+										userInfo.province = province;
+										userInfo.city = city;
+										
+										uni.setStorageSync('userInfo',userInfo);
+										resolve(true);
+									}else{
+										uni.showToast({
+											title:res1.message,
+											icon:'none'
+										})
+										reject(res1)
+									}
+								},
+								fail: (res) => {
+									reject(res)
+								}
+							});
 						}
-					},
-					fail: (res) => {
-						reject(res)
 					}
-				});
+				})
+				
 			});
 			
 			

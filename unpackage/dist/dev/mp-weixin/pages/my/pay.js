@@ -240,7 +240,7 @@ var _default =
     this.arr.id = options.id;
     // this.arr.chapter = options.chapter
     this.arr.typeId = options.typeId || '';
-    console.log(this.arr.typeId);
+    console.log(options);
     this.arr.price = options.price;
     this.emitName = options.emitName;
   },
@@ -252,24 +252,25 @@ var _default =
       this.agreement = !this.agreement;
     },
     pay: function pay() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var emitName, res, _res$data, appId, nonceStr, pp, paySign, signType, timeStamp, timestamp, orderno;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                emitName = _this.emitName;if (!(
-                _this.agreement == false)) {_context.next = 5;break;}
+                emitName = _this.emitName;
+                console.log(emitName);if (!(
+                _this.agreement == false)) {_context.next = 6;break;}
                 uni.showToast({
                   title: "请勾选支付方式",
-                  icon: 'none' });_context.next = 11;break;case 5:
+                  icon: 'none' });_context.next = 12;break;case 6:
 
 
                 console.log("支付---------");
                 console.log({
                   user_id: _this.$store.state.userInfo.user_id,
-                  source_id: _this.arr.id });_context.next = 9;return (
+                  source_id: _this.arr.id });_context.next = 10;return (
 
                   _this.$myRequest({
                     url: 'wechat/payCenter',
                     methods: 'GET',
                     data: {
                       user_id: _this.$store.state.userInfo.user_id,
-                      source_id: _this.arr.id } }));case 9:res = _context.sent;
+                      source_id: _this.arr.id } }));case 10:res = _context.sent;
 
 
                 if (res.code == -1) {
@@ -302,6 +303,11 @@ var _default =
                           }
                         }, fail: function fail(res) {
                           console.log(res);
+                          console.log(emitName);
+                          if (emitName) {
+                            console.log('---' + emitName);
+                            uni.$emit(emitName, { ispay: true });
+                          }
                           uni.showToast({
                             title: '支付失败:' + res.errMsg,
                             icon: 'none' });
@@ -309,6 +315,7 @@ var _default =
                         } });
 
                     }, fail: function fail(res) {
+
                       uni.showToast({
                         title: '支付失败:' + res.errMsg,
                         icon: 'none' });
@@ -316,7 +323,7 @@ var _default =
                     } });
 
 
-                }case 11:case "end":return _context.stop();}}}, _callee);}))();
+                }case 12:case "end":return _context.stop();}}}, _callee);}))();
 
 
 

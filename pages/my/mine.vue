@@ -88,15 +88,25 @@
 			</view>
 		</view>
 	</view>
+	<!-- <authMode @confirm="authorTap" @backindex="backIndex" ref="authMode"></authMode> -->
 	</view>
 </template>
 
 <script>
 	import iconlist from '../components/iconlist/iconlist.vue'
+	// import authMode from '@/pages/components/authMode/authMode.vue'
 	export default {
 		components:{
 			iconlist
+			// authMode
 		},
+		// async onShow() {
+		// 	if (!this.$store.state.userInfo) {
+				
+		// 		await this.getWxCode();
+		// 		this.$refs.authMode.open()
+		// 	}
+		// },
 		data() {
 			return {
 				user:{
@@ -235,6 +245,24 @@
 					url:url
 				})
 			},
+			// async authorTap() {
+			// 	if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id || !this.$store.state.userInfo
+			// 		.isAuthor) {
+			// 		let isSuccess = await this.updateUserInfo();
+			// 		if (isSuccess) {
+			// 			uni.showToast({
+			// 				title: '授权成功！'
+			// 			})
+			// 			this.$refs.authMode.setDialogFalse();
+			// 		}
+					
+			// 	}
+			// },
+			// backIndex(){
+			// 	uni.switchTab({
+			// 		url:'../index/index'
+			// 	})
+			// },
 		}
 	};
 </script>

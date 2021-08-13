@@ -46,7 +46,8 @@
     "pages/list/cooperModuleList",
     "pages/single_service/cooperProcess",
     "pages/my/contractList",
-    "pages/my/follow"
+    "pages/my/follow",
+    "pages/anjianDetail/anjianDetail"
   ],
   "subPackages": [],
   "window": {

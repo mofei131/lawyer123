@@ -128,8 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 479));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 486));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 485));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 492));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -152,14 +151,64 @@ __webpack_require__.r(__webpack_exports__);
 
 
 {
+
+  onLoad: function onLoad(p) {var _this = this;
+    this.source_id = p.source_id;
+    this.layer_id = p.layer_id;
+    this.user_id = this.$store.state.userInfo.user_id;
+    // this.isSelf = this.user_id == this.$store.state.userInfo.user_id;
+    if (this.$store.state.websocketConnect) {
+      uni.sendSocketMessage({
+        data: JSON.stringify({
+          "action": "bind",
+          "data": {
+            "source_id": this.source_id } }),
+
+
+        fail: function fail(res) {
+          uni.showToast({
+            title: '聊天连接失败',
+            icon: 'none' });
+
+        } });
+
+    }
+    uni.onSocketMessage(function (res) {
+      console.log('收到服务器内容：');
+      var d = JSON.parse(res.data);
+      console.log(d);
+      if (d.type) return;
+      var data = d.data;
+      if (data.service_id) {
+        var item = {
+          group: 'group1',
+          uindex: data.user_id,
+          contentType: 'txt',
+          uname: '小米',
+          content: data.message,
+          uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png' };
+
+        _this.msgs.push(item);
+      }
+
+    });
+  },
+  onShow: function onShow() {
+    this.getMessage(this.source_id);
+  },
   components: {
     guiImMessage: guiImMessage,
     guiImInput: guiImInput },
 
   data: function data() {
     return {
-      msgs: [
-      {
+      isSelf: true,
+      page: 1,
+      limit: 10,
+      user_id: '',
+      source_id: '',
+      layer_id: '',
+      msgs: [{
         group: 'group1',
         uindex: 123,
         uname: '小米',
@@ -180,21 +229,34 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
-    sendText: function sendText(msg) {
-      //提交给 IM 服务返回消息数据，添加到消息列表中
-      //模拟IM 服务端返回消息
+    sendText: function sendText(msg) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                console.log(msg);
+                // console.log(this.$store.state.userInfo.user_id);
+                uni.sendSocketMessage({
+                  data: JSON.stringify({
+                    "action": "sendMessage",
+                    "data": {
+                      "source_id": _this2.source_id,
+                      "user_id": _this2.$store.state.userInfo.user_id,
+                      "message": msg } }),
 
-      var item = {
-        group: 'group1',
-        uindex: 1,
-        contentType: 'txt',
-        content: msg,
-        uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png' };
+
+                  success: function success() {
+                    uni.showToast({
+                      title: '发送成功',
+                      duration: 500 });
+
+                  },
+                  fail: function fail(res) {
+                    uni.showToast({
+                      title: '聊天连接失败',
+                      icon: 'none' });
+
+                  } });case 2:case "end":return _context.stop();}}}, _callee);}))();
 
 
-      this.msgs.push(item);
 
-      this.pageScroll();
+
 
     },
     // 滚动条滚动 [ 有新消息可以自动滚动到底部 ]
@@ -205,6 +267,30 @@ __webpack_require__.r(__webpack_exports__);
           duration: 100 });
 
       }, 200);
+    },
+    getMessage: function getMessage() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this3.$myRequest({
+                    url: 'service/selectCaseDetail',
+                    methods: 'GET',
+                    data: {
+                      source_id: _this3.source_id } }));case 2:res = _context2.sent;
+
+
+                if (res && res.code == 200) {
+                  console.log(res);
+                  res.data.forEach(function (item) {
+                    var d = {
+                      group: 'group1',
+                      uindex: item.user_id,
+                      uname: '小米',
+                      contentType: 'txt',
+                      content: item.message,
+                      uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png' };
+
+                    _this3.msgs.push(d);
+                  });
+
+                }case 4:case "end":return _context2.stop();}}}, _callee2);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

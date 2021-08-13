@@ -116,8 +116,9 @@
 						uni.showToast({
 							title: '授权成功！'
 						})
-						this.$refs.authMode.open();
+						this.$refs.authMode.setDialogFalse();
 					}
+					
 				}
 			},
 			input(e) {

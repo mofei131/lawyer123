@@ -17,7 +17,7 @@
 				没有数据了，切换选择试试!</view>
 
 		</view>
-		<authMode @confirm="authorTap" ref="authMode"></authMode>
+		<authMode @confirm="authorTap" @backindex="backIndex" ref="authMode"></authMode>
 
 
 
@@ -48,10 +48,17 @@
 			lawyercard1,
 			authMode
 		},
-		onShow() {
+// <<<<<<< HEAD
+// 		onShow() {
+// 			if (!this.$store.state.userInfo) {
+// 				this.$refs.authMode.open()
+// 				this.getWxCode();
+// =======
+		async onShow() {
 			if (!this.$store.state.userInfo) {
+				
+				await this.getWxCode();
 				this.$refs.authMode.open()
-				this.getWxCode();
 			}
 		},
 		computed: {
@@ -108,6 +115,14 @@
 					delta: 1
 				})
 			},
+			backIndex(){
+				// uni.switchTab({
+				// 	url: '@/pages/index/index.vue'
+				// })
+				uni.switchTab({
+					url:'../index/index'
+				})
+			},
 			change(e) {
 				console.log(e);
 			},
@@ -119,8 +134,9 @@
 						uni.showToast({
 							title: '授权成功！'
 						})
-						this.$refs.authMode.open();
+						this.$refs.authMode.setDialogFalse();
 					}
+					
 				}
 			},
 
@@ -134,7 +150,7 @@
 			onPullDownRefresh() {
 				uni.showToast({
 					title: '刷新',
-					icon:'none'
+					icon: 'none'
 				});
 				this.isMore = true;
 				this.searchChange()
@@ -169,7 +185,7 @@
 					this.age = e.age;
 				}
 				uni.showLoading({
-					title:'加载中'
+					title: '加载中'
 				})
 				let res = await this.$myRequest({
 					url: 'layer/list',
@@ -190,8 +206,8 @@
 					if (res.data.length > 0) {
 						for (let s of res.data) {
 							console.log(s.id);
-							let f = this.lawyerList.find(item2=>item2.id==s.id);
-							if(!f){
+							let f = this.lawyerList.find(item2 => item2.id == s.id);
+							if (!f) {
 								this.lawyerList.push(s)
 							}
 						}

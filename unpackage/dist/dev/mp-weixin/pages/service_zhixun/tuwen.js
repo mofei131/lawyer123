@@ -96,7 +96,7 @@ var components
 try {
   components = {
     faIcon: function() {
-      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 383))
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 389))
     }
   }
 } catch (e) {
@@ -218,6 +218,9 @@ var _default =
     this.layer_id = param.layer_id;
     this.user_id = userInfo.user_id;
 
+    uni.navigateTo({
+      url: '../chat/chat' });
+
     // uni.getLocation({
     // 	type: 'wgs84',
     // 	geocode: true,
@@ -338,8 +341,16 @@ var _default =
                 if (res && res.code == 200) {
 
                   uni.navigateTo({
-                    url: '../my/pay?id=' + res.data.service_id + '&price=' + _this.price + '&typeId=1' });
+                    url: '../my/pay?id=' + res.data.service_id + '&price=' + _this.price + '&typeId=1' + '&emitName=' + 'tochat' });
 
+
+                  uni.$on('tochat', function () {
+                    console.log('--------------------------');
+                    console.log('--------------------------' + res.data.service_id + '&layer_id=' + _this.layer_id + '&user_id=' + _this.user_id);
+                    uni.navigateTo({
+                      url: '../chat/chat?source_id=' + res.data.service_id + '&layer_id=' + _this.layer_id + '&user_id=' + _this.user_id });
+
+                  });
 
                 } else {
                   uni.showToast({

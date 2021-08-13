@@ -130,61 +130,51 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));
 
 
 
 
 
 
-var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-var _default = { components: { anli: _anli.default }, data: function data() {
+var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+{
+  components: {
+    anli: _anli.default },
+
+  onLoad: function onLoad() {
+    this.getAnli();
+  },
+  data: function data() {
     return {
-      anli: [{
-        id: 0,
-        sort: '买卖合同',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东青岛',
-        name: '张三',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '1783' },
-
-      {
-        id: 1,
-        sort: '婚姻家庭',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东潍坊',
-        name: '李四',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '32' },
-
-      {
-        id: 2,
-        sort: '为高质量',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东烟台',
-        name: '王五',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '544' },
-
-      {
-        id: 3,
-        sort: '为高质量',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东日照',
-        name: '赵六',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '6' }] };
-
-
+      anli: [],
+      page: 1,
+      limit: 10 };
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    getAnli: function getAnli() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.$myRequest({
+                    url: 'service/selectCase',
+                    methods: 'GET',
+                    data: {
+                      page: _this.page,
+                      limit: _this.limit,
+                      layer_id: '' } }));case 2:res = _context.sent;
+
+
+                if (res && res.code == 200) {
+                  console.log(res.data);
+                  _this.anli = res.data;
+                } else {
+                  uni.showToast({
+                    title: '每日学法数据获取异常',
+                    icon: 'none' });
+
+                }case 4:case "end":return _context.stop();}}}, _callee);}))();
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
@@ -374,9 +364,10 @@ var _default =
 
   },
   methods: {
-    tochat: function tochat() {
+    tochat: function tochat(item) {
+      console.log(item);
       uni.navigateTo({
-        url: '../chat/chat' });
+        url: '../anjianDetail/anjianDetail?source_id=' + item.id + "&layer_id=" + item.layer.id + "&user_id=" + item.user_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

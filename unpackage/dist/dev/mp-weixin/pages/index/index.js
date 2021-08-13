@@ -210,7 +210,7 @@ __webpack_require__.r(__webpack_exports__);
 var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));
 
 
-var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var search = function search() {__webpack_require__.e(/*! require.ensure | pages/components/search/search */ "pages/components/search/search").then((function () {return resolve(__webpack_require__(/*! ../components/search/search.vue */ 390));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 397));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard = function lawyercard() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard/lawyercard */ "pages/components/lawyercard/lawyercard").then((function () {return resolve(__webpack_require__(/*! ../components/lawyercard/lawyercard.vue */ 404));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var study = function study() {__webpack_require__.e(/*! require.ensure | pages/components/study/study */ "pages/components/study/study").then((function () {return resolve(__webpack_require__(/*! ../components/study/study.vue */ 411));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var search = function search() {__webpack_require__.e(/*! require.ensure | pages/components/search/search */ "pages/components/search/search").then((function () {return resolve(__webpack_require__(/*! ../components/search/search.vue */ 396));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 403));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard = function lawyercard() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard/lawyercard */ "pages/components/lawyercard/lawyercard").then((function () {return resolve(__webpack_require__(/*! ../components/lawyercard/lawyercard.vue */ 410));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var study = function study() {__webpack_require__.e(/*! require.ensure | pages/components/study/study */ "pages/components/study/study").then((function () {return resolve(__webpack_require__(/*! ../components/study/study.vue */ 417));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -348,51 +348,15 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
 
       lawyercard: [],
-      anli: [{
-        id: 0,
-        sort: '买卖合同',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东青岛',
-        name: '张三',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '1783' },
-
-      {
-        id: 1,
-        sort: '婚姻家庭',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东潍坊',
-        name: '李四',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '32' },
-
-      {
-        id: 2,
-        sort: '为高质量',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东烟台',
-        name: '王五',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '544' },
-
-      {
-        id: 3,
-        sort: '为高质量',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东日照',
-        name: '赵六',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '6' }],
-
-
+      anli: [],
       learn: [] };
 
   },
   onLoad: function onLoad() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
 
-              !_this.$store.state.userInfo || !_this.$store.state.userInfo.user_id)) {_context.next = 3;break;}_context.next = 3;return (
+              !_this.$store.state.userInfo || !_this.$store.state.userInfo.user_id)) {_context.next = 4;break;}_context.next = 3;return (
                 _this.getWxCode());case 3:
-
+              console.log(_this.$store.state);case 4:
 
               _this.getProvinceCity();
               _this.getBussinessTypes();
@@ -400,11 +364,14 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
               _this.getWorkAges();
               _this.getYouXuanLvshi();
               _this.getLearn();
+              _this.getAnli();
+
+
               uni.getSystemInfo({
                 success: function success(res) {
                   console.log(res);
                   _this.commitWindowHeight(res.windowHeight);
-                } });case 10:case "end":return _context.stop();}}}, _callee);}))();
+                } });case 12:case "end":return _context.stop();}}}, _callee);}))();
 
   },
   computed: _objectSpread({},
@@ -472,14 +439,16 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
                 }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
     },
-    getLearn: function getLearn() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
+    getLearn: function getLearn() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
+                console.log('------------->>>>>');
+                console.log(_this3.$store.state);_context4.next = 4;return (
                   _this3.$myRequest({
                     url: 'article/list',
                     methods: 'GET',
                     data: {
                       page: 1,
                       limit: 5,
-                      user_id: _this3.$store.state.userInfo.user_id } }));case 2:res = _context4.sent;
+                      user_id: _this3.$store.state.userInfo.user_id } }));case 4:res = _context4.sent;
 
 
                 if (res && res.code == 200) {
@@ -490,7 +459,27 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                     title: '每日学法数据获取异常',
                     icon: 'none' });
 
-                }case 4:case "end":return _context4.stop();}}}, _callee4);}))();
+                }case 6:case "end":return _context4.stop();}}}, _callee4);}))();
+    },
+    getAnli: function getAnli() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {var res;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
+                  _this4.$myRequest({
+                    url: 'service/selectCase',
+                    methods: 'GET',
+                    data: {
+                      page: 1,
+                      limit: 5,
+                      layer_id: '' } }));case 2:res = _context5.sent;
+
+
+                if (res && res.code == 200) {
+                  console.log(res.data);
+                  _this4.anli = res.data;
+                } else {
+                  uni.showToast({
+                    title: '每日学法数据获取异常',
+                    icon: 'none' });
+
+                }case 4:case "end":return _context5.stop();}}}, _callee5);}))();
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
@@ -648,9 +637,10 @@ var _default =
 
   },
   methods: {
-    tochat: function tochat() {
+    tochat: function tochat(item) {
+      console.log(item);
       uni.navigateTo({
-        url: '../chat/chat' });
+        url: '../anjianDetail/anjianDetail?source_id=' + item.id + "&layer_id=" + item.layer.id + "&user_id=" + item.user_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
