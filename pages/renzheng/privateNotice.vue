@@ -1,12 +1,31 @@
 <template>
 	<view>
-		<view class="content" :nodes="item.content"></view>
+		<view class="content" v-html="content"></view>
 		<view class="btn" @tap="toUrl()">立即认证</view>
 	</view>
 </template>
 
 <script>
 	export default{
+		data(){
+			return{
+				content:''
+			}
+		},
+		onLoad() {
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/index/setting',
+				method:'GET',
+				data:{
+					key:'ziying'
+				},
+				success(res) {
+					// console.log(res.data.data.data)
+					that.content = res.data.data.data
+				}
+			})
+		},
 		methods:{
 			toUrl(){
 				uni.navigateTo({

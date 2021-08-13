@@ -274,6 +274,14 @@
 				"navigationBarTitleText": "我的提成",
 				"enablePullDownRefresh":true
 			}
+		}, {
+			"path": "pages/my/finish",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
 		}
 		, {
 			"path": "pages/list/cooperModuleList",

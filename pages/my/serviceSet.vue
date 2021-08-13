@@ -158,13 +158,14 @@
 				}
 				let paramsJson = JSON.stringify(setting);
 				console.log(paramsJson)
+				// console.log(JSON.stringify(that.cardlist).replace(/\[|]/g, ''))
 				uni.request({
 					url:'https://layer.boyaokj.cn/api/layer/setting',
 					method: 'POST',
 					data:{
 						user_id:uni.getStorageSync('userInfo').id,
 						setting:paramsJson,
-						area:that.cardlist
+						area:JSON.stringify(that.cardlist).replace(/\[|]/g, '')
 					},
 					success(res) {
 						if(res.data.code == 200){
@@ -184,7 +185,6 @@
 			select(index) {
 		let that = this;
 		if (that.cardlist.indexOf(index) == -1) {
-			// console.log(index); //打印下标
 			that.cardlist.push(index); //选中添加到数组里
 		} else {
 			that.cardlist.splice(that.cardlist.indexOf(index), 1); //取消

@@ -11,8 +11,9 @@
 			<view class="username">
 				<view class="name">{{user.name}}</view>
 				<view class="record">
-					<view v-if="user.lawyer == ''">立即认证享更多权益</view>
-					<view v-else>已认证</view>
+					<view v-if="user.layer_status == 0">立即认证享更多权益</view>
+					<view v-if="user.layer_status == 1">认证中</view>
+					<view v-if="user.layer_status == 2">已认证</view>
 				</view>
 			</view>
 		</view>
@@ -81,8 +82,9 @@
 				<view>{{item.title}}</view>
 			</view>
 			<view class="itemright">
-				<view class="renzheng" v-if="user.lawyer == ''">{{item.rightxt2}}</view>
-				<view class="renzheng" v-if="user.lawyer != ''">{{item.rightxt}}</view>
+				<view class="renzheng" v-if="user.layer_status == 0">{{item.rightxt2}}</view>
+				<view class="renzheng" v-if="user.layer_status == 2">{{item.rightxt}}</view>
+				<view class="renzheng" v-if="user.layer_status == 1">{{item.rightxt3}}</view>
 				<view class="kefu" v-if="item.kefu">{{item.kefu}}</view>
 				<image src="../../static/icon/myrighticon.png" mode=""></image>
 			</view>
@@ -118,7 +120,8 @@
 					record:0,//是否认证
 					package:'',
 					vipname:'套餐二',//已开通vip名称
-					kefu:'400-8263-5078'
+					kefu:'400-8263-5078',
+					layer_status:0
 				},
 				iconlist:{
 					zixun:[
@@ -153,6 +156,7 @@
 						title:'律师认证',
 						rightxt:'已认证',
 						rightxt2:'未认证',
+						rightxt3:'认证中',
 						url:'../renzheng/classify'
 					},{
 						icon:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAApxJREFUOE+tlE1IVFEUx8954yRN+S0EhRUtAjdFuaiIomUmIhFEDuZSCUqKBCuKJigRpJRARatFRUoUIWJhEISELaIgMnIRSEGFSFDjx5u599x7Trz3nNHRZhF0N+/79/+f8z/vIvynhdk4XaNSluvAAUQoU4bJkPMpNwkvG6vR/ds3K0C3x2QTCnSIQI2IOGQENAkER4wrZTsdXNUaO4p6KTADdGdM9gjDkIiUWgYgCiB6Aeaf+1AYdbVb09dYHE/B0iDPCTC8ZZZSX91IghnPETmDSa0LFUGL0hxNwRTB07tNkWoAFA+WBt16JU+M4cOeuufEGqxP5IUG1BTVJixOdtaFx070JZ4p4srAKYMyTnTw/NqBNKjruZRJiL9oI86CYpKLwnlz33WLNXxVkVjXUrkkw9u0tY/TJVp4PRIr2JsGdYyY42Tlnqek/J6AKC09xsgRTbxOGxTRvH1O8xayMOg7Cvpm51cX5r+LoeuX1jpkLxDZaymlVHkqKFMZxqb+M2v6Dl2J9xsrtX7DPVEjYDhn6/ubBZ990KWH1EzGti9Px7u21rnIbyJt8fKZdmvltCbGVJLGAhgMbZ7oKvrqg5rvJ6s0yXAQLYMmCGL3rhn2zbuykZkfpObJS5W9rARmx3+WFMEjtD6ooVciwskfWtuClXMDU9pIhIjzfYecMYYD490l0Yz4667Px5Tly4tTHDgjlqhOwkGyXO8PzOIyIk7Fx57iDxmgil4Jr5+efaGI96fLClLsFoGdgLA7AyN4dryn5MaKyfZuVMYkfy7xu19rrgoa7bVh+UIDAi1LIRmOFl8X3HHq1zFj5SSC7BKAkP9MYBYRh1mwLVVO1p92uXZFg0RcnNkAOawnpgu/eelk23ay7kf/ut/9AZ3sEjGcc4UwAAAAAElFTkSuQmCC',
@@ -194,10 +198,11 @@
 							user_id:user.user_id
 						},
 						success(res) {
-							console.log(!res.data.data.layer)
+							console.log(res.data.data)
 							that.user.name = res.data.data.nickname
 							that.user.headimg = res.data.data.avater
 							that.user.balance = res.data.data.wallet
+							that.user.layer_status = res.data.data.layer_status
 							if(!res.data.data.layer){
 							}else{
 								that.user.lawyer = res.data.data.layer

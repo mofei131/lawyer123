@@ -139,6 +139,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
+  data: function data() {
+    return {
+      content: '' };
+
+  },
+  onLoad: function onLoad() {
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/index/setting',
+      method: 'GET',
+      data: {
+        key: 'ziying' },
+
+      success: function success(res) {
+        // console.log(res.data.data.data)
+        that.content = res.data.data.data;
+      } });
+
+  },
   methods: {
     toUrl: function toUrl() {
       uni.navigateTo({
