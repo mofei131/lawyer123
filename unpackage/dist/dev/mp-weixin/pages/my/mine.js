@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 411));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 411));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -227,20 +227,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-// import authMode from '@/pages/components/authMode/authMode.vue'
-var _default = {
+{
   components: {
-    iconlist: iconlist
-    // authMode
-  },
-  // async onShow() {
-  // 	if (!this.$store.state.userInfo) {
+    iconlist: iconlist },
 
-  // 		await this.getWxCode();
-  // 		this.$refs.authMode.open()
-  // 	}
-  // },
   data: function data() {
     return {
       user: {
@@ -317,11 +307,27 @@ var _default = {
 
   },
   onLoad: function onLoad() {
-
+    // let _this = this;
+    // uni.login({
+    // 	provider: 'weixin',
+    // 	  success: function (res) {
+    // 	    console.log(res.code);
+    // 			uni.request({
+    // 				url:'https://layer.boyaokj.cn/api/wechat/login',
+    // 				method:'GET',
+    // 				data:{
+    // 					pid:1,
+    // 					code:res.code
+    // 				},
+    // 				success(res) {
+    // 					console.log(res)
+    // 				}
+    // 			})
+    // 	  }
+    // })
   },
   onShow: function onShow() {
     var that = this;
-    // console.log(this.$store.state.userInfo)
     var user = uni.getStorageSync('userInfo');
     uni.request({
       url: 'https://layer.boyaokj.cn/api/wechat/getUserinfo',
@@ -330,14 +336,13 @@ var _default = {
         user_id: user.user_id },
 
       success: function success(res) {
-        console.log(res.data.data);
         that.user.name = res.data.data.nickname;
         that.user.headimg = res.data.data.avater;
         that.user.balance = res.data.data.wallet;
         that.user.layer_status = res.data.data.layer_status;
         if (!res.data.data.layer) {
         } else {
-          // that.user.lawyer = res.data.data.layer
+          that.user.lawyer = res.data.data.layer;
         }
         that.user.package = res.data.data.package;
       } });
@@ -384,26 +389,7 @@ var _default = {
       uni.navigateTo({
         url: url });
 
-    }
-    // async authorTap() {
-    // 	if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id || !this.$store.state.userInfo
-    // 		.isAuthor) {
-    // 		let isSuccess = await this.updateUserInfo();
-    // 		if (isSuccess) {
-    // 			uni.showToast({
-    // 				title: '授权成功！'
-    // 			})
-    // 			this.$refs.authMode.setDialogFalse();
-    // 		}
-
-    // 	}
-    // },
-    // backIndex(){
-    // 	uni.switchTab({
-    // 		url:'../index/index'
-    // 	})
-    // },
-  } };exports.default = _default;
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

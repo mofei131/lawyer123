@@ -90,25 +90,15 @@
 			</view>
 		</view>
 	</view>
-	<!-- <authMode @confirm="authorTap" @backindex="backIndex" ref="authMode"></authMode> -->
 	</view>
 </template>
 
 <script>
 	import iconlist from '../components/iconlist/iconlist.vue'
-	// import authMode from '@/pages/components/authMode/authMode.vue'
 	export default {
 		components:{
 			iconlist
-			// authMode
 		},
-		// async onShow() {
-		// 	if (!this.$store.state.userInfo) {
-				
-		// 		await this.getWxCode();
-		// 		this.$refs.authMode.open()
-		// 	}
-		// },
 		data() {
 			return {
 				user:{
@@ -121,7 +111,7 @@
 					package:'',
 					vipname:'套餐二',//已开通vip名称
 					kefu:'400-8263-5078',
-					layer_status:0
+					layer_status:0,
 				},
 				iconlist:{
 					zixun:[
@@ -185,11 +175,27 @@
 		      }
 		    },
 				onLoad(){
-					
+					// let _this = this;
+					// uni.login({
+					// 	provider: 'weixin',
+					// 	  success: function (res) {
+					// 	    console.log(res.code);
+					// 			uni.request({
+					// 				url:'https://layer.boyaokj.cn/api/wechat/login',
+					// 				method:'GET',
+					// 				data:{
+					// 					pid:1,
+					// 					code:res.code
+					// 				},
+					// 				success(res) {
+					// 					console.log(res)
+					// 				}
+					// 			})
+					// 	  }
+					// })
 				},
 				onShow() {
 					let that = this
-					// console.log(this.$store.state.userInfo)
 					let user = uni.getStorageSync('userInfo');
 					uni.request({
 						url:'https://layer.boyaokj.cn/api/wechat/getUserinfo',
@@ -198,14 +204,13 @@
 							user_id:user.user_id
 						},
 						success(res) {
-							console.log(res.data.data)
 							that.user.name = res.data.data.nickname
 							that.user.headimg = res.data.data.avater
 							that.user.balance = res.data.data.wallet
 							that.user.layer_status = res.data.data.layer_status
 							if(!res.data.data.layer){
 							}else{
-								// that.user.lawyer = res.data.data.layer
+								that.user.lawyer = res.data.data.layer
 							}
 							that.user.package = res.data.data.package
 						}
@@ -253,24 +258,6 @@
 					url:url
 				})
 			},
-			// async authorTap() {
-			// 	if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id || !this.$store.state.userInfo
-			// 		.isAuthor) {
-			// 		let isSuccess = await this.updateUserInfo();
-			// 		if (isSuccess) {
-			// 			uni.showToast({
-			// 				title: '授权成功！'
-			// 			})
-			// 			this.$refs.authMode.setDialogFalse();
-			// 		}
-					
-			// 	}
-			// },
-			// backIndex(){
-			// 	uni.switchTab({
-			// 		url:'../index/index'
-			// 	})
-			// },
 		}
 	};
 </script>
