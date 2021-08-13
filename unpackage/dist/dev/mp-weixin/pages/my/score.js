@@ -197,7 +197,7 @@ __webpack_require__.r(__webpack_exports__);
         url: 'https://layer.boyaokj.cn/api/order/judgeOrder',
         method: 'GET',
         data: {
-          user_id: 43,
+          user_id: uni.getStorageSync('userInfo').user_id,
           service_id: that.id,
           star: that.value },
 
@@ -207,9 +207,9 @@ __webpack_require__.r(__webpack_exports__);
             duration: 1000 });
 
           setTimeout(function () {
-            uni.navigateBack({},
+            uni.navigateBack({});
 
-            1000);
+
           }, 1000);
         } });
 

@@ -191,6 +191,25 @@ __webpack_require__.r(__webpack_exports__);
 
         } });
 
+    },
+    getChild1: function getChild1(e) {
+      this.type = e;
+      var that = this;
+      if (that.type == 2) {
+        uni.request({
+          url: 'https://layer.boyaokj.cn/api/order/shouli_dingdan_list',
+          method: 'GET',
+          data: {
+            user_id: uni.getStorageSync('userInfo').user_id,
+            page: that.page,
+            limit: that.limit },
+
+          success: function success(res) {
+            // console.log(res.data.data)
+            that.list = res.data.data;
+          } });
+
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

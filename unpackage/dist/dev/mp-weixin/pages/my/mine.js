@@ -337,7 +337,7 @@ var _default = {
         that.user.layer_status = res.data.data.layer_status;
         if (!res.data.data.layer) {
         } else {
-          that.user.lawyer = res.data.data.layer;
+          // that.user.lawyer = res.data.data.layer
         }
         that.user.package = res.data.data.package;
       } });

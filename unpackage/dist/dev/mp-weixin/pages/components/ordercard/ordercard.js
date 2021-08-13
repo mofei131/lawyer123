@@ -162,6 +162,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default =
 {
   props: ['list'],
@@ -178,16 +181,9 @@ var _default =
 
     },
     score: function score(item) {
-      if (item) {
-        uni.showToast({
-          title: '已评价',
-          icon: 'none' });
+      uni.navigateTo({
+        url: './score?id=' + item.service_id + "&code=" + item.orderno });
 
-      } else {
-        uni.navigateTo({
-          url: './score?id=' + item.service_id + "&code=" + item.orderno });
-
-      }
     },
     tuwen: function tuwen(item) {
       uni.navigateTo({

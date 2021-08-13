@@ -177,7 +177,6 @@ var _default =
 
     },
     over: function over(e) {
-      console.log(e);
       uni.request({
         url: 'https://layer.boyaokj.cn/api/order/endService',
         method: 'GET',
@@ -187,12 +186,14 @@ var _default =
 
         success: function success(res) {
           uni.showToast({
-            title: '结束成功' });
+            title: '结束成功',
+            duration: 1000 });
 
         } });
 
+      this.$emit("getChild1", this.type);
     },
-    dianhua: function dianhua(item) {
+    dianhau: function dianhau(item) {
       uni.makePhoneCall({
         phoneNumber: item.mobile });
 

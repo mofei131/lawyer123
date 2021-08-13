@@ -42,7 +42,7 @@
 					 	url:'https://layer.boyaokj.cn/api/order/judgeOrder',
 					 						method:'GET',
 					 						data:{
-					 							user_id:43,
+					 							user_id:uni.getStorageSync('userInfo').user_id,
 					 							service_id:that.id,
 					 							star:that.value
 					 						},
@@ -54,7 +54,7 @@
 												setTimeout(function() {
 												uni.navigateBack({
 												
-												},1000);
+												});
 												},1000)
 					 						}
 					 })

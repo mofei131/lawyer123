@@ -21,6 +21,8 @@
 		onLoad(p) {
 			this.type = p.id
 			console.log(p)
+		},
+		onShow() {
 			let that = this
 			uni.request({
 				url:'https://layer.boyaokj.cn/api/order/fuwu_list',
@@ -35,7 +37,6 @@
 					that.list = res.data.data
 				}
 			})
-			
 		},
 		onReachBottom() {
 			let that = this

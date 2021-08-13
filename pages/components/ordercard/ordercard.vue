@@ -36,8 +36,11 @@
 						<view class="btn"  v-if="item.status == 1 && item.service_type != 1" @tap="dianhua(item)">
 							<view>联系律师</view>
 						</view>
-						<view class="btn" @tap="score(item)" v-if="item.status == 2">
+						<view class="btn" @tap="score(item)" v-if="!item.star">
 							<view>去评价</view>
+						</view>
+						<view class="btn" v-if=" item.star > 0">
+							<view>已评价</view>
 						</view>
 					</view>
 				</view>
@@ -62,16 +65,9 @@
 				})
 			},
 			score(item){
-				if(item){
-					uni.showToast({
-						title:'已评价',
-						icon:'none'
-					})
-				}else{
-					uni.navigateTo({
-						url:'./score?id='+item.service_id+"&code="+item.orderno
-					})
-				}
+				uni.navigateTo({
+					url:'./score?id='+item.service_id+"&code="+item.orderno
+				})
 			},
 			tuwen(item){
 				uni.navigateTo({

@@ -25,12 +25,12 @@
 						<view v-else>￥{{item.service_price}}</view>
 					</view>
 				</view>
-				<view v-if="item.status == 0">
+				<view v-if="item.status == 1">
 				<view class="bottom">
 					<view class="btn" @tap="over(item.service_id)">
 						<view>结束服务</view>
 					</view>
-						<view class="btn" @tap="dainhau(item)">
+						<view class="btn" @tap="dianhau(item)">
 							<view>联系客户</view>
 						</view>
 					</view>
@@ -46,7 +46,7 @@
 		data(){
 			return{
 				type:2,
-				id:0
+				id:0,
 			}
 		},
 		methods:{
@@ -61,7 +61,6 @@
 				})
 			},
 			over(e){
-				console.log(e)
 				uni.request({
 					url:'https://layer.boyaokj.cn/api/order/endService',
 					method:'GET',
@@ -72,17 +71,20 @@
 					success(res) {
 							uni.showToast({
 								title: '结束成功',
+								duration:1000
 							})
 					}
 				})
+				this.$emit("getChild1",this.type);
 			},
-			dianhua(item){
+			dianhau(item){
 				uni.makePhoneCall({
 					 phoneNumber: item.mobile, 
 				})
+			},
 			}
 		}
-	}
+	
 </script>
 
 <style>

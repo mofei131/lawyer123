@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<ordercard :list = 'list' ></ordercard>
+		<ordercard :list = 'list' @getChild1 = "getChild1"></ordercard>
 	</view>
 </template>
 
@@ -59,6 +59,25 @@
 						
 					}
 				})
+			},
+			getChild1(e){
+				this.type = e
+				let that = this
+				if(that.type == 2){
+				uni.request({
+					url:'https://layer.boyaokj.cn/api/order/shouli_dingdan_list',
+					method:'GET',
+					data:{
+						user_id:uni.getStorageSync('userInfo').user_id,
+						page:that.page,
+						limit:that.limit
+					},
+					success(res) {
+						// console.log(res.data.data)
+						that.list = res.data.data
+					}
+				})
+				}
 			}
 		}
 	}
