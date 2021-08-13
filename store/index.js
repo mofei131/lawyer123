@@ -20,7 +20,9 @@ const store = new Vuex.Store({
 		lawyerLevels: [],
 		workAges: [],
 		wxCode: null,
-		windowHeight:'750'
+		windowHeight:'750',
+		websocketConnect:false,
+		socketInfo:[]
 
 	},
 	mutations: {
@@ -45,8 +47,16 @@ const store = new Vuex.Store({
 		},
 		commitWindowHeight(state, params){
 			state.windowHeight = params;
+		},
+		commitWebsocketConnect(state, params){
+			state.websocketConnect = params;
+		},
+		commitSocketInfo(state, params){
+			let c = state.socketInfo;
+			
+			c.push(params);
+			state.socketInfo = c;
 		}
-		
 
 	},
 	getters: {

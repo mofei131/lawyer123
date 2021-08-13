@@ -96,7 +96,7 @@ var components
 try {
   components = {
     faIcon: function() {
-      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 343))
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 349))
     }
   }
 } catch (e) {
@@ -217,6 +217,9 @@ var _default =
     this.userInfo = userInfo;
     this.layer_id = param.layer_id;
     this.user_id = userInfo.user_id;
+
+    uni.navigateTo({
+      url: '../chat/chat' });
 
     // uni.getLocation({
     // 	type: 'wgs84',

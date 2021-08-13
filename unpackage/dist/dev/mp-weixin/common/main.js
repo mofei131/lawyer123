@@ -7,18 +7,56 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 4);var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+/* WEBPACK VAR INJECTION */(function(uni, createApp) {__webpack_require__(/*! uni-pages */ 4);var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 var _index = _interopRequireDefault(__webpack_require__(/*! @/store/index */ 11));
 var _http = _interopRequireDefault(__webpack_require__(/*! @/common/http */ 18));
 var _amapWx = _interopRequireDefault(__webpack_require__(/*! @/common/SDK/amap-wx.js */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-_vue.default.prototype.$amapPlugin = new _amapWx.default.AMapWX({ key: "9ef3f1159ac3b62ed6cb47fd15bac9df" });
+_vue.default.prototype.$amapPlugin = new _amapWx.default.AMapWX({
+  key: "9ef3f1159ac3b62ed6cb47fd15bac9df" });
+
 _vue.default.prototype.$store = _index.default;
 _vue.default.prototype.$myRequest = _http.default.ajax;
 
+
+var socketTask = uni.connectSocket({
+  url: 'wss://layer.boyaokj.cn/wss',
+  header: {
+    'content-type': 'application/json' },
+
+  protocols: [],
+  method: 'GET' });
+
+_vue.default.prototype.$socketTask = socketTask;
+uni.onSocketOpen(function (res) {
+  console.log('WebSocket连接已打开！');
+  _index.default.commit('commitWebsocketConnect', true);
+});
+uni.onSocketError(function (res) {
+  console.log('WebSocket连接打开失败，请检查！');
+  _index.default.commit('commitWebsocketConnect', false);
+});
+
+// uni.onSocketMessage(function(res) {
+// 	console.log('收到服务器内容：');
+// 	let data = JSON.parse(res.data);
+// 	console.log(data)
+// 	if (data.code == 200) {
+// 		store.commit('commitSocketInfo', data.data)
+// 	}
+
+// });
+uni.onSocketClose(function (res) {
+  console.log('WebSocket 已关闭！');
+  _index.default.commit('commitWebsocketConnect', false);
+});
+
+
+
+
 _vue.default.config.productionTip = false;
 // 图标组件
-var faicon = function faicon() {__webpack_require__.e(/*! require.ensure | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then((function () {return resolve(__webpack_require__(/*! @/components/fa-icon/fa-icon.vue */ 343));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var faicon = function faicon() {__webpack_require__.e(/*! require.ensure | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then((function () {return resolve(__webpack_require__(/*! @/components/fa-icon/fa-icon.vue */ 349));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 _vue.default.component('fa-icon', faicon);
 _App.default.mpType = 'app';
 
@@ -26,7 +64,7 @@ var app = new _vue.default(_objectSpread({},
 _App.default));
 
 createApp(app).$mount();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
 
 /***/ }),
 /* 1 */,

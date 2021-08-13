@@ -62,7 +62,10 @@
 			this.userInfo = userInfo;
 			this.layer_id = param.layer_id;
 			this.user_id = userInfo.user_id;
-
+			
+			uni.navigateTo({
+				url:'../chat/chat'
+			})
 			// uni.getLocation({
 			// 	type: 'wgs84',
 			// 	geocode: true,
