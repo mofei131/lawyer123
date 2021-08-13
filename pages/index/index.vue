@@ -5,11 +5,13 @@
 		<swiper class="swiper flex-column mx-start sx-stretch" circular :indicator-dots="true" :autoplay="true"
 			interval="3000" duration="500">
 			<swiper-item class="flex-column mx-start sx-stretch">
-				<view class="swiper-item backImgFull" :style="{backgroundImage: 'url(/static/images/banner.png)'}">
-				</view>
+				<!-- <view class="swiper-item backImgFull" mode="widthFix" :style="{backgroundImage: 'url(/static/images/banner.png)'}">
+				</view> -->
+				<image class="swiper-item backImgFull" mode="widthFix" src="@/static/images/banner.png"></image>
 			</swiper-item>
 			<swiper-item class="flex-column mx-start sx-stretch">
-				<view class="swiper-item backImgFull" style="background-image: url(/static/images/banner.png)"></view>
+				<!-- <view class="swiper-item backImgFull" style="background-image: url(/static/images/banner.png)" mode="widthFix"></view> -->
+				<image class="swiper-item backImgFull" mode="widthFix" src="@/static/images/banner.png"></image>
 			</swiper-item>
 		</swiper>
 
@@ -360,6 +362,9 @@
 </script>
 
 <style>
+	.backImgFull{
+		width: 100%;
+	}
 	.swiper {
 		height: 400rpx;
 	}

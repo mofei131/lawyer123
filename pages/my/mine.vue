@@ -11,7 +11,7 @@
 			<view class="username">
 				<view class="name">{{user.name}}</view>
 				<view class="record">
-					<view v-if="user.type == ''">立即认证享更多权益</view>
+					<view v-if="user.lawyer == ''">立即认证享更多权益</view>
 					<view v-else>已认证</view>
 				</view>
 			</view>
@@ -194,11 +194,14 @@
 							user_id:user.user_id
 						},
 						success(res) {
-							console.log(res.data.data)
+							console.log(!res.data.data.layer)
 							that.user.name = res.data.data.nickname
 							that.user.headimg = res.data.data.avater
 							that.user.balance = res.data.data.wallet
-							that.user.lawyer = res.data.data.layer
+							if(!res.data.data.layer){
+							}else{
+								that.user.lawyer = res.data.data.layer
+							}
 							that.user.package = res.data.data.package
 						}
 					})
@@ -318,6 +321,9 @@
 		margin-top: 15rpx;
 		margin-bottom: 5rpx;
 	}
+	.record{
+		float: left;
+	}
 	.record view{
 		padding: 11rpx;
 		font-weight: 400;
@@ -328,6 +334,9 @@
 		text-align: center;
 		padding-top: 2rpx;
 		padding-bottom: 2rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	.username{
 		margin-left: 31rpx;

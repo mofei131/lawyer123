@@ -46,7 +46,7 @@
 				<view>添加更多服务项目</view>
 			</view>
 	</view>
-	<view class="molde" v-if="molde">
+	<view class="molde" v-show="molde">
 		<view class="eject">
 			<view class="ejtitle">是否添加新的案件聘请服务</view>
 			<picker class="gather" @change="anjianChange1" :value="index1" :range="array1" range-key="name">
@@ -97,6 +97,8 @@
 				url:'https://layer.boyaokj.cn/api/service/getOtherService',
 				success(res) {
 					that.array1 = res.data.data
+					that.zancun = res.data.data[0].name
+					that.zancunid = res.data.data[0].id
 				}
 			})
 		},
@@ -135,9 +137,6 @@
 					return
 					}
 				let that = this
-				// uni.navigateTo({
-				// 	url:'./classifyDet2'
-				// })
 				let setting =[
 					{id:1,price:that.chat},
 					{id:2,price:that.phone},
@@ -168,8 +167,18 @@
 						area:that.cardlist
 					},
 					success(res) {
-						console.log(res)
-					},
+						if(res.data.code == 200){
+							uni.showToast({
+								title: '提交成功',
+								duration:1000
+							})
+							setTimeout(function() {
+							uni.switchTab({
+								url:'./mine'
+							})
+							},1000)
+					}
+					}
 				})
 			},
 			select(index) {
@@ -190,6 +199,7 @@
 				this.molde = !this.molde
 			},
 			press(){
+				let that = this
 				this.sevedata.push({
 					service:this.zancun,
 					id:this.zancunid,

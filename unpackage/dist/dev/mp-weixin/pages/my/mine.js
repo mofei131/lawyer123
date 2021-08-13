@@ -326,11 +326,14 @@ var _default = {
         user_id: user.user_id },
 
       success: function success(res) {
-        console.log(res.data.data);
+        console.log(!res.data.data.layer);
         that.user.name = res.data.data.nickname;
         that.user.headimg = res.data.data.avater;
         that.user.balance = res.data.data.wallet;
-        that.user.lawyer = res.data.data.layer;
+        if (!res.data.data.layer) {
+        } else {
+          that.user.lawyer = res.data.data.layer;
+        }
         that.user.package = res.data.data.package;
       } });
 

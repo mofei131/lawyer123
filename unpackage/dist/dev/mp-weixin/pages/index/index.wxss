@@ -72,6 +72,9 @@
 }
 
 
+.backImgFull{
+	width: 100%;
+}
 .swiper {
 	height: 400rpx;
 }
@@ -224,7 +227,6 @@
 .top-menu-view .menu-topic-view .menu-topic:first-child {
 	margin-left: 30rpx;
 }
-
 /* .top-menu-view .menu-topic-view:last-child  .menu-topic{
      margin-right: 80rpx;
  } */

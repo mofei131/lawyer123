@@ -270,6 +270,8 @@ var _default =
       url: 'https://layer.boyaokj.cn/api/service/getOtherService',
       success: function success(res) {
         that.array1 = res.data.data;
+        that.zancun = res.data.data[0].name;
+        that.zancunid = res.data.data[0].id;
       } });
 
   },
@@ -308,9 +310,6 @@ var _default =
         return;
       }
       var that = this;
-      // uni.navigateTo({
-      // 	url:'./classifyDet2'
-      // })
       var setting = [
       { id: 1, price: that.chat },
       { id: 2, price: that.phone },
@@ -341,7 +340,17 @@ var _default =
           area: that.cardlist },
 
         success: function success(res) {
-          console.log(res);
+          if (res.data.code == 200) {
+            uni.showToast({
+              title: '提交成功',
+              duration: 1000 });
+
+            setTimeout(function () {
+              uni.switchTab({
+                url: './mine' });
+
+            }, 1000);
+          }
         } });
 
     },
@@ -363,6 +372,7 @@ var _default =
       this.molde = !this.molde;
     },
     press: function press() {
+      var that = this;
       this.sevedata.push({
         service: this.zancun,
         id: this.zancunid });

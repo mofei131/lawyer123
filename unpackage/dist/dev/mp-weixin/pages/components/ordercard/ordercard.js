@@ -191,7 +191,7 @@ var _default =
     },
     tuwen: function tuwen(item) {
       uni.navigateTo({
-        url: '../service_zhixun/tuwen?layer_id=' + item.layer_id });
+        url: '../chat/chat?layer_id=' + item.layer_id });
 
     },
     dianhua: function dianhua(item) {
