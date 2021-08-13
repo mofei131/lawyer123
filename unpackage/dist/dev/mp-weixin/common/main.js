@@ -34,7 +34,7 @@ uni.onSocketOpen(function (res) {
 });
 uni.onSocketError(function (res) {
   console.log('WebSocket连接打开失败，请检查！');
-  _index.default.commit('commitWebsocketConnect', false);
+  // store.commit('commitWebsocketConnect', false)
 });
 
 // uni.onSocketMessage(function(res) {
@@ -48,6 +48,7 @@ uni.onSocketError(function (res) {
 // });
 uni.onSocketClose(function (res) {
   console.log('WebSocket 已关闭！');
+  _vue.default.prototype.$socketTask = null;
   _index.default.commit('commitWebsocketConnect', false);
 });
 
@@ -56,7 +57,7 @@ uni.onSocketClose(function (res) {
 
 _vue.default.config.productionTip = false;
 // 图标组件
-var faicon = function faicon() {__webpack_require__.e(/*! require.ensure | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then((function () {return resolve(__webpack_require__(/*! @/components/fa-icon/fa-icon.vue */ 349));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var faicon = function faicon() {__webpack_require__.e(/*! require.ensure | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then((function () {return resolve(__webpack_require__(/*! @/components/fa-icon/fa-icon.vue */ 397));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 _vue.default.component('fa-icon', faicon);
 _App.default.mpType = 'app';
 

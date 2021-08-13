@@ -1,6 +1,13 @@
 
+page{
+		background: #F4F7F7;
+}
 .contractdet{
-	width: 710rpx;
-	margin: auto;
+		width: 720rpx;
+		margin: auto;
+		border-radius: 10rpx;
+		background: #fff;
+		
+		padding: 20rpx;
 }
 

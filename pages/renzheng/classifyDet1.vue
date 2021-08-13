@@ -64,17 +64,38 @@
 		methods:{
 			chooseImage(e) {
 				let that = this
-							uni.chooseImage({
+							let file = uni.chooseImage({
 								count: 1, //默认9
 								sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
 								sourceType: ['album','camera'], //从相册选择、摄像头
 								success: function(res) {
 									if(e == 1){
-										that.zipai = res.tempFilePaths[0]
+										uni.uploadFile({
+											url:'https://layer.boyaokj.cn/api/file/upload',
+											filePath: res.tempFilePaths[0],
+											name: 'file',
+											success(res) {
+												that.zipai = JSON.parse(res.data).data.url
+											}
+										})
 									}else if(e == 2){
-										that.zheng = res.tempFilePaths[0]
+										uni.uploadFile({
+											url:'https://layer.boyaokj.cn/api/file/upload',
+											filePath: res.tempFilePaths[0],
+											name: 'file',
+											success(res) {
+												that.zheng = JSON.parse(res.data).data.url
+											}
+										})
 									}else{
-										that.fan = res.tempFilePaths[0]
+										uni.uploadFile({
+											url:'https://layer.boyaokj.cn/api/file/upload',
+											filePath: res.tempFilePaths[0],
+											name: 'file',
+											success(res) {
+												that.fan = JSON.parse(res.data).data.url
+											}
+										})
 									}
 								},
 							});

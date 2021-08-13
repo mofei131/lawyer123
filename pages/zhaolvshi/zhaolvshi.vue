@@ -49,6 +49,12 @@
 			lawyercard1,
 			authMode
 		},
+// <<<<<<< HEAD
+// 		onShow() {
+// 			if (!this.$store.state.userInfo) {
+// 				this.$refs.authMode.open()
+// 				this.getWxCode();
+// =======
 		async onShow() {
 			let userInfo = this.$store.state.userInfo;
 			console.log(userInfo);

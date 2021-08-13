@@ -43,9 +43,8 @@
 		}, {
 			"path": "pages/detail/cooperDetail",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "合同下载",
+				"enablePullDownRefresh": false
 			}
 
 		}, {
@@ -70,7 +69,8 @@
 		}, {
 			"path": "pages/my/serviceList",
 			"style": {
-				"navigationBarTitleText": "我的订单"
+				"navigationBarTitleText": "我的订单",
+				"enablePullDownRefresh": true
 			}
 
 		}, {
@@ -163,7 +163,8 @@
 		}, {
 			"path": "pages/my/dealList",
 			"style": {
-				"navigationBarTitleText": "我的订单"
+				"navigationBarTitleText": "我的订单",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/my/takeOut",
@@ -173,7 +174,8 @@
 		}, {
 			"path": "pages/my/bill",
 			"style": {
-				"navigationBarTitleText": "余额明细"
+				"navigationBarTitleText": "余额明细",
+				"enablePullDownRefresh":true
 			}
 		}, {
 			"path": "pages/my/fenxiao",
@@ -246,9 +248,39 @@
 			"style": {
 				"navigationBarTitleText": "支付"
 			}
+		}, {
+			"path": "pages/my/case",
+			"style": {
+				"navigationBarTitleText": "我的案件",
+				"enablePullDownRefresh":true
+			}
+		}, {
+			"path": "pages/my/slfuwu",
+			"style": {
+				"navigationBarTitleText": "受理订单",
+				"enablePullDownRefresh":true
+			}
+		}, {
+			"path": "pages/my/slanjian",
+			"style": {
+				"navigationBarTitleText": "受理案件",
+				"enablePullDownRefresh":true
+			}
+		}, {
+			"path": "pages/my/ticheng",
+			"style": {
+				"navigationBarTitleText": "我的提成",
+				"enablePullDownRefresh":true
+			}
+		}, {
+			"path": "pages/my/finish",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
 		}
-
-
 		, {
 			"path": "pages/list/cooperModuleList",
 			"style": {

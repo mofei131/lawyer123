@@ -7,22 +7,22 @@
 		<view class="collect">
 			<view class="intitem">
 				<view class="tips">图文资讯：</view>
-				<input class="gather" type="number" value="" placeholder="请手动输入图文咨询价格" v-model="chat" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" placeholder="请手动输入图文咨询价格" v-model="chat" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 		<view class="intitem">
 				<view class="tips">电话咨询：</view>
-				<input class="gather" type="number" value="" placeholder="请手动输入电话咨询价格" v-model="phone" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" placeholder="请手动输入电话咨询价格" v-model="phone" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 		<view class="intitem">
 				<view class="tips">见面资讯：</view>
-				<input class="gather" type="number" value="" placeholder="请手动输入见面咨询价格" v-model="meet" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" placeholder="请手动输入见面咨询价格" v-model="meet" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 		<view class="intitem">
 				<view class="tips">聘请律师：</view>
-				<input class="gather" type="number" value="" placeholder="请手动输入受聘价格" v-model="emplay" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" placeholder="请手动输入受聘价格" v-model="emplay" placeholder-style="color: #C1C2C3;"/>
 			</view>
 			<view class="boder" style="margin-bottom: 10rpx;"></view>
 			<view class="boder"></view>
@@ -37,8 +37,8 @@
 			</view>
 			<view class="boder"></view>
 			<view class="servicepirce" v-for="(item,index) in sevedata" :key="index">
-				<view>{{item.service}}：</view>
-				<input type="number" value="" class="serviceinp" placeholder="请手动输入服务价格" v-model="item.price" placeholder-style="color: #C1C2C3;"/>
+				<view class="sevname">{{item.service}}：</view>
+				<input type="digit" value="" class="serviceinp" placeholder="请手动输入服务价格" v-model="item.price" placeholder-style="color: #C1C2C3;"/>
 				<image src="../../static/icon/deleteicon.png" @tap="delect(item.id)"></image>
 			</view>
 			<view class="addmore" @tap="cancel()">
@@ -46,7 +46,7 @@
 				<view>添加更多服务项目</view>
 			</view>
 	</view>
-	<view class="molde" v-if="molde">
+	<view class="molde" v-show="molde">
 		<view class="eject">
 			<view class="ejtitle">是否添加新的案件聘请服务</view>
 			<picker class="gather" @change="anjianChange1" :value="index1" :range="array1" range-key="name">
@@ -97,6 +97,8 @@
 				url:'https://layer.boyaokj.cn/api/service/getOtherService',
 				success(res) {
 					that.array1 = res.data.data
+					that.zancun = res.data.data[0].name
+					that.zancunid = res.data.data[0].id
 				}
 			})
 		},
@@ -135,9 +137,6 @@
 					return
 					}
 				let that = this
-				// uni.navigateTo({
-				// 	url:'./classifyDet2'
-				// })
 				let setting =[
 					{id:1,price:that.chat},
 					{id:2,price:that.phone},
@@ -159,23 +158,33 @@
 				}
 				let paramsJson = JSON.stringify(setting);
 				console.log(paramsJson)
+				// console.log(JSON.stringify(that.cardlist).replace(/\[|]/g, ''))
 				uni.request({
 					url:'https://layer.boyaokj.cn/api/layer/setting',
 					method: 'POST',
 					data:{
 						user_id:uni.getStorageSync('userInfo').id,
 						setting:paramsJson,
-						area:that.cardlist
+						area:JSON.stringify(that.cardlist).replace(/\[|]/g, '')
 					},
 					success(res) {
-						console.log(res)
-					},
+						if(res.data.code == 200){
+							uni.showToast({
+								title: '提交成功',
+								duration:1000
+							})
+							setTimeout(function() {
+							uni.switchTab({
+								url:'./mine'
+							})
+							},1000)
+					}
+					}
 				})
 			},
 			select(index) {
 		let that = this;
 		if (that.cardlist.indexOf(index) == -1) {
-			// console.log(index); //打印下标
 			that.cardlist.push(index); //选中添加到数组里
 		} else {
 			that.cardlist.splice(that.cardlist.indexOf(index), 1); //取消
@@ -190,6 +199,7 @@
 				this.molde = !this.molde
 			},
 			press(){
+				let that = this
 				this.sevedata.push({
 					service:this.zancun,
 					id:this.zancunid,
@@ -444,4 +454,9 @@
 		font-weight: 400;
 		color: #40A9FF;
 	}
+	.sevname{
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		}
 </style>

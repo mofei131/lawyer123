@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="contractdet">
-			<view  v-index = 'content'></view>
+			<view  v-html="content"></view>
 		</view>
 	</view>
 </template>
@@ -20,10 +20,10 @@
 				method:'GET',
 				data:{
 					id:p.id,
-					user_id:uni.getStorageSync('userInfo').id
+					user_id:uni.getStorageSync('userInfo').user_id
 				},
 				success(res) {
-					console.log(res.data.data.content)
+					// console.log(res.data.data.content)
 					that.content = res.data.data.content
 				}
 			})
@@ -32,9 +32,15 @@
 </script>
 
 <style>
-.contractdet{
-	width: 710rpx;
-	margin: auto;
-	
-}
+page{
+		background: #F4F7F7;
+	}
+	.contractdet{
+		width: 720rpx;
+		margin: auto;
+		border-radius: 10rpx;
+		background: #fff;
+		
+		padding: 20rpx;
+	}
 </style>

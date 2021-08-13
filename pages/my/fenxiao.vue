@@ -34,7 +34,7 @@
 				url:'https://layer.boyaokj.cn/api/commission/getList',
 				method:'GET',
 				data:{
-					user_id:uni.getStorageSync('userInfo').id,
+					user_id:uni.getStorageSync('userInfo').user_id,
 					type:1
 				},
 				success(res) {
@@ -45,7 +45,7 @@
 				url:'https://layer.boyaokj.cn/api/commission/getList',
 				method:'GET',
 				data:{
-					user_id:uni.getStorageSync('userInfo').id,
+					user_id:uni.getStorageSync('userInfo').user_id,
 					type:2
 				},
 				success(res) {
@@ -93,8 +93,10 @@
 		font-weight: 500;
 		color: #464646;
 		text-align: center;
-		padding-top: 13rpx;
 		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	.empty{
 		width: 240rpx;
@@ -107,8 +109,10 @@
 		font-weight: 500;
 		color: #464646;
 		text-align: center;
-		padding-top: 13rpx;
 		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	.directitem{
 		width: 710rpx;

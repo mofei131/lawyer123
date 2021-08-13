@@ -1,21 +1,15 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
-		<view class="">
-			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="合同详情" color="#333333"
-				background-color="#FFFFFF" @clickLeft="back">
-				<!-- <block slot="right">
-					<view class="city">
-						<view><text class="uni-nav-bar-text">123</text></view>
-						<uni-icons type="arrowdown" color="#333333" size="22" />
-					</view>
-				</block> -->
 
-			</uni-nav-bar>
-		</view>
 
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;">
 			<view v-html="dataSource.content" style=""></view>
-			<view class="flex-txt-center" style="margin-top: 40rpx;border-radius: 40rpx;flex:0 0 80rpx;background-color: #6CA5FF; color: #FFFFFF;" @click="download">立即下载</view>
+			<view class="flex-row mx-evenly sx-center" style="margin-top: 40rpx;">
+				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #4CD964; color: #FFFFFF;" @tap="toIndex">返回首页</view>
+				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #6CA5FF; color: #FFFFFF;" @tap="download">立即下载</view>
+				
+			</view>
+			
 		</view>
 
 
@@ -50,6 +44,11 @@
 			}
 		},
 		methods: {
+			toIndex(){
+				uni.switchTab({
+					url:'/pages/index/index'
+				})
+			},
 			back() {
 				uni.navigateBack({
 					delta: 1
@@ -61,6 +60,7 @@
 				})
 			},
 			download(){
+				console.log(this.dataSource);
 				uni.downloadFile({
 				    url: this.dataSource.link, //仅为示例，并非真实的资源
 				    success: (res) => {

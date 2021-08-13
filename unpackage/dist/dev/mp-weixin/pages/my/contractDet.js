@@ -152,10 +152,10 @@ var _default =
       method: 'GET',
       data: {
         id: p.id,
-        user_id: uni.getStorageSync('userInfo').id },
+        user_id: uni.getStorageSync('userInfo').user_id },
 
       success: function success(res) {
-        console.log(res.data.data.content);
+        // console.log(res.data.data.content)
         that.content = res.data.data.content;
       } });
 

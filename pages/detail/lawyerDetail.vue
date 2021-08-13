@@ -194,7 +194,13 @@
 					//跳转收银台
 					uni.navigateTo({
 						url: '../my/pay?id=' + res.data.service_id + '&price=' + lawyer.price.dianhua +
-							'&typeId=2'
+							'&typeId=2'+'&emitName=callphone'
+					})
+					uni.$on('callphone',()=>{
+						uni.makePhoneCall({
+							 phoneNumber: lawyer.mobile, 
+						})
+						
 					})
 
 				}

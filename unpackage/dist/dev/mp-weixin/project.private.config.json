@@ -83,6 +83,12 @@
           "pathName": "pages/my/pay",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "支付成功",
+          "pathName": "pages/my/finish",
+          "query": "",
+          "scene": null
         }
       ]
     }

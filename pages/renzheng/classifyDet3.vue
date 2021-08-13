@@ -162,7 +162,7 @@
 					method: 'POST',
 					data: {
 						// user_id: uni.getStorageSync('userInfo').id,
-						user_id: 60,
+						user_id: uni.getStorageSync('userInfo').user_id,
 						type:that.type,
 						name:that.name,
 						mobile:that.mobile,
@@ -183,16 +183,22 @@
 						jianjie:that.mark
 					},
 					success(res){
+						uni.removeStorage({key: 'type',})
+						uni.removeStorage({key: 'cache1',})
+						uni.removeStorage({key: 'cache2'})
 						if(res.data.code == 200){
 							uni.showToast({
 								title: '提交成功',
+								duration:1000
 							})
-							uni.removeStorage({key: 'type',})
-							uni.removeStorage({key: 'cache1',})
-							uni.removeStorage({key: 'cache2'})
+							setTimeout(function() {
+							uni.switchTab({
+								url:'../my/mine'
+							})
+							},1000)
 						}else if(res.data.message == '您已经申请过,请勿重复申请'){
 							uni.showToast({
-								title: '请勿重复认证',
+								title: '您已认证，请勿重复认证',
 								icon:'error'
 							})
 							uni.removeStorage({key: 'type',})

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<ordercard :list = 'type == 2?list2:list'></ordercard>
+		<ordercard :list = 'list' ></ordercard>
 	</view>
 </template>
 
@@ -12,52 +12,63 @@
 		},
 		data(){
 			return{
-				type:2,
-				list:[
-					{
-						code:'12408372859',//订单号
-						state:0,//是否完成(0已完成，1已付款,-1没有事件按钮)
-						name:'王长田',
-						service:'电话咨询服务',
-						headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
-						price:'1398.00'
-					},{
-						code:'12408372860',//订单号
-						state:1,//是否完成(0已完成，1已付款,-1没有事件按钮)
-						name:'王长田',
-						service:'图文咨询服务',
-						headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
-						price:'1698.00'
+				type:1,
+				page:1,
+				limit:10,
+				list:[],	
+			}
+		},
+		onLoad(p) {
+			this.type = p.id
+			console.log(p)
+		},
+		onShow() {
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/order/fuwu_list',
+				method:'GET',
+				data:{
+					user_id:uni.getStorageSync('userInfo').user_id,
+					page:that.page,
+					limit:that.limit
+				},
+				success(res) {
+					console.log(res.data.data)
+					that.list = res.data.data
+				}
+			})
+		},
+		onReachBottom() {
+			let that = this
+		  that.getnewsList();
+		},
+		methods:{
+			getnewsList(){
+				let that = this
+				that.page++
+				uni.request({
+					url:'https://layer.boyaokj.cn/api/order/fuwu_list',
+					method:'GET',
+					data:{
+						user_id:uni.getStorageSync('userInfo').user_id,
+						page:that.page,
+						limit:that.limit
+					},
+					success(res) {
+						// console.log(res.data.data)
+						for(let i in res.data.data){
+							that.list.push(res.data.data[i])
+							console.log()
+						}
 					}
-				],
-				list2:[
-					{
-						code:'12408372859',//订单号
-						state:0,//是否完成(0已完成，1已付款,-1没有事件按钮,2律师身份)
-						name:'闷三',
-						service:'电话咨询服务',
-						headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
-						price:'1398.00'
-					},{
-						code:'12408372859',//订单号
-						state:1,//是否完成(0已完成，1已付款,-1没有事件按钮,2律师身份)
-						name:'闷三',
-						service:'电话咨询服务',
-						headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
-						price:'1398.00'
-					},{
-						code:'12408372860',//订单号
-						state:2,//是否完成(0已完成，1已付款,-1没有事件按钮)
-						name:'闷三闷三',
-						service:'图文咨询服务',
-						headimg:'https://avatar.52pojie.cn/data/avatar/001/14/64/55_avatar_small.jpg',
-						price:'1698.00'
-					}
-				]
+				})
 			}
 		}
 	}
 </script>
 
 <style>
+	page{
+		height: 100%;
+	}
 </style>

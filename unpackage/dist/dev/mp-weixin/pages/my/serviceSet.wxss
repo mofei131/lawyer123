@@ -268,4 +268,9 @@ page{
 	font-weight: 400;
 	color: #40A9FF;
 }
+.sevname{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
 
