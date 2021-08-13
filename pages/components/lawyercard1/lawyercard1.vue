@@ -1,6 +1,6 @@
 <template>
 	<view class="flex-column mx-start sx-stretch">
-		<view class="flex-column mx-start sx-stretch  list-item" v-for="(item,index) in lawyerlist" :key="index"
+		<view v-if="lawyerlist.length>0" class="flex-column mx-start sx-stretch  list-item" v-for="(item,index) in lawyerlist" :key="index"
 			:style="{flex:'0 0 auto',order:item}">
 			<view class="flex-row mx-start sx-stretch" @tap="todetail(item)">
 
@@ -16,6 +16,7 @@
 							<text lines="1"
 								style="color: #FFFFFF;height: 26rpx;line-height: 26rpx;text-align: center;font-size: 17rpx;">{{item.type_text&& item.type_text.name}}</text>
 						</view>
+						
 						<view v-if="item.busy_text" class="flex-row mx-end sx-center" style="flex:1 1 auto">
 							<view class="statuSDot"
 								:style="{backgroundColor: item.busy_text.id==1?'green': 'rgba(255,77,79,1)'}">
@@ -26,8 +27,14 @@
 								style="margin-left:8rpx;color: red;font-size: 20rpx;">{{item.busy_text.name}}</text>
 						</view>
 					</view>
-					<view class="ellipsis" style="width: 512rpx;font-size: 22rpx;color: rgba(102,102,102,1);">
-						{{item.jianjie}}</view>
+					<view class="flex-row mx-between sx-center">
+						<view class="ellipsis" style="width: 512rpx;font-size: 22rpx;color: rgba(102,102,102,1);">
+							{{item.jianjie}}
+						</view>
+						<view v-if="follow" @tap.stop="guanzhu(item)" style="padding: 0 10rpx;font-size: 22rpx;flex: 0 0 auto ;border-radius: 16rpx;background-color: #6bc1f3;color: #FFFFFF;">{{item.follow==1?'取消关注':'关注'}}</view>
+						
+					
+					</view>
 
 					<view class="field">
 						<view class="label" v-for="(ct,index1) in item.case_type" :key="ct.id" :class="[caseClass(ct)]">
@@ -51,7 +58,7 @@
 				</view>
 
 			</view>
-			<view v-if="zixun" class="flex-row mx-between sx-center" style="flex: 0 0 auto;margin-top: 20rpx;">
+			<view v-if="item && zixun" class="flex-row mx-between sx-center" style="flex: 0 0 auto;margin-top: 20rpx;">
 				<view class="serviceBtn flex-txt-center" @tap="tuwen(item)">
 					<text>图文咨询</text>
 					<text style="color: red;">￥{{item.price && item.price.tuwen}}</text>
@@ -77,7 +84,7 @@
 <script>
 	export default {
 		components: {},
-		props: ['lawyerlist', 'zixun', 'isbuy'],
+		props: ['lawyerlist', 'zixun', 'isbuy','updatefollow','follow'],
 		data() {
 			return {
 
@@ -116,6 +123,7 @@
 			},
 
 			tuwen(item) {
+				console.log('--------------------------');
 				console.log(item);
 				uni.navigateTo({
 					url: '../service_zhixun/tuwen?layer_id='+item.id+'&price='+item.price.tuwen+'&typeId=1'
@@ -181,8 +189,21 @@
 			todetail(item) {
 				console.log(item);
 				uni.navigateTo({
-					url: '../detail/lawyerDetail?id=1'+item.id
+					url: '../detail/lawyerDetail?id='+item.id
 				})
+			},
+			async guanzhu(item){
+				let res = await this.$myRequest({
+				url: 'layer/follow',
+				methods: 'GET',
+				data: {
+					user_id:this.$store.state.userInfo.user_id,
+					layer_id: item.id
+				}
+				});
+				if (res && res.code=='200') {
+					this.$emit('updatefollow',item.follow)				
+				}
 			}
 		}
 	}

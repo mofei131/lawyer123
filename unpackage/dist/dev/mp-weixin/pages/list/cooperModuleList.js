@@ -91,29 +91,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
-try {
-  components = {
-    uniNavBar: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue */ 431))
-    }
-  }
-} catch (e) {
-  if (
-    e.message.indexOf("Cannot find module") !== -1 &&
-    e.message.indexOf(".vue") !== -1
-  ) {
-    console.error(e.message)
-    console.error("1. 排查组件名称拼写是否正确")
-    console.error(
-      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
-    )
-    console.error(
-      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
-    )
-  } else {
-    throw e
-  }
-}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -183,30 +160,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   onLoad: function onLoad(p) {
     console.log(p);
     var userInfo = this.$store.state.userInfo;
     console.log(userInfo);
-    if (!p || !p.cid || !p.name || !userInfo) {
-      uni.showToast({
-        title: '参数有误！',
-        icon: 'none' });
-
-      return;
-    }
+    // if (!p || !p.cid || !p.name || !userInfo) {
+    // 	uni.showToast({
+    // 		title: '参数有误！',
+    // 		icon: 'none'
+    // 	})
+    // 	return;
+    // }
     this.id = p.cid;
     this.user_id = userInfo.user_id;
     this.drawInit(p.cid, p.name);
@@ -232,7 +198,7 @@ var _default =
                     method: 'GET',
                     data: {
                       cid: cid,
-                      name: '',
+                      name: name,
                       user_id: _this.user_id } }));case 3:res = _context.sent;
 
 

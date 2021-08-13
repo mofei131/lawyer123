@@ -120,7 +120,7 @@
 					if (res && res.code == 200) {
 						console.log(res);
 						uni.navigateTo({
-							url: '../my/pay?id=' + res.data.service_id + '&price=' + this.price+'&typeId=5'
+							url: '../my/pay?id=' + res.data.service_id + '&price=' + this.price+'&typeId=10'
 						})
 					} else {
 						uni.showToast({

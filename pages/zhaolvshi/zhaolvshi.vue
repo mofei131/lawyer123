@@ -3,8 +3,9 @@
 		<view class="head" style="">
 			<view class="search">
 				<image src="@/static/images/search.png"></image>
-				<input type="text" v-model="name" @input="searchName" placeholder="请输入搜索内容"
+				<input type="text" v-model="name" @input="searchName" @change="inputChange"  placeholder="请输入搜索内容"
 					placeholder-style="color:#fff;font-size:20rpx;" />
+					
 			</view>
 		</view>
 		<cooperTabar @searchChange="searchChange"></cooperTabar>
@@ -13,8 +14,8 @@
 
 			<lawyercard1 :zixun="true" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
 
-			<view v-if="!isMore" style="text-align: center;font-size: 36rpx;color: gray;margin-top: 20rpx;">
-				没有数据了，切换选择试试!</view>
+		<!-- 	<view v-if="!isMore" style="text-align: center;font-size: 36rpx;color: gray;margin-top: 20rpx;">
+				没有数据了，切换选择试试!</view> -->
 
 		</view>
 		<authMode @confirm="authorTap" @backindex="backIndex" ref="authMode"></authMode>
@@ -49,10 +50,14 @@
 			authMode
 		},
 		async onShow() {
-			if (!this.$store.state.userInfo) {
-				
-				await this.getWxCode();
-				this.$refs.authMode.open()
+			let userInfo = this.$store.state.userInfo;
+			console.log(userInfo);
+			if (!userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname) {
+				let res = await this.getWxCode();
+				if (res.hasUserInfo) {
+					this.$refs.authMode.open()
+				}
+
 			}
 		},
 		computed: {
@@ -109,28 +114,29 @@
 					delta: 1
 				})
 			},
-			backIndex(){
-				// uni.switchTab({
-				// 	url: '@/pages/index/index.vue'
-				// })
+			backIndex() {
 				uni.switchTab({
-					url:'../index/index'
+					url: '../index/index'
 				})
 			},
 			change(e) {
 				console.log(e);
 			},
 			async authorTap() {
-				if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id || !this.$store.state.userInfo
-					.isAuthor) {
+				let userInfo = this.$store.state.userInfo;
+				if (!userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname) {
 					let isSuccess = await this.updateUserInfo();
 					if (isSuccess) {
 						uni.showToast({
 							title: '授权成功！'
 						})
 						this.$refs.authMode.setDialogFalse();
+					} else {
+						uni.showToast({
+							title: '授权失败，请重新登录！'
+						})
+						this.$refs.authMode.setDialogFalse();
 					}
-					
 				}
 			},
 
@@ -154,14 +160,14 @@
 			},
 			//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
 			async onReachBottom() {
-				if (this.isMore) {
-					this.page = this.page + 1;
-					this.limit = this.limit + 10;
-					this.searchChange()
-				}
+				// if (this.isMore) {
+				// 	this.page = this.page + 1;
+				// 	this.limit = this.limit + 10;
+				// 	this.searchChange()
+				// }
 			},
 			searchName() {
-				this.isMore = true;
+				// this.isMore = true;
 				if (this.ttt) {
 					clearTimeout(this.ttt);
 				}
@@ -169,20 +175,50 @@
 					this.searchChange()
 				}, 1000)
 			},
+			inputChange(){
+				this.searchChange();
+			},
 			async searchChange(e) {
 				console.log('----请求律师列表的信息 ------>');
+
 				if (e) {
-					this.isMore = true;
-					this.case_type = e.case_type;
-					this.cityid = e.cityid;
-					this.level = e.level;
-					this.age = e.age;
+					let {
+						case_type,
+						cityid,
+						level,
+						age
+					} = e;
+					if (this.case_type == case_type && this.cityid == cityid && this.level == level && this.age ==
+						age) {
+						
+					} else {
+						this.lawyerList = [];
+						// this.isMore = true;
+						this.case_type = case_type;
+						this.cityid = cityid;
+						this.level = level;
+						this.age = age;
+					}
+
+
+					
+
 				}
 				uni.showLoading({
 					title: '加载中'
 				})
+				console.log({
+					page: this.page,
+					limit: this.limit,
+					name: this.name,
+					case_type: this.case_type,
+					cityid: this.cityid,
+					level: this.level,
+					age: this.age
+				});
 				let res = await this.$myRequest({
 					url: 'layer/list',
+					method: 'GET',
 					data: {
 						page: this.page,
 						limit: this.limit,
@@ -190,10 +226,12 @@
 						case_type: this.case_type,
 						cityid: this.cityid,
 						level: this.level,
-						age: this.age
+						age: this.age,
+						service_id: ''
 					}
 				});
 				uni.hideLoading();
+				console.log(res);
 				if (res && res.data) {
 
 					// this.lawyerList = res.data;
@@ -207,8 +245,10 @@
 						}
 
 					} else {
-						this.isMore = false;
+						// this.isMore = false;
 					}
+
+			
 				}
 			},
 			buy(e) {

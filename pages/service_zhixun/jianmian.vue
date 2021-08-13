@@ -6,7 +6,7 @@
 				<view style="z-index: 78;
 		height: 379rpx;
 		overflow: hidden;
-		background-image: url(../../static/icon/cooper_back.png);
+		background-image: url(/static/icon/cooper_back.png);
 		background-size: 100%;
 		background-repeat: no-repeat;
 		width: 750rpx;
@@ -53,8 +53,12 @@
 					<view class="group7">
 						<text lines="1" decode="true" class="info4">～&nbsp;产品介绍&nbsp;～</text>
 						<view class="bd1"></view>
-						<text lines="1"
-							class="info5">{{dataSource.intro}}</text>
+						<view class="info5">
+							<rich-text :nodes="dataSource.intro"></rich-text>
+						</view>
+						
+						
+		
 					</view>
 				</view>
 				<view class="block3">
@@ -62,7 +66,7 @@
 						<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 						<view class="bd2"></view>
 						<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;">
-							{{dataSource.service}}
+							<rich-text :nodes="dataSource.service"></rich-text>
 						</view>
 
 					</view>

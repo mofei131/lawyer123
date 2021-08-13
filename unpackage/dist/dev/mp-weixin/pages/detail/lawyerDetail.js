@@ -241,28 +241,11 @@ __webpack_require__.r(__webpack_exports__);
 var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var lawyercard1 = function lawyercard1() {Promise.all(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/components/lawyercard1/lawyercard1")]).then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 391));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 {
-  onLoad: function onLoad(p) {var _this = this;
+  onLoad: function onLoad(p) {
     console.log(p.id + "=======" + this.$store.state.userInfo.user_id);
     this.lawyerid = p.id;
-    var res = this.$myRequest({
-      url: 'layer/detail',
-      methods: 'GET',
-      data: {
-        layer_id: p.id,
-        user_id: this.$store.state.userInfo.user_id } });
-
-
-    res.then(function (data) {
-      if (data.code == 200) {
-        console.log(data);
-        _this.lawyerList.push(data.data);
-      } else {
-        uni.showToast({
-          title: data.message,
-          icon: 'none' });
-
-      }
-    });
+    this.getLawyer();
+    this.getAnli();
   },
   components: {
     anli: _anli.default,
@@ -272,46 +255,56 @@ var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/an
     return {
       lawyerid: null,
       lawyerList: [],
-      anli: [{
-        id: 0,
-        sort: '买卖合同',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东青岛',
-        name: '张三',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '1783' },
-
-      {
-        id: 1,
-        sort: '婚姻家庭',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东潍坊',
-        name: '李四',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '32' },
-
-      {
-        id: 2,
-        sort: '为高质量',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东烟台',
-        name: '王五',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '544' },
-
-      {
-        id: 3,
-        sort: '为高质量',
-        title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-        address: '山东日照',
-        name: '赵六',
-        portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-        read: '6' }] };
-
-
+      anli: [] };
 
   },
   methods: {
+    getAnli: function getAnli() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.$myRequest({
+                    url: 'service/selectCase',
+                    methods: 'GET',
+                    data: {
+                      page: 1,
+                      limit: 5,
+                      layer_id: _this.lawyerid } }));case 2:res = _context.sent;
+
+
+                if (res && res.code == 200) {
+                  console.log('====获取案例----');
+                  console.log(res.data);
+                  _this.anli = res.data;
+                } else {
+                  uni.showToast({
+                    title: '每日学法数据获取异常',
+                    icon: 'none' });
+
+                }case 4:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    getLawyer: function getLawyer() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                _this2.lawyerList = [];
+                res = _this2.$myRequest({
+                  url: 'layer/detail',
+                  methods: 'GET',
+                  data: {
+                    layer_id: _this2.lawyerid,
+                    user_id: _this2.$store.state.userInfo.user_id } });
+
+
+                res.then(function (data) {
+                  if (data.code == 200) {
+                    console.log(data);
+                    _this2.lawyerList.push(data.data);
+                  } else {
+                    uni.showToast({
+                      title: data.message,
+                      icon: 'none' });
+
+                  }
+                });case 3:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    updateFollow: function updateFollow(fllow) {
+      this.lawyerList[0].follow = fllow == 1 ? 0 : 1;
+    },
     tuTuwenPage: function tuTuwenPage() {
       var lawyer = this.lawyerList[0];
       if (!lawyer) return;
@@ -320,30 +313,30 @@ var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/an
         '&typeId=1' });
 
     },
-    toDianhuaPage: function toDianhuaPage() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var lawyer, layer_id, user_id, data, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                lawyer = _this2.lawyerList[0];if (
-                lawyer) {_context.next = 3;break;}return _context.abrupt("return");case 3:
+    toDianhuaPage: function toDianhuaPage() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var lawyer, layer_id, user_id, data, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                lawyer = _this3.lawyerList[0];if (
+                lawyer) {_context3.next = 3;break;}return _context3.abrupt("return");case 3:
                 layer_id = lawyer.id;
-                user_id = _this2.$store.state.userInfo.user_id;if (!(
-                !layer_id || !user_id)) {_context.next = 8;break;}
+                user_id = _this3.$store.state.userInfo.user_id;if (!(
+                !layer_id || !user_id)) {_context3.next = 8;break;}
                 uni.showToast({
                   title: '用户数据异常，请重新登录',
-                  icon: 'none' });return _context.abrupt("return");case 8:
+                  icon: 'none' });return _context3.abrupt("return");case 8:
 
 
 
                 data = {
                   layer_id: layer_id,
-                  user_id: _this2.$store.state.userInfo.user_id };
+                  user_id: _this3.$store.state.userInfo.user_id };
 
                 console.log(data);
                 uni.showLoading({
-                  title: '请稍等' });_context.next = 13;return (
+                  title: '请稍等' });_context3.next = 13;return (
 
-                  _this2.$myRequest({
+                  _this3.$myRequest({
                     url: 'service/dianhua',
                     method: 'GET',
-                    data: data }));case 13:res = _context.sent;
+                    data: data }));case 13:res = _context3.sent;
 
                 uni.hideLoading();
                 if (res && res.code == -1) {
@@ -359,7 +352,7 @@ var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/an
                     '&typeId=2' });
 
 
-                }case 16:case "end":return _context.stop();}}}, _callee);}))();
+                }case 16:case "end":return _context3.stop();}}}, _callee3);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
@@ -509,6 +502,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
 //
 //
 //

@@ -5,7 +5,7 @@
 
 			<view class="flex-row mx-center sx-center">
 				<uni-search-bar style="flex:0 0 600rpx;" border="1rpx solid #fff" placeholder="请输入模板名称"
-					bgColor="#ffffff" :cancel-text="text" radius="100" :focus="true" v-model="name" @input="input"
+					bgColor="#ffffff" :cancel-text="text" radius="100" :focus="true" v-model="name" @input="input" 
 					@cancel="cancel" @clear="clear">
 				</uni-search-bar>
 				<view style="padding: 10rpx;border-radius: 10rpx;background-color: #008000;color: #FFFFFF;"
@@ -61,6 +61,7 @@
 			}
 		},
 		methods: {
+
 			async getModelLevel1() {
 				let res = await this.$myRequest({
 					url: 'agreement/getClassify',
@@ -85,28 +86,19 @@
 				console.log('----input:', res)
 			},
 			clear(res) {
-				uni.showToast({
-					title: 'clear事件，输入值为：' + res.value,
-					icon: 'none'
-				})
+				
 			},
 			blur(res) {
-				uni.showToast({
-					title: 'blur事件，输入值为：' + res.value,
-					icon: 'none'
-				})
+				
 			},
 			cancel(res) {
-				uni.showToast({
-					title: '点击取消，输入值为：' + res.value,
-					icon: 'none'
-				})
+				
 			},
 
 			todetail(item1){
 				if(item1){
 					this.cid = item1.id;
-					this.name = item1.name;
+					// this.name = item1.name;
 				}
 				
 				uni.navigateTo({

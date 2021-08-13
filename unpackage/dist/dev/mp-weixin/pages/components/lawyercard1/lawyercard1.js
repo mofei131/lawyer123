@@ -84,18 +84,20 @@ var render = function() {
   var l1 = _vm.__map(_vm.lawyerlist, function(item, index) {
     var $orig = _vm.__get_orig(item)
 
-    var l0 = _vm.__map(item.case_type, function(ct, index1) {
-      var $orig = _vm.__get_orig(ct)
+    var l0 =
+      _vm.lawyerlist.length > 0
+        ? _vm.__map(item.case_type, function(ct, index1) {
+            var $orig = _vm.__get_orig(ct)
 
-      var m0 = _vm.caseClass(ct)
-      var g0 = ct.name.substr(0, 2)
-      return {
-        $orig: $orig,
-        m0: m0,
-        g0: g0
-      }
-    })
-
+            var m0 = _vm.caseClass(ct)
+            var g0 = ct.name.substr(0, 2)
+            return {
+              $orig: $orig,
+              m0: m0,
+              g0: g0
+            }
+          })
+        : null
     return {
       $orig: $orig,
       l0: l0
@@ -219,10 +221,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   components: {},
-  props: ['lawyerlist', 'zixun', 'isbuy'],
+  props: ['lawyerlist', 'zixun', 'isbuy', 'updatefollow', 'follow'],
   data: function data() {
     return {};
 
@@ -261,6 +270,7 @@ var _default =
     },
 
     tuwen: function tuwen(item) {
+      console.log('--------------------------');
       console.log(item);
       uni.navigateTo({
         url: '../service_zhixun/tuwen?layer_id=' + item.id + '&price=' + item.price.tuwen + '&typeId=1' });
@@ -326,8 +336,21 @@ var _default =
     todetail: function todetail(item) {
       console.log(item);
       uni.navigateTo({
-        url: '../detail/lawyerDetail?id=1' + item.id });
+        url: '../detail/lawyerDetail?id=' + item.id });
 
+    },
+    guanzhu: function guanzhu(item) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this2.$myRequest({
+                    url: 'layer/follow',
+                    methods: 'GET',
+                    data: {
+                      user_id: _this2.$store.state.userInfo.user_id,
+                      layer_id: item.id } }));case 2:res = _context2.sent;
+
+
+                if (res && res.code == '200') {
+                  _this2.$emit('updatefollow', item.follow);
+                }case 4:case "end":return _context2.stop();}}}, _callee2);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

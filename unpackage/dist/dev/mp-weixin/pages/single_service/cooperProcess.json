@@ -1,8 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "合同审核",
   "enablePullDownRefresh": false,
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "uni-nav-bar": "/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar"
-  }
+  "usingComponents": {}
 }

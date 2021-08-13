@@ -1,6 +1,6 @@
 <template>
 	<view class="anlilist">
-		<view class="anlilistitem" v-for="(item,index) in anli" :key="index" :style="{marginBottom: marginBottom}"
+		<view  class="anlilistitem" v-for="(item,index) in anli" :key="index" :style="{marginBottom: marginBottom}"
 			@tap="tochat(item)">
 			<view class="floor1">
 				<view>{{item.type}}</view>
@@ -16,6 +16,7 @@
 			</view>
 			<view class="anliborder" v-if="index<3 && showBottomBorder"></view>
 		</view>
+		<view v-if="anli.length<1"  class="flex-txt-center" style="height: 120rpx;width: 100%;color: gray;font: 36rpx;">没有案例哦~</view>
 	</view>
 </template>
 

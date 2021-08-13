@@ -160,6 +160,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var cooperTabar = function cooperTabar() {__webpack_require__.e(/*! require.ensure | pages/components/cooperTabar/cooperTabar */ "pages/components/cooperTabar/cooperTabar").then((function () {return resolve(__webpack_require__(/*! @/pages/components/cooperTabar/cooperTabar.vue */ 384));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard1 = function lawyercard1() {Promise.all(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/components/lawyercard1/lawyercard1")]).then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 391));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var authMode = function authMode() {__webpack_require__.e(/*! require.ensure | pages/components/authMode/authMode */ "pages/components/authMode/authMode").then((function () {return resolve(__webpack_require__(/*! @/pages/components/authMode/authMode.vue */ 398));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
@@ -180,11 +181,15 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
     lawyercard1: lawyercard1,
     authMode: authMode },
 
-  onShow: function onShow() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
-              _this2.$store.state.userInfo) {_context.next = 4;break;}_context.next = 3;return (
+  onShow: function onShow() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+              userInfo = _this2.$store.state.userInfo;
+              console.log(userInfo);if (!(
+              !userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname)) {_context.next = 7;break;}_context.next = 5;return (
+                _this2.getWxCode());case 5:res = _context.sent;
+              if (res.hasUserInfo) {
+                _this2.$refs.authMode.open();
+              }case 7:case "end":return _context.stop();}}}, _callee);}))();
 
-                _this2.getWxCode());case 3:
-              _this2.$refs.authMode.open();case 4:case "end":return _context.stop();}}}, _callee);}))();
 
   },
   computed: _objectSpread({},
@@ -242,9 +247,6 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
     },
     backIndex: function backIndex() {
-      // uni.switchTab({
-      // 	url: '@/pages/index/index.vue'
-      // })
       uni.switchTab({
         url: '../index/index' });
 
@@ -252,17 +254,21 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
     change: function change(e) {
       console.log(e);
     },
-    authorTap: function authorTap() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var isSuccess;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (!(
-                !_this3.$store.state.userInfo || !_this3.$store.state.userInfo.user_id || !_this3.$store.state.userInfo.
-                isAuthor)) {_context2.next = 5;break;}_context2.next = 3;return (
-                  _this3.updateUserInfo());case 3:isSuccess = _context2.sent;
+    authorTap: function authorTap() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var userInfo, isSuccess;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                userInfo = _this3.$store.state.userInfo;if (!(
+                !userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname)) {_context2.next = 6;break;}_context2.next = 4;return (
+                  _this3.updateUserInfo());case 4:isSuccess = _context2.sent;
                 if (isSuccess) {
                   uni.showToast({
                     title: '授权成功！' });
 
                   _this3.$refs.authMode.setDialogFalse();
-                }case 5:case "end":return _context2.stop();}}}, _callee2);}))();
+                } else {
+                  uni.showToast({
+                    title: '授权失败，请重新登录！' });
 
+                  _this3.$refs.authMode.setDialogFalse();
+                }case 6:case "end":return _context2.stop();}}}, _callee2);}))();
 
     },
 
@@ -285,63 +291,97 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       }, 1000);
     },
     //上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
-    onReachBottom: function onReachBottom() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
-                if (_this4.isMore) {
-                  _this4.page = _this4.page + 1;
-                  _this4.limit = _this4.limit + 10;
-                  _this4.searchChange();
-                }case 1:case "end":return _context3.stop();}}}, _callee3);}))();
-    },
-    searchName: function searchName() {var _this5 = this;
-      this.isMore = true;
+    onReachBottom: function onReachBottom() {
+      // if (this.isMore) {
+      // 	this.page = this.page + 1;
+      // 	this.limit = this.limit + 10;
+      // 	this.searchChange()
+      // }
+      return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:case "end":return _context3.stop();}}}, _callee3);}))();},
+    searchName: function searchName() {var _this4 = this;
+      // this.isMore = true;
       if (this.ttt) {
         clearTimeout(this.ttt);
       }
       this.ttt = setTimeout(function (item) {
-        _this5.searchChange();
+        _this4.searchChange();
       }, 1000);
     },
-    searchChange: function searchChange(e) {var _this6 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res, _iterator, _step, _loop;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
+    inputChange: function inputChange() {
+      this.searchChange();
+    },
+    searchChange: function searchChange(e) {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var case_type, cityid, level, age, res, _iterator, _step, _loop;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
                 console.log('----请求律师列表的信息 ------>');
+
                 if (e) {
-                  _this6.isMore = true;
-                  _this6.case_type = e.case_type;
-                  _this6.cityid = e.cityid;
-                  _this6.level = e.level;
-                  _this6.age = e.age;
+
+                  case_type =
+
+
+
+                  e.case_type, cityid = e.cityid, level = e.level, age = e.age;
+                  if (_this5.case_type == case_type && _this5.cityid == cityid && _this5.level == level && _this5.age ==
+                  age) {
+
+                  } else {
+                    _this5.lawyerList = [];
+                    // this.isMore = true;
+                    _this5.case_type = case_type;
+                    _this5.cityid = cityid;
+                    _this5.level = level;
+                    _this5.age = age;
+                  }
+
+
+
+
                 }
                 uni.showLoading({
-                  title: '加载中' });_context4.next = 5;return (
+                  title: '加载中' });
 
-                  _this6.$myRequest({
+                console.log({
+                  page: _this5.page,
+                  limit: _this5.limit,
+                  name: _this5.name,
+                  case_type: _this5.case_type,
+                  cityid: _this5.cityid,
+                  level: _this5.level,
+                  age: _this5.age });_context4.next = 6;return (
+
+                  _this5.$myRequest({
                     url: 'layer/list',
+                    method: 'GET',
                     data: {
-                      page: _this6.page,
-                      limit: _this6.limit,
-                      name: _this6.name,
-                      case_type: _this6.case_type,
-                      cityid: _this6.cityid,
-                      level: _this6.level,
-                      age: _this6.age } }));case 5:res = _context4.sent;
+                      page: _this5.page,
+                      limit: _this5.limit,
+                      name: _this5.name,
+                      case_type: _this5.case_type,
+                      cityid: _this5.cityid,
+                      level: _this5.level,
+                      age: _this5.age,
+                      service_id: '' } }));case 6:res = _context4.sent;
 
 
                 uni.hideLoading();
+                console.log(res);
                 if (res && res.data) {
 
                   // this.lawyerList = res.data;
                   if (res.data.length > 0) {_iterator = _createForOfIteratorHelper(
                     res.data);try {_loop = function _loop() {var s = _step.value;
                         console.log(s.id);
-                        var f = _this6.lawyerList.find(function (item2) {return item2.id == s.id;});
+                        var f = _this5.lawyerList.find(function (item2) {return item2.id == s.id;});
                         if (!f) {
-                          _this6.lawyerList.push(s);
+                          _this5.lawyerList.push(s);
                         }};for (_iterator.s(); !(_step = _iterator.n()).done;) {_loop();
                       }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
 
                   } else {
-                    _this6.isMore = false;
+                    // this.isMore = false;
                   }
-                }case 8:case "end":return _context4.stop();}}}, _callee4);}))();
+
+
+                }case 10:case "end":return _context4.stop();}}}, _callee4);}))();
     },
     buy: function buy(e) {
       console.log(e);

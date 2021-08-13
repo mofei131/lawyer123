@@ -51,9 +51,8 @@
 		}, {
 			"path": "pages/single_service/cooperCheck",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "合同审核",
+				"enablePullDownRefresh": false
 			}
 
 		}, {
@@ -253,9 +252,8 @@
 		, {
 			"path": "pages/list/cooperModuleList",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "合同模板",
+				"enablePullDownRefresh": false
 			}
 
 		}
@@ -264,9 +262,8 @@
 		, {
 			"path": "pages/single_service/cooperProcess",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "合同审核",
+				"enablePullDownRefresh": false
 			}
 
 		}, {

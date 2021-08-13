@@ -2207,14 +2207,18 @@ var store = new _vuex.default.Store({
 
       console.log(context.state.userInfo);
       return new Promise(function (resolve, feject) {
+        console.log('-------------------');
+        console.log(context.state);
         if (context.state.userInfo && context.state.userInfo.user_id) {
           resolve({ hasUserInfo: true });
+          return;
         };
+
         uni.login({
           provider: 'weixin',
           success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(res) {var code, res1;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
                       console.log(res);if (!
-                      res.code) {_context4.next = 11;break;}
+                      res.code) {_context4.next = 20;break;}
                       code = res.code;_context4.next = 5;return (
                         _http.default.ajax({
                           url: 'wechat/login',
@@ -2224,20 +2228,23 @@ var store = new _vuex.default.Store({
 
 
                       console.log('===========getwxcode=======================');
-                      if (res1.code == -1) {
-                        uni.showToast({
-                          title: res1.message,
-                          icon: 'none' });
+                      console.log(res1);if (!(
 
-                        reject(res1);
-                      }
-                      if (res1 && res1.data) {
-                        console.log('===========缓存userInfo=======================');
-                        console.log(res1.data);
-                        context.commit('commitUserInfo', res1.data);
-                        uni.setStorageSync('userInfo', res1.data);
-                        resolve({ hasUserInfo: true });
-                      }_context4.next = 13;break;case 11:
+                      res1.code == -1)) {_context4.next = 12;break;}
+                      uni.showToast({
+                        title: res1.message,
+                        icon: 'none' });
+
+                      reject(res1);return _context4.abrupt("return");case 12:if (!(
+
+
+                      res1 && res1.code == 200)) {_context4.next = 18;break;}
+                      console.log('');
+                      context.commit('commitUserInfo', res1.data);
+                      uni.setStorageSync('userInfo', res1.data);
+                      resolve({ hasUserInfo: true });return _context4.abrupt("return");case 18:_context4.next = 22;break;case 20:
+
+
 
 
                       uni.showToast({
@@ -2245,7 +2252,7 @@ var store = new _vuex.default.Store({
                         icon: 'none',
                         duration: 2000 });
 
-                      resolve({ hasUserInfo: false });case 13:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
+                      resolve({ hasUserInfo: false });case 22:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
 
 
 
@@ -2253,14 +2260,15 @@ var store = new _vuex.default.Store({
 
     },
     updateUserInfo: function updateUserInfo(context) {
-      console.log(111);
-      return new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(resolve, reject) {var pass, result;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:
-                  pass = true;if (
-                  context.state.userInfo) {_context6.next = 6;break;}_context6.next = 4;return (
-                    context.dispatch('getWxCode'));case 4:result = _context6.sent;
+
+      return new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(resolve, reject) {var userInfo, pass, result;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:
+                  userInfo = uni.getStorageSync('userInfo');
+                  pass = true;if (!(
+                  !userInfo || !userInfo.user_id)) {_context6.next = 7;break;}_context6.next = 5;return (
+                    context.dispatch('getWxCode'));case 5:result = _context6.sent;
                   if (!result.hasUserInfo) {
                     pass = false;
-                  }case 6:
+                  }case 7:
 
                   if (!pass) {
                     resolve(false);
@@ -2272,14 +2280,10 @@ var store = new _vuex.default.Store({
                       if (res.confirm) {
                         uni.getUserProfile({
                           desc: '获取用户头像等信息',
-                          success: function () {var _success2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(res) {var _res$userInfo, avatarUrl, city, country, gender, language, nickName, province, userInfo, data, res1;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_res$userInfo =
+                          success: function () {var _success2 = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(res) {var _res$userInfo, avatarUrl, city, country, gender, language, nickName, province, data, res1;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_res$userInfo =
                                       res.userInfo, avatarUrl = _res$userInfo.avatarUrl, city = _res$userInfo.city, country = _res$userInfo.country, gender = _res$userInfo.gender, language = _res$userInfo.language, nickName = _res$userInfo.nickName, province = _res$userInfo.province;
                                       userInfo = uni.getStorageSync('userInfo');
                                       if (!userInfo) {
-                                        uni.showToast({
-                                          title: '用户信息缓存为空',
-                                          icon: 'none' });
-
                                         reject(false);
                                       }
                                       data = {
@@ -2305,23 +2309,19 @@ var store = new _vuex.default.Store({
                                         userInfo.gender = gender;
                                         userInfo.province = province;
                                         userInfo.city = city;
-
+                                        context.commit('commitUserInfo', userInfo);
                                         uni.setStorageSync('userInfo', userInfo);
                                         resolve(true);
                                       } else {
-                                        uni.showToast({
-                                          title: res1.message,
-                                          icon: 'none' });
-
-                                        reject(res1);
+                                        reject(false);
                                       }case 8:case "end":return _context5.stop();}}}, _callee5);}));function success(_x4) {return _success2.apply(this, arguments);}return success;}(),
 
                           fail: function fail(res) {
-                            reject(res);
+                            reject(false);
                           } });
 
                       }
-                    } });case 8:case "end":return _context6.stop();}}}, _callee6);}));return function (_x2, _x3) {return _ref.apply(this, arguments);};}());
+                    } });case 9:case "end":return _context6.stop();}}}, _callee6);}));return function (_x2, _x3) {return _ref.apply(this, arguments);};}());
 
 
 

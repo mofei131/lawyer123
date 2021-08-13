@@ -227,8 +227,8 @@
 			}
 		},
 		async onLoad() {
-
-			if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id) {
+			let userInfo = this.$store.state.userInfo;
+			if (!userInfo || !userInfo.user_id) {
 				await this.getWxCode();
 				console.log(this.$store.state);
 			}
@@ -243,7 +243,7 @@
 
 			uni.getSystemInfo({
 				success: (res) => {
-					console.log(res);
+					// console.log(res);
 					this.commitWindowHeight(res.windowHeight);
 				}
 			})
@@ -303,7 +303,7 @@
 					data: {}
 				});
 				if (res && res.code == 200) {
-					console.log(res.data);
+					// console.log(res.data);
 					this.youXuanList = res.data;
 					this.lawyercard = res.data[this.currentTab].layer || [];
 				} else {
@@ -314,8 +314,8 @@
 				}
 			},
 			async getLearn() {
-				console.log('------------->>>>>');
-				console.log(this.$store.state);
+				// console.log('------------->>>>>');
+				// console.log(this.$store.state);
 				let res = await this.$myRequest({
 					url: 'article/list',
 					methods: 'GET',
@@ -326,7 +326,7 @@
 					}
 				});
 				if (res && res.code == 200) {
-					console.log(res.data);
+					// console.log(res.data);
 					this.learn = res.data;
 				} else {
 					uni.showToast({
@@ -346,7 +346,7 @@
 					}
 				});
 				if (res && res.code == 200) {
-					console.log(res.data);
+					// console.log(res.data);
 					this.anli = res.data;
 				} else {
 					uni.showToast({

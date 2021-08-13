@@ -6,7 +6,7 @@
 				<view style="z-index: 78;
 		height: 379rpx;
 		overflow: hidden;
-		background-image: url(../../static/icon/cooper_back.png);
+		background-image: url(/static/icon/cooper_back.png);
 		background-size: 100%;
 		background-repeat: no-repeat;
 		width: 750rpx;
@@ -26,13 +26,13 @@
 		top: 48rpx;
 		width: 826rpx;
 		height: 261rpx;
-		background: url(../../static/icon/cooper_group5.png) 46rpx 0rpx no-repeat;
+		background: url(/static/icon/cooper_group5.png) 46rpx 0rpx no-repeat;
 		background-size: 750rpx 262rpx;
 		display: flex;
 		flex-direction: column;"></view>
 					<view style="z-index: 80;
 		height: 332rpx;
-		background: url(../../static/icon/cooper_group6.png) 100% no-repeat;
+		background: url(/static/icon/cooper_group6.png) 100% no-repeat;
 		width: 750rpx;
 		justify-content: flex-end;
 		position: absolute;
@@ -43,7 +43,7 @@
 						<view style="z-index: 81;
 		width: 750rpx;
 		height: 156rpx;
-		background: url(../../static/icon/cooper_mod2.png) 100% no-repeat;
+		background: url(/static/icon/cooper_mod2.png) 100% no-repeat;
 		display: flex;
 		flex-direction: column;"></view>
 						<image src="/static/icon/cooper_back1.png" class="pic2"></image>

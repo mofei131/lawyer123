@@ -20,10 +20,11 @@
 				style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 0 30rpx 30rpx 0;"
 				@tap="changeFlage(2)">不可用</view>
 		</view>
-		<view v-for="(item,index) in dataSource" :key='index' class="flex-row mx-start sx-stretch backImgFull youhuiquan"
-			:style="{backgroundImage:itme.status==2?'url(../../static/images/youhuiquan2.png)': 'url(../../static/images/youhuiquan.png)',color: itme.status==2?'#ccc':'#FFFFFF'}">
+		<view v-for="(item,index) in dataSource" :key='index'
+			class="flex-row mx-start sx-stretch backImgFull youhuiquan"
+			:style="{backgroundImage:itme.status>=0 && item.status<=2?'url(/static/images/youhuiquan.png)':'url(/static/images/youhuiquan3.png)',color: itme.status>=0 && item.status<=2?'#fff':'#ccc'}">
 			<view class="flex-column mx-center sx-center" style="flex: 0 0 218rpx;">
-				<view class="flex-row mx-center sx-center" >
+				<view class="flex-row mx-center sx-center">
 					<text style="font-size: 32rpx;">￥</text>
 					<text style="font-size: 57rpx;">{{item.price}}</text>
 				</view>
@@ -31,22 +32,40 @@
 			</view>
 			<view class="flex-column mx-end sx-stretch" style="padding-left: 40rpx;flex: 1 1 auto;line-height: 36rpx;">
 
-				<view class="flex-row mx-between sx-end" style="flex:1 1 auto;">
+				<view class="flex-row mx-between sx-end" style="flex:1 1 auto;position: relative;">
 					<view class="flex-column mx-end sx-stretch">
 						<view class="ellipsis quan_title">
 							{{item.name}}
 						</view>
-						<text style="color: rgba(255,255,255,0.5);font-size: 24rpx;">{{usertime(item.starttime,item.endtime)}}</text>
+						<text
+							style="color: rgba(255,255,255,0.5);font-size: 24rpx;">{{usertime(item.starttime,item.endtime)}}</text>
 
 					</view>
-					<view class="flex-row mx-center sx-center" style="align-self: center;margin-right: 20rpx;">
-						<view @tap="shiyong(item)" v-if="item.status>0" class="flex-txt-center lingqu" :style="{backgroundColor: item.status==1?'rgba(182,100,247,1)':'#B6B6B6'}">
+					<view v-if="item.status==0 || item.status==1 || item.status==2" class="flex-row mx-center sx-center" style="align-self: center;margin-right: 20rpx;">
+						<!-- <view @tap="shiyong(item)" v-if="item.status>0" class="flex-txt-center lingqu"
+							:style="{backgroundColor: item.status==1?'rgba(182,100,247,1)':'#B6B6B6'}">
 							<text v-if="item.status==1" style="font-size: 24rpx;">未使用</text>
-							<view v-else class="backImgCenter" style="width: 121rpx;height: 121rpx;background-image: url(../../static/images/youhuiquan3.png);" v-else></view>
+							<view v-else class="backImgCenter"
+								style="width: 121rpx;height: 121rpx;background-image: url(../../static/images/youhuiquan3.png);"
+								v-else></view>
+						</view> -->
+
+						<view @tap="lingqu(item)" v-if="item.status==0" class="flex-txt-center lingqu"
+							:style="{backgroundColor:'rgba(182,100,247,1)'}">
+							<text style="font-size: 24rpx;">领取</text>
 						</view>
-						<view @tap="lingqu(item)" v-else class="flex-txt-center lingqu" :style="{backgroundColor:'rgba(182,100,247,1)'}">
-							<text  style="font-size: 24rpx;">领取</text>
+						<view @tap="shiyong(item)" v-else-if="item.status==1" class="flex-txt-center lingqu"
+							:style="{backgroundColor:'rgba(182,100,247,1)'}">
+							<text style="font-size: 24rpx;">未使用</text>
 						</view>
+						<view v-else-if="item.status==2" class="flex-txt-center lingqu"
+							:style="{backgroundColor:'rgba(182,100,247,1)'}">
+							<text style="font-size: 24rpx;">已使用</text>
+						</view>
+					</view>
+					<view v-else class="backImgCenter"
+						style="position: absolute;top: 20rpx;right: 10rpx;width: 121rpx;height: 121rpx;background-image: url(/static/images/youhuiquan2.png);">
+						
 					</view>
 				</view>
 				<text lines="1" class="ellipsis" style="width:400rpx;color: rgba(255,255,255,0.5);margin-bottom: 20rpx;
@@ -57,7 +76,7 @@
 
 		</view>
 
-		<authMode @confirm="authorTap" ref="authMode"></authMode>
+		<authMode @confirm="authorTap" @backindex="backIndex" ref="authMode"></authMode>
 
 
 	</view>
@@ -85,16 +104,21 @@
 				closeText: '',
 				searchValue: '',
 				city_id: '',
-				dataSource:[]
+				dataSource: []
 			}
 		},
 		onLoad: function() {
 
 		},
-		onShow() {
-			if (!this.$store.state.userInfo) {
-				this.$refs.authMode.open()
-				this.getWxCode();
+		async onShow() {
+			let userInfo = this.$store.state.userInfo;
+			console.log(userInfo);
+			if (!userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname) {
+				let res = await this.getWxCode();
+				if (res.hasUserInfo) {
+					this.$refs.authMode.open()
+				}
+
 			}
 		},
 		methods: {
@@ -109,26 +133,30 @@
 				this.getYouhuiquan();
 			},
 			async authorTap() {
-				if (!this.$store.state.userInfo || !this.$store.state.userInfo.user_id || !this.$store.state.userInfo
-					.isAuthor) {
+				let userInfo = this.$store.state.userInfo;
+				if (!userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname) {
 					let isSuccess = await this.updateUserInfo();
 					if (isSuccess) {
 						uni.showToast({
 							title: '授权成功！'
 						})
 						this.$refs.authMode.setDialogFalse();
+					} else {
+						uni.showToast({
+							title: '授权失败，请重新登录！'
+						})
+						this.$refs.authMode.setDialogFalse();
 					}
-					
 				}
 			},
 			input(e) {
 				this.searchValue = e;
-				if(this.ttt){
+				if (this.ttt) {
 					clearTimeout(this.ttt)
 				}
-				this.ttt = setTimeout(()=>{
+				this.ttt = setTimeout(() => {
 					this.getYouhuiquan();
-				},1500)
+				}, 1500)
 			},
 			clear(e) {
 				console.log(e);
@@ -146,7 +174,7 @@
 						city_id: this.city_id,
 						type: this.flag,
 						user_id: this.$store.state.userInfo.user_id,
-						name:this.searchValue
+						name: this.searchValue
 					}
 				});
 				if (res && res.code == 200) {
@@ -160,12 +188,12 @@
 				}
 
 			},
-			async lingqu(item){
+			async lingqu(item) {
 				let res = await this.$myRequest({
 					url: 'coupon/getCoupon',
 					methods: 'GET',
 					data: {
-						coupon_id:item.id,
+						coupon_id: item.id,
 						user_id: this.$store.state.userInfo.user_id
 					}
 				});
@@ -178,22 +206,22 @@
 					})
 				}
 			},
-			 shiyong(item){
+			shiyong(item) {
 				uni.showModal({
 					cancelText: "取消", // 取消按钮的文字  
 					confirmText: "确认", // 确认按钮文字 
 					title: '提示',
 					content: '确定使用优惠券吗?',
-					confirmColor:'#3B8BFF',
-					cancelColor:'#222222',
-					success:async res => {
+					confirmColor: '#3B8BFF',
+					cancelColor: '#222222',
+					success: async res => {
 						if (res.confirm) {
-							
+
 							let result = await this.$myRequest({
 								url: 'coupon/useCoupon',
 								methods: 'GET',
 								data: {
-									coupon_id:item.id,
+									coupon_id: item.id,
 									user_id: this.$store.state.userInfo.user_id
 								}
 							});
@@ -205,15 +233,15 @@
 									icon: 'none'
 								})
 							}
-							
-							
+
+
 						} else if (res.cancel) {
 							// 取消
 							console.log('cancel')
 						}
 					}
 				});
-				
+
 			},
 			getCity(e) {
 				this.city_id = e.cityid;
@@ -222,10 +250,10 @@
 			}
 		},
 		computed: {
-			usertime(sdt,edt) {
-				return (sdt,edt) => {
-					let sdtStr = math.formatTime(sdt,'Y.M.D');
-					let edtStr = math.formatTime(edt,'Y.M.D');
+			usertime(sdt, edt) {
+				return (sdt, edt) => {
+					let sdtStr = math.formatTime(sdt, 'Y.M.D');
+					let edtStr = math.formatTime(edt, 'Y.M.D');
 					console.log(sdtStr);
 					console.log(edtStr);
 					return `${sdtStr}-${edtStr}`
@@ -266,5 +294,4 @@
 		border-radius: 24rpx;
 		width: 139rpx;
 	}
-
 </style>
