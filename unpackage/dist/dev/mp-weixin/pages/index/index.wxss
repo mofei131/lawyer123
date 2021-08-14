@@ -78,7 +78,7 @@ page{
 	background: #F8F8F8;
 }
 .huoqu{
-	position: absolute;
+	position: fixed;
 	top: 0;
 	background-color: #fff;
 	/* height: 200rpx; */
@@ -274,6 +274,8 @@ page{
 	margin: auto;
 	border-radius: 14px 14px 0px 0px;
 	padding-right: 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .top-menu-view .menu-topic-view {
 	display: inline-block;

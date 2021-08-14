@@ -397,7 +397,7 @@
 		background: #F8F8F8;
 	}
 	.huoqu{
-		position: absolute;
+		position: fixed;
 		top: 0;
 		background-color: #fff;
 		/* height: 200rpx; */
@@ -579,6 +579,7 @@
 		margin: auto;
 		border-radius: 14px 14px 0px 0px;
 		padding-right: 20rpx;
+		box-sizing: border-box;
 	}
 
 	.top-menu-view .menu-topic-view {

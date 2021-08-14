@@ -130,7 +130,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} //
+//
 //
 //
 //
@@ -283,53 +284,65 @@ var _default =
         title: obj.name });
 
     }
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/index/setting',
+      method: 'GET',
+      data: {
+        key: 'wenti' },
+
+      success: function success(res) {
+        // console.log(res.data.data.data)
+        that.content = res.data.data.data;
+      } });
 
   },
-  data: function data() {
-    return {
+  data: function data() {var _ref;
+    return _ref = {
 
       content: "双方都",
-      dataSource: {},
-      id: '',
-      list: [{
-        id: 5,
-        name: "合同审核",
-        url: "/static/icon/icon6.png",
-        detailId: 4 },
+      dataSource: {} }, _defineProperty(_ref, "content",
+    ''), _defineProperty(_ref, "id",
+    ''), _defineProperty(_ref, "list",
+    [{
+      id: 5,
+      name: "合同审核",
+      url: "/static/icon/icon6.png",
+      detailId: 4 },
 
-      {
-        id: 6,
-        name: "律师函",
-        url: "/static/icon/icon7.png",
-        detailId: 5 },
+    {
+      id: 6,
+      name: "律师函",
+      url: "/static/icon/icon7.png",
+      detailId: 5 },
 
-      {
-        id: 7,
-        name: "债务催收指导",
-        url: "/static/icon/icon8.png",
-        detailId: 6 },
+    {
+      id: 7,
+      name: "债务催收指导",
+      url: "/static/icon/icon8.png",
+      detailId: 6 },
 
-      {
-        id: 8,
-        name: "起诉状/答辩状",
-        url: "/static/icon/icon9.png",
-        detailId: 7 },
+    {
+      id: 8,
+      name: "起诉状/答辩状",
+      url: "/static/icon/icon9.png",
+      detailId: 7 },
 
-      {
-        id: 9,
-        name: "代写借/欠条",
-        url: "/static/icon/icon10.png",
-        detailId: 8 },
+    {
+      id: 9,
+      name: "代写借/欠条",
+      url: "/static/icon/icon10.png",
+      detailId: 8 },
 
-      {
-        id: 10,
-        name: "刑事会见",
-        url: "/static/icon/icon11.png",
-        detailId: 9 }],
+    {
+      id: 10,
+      name: "刑事会见",
+      url: "/static/icon/icon11.png",
+      detailId: 9 }]), _defineProperty(_ref, "typeData",
 
 
 
-      typeData: '' };
+    ''), _ref;
 
   },
   methods: {
