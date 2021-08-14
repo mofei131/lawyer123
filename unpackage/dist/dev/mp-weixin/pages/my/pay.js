@@ -294,10 +294,7 @@ var _default =
                         signType: signType,
                         paySign: paySign,
                         success: function success(res) {
-                          console.log(res);
-                          uni.showToast({
-                            title: '支付成功' });
-
+                          //调整到成功页面
                           if (emitName) {
                             uni.$emit(emitName, { ispay: true });
                           }
@@ -308,9 +305,6 @@ var _default =
                             console.log('---' + emitName);
                             uni.$emit(emitName, { ispay: true });
                           }
-                          uni.showToast({
-                            title: '支付失败:' + res.errMsg,
-                            icon: 'none' });
 
                         } });
 

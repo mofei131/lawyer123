@@ -240,8 +240,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _math = _interopRequireDefault(__webpack_require__(/*! @/common/math.js */ 49));
-var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var authMode = function authMode() {__webpack_require__.e(/*! require.ensure | pages/components/authMode/authMode */ "pages/components/authMode/authMode").then((function () {return resolve(__webpack_require__(/*! @/pages/components/authMode/authMode.vue */ 446));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 460));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var authMode = function authMode() {__webpack_require__.e(/*! require.ensure | pages/components/authMode/authMode */ "pages/components/authMode/authMode").then((function () {return resolve(__webpack_require__(/*! @/pages/components/authMode/authMode.vue */ 446));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 460));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -264,11 +283,16 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
   onLoad: function onLoad() {
 
   },
-  onShow: function onShow() {
-    if (!this.$store.state.userInfo) {
-      this.$refs.authMode.open();
-      this.getWxCode();
-    }
+  onShow: function onShow() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+              userInfo = _this.$store.state.userInfo;
+              console.log(userInfo);if (!(
+              !userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname)) {_context.next = 7;break;}_context.next = 5;return (
+                _this.getWxCode());case 5:res = _context.sent;
+              if (res.hasUserInfo) {
+                _this.$refs.authMode.open();
+              }case 7:case "end":return _context.stop();}}}, _callee);}))();
+
+
   },
   methods: _objectSpread(_objectSpread({},
 
@@ -281,26 +305,30 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       this.flag = flag;
       this.getYouhuiquan();
     },
-    authorTap: function authorTap() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var isSuccess;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
-                !_this.$store.state.userInfo || !_this.$store.state.userInfo.user_id || !_this.$store.state.userInfo.
-                isAuthor)) {_context.next = 5;break;}_context.next = 3;return (
-                  _this.updateUserInfo());case 3:isSuccess = _context.sent;
+    authorTap: function authorTap() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var userInfo, isSuccess;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                userInfo = _this2.$store.state.userInfo;if (!(
+                !userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname)) {_context2.next = 6;break;}_context2.next = 4;return (
+                  _this2.updateUserInfo());case 4:isSuccess = _context2.sent;
                 if (isSuccess) {
                   uni.showToast({
                     title: '授权成功！' });
 
-                  _this.$refs.authMode.setDialogFalse();
-                }case 5:case "end":return _context.stop();}}}, _callee);}))();
+                  _this2.$refs.authMode.setDialogFalse();
+                } else {
+                  uni.showToast({
+                    title: '授权失败，请重新登录！' });
 
+                  _this2.$refs.authMode.setDialogFalse();
+                }case 6:case "end":return _context2.stop();}}}, _callee2);}))();
 
     },
-    input: function input(e) {var _this2 = this;
+    input: function input(e) {var _this3 = this;
       this.searchValue = e;
       if (this.ttt) {
         clearTimeout(this.ttt);
       }
       this.ttt = setTimeout(function () {
-        _this2.getYouhuiquan();
+        _this3.getYouhuiquan();
       }, 1500);
     },
     clear: function clear(e) {
@@ -309,49 +337,49 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
     search: function search(e) {
 
     },
-    getYouhuiquan: function getYouhuiquan() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+    getYouhuiquan: function getYouhuiquan() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
 
 
-                  _this3.$myRequest({
+                  _this4.$myRequest({
                     url: 'coupon/list',
                     methods: 'GET',
                     data: {
-                      city_id: _this3.city_id,
-                      type: _this3.flag,
-                      user_id: _this3.$store.state.userInfo.user_id,
-                      name: _this3.searchValue } }));case 2:res = _context2.sent;
+                      city_id: _this4.city_id,
+                      type: _this4.flag,
+                      user_id: _this4.$store.state.userInfo.user_id,
+                      name: _this4.searchValue } }));case 2:res = _context3.sent;
 
 
                 if (res && res.code == 200) {
                   console.log(res.data);
-                  _this3.dataSource = res.data;
+                  _this4.dataSource = res.data;
                 } else {
                   uni.showToast({
                     title: '每日学法数据获取异常',
                     icon: 'none' });
 
-                }case 4:case "end":return _context2.stop();}}}, _callee2);}))();
+                }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
 
     },
-    lingqu: function lingqu(item) {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
-                  _this4.$myRequest({
+    lingqu: function lingqu(item) {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
+                  _this5.$myRequest({
                     url: 'coupon/getCoupon',
                     methods: 'GET',
                     data: {
                       coupon_id: item.id,
-                      user_id: _this4.$store.state.userInfo.user_id } }));case 2:res = _context3.sent;
+                      user_id: _this5.$store.state.userInfo.user_id } }));case 2:res = _context4.sent;
 
 
                 if (res && res.code == 200) {
-                  _this4.getYouhuiquan();
+                  _this5.getYouhuiquan();
                 } else {
                   uni.showToast({
                     title: '服务器异常',
                     icon: 'none' });
 
-                }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
+                }case 4:case "end":return _context4.stop();}}}, _callee4);}))();
     },
-    shiyong: function shiyong(item) {var _this5 = this;
+    shiyong: function shiyong(item) {var _this6 = this;
       uni.showModal({
         cancelText: "取消", // 取消按钮的文字  
         confirmText: "确认", // 确认按钮文字 
@@ -359,31 +387,31 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
         content: '确定使用优惠券吗?',
         confirmColor: '#3B8BFF',
         cancelColor: '#222222',
-        success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(res) {var result;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:if (!
-                    res.confirm) {_context4.next = 7;break;}_context4.next = 3;return (
+        success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(res) {var result;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:if (!
+                    res.confirm) {_context5.next = 7;break;}_context5.next = 3;return (
 
-                      _this5.$myRequest({
+                      _this6.$myRequest({
                         url: 'coupon/useCoupon',
                         methods: 'GET',
                         data: {
                           coupon_id: item.id,
-                          user_id: _this5.$store.state.userInfo.user_id } }));case 3:result = _context4.sent;
+                          user_id: _this6.$store.state.userInfo.user_id } }));case 3:result = _context5.sent;
 
 
                     if (result && result.code == 200) {
-                      _this5.getYouhuiquan();
+                      _this6.getYouhuiquan();
                     } else {
                       uni.showToast({
                         title: '服务器异常',
                         icon: 'none' });
 
-                    }_context4.next = 8;break;case 7:
+                    }_context5.next = 8;break;case 7:
 
 
                     if (res.cancel) {
                       // 取消
                       console.log('cancel');
-                    }case 8:case "end":return _context4.stop();}}}, _callee4);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
+                    }case 8:case "end":return _context5.stop();}}}, _callee5);}));function success(_x) {return _success.apply(this, arguments);}return success;}() });
 
 
 

@@ -222,6 +222,7 @@ var _default =
 
   },
   methods: {
+
     getModelLevel1: function getModelLevel1() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _this.$myRequest({
                     url: 'agreement/getClassify',
@@ -246,28 +247,19 @@ var _default =
       console.log('----input:', res);
     },
     clear: function clear(res) {
-      uni.showToast({
-        title: 'clear事件，输入值为：' + res.value,
-        icon: 'none' });
 
     },
     blur: function blur(res) {
-      uni.showToast({
-        title: 'blur事件，输入值为：' + res.value,
-        icon: 'none' });
 
     },
     cancel: function cancel(res) {
-      uni.showToast({
-        title: '点击取消，输入值为：' + res.value,
-        icon: 'none' });
 
     },
 
     todetail: function todetail(item1) {
       if (item1) {
         this.cid = item1.id;
-        this.name = item1.name;
+        // this.name = item1.name;
       }
 
       uni.navigateTo({

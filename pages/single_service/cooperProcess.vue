@@ -1,24 +1,18 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
-		<view class="">
+		<!-- <view class="">
 			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" :title="typeData && typeData.name"
 				color="#333333" background-color="#FFFFFF" @clickLeft="back">
-				<!-- <block slot="right">
-					<view class="city">
-						<view><text class="uni-nav-bar-text">123</text></view>
-						<uni-icons type="arrowdown" color="#333333" size="22" />
-					</view>
-				</block> -->
 
 			</uni-nav-bar>
-		</view>
+		</view> -->
 
 		<view class="page">
 			<view class="mod1">
 				<view style="z-index: 78;
 		height: 379rpx;
 		overflow: hidden;
-		background-image: url(../../static/icon/cooper_back.png);
+		background-image: url(/static/icon/cooper_back.png);
 		background-size: 100%;
 		background-repeat: no-repeat;
 		width: 750rpx;
@@ -38,13 +32,13 @@
 		top: 48rpx;
 		width: 826rpx;
 		height: 261rpx;
-		background: url(../../static/icon/cooper_group5.png) 46rpx 0rpx no-repeat;
+		background: url(/static/icon/cooper_group5.png) 46rpx 0rpx no-repeat;
 		background-size: 750rpx 262rpx;
 		display: flex;
 		flex-direction: column;"></view>
 					<view style="z-index: 80;
 		height: 332rpx;
-		background: url(../../static/icon/cooper_group6.png) 100% no-repeat;
+		background: url(/static/icon/cooper_group6.png) 100% no-repeat;
 		width: 750rpx;
 		justify-content: flex-end;
 		position: absolute;
@@ -55,7 +49,7 @@
 						<view style="z-index: 81;
 		width: 750rpx;
 		height: 156rpx;
-		background: url(../../static/icon/cooper_mod2.png) 100% no-repeat;
+		background: url(/static/icon/cooper_mod2.png) 100% no-repeat;
 		display: flex;
 		flex-direction: column;"></view>
 						<image src="/static/icon/cooper_back1.png" class="pic2"></image>
@@ -124,13 +118,13 @@
 			</view>
 			<view class="mod8">
 				<view class="box3">
-					<view class="mod9">
+					<view class="mod9" @tap="kefu">
 						<view class="mod10">
 							<image src="/static/icon/cooper_p4.png" class="icon2"></image>
 							<text lines="1" class="word10">客服</text>
 						</view>
 					</view>
-					<button bindtap="toPay" class="mod11">
+					<button @tap="toPay" class="mod11">
 						<text lines="1" class="word11">立即购买</text>
 					</button>
 				</view>
@@ -146,14 +140,16 @@
 	export default {
 		onLoad(p) {
 			console.log(p);
-			
+
 			this.id = p && p.id;
 			let obj = this.list.find(item => item.id == this.id);
 			if (obj) {
 				this.typeData = obj;
 
 				this.getContent(obj.detailId);
-
+				uni.setNavigationBarTitle({
+					title: obj.name
+				});
 			}
 
 		},
@@ -210,6 +206,13 @@
 					delta: 1
 				})
 			},
+			kefu() {
+				uni.makePhoneCall({
+					phoneNumber: "400-8623-5513",
+				})
+
+			},
+
 			async getContent(id) {
 				let res = await this.$myRequest({
 					url: 'service/detail',
@@ -228,7 +231,9 @@
 				})
 			},
 			async toPay() {
-
+				uni.navigateBack({
+					delta: 1
+				})
 			},
 			async commitService() {
 				let res = await this.$myRequest({

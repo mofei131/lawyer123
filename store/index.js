@@ -138,9 +138,13 @@ const store = new Vuex.Store({
 			
 			console.log(context.state.userInfo );
 			return new Promise((resolve,feject)=>{
-				if(context.state.userInfo &&context.state.userInfo.user_id){
+				console.log('-------------------');
+				console.log(context.state);
+				if(context.state.userInfo && context.state.userInfo.user_id){
 					resolve({hasUserInfo:true});
+					return;
 				};
+		
 				uni.login({
 					provider: 'weixin',
 					success: async function(res) {
@@ -155,19 +159,22 @@ const store = new Vuex.Store({
 								}
 							});
 							console.log('===========getwxcode=======================');
+							console.log(res1);
+
 							if(res1.code==-1){
 								uni.showToast({
 									title:res1.message,
 									icon:'none'
 								})
 								reject(res1)
+								return
 							}
-							if (res1 && res1.data) {
-								console.log('===========缓存userInfo=======================');
-								console.log(res1.data);
+							if (res1 && res1.code==200) {
+								console.log('');
 								context.commit('commitUserInfo',res1.data);
 								uni.setStorageSync('userInfo',res1.data);
 								resolve({hasUserInfo:true});
+								return
 							}
 				
 						} else {
@@ -184,10 +191,11 @@ const store = new Vuex.Store({
 			
 		},
 		updateUserInfo(context){
-			console.log(111)
+			
 			return new Promise(async (resolve,reject)=>{
+				let userInfo = uni.getStorageSync('userInfo');
 				let pass =true;
-				if(!context.state.userInfo){
+				if(!userInfo || !userInfo.user_id){
 						let result = await context.dispatch('getWxCode');
 						if(!result.hasUserInfo){
 							pass =false;
@@ -205,12 +213,8 @@ const store = new Vuex.Store({
 								desc: '获取用户头像等信息',
 								success: async (res) => {
 									let {avatarUrl,city,country,gender,language,nickName,province} = res.userInfo;
-									let userInfo = uni.getStorageSync('userInfo');
+									userInfo = uni.getStorageSync('userInfo');
 									if(!userInfo){
-										uni.showToast({
-											title:'用户信息缓存为空',
-											icon:'none'
-										})
 										reject(false);
 									}
 									let data =  {
@@ -236,19 +240,15 @@ const store = new Vuex.Store({
 										userInfo.gender = gender;
 										userInfo.province = province;
 										userInfo.city = city;
-										
+										context.commit('commitUserInfo',userInfo);
 										uni.setStorageSync('userInfo',userInfo);
 										resolve(true);
 									}else{
-										uni.showToast({
-											title:res1.message,
-											icon:'none'
-										})
-										reject(res1)
+										reject(false)
 									}
 								},
 								fail: (res) => {
-									reject(res)
+									reject(false)
 								}
 							});
 						}

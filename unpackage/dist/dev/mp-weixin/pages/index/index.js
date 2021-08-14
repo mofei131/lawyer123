@@ -354,11 +354,11 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       learn: [] };
 
   },
-  onLoad: function onLoad() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
-
-              !_this.$store.state.userInfo || !_this.$store.state.userInfo.user_id)) {_context.next = 4;break;}_context.next = 3;return (
-                _this.getWxCode());case 3:
-              console.log(_this.$store.state);case 4:
+  onLoad: function onLoad() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+              userInfo = _this.$store.state.userInfo;if (!(
+              !userInfo || !userInfo.user_id)) {_context.next = 5;break;}_context.next = 4;return (
+                _this.getWxCode());case 4:
+              console.log(_this.$store.state);case 5:
 
               _this.getProvinceCity();
               _this.getBussinessTypes();
@@ -371,9 +371,9 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
               uni.getSystemInfo({
                 success: function success(res) {
-                  console.log(res);
+                  // console.log(res);
                   _this.commitWindowHeight(res.windowHeight);
-                } });case 12:case "end":return _context.stop();}}}, _callee);}))();
+                } });case 13:case "end":return _context.stop();}}}, _callee);}))();
 
   },
   computed: _objectSpread({},
@@ -431,7 +431,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                     data: {} }));case 2:res = _context3.sent;
 
                 if (res && res.code == 200) {
-                  console.log(res.data);
+                  // console.log(res.data);
                   _this2.youXuanList = res.data;
                   _this2.lawyercard = res.data[_this2.currentTab].layer || [];
                 } else {
@@ -441,27 +441,27 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
                 }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
     },
-    getLearn: function getLearn() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
-                console.log('------------->>>>>');
-                console.log(_this3.$store.state);_context4.next = 4;return (
+    getLearn: function getLearn() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
+
+
                   _this3.$myRequest({
                     url: 'article/list',
                     methods: 'GET',
                     data: {
                       page: 1,
                       limit: 5,
-                      user_id: _this3.$store.state.userInfo.user_id } }));case 4:res = _context4.sent;
+                      user_id: _this3.$store.state.userInfo.user_id } }));case 2:res = _context4.sent;
 
 
                 if (res && res.code == 200) {
-                  console.log(res.data);
+                  // console.log(res.data);
                   _this3.learn = res.data;
                 } else {
                   uni.showToast({
                     title: '每日学法数据获取异常',
                     icon: 'none' });
 
-                }case 6:case "end":return _context4.stop();}}}, _callee4);}))();
+                }case 4:case "end":return _context4.stop();}}}, _callee4);}))();
     },
     getAnli: function getAnli() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {var res;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:_context5.next = 2;return (
                   _this4.$myRequest({
@@ -474,7 +474,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
 
                 if (res && res.code == 200) {
-                  console.log(res.data);
+                  // console.log(res.data);
                   _this4.anli = res.data;
                 } else {
                   uni.showToast({
@@ -597,6 +597,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
 //
 //
 //

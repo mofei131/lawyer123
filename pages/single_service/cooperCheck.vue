@@ -1,12 +1,6 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
-		<view class="flex-column mx-end sx-stretch" style="background-color: #40A9FF;height: 128rpx;">
-			<uni-nav-bar :fixed="false" :border="false" left-icon="arrowleft" color="#ffffff" background-color="#40A9FF"
-				@clickLeft="back">
-				<view class="flex-txt-center" style="flex: 1 1 auto;font-size: 26rpx;margin-left: -16rpx;">
-					{{typeData && typeData.name}}</view>
-			</uni-nav-bar>
-		</view>
+		
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;">
 
 			<view class="flex-row mx-center sx-center"
@@ -23,7 +17,7 @@
 			</view>
 
 			<cooperTabar @searchChange="searchChange"></cooperTabar>
-			<lawyercard1 :zixun="true" :isbuy="true" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
+			<lawyercard1 :zixun="false" :isbuy="true" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
 
 
 
@@ -44,6 +38,9 @@
 			if (obj) {
 				this.typeData = obj;
 				this.detailId = obj.detailId;
+				uni.setNavigationBarTitle({
+					title: obj.name
+				});
 			}
 		},
 		components: {

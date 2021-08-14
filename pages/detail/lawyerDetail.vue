@@ -1,6 +1,6 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="padding: 20rpx;background-color: #F8F8F8;">
-		<lawyercard1 :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
+		<lawyercard1 @updatefollow="updateFollow" :lawyerlist="lawyerList" :follow='true' @buy="buy"></lawyercard1>
 
 		<view class="flex-column mx-start sx-stretch" style="border-radius: 20rpx;background-color: #FFFFFF;">
 			<view class="flex-row mx-start sx-center ld_title_wrap">
@@ -38,7 +38,7 @@
 			<view @tap="tuTuwenPage" class="flex-row mx-start sx-center"
 				style="flex: 1 1 auto;padding: 10rpx;background-color: #FFFFFF;margin-right: 20rpx;border-radius: 10rpx;">
 				<view class="backImgCenter"
-					style="background-image: url(../../static/icon/icon1.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
+					style="background-image: url(/static/icon/icon1.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
 				</view>
 				<view class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
 					<text>图文详情</text>
@@ -49,7 +49,7 @@
 			<view @tap="toDianhuaPage" class="flex-row mx-start sx-center"
 				style="flex: 1 1 auto;padding: 10rpx;background-color: #FFFFFF;border-radius: 10rpx">
 				<view class="backImgCenter"
-					style="background-image: url(../../static/icon/icon2.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
+					style="background-image: url(/static/icon/icon2.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
 				</view>
 				<view  class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
 					<text>电话沟通</text>
@@ -89,25 +89,8 @@
 		onLoad(p) {
 			console.log(p.id + "=======" + this.$store.state.userInfo.user_id);
 			this.lawyerid = p.id;
-			let res = this.$myRequest({
-				url: 'layer/detail',
-				methods: 'GET',
-				data: {
-					layer_id: p.id,
-					user_id: this.$store.state.userInfo.user_id
-				}
-			});
-			res.then(data => {
-				if (data.code == 200) {
-					console.log(data);
-					this.lawyerList.push(data.data)
-				} else {
-					uni.showToast({
-						title: data.message,
-						icon: 'none'
-					})
-				}
-			})
+			this.getLawyer();
+			this.getAnli();
 		},
 		components: {
 			anli,
@@ -117,46 +100,56 @@
 			return {
 				lawyerid: null,
 				lawyerList: [],
-				anli: [{
-						id: 0,
-						sort: '买卖合同',
-						title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-						address: '山东青岛',
-						name: '张三',
-						portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-						read: '1783'
-					},
-					{
-						id: 1,
-						sort: '婚姻家庭',
-						title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-						address: '山东潍坊',
-						name: '李四',
-						portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-						read: '32'
-					},
-					{
-						id: 2,
-						sort: '为高质量',
-						title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-						address: '山东烟台',
-						name: '王五',
-						portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-						read: '544'
-					},
-					{
-						id: 3,
-						sort: '为高质量',
-						title: '发展提供高质量数据——第四次fd经济论坛第四次fd经济论坛',
-						address: '山东日照',
-						name: '赵六',
-						portrait: 'https://avatar.csdnimg.cn/1/E/4/3_guorui_java_1609847720.jpg',
-						read: '6'
-					},
-				],
+				anli: [],
 			}
 		},
 		methods: {
+			async getAnli() {
+				let res = await this.$myRequest({
+					url: 'service/selectCase',
+					methods: 'GET',
+					data: {
+						page: 1,
+						limit: 5,
+						layer_id: this.lawyerid,
+					}
+				});
+				if (res && res.code == 200) {
+					console.log('====获取案例----');
+					console.log(res.data);
+					this.anli = res.data;
+				} else {
+					uni.showToast({
+						title: '每日学法数据获取异常',
+						icon: 'none'
+					})
+				}
+			},
+			async getLawyer(){
+				this.lawyerList = [];
+				let res = this.$myRequest({
+					url: 'layer/detail',
+					methods: 'GET',
+					data: {
+						layer_id:this.lawyerid,
+						user_id: this.$store.state.userInfo.user_id
+					}
+				});
+				res.then(data => {
+					if (data.code == 200) {
+						console.log(data);
+						this.lawyerList.push(data.data)
+					} else {
+						uni.showToast({
+							title: data.message,
+							icon: 'none'
+						})
+					}
+				})
+			},
+			updateFollow(fllow){
+				this.lawyerList[0].follow = fllow==1?0:1;
+			},
 			tuTuwenPage() {
 				let lawyer = this.lawyerList[0];
 				if (!lawyer) return;

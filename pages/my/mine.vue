@@ -1,9 +1,6 @@
 <template>
 	<view>
 	<view class="myhead">
-		<!-- <view class="back">
-			<image src="../../static/images/back.png"></image>
-		</view> -->
 		<view class="userifom" v-if="user.name != ''">
 			<view class="headimg">
 				<image  :src='user.headimg'></image>
@@ -46,7 +43,6 @@
 			<view class="kaitongbtn" v-else>已开通</view>
 		</view>
 	</view>
-	<!-- <iconlist :item='user.type == 1?iconlist:iconlist1'></iconlist> -->
 	<view class="iconlist">
 		<view class="zixun" v-if="user.lawyer == ''">
 			<view v-for="(item,index) in iconlist.zixun" class="zixunitem" @click="toPage(item.tourl)" :key="index">
@@ -63,7 +59,6 @@
 	</view>
 	<view class="tuigaung" v-if="user.lawyer == ''">
 		<view class="tgtext">我的推广</view>
-		<!-- <iconlist :item='iconlist2'></iconlist> -->
 		<view class="zixun">
 			<button class="yqbtn" open-type="share">
 				<image src="../../static/icon/fenxiangicon.png" class="zixunitemimage"></image>

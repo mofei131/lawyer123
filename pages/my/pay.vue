@@ -162,10 +162,7 @@
 									signType,
 									paySign,
 									success: (res) => {
-										console.log(res);
-										uni.showToast({
-											title:'支付成功'
-										})
+										//调整到成功页面
 										if(emitName){
 											uni.$emit(emitName,{ispay:true});
 										}
@@ -176,10 +173,7 @@
 											console.log('---'+emitName);
 											uni.$emit(emitName,{ispay:true});
 										}
-										uni.showToast({
-											title:'支付失败:'+res.errMsg,
-											icon:'none'
-										})
+										
 									}
 								})
 							},fail(res) {
