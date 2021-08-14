@@ -56,24 +56,21 @@
 
 <style>
 	.anlilist {
-<<<<<<< HEAD
+
 		width: 710rpx;
 		margin: auto;
-=======
-		    width: 710rpx;
-		    margin: auto;
->>>>>>> 5cf4cb418c09c45738fec7b17c32ccf099514cab
 	}
 
 	.anlilistitem {
 		background-color: #FFFFFF;
 		/* border-radius: 20rpx; */
 		padding: 20rpx;
-		
+
 
 		/* border: 1px solid; */
 	}
-	.anlilistitem:last-child{
+
+	.anlilistitem:last-child {
 		border-radius: 0 0 14rpx 14rpx;
 	}
 
@@ -133,11 +130,8 @@
 	}
 
 	.anliborder {
-<<<<<<< HEAD
 		width: 674rpx;
-=======
-		width: 680rpx;
->>>>>>> 5cf4cb418c09c45738fec7b17c32ccf099514cab
+
 		height: 1rpx;
 		background: #ddd;
 		margin: auto;

@@ -577,13 +577,8 @@
 		border-top: 1px solid #d8dbe6;
 		border-bottom: 1px solid #d8dbe6;
 		margin: auto;
-<<<<<<< HEAD
 		border-radius: 14rpx 14rpx 0px 0px;
-=======
-		border-radius: 14px 14px 0px 0px;
-		padding-right: 20rpx;
-		box-sizing: border-box;
->>>>>>> 5cf4cb418c09c45738fec7b17c32ccf099514cab
+
 	}
 
 	.top-menu-view .menu-topic-view {

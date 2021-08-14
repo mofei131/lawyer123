@@ -58,32 +58,17 @@
 						<text lines="1" class="info9">回访评价</text>
 					</view>
 				</view>
-<<<<<<< HEAD
+
 			</view>
+
+
+
 			<view class="block5">
 				<view class="mod7">
 					<text lines="1" decode="true" class="word7">～&nbsp;常见问题&nbsp;～</text>
 					<view class="block6"></view>
-					<view class="flex-column" style="overflow: auto;">
-						<text lines="1" class="word8">问：下单购买后什么时候联系我？</text>
-						<text lines="1" class="txt5">答：下单付款后，专属客服马上联系您，无需等待！</text>
-						<text lines="1" class="txt6">问：下单购买后什么时候联系我？</text>
-						<text lines="1" class="info10">答：下单付款后，专属客服马上联系您，无需等待！</text>
-						<text lines="1" class="info11">问：下单购买后什么时候联系我？</text>
-						<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text>
-						<text lines="1" class="info11">问：下单购买后什么时候联系我？</text>
-						<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text>
-						<text lines="1" class="info11">问：下单购买后什么时候联系我？</text>
-						<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text>
-					</view>
-
-=======
-				<view class="block5">
-					<view class="mod7">
-						<text lines="1" decode="true" class="word7">～&nbsp;常见问题&nbsp;～</text>
-						<view class="block6"></view>
-						<view class="flex-column" style="overflow: auto;padding-bottom: 60rpx;">
-							<!-- <text lines="1" class="word8">问：下单购买后什么时候联系我？</text>
+					<view class="flex-column" style="overflow: auto;padding-bottom: 60rpx;">
+						<!-- <text lines="1" class="word8">问：下单购买后什么时候联系我？</text>
 							<text lines="1" class="txt5">答：下单付款后，专属客服马上联系您，无需等待！</text>
 							<text lines="1" class="txt6">问：下单购买后什么时候联系我？</text>
 							<text lines="1" class="info10">答：下单付款后，专属客服马上联系您，无需等待！</text>
@@ -93,14 +78,14 @@
 							<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text>
 							<text lines="1" class="info11">问：下单购买后什么时候联系我？</text>
 							<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text> -->
-							<rich-text  v-html = 'content'></rich-text>
-						</view>
+						<rich-text v-html='content'></rich-text>
 					</view>
-					
->>>>>>> 5cf4cb418c09c45738fec7b17c32ccf099514cab
 				</view>
+
+
 			</view>
-		</view>
+	
+
 		<view class="mod8">
 			<view class="box3">
 				<view class="mod9" @tap="kefu">
@@ -138,10 +123,10 @@
 			}
 			let that = this
 			uni.request({
-				url:'https://layer.boyaokj.cn/api/index/setting',
-				method:'GET',
-				data:{
-					key:'wenti'
+				url: 'https://layer.boyaokj.cn/api/index/setting',
+				method: 'GET',
+				data: {
+					key: 'wenti'
 				},
 				success(res) {
 					// console.log(res.data.data.data)
