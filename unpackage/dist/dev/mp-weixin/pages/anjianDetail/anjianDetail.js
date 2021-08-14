@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 493));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 500));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 486));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 493));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -180,14 +180,6 @@ __webpack_require__.r(__webpack_exports__);
         // 	uname: '小米',
         // 	contentType: 'txt',
         // 	content: "s假数据假数据",
-        // 	uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png'
-        // },
-        // {
-        // 	group: 'group1',
-        // 	uindex: 123,
-        // 	uname: '小米',
-        // 	contentType: 'txt',
-        // 	content: "假数据假数据",
         // 	uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png'
         // },
       ] };
@@ -254,10 +246,10 @@ __webpack_require__.r(__webpack_exports__);
                     var d = {
                       group: 'group1',
                       uindex: item.user_id,
-                      uname: '小米',
+                      uname: item.user_id == _this.user_id ? item.user.name : item.layer_name,
                       contentType: 'txt',
-                      content: item.message,
-                      uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png' };
+                      content: item.message || '',
+                      uface: item.user_id == _this.user_id ? item.user.avater : item.layer_photo };
 
                     return d;
                   });

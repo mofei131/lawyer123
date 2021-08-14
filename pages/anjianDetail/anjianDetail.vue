@@ -7,7 +7,7 @@
 			<view style="width: 100%;">
 
 				<!-- IM 消息展示区 -->
-				<gui-im-message background="#FFFFFF" :msgs="msgs" group="group1" :userid="user_id">
+				<gui-im-message background="#FFFFFF" :msgs="msgs" group="group1" :rightname='true' :userid="user_id">
 				</gui-im-message>
 				<!-- 底部提交区 -->
 				<gui-im-input v-if="false"  @sendText="sendText"></gui-im-input>
@@ -52,15 +52,7 @@
 					// 	content: "s假数据假数据",
 					// 	uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png'
 					// },
-					// {
-					// 	group: 'group1',
-					// 	uindex: 123,
-					// 	uname: '小米',
-					// 	contentType: 'txt',
-					// 	content: "假数据假数据",
-					// 	uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png'
-					// },
-
+			
 				]
 			}
 		},
@@ -124,10 +116,10 @@
 						let d = {
 							group: 'group1',
 							uindex: item.user_id,
-							uname: '小米',
+							uname: item.user_id==this.user_id?item.user.name:item.layer_name,
 							contentType: 'txt',
-							content: item.message,
-							uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png'
+							content: item.message||'',
+							uface: item.user_id==this.user_id?item.user.avater:item.layer_photo
 						};
 						return d;
 					})

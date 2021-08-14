@@ -1,0 +1,11 @@
+
+page{
+	background: #F4F7F7;
+}
+.serviceBtn{
+	display: none;
+}
+.dis{
+	margin-top: 20rpx;
+}
+

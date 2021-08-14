@@ -1,6 +1,6 @@
 <template>
-	<view>
-		<lawyercard1 :zixun="true" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
+	<view class="box">
+		<lawyercard1 :zixun="true" :lawyerlist="lawyerList" @buy="buy" class="dis"></lawyercard1>
 	</view>
 </template>
 
@@ -69,4 +69,13 @@
 </script>
 
 <style>
+	page{
+		background: #F4F7F7;
+	}
+	.serviceBtn{
+		display: none;
+	}
+	.dis{
+		margin-top: 20rpx;
+	}
 </style>

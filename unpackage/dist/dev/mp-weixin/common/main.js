@@ -34,7 +34,7 @@ uni.onSocketOpen(function (res) {
 });
 uni.onSocketError(function (res) {
   console.log('WebSocket连接打开失败，请检查！');
-  _index.default.commit('commitWebsocketConnect', false);
+  // store.commit('commitWebsocketConnect', false)
 });
 
 // uni.onSocketMessage(function(res) {
@@ -48,6 +48,7 @@ uni.onSocketError(function (res) {
 // });
 uni.onSocketClose(function (res) {
   console.log('WebSocket 已关闭！');
+  _vue.default.prototype.$socketTask = null;
   _index.default.commit('commitWebsocketConnect', false);
 });
 

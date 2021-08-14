@@ -140,15 +140,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
+  onLoad: function onLoad(p) {
+    this.emitName = p.emitName;
+  },
   data: function data() {
-    return {};
-
+    return {
+      emitName: '' };
 
   },
   methods: {
+
     back: function back() {
-      uni.switchTab({
-        url: '../index/index' });
+      if (this.emitName) {
+        uni.$emit(this.emitName, {
+          ispay: true });
+
+      } else {
+        uni.switchTab({
+          url: '../index/index' });
+
+      }
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

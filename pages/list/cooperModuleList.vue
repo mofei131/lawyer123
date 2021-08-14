@@ -118,7 +118,7 @@
 					})
 					uni.$on('goCoodetail', res => {
 						uni.navigateTo({
-							url: '@/pages/detail/cooperDetail?coopid=' + item.id
+							url: '/pages/detail/cooperDetail?coopid=' + item.id
 						})
 					});
 

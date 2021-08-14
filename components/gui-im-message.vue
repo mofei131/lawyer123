@@ -20,6 +20,9 @@
 							<view class="gui-im-name" v-if="userid != item.uindex">
 								<text :style="unameStyle">{{item.uname}}</text>
 							</view>
+							<view class="flex-txt-right-center" v-if="rightname && userid == item.uindex" style="font-size: 26rpx;">
+								{{item.uname}}
+							</view>
 							<!-- 文本消息 -->
 							<view v-if="item.contentType == 'txt'" 
 							:class="[userid == item.uindex ? 'gui-im-flex-end' : '']">
@@ -70,6 +73,8 @@ export default {
 	props  : {
 		msgs             : { type : Array,  default : function(){ return []; }},
 		userid           : { type : String, default:''},
+		rightname           : { type : Boolean, default:false},
+		
 		group            : { type : String, default : "" },
 		background       : { type : String, default : "#F7FBFE" },
 		unameStyle       : { type : String, default : 'line-height:28rpx; height:28rpx; font-size:26rpx; color:#666666;'},

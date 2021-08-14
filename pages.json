@@ -43,9 +43,8 @@
 		}, {
 			"path": "pages/detail/cooperDetail",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "合同下载",
+				"enablePullDownRefresh": false
 			}
 
 		}, {

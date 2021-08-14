@@ -1,44 +1,58 @@
 <template>
 	<view class="finish">
-		<image src="../../static/icon/wxicon.png"></image>
+		<image src="../../static/icon/wxicon2.png"></image>
 		<view>支付成功</view>
 		<button type="default" @tap="back()">确定</button>
 	</view>
 </template>
 
 <script>
-	export default{
-		data(){
-			return{
-				
+	export default {
+		onLoad(p) {
+			this.emitName = p.emitName;
+		},
+		data() {
+			return {
+				emitName: ''
 			}
 		},
-		methods:{
-			back(){
-				uni.switchTab({
-					url:'../index/index'
-				})
+		methods: {
+
+			back() {
+				if (this.emitName) {
+					uni.$emit(this.emitName, {
+						ispay: true
+					});
+				} else {
+					uni.switchTab({
+						url: '../index/index'
+					})
+				}
+
 			}
 		}
 	}
 </script>
 
 <style>
-	.finish{
+	.finish {
 		padding-top: 80%;
 	}
-	.finish image{
+
+	.finish image {
 		margin: auto;
 		width: 300rpx;
 		height: 300rpx;
 		display: block;
 	}
-	.finish view{
+
+	.finish view {
 		font-size: 24rpx;
 		text-align: center;
 		margin-top: 50rpx;
 	}
-	.finish button{
+
+	.finish button {
 		width: 500rpx;
 		height: 80rpx;
 		border: 1rpx solid #40A9FF;

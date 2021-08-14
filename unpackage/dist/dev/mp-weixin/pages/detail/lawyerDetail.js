@@ -349,8 +349,14 @@ var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/an
                   //跳转收银台
                   uni.navigateTo({
                     url: '../my/pay?id=' + res.data.service_id + '&price=' + lawyer.price.dianhua +
-                    '&typeId=2' });
+                    '&typeId=2' + '&emitName=callphone' });
 
+                  uni.$on('callphone', function () {
+                    uni.makePhoneCall({
+                      phoneNumber: lawyer.mobile });
+
+
+                  });
 
                 }case 16:case "end":return _context3.stop();}}}, _callee3);}))();
     } } };exports.default = _default;

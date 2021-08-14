@@ -248,7 +248,7 @@ var _default =
 
                   uni.$on('goCoodetail', function (res) {
                     uni.navigateTo({
-                      url: '@/pages/detail/cooperDetail?coopid=' + item.id });
+                      url: '/pages/detail/cooperDetail?coopid=' + item.id });
 
                   });
 

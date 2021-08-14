@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 493));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 500));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));
 
 
 
@@ -145,18 +145,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 486));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 493));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
 
 
 {
+  onBackPress: function onBackPress(options) {
 
+    uni.switchTab({
+      url: '/pages/index/index' });
+
+
+    return true;
+
+  },
+  onUnload: function onUnload() {
+    uni.switchTab({
+      url: '/pages/index/index' });
+
+  },
   onLoad: function onLoad(p) {var _this = this;
+    console.log(p);
+    console.log(this.$store.state.userInfo);
     this.source_id = p.source_id;
     this.layer_id = p.layer_id;
     this.user_id = this.$store.state.userInfo.user_id;
+    console.log('用户id：', this.user_id);
     // this.isSelf = this.user_id == this.$store.state.userInfo.user_id;
+
+
+
     if (this.$store.state.websocketConnect) {
       uni.sendSocketMessage({
         data: JSON.stringify({
@@ -172,26 +197,34 @@ __webpack_require__.r(__webpack_exports__);
 
         } });
 
+      uni.onSocketMessage(function (res) {
+        console.log('收到服务器内容：');
+        var d = JSON.parse(res.data);
+        console.log(d);
+        if (d.type) return;
+        var data = d.data;
+        if (data.source_id) {
+          var item = {
+            group: 'group1',
+            uindex: data.user_id,
+            contentType: 'txt',
+            uname: data.user_id == _this.user_id ? _this.userName : _this.lawyerName,
+            content: data.message,
+            uface: data.user_id == _this.user_id ? _this.$store.state.userInfo.avater : _this.lawyerAvator || "https://layer.boyaokj.cn/upload/20210813/1b54fb67409ad93d2eaf28ea20faa644.jpg" };
+
+          _this.msgs.push(item);
+          _this.pageScroll();
+          console.log(_this.msgs);
+        }
+
+      });
+
+    } else {
+      this.checkOpenSocket();
     }
-    uni.onSocketMessage(function (res) {
-      console.log('收到服务器内容：');
-      var d = JSON.parse(res.data);
-      console.log(d);
-      if (d.type) return;
-      var data = d.data;
-      if (data.service_id) {
-        var item = {
-          group: 'group1',
-          uindex: data.user_id,
-          contentType: 'txt',
-          uname: '小米',
-          content: data.message,
-          uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png' };
 
-        _this.msgs.push(item);
-      }
 
-    });
+
   },
   onShow: function onShow() {
     this.getMessage(this.source_id);
@@ -202,56 +235,156 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
+      userName: '',
+      userAvator: '',
+      lawyerName: '',
+      lawyerAvator: '',
       isSelf: true,
       page: 1,
       limit: 10,
       user_id: '',
       source_id: '',
       layer_id: '',
-      msgs: [{
-        group: 'group1',
-        uindex: 123,
-        uname: '小米',
-        contentType: 'txt',
-        content: "s水电费水电费",
-        uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png' },
-
-      {
-        group: 'group1',
-        uindex: 123,
-        uname: '小米',
-        contentType: 'txt',
-        content: "s水电费水电费",
-        uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png' }] };
-
+      msgs: [] };
 
 
 
   },
-  methods: {
-    sendText: function sendText(msg) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+  methods: _objectSpread(_objectSpread({},
+
+  (0, _vuex.mapMutations)(['commitWebsocketConnect', 'commitSocketInfo'])), {}, {
+    checkOpenSocket: function checkOpenSocket() {var _this2 = this;
+      uni.sendSocketMessage({
+        data: JSON.stringify({
+          "action": "bind",
+          "data": {
+            "source_id": this.source_id } }),
+
+
+        success: function success(res) {
+          return;
+        },
+        fail: function fail(err) {
+          // 未连接打开websocket连接
+          _this2.openConnection();
+        } });
+
+    },
+    openConnection: function openConnection() {var _this3 = this;
+      // 打开连接
+      uni.closeSocket(); // 确保已经关闭后再重新打开
+      uni.connectSocket({
+        url: 'wss://layer.boyaokj.cn/wss',
+        header: {
+          'content-type': 'application/json' },
+
+        method: 'GET',
+        success: function success(res) {
+          console.log('连接成功 connectSocket=', res);
+        },
+        fail: function fail(err) {
+
+          console.log('连接失败 connectSocket=从连');
+
+        } });
+
+      uni.onSocketOpen(function (res) {
+        console.log('====================连接成功==================');
+        uni.sendSocketMessage({
+          data: JSON.stringify({
+            "action": "bind",
+            "data": {
+              "source_id": _this3.source_id } }),
+
+
+          fail: function fail(res) {
+            uni.showToast({
+              title: '聊天连接失败',
+              icon: 'none' });
+
+          } });
+
+
+      });
+      this.onSocketMessage(); // 打开成功监听服务器返回的消息
+    },
+    //	打开成功监听服务器返回的消息
+    onSocketMessage: function onSocketMessage() {var _this4 = this;
+      // 消息
+      this.timeout = 30000;
+      this.timeoutObj = null;
+      uni.onSocketMessage(function (res) {
+        console.log(res);
+        console.log('收到服务器内容：');
+
+        _this4.getSocketMsg(res.data); // 监听到有新服务器消息
+      });
+    },
+    // 监听到有新服务器消息
+    getSocketMsg: function getSocketMsg(reData) {
+      // 监听到服务器消息
+      var d = JSON.parse(reData);
+      if (d.type) return;
+      var data = d.data;
+      if (data.source_id) {
+        var item = {
+          group: 'group1',
+          uindex: data.user_id,
+          contentType: 'txt',
+          uname: data.user_id == this.user_id ? this.userName : this.lawyerName,
+          content: data.message,
+          uface: data.user_id == this.user_id ? this.$store.state.userInfo.avater : this.lawyerAvator || "https://layer.boyaokj.cn/upload/20210813/1b54fb67409ad93d2eaf28ea20faa644.jpg" };
+
+
+
+        this.msgs.push(item);
+      }
+      console.log('收到服务器消息', reData);
+      // this.reset(); // 检测心跳reset,防止长时间连接导致连接关闭
+    },
+    // 检测心跳reset
+    reset: function reset() {
+      clearInterval(this.timeoutObj);
+      this.start(); // 启动心跳
+    },
+    // 启动心跳 start
+    start: function start() {
+      this.timeoutObj = setInterval(function () {var _this5 = this;
+        uni.sendSocketMessage({
+          data: 'ping',
+          success: function success(res) {
+            console.log('连接中....');
+          },
+          fail: function fail(err) {
+            console.log('连接失败重新连接....');
+            _this5.openConnection();
+          } });
+
+      }, this.timeout);
+    },
+
+
+    sendText: function sendText(msg) {var _this6 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 console.log(msg);
                 // console.log(this.$store.state.userInfo.user_id);
                 uni.sendSocketMessage({
                   data: JSON.stringify({
                     "action": "sendMessage",
                     "data": {
-                      "source_id": _this2.source_id,
-                      "user_id": _this2.$store.state.userInfo.user_id,
+                      "source_id": _this6.source_id,
+                      "user_id": _this6.$store.state.userInfo.user_id,
                       "message": msg } }),
 
 
                   success: function success() {
-                    uni.showToast({
-                      title: '发送成功',
-                      duration: 500 });
-
+                    console.log('发消息成功');
                   },
                   fail: function fail(res) {
                     uni.showToast({
                       title: '聊天连接失败',
                       icon: 'none' });
 
+                    _this6.openConnection();
                   } });case 2:case "end":return _context.stop();}}}, _callee);}))();
 
 
@@ -268,30 +401,39 @@ __webpack_require__.r(__webpack_exports__);
 
       }, 200);
     },
-    getMessage: function getMessage() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
-                  _this3.$myRequest({
+    getMessage: function getMessage() {var _this7 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this7.$myRequest({
                     url: 'service/selectCaseDetail',
                     methods: 'GET',
                     data: {
-                      source_id: _this3.source_id } }));case 2:res = _context2.sent;
+                      source_id: _this7.source_id } }));case 2:res = _context2.sent;
 
 
                 if (res && res.code == 200) {
+                  console.log('=====================getmessage==============');
                   console.log(res);
                   res.data.forEach(function (item) {
+                    if (item.user_id == _this7.user_id && (!_this7.userAvator || !_this7.userName)) {
+                      _this7.userName = item.user.name;
+                      _this7.userAvator = item.user.avater;
+                    }
+                    if (item.user_id != _this7.user_id && (!_this7.lawyerAvator || !_this7.lawyerName)) {
+                      _this7.lawyerName = item.layer_name;
+                      _this7.lawyerAvator = item.layer_photo;
+                    }
                     var d = {
                       group: 'group1',
                       uindex: item.user_id,
-                      uname: '小米',
+                      uname: item.user_id == _this7.user_id ? item.user.name : item.layer_name,
                       contentType: 'txt',
-                      content: item.message,
-                      uface: 'https://cmsuse.oss-cn-beijing.aliyuncs.com/g5/13.png' };
+                      content: item.message || '',
+                      uface: item.user_id == _this7.user_id ? item.user.avater : item.layer_photo };
 
-                    _this3.msgs.push(d);
+                    _this7.msgs.push(d);
                   });
 
                 }case 4:case "end":return _context2.stop();}}}, _callee2);}))();
-    } } };exports.default = _default;
+    } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
