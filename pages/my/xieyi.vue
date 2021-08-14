@@ -32,12 +32,8 @@
 </script>
 
 <style>
-	*{
-		background: #F4F7F7;
-	}
 	page{
 		background: #F4F7F7;
-		overflow: hidden;
 	}
 	.about{
 		width: 720rpx;
