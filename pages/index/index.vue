@@ -74,8 +74,12 @@
 			</view>
 		</view>
 		<study :learn="learn"></study>
-
-
+		<view class="huoqu" v-if="xian">
+			<image src="../../static/icon/wxgficon.png" mode=""></image>
+			<view class="btnbor"></view>
+			<view class="shao">需要获取本机手机号</view>
+			<button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">授权登录</button>
+		</view>
 	</view>
 </template>
 
@@ -106,6 +110,7 @@
 				scrollLeft: 0,
 				isClickChange: false,
 				currentTab: 0,
+				xian:false,
 				item1: {
 					title: '咨询律师',
 					zixun: [{
@@ -249,6 +254,9 @@
 					this.commitWindowHeight(res.windowHeight);
 				}
 			})
+			if(!uni.getStorageSync('move')){
+				this.xian = !this.xian
+			}
 		},
 		computed: {
 			// 使用对象展开运算符将 getter 混入 computed 对象中
@@ -268,7 +276,30 @@
 			// }),
 
 		},
-		methods: {
+		methods: { 
+			getPhoneNumber(e) {
+							 let that = this 
+								uni.login({
+									provider: 'weixin',
+									success(res) {
+										// console.log(res)
+										uni.request({
+											url:'https://layer.boyaokj.cn/api/wechat/setMobile',
+											method:'GET',
+											data:{
+												user_id:uni.getStorageSync('userInfo').user_id,
+												code:res.code,
+												iv:e.detail.iv,
+												encrypteddata:e.detail.encryptedData
+											},
+											success(res) {
+												that.xian = !that.xian
+												uni.setStorageSync('move',1)
+											}
+										})
+									}
+								})
+			           },
 			...mapMutations(['commitWindowHeight']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
 			...mapActions([
 				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
@@ -364,6 +395,52 @@
 <style>
 	page{
 		background: #F8F8F8;
+	}
+	.huoqu{
+		position: absolute;
+		top: 0;
+		background-color: #fff;
+		/* height: 200rpx; */
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		padding-top: 60%;
+		z-index: 50;
+	}
+	.huoqu image{
+		width: 200rpx;
+		height: 200rpx;
+		margin: auto;
+		display: block;
+	}
+	.shao{
+		color: #333;
+		text-align: center;
+		font-size: 32rpx;
+		margin-top: 80rpx;
+		margin-bottom: 60rpx;
+	}
+	.btnbor{
+		width: 680rpx;
+		margin: 20rpx auto;
+		height: 1rpx;
+		background: #999;
+		opacity: .5;
+		margin-top: 80rpx;
+	}
+	.huoqu button{
+		background: #67c23a;
+		color: #fff;
+		font: 32rpx;
+		width: 600rpx;
+		height: 80rpx;
+		display: flex;
+		margin: auto;
+		justify-content: center;
+		align-items: center;
+		border: 1rpx solid #67c23a;
+		border: 0!important;
+		border-radius: 40rpx;
 	}
 	.fourcard{
 		background: #fff;

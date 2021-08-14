@@ -209,10 +209,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));
 
 
-var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var search = function search() {__webpack_require__.e(/*! require.ensure | pages/components/search/search */ "pages/components/search/search").then((function () {return resolve(__webpack_require__(/*! ../components/search/search.vue */ 404));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 411));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard = function lawyercard() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard/lawyercard */ "pages/components/lawyercard/lawyercard").then((function () {return resolve(__webpack_require__(/*! ../components/lawyercard/lawyercard.vue */ 418));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var study = function study() {__webpack_require__.e(/*! require.ensure | pages/components/study/study */ "pages/components/study/study").then((function () {return resolve(__webpack_require__(/*! ../components/study/study.vue */ 425));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var search = function search() {__webpack_require__.e(/*! require.ensure | pages/components/search/search */ "pages/components/search/search").then((function () {return resolve(__webpack_require__(/*! ../components/search/search.vue */ 406));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 413));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard = function lawyercard() {__webpack_require__.e(/*! require.ensure | pages/components/lawyercard/lawyercard */ "pages/components/lawyercard/lawyercard").then((function () {return resolve(__webpack_require__(/*! ../components/lawyercard/lawyercard.vue */ 420));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var study = function study() {__webpack_require__.e(/*! require.ensure | pages/components/study/study */ "pages/components/study/study").then((function () {return resolve(__webpack_require__(/*! ../components/study/study.vue */ 427));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -232,6 +236,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       scrollLeft: 0,
       isClickChange: false,
       currentTab: 0,
+      xian: false,
       item1: {
         title: '咨询律师',
         zixun: [{
@@ -373,8 +378,11 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                 success: function success(res) {
                   // console.log(res);
                   _this.commitWindowHeight(res.windowHeight);
-                } });case 13:case "end":return _context.stop();}}}, _callee);}))();
+                } });
 
+              if (!uni.getStorageSync('move')) {
+                _this.xian = !_this.xian;
+              }case 14:case "end":return _context.stop();}}}, _callee);}))();
   },
   computed: _objectSpread({},
 
@@ -394,7 +402,30 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
 
 
-  methods: _objectSpread(_objectSpread(_objectSpread({},
+  methods: _objectSpread(_objectSpread(_objectSpread({
+    getPhoneNumber: function getPhoneNumber(e) {
+      var that = this;
+      uni.login({
+        provider: 'weixin',
+        success: function success(res) {
+          // console.log(res)
+          uni.request({
+            url: 'https://layer.boyaokj.cn/api/wechat/setMobile',
+            method: 'GET',
+            data: {
+              user_id: uni.getStorageSync('userInfo').user_id,
+              code: res.code,
+              iv: e.detail.iv,
+              encrypteddata: e.detail.encryptedData },
+
+            success: function success(res) {
+              that.xian = !that.xian;
+              uni.setStorageSync('move', 1);
+            } });
+
+        } });
+
+    } },
   (0, _vuex.mapMutations)(['commitWindowHeight'])),
   (0, _vuex.mapActions)([
   'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
