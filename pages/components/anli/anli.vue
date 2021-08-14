@@ -109,15 +109,13 @@
 	}
 
 	.read {
-		/* width: 105rpx; */
-		height: 26rpx;
-		background: #D4E5F8;
-		border-radius: 1rpx;
-		color: #40A9FF;
-		font-size: 16rpx;
-		text-align: center;
-		margin-top: 28rpx;
-		line-height: 27rpx;
+		    background: #D4E5F8;
+		    border-radius: 1rpx;
+		    color: #40A9FF;
+		    font-size: 16rpx;
+		    text-align: center;
+		    margin-top: 28rpx;
+		    padding: 7rpx;
 	}
 
 	.anliborder {

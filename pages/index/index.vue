@@ -2,7 +2,7 @@
 	<view>
 		<search></search>
 
-		<swiper class="swiper flex-column mx-start sx-stretch" circular :indicator-dots="true" :autoplay="true"
+		<swiper class="swiper flex-column mx-start sx-stretch" circular :autoplay="true"
 			interval="3000" duration="500">
 			<swiper-item class="flex-column mx-start sx-stretch">
 				<!-- <view class="swiper-item backImgFull" mode="widthFix" :style="{backgroundImage: 'url(/static/images/banner.png)'}">
@@ -362,6 +362,14 @@
 </script>
 
 <style>
+	page{
+		background: #F8F8F8;
+	}
+	.fourcard{
+		background: #fff;
+		width: 710rpx!important;
+		padding-bottom: 29rpx;
+	}
 	.backImgFull{
 		width: 100%;
 	}
@@ -384,6 +392,7 @@
 		margin: auto;
 		box-sizing: border-box;
 		margin-top: 16rpx;
+		margin-bottom: 12rpx;
 	}
 
 	.modleft,
@@ -401,9 +410,12 @@
 
 	.blue {
 		width: 6rpx;
-		height: auto;
+		height: 24rpx;
 		background: #40A9FF;
-		/* margin-top: 8rpx */
+		border-radius: 2rpx;
+		margin-top: 8rpx;
+		box-sizing: border-box;
+		
 	}
 
 	.modone {
@@ -418,6 +430,7 @@
 		font-size: 24rpx;
 		font-weight: 400;
 		margin-right: 13rpx;
+		margin-top: 4rpx;
 	}
 
 	.beg {
@@ -480,11 +493,13 @@
 	.top-menu-view {
 		display: flex;
 		white-space: nowrap;
-		width: 100%;
+		width: 710rpx;
 		background-color: #FFFFFF;
 		height: 86rpx;
 		border-top: 1px solid #d8dbe6;
 		border-bottom: 1px solid #d8dbe6;
+		margin: auto;
+		border-radius: 14px 14px 0px 0px;
 	}
 
 	.top-menu-view .menu-topic-view {

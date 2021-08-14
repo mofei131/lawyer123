@@ -187,7 +187,7 @@ var _default =
     },
     tuwen: function tuwen(item) {
       uni.navigateTo({
-        url: '../chat/chat?layer_id=' + item.layer_id });
+        url: '../chat/chat?layer_id=' + item.layer_id + "&source_id=" + item.source_id });
 
     },
     dianhua: function dianhua(item) {

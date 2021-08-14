@@ -156,6 +156,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default =
 {
   props: ['list'],
@@ -194,8 +197,14 @@ var _default =
       this.$emit("getChild1", this.type);
     },
     dianhau: function dianhau(item) {
+      console.log(item.mobile);
       uni.makePhoneCall({
         phoneNumber: item.mobile });
+
+    },
+    tuwen: function tuwen(item) {
+      uni.navigateTo({
+        url: '../chat/chat?layer_id=' + item.layer_id + "&source_id=" + item.source_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

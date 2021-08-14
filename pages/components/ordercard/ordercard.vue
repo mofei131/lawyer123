@@ -36,7 +36,7 @@
 						<view class="btn"  v-if="item.status == 1 && item.service_type != 1" @tap="dianhua(item)">
 							<view>联系律师</view>
 						</view>
-						<view class="btn" @tap="score(item)" v-if="!item.star">
+						<view class="btn" @tap="score(item)" v-if="item.star == 0 && item.status == 2">
 							<view>去评价</view>
 						</view>
 						<view class="btn" v-if=" item.star > 0">
@@ -71,7 +71,7 @@
 			},
 			tuwen(item){
 				uni.navigateTo({
-					url:'../chat/chat?layer_id='+item.layer_id
+					url:'../chat/chat?layer_id='+item.layer_id+"&source_id="+item.source_id
 				})
 			},
 			dianhua(item){

@@ -41,6 +41,7 @@
 		width: 338rpx;
 		display: flex;
 		margin-top: 28rpx;
+		margin-left: 32rpx;
 	}
 	.cardoneleft image{
 		width: 70rpx;
@@ -55,15 +56,14 @@
 		color: #333333;
 	}
 	.workyer{
-		width: 70rpx;
-		height: 26rpx;
-		background: #D4E5F8;
-		border-radius: 2rpx;
-		color: #40A9FF;
-		font-size: 16rpx;
-		text-align: center;
-		margin-top: 5rpx;
-		margin-left: 20rpx;
+			background: #D4E5F8;
+			border-radius: 2rpx;
+			color: #40A9FF;
+			font-size: 16rpx;
+			text-align: center;
+			margin-top: 5rpx;
+			margin-left: 20rpx;
+			padding: 7rpx;
 	}
 	.address{
 		color: #666666;

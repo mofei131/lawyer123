@@ -21,7 +21,8 @@
 				text-align: center;">
 								<view v-if="item.buy" class="cost" style="flex: 0 0 auto;padding: 0 20rpx;">已购买</view>
 								<view v-else-if="item.price > 0" class="cost" style="flex: 0 0 auto;padding: 0 20rpx;" @tap="toPay(item)">￥{{item.price}}</view>
-								<view v-else style="flex: 0 0 auto;">限时免费</view>
+								<view v-else style="    padding: 8rpx 16rpx 8rpx 16rpx;
+    background: #D4E5F8;">限时免费</view>
 							</view>
 						</view>
 				</view>

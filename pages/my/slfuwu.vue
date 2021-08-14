@@ -29,7 +29,7 @@
 					limit:that.limit
 				},
 				success(res) {
-					// console.log(res.data.data)
+					console.log(res.data.data)
 					that.list = res.data.data
 				}
 			})

@@ -30,7 +30,10 @@
 					<view class="btn" @tap="over(item.service_id)">
 						<view>结束服务</view>
 					</view>
-						<view class="btn" @tap="dianhau(item)">
+						<view class="btn" @tap="tuwen(item)" v-if="item.service_type == 1">
+							<view>联系客户</view>
+						</view>
+						<view class="btn" @tap="dianhau(item)"  v-else>
 							<view>联系客户</view>
 						</view>
 					</view>
@@ -78,10 +81,16 @@
 				this.$emit("getChild1",this.type);
 			},
 			dianhau(item){
+				console.log(item.mobile)
 				uni.makePhoneCall({
 					 phoneNumber: item.mobile, 
 				})
 			},
+			tuwen(item){
+				uni.navigateTo({
+					url:'../chat/chat?layer_id='+item.layer_id+"&source_id="+item.source_id
+				})
+			}
 			}
 		}
 	
