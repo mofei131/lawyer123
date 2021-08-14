@@ -46,7 +46,7 @@ export default {
 	},
 	created: function() {
 		// #ifndef H5
-		this.voiceBtnShow = true;
+		this.voiceBtnShow = false; //   关闭录音按钮
 		this.recorderManager = uni.getRecorderManager();
 		this.recorderManager.onStop(res => {
 			this.tmpVoice = res.tempFilePath;

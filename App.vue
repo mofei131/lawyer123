@@ -15,4 +15,10 @@
 <style>
 	/*每个页面公共css */
 	@import "@/static/css/zds.css";
+	view{
+		font-family: PingFangSC-Regular;
+	}
+	text{
+		font-family: PingFangSC-Regular;
+	}
 </style>

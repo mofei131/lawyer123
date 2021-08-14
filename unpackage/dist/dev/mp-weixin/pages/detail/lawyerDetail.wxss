@@ -1,19 +1,19 @@
 
 .anlilist {
-	width: 670rpx;
+	width: 710rpx;
 	margin: auto;
 }
 .anlilistitem {
 	background-color: #FFFFFF;
-	border-radius: 20rpx;
+	/* border-radius: 20rpx; */
 	padding: 20rpx;
 
 	/* border: 1px solid; */
 }
 .mine image {
-	width: 60rpx;
-	height: 60rpx;
-	border-radius: 36rpx;
+	width: 70rpx;
+	height: 70rpx;
+	border-radius: 35rpx;
 }
 .floor1 {
 	display: -webkit-box;
@@ -23,7 +23,8 @@
 	white-space: nowrap;
 	color: #323232;
 	font-size: 28rpx;
-	margin-top: 16rpx;
+	/* margin-top: 16rpx; */
+	/* 	line-height: 44rpx; */
 }
 .floor1 view:nth-child(2) {
 	overflow: hidden;
@@ -54,16 +55,18 @@
 	padding-top: 25rpx;
 }
 .read {
-	    background: #D4E5F8;
-	    border-radius: 1rpx;
-	    color: #40A9FF;
-	    font-size: 16rpx;
-	    text-align: center;
-	    margin-top: 28rpx;
-	    padding: 7rpx;
+	background: #D4E5F8;
+	border-radius: 1rpx;
+	color: #40A9FF;
+	font-size: 16rpx;
+	text-align: center;
+	margin-top: 28rpx;
+	height: 30rpx;
+	line-height: 30rpx;
+	padding: 0 10rpx;
 }
 .anliborder {
-	width: 636rpx;
+	width: 674rpx;
 	height: 1rpx;
 	background: #ddd;
 	margin: auto;

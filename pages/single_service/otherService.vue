@@ -3,52 +3,17 @@
 
 		<view class="page">
 			<view class="mod1">
-				<view style="z-index: 78;
-		height: 379rpx;
-		overflow: hidden;
-		background-image: url(/static/icon/cooper_back.png);
-		background-size: 100%;
-		background-repeat: no-repeat;
-		width: 750rpx;
-		position: relative;
-		display: flex;
-		flex-direction: column;">
-
-					<view class="group3">
+				<view style="position: relative;height: 332rpx;width: 100%;background-color: rgba(64, 169, 255, 1);">
+					<image style="width: 100%;height: 332rpx;" mode="scaleToFill" src="/static/icon/cooper_back112.png">
+					</image>
+					<view style="position: absolute;top: 61px;left: 43px;">
 						<text lines="1" class="info3">超值套餐</text>
 					</view>
 					<view class="group4">
-						<text lines="1" class="paragraph1">超值套餐，省钱，省心，值得拥有</text>
-					</view>
-					<view style="z-index: 79;
-		position: absolute;
-		left: -45rpx;
-		top: 48rpx;
-		width: 826rpx;
-		height: 261rpx;
-		background: url(/static/icon/cooper_group5.png) 46rpx 0rpx no-repeat;
-		background-size: 750rpx 262rpx;
-		display: flex;
-		flex-direction: column;"></view>
-					<view style="z-index: 80;
-		height: 332rpx;
-		background: url(/static/icon/cooper_group6.png) 100% no-repeat;
-		width: 750rpx;
-		justify-content: flex-end;
-		position: absolute;
-		left: 0rpx;
-		top: 47rpx;
-		display: flex;
-		flex-direction: column;">
-						<view style="z-index: 81;
-		width: 750rpx;
-		height: 156rpx;
-		background: url(/static/icon/cooper_mod2.png) 100% no-repeat;
-		display: flex;
-		flex-direction: column;"></view>
-						<image src="/static/icon/cooper_back1.png" class="pic2"></image>
+						<text lines="1" class="paragraph1">超值套餐，省钱、省心，值得拥有</text>
 					</view>
 				</view>
+				
 				<view class="block2" v-for="(item,index) in dataSource" :key="index">
 					<view class="group7">
 						<text lines="1" decode="true" class="info4">～&nbsp;套餐{{index+1}}&nbsp;～</text>
@@ -301,17 +266,18 @@
 	}
 
 	.group4 {
-		z-index: auto;
+		left: 91rpx;
+		top: 208rpx;
 		width: 240rpx;
 		height: 66rpx;
+		position: absolute;
 		flex-direction: row;
 		display: flex;
-		margin: 16rpx 0 0 86rpx;
 	}
 
 	.paragraph1 {
 		z-index: 84;
-		width: 240rpx;
+		width: 200rpx;
 		height: 66rpx;
 		display: block;
 		overflow-wrap: break-word;
@@ -325,17 +291,6 @@
 	}
 
 
-
-	.mod2 {}
-
-	.pic2 {
-		z-index: 82;
-		position: absolute;
-		left: 419rpx;
-		top: 91rpx;
-		width: 294rpx;
-		height: 210rpx;
-	}
 
 	.block2 {
 		z-index: 4;

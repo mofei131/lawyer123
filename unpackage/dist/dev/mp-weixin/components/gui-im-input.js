@@ -162,7 +162,7 @@ var bgAudioMannager = uni.getBackgroundAudioManager();var _default =
   },
   created: function created() {var _this = this;
 
-    this.voiceBtnShow = true;
+    this.voiceBtnShow = false; //   关闭录音按钮
     this.recorderManager = uni.getRecorderManager();
     this.recorderManager.onStop(function (res) {
       _this.tmpVoice = res.tempFilePath;

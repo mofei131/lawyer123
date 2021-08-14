@@ -2,13 +2,13 @@
 	<view class="page">
 		<view class="section1">
 
-			<text lines="1" class="txt2">{{dataSource.title}}</text>
+			<view class="txt2 ellipsis-2">{{dataSource.title}}</view>
 			<text lines="1" decode="true" class="word3">{{dataSource.create_time}}</text>
 			<image :src="dataSource.image|| '/static/icon/study_detail_icon.png'" class="img1"></image>
 
 			<view class="paragraph1">
 				<rich-text :nodes="dataSource.content"></rich-text>
-				
+
 			</view>
 		</view>
 	</view>
@@ -69,20 +69,10 @@
 	}
 
 	.txt2 {
-		z-index: 6;
-		width: 694rpx;
-		height: 118rpx;
-		display: block;
-		overflow-wrap: break-word;
 		color: rgba(81, 86, 93, 1);
 		font-size: 42rpx;
 		font-family: Helvetica;
-		line-height: 50rpx;
-		text-align: left;
-		align-self: flex-end;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		margin: 43rpx 21rpx 0 0;
+		margin: 40rpx 35rpx 0 35rpx;
 	}
 
 	.word3 {

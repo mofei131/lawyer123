@@ -618,6 +618,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   props: {
@@ -643,7 +644,8 @@ var _default =
     tochat: function tochat(item) {
       console.log(item);
       uni.navigateTo({
-        url: '../anjianDetail/anjianDetail?source_id=' + item.id + "&layer_id=" + item.layer.id + "&user_id=" + item.user_id });
+        url: '../anjianDetail/anjianDetail?source_id=' + item.id + "&layer_id=" + item.layer.id +
+        "&user_id=" + item.user_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

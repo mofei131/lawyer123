@@ -53,7 +53,7 @@
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#40A9FF",
+    "backgroundColor": "#F4F7F7",
     "navigationBarBackgroundColor": "#40A9FF"
   },
   "tabBar": {
@@ -95,6 +95,5 @@
   },
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

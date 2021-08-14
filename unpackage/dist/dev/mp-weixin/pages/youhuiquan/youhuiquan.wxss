@@ -1,11 +1,11 @@
 
 .quan_on {
-	border: 2rpx solid #65ADF6;
-	background-color: #65ADF6;
+	border: 2rpx solid #40A9FF;
+	background-color: #40A9FF;
 	color: #FFFFFF;
 }
 .quan_off {
-	border: 2rpx solid #65ADF6;
+	border: 2rpx solid #40A9FF;
 	background-color: #FFFFFF;
 	color: gray;
 }
