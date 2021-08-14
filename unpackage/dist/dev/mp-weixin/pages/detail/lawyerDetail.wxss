@@ -1,14 +1,18 @@
 
 .anlilist {
-	width: 670rpx;
-	margin: auto;
+	    width: 710rpx;
+	    margin: auto;
 }
 .anlilistitem {
 	background-color: #FFFFFF;
-	border-radius: 20rpx;
+	/* border-radius: 20rpx; */
 	padding: 20rpx;
+	
 
 	/* border: 1px solid; */
+}
+.anlilistitem:last-child{
+	border-radius: 0 0 14rpx 14rpx;
 }
 .mine image {
 	width: 60rpx;
@@ -63,7 +67,7 @@
 	    padding: 7rpx;
 }
 .anliborder {
-	width: 636rpx;
+	width: 680rpx;
 	height: 1rpx;
 	background: #ddd;
 	margin: auto;

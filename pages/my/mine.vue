@@ -261,6 +261,9 @@
 	page{
 		background: #F8F8F8;
 	}
+	.functionlist{
+		padding-bottom: 60rpx;
+	}
 	.vipname{
 		color: #fff;
 		margin: 20rpx 0 0 40rpx;

@@ -1,7 +1,9 @@
 <template>
+	<view style="overflow: hidden;">
 	<view class="about">
 		<!-- <view v-html="content"></view> -->
 		<rich-text  v-html = 'content'></rich-text>
+	</view>
 	</view>
 </template>
 
@@ -39,5 +41,6 @@
 		border-radius: 10rpx;
 		background: #fff;
 		padding: 20rpx;
+		height: 100%;
 	}
 </style>

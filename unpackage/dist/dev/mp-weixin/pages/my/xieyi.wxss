@@ -1,6 +1,7 @@
 
 page{
 	background: #F4F7F7;
+	overflow: hidden;
 }
 .about{
 	width: 720rpx;
@@ -8,5 +9,8 @@ page{
 	border-radius: 10rpx;
 	background: #fff;
 	padding: 20rpx;
+	-webkit-user-select: none;
+	        user-select: none;
+	height: 100%;
 }
 

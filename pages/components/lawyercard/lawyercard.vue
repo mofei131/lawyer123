@@ -35,7 +35,7 @@
 		display: flex;
 		margin: auto;
 		flex-wrap: wrap;
-		
+		border: 0 0 14rpx 14rpx;
 	}
 	.cardone{
 		width: 338rpx;

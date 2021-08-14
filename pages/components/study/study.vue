@@ -107,6 +107,9 @@
 		padding: 20rpx;
 
 	}
+	..studyitem:last-child{
+		border-radius: 0 0 14rpx 14rpx;
+	}
 
 	.studyitemleft image {
 		width: 196rpx;
@@ -115,9 +118,9 @@
 	}
 
 	.study {
-		width: 673rpx;
+		width: 710rpx;
 		margin: auto;
-		padding-top: 16rpx;
+		/* padding-top: 16rpx; */
 	}
 
 	.studyitem {

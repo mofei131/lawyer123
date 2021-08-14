@@ -446,6 +446,7 @@
 		background: #fff;
 		width: 710rpx!important;
 		padding-bottom: 29rpx;
+		border: 0 0 14rpx 14rpx;
 	}
 	.backImgFull{
 		width: 100%;
@@ -577,6 +578,7 @@
 		border-bottom: 1px solid #d8dbe6;
 		margin: auto;
 		border-radius: 14px 14px 0px 0px;
+		padding-right: 20rpx;
 	}
 
 	.top-menu-view .menu-topic-view {

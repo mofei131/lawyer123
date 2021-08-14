@@ -14,7 +14,7 @@
 				</view>
 				<view class="read">{{item.view}}人查看</view>
 			</view>
-			<view class="anliborder" v-if="index<3 && showBottomBorder"></view>
+			<view class="anliborder" v-if="index<anli.length-1 && showBottomBorder"></view>
 		</view>
 		<view v-if="anli.length<1"  class="flex-txt-center" style="height: 120rpx;width: 100%;color: gray;font: 36rpx;">没有案例哦~</view>
 	</view>
@@ -54,16 +54,20 @@
 
 <style>
 	.anlilist {
-		width: 670rpx;
-		margin: auto;
+		    width: 710rpx;
+		    margin: auto;
 	}
 
 	.anlilistitem {
 		background-color: #FFFFFF;
-		border-radius: 20rpx;
+		/* border-radius: 20rpx; */
 		padding: 20rpx;
+		
 
 		/* border: 1px solid; */
+	}
+	.anlilistitem:last-child{
+		border-radius: 0 0 14rpx 14rpx;
 	}
 
 	.mine image {
@@ -119,7 +123,7 @@
 	}
 
 	.anliborder {
-		width: 636rpx;
+		width: 680rpx;
 		height: 1rpx;
 		background: #ddd;
 		margin: auto;

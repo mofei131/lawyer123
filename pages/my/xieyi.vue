@@ -1,7 +1,9 @@
 <template>
+	<view style="overflow: hidden;">
 	<view class="about">
 		<!-- <view v-html="content"></view> -->
 		<rich-text  v-html = 'content'></rich-text>
+	</view>
 	</view>
 </template>
 
@@ -30,8 +32,12 @@
 </script>
 
 <style>
+	*{
+		background: #F4F7F7;
+	}
 	page{
 		background: #F4F7F7;
+		overflow: hidden;
 	}
 	.about{
 		width: 720rpx;
@@ -39,5 +45,7 @@
 		border-radius: 10rpx;
 		background: #fff;
 		padding: 20rpx;
+		user-select: none;
+		height: 100%;
 	}
 </style>

@@ -8,5 +8,6 @@ page{
 	border-radius: 10rpx;
 	background: #fff;
 	padding: 20rpx;
+	height: 100%;
 }
 
