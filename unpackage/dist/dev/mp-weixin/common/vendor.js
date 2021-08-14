@@ -2091,7 +2091,8 @@ var store = new _vuex.default.Store({
     wxCode: null,
     windowHeight: '750',
     websocketConnect: false,
-    socketInfo: [] },
+    socketInfo: [],
+    code: '' },
 
 
   mutations: {
@@ -2217,8 +2218,9 @@ var store = new _vuex.default.Store({
         uni.login({
           provider: 'weixin',
           success: function () {var _success = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(res) {var code, res1;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
-                      console.log(res);if (!
-                      res.code) {_context4.next = 20;break;}
+                      console.log(res);
+                      // uni.setStorageSync('code',res.code);
+                      if (!res.code) {_context4.next = 20;break;}
                       code = res.code;_context4.next = 5;return (
                         _http.default.ajax({
                           url: 'wechat/login',
@@ -10694,9 +10696,15 @@ var formatTime = function formatTime(number, format) {
 /***/ }),
 
 /***/ 521:
+<<<<<<< HEAD
 /*!**********************************************************************************!*\
   !*** D:/咸鱼/20210806律师uniapp/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \**********************************************************************************/
+=======
+/*!***********************************************************************************!*\
+  !*** G:/mofei/item/lawyer123/uni_modules/uni-icons/components/uni-icons/icons.js ***!
+  \***********************************************************************************/
+>>>>>>> 5cf4cb418c09c45738fec7b17c32ccf099514cab
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

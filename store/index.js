@@ -22,7 +22,8 @@ const store = new Vuex.Store({
 		wxCode: null,
 		windowHeight:'750',
 		websocketConnect:false,
-		socketInfo:[]
+		socketInfo:[],
+		code:''
 
 	},
 	mutations: {
@@ -149,6 +150,7 @@ const store = new Vuex.Store({
 					provider: 'weixin',
 					success: async function(res) {
 						console.log(res);
+						// uni.setStorageSync('code',res.code);
 						if (res.code) {
 							let code = res.code;
 							let res1 = await http.ajax({

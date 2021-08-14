@@ -176,7 +176,7 @@
 				uni.login({
 					provider: 'weixin',
 					success: async function(res) {
-						//console.log(res);
+						console.log(res);
 						if (res.code) {
 							let code = res.code;
 				

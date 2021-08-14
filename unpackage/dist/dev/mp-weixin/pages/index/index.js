@@ -209,6 +209,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));
 
 
@@ -232,6 +236,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       scrollLeft: 0,
       isClickChange: false,
       currentTab: 0,
+      xian: false,
       item1: {
         title: '咨询律师',
         zixun: [{
@@ -373,8 +378,11 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                 success: function success(res) {
                   // console.log(res);
                   _this.commitWindowHeight(res.windowHeight);
-                } });case 13:case "end":return _context.stop();}}}, _callee);}))();
+                } });
 
+              if (!uni.getStorageSync('move')) {
+                _this.xian = !_this.xian;
+              }case 14:case "end":return _context.stop();}}}, _callee);}))();
   },
   computed: _objectSpread({},
 
@@ -394,7 +402,30 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
 
 
-  methods: _objectSpread(_objectSpread(_objectSpread({},
+  methods: _objectSpread(_objectSpread(_objectSpread({
+    getPhoneNumber: function getPhoneNumber(e) {
+      var that = this;
+      uni.login({
+        provider: 'weixin',
+        success: function success(res) {
+          // console.log(res)
+          uni.request({
+            url: 'https://layer.boyaokj.cn/api/wechat/setMobile',
+            method: 'GET',
+            data: {
+              user_id: uni.getStorageSync('userInfo').user_id,
+              code: res.code,
+              iv: e.detail.iv,
+              encrypteddata: e.detail.encryptedData },
+
+            success: function success(res) {
+              that.xian = !that.xian;
+              uni.setStorageSync('move', 1);
+            } });
+
+        } });
+
+    } },
   (0, _vuex.mapMutations)(['commitWindowHeight'])),
   (0, _vuex.mapActions)([
   'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`

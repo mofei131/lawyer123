@@ -8,5 +8,8 @@ page{
 	border-radius: 10rpx;
 	background: #fff;
 	padding: 20rpx;
+	-webkit-user-select: none;
+	        user-select: none;
+	height: 100%;
 }
 

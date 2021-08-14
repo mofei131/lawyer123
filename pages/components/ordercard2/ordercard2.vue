@@ -27,7 +27,7 @@
 				</view>
 				<view v-if="item.status == 1">
 				<view class="bottom">
-					<view class="btn" @tap="over(item.service_id)">
+					<view class="btn" @tap="over(item.source_id)">
 						<view>结束服务</view>
 					</view>
 						<view class="btn" @tap="tuwen(item)" v-if="item.service_type == 1">
@@ -64,6 +64,7 @@
 				})
 			},
 			over(e){
+				// console.log(e)
 				uni.request({
 					url:'https://layer.boyaokj.cn/api/order/endService',
 					method:'GET',

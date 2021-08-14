@@ -1,14 +1,23 @@
 
 .anlilist {
+<<<<<<< HEAD
 	width: 710rpx;
 	margin: auto;
+=======
+	    width: 710rpx;
+	    margin: auto;
+>>>>>>> 5cf4cb418c09c45738fec7b17c32ccf099514cab
 }
 .anlilistitem {
 	background-color: #FFFFFF;
 	/* border-radius: 20rpx; */
 	padding: 20rpx;
+	
 
 	/* border: 1px solid; */
+}
+.anlilistitem:last-child{
+	border-radius: 0 0 14rpx 14rpx;
 }
 .mine image {
 	width: 70rpx;
@@ -66,7 +75,11 @@
 	padding: 0 10rpx;
 }
 .anliborder {
+<<<<<<< HEAD
 	width: 674rpx;
+=======
+	width: 680rpx;
+>>>>>>> 5cf4cb418c09c45738fec7b17c32ccf099514cab
 	height: 1rpx;
 	background: #ddd;
 	margin: auto;
@@ -76,10 +89,64 @@
 page{
 	background: #F8F8F8;
 }
+.huoqu{
+	position: fixed;
+	top: 0;
+	background-color: #fff;
+	/* height: 200rpx; */
+	width: 100%;
+	height: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding-top: 60%;
+	z-index: 50;
+}
+.huoqu image{
+	width: 200rpx;
+	height: 200rpx;
+	margin: auto;
+	display: block;
+}
+.shao{
+	color: #333;
+	text-align: center;
+	font-size: 32rpx;
+	margin-top: 80rpx;
+	margin-bottom: 60rpx;
+}
+.btnbor{
+	width: 680rpx;
+	margin: 20rpx auto;
+	height: 1rpx;
+	background: #999;
+	opacity: .5;
+	margin-top: 80rpx;
+}
+.huoqu button{
+	background: #67c23a;
+	color: #fff;
+	font: 32rpx;
+	width: 600rpx;
+	height: 80rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	margin: auto;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	border: 1rpx solid #67c23a;
+	border: 0!important;
+	border-radius: 40rpx;
+}
 .fourcard{
 	background: #fff;
 	width: 710rpx!important;
 	padding-bottom: 29rpx;
+	border: 0 0 14rpx 14rpx;
 }
 .backImgFull{
 	width: 100%;
@@ -217,7 +284,14 @@ page{
 	border-top: 1px solid #d8dbe6;
 	border-bottom: 1px solid #d8dbe6;
 	margin: auto;
+<<<<<<< HEAD
 	border-radius: 14rpx 14rpx 0px 0px;
+=======
+	border-radius: 14px 14px 0px 0px;
+	padding-right: 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+>>>>>>> 5cf4cb418c09c45738fec7b17c32ccf099514cab
 }
 .top-menu-view .menu-topic-view {
 	display: inline-block;
