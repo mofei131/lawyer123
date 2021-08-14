@@ -121,10 +121,10 @@
 			},
 			async pay() {
 				let emitName = this.emitName;
-				uni.navigateTo({
-					url:'/pages/my/finish?emitName='+emitName
-				})
-				return
+				// uni.navigateTo({
+				// 	url:'/pages/my/finish?emitName='+emitName
+				// })
+				// return
 				console.log(emitName);
 				if (this.agreement == false) {
 					uni.showToast({
@@ -175,7 +175,7 @@
 										console.log(res);
 										console.log(emitName);
 										// if(emitName){
-										// 	console.log('---'+emitName);
+										// 	// console.log('---'+emitName);
 										// 	uni.$emit(emitName,{ispay:true});
 										// }
 										
