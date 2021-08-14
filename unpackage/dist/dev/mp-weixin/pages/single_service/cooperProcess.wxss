@@ -3,7 +3,7 @@
 	z-index: 1;
 	position: relative;
 	width: 750rpx;
-	height: 1664rpx;
+	height: 1755rpx;
 	background-color: rgba(248, 248, 248, 1);
 	overflow: hidden;
 	display: -webkit-box;
@@ -865,7 +865,7 @@
 	        align-items: center;
 	position: absolute;
 	left: 0rpx;
-	top: 1513rpx;
+	top: 1600rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;

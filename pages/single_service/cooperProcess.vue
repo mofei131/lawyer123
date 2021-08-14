@@ -84,22 +84,22 @@
 
 
 			</view>
-	
 
-		<view class="mod8">
-			<view class="box3">
-				<view class="mod9" @tap="kefu">
-					<view class="mod10">
-						<image src="/static/icon/cooper_p4.png" class="icon2"></image>
-						<text lines="1" class="word10">客服</text>
+
+			<view class="mod8">
+				<view class="box3">
+					<view class="mod9" @tap="kefu">
+						<view class="mod10">
+							<image src="/static/icon/cooper_p4.png" class="icon2"></image>
+							<text lines="1" class="word10">客服</text>
+						</view>
 					</view>
+					<button @tap="toPay" class="mod11">
+						<text lines="1" class="word11">立即购买</text>
+					</button>
 				</view>
-				<button @tap="toPay" class="mod11">
-					<text lines="1" class="word11">立即购买</text>
-				</button>
 			</view>
 		</view>
-	</view>
 
 
 
@@ -249,7 +249,7 @@
 		z-index: 1;
 		position: relative;
 		width: 750rpx;
-		height: 1664rpx;
+		height: 1755rpx;
 		background-color: rgba(248, 248, 248, 1);
 		overflow: hidden;
 		display: flex;
@@ -986,7 +986,7 @@
 		align-items: center;
 		position: absolute;
 		left: 0rpx;
-		top: 1513rpx;
+		top: 1600rpx;
 		display: flex;
 		flex-direction: column;
 	}
