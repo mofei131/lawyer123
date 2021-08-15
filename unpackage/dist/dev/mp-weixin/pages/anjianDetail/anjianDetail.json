@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "案件详情",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "gui-im-message": "/components/gui-im-message",
-    "gui-im-input": "/components/gui-im-input"
-  }
-}

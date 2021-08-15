@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "受理案件",
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "ordercard": "/pages/components/ordercard2/ordercard2"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "更多案例",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "anli": "/pages/components/anli/anli"
-  }
-}

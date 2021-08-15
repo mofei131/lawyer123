@@ -2,12 +2,16 @@
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
 		
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;">
-
+<!-- :style="{backgroundImage: `url(${typeData && typeData.url})`}"> -->
 			<view class="flex-row mx-center sx-center"
 				style="padding: 20rpx;flex: 0 0 160rpx;background-color: #C0DDFF;border-radius: 20rpx;">
-				<view v-if="typeData" class="backImgCenter cooper_check_icon"
-					:style="{backgroundImage: `url(${typeData && typeData.url})`}">
-				</view>
+				<!-- <view v-if="typeData" class="backImgCenter cooper_check_icon"
+					
+					:style="{backgroundImage: '/static/icon/icon6.png'}">
+					
+				</view> -->
+				                    <image class="cooper_check_icon" mode="aspectFit" :src="typeData && typeData.url"></image>
+
 				<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;" @click="goToPage">
 					<view>{{typeData && typeData.name}}</view>
 					<view class="ellipsis" style="width: 512rpx;font-size: 26rpx;color: rgba(102,102,102,1);">

@@ -1,9 +1,0 @@
-
-.cooper_check_icon {
-	margin-right: 10rpx;
-	-webkit-box-flex: 0;
-	-webkit-flex: 0 0 116rpx;
-	        flex: 0 0 116rpx;
-	height: 116rpx;
-}
-

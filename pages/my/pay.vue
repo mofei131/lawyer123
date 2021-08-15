@@ -121,10 +121,10 @@
 			},
 			async pay() {
 				let emitName = this.emitName;
-				// uni.navigateTo({
-				// 	url:'/pages/my/finish?emitName='+emitName
-				// })
-				// return
+				uni.navigateTo({
+					url:'/pages/my/finish?emitName='+emitName
+				})
+				return
 				console.log(emitName);
 				if (this.agreement == false) {
 					uni.showToast({

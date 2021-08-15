@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "每日学法",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "study": "/pages/components/study/study"
-  }
-}

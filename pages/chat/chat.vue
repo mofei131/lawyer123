@@ -27,15 +27,7 @@
 		mapActions
 	} from 'vuex'
 	export default {
-		onBackPress(options) {
-	
-				uni.switchTab({
-					url:'/pages/index/index'
-				})
-
-			return true
-			
-		},
+		
 		onUnload() {
 			uni.switchTab({
 				url:'/pages/index/index'
@@ -236,7 +228,8 @@
 
 			async sendText(msg) {
 				console.log(msg);
-				// console.log(this.$store.state.userInfo.user_id);
+				console.log(this.$store.state.userInfo.user_id);
+				console.log(this.source_id);
 				uni.sendSocketMessage({
 					data: JSON.stringify({
 						"action": "sendMessage",
