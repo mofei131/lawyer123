@@ -1,0 +1,1 @@
+<view class="page"><view class="section1"><text class="txt2" lines="1">{{dataSource.title}}</text><text class="word3" lines="1" decode="true">{{dataSource.create_time}}</text><image class="img1" src="{{dataSource.image||'/static/icon/study_detail_icon.png'}}"></image><view class="paragraph1"><rich-text nodes="{{dataSource.content}}"></rich-text></view></view></view>

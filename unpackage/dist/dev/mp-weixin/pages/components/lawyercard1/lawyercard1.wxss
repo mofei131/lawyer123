@@ -1,0 +1,58 @@
+
+.list-item {
+	padding: 20rpx;
+	
+	-webkit-box-flex: 0;
+	
+	-webkit-flex: 0 0 auto;
+	
+	        flex: 0 0 auto;
+	background-color: #FFFFFF;
+	border-radius: 20rpx;
+	margin-bottom: 20rpx;
+}
+.statuSDot{
+	width: 14rpx;height: 14rpx;border-radius: 50%
+}
+.serviceBtn {
+	border: 2rpx solid #4CA2FF;
+	padding: 0 5rpx;
+	font-size: 22rpx;
+	color: #4CA2FF;
+}
+.field {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	/* margin-bottom: 13rpx; */
+}
+.label {
+	width: 56rpx;
+	height: 26rpx;
+	background: #26CD93;
+	border-radius: 2rpx;
+	font-size: 18rpx;
+	color: #fff;
+	line-height: 26rpx;
+	margin-right: 6rpx;
+	text-align: center;
+}
+.gree {
+	background: #26CD93;
+}
+.blue {
+	background: #5F91F6;
+}
+.pink {
+	background: #ED538A;
+}
+.purple {
+	background: #6765FF;
+}
+.yellow {
+	background: #E1B12F;
+}
+.avator{
+	border-radius: 50%;margin-right: 10rpx;-webkit-box-flex: 0;-webkit-flex: 0 0 125rpx;flex: 0 0 125rpx;height:125rpx;
+}
+

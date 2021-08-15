@@ -1,0 +1,15 @@
+
+page{
+	background: #F4F7F7;
+}
+.about{
+	width: 720rpx;
+	margin: auto;
+	border-radius: 10rpx;
+	background: #fff;
+	padding: 20rpx;
+	-webkit-user-select: none;
+	        user-select: none;
+	height: 100%;
+}
+
