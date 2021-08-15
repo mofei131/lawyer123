@@ -6,23 +6,16 @@
 				<image style="width: 120rpx;height: 120rpx;"  :src="item.image"></image>
 			</view>
 			<view class="studyitemright flex-column mx-start sx-stretch">
-				<view class="studytitle">{{item.title}}</view>
+				<view class="studytitle ellipsis">{{item.title}}</view>
 				<view class="studycontent">{{item.desc}}</view>
 				<view class="figure flex-row mx-between sx-center">
 					<view>{{item.subtitle}}</view>
 				<view class="flex-row mx-center sx-center">
 							<view class="stage" style="flex: 1 1 auto;"></view>
-							<view style="flex: 0 0 auto;height: 32rpx;
-				background: #D4E5F8;
-				border-radius: 1rpx;
-				color: #40A9FF;
-				font-size: 22rpx;
-				line-height: 32rpx;
-				text-align: center;">
+							<view style="flex: 0 0 auto;height: 32rpx;background: #D4E5F8;border-radius: 1rpx;color: #40A9FF;font-size: 22rpx;text-align: center;">
 								<view v-if="item.buy" class="cost" style="flex: 0 0 auto;padding: 0 20rpx;">已购买</view>
 								<view v-else-if="item.price > 0" class="cost" style="flex: 0 0 auto;padding: 0 20rpx;" @tap="toPay(item)">￥{{item.price}}</view>
-								<view v-else style="    padding: 8rpx 16rpx 8rpx 16rpx;
-    background: #D4E5F8;">限时免费</view>
+								<view v-else style="flex0 0 auto;background: #D4E5F8;padding: 0 20rpx;">限时免费</view>
 							</view>
 						</view>
 				</view>
@@ -103,7 +96,7 @@
 <style>
 	.studyitem {
 		background-color: #FFFFFF;
-		border-radius: 20rpx;
+		/* border-radius: 20rpx; */
 		padding: 20rpx;
 
 	}
@@ -133,11 +126,13 @@
 
 	.studytitle {
 		color: #323232;
+		width: 500rpx;
 		font-size: 24rpx;
 		margin-bottom: 15rpx;
 	}
 
 	.studycontent {
+		width: 500rpx;
 		color: #424242;
 		font-size: 22rpx;
 		overflow: hidden;
@@ -145,13 +140,14 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
-		line-height: 22rpx;
+		line-height: 26rpx;
 	}
 
 	.figure {
 		display: flex;
 		color: #999999;
 		font-size: 21rpx;
+		flex: 0 0 40rpx;
 	}
 
 	.figure view:nth-child(2) {

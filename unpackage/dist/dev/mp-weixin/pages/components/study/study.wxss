@@ -1,7 +1,7 @@
 
 .studyitem {
 	background-color: #FFFFFF;
-	border-radius: 20rpx;
+	/* border-radius: 20rpx; */
 	padding: 20rpx;
 }
 ..studyitem:last-child{
@@ -28,10 +28,12 @@
 }
 .studytitle {
 	color: #323232;
+	width: 500rpx;
 	font-size: 24rpx;
 	margin-bottom: 15rpx;
 }
 .studycontent {
+	width: 500rpx;
 	color: #424242;
 	font-size: 22rpx;
 	overflow: hidden;
@@ -39,7 +41,7 @@
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
-	line-height: 22rpx;
+	line-height: 26rpx;
 }
 .figure {
 	display: -webkit-box;
@@ -47,6 +49,9 @@
 	display: flex;
 	color: #999999;
 	font-size: 21rpx;
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 0 40rpx;
+	        flex: 0 0 40rpx;
 }
 .figure view:nth-child(2) {
 	margin-left: 18rpx;

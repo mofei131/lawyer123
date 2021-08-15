@@ -8,7 +8,7 @@
 					bgColor="#ffffff" :cancel-text="text" radius="100" :focus="true" v-model="name" @input="input" 
 					@cancel="cancel" @clear="clear">
 				</uni-search-bar>
-				<view style="padding: 10rpx;border-radius: 10rpx;background-color: #008000;color: #FFFFFF;"
+				<view style="padding: 10rpx;font-size: 32rpx;border-radius: 10rpx;background-color: #0095ff;color: #FFFFFF;"
 					@tap="search">搜索</view>
 			</view>
 

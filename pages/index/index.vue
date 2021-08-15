@@ -577,9 +577,8 @@
 		border-top: 1px solid #d8dbe6;
 		border-bottom: 1px solid #d8dbe6;
 		margin: auto;
-		border-radius: 14px 14px 0px 0px;
-		padding-right: 20rpx;
-		box-sizing: border-box;
+		border-radius: 14rpx 14rpx 0px 0px;
+
 	}
 
 	.top-menu-view .menu-topic-view {

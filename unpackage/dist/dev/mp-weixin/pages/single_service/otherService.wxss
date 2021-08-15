@@ -182,9 +182,11 @@
 	text-align: center;
 }
 .group4 {
-	z-index: auto;
+	left: 91rpx;
+	top: 208rpx;
 	width: 240rpx;
 	height: 66rpx;
+	position: absolute;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
@@ -192,11 +194,10 @@
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	margin: 16rpx 0 0 86rpx;
 }
 .paragraph1 {
 	z-index: 84;
-	width: 240rpx;
+	width: 200rpx;
 	height: 66rpx;
 	display: block;
 	overflow-wrap: break-word;
@@ -207,15 +208,6 @@
 	text-align: center;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-.mod2 {}
-.pic2 {
-	z-index: 82;
-	position: absolute;
-	left: 419rpx;
-	top: 91rpx;
-	width: 294rpx;
-	height: 210rpx;
 }
 .block2 {
 	z-index: 4;

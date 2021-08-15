@@ -185,10 +185,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
 {
   onLoad: function onLoad(p) {var _this = this;
     console.log(p);

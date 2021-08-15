@@ -8,100 +8,67 @@
 		</view> -->
 
 		<view class="page">
-			<view class="mod1">
-				<view style="z-index: 78;
-		height: 379rpx;
-		overflow: hidden;
-		background-image: url(/static/icon/cooper_back.png);
-		background-size: 100%;
-		background-repeat: no-repeat;
-		width: 750rpx;
-		position: relative;
-		display: flex;
-		flex-direction: column;">
-
-					<view class="group3">
-						<text lines="1" class="info3">{{typeData && typeData.name}}</text>
-					</view>
-					<view class="group4">
-						<text lines="1" class="paragraph1">专业律师为您审查合同,最大限度保障您的利益</text>
-					</view>
-					<view style="z-index: 79;
-		position: absolute;
-		left: -45rpx;
-		top: 48rpx;
-		width: 826rpx;
-		height: 261rpx;
-		background: url(/static/icon/cooper_group5.png) 46rpx 0rpx no-repeat;
-		background-size: 750rpx 262rpx;
-		display: flex;
-		flex-direction: column;"></view>
-					<view style="z-index: 80;
-		height: 332rpx;
-		background: url(/static/icon/cooper_group6.png) 100% no-repeat;
-		width: 750rpx;
-		justify-content: flex-end;
-		position: absolute;
-		left: 0rpx;
-		top: 47rpx;
-		display: flex;
-		flex-direction: column;">
-						<view style="z-index: 81;
-		width: 750rpx;
-		height: 156rpx;
-		background: url(/static/icon/cooper_mod2.png) 100% no-repeat;
-		display: flex;
-		flex-direction: column;"></view>
-						<image src="/static/icon/cooper_back1.png" class="pic2"></image>
+			<view class="mod1" style="position: relative;">
+				<image style="width: 100%;height: 332rpx;" mode="scaleToFill" src="/static/icon/cooper_back111.png">
+				</image>
+				<view style="position: absolute;top: 58px;left: 110rpx;">
+					<text lines="1" class="info3">合同审核</text>
+				</view>
+				<view class="group4">
+					<text lines="1" class="paragraph1">专业律师为您审查合同,最大限度保障您的利益</text>
+				</view>
+			</view>
+			<view class="block2">
+				<view class="group7">
+					<text lines="1" decode="true" class="info4">～&nbsp;产品介绍&nbsp;～</text>
+					<view class="bd1"></view>
+					<view lines="1" class="info5">
+						<rich-text :nodes="dataSource.intro"></rich-text>
 					</view>
 				</view>
-				<view class="block2">
-					<view class="group7">
-						<text lines="1" decode="true" class="info4">～&nbsp;产品介绍&nbsp;～</text>
-						<view class="bd1"></view>
-						<view lines="1" class="info5">
-							<rich-text :nodes="dataSource.intro"></rich-text>
-						</view>
-					</view>
-				</view>
-				<view class="block3">
-					<view class="group8">
-						<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
-						<view class="bd2"></view>
-						<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;">
-							<rich-text :nodes="dataSource.service"></rich-text>
-
-						</view>
+			</view>
+			<view class="block3">
+				<view class="group8">
+					<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
+					<view class="bd2"></view>
+					<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;">
+						<rich-text :nodes="dataSource.service"></rich-text>
 
 					</view>
+
 				</view>
-				<view class="block4">
-					<view class="mod3">
-						<text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
-						<view class="mod4"></view>
-						<view class="mod5">
-							<image src="/static/icon/cooper_p3.png" class="img1"></image>
-							<view class="group9"></view>
-							<image src="/static/icon/cooper_p1.png" class="pic3"></image>
-							<view class="group10"></view>
-							<image src="/static/icon/cooper_p2.png" class="img2"></image>
-							<view class="group11"></view>
-							<image src="/static/icon/cooper_p5.png" class="img3"></image>
-						</view>
-						<view class="mod6">
-							<text lines="1" class="word6">下单购买</text>
-							<text lines="1" class="txt4">律师接单</text>
-							<text lines="1" class="info8">律师服务</text>
-							<text lines="1" class="info9">回访评价</text>
-						</view>
+			</view>
+			<view class="block4">
+				<view class="mod3">
+					<text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
+					<view class="mod4"></view>
+					<view class="mod5">
+						<image src="/static/icon/cooper_p3.png" class="img1"></image>
+						<view class="group9"></view>
+						<image src="/static/icon/cooper_p1.png" class="pic3"></image>
+						<view class="group10"></view>
+						<image src="/static/icon/cooper_p2.png" class="img2"></image>
+						<view class="group11"></view>
+						<image src="/static/icon/cooper_p5.png" class="img3"></image>
+					</view>
+					<view class="mod6">
+						<text lines="1" class="word6">下单购买</text>
+						<text lines="1" class="txt4">律师接单</text>
+						<text lines="1" class="info8">律师服务</text>
+						<text lines="1" class="info9">回访评价</text>
 					</view>
 				</view>
-				<view class="block5">
-					<view class="mod7">
-						<text lines="1" decode="true" class="word7">～&nbsp;常见问题&nbsp;～</text>
-						<view class="block6"></view>
-						<view class="flex-column" style="overflow: auto;padding-bottom: 60rpx;">
-							<!-- <text lines="1" class="word8">问：下单购买后什么时候联系我？</text>
+
+			</view>
+
+
+
+			<view class="block5">
+				<view class="mod7">
+					<text lines="1" decode="true" class="word7">～&nbsp;常见问题&nbsp;～</text>
+					<view class="block6"></view>
+					<view class="flex-column" style="overflow: auto;padding-bottom: 60rpx;">
+						<!-- <text lines="1" class="word8">问：下单购买后什么时候联系我？</text>
 							<text lines="1" class="txt5">答：下单付款后，专属客服马上联系您，无需等待！</text>
 							<text lines="1" class="txt6">问：下单购买后什么时候联系我？</text>
 							<text lines="1" class="info10">答：下单付款后，专属客服马上联系您，无需等待！</text>
@@ -111,12 +78,14 @@
 							<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text>
 							<text lines="1" class="info11">问：下单购买后什么时候联系我？</text>
 							<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text> -->
-							<rich-text  v-html = 'content'></rich-text>
-						</view>
+						<rich-text v-html='content'></rich-text>
 					</view>
-					
 				</view>
+
+
 			</view>
+
+
 			<view class="mod8">
 				<view class="box3">
 					<view class="mod9" @tap="kefu">
@@ -154,10 +123,10 @@
 			}
 			let that = this
 			uni.request({
-				url:'https://layer.boyaokj.cn/api/index/setting',
-				method:'GET',
-				data:{
-					key:'wenti'
+				url: 'https://layer.boyaokj.cn/api/index/setting',
+				method: 'GET',
+				data: {
+					key: 'wenti'
 				},
 				success(res) {
 					// console.log(res.data.data.data)
@@ -280,7 +249,7 @@
 		z-index: 1;
 		position: relative;
 		width: 750rpx;
-		height: 1664rpx;
+		height: 1755rpx;
 		background-color: rgba(248, 248, 248, 1);
 		overflow: hidden;
 		display: flex;
@@ -290,9 +259,7 @@
 	}
 
 	.mod1 {
-		z-index: auto;
-		width: 750rpx;
-		height: 1590rpx;
+		height: 332rpx;
 		display: flex;
 		flex-direction: column;
 	}
@@ -436,12 +403,14 @@
 	}
 
 	.group4 {
-		z-index: auto;
+
+		left: 91rpx;
+		top: 208rpx;
 		width: 240rpx;
 		height: 66rpx;
+		position: absolute;
 		flex-direction: row;
 		display: flex;
-		margin: 16rpx 0 0 86rpx;
 	}
 
 	.paragraph1 {
@@ -1017,7 +986,7 @@
 		align-items: center;
 		position: absolute;
 		left: 0rpx;
-		top: 1513rpx;
+		top: 1600rpx;
 		display: flex;
 		flex-direction: column;
 	}

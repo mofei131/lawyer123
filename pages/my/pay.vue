@@ -2,8 +2,9 @@
 	<view>
 		<view class="itemlist">
 			<view class="listitem flex-row mx-start sx-center">
-				<view v-if="typeInfo[arr.typeId]" class="backImgCenter imggg"
-					:style="{backgroundImage: `url(${typeInfo[arr.typeId].url})`}"></view>
+				<!-- <view v-if="typeInfo[arr.typeId]" class="backImgCenter imggg"
+					:style="{backgroundImage: `url(${typeInfo[arr.typeId].url})`}"></view> -->
+				<image v-if="typeInfo[arr.typeId]" class="imggg" mode="aspectFit" :src="typeInfo[arr.typeId].url"></image>
 				<view v-if="typeInfo[arr.typeId]" style="margin: 0 20rpx;flex:1 1 auto">{{typeInfo[arr.typeId].name}}</view>
 				<view>￥{{arr.price}}</view>
 			</view>
@@ -121,10 +122,7 @@
 			},
 			async pay() {
 				let emitName = this.emitName;
-				uni.navigateTo({
-					url:'/pages/my/finish?emitName='+emitName
-				})
-				return
+				
 				console.log(emitName);
 				if (this.agreement == false) {
 					uni.showToast({

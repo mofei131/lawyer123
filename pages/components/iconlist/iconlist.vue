@@ -85,7 +85,7 @@
 
 	.blue {
 		width: 6rpx;
-		height: auto;
+		height: 28rpx;
 		background: #40A9FF;
 		/* margin-top: 6rpx; */
 	}

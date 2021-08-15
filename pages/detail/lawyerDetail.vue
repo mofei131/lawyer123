@@ -37,9 +37,11 @@
 		<view class="flex-row mx-start sx-center" style="flex: 0 0 auto;margin: 40rpx 0; color: gray;">
 			<view @tap="tuTuwenPage" class="flex-row mx-start sx-center"
 				style="flex: 1 1 auto;padding: 10rpx;background-color: #FFFFFF;margin-right: 20rpx;border-radius: 10rpx;">
-				<view class="backImgCenter"
+				<!-- <view class="backImgCenter"
 					style="background-image: url(/static/icon/icon1.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
-				</view>
+				</view> -->
+				<image style="flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;" mode="aspectFit" src="/static/icon/icon1.png"></image>
+				
 				<view class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
 					<text>图文详情</text>
 					<text>￥{{lawyerList[0] && lawyerList[0].price && lawyerList[0] && lawyerList[0].price.tuwen}}元</text>

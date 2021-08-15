@@ -10,7 +10,7 @@
 					<view class="workyer">执业{{item.zhiyenianxian}}年</view>
 				</view>
 				<view class="address">{{item.city}}</view>
-				<view class="begood">{{item.case_type}}</view>
+				<view class="begood">擅长：{{item.case_type}}</view>
 			</view>
 		</view>
 	</view>
@@ -53,10 +53,10 @@
 	}
 	.name{
 		font-size: 24rpx;
-		color: #333333;
+		color: rgba(51,51,51,1);
 	}
 	.workyer{
-			background: #D4E5F8;
+			background: rgba(212,229,248,1);;
 			border-radius: 2rpx;
 			color: #40A9FF;
 			font-size: 16rpx;
@@ -66,13 +66,12 @@
 			padding: 7rpx;
 	}
 	.address{
-		color: #666666;
+		color: rgba(102,102,102,1);;
 		font-size: 20rpx;
-		margin-top: 6rpx;
 	}
 	.begood{
 		width: 240rpx;
-		color: #999999;
+		color: rgba(153,153,153,1);
 		font-size: 20rpx;
 		overflow: hidden;
 		white-space: nowrap;

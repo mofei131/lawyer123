@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- 页面主体 -->
-		<view class="flex-column mx-center sx-center" slot="gBody" style="width: 100%;  background-color: #FFFFFF">
+		<view class="flex-column mx-center sx-center" style="width: 100%;  background-color: #FFFFFF;">
 
 
 			<view style="width: 100%;">
@@ -266,7 +266,7 @@
 			},
 			async getMessage() {
 				let res = await this.$myRequest({
-					url: 'service/selectCaseDetail',
+					url: 'message/list',
 					methods: 'GET',
 					data: {
 						source_id: this.source_id

@@ -11,10 +11,10 @@
 					<view class="flex-row mx-start sx-center">
 						<text
 							style="font-size: 26rpx;">{{item.name}}</text>
-						<view class="flex-txt-center"
+						<view v-if="item.type_text" class="flex-txt-center"
 							style="margin-left: 10rpx;width: 52rpx;background-color: #FF4D4F;">
 							<text lines="1"
-								style="color: #FFFFFF;height: 26rpx;line-height: 26rpx;text-align: center;font-size: 17rpx;">{{item.type_text&& item.type_text.name}}</text>
+								style="color: #FFFFFF;height: 26rpx;line-height: 26rpx;text-align: center;font-size: 17rpx;">{{item.type_text && item.type_text.name}}</text>
 						</view>
 						
 						<view v-if="item.busy_text" class="flex-row mx-end sx-center" style="flex:1 1 auto">

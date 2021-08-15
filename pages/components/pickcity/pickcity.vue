@@ -1,9 +1,9 @@
 <template>
 	<picker mode="multiSelector" @change="cityChooseChange" @columnchange="bindMultiPickerColumnChange"
 		:value="multiIndex" :range="multiArray">
-		<view class="flex-row mx-center sx-center">
-			<text style="font-size: 26rpx;">{{currentCityName}}</text>
-			<fa-icon type="angle-down" color="gray" style="margin-left:16rpx;"></fa-icon>
+		<view class="flex-row mx-center sx-center" style="min-width: 100rpx;">
+			<text style="flex: 0 0 auto;font-size: 26rpx;">{{currentCityName}}</text>
+			<fa-icon type="angle-down" :color="anglecolor" style="flex: 0 0 auto;margin-left:14rpx;"></fa-icon>
 		</view>
 	</picker>
 </template>
@@ -14,7 +14,17 @@
 		components: {
 
 		},
-		props: ['getcity'],
+		// props: ['getcity'],
+		props:{
+			getcity:{
+				type:Array,
+				default:[]
+			},
+			anglecolor:{
+				type:String,
+				default:'gray'
+			}
+		},
 		mounted() {
 			
 			this.$amapPlugin.getRegeo({

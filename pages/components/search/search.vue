@@ -2,7 +2,7 @@
 	 <view>
 		 <view class="dropDown">
 		 	<view class="uni-form-item uni-column">
-		 		<pickcity @getcity="getCity"></pickcity>
+		 		<pickcity anglecolor='#ffffff' @getcity="getCity"></pickcity>
 		 	</view>
 			<view class="search">
 				<image src="@/static/images/search.png"></image>
@@ -64,6 +64,7 @@
 		background: rgb(255,255,255,.34);
 		border-radius: 32rpx;
 		margin: auto;
+		margin-left: 10rpx;
 		box-sizing: border-box;
 	}
 	.search image{

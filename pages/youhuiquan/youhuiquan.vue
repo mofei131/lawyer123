@@ -12,7 +12,7 @@
 			</uni-search-bar>
 		</view>
 
-		<view class="flex-row mx-center sx-center" style="margin: 20rpx;">
+		<view class="flex-row mx-center sx-center" >
 			<view :class="{quan_on:flag==1,quan_off:flag!=1}"
 				style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 30rpx 0 0 30rpx;"
 				@tap="changeFlage(1)">未使用</view>
@@ -265,13 +265,13 @@
 
 <style>
 	.quan_on {
-		border: 2rpx solid #65ADF6;
-		background-color: #65ADF6;
+		border: 2rpx solid #40A9FF;
+		background-color: #40A9FF;
 		color: #FFFFFF;
 	}
 
 	.quan_off {
-		border: 2rpx solid #65ADF6;
+		border: 2rpx solid #40A9FF;
 		background-color: #FFFFFF;
 		color: gray;
 

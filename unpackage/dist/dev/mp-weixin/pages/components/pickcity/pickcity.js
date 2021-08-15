@@ -151,7 +151,17 @@ var _default =
   components: {},
 
 
-  props: ['getcity'],
+  // props: ['getcity'],
+  props: {
+    getcity: {
+      type: Array,
+      default: [] },
+
+    anglecolor: {
+      type: String,
+      default: 'gray' } },
+
+
   mounted: function mounted() {var _this = this;
 
     this.$amapPlugin.getRegeo({

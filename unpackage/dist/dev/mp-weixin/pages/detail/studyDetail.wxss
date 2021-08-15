@@ -27,21 +27,10 @@
 	        flex-direction: column;
 }
 .txt2 {
-	z-index: 6;
-	width: 694rpx;
-	height: 118rpx;
-	display: block;
-	overflow-wrap: break-word;
 	color: rgba(81, 86, 93, 1);
 	font-size: 42rpx;
 	font-family: Helvetica;
-	line-height: 50rpx;
-	text-align: left;
-	-webkit-align-self: flex-end;
-	        align-self: flex-end;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	margin: 43rpx 21rpx 0 0;
+	margin: 40rpx 35rpx 0 35rpx;
 }
 .word3 {
 	z-index: 7;
