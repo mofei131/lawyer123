@@ -62,7 +62,7 @@
 		<view class="zixun">
 			<button class="yqbtn" open-type="share">
 				<image src="../../static/icon/fenxiangicon.png" class="zixunitemimage"></image>
-				<view class="zixunitemview">邀请好友</view>
+				<view class="zixunitemview" style="margin-top: 22rpx;">邀请好友</view>
 			</button>
 			<view v-for="(item,index) in iconlist2.zixun" class="zixunitem" @click="toPage(item.tourl)" :key="index">
 				<image :src='item.url' class="zixunitemimage"></image>

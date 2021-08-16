@@ -359,7 +359,7 @@
 					}
 				});
 				if (res && res.code == 200) {
-					// console.log(res.data);
+					console.log(res.data);
 					this.learn = res.data;
 				} else {
 					uni.showToast({
@@ -469,7 +469,7 @@
 		width: 690rpx;
 		margin: auto;
 		box-sizing: border-box;
-		margin-top: 16rpx;
+		margin-top: 24rpx;
 		margin-bottom: 12rpx;
 	}
 
@@ -544,7 +544,7 @@
 		width: 710rpx;
 		margin: auto;
 		padding-top: 10rpx;
-		margin-top: 50rpx;
+		/* margin-top: 14rpx; */
 	}
 
 

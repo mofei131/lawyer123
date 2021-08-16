@@ -67,7 +67,7 @@
 		font-size: 24rpx;
 		display: flex;
 		position: absolute;
-		top: 60rpx;
+		top: 70rpx;
 		z-index: 10;
 		font-size: 24rpx;
 	}
@@ -86,7 +86,7 @@
 	.search{
 		display: flex;
 		width: 360rpx;
-		height: 70rpx;
+		height: 60rpx;
 		background: rgb(255,255,255,.34);
 		border-radius: 32rpx;
 		margin: auto;
@@ -96,12 +96,12 @@
 	.search image{
 		width: 30rpx;
 		height: 30rpx;
-		margin: 20rpx 0 0 14rpx;
+		margin: 16rpx 0 0 14rpx;
 	}
 	.search input{
 		width: 300rpx;
 		margin: auto;
-		height: 70rpx;
+		height: 60rpx;
 		box-sizing: border-box;
 	}
 </style>

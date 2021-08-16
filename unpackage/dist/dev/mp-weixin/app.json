@@ -97,5 +97,6 @@
   },
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

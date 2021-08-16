@@ -79,7 +79,7 @@
 		display: flex;
 		width: 690rpx;
 		margin: auto;
-		margin-top: 16rpx;
+		margin-top: 24rpx;
 		margin-bottom: 12rpx;
 	}
 
