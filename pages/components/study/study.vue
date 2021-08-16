@@ -1,26 +1,27 @@
 <template>
 	<view class="study">
-		<view class="studyitem flex-row mx-center sx-center" v-for="(item,index) in learn" :key="index" :style="{marginBottom: marginBottom}"
-			@click="todetail(item)">
+		<view class="studyitem flex-row mx-center sx-center" v-for="(item,index) in learn" :key="index"
+			:style="{marginBottom: marginBottom}" @click="todetail(item)">
 			<view class="studyitemleft">
-				<image style="width: 120rpx;height: 120rpx;"  :src="item.image"></image>
+				<image style="width: 120rpx;height: 120rpx;" :src="item.image"></image>
 			</view>
 			<view class="studyitemright flex-column mx-start sx-stretch">
 				<view class="studytitle ellipsis">{{item.title}}</view>
 				<view class="studycontent">{{item.content}}</view>
-				<view class="figure flex-row mx-between sx-center" style="margin-top: 19rpx;">
-					<view>已更新{{item.desc}}期</view>
-					<view>{{item.subtitle}}</view>
-				<view class="flex-row mx-center sx-center">
-							<view class="stage" style="flex: 1 1 auto;"></view>
-							<view style="flex: 0 0 auto;height: 32rpx;background: #D4E5F8;border-radius: 1rpx;color: #40A9FF;font-size: 22rpx;text-align: center;">
-								<view v-if="item.buy" class="cost" style="flex: 0 0 auto;padding: 0 20rpx;">已购买</view>
-								<view v-else-if="item.price > 0" class="cost" style="flex: 0 0 auto;padding: 0 20rpx;" @tap="toPay(item)">￥{{item.price}}</view>
-								<view v-else style="flex0 0 auto;background: #D4E5F8;padding: 0 20rpx;">限时免费</view>
-							</view>
-						</view>
+				<view class="figure flex-row mx-start sx-center" style="margin-top: 15rpx;">
+					<view>已更新{{item.num || 1}}期</view>
+					<view class="ellipsis" style="flex: 1 1 auto;width: 1rpx;">{{item.subtitle}}</view>
+
+					<view
+						style="flex: 0 0 auto;height: 32rpx;background: #D4E5F8;border-radius: 1rpx;color: #40A9FF;font-size: 22rpx;text-align: center; ">
+						<view v-if="item.buy" class="cost" style="flex: 0 0 auto;padding: 0 20rpx;">已购买</view>
+						<view v-else-if="item.price > 0" class="cost" style="flex: 0 0 auto;padding: 0 20rpx;"
+							@tap="toPay(item)">￥{{item.price}}</view>
+						<view v-else style="flex:0 0 auto;background: #D4E5F8;padding: 0 20rpx;">限时免费</view>
+					</view>
+
 				</view>
-				
+
 
 			</view>
 		</view>
@@ -47,18 +48,18 @@
 		},
 		methods: {
 			todetail(item) {
-				if(!item.buy && item.price>0){
+				if (!item.buy && item.price > 0) {
 					uni.showToast({
-						title:'请先购买',
-						icon:'none'
+						title: '请先购买',
+						icon: 'none'
 					})
 					return;
 				}
 				uni.navigateTo({
-					url:'../detail/studyDetail?id='+item.id
+					url: '../detail/studyDetail?id=' + item.id
 				})
 			},
-			async toPay(item){
+			async toPay(item) {
 				console.log(item);
 				//跳转到支付页面；支付成功，请求
 				let res = await this.$myRequest({
@@ -71,24 +72,25 @@
 				});
 				if (res.code == 200) {
 					console.log(res);
-				
+
 					uni.navigateTo({
-						url: '../my/pay?id=' + res.data.service_id + '&price=' + item.price + '&typeId=12'+"&emitName=goCoodetail"
+						url: '../my/pay?id=' + res.data.service_id + '&price=' + item.price + '&typeId=12' +
+							"&emitName=goCoodetail"
 					})
 					uni.$on('goCoodetail', res => {
 						uni.navigateTo({
 							url: '@/pages/detail/detail?detail=' + item.id
 						})
 					});
-				
-				
+
+
 				} else {
 					uni.showToast({
 						title: res.message,
 						icon: 'none'
 					})
 				}
-				
+
 			}
 		}
 	}
@@ -101,7 +103,8 @@
 		padding: 20rpx;
 
 	}
-	..studyitem:last-child{
+
+	..studyitem:last-child {
 		border-radius: 0 0 14rpx 14rpx;
 	}
 
@@ -121,7 +124,7 @@
 		display: flex;
 		position: relative;
 		margin-bottom: 34rpx;
-		
+
 		/* border: 1px solid; */
 	}
 
@@ -145,10 +148,9 @@
 	}
 
 	.figure {
-		display: flex;
 		color: #999999;
 		font-size: 21rpx;
-		flex: 0 0 40rpx;
+		flex: 0 0 auto;
 	}
 
 	.figure view:nth-child(2) {

@@ -6,10 +6,10 @@
 			</view>
 			<view class="cardoneright">
 				<view class="head">
-					<view class="name">{{item.name}}</view>
+					<view class="name ellipsis">{{item.name}}</view>
 					<view class="workyer">执业{{item.zhiyenianxian}}年</view>
 				</view>
-				<view class="address">{{item.city}}</view>
+				<view class="address ellipsis">{{item.city}}</view>
 				<view class="begood">擅长：{{item.case_type}}</view>
 			</view>
 		</view>
@@ -38,7 +38,7 @@
 		border: 0 0 14rpx 14rpx;
 	}
 	.cardone{
-		width: 338rpx;
+		/* width: 338rpx; */
 		display: flex;
 		margin-top: 28rpx;
 		margin-left: 32rpx;
@@ -52,10 +52,12 @@
 		display: flex;
 	}
 	.name{
+		width: 150rpx;
 		font-size: 24rpx;
 		color: rgba(51,51,51,1);
 	}
 	.workyer{
+			
 			background: rgba(212,229,248,1);;
 			border-radius: 2rpx;
 			color: #40A9FF;
@@ -66,6 +68,7 @@
 			padding: 7rpx;
 	}
 	.address{
+		width: 220rpx;
 		color: rgba(102,102,102,1);;
 		font-size: 20rpx;
 		margin-top: 5rpx;

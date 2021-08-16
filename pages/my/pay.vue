@@ -147,7 +147,6 @@
 			},
 			async submit() {
 				let emitName = this.emitName;
-				
 				console.log(emitName);
 				if (this.agreement == false) {
 					uni.showToast({
