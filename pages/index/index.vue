@@ -477,6 +477,7 @@
 	.more {
 		display: flex;
 		box-sizing: border-box;
+		margin-bottom: 12rpx;
 	}
 
 	.more image {
@@ -537,7 +538,8 @@
 	.case {
 		height: 80rpx;
 		border-radius: 14rpx 14rpx 0rpx 0rpx;
-		background: rgb(9, 109, 217, .1);
+		/* background: rgb(9, 109, 217, .1); */
+		background: #F8F8F8;
 		box-sizing: border-box;
 		width: 710rpx;
 		margin: auto;
@@ -564,8 +566,9 @@
 	}
 
 	.top-menu-view {
-		background: rgb(9, 109, 217, .1) !important;
+		background: #fff !important;
 		border: 0 !important;
+		padding-right: 20rpx;
 	}
 
 	.top-menu-view {

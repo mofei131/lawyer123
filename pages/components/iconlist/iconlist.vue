@@ -87,7 +87,8 @@
 		width: 6rpx;
 		height: 28rpx;
 		background: #40A9FF;
-		/* margin-top: 6rpx; */
+		/* margin-top: 16rpx; */
+		padding-top: 16rpx;
 	}
 
 	.childtitle view {

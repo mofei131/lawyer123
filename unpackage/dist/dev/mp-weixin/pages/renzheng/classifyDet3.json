@@ -2,6 +2,7 @@
   "navigationBarTitleText": "律师认证",
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon",
-    "pickcity": "/pages/components/pickcity/pickcity"
+    "pickcity": "/pages/components/pickcity/pickcity",
+    "tankuang": "/pages/components/tankuang/tankuang"
   }
 }

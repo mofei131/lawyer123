@@ -19,7 +19,7 @@
 			</view>
 		</view>
 		<view class="flex-row mx-center sx-center">
-			<view class="flex-txt-center" @tap="commit"
+			<view class="flex-txt-center" @tap="submit()"
 				style="flex: 1 1 auto;margin: 20rpx;height: 80rpx;border-radius:30rpx;background-color: #57A9FF;color: #FFFFFF;">
 				提交
 			</view>
@@ -54,8 +54,7 @@
 			}
 		},
 		methods: {
-			async commit() {
-				//跳转支付页面
+			submit(){
 				let {
 					layer_id,
 					user_id,
@@ -93,6 +92,21 @@
 					})
 					return;
 				}
+				let that = this
+				uni.showModal({
+				    title: '风险友情提示',
+				    content: '本次付费为聘请律师的定金费用，律师费差额请转账到山东一二三法律服务集团名下对公账户，否则产生的一切损失由客户自行承担',
+				    success: function (res) {
+				        if (res.confirm) {
+				            that.commit()
+				        }
+				    }
+				});
+			},
+			async commit() {
+				
+				//跳转支付页面
+				
 				let data = {
 					layer_id,
 					user_id,
@@ -102,6 +116,7 @@
 					lng,
 					lat
 				}
+				
 				console.log(data);
 				uni.showLoading({
 					title: '正在提交...'

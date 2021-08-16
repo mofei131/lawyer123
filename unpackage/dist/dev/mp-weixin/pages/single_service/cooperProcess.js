@@ -228,21 +228,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   onLoad: function onLoad(p) {var _this = this;
     console.log(p);
-
     this.id = p && p.id;
     var obj = this.list.find(function (item) {return item.id == _this.id;});
     if (obj) {
@@ -272,6 +261,7 @@ var _default =
       content: "双方都",
       dataSource: {} }, _defineProperty(_ref, "content",
     ''), _defineProperty(_ref, "id",
+    ''), _defineProperty(_ref, "name",
     ''), _defineProperty(_ref, "list",
     [{
       id: 5,
@@ -337,6 +327,7 @@ var _default =
                 if (res && res.code == 200) {
                   console.log(res.data);
                   _this2.dataSource = res.data;
+                  _this2.name = res.data.name;
                 }case 4:case "end":return _context.stop();}}}, _callee);}))();
     },
     toDetail: function toDetail() {

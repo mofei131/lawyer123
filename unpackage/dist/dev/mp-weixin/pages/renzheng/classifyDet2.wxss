@@ -1,4 +1,28 @@
 
+.danxuan{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	font-size: 24rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #5D6168;
+}
+.danxuanleft,.danxuanright{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.danxuanright{
+	margin-left: 70rpx;
+}
+.danxuanleft image,.danxuanright image{
+	width: 40rpx;
+	height: 40rpx;
+}
 page{
 	background: #F4F7F7;
 }

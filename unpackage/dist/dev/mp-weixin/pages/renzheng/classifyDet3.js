@@ -153,7 +153,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 462));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 462));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var tankuang = function tankuang() {__webpack_require__.e(/*! require.ensure | pages/components/tankuang/tankuang */ "pages/components/tankuang/tankuang").then((function () {return resolve(__webpack_require__(/*! ../components/tankuang/tankuang.vue */ 587));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 
@@ -205,10 +207,15 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   components: {
-    pickcity: pickcity },
+    pickcity: pickcity,
+    tankuang: tankuang },
 
   data: function data() {
     return {
+      hide: false,
+      box: {
+        title: '平台律师服务协议' },
+
       city: '',
       unit: '',
       college: '',
@@ -276,6 +283,14 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
+    cak: function cak() {
+      uni.navigateTo({
+        url: '../components/tankuang/xiyipingtai' });
+
+    },
+    show: function show() {
+      this.hide = !this.hide;
+    },
     getCity: function getCity(e) {
       this.city = e.cityid;
     },
@@ -338,6 +353,7 @@ __webpack_require__.r(__webpack_exports__);
           jianjie: that.mark },
 
         success: function success(res) {
+          that.hide = !that.hide;
           uni.removeStorage({ key: 'type' });
           uni.removeStorage({ key: 'cache1' });
           uni.removeStorage({ key: 'cache2' });

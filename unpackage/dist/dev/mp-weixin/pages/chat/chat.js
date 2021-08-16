@@ -360,6 +360,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                 console.log(msg);
                 console.log(_this6.$store.state.userInfo.user_id);
                 console.log(_this6.source_id);
+                _this6.checkOpenSocket();
                 uni.sendSocketMessage({
                   data: JSON.stringify({
                     "action": "sendMessage",
@@ -378,7 +379,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                       icon: 'none' });
 
                     _this6.openConnection();
-                  } });case 4:case "end":return _context.stop();}}}, _callee);}))();
+                  } });case 5:case "end":return _context.stop();}}}, _callee);}))();
 
 
 
@@ -411,16 +412,16 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                       _this7.userAvator = item.user.avater;
                     }
                     if (item.user_id != _this7.user_id && (!_this7.lawyerAvator || !_this7.lawyerName)) {
-                      _this7.lawyerName = item.layer_name;
-                      _this7.lawyerAvator = item.layer_photo;
+                      _this7.lawyerName = item.user.name;
+                      _this7.lawyerAvator = item.user.avater;
                     }
                     var d = {
                       group: 'group1',
                       uindex: item.user_id,
-                      uname: item.user_id == _this7.user_id ? item.user.name : item.layer_name,
+                      uname: item.user_id == _this7.user_id ? item.user.name : item.user.name,
                       contentType: 'txt',
                       content: item.message || '',
-                      uface: item.user_id == _this7.user_id ? item.user.avater : item.layer_photo };
+                      uface: item.user_id == _this7.user_id ? item.user.avater : item.user.avater };
 
                     _this7.msgs.push(d);
                   });

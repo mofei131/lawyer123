@@ -55,8 +55,8 @@
           "scene": null
         },
         {
-          "name": "pages/renzheng/classifyDet2",
-          "pathName": "pages/renzheng/classifyDet2",
+          "name": "pages/renzheng/classifyDet3",
+          "pathName": "pages/renzheng/classifyDet3",
           "query": "",
           "scene": null
         },
@@ -87,6 +87,12 @@
         {
           "name": "支付成功",
           "pathName": "pages/my/finish",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/components/tankuang/xiyipingtai",
+          "pathName": "pages/components/tankuang/xiyipingtai",
           "query": "",
           "scene": null
         }

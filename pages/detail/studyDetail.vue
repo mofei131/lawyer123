@@ -2,12 +2,12 @@
 	<view class="page">
 		<view class="section1">
 
-			<view class="txt2 ellipsis-2">{{dataSource.title}}</view>
+			<view class="txt2">{{dataSource.title}}</view>
 			<text lines="1" decode="true" class="word3">{{dataSource.create_time}}</text>
-			<image :src="dataSource.image|| '/static/icon/study_detail_icon.png'" class="img1"></image>
+			<!-- <image :src="dataSource.image|| '/static/icon/study_detail_icon.png'" class="img1"></image> -->
 
 			<view class="paragraph1">
-				<rich-text :nodes="dataSource.content"></rich-text>
+				<rich-text :nodes="zhuanhua"></rich-text>
 
 			</view>
 		</view>
@@ -35,20 +35,42 @@
 			} else {
 				console.log(res.data);
 				this.dataSource = res.data;
+				this.zhuanhua = this.formatRichText(this.dataSource.content)
 			}
+
 		},
 		data() {
 			return {
-				dataSource: {}
+				dataSource: {},
+				zhuanhua:''
 			}
 		},
 		methods: {
-
+			formatRichText(html) {
+					let newContent = html.replace(/<img[^>]*>/gi, function(match, capture) {
+						match = match.replace(/style="[^"]+"/gi, '').replace(/style='[^']+'/gi, '');
+						match = match.replace(/width="[^"]+"/gi, '').replace(/width='[^']+'/gi, '');
+						match = match.replace(/height="[^"]+"/gi, '').replace(/height='[^']+'/gi, '');
+						return match;
+					});
+					newContent = newContent.replace(/style="[^"]+"/gi, function(match, capture) {
+						match = match.replace(/width:[^;]+;/gi, 'max-width:100%;').replace(/width:[^;]+;/gi, 'max-width:100%;');
+						return match;
+					});
+					newContent = newContent.replace(/<br[^>]*\/>/gi, '');
+					newContent = newContent.replace(/\<img/gi,
+						'<img style="max-width:100%;height:auto;display:inline-block;margin:10rpx auto;"');
+					return newContent;
+				}
 		}
 	}
 </script>
 
 <style>
+	img{
+		width: 100%;
+		
+	}
 	.page {
 		z-index: 1;
 		position: relative;

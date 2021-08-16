@@ -48,7 +48,9 @@
     "pages/single_service/cooperProcess",
     "pages/my/contractList",
     "pages/my/follow",
-    "pages/anjianDetail/anjianDetail"
+    "pages/anjianDetail/anjianDetail",
+    "pages/components/tankuang/xiyipingtai",
+    "pages/components/tankuang/xiyichangnian"
   ],
   "subPackages": [],
   "window": {

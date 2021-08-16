@@ -4,6 +4,8 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationStyle": "custom",
+				"onReachBottomDistance": 50,
+				"enablePullDownRefresh": true,
 				"app-plus": {
 					"titleNView": false
 				}
@@ -301,7 +303,8 @@
 		}, {
 			"path": "pages/my/contractList",
 			"style": {
-				"navigationBarTitleText": "合同模板"
+				"navigationBarTitleText": "合同模板",
+				"enablePullDownRefresh": true
 			}
 
 		}
@@ -318,6 +321,22 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "案件详情",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/components/tankuang/xiyipingtai",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "平台律师服务协议",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/components/tankuang/xiyichangnian",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "常年法律顾问协议",
                 "enablePullDownRefresh": false
             }
             

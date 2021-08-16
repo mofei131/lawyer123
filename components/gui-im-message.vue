@@ -160,7 +160,8 @@ export default {
 	color: white;
 }
 .gui-bg-green{
-	background-color: green;
+	background-color: #67c23a;
+	color: #fff;
 }
 @font-face {
 font-family: "guiimfont"; 

@@ -5,7 +5,6 @@
 				<image src="@/static/images/search.png"></image>
 				<input type="text" v-model="name" @input="searchName" @change="inputChange"  placeholder="请输入搜索内容"
 					placeholder-style="color:#fff;font-size:20rpx;" />
-					
 			</view>
 		</view>
 		<cooperTabar @searchChange="searchChange"></cooperTabar>
@@ -109,7 +108,40 @@
 				ttt: null,
 			}
 		},
+		// onReachBottom() {
+		// 		this.searchChange()
+		// 		console.log("滚动")
+		// },
 		methods: {
+			// searchChange(e) {
+			// 			let that = this
+			// 			that.page++
+			// 			console.log("加载")
+			// 			uni.request({
+			// 				url:'https://layer.boyaokj.cn/api/layer/list',
+			// 				method:'GET',
+			// 				data:{
+			// 					page: that.page,
+			// 					limit: that.limit,
+			// 					name: that.name,
+			// 					case_type: that.case_type,
+			// 					cityid: that.cityid,
+			// 					level: that.level,
+			// 					age: that.age,
+			// 					service_id: ''
+			// 				},
+			// 				success(res) {
+			// 					for(let i in res.data){
+			// 						that.lawyerList.push(res.data[i])
+			// 					}
+			// 				},fail(res){
+			// 					uni.showToast({
+			// 						title: '没有更多了'
+			// 					})
+			// 				}
+			// 			})
+			// 		},
+			
 			...mapActions([
 				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
 				'getBussinessTypes',
@@ -196,7 +228,6 @@
 					} = e;
 					if (this.case_type == case_type && this.cityid == cityid && this.level == level && this.age ==
 						age) {
-						
 					} else {
 						this.lawyerList = [];
 						// this.isMore = true;
@@ -238,6 +269,7 @@
 				});
 				uni.hideLoading();
 				console.log(res);
+				this.lawyerList = []
 				if (res && res.data) {
 
 					// this.lawyerList = res.data;

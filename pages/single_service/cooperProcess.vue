@@ -12,7 +12,7 @@
 				<image style="width: 100%;height: 332rpx;" mode="scaleToFill" src="/static/icon/cooper_back111.png">
 				</image>
 				<view style="position: absolute;top: 58px;left: 110rpx;">
-					<text lines="1" class="info3">合同审核</text>
+					<text lines="1" class="info3">{{name}}</text>
 				</view>
 				<view class="group4">
 					<text lines="1" class="paragraph1">专业律师为您审查合同,最大限度保障您的利益</text>
@@ -63,27 +63,17 @@
 
 
 
-			<view class="block5">
+			<!-- <view class="block5">
 				<view class="mod7">
 					<text lines="1" decode="true" class="word7">～&nbsp;常见问题&nbsp;～</text>
 					<view class="block6"></view>
 					<view class="flex-column" style="overflow: auto;padding-bottom: 60rpx;">
-						<!-- <text lines="1" class="word8">问：下单购买后什么时候联系我？</text>
-							<text lines="1" class="txt5">答：下单付款后，专属客服马上联系您，无需等待！</text>
-							<text lines="1" class="txt6">问：下单购买后什么时候联系我？</text>
-							<text lines="1" class="info10">答：下单付款后，专属客服马上联系您，无需等待！</text>
-							<text lines="1" class="info11">问：下单购买后什么时候联系我？</text>
-							<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text>
-							<text lines="1" class="info11">问：下单购买后什么时候联系我？</text>
-							<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text>
-							<text lines="1" class="info11">问：下单购买后什么时候联系我？</text>
-							<text lines="1" class="word9">答：下单付款后，专属客服马上联系您，无需等待！</text> -->
 						<rich-text v-html='content'></rich-text>
 					</view>
 				</view>
 
 
-			</view>
+			</view> -->
 
 
 			<view class="mod8">
@@ -110,7 +100,6 @@
 	export default {
 		onLoad(p) {
 			console.log(p);
-
 			this.id = p && p.id;
 			let obj = this.list.find(item => item.id == this.id);
 			if (obj) {
@@ -141,6 +130,7 @@
 				dataSource: {},
 				content: '',
 				id: '',
+				name:'',
 				list: [{
 						id: 5,
 						name: "合同审核",
@@ -205,6 +195,7 @@
 				if (res && res.code == 200) {
 					console.log(res.data);
 					this.dataSource = res.data;
+					this.name = res.data.name
 				}
 			},
 			toDetail() {

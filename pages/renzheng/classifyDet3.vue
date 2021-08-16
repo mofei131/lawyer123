@@ -42,18 +42,25 @@
 			<!-- <view class="kong"></view> -->
 			
 	</view>
-	<view class="next" @tap="submit()">提交</view>
+	<view class="next" @tap="show()">提交</view>
+	<tankuang :box='box' v-show="hide" v-on:submit="submit" v-on:show="show" v-on:cak="cak"></tankuang>
 	</view>
 </template>
 
 <script>
 	import pickcity from '@/pages/components/pickcity/pickcity.vue'
+	import tankuang from '../components/tankuang/tankuang.vue'
 	export default{
 		components:{
 			pickcity,
+			tankuang
 		},
 		data(){
 			return{
+				hide:false,
+				box:{
+					title:'平台律师服务协议'
+				},
 				city:'',
 				unit:'',
 				college:'',
@@ -121,6 +128,14 @@
 				})
 		},
 		methods:{
+			cak(){
+				uni.navigateTo({
+					url:'../components/tankuang/xiyipingtai'
+				})
+			},
+			show(){
+				this.hide = !this.hide
+			},
 			getCity(e){
 				this.city = e.cityid
 			},
@@ -183,6 +198,7 @@
 						jianjie:that.mark
 					},
 					success(res){
+						that.hide = !that.hide
 						uni.removeStorage({key: 'type',})
 						uni.removeStorage({key: 'cache1',})
 						uni.removeStorage({key: 'cache2'})

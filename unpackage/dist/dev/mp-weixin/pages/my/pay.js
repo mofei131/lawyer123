@@ -130,37 +130,49 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var tankuang = function tankuang() {__webpack_require__.e(/*! require.ensure | pages/components/tankuang/tankuang */ "pages/components/tankuang/tankuang").then((function () {return resolve(__webpack_require__(/*! ../components/tankuang/tankuang.vue */ 587));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    tankuang: tankuang },
+
   data: function data() {
     return {
+      hide: false,
+      box: {
+        title: '常年法律服务协议' },
+
       emitName: '',
       typeInfo: {
         1: {
@@ -209,32 +221,35 @@ var _default =
 
         12: {
           name: '每日学法',
-          url: '/static/icon/icon7.png' },
+          url: '/static/icon/icon7.png' }
 
-        13: {
-          name: '套餐1',
-          url: '/static/icon/icon7.png' },
-
-        14: {
-          name: '套餐2',
-          url: '/static/icon/icon7.png' },
-
-        15: {
-          name: '套餐3',
-          url: '/static/icon/icon7.png' },
-
-        16: {
-          name: '套餐4',
-          url: '/static/icon/icon7.png' } },
-
-
+        // 13: {
+        // 	name: '套餐1',
+        // 	url: '/static/icon/icon7.png'
+        // },
+        // 14: {
+        // 	name: '套餐2',
+        // 	url: '/static/icon/icon7.png'
+        // },
+        // 15: {
+        // 	name: '套餐3',
+        // 	url: '/static/icon/icon7.png'
+        // },
+        // 16: {
+        // 	name: '套餐4',
+        // 	url: '/static/icon/icon7.png'
+        // },
+      },
       arr: {
         id: '',
         chapter: '',
         price: '',
         typeId: '' },
 
-      agreement: true };
+      agreement: true,
+      name: '',
+      price: '',
+      id: '' };
 
   },
   onLoad: function onLoad(options) {
@@ -244,15 +259,25 @@ var _default =
     console.log(options);
     this.arr.price = options.price;
     this.emitName = options.emitName;
+    this.name = options.name;
+    this.id = options.id;
   },
   computed: {},
 
 
   methods: {
+    cak: function cak() {
+      uni.navigateTo({
+        url: '../components/tankuang/xiyichangnian' });
+
+    },
+    show: function show() {
+      this.hide = !this.hide;
+    },
     agreementSuccess: function agreementSuccess() {
       this.agreement = !this.agreement;
     },
-    pay: function pay() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var emitName, res, _res$data, appId, nonceStr, pp, paySign, signType, timeStamp, timestamp, orderno;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    submit: function submit() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var emitName, res, _res$data, appId, nonceStr, pp, paySign, signType, timeStamp, timestamp, orderno;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 emitName = _this.emitName;
 
                 console.log(emitName);if (!(
@@ -272,7 +297,7 @@ var _default =
                     methods: 'GET',
                     data: {
                       user_id: _this.$store.state.userInfo.user_id,
-                      source_id: _this.arr.id } }));case 10:res = _context.sent;
+                      source_id: _this.id } }));case 10:res = _context.sent;
 
 
                 if (res.code == -1) {

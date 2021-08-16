@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 462));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 462));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = _defineProperty({
 
 
 
@@ -131,22 +131,49 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-{
+
   components: {
     pickcity: pickcity },
 
+  data: function data() {
+    return {
+      ttt: null,
+      input: '' };
+
+  },
   methods: {
     getCity: function getCity(e) {
       console.log(e);
-    } },
+    },
+    searchName: function searchName() {var _this = this;
+      // this.isMore = true;
+      if (this.ttt) {
+        clearTimeout(this.ttt);
+      }
+      this.ttt = setTimeout(function (item) {
+        _this.searchChange();
+        // console.log("点击")
+      }, 1000);
+    },
+    inputChange: function inputChange() {
+      this.searchChange();
+      // console.log("搜索")
+    },
+    searchChange: function searchChange() {
+      // console.log(this.input)
+      uni.navigateTo({
+        url: '../list/moreAnli?name=' + this.input });
 
-  data: function data() {
-    return {
-      diqu: ["奎文区", "高新区", "潍城区"],
-      index: 0,
-      input: '' };
+    } } }, "data", function data()
 
-  } };exports.default = _default;
+{
+  return {
+    diqu: ["奎文区", "高新区", "潍城区"],
+    index: 0,
+    input: '' };
+
+});exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

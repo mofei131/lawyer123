@@ -160,7 +160,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var cooperTabar = function cooperTabar() {__webpack_require__.e(/*! require.ensure | pages/components/cooperTabar/cooperTabar */ "pages/components/cooperTabar/cooperTabar").then((function () {return resolve(__webpack_require__(/*! @/pages/components/cooperTabar/cooperTabar.vue */ 434));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var lawyercard1 = function lawyercard1() {Promise.all(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/components/lawyercard1/lawyercard1")]).then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 441));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var authMode = function authMode() {__webpack_require__.e(/*! require.ensure | pages/components/authMode/authMode */ "pages/components/authMode/authMode").then((function () {return resolve(__webpack_require__(/*! @/pages/components/authMode/authMode.vue */ 448));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
@@ -241,7 +240,40 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       ttt: null };
 
   },
+  // onReachBottom() {
+  // 		this.searchChange()
+  // 		console.log("滚动")
+  // },
   methods: _objectSpread(_objectSpread({},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   (0, _vuex.mapActions)([
   'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
   'getBussinessTypes',
@@ -328,7 +360,6 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                   e.case_type, cityid = e.cityid, level = e.level, age = e.age;
                   if (_this5.case_type == case_type && _this5.cityid == cityid && _this5.level == level && _this5.age ==
                   age) {
-
                   } else {
                     _this5.lawyerList = [];
                     // this.isMore = true;
@@ -370,6 +401,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
                 uni.hideLoading();
                 console.log(res);
+                _this5.lawyerList = [];
                 if (res && res.data) {
 
                   // this.lawyerList = res.data;
@@ -387,7 +419,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                   }
 
 
-                }case 10:case "end":return _context4.stop();}}}, _callee4);}))();
+                }case 11:case "end":return _context4.stop();}}}, _callee4);}))();
     },
     buy: function buy(e) {
       console.log(e);

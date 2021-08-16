@@ -130,50 +130,74 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
 
 
 
-var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+var _default = { components: { anli: _anli.default }, onLoad: function onLoad(p) {
+    // this.getAnli();
+    // this.name = p.name
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/service/selectCase',
+      methods: 'GET',
+      data: {
+        page: this.page,
+        limit: this.limit,
+        layer_id: '',
+        name: p.name },
 
-{
-  components: {
-    anli: _anli.default },
+      success: function success(res) {
+        console.log(res.data);
+        that.anli = res.data.data;
+        // for(let i in res.dat){
+        // 	that.anli.push(res.data[i])
+        // }
+      } });
 
-  onLoad: function onLoad() {
-    this.getAnli();
+    // let res = await this.$myRequest({
+    // 	url: 'service/selectCase',
+    // 	methods: 'GET',
+    // 	data: {
+    // 		page: this.page,
+    // 		limit: this.limit,
+    // 		layer_id:'',
+    // 		name:p.name
+    // 	}
+    // });
+    // if (res && res.code == 200) {
+    // 	console.log(res.data);
+    // 	this.anli = res.data;
+    // } else {
+    // 	uni.showToast({
+    // 		title: '每日学法数据获取异常',
+    // 		icon: 'none'
+    // 	})
+    // }
   },
   data: function data() {
     return {
       anli: [],
       page: 1,
-      limit: 10 };
+      limit: 10,
+      name: null };
 
   },
   methods: {
-    getAnli: function getAnli() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this.$myRequest({
-                    url: 'service/selectCase',
-                    methods: 'GET',
-                    data: {
-                      page: _this.page,
-                      limit: _this.limit,
-                      layer_id: '' } }));case 2:res = _context.sent;
+    // async getAnli(){
+    // 	let that = this
 
-
-                if (res && res.code == 200) {
-                  console.log(res.data);
-                  _this.anli = res.data;
-                } else {
-                  uni.showToast({
-                    title: '每日学法数据获取异常',
-                    icon: 'none' });
-
-                }case 4:case "end":return _context.stop();}}}, _callee);}))();
-    } } };exports.default = _default;
+    // }
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

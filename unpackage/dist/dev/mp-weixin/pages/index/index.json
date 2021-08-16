@@ -1,5 +1,7 @@
 {
   "navigationStyle": "custom",
+  "onReachBottomDistance": 50,
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "search": "/pages/components/search/search",
     "study": "/pages/components/study/study",

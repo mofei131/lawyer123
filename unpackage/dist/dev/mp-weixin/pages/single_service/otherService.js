@@ -224,7 +224,7 @@ var _default =
                 if (res && res.code == 200) {
                   console.log(res.data.service_id); //只有指个参数
                   uni.navigateTo({
-                    url: '../my/pay?id=' + res.data.service_id + '&price=' + item.price + '&typeId=' + item.id });
+                    url: '../my/pay?id=' + res.data.service_id + '&price=' + item.price + '&typeId=' + item.id + '&name=' + item.name });
 
                 } else {
                   uni.showToast({

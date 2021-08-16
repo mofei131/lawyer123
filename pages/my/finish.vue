@@ -19,15 +19,15 @@
 		methods: {
 
 			back() {
-				if (this.emitName) {
-					uni.$emit(this.emitName, {
-						ispay: true
-					});
-				} else {
+				// if (this.emitName) {
+				// 	uni.$emit(this.emitName, {
+				// 		ispay: true
+				// 	});
+				// } else {
 					uni.switchTab({
 						url: '../index/index'
 					})
-				}
+				// }
 
 			}
 		}

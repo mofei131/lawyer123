@@ -207,44 +207,58 @@ var _default =
 
   },
   methods: {
-    commit: function commit() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this$$data, layer_id, user_id, content, title, address, lng, lat, data, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    submit: function submit() {var _this$$data =
+
+
+
+
+
+
+
+
+      this.$data,layer_id = _this$$data.layer_id,user_id = _this$$data.user_id,content = _this$$data.content,title = _this$$data.title,address = _this$$data.address,lng = _this$$data.lng,lat = _this$$data.lat;
+      if (!layer_id || !user_id) {
+        uni.showToast({
+          title: '用户数据异常，请重新登录',
+          icon: 'none' });
+
+        return;
+      }
+      if (!content || (content + '').trim() == '') {
+        uni.showToast({
+          title: '请输入咨询内容',
+          icon: 'none' });
+
+        return;
+      }
+      if (!title) {
+        uni.showToast({
+          title: '请输入标题！',
+          icon: 'none' });
+
+        return;
+      }
+      if (!address || !lng || !lat) {
+        uni.showToast({
+          title: '请选择事发地址！',
+          icon: 'none' });
+
+        return;
+      }
+      var that = this;
+      uni.showModal({
+        title: '风险友情提示',
+        content: '本次付费为聘请律师的定金费用，律师费差额请转账到山东一二三法律服务集团名下对公账户，否则产生的一切损失由客户自行承担',
+        success: function success(res) {
+          if (res.confirm) {
+            that.commit();
+          }
+        } });
+
+    },
+    commit: function commit() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var data, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+
                 //跳转支付页面
-                _this$$data =
-
-
-
-
-
-
-
-                _this.$data, layer_id = _this$$data.layer_id, user_id = _this$$data.user_id, content = _this$$data.content, title = _this$$data.title, address = _this$$data.address, lng = _this$$data.lng, lat = _this$$data.lat;if (!(
-                !layer_id || !user_id)) {_context.next = 4;break;}
-                uni.showToast({
-                  title: '用户数据异常，请重新登录',
-                  icon: 'none' });return _context.abrupt("return");case 4:if (!(
-
-
-
-                !content || (content + '').trim() == '')) {_context.next = 7;break;}
-                uni.showToast({
-                  title: '请输入咨询内容',
-                  icon: 'none' });return _context.abrupt("return");case 7:if (
-
-
-
-                title) {_context.next = 10;break;}
-                uni.showToast({
-                  title: '请输入标题！',
-                  icon: 'none' });return _context.abrupt("return");case 10:if (!(
-
-
-
-                !address || !lng || !lat)) {_context.next = 13;break;}
-                uni.showToast({
-                  title: '请选择事发地址！',
-                  icon: 'none' });return _context.abrupt("return");case 13:
-
-
 
                 data = {
                   layer_id: layer_id,
@@ -255,13 +269,14 @@ var _default =
                   lng: lng,
                   lat: lat };
 
+
                 console.log(data);
                 uni.showLoading({
-                  title: '正在提交...' });_context.next = 18;return (
+                  title: '正在提交...' });_context.next = 5;return (
 
                   _this.$myRequest({
                     url: 'service/pinqing',
-                    data: data }));case 18:res = _context.sent;
+                    data: data }));case 5:res = _context.sent;
 
                 uni.hideLoading();
                 if (res && res.code == -1) {
@@ -281,7 +296,7 @@ var _default =
                       icon: 'none' });
 
                   }
-                }case 21:case "end":return _context.stop();}}}, _callee);}))();
+                }case 8:case "end":return _context.stop();}}}, _callee);}))();
     },
     searchKeyWord: function searchKeyWord() {var _this2 = this;
       console.log('---' + this.searchAddress);

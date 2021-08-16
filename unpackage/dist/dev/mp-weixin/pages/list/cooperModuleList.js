@@ -159,7 +159,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   onLoad: function onLoad(p) {
@@ -213,19 +212,19 @@ var _default =
 
     },
     toDetail: function toDetail(item) {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                if (item.buy) {
+                // if (item.buy) {
 
-                  uni.navigateTo({
-                    url: '../detail/cooperDetail?coopid=' + item.id });
+                uni.navigateTo({
+                  url: '../detail/cooperDetail?coopid=' + item.id + '&buy=' + item.buy + '&price=' + item.price + '&link=' + item.link });
 
 
-                } else {
-                  uni.showToast({
-                    title: '请先购买',
-                    icon: 'none' });
-
-                }case 1:case "end":return _context2.stop();}}}, _callee2);}))();
-
+                // } else {
+                // 	uni.showToast({
+                // 		title: '请先购买',
+                // 		icon: 'none'
+                // 	})
+                // }
+              case 1:case "end":return _context2.stop();}}}, _callee2);}))();
     },
 
 

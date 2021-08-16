@@ -4,6 +4,9 @@
 			<view class="listitem flex-row mx-start sx-center">
 				<!-- <view v-if="typeInfo[arr.typeId]" class="backImgCenter imggg"
 					:style="{backgroundImage: `url(${typeInfo[arr.typeId].url})`}"></view> -->
+						<image v-if="name != ''" class="imggg" mode="aspectFit" src="@/static/icon/icon7.png"></image>
+						<view v-if="name != ''" style="margin: 0 20rpx;flex:1 1 auto">{{name}}</view>
+						<view v-if="name != ''" >{{price}}</view>
 				<image v-if="typeInfo[arr.typeId]" class="imggg" mode="aspectFit" :src="typeInfo[arr.typeId].url"></image>
 				<view v-if="typeInfo[arr.typeId]" style="margin: 0 20rpx;flex:1 1 auto">{{typeInfo[arr.typeId].name}}</view>
 				<view>￥{{arr.price}}</view>
@@ -17,18 +20,27 @@
 					:src="agreement==true?'../../static/icon/ty1.png':'../../static/icon/ty0.png'"></image>
 			</view>
 			<view class="nowpay">
-				<button @tap="pay()">立即支付</button>
+				<button @tap="show()">立即支付</button>
 			</view>
 		</view>
+		<tankuang :box='box' v-show="hide" v-on:submit="submit" v-on:show="show" v-on:cak="cak"></tankuang>
 	</view>
 </template>
 
 
 
 <script>
+	import tankuang from '../components/tankuang/tankuang.vue'
 	export default {
+		components:{
+			tankuang
+		},
 		data() {
 			return {
+				hide:false,
+				box:{
+					title:'常年法律顾问协议'
+				},
 				emitName:'',
 				typeInfo: {
 					1: {
@@ -79,22 +91,22 @@
 						name: '每日学法',
 						url: '/static/icon/icon7.png'
 					},
-					13: {
-						name: '套餐1',
-						url: '/static/icon/icon7.png'
-					},
-					14: {
-						name: '套餐2',
-						url: '/static/icon/icon7.png'
-					},
-					15: {
-						name: '套餐3',
-						url: '/static/icon/icon7.png'
-					},
-					16: {
-						name: '套餐4',
-						url: '/static/icon/icon7.png'
-					},
+					// 13: {
+					// 	name: '套餐1',
+					// 	url: '/static/icon/icon7.png'
+					// },
+					// 14: {
+					// 	name: '套餐2',
+					// 	url: '/static/icon/icon7.png'
+					// },
+					// 15: {
+					// 	name: '套餐3',
+					// 	url: '/static/icon/icon7.png'
+					// },
+					// 16: {
+					// 	name: '套餐4',
+					// 	url: '/static/icon/icon7.png'
+					// },
 				},
 				arr: {
 					id: '',
@@ -103,6 +115,9 @@
 					typeId: ''
 				},
 				agreement: true,
+				name:'',
+				price:'',
+				id:''
 			}
 		},
 		onLoad(options) {
@@ -112,15 +127,25 @@
 			console.log(options);
 			this.arr.price = options.price;
 			this.emitName = options.emitName;
+			this.name = options.name;
+			this.id = options.id
 		},
 		computed: {
 
 		},
 		methods: {
+			cak(){
+				uni.navigateTo({
+					url:'../components/tankuang/xiyichangnian'
+				})
+			},
+			show(){
+				this.hide = !this.hide
+			},
 			agreementSuccess() {
 				this.agreement = !this.agreement;
 			},
-			async pay() {
+			async submit() {
 				let emitName = this.emitName;
 				
 				console.log(emitName);
@@ -140,7 +165,7 @@
 						methods: 'GET',
 						data: {
 							user_id: this.$store.state.userInfo.user_id,
-							source_id: this.arr.id
+							source_id: this.id
 						}
 					});
 					if (res.code == -1) {

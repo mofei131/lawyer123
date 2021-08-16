@@ -4,7 +4,7 @@
 			@tap="tochat(item)">
 			<view class="floor1">
 				<view>{{item.type}}</view>
-				<view>{{item.title}}</view>
+				<view>{{item.content}}</view>
 			</view>
 			<view class="floor2">
 				<view class="mine">

@@ -4,23 +4,22 @@
 
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;">
 			<view class="flex-column mx-evenly sx-stretch" v-for="(item,index) in dataSource" :key="index"
-				style="flex: 0 0 200rpx;background-color: #FFFFFF;border-radius: 20rpx;padding: 20rpx;margin-bottom: 20rpx;">
-				<view class="ellipsis" style="flex:0 0 auto;width: 200rpx;">
+				style="flex: 0 0 200rpx;background-color: #FFFFFF;border-radius: 20rpx;padding: 20rpx;margin-bottom: 20rpx;" @click="toDetail(item)">
+				<view class="ellipsis" style="flex:0 0 auto;width: 600rpx;">
 					<text>{{item.name}}</text>
 				</view>
-				<view class="ellipsis-3" style="flex: 1 1 auto;font-size: 22rpx;margin:16rpx 0;"
-					@click="toDetail(item)">
+				<view class="ellipsis-3" style="flex: 1 1 auto;font-size: 22rpx;margin:16rpx 0;">
 					{{item.intro}}
 				</view>
 				<view class="flex-row mx-between sx-center" style="flex: 0 0 auto;">
 					<text style="color: #FF4D4F;">￥{{item.price}}</text>
 
-					<view v-if="item.buy"
+					<!-- <view v-if="item.buy"
 						style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
 						已购买</view>
 					<view v-else @tap="toPay(item)"
 						style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
-						立即购买</view>
+						立即购买</view> -->
 				</view>
 			</view>
 		</view>
@@ -83,18 +82,18 @@
 				})
 			},
 			async toDetail(item) {
-				if (item.buy) {
+				// if (item.buy) {
 
 					uni.navigateTo({
-						url: '../detail/cooperDetail?coopid=' + item.id
+						url: '../detail/cooperDetail?coopid=' + item.id+'&buy='+item.buy+'&price='+item.price+'&link='+item.link
 					})
 
-				} else {
-					uni.showToast({
-						title: '请先购买',
-						icon: 'none'
-					})
-				}
+				// } else {
+				// 	uni.showToast({
+				// 		title: '请先购买',
+				// 		icon: 'none'
+				// 	})
+				// }
 
 			},
 			

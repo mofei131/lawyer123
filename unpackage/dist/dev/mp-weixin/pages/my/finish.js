@@ -151,15 +151,15 @@ var _default =
   methods: {
 
     back: function back() {
-      if (this.emitName) {
-        uni.$emit(this.emitName, {
-          ispay: true });
+      // if (this.emitName) {
+      // 	uni.$emit(this.emitName, {
+      // 		ispay: true
+      // 	});
+      // } else {
+      uni.switchTab({
+        url: '../index/index' });
 
-      } else {
-        uni.switchTab({
-          url: '../index/index' });
-
-      }
+      // }
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

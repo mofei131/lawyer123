@@ -34,9 +34,9 @@
 
 			</view>
 		</view>
-		<view class="flex-row mx-start sx-center" style="flex: 0 0 auto;margin: 40rpx 0; color: gray;">
+		<view class="flex-row mx-start sx-center" style="flex: 0 0 auto;margin: 16rpx 0; color: gray;">
 			<view @tap="tuTuwenPage" class="flex-row mx-start sx-center"
-				style="flex: 1 1 auto;padding: 10rpx;background-color: #FFFFFF;margin-right: 20rpx;border-radius: 10rpx;">
+				style="flex: 1 1 auto;padding: 10rpx;background-color: #FFFFFF;margin-right: 20rpx;border-radius: 10rpx; width: 20%;">
 				<!-- <view class="backImgCenter"
 					style="background-image: url(/static/icon/icon1.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
 				</view> -->
@@ -49,10 +49,11 @@
 				<fa-icon type="angle-right" color="gray"></fa-icon>
 			</view>
 			<view @tap="toDianhuaPage" class="flex-row mx-start sx-center"
-				style="flex: 1 1 auto;padding: 10rpx;background-color: #FFFFFF;border-radius: 10rpx">
-				<view class="backImgCenter"
+				style="flex: 1 1 auto;padding: 10rpx;background-color: #FFFFFF;border-radius: 10rpx;width: 20%;">
+				<!-- <view class="backImgCenter"
 					style="background-image: url(/static/icon/icon2.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
-				</view>
+				</view> -->
+				<image style="flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;" mode="aspectFit" src="/static/icon/icon2.png"></image>
 				<view  class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
 					<text>电话沟通</text>
 					<text>{{lawyerList[0] && lawyerList[0].price && lawyerList[0] && lawyerList[0].price.dianhua}}元</text>

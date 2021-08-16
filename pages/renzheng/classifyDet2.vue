@@ -29,14 +29,28 @@
 					</view>
 				</picker>
 			</view>
+			<view class="boder"></view>
+				<view class="intitem">
+					<view class="tips">认证分类：</view>
+					<view class="danxuan">
+						<view class="danxuanleft" @tap="dian1()">
+							<view>律所律师认证：</view>
+							<image :src="dian?icon1:icon2" ></image>
+						</view>
+						<view class="danxuanright" @tap="dian2()">
+							<view>司法从业者认证：</view>
+							<image :src="!dian?icon1:icon2" ></image>
+						</view>
+					</view>
+				</view>
 			<view class="kong"></view>
-			<view class="imgitem">
+			<view class="imgitem" v-if="dian">
 				<view class="imgtitle">请上传执业证书姓名页</view>
 				<image class="classfiyimg" src="../../static/images/classfiyimg2.png" v-if="zhiname == ''" @click="chooseImage(1)"></image>
 				<image class="classfiyimg" :src="zhiname" v-else @click="chooseImage(1)"></image>
 			</view>
-			<view class="imgitem">
-				<view class="imgtitle">请上传执业证书年检页</view>
+			<view class="imgitem" v-if="!dian">
+				<view class="imgtitle">请上传司法从业者证书</view>
 				<image class="classfiyimg" src="../../static/images/classfiyimg3.png" v-if="zhiyear == ''" @click="chooseImage(2)"></image>
 				<image class="classfiyimg" :src="zhiyear" v-else @click="chooseImage(2)"></image>
 			</view>
@@ -56,6 +70,9 @@
 				index2: 0,
 				zhiname:'',
 				zhiyear:'',
+				dian:true,
+				icon1:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAA0hJREFUWEftmE1sFGUYx3//WSgSPCgqSkzwgAkJ8UQChGLZ7R7gJBJJZwgRU6g3bk1AiT3WIJJw8yYfQUKYaTCAJzhsZykfQRJOhMTEHiQxQOXDgwZau/OYaba6HXe7s13QieG9zvs883v/z8f7ITI+lHE+ngO2G6H/v4KFwF50jFWT8HZOvBQBZvw6D36MxI3Q1W/tqDgnBVcG1rEEtmN8BLwLzI8hDGK+OLGdKtQfwCXE8TE4ecvVRKuwLQMWfPsQsR9404zrjsPpyBh5AX4438OjGGDTEC8/gRWO6IoitkqsBn7G2Bd6OtEKZGrAdYEtXABHMTzgsuCTYU+X0/ys27f1BgeA9Qh/HHZedfU4jW0qwK7TtjRX4TuMdxC7Q1eH0zhPzikE1ofxFeJmJcd7I1t1p5mfpoBV5UYwljkOW0o9utLM6Wzfi0PWGUWcQdweh65mSjYFLAR2CmOL41BsF24avApZQpwJXW2bbUGzAk4VBHyD+LhRWIunbHnksBNjI7Cs+rPbiAtOxNHSNo3WA6iG+2tgx2yF0xCw2kpGMX4KPcWtZMboCSz3Cwya0S/oqAdhMCFx6DUYGHJV+UdO+ha3oLfGYHmjFtQQsBBYL3BERleyWmO4+/CtGZvT5KPEuVfhgyTkVHWLEWBX6OpYPV+NAX0rGSwqe1pbpxr3Y3yaBu6vOeKL0NW+pE3et2uC30NPxdSA8faF8VAOA8M9+rLWMM65irjVKKyNoONw54yVyZzsHrK9FjGIWFxvW6yrYNG3DRGUTXSWXV2t/WkhsEGMz1pSb3qy+Dx0NVBrmw9snYwrDuRLni4m/dYF3ODbLgcOLxCvnHf1cAagb9/D1NY1l3E99LSm1nBTYIvHjQcR9F30dCQVYHdg/ZFxsOwyD8kSgHeB1+dCB9wLPb0xw9ZM+YBJR+wZdnUoFWA+sH7+ZUDEnnJawMyHOPNFkvk2EydqIcuNegow61td5g8L1TBn97g13TDzvvmC95/FgdXgbNlTfMdpOJqeqDN/5I+XlulL07T2sZIdxjGB28610yCYEL3NLkt/H4Ba3PUze3GvXUemnz6Sgicfj+Lvlf/68ajFrGhretM205b3p2D8HLBdETOv4J+xogtHzKYMwwAAAABJRU5ErkJggg==',
+				icon2:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAApCAYAAABHomvIAAAAAXNSR0IArs4c6QAAAq9JREFUWEftmDFoFEEUht9bs4HDBNSgQbl0QhALLQ4VbCwsEjlzs3uyiGAKCxOwEARFsEkjCoKQQshZWEQUWbybuRgvB1rYCCLXWKgELA8likZIJHAb95eFBELI3c1eiJnipt1/5n37v5l9b5bJ8MGG81EbcLMZajvYdrCRA9PT07uXl5cHiSgF4AAzd0V6AIvM/JWIKh0dHTPpdHq+VSdb2oP5fD5pWdYYM3sA3hFRCcBHZv6xAriXmQ8T0RlmPgHAD8NwLJvNVuOCxgIEwFNTU7cAXAUwYdv2/WbuRC4HQXCNmUeZeXxoaOg2M0MXVBvQ9/0u27YfE9GuRCJxYWBg4JtukEhXLpf3Ly0tPSWi30EQXPQ8b1FnvhZgpVKxq9XqayKanZubuzIyMhLoLL5ek8vl7N7e3gdE1J9MJk+nUqmm62gBKqUeAugRQpyLk56NXiLaJkqp58z8UwhxudmLNgVUSp0FcHdhYeHY8PDwn2YL6jyfnJzc2d3d/Z6ZbwohXjSa0xDQ9/0dnZ2dHwBcdxxnRie4rkZKOcjM92q12hHP8/7Wm9cQsFgsng/DcNRxnFO6gePopJRvLMuayGQyz1oClFK+tCwrn8lkHsUJrKstFouXALhCiHRswCi9tm3PAzjouu533aBxdIVCYR8zf+nr6+upd6LrprhUKiVrtdorIcShOEHjapVSn4koK4T4tNHcuoBSyqPMfEcIEdXaLRtKqZkwDMdd1y3HAlRKHQdww3Gc7JbREZGUMg/gieu6hViAxjto/B40/hRH+8Ho72AEaHwlMb4WRy4a3c2sfpeM7gcjSOM76gjS6DvJaqqNvtWtrZPG3ovXF/M1fxZOAugnoj0rml/MPEtEb7flz8JWdjfr1256q/ufMLHare0GW43fdnCzmWg7uFkH/wH4Vq45pse57gAAAABJRU5ErkJggg==',
 			}
 		},
 		onLoad(){
@@ -74,6 +91,12 @@
 			})
 		},
 		methods:{
+			dian1(){
+				this.dian = !this.dian
+			},
+			dian2(){
+				this.dian = !this.dian
+			},
 			chooseImage(e) {
 				let that = this
 							uni.chooseImage({
@@ -117,16 +140,16 @@
 					})
 					return
 				}
-				if (!this.zhiname) {
+				if (!this.zhiname && this.dian) {
 					uni.showToast({
 						title: '请上传执业证书姓名页',
 						icon: 'none',
 					})
 					return
 				}
-				if (!this.zhiyear) {
+				if (!this.zhiyear && !this.dian) {
 					uni.showToast({
-						title: '请上传执业证书年限页',
+						title: '请上传司法从业者证书',
 						icon: 'none',
 					})
 					return
@@ -152,6 +175,24 @@
 </script>
 
 <style>
+	.danxuan{
+		display: flex;
+		justify-content: space-between;
+		font-size: 24rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #5D6168;
+	}
+	.danxuanleft,.danxuanright{
+		display: flex;
+	}
+	.danxuanright{
+		margin-left: 70rpx;
+	}
+	.danxuanleft image,.danxuanright image{
+		width: 40rpx;
+		height: 40rpx;
+	}
 	page{
 		background: #F4F7F7;
 	}

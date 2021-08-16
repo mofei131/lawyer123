@@ -230,6 +230,7 @@
 				console.log(msg);
 				console.log(this.$store.state.userInfo.user_id);
 				console.log(this.source_id);
+				this.checkOpenSocket();
 				uni.sendSocketMessage({
 					data: JSON.stringify({
 						"action": "sendMessage",
@@ -281,16 +282,16 @@
 							this.userAvator = item.user.avater;
 						}
 						if (item.user_id != this.user_id && (!this.lawyerAvator || !this.lawyerName)) {
-							this.lawyerName = item.layer_name;
-							this.lawyerAvator = item.layer_photo;
+							this.lawyerName = item.user.name;
+							this.lawyerAvator = item.user.avater;
 						}
 						let d = {
 							group: 'group1',
 							uindex: item.user_id,
-							uname: item.user_id == this.user_id ? item.user.name : item.layer_name,
+							uname: item.user_id == this.user_id ? item.user.name : item.user.name,
 							contentType: 'txt',
 							content: item.message || '',
-							uface: item.user_id == this.user_id ? item.user.avater : item.layer_photo
+							uface: item.user_id == this.user_id ? item.user.avater : item.user.avater
 						};
 						this.msgs.push(d);
 					})

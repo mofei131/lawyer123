@@ -44,6 +44,7 @@
 .address{
 	color: rgba(102,102,102,1);
 	font-size: 20rpx;
+	margin-top: 5rpx;
 }
 .begood{
 	width: 240rpx;

@@ -166,15 +166,34 @@ var _default =
 
 
               console.log(res.data);
-              _this.dataSource = res.data;case 11:case "end":return _context.stop();}}}, _callee);}))();
+              _this.dataSource = res.data;
+              _this.zhuanhua = _this.formatRichText(_this.dataSource.content);case 12:case "end":return _context.stop();}}}, _callee);}))();
+
 
   },
   data: function data() {
     return {
-      dataSource: {} };
+      dataSource: {},
+      zhuanhua: '' };
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    formatRichText: function formatRichText(html) {
+      var newContent = html.replace(/<img[^>]*>/gi, function (match, capture) {
+        match = match.replace(/style="[^"]+"/gi, '').replace(/style='[^']+'/gi, '');
+        match = match.replace(/width="[^"]+"/gi, '').replace(/width='[^']+'/gi, '');
+        match = match.replace(/height="[^"]+"/gi, '').replace(/height='[^']+'/gi, '');
+        return match;
+      });
+      newContent = newContent.replace(/style="[^"]+"/gi, function (match, capture) {
+        match = match.replace(/width:[^;]+;/gi, 'max-width:100%;').replace(/width:[^;]+;/gi, 'max-width:100%;');
+        return match;
+      });
+      newContent = newContent.replace(/<br[^>]*\/>/gi, '');
+      newContent = newContent.replace(/\<img/gi,
+      '<img style="max-width:100%;height:auto;display:inline-block;margin:10rpx auto;"');
+      return newContent;
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

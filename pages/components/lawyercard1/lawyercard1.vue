@@ -7,7 +7,7 @@
 				<view class="backImgCenter avator"
 					:style="{backgroundImage: `url(${item.photo||'/static/icon/girl.png'})`}">
 				</view>
-				<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;line-height: 40rpx;">
+				<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;line-height: 40rpx;width: 500rpx;">
 					<view class="flex-row mx-start sx-center">
 						<text
 							style="font-size: 26rpx;">{{item.name}}</text>
@@ -17,21 +17,23 @@
 								style="color: #FFFFFF;height: 26rpx;line-height: 26rpx;text-align: center;font-size: 17rpx;">{{item.type_text && item.type_text.name}}</text>
 						</view>
 						
-						<view v-if="item.busy_text" class="flex-row mx-end sx-center" style="flex:1 1 auto">
+						<view v-if="item.busy" class="flex-row mx-end sx-center" style="flex:1 1 auto">
 							<view class="statuSDot"
-								:style="{backgroundColor: item.busy_text.id==1?'green': 'rgba(255,77,79,1)'}">
+								:style="{backgroundColor: item.busy==1?'green': 'red'}">
 							</view>
-							<text v-if="item.busy_text.id==1"
-								style="margin-left:8rpx;color: green;font-size: 20rpx;">{{item.busy_text.name}}</text>
-							<text v-else
-								style="margin-left:8rpx;color: red;font-size: 20rpx;">{{item.busy_text.name}}</text>
+							<text v-if="item.busy==1"
+								style="margin-left:8rpx;color: green;font-size: 20rpx;">在线</text>
+							<text v-else-if="item.busy==2"
+								style="margin-left:8rpx;color: red;font-size: 20rpx;">开庭</text>
+								<text v-else-if="item.busy==3"
+									style="margin-left:8rpx;color: red;font-size: 20rpx;">忙碌</text>
 						</view>
 					</view>
 					<view class="flex-row mx-between sx-center">
 						<view class="ellipsis" style="width: 512rpx;font-size: 22rpx;color: rgba(102,102,102,1);">
 							{{item.jianjie}}
 						</view>
-						<view v-if="follow" @tap.stop="guanzhu(item)" style="padding: 0 10rpx;font-size: 22rpx;flex: 0 0 auto ;border-radius: 16rpx;background-color: #6bc1f3;color: #FFFFFF;">{{item.follow==1?'取消关注':'关注'}}</view>
+						<view v-if="follow" @tap.stop="guanzhu(item)" style="padding: 0 16rpx;font-size: 22rpx;flex: 0 0 auto ;border-radius: 40rpx;background-color: #6bc1f3;color: #FFFFFF;box-sizing: border-box;">{{item.follow==1?'取消关注':'关注'}}</view>
 						
 					
 					</view>

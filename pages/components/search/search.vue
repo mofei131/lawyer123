@@ -6,7 +6,7 @@
 		 	</view>
 			<view class="search">
 				<image src="@/static/images/search.png"></image>
-				<input type="text" v-model="input" placeholder="请输入搜索内容" placeholder-style="color:#fff;font-size:28rpx;"/>
+				<input type="text" v-model="input" @change="inputChange" @input="searchName" placeholder="请输入搜索内容" placeholder-style="color:#fff;font-size:28rpx;"/>
 			</view>
 		 </view>
 	 </view>
@@ -19,9 +19,35 @@
 		components:{
 			pickcity
 		},
+		data(){
+			return{
+				ttt:null,
+				input:''
+			}
+		},
 		methods:{
 			getCity(e){
 				console.log(e);
+			},
+			searchName() {
+				// this.isMore = true;
+				if (this.ttt) {
+					clearTimeout(this.ttt);
+				}
+				this.ttt = setTimeout(item => {
+					this.searchChange()
+					// console.log("点击")
+				}, 1000)
+			},
+			inputChange(){
+				this.searchChange();
+				// console.log("搜索")
+			},
+			searchChange(){
+				// console.log(this.input)
+				uni.navigateTo({
+					url:'../list/moreAnli?name='+this.input
+				})
 			}
 		},
 		data(){
