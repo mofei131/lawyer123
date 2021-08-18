@@ -159,19 +159,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   onLoad: function onLoad(p) {
     console.log(p);
     var userInfo = this.$store.state.userInfo;
     console.log(userInfo);
-    // if (!p || !p.cid || !p.name || !userInfo) {
-    // 	uni.showToast({
-    // 		title: '参数有误！',
-    // 		icon: 'none'
-    // 	})
-    // 	return;
-    // }
+    if (!p || !p.cid || !userInfo) {
+      uni.showToast({
+        title: '参数有误！',
+        icon: 'none' });
+
+      return;
+    }
     this.id = p.cid;
     this.user_id = userInfo.user_id;
     this.drawInit(p.cid, p.name);

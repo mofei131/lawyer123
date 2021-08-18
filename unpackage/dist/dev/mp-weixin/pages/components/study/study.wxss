@@ -4,7 +4,7 @@
 	/* border-radius: 20rpx; */
 	padding: 20rpx;
 }
-..studyitem:last-child{
+..studyitem:last-child {
 	border-radius: 0 0 14rpx 14rpx;
 }
 .studyitemleft image {
@@ -23,7 +23,7 @@
 	display: flex;
 	position: relative;
 	margin-bottom: 34rpx;
-	
+
 	/* border: 1px solid; */
 }
 .studytitle {
@@ -44,14 +44,11 @@
 	line-height: 26rpx;
 }
 .figure {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: flex;
 	color: #999999;
 	font-size: 21rpx;
 	-webkit-box-flex: 0;
-	-webkit-flex: 0 0 40rpx;
-	        flex: 0 0 40rpx;
+	-webkit-flex: 0 0 auto;
+	        flex: 0 0 auto;
 }
 .figure view:nth-child(2) {
 	margin-left: 18rpx;

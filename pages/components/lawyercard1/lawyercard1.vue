@@ -19,7 +19,7 @@
 						
 						<view v-if="item.busy" class="flex-row mx-end sx-center" style="flex:1 1 auto">
 							<view class="statuSDot"
-								:style="{backgroundColor: item.busy==1?'green': 'red'}">
+								:style="{backgroundColor: item.busy==1?'#26CD93': 'red'}">
 							</view>
 							<text v-if="item.busy==1"
 								style="margin-left:8rpx;color: green;font-size: 20rpx;">在线</text>
@@ -46,7 +46,7 @@
 					<view class="flex-row mx-between sx-center"
 						style="flex: 0 0 auto;font-size: 20rpx;color: rgba(153,153,153,1);">
 						<view class="flex-row">职业年限：{{item.zhiyenianxian && item.zhiyenianxian.name}}</view>
-						<view class="flex-row">案例：<text style="color: red;">{{item.case_num}}</text>件</view>
+						<view class="flex-row">已咨询：<text style="color: red;">{{item.case_num}}</text>件</view>
 						<view class="flex-row">好评：<text style="color: red;">{{praise||0}}</text>次</view>
 					</view>
 
@@ -221,7 +221,6 @@
 <style>
 	.list-item {
 		padding: 20rpx;
-		;
 		flex: 0 0 auto;
 		background-color: #FFFFFF;
 		border-radius: 20rpx;
@@ -231,10 +230,19 @@
 		width: 14rpx;height: 14rpx;border-radius: 50%
 	}
 	.serviceBtn {
-		border: 2rpx solid #4CA2FF;
+		/* border: 2rpx solid #4CA2FF;
 		padding: 0 5rpx;
 		font-size: 28rpx;
-		color: #4CA2FF;
+		color: #4CA2FF; */
+		width: 150rpx;
+		border-radius: 4rpx;
+		border: 1px solid #40A9FF;
+		font-size: 21rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #40A9FF;
+		padding-top: 8rpx;
+		padding-bottom: 8rpx;
 	}
 
 	.field {

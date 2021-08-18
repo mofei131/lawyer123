@@ -2,10 +2,7 @@
 	<view>
 		<!-- 页面主体 -->
 		<view class="flex-column mx-center sx-center" style="width: 100%;  background-color: #FFFFFF;">
-
-
 			<view style="width: 100%;">
-
 				<!-- IM 消息展示区 -->
 				<gui-im-message background="#ffffff" :msgs="msgs" group="group1" :userid="user_id">
 				</gui-im-message>
@@ -40,10 +37,6 @@
 			this.layer_id = p.layer_id;
 			this.user_id = this.$store.state.userInfo.user_id;
 			console.log('用户id：',this.user_id);
-			// this.isSelf = this.user_id == this.$store.state.userInfo.user_id;
-
-
-
 			if (this.$store.state.websocketConnect) {
 				uni.sendSocketMessage({
 					data: JSON.stringify({
@@ -84,9 +77,6 @@
 			} else {
 				this.checkOpenSocket();
 			}
-
-
-
 		},
 		onShow() {
 			this.getMessage(this.source_id);
@@ -101,7 +91,6 @@
 				userAvator: '',
 				lawyerName: '',
 				lawyerAvator: '',
-				isSelf: true,
 				page: 1,
 				limit: 10,
 				user_id: '',
@@ -196,8 +185,6 @@
 						uname: data.user_id == this.user_id ? this.userName : this.lawyerName,
 						content: data.message,
 						uface: data.user_id == this.user_id ? this.$store.state.userInfo.avater : this.lawyerAvator || "https://layer.boyaokj.cn/upload/20210813/1b54fb67409ad93d2eaf28ea20faa644.jpg"
-						
-
 					};
 					this.msgs.push(item);
 				}
@@ -251,10 +238,6 @@
 						this.openConnection()
 					}
 				});
-
-
-
-
 			},
 			// 滚动条滚动 [ 有新消息可以自动滚动到底部 ]
 			pageScroll: function() {

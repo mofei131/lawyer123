@@ -70,7 +70,7 @@
 			<anli :anli="anli"></anli>
 
 		</view>
-		<view class="flex-row mx-center sx-center">
+		<!-- <view class="flex-row mx-center sx-center">
 			<view class="flex-txt-center" @tap="tuTuwenPage"
 				style="flex: 1 1 auto;margin: 20rpx;height: 60rpx;border-radius:30rpx;background-color: rgba(255,96,96,1);;color: #FFFFFF;">
 				图文咨询
@@ -79,7 +79,7 @@
 				style="flex: 1 1 auto;margin: 20rpx;height: 60rpx;border-radius:30rpx;background-color: #57A9FF;color: #FFFFFF;">
 				电话咨询
 			</view>
-		</view>
+		</view> -->
 
 
 	</view>
@@ -140,6 +140,7 @@
 				});
 				res.then(data => {
 					if (data.code == 200) {
+						console.log("律师详情")
 						console.log(data);
 						this.lawyerList.push(data.data)
 					} else {

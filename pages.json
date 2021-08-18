@@ -136,7 +136,8 @@
 			"path": "pages/list/moreAnli",
 			"style": {
 				"navigationBarTitleText": "更多案例",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance":50
 			}
 
 		}, {
@@ -152,7 +153,8 @@
 			"path": "pages/list/moreStudy",
 			"style": {
 				"navigationBarTitleText": "每日学法",
-				"enablePullDownRefresh": false
+				"onReachBottomDistance": 50,
+				"enablePullDownRefresh": true
 			}
 
 		}, {

@@ -143,6 +143,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   props: {
@@ -189,7 +190,8 @@ var _default =
                   console.log(res);
 
                   uni.navigateTo({
-                    url: '../my/pay?id=' + res.data.service_id + '&price=' + item.price + '&typeId=12' + "&emitName=goCoodetail" });
+                    url: '../my/pay?id=' + res.data.service_id + '&price=' + item.price + '&typeId=12' +
+                    "&emitName=goCoodetail" });
 
                   uni.$on('goCoodetail', function (res) {
                     uni.navigateTo({

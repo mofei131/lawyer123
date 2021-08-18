@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "每日学法",
-  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 50,
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "study": "/pages/components/study/study"
   }

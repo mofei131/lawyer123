@@ -16,8 +16,8 @@
 			</view>
 			<view class="anliborder" v-if="index<anli.length-1 && showBottomBorder"></view>
 		</view>
-		<view v-if="anli.length<1" class="flex-txt-center" style="height: 120rpx;width: 100%;color: gray;font: 36rpx;">
-			没有案例哦~</view>
+		<!-- <view v-if="anli.length<1" class="flex-txt-center" style="height: 120rpx;width: 100%;color: gray;font: 36rpx;">
+			没有案例哦~</view> -->
 	</view>
 </template>
 

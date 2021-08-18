@@ -383,6 +383,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
               if (!uni.getStorageSync('move')) {
                 _this.xian = !_this.xian;
               }case 14:case "end":return _context.stop();}}}, _callee);}))();
+
   },
   computed: _objectSpread({},
 

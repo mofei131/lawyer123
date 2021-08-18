@@ -14,7 +14,7 @@
 					</view>
 				</view>
 				
-				<view class="block2" v-for="(item,index) in dataSource" :key="index">
+				<view class="block2" v-for="(item,index) in dataSource" :key="index" @tap="toPay(item)">
 					<view class="group7">
 						<text lines="1" decode="true" class="info4">～&nbsp;套餐{{index+1}}&nbsp;～</text>
 						<view class="bd1"></view>
@@ -26,9 +26,9 @@
 					</view>
 					<view class="flex-row mx-between sx-center" style="width: 664rpx;;padding: 10rpx 20rpx;">
 						<text style="color: #FF4D4F;">￥{{item.price}}</text>
-						<view @tap="toPay(item)"
+						<!-- <view 
 							style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
-							立即购买</view>
+							立即购买</view> -->
 					</view>
 				</view>
 

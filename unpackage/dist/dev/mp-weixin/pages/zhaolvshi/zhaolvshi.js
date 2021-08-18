@@ -180,12 +180,6 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
     lawyercard1: lawyercard1,
     authMode: authMode },
 
-  // <<<<<<< HEAD
-  // 		onShow() {
-  // 			if (!this.$store.state.userInfo) {
-  // 				this.$refs.authMode.open()
-  // 				this.getWxCode();
-  // =======
   onShow: function onShow() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
               userInfo = _this2.$store.state.userInfo;
               console.log(userInfo);if (!(
@@ -194,7 +188,6 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
               if (res.hasUserInfo) {
                 _this2.$refs.authMode.open();
               }case 7:case "end":return _context.stop();}}}, _callee);}))();
-
 
   },
   computed: _objectSpread({},
@@ -240,40 +233,47 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       ttt: null };
 
   },
-  // onReachBottom() {
-  // 		this.searchChange()
-  // 		console.log("滚动")
+  // onPageScroll(e) {
+  // 	//兼容iOS端下拉时顶部漂移
+  // 	this.headerPosition = e.scrollTop>=0?"fixed":"absolute";
+  // 	this.headerTop = e.scrollTop>=0?null:0;
+  // 	this.statusTop = e.scrollTop>=0?null:-this.statusHeight+'px';
   // },
-  methods: _objectSpread(_objectSpread({},
+  //下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
+  onPullDownRefresh: function onPullDownRefresh() {
+    this.isMore = true;
+    this.page = 1;
+    this.lawyerList = [];
+    this.searchChange();
+    setTimeout(function () {
+      uni.stopPullDownRefresh();
+    }, 1000);
+  },
+  //上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
+  onReachBottom: function onReachBottom() {
+    this.isMore = true;
+    uni.showNavigationBarLoading();
+    this.searchChange();
+    setTimeout(function () {
+      uni.hideNavigationBarLoading();
+    }, 500);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  },
+  // 上拉加载
+  // onReachBottom() {
+  // 	let _self = this
+  // 	uni.showNavigationBarLoading()
+  // 	console.log('reach');
+  // 	setTimeout(function() {
+  // 		_self.page++;
+  // 		_self.searchChange();
+  // 		uni.hideNavigationBarLoading()
+  // 	}, 2000);
+  // },
+  methods: _objectSpread(_objectSpread({
+    updateFollow: function updateFollow(fllow) {
+      this.lawyerList[0].follow = fllow == 1 ? 0 : 1;
+    } },
   (0, _vuex.mapActions)([
   'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
   'getBussinessTypes',
@@ -310,32 +310,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
     },
 
-    // onPageScroll(e) {
-    // 	//兼容iOS端下拉时顶部漂移
-    // 	this.headerPosition = e.scrollTop>=0?"fixed":"absolute";
-    // 	this.headerTop = e.scrollTop>=0?null:0;
-    // 	this.statusTop = e.scrollTop>=0?null:-this.statusHeight+'px';
-    // },
-    //下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
-    onPullDownRefresh: function onPullDownRefresh() {
-      uni.showToast({
-        title: '刷新',
-        icon: 'none' });
 
-      this.isMore = true;
-      this.searchChange();
-      setTimeout(function () {
-        uni.stopPullDownRefresh();
-      }, 1000);
-    },
-    //上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
-    onReachBottom: function onReachBottom() {
-      // if (this.isMore) {
-      // 	this.page = this.page + 1;
-      // 	this.limit = this.limit + 10;
-      // 	this.searchChange()
-      // }
-      return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:case "end":return _context3.stop();}}}, _callee3);}))();},
     searchName: function searchName() {var _this4 = this;
       // this.isMore = true;
       if (this.ttt) {
@@ -348,31 +323,29 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
     inputChange: function inputChange() {
       this.searchChange();
     },
-    searchChange: function searchChange(e) {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var case_type, cityid, level, age, res, _iterator, _step, _loop;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
-                console.log('----请求律师列表的信息 ------>');
+    searchChange: function searchChange(e) {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var case_type, cityid, level, age, res, _iterator, _step, _loop;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                console.log('----请求律师列表的信息 ------>');if (!
 
-                if (e) {
+                e) {_context3.next = 14;break;}
 
-                  case_type =
-
-
-
-                  e.case_type, cityid = e.cityid, level = e.level, age = e.age;
-                  if (_this5.case_type == case_type && _this5.cityid == cityid && _this5.level == level && _this5.age ==
-                  age) {
-                  } else {
-                    _this5.lawyerList = [];
-                    // this.isMore = true;
-                    _this5.case_type = case_type;
-                    _this5.cityid = cityid;
-                    _this5.level = level;
-                    _this5.age = age;
-                  }
+                case_type =
 
 
 
+                e.case_type, cityid = e.cityid, level = e.level, age = e.age;if (!(
+                _this5.case_type == case_type && _this5.cityid == cityid && _this5.level == level && _this5.age ==
+                age)) {_context3.next = 7;break;}return _context3.abrupt("return");case 7:
 
-                }
+
+                _this5.lawyerList = [];
+                _this5.isMore = true;
+                _this5.page = 1;
+                _this5.case_type = case_type;
+                _this5.cityid = cityid;
+                _this5.level = level;
+                _this5.age = age;case 14:
+
+
                 uni.showLoading({
                   title: '加载中' });
 
@@ -383,7 +356,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                   case_type: _this5.case_type,
                   cityid: _this5.cityid,
                   level: _this5.level,
-                  age: _this5.age });_context4.next = 6;return (
+                  age: _this5.age });_context3.next = 18;return (
 
                   _this5.$myRequest({
                     url: 'layer/list',
@@ -396,16 +369,17 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                       cityid: _this5.cityid,
                       level: _this5.level,
                       age: _this5.age,
-                      service_id: '' } }));case 6:res = _context4.sent;
+                      service_id: '' } }));case 18:res = _context3.sent;
 
 
                 uni.hideLoading();
+                console.log("律师列表");
                 console.log(res);
-                _this5.lawyerList = [];
                 if (res && res.data) {
 
                   // this.lawyerList = res.data;
-                  if (res.data.length > 0) {_iterator = _createForOfIteratorHelper(
+                  if (res.data.length > 0) {
+                    console.log('有数据');_iterator = _createForOfIteratorHelper(
                     res.data);try {_loop = function _loop() {var s = _step.value;
                         console.log(s.id);
                         var f = _this5.lawyerList.find(function (item2) {return item2.id == s.id;});
@@ -413,13 +387,14 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                           _this5.lawyerList.push(s);
                         }};for (_iterator.s(); !(_step = _iterator.n()).done;) {_loop();
                       }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
-
+                    _this5.page += 1;
                   } else {
-                    // this.isMore = false;
+                    console.log('无数据');
+                    _this5.isMore = false;
                   }
+                  console.log(_this5.lawyerList);
 
-
-                }case 11:case "end":return _context4.stop();}}}, _callee4);}))();
+                }case 23:case "end":return _context3.stop();}}}, _callee3);}))();
     },
     buy: function buy(e) {
       console.log(e);

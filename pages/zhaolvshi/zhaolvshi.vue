@@ -1,20 +1,20 @@
 <template>
-	<view class="flex-column mx-start sx-stretch" :style="{backgroundColor: '#F4F7F7',height: getWindowHeight}">
-		<view class="head" style="">
+	<view class="flex-column mx-start sx-stretch" :style="{backgroundColor: '#F4F7F7',minHeight: getWindowHeight}">
+		<view class="head" style="position: fixed;top: 0;left: 0;margin: auto;">
 			<view class="search">
 				<image src="@/static/images/search.png"></image>
-				<input type="text" v-model="name" @input="searchName" @change="inputChange"  placeholder="请输入搜索内容"
+				<input type="text" v-model="name" @input="searchName" @change="inputChange" placeholder="请输入搜索内容"
 					placeholder-style="color:#fff;font-size:20rpx;" />
 			</view>
 		</view>
-		<cooperTabar @searchChange="searchChange"></cooperTabar>
-		<view class="flex-column mx-start sx-stretch" style="flex: 1 1 auto;padding: 20rpx;overflow: auto;">
+		<cooperTabar @searchChange="searchChange" style="position: fixed;top: 156rpx;width: 100%;left: 0;margin: auto;"></cooperTabar>
+		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;overflow: auto;margin-top: 256rpx;">
 
 
-			<lawyercard1 :zixun="true" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
+			<lawyercard1 :zixun="true" @updatefollow="updateFollow" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
 
-		<!-- 	<view v-if="!isMore" style="text-align: center;font-size: 36rpx;color: gray;margin-top: 20rpx;">
-				没有数据了，切换选择试试!</view> -->
+			<view v-if="!isMore" style="text-align: center;font-size: 36rpx;color: gray;margin-top: 20rpx;">
+				没有数据了，切换选择试试!</view>
 
 		</view>
 		<authMode @confirm="authorTap" @backindex="backIndex" ref="authMode"></authMode>
@@ -48,12 +48,6 @@
 			lawyercard1,
 			authMode
 		},
-// <<<<<<< HEAD
-// 		onShow() {
-// 			if (!this.$store.state.userInfo) {
-// 				this.$refs.authMode.open()
-// 				this.getWxCode();
-// =======
 		async onShow() {
 			let userInfo = this.$store.state.userInfo;
 			console.log(userInfo);
@@ -62,7 +56,6 @@
 				if (res.hasUserInfo) {
 					this.$refs.authMode.open()
 				}
-
 			}
 		},
 		computed: {
@@ -108,40 +101,47 @@
 				ttt: null,
 			}
 		},
+		// onPageScroll(e) {
+		// 	//兼容iOS端下拉时顶部漂移
+		// 	this.headerPosition = e.scrollTop>=0?"fixed":"absolute";
+		// 	this.headerTop = e.scrollTop>=0?null:0;
+		// 	this.statusTop = e.scrollTop>=0?null:-this.statusHeight+'px';
+		// },
+		//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
+		onPullDownRefresh() {
+			this.isMore = true;
+			this.page = 1;
+			this.lawyerList = [];
+			this.searchChange();
+			setTimeout(function() {
+				uni.stopPullDownRefresh();
+			}, 1000);
+		},
+		//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
+		onReachBottom() {
+			this.isMore = true;
+			uni.showNavigationBarLoading();
+			this.searchChange();
+			setTimeout(function() {
+				uni.hideNavigationBarLoading()
+			}, 500);
+
+		},
+		// 上拉加载
 		// onReachBottom() {
-		// 		this.searchChange()
-		// 		console.log("滚动")
+		// 	let _self = this
+		// 	uni.showNavigationBarLoading()
+		// 	console.log('reach');
+		// 	setTimeout(function() {
+		// 		_self.page++;
+		// 		_self.searchChange();
+		// 		uni.hideNavigationBarLoading()
+		// 	}, 2000);
 		// },
 		methods: {
-			// searchChange(e) {
-			// 			let that = this
-			// 			that.page++
-			// 			console.log("加载")
-			// 			uni.request({
-			// 				url:'https://layer.boyaokj.cn/api/layer/list',
-			// 				method:'GET',
-			// 				data:{
-			// 					page: that.page,
-			// 					limit: that.limit,
-			// 					name: that.name,
-			// 					case_type: that.case_type,
-			// 					cityid: that.cityid,
-			// 					level: that.level,
-			// 					age: that.age,
-			// 					service_id: ''
-			// 				},
-			// 				success(res) {
-			// 					for(let i in res.data){
-			// 						that.lawyerList.push(res.data[i])
-			// 					}
-			// 				},fail(res){
-			// 					uni.showToast({
-			// 						title: '没有更多了'
-			// 					})
-			// 				}
-			// 			})
-			// 		},
-			
+			updateFollow(fllow){
+				this.lawyerList[0].follow = fllow==1?0:1;
+			},
 			...mapActions([
 				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
 				'getBussinessTypes',
@@ -178,32 +178,7 @@
 				}
 			},
 
-			// onPageScroll(e) {
-			// 	//兼容iOS端下拉时顶部漂移
-			// 	this.headerPosition = e.scrollTop>=0?"fixed":"absolute";
-			// 	this.headerTop = e.scrollTop>=0?null:0;
-			// 	this.statusTop = e.scrollTop>=0?null:-this.statusHeight+'px';
-			// },
-			//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
-			onPullDownRefresh() {
-				uni.showToast({
-					title: '刷新',
-					icon: 'none'
-				});
-				this.isMore = true;
-				this.searchChange()
-				setTimeout(function() {
-					uni.stopPullDownRefresh();
-				}, 1000);
-			},
-			//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
-			async onReachBottom() {
-				// if (this.isMore) {
-				// 	this.page = this.page + 1;
-				// 	this.limit = this.limit + 10;
-				// 	this.searchChange()
-				// }
-			},
+
 			searchName() {
 				// this.isMore = true;
 				if (this.ttt) {
@@ -213,7 +188,7 @@
 					this.searchChange()
 				}, 1000)
 			},
-			inputChange(){
+			inputChange() {
 				this.searchChange();
 			},
 			async searchChange(e) {
@@ -228,18 +203,16 @@
 					} = e;
 					if (this.case_type == case_type && this.cityid == cityid && this.level == level && this.age ==
 						age) {
-					} else {
+							return;
+						} else {
 						this.lawyerList = [];
-						// this.isMore = true;
+						this.isMore = true;
+						this.page = 1;
 						this.case_type = case_type;
 						this.cityid = cityid;
 						this.level = level;
 						this.age = age;
 					}
-
-
-					
-
 				}
 				uni.showLoading({
 					title: '加载中'
@@ -268,12 +241,13 @@
 					}
 				});
 				uni.hideLoading();
+				console.log("律师列表")
 				console.log(res);
-				this.lawyerList = []
 				if (res && res.data) {
 
 					// this.lawyerList = res.data;
 					if (res.data.length > 0) {
+						console.log('有数据');
 						for (let s of res.data) {
 							console.log(s.id);
 							let f = this.lawyerList.find(item2 => item2.id == s.id);
@@ -281,12 +255,13 @@
 								this.lawyerList.push(s)
 							}
 						}
-
+						this.page += 1;
 					} else {
-						// this.isMore = false;
+						console.log('无数据');
+						this.isMore = false;
 					}
+					console.log(this.lawyerList);
 
-			
 				}
 			},
 			buy(e) {

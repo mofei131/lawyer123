@@ -162,44 +162,8 @@ var _default =
       default: 'gray' } },
 
 
-  mounted: function mounted() {var _this = this;
-
-    this.$amapPlugin.getRegeo({
-      success: function success(data) {
-        // console.log(data)
-        var _data$0$regeocodeData =
-
-
-
-
-        data[0].regeocodeData.addressComponent,citycode = _data$0$regeocodeData.citycode,adcode = _data$0$regeocodeData.adcode,city = _data$0$regeocodeData.city,province = _data$0$regeocodeData.province;
-        // console.log({
-        // 	citycode,adcode,city
-        // });
-        _this.currentCityName = city;
-        var c = _this.$store.state.cities.find(function (item) {return item.city == city;});
-        // console.log(c);
-        _this.currentCityId = c && c.cityid;
-        _this.currentProvinceid = c && c.provinceid;
-
-        var temp = _this.$store.state.provinces;
-        var provinces = temp.map(function (item) {return item.province;});
-        var pIndex = provinces.findIndex(function (item) {return item == province;});
-
-        if (pIndex != -1) {
-          var cities = _this.getCity(c.provinceid).map(function (item) {return item.city;});
-          var cIndex = cities.findIndex(function (item) {return item == city;});
-          _this.multiIndex = [pIndex, Math.max(0, cIndex)];
-          _this.multiArray = [provinces, cities];
-          _this.$emit("getcity", {
-            cityid: _this.currentCityId });
-
-        }
-
-
-      } });
-
-
+  mounted: function mounted() {
+    this.drawinit();
 
   },
   data: function data() {
@@ -219,9 +183,48 @@ var _default =
   },
 
   methods: {
+    drawinit: function drawinit() {var _this = this;
+      this.$amapPlugin.getRegeo({
+        success: function success(data) {
+          // console.log(data)
+          var _data$0$regeocodeData =
+
+
+
+
+          data[0].regeocodeData.addressComponent,citycode = _data$0$regeocodeData.citycode,adcode = _data$0$regeocodeData.adcode,city = _data$0$regeocodeData.city,province = _data$0$regeocodeData.province;
+
+          _this.currentCityName = city;
+          var c = _this.$store.state.cities.find(function (item) {return item.city == city;});
+          // console.log(c);
+          _this.currentCityId = c && c.cityid;
+          _this.currentProvinceid = c && c.provinceid;
+
+          var temp = _this.$store.state.provinces;
+          var provinces = temp.map(function (item) {return item.province;});
+          var pIndex = provinces.findIndex(function (item) {return item == province;});
+
+          if (pIndex != -1) {
+            var cities = _this.getCity(c.provinceid).map(function (item) {return item.city;});
+            var cIndex = cities.findIndex(function (item) {return item == city;});
+            _this.multiIndex = [pIndex, Math.max(0, cIndex)];
+            _this.multiArray = [provinces, cities];
+            _this.$emit("getcity", {
+              cityid: _this.currentCityId });
+
+          }
+        },
+        fail: function fail() {
+          _this.tt && clearTimeout(_this.tt);
+          _this.tt = setTimeout(function () {
+            _this.drawinit();
+          }, 1000);
+        } });
+
+
+    },
     getCity: function getCity(provinceId) {
       return this.$store.state.cities.filter(function (item) {return item.provinceid == provinceId;});
-
     },
     cityChooseChange: function cityChooseChange(e) {
       console.log(e);

@@ -295,6 +295,7 @@ var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/an
 
                 res.then(function (data) {
                   if (data.code == 200) {
+                    console.log("律师详情");
                     console.log(data);
                     _this2.lawyerList.push(data.data);
                   } else {

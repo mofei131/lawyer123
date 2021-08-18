@@ -26,43 +26,7 @@
 			}
 		},
 		mounted() {
-			
-			this.$amapPlugin.getRegeo({
-				success: (data) => {
-					// console.log(data)
-					let {
-						citycode,
-						adcode,
-						city,
-						province
-					} = data[0].regeocodeData.addressComponent;
-					// console.log({
-					// 	citycode,adcode,city
-					// });
-					this.currentCityName = city;
-					let c = this.$store.state.cities.find(item => item.city == city);
-					// console.log(c);
-					this.currentCityId = c && c.cityid;
-					this.currentProvinceid = c && c.provinceid;
-
-					let temp = this.$store.state.provinces;
-					let provinces = temp.map(item => item.province);
-					let pIndex = provinces.findIndex(item => item == province);
-
-					if (pIndex != -1) {
-						let cities = this.getCity(c.provinceid).map(item => item.city);
-						let cIndex = cities.findIndex(item => item == city);
-						this.multiIndex = [pIndex, Math.max(0, cIndex)];
-						this.multiArray = [provinces, cities];
-						this.$emit("getcity", {
-							cityid: this.currentCityId,
-						})
-					}
-
-
-				}
-			});
-
+			this.drawinit();
 
 		},
 		data() {
@@ -82,9 +46,48 @@
 		},
 
 		methods: {
+			drawinit(){
+				this.$amapPlugin.getRegeo({
+					success: (data) => {
+						// console.log(data)
+						let {
+							citycode,
+							adcode,
+							city,
+							province
+						} = data[0].regeocodeData.addressComponent;
+				
+						this.currentCityName = city;
+						let c = this.$store.state.cities.find(item => item.city == city);
+						// console.log(c);
+						this.currentCityId = c && c.cityid;
+						this.currentProvinceid = c && c.provinceid;
+				
+						let temp = this.$store.state.provinces;
+						let provinces = temp.map(item => item.province);
+						let pIndex = provinces.findIndex(item => item == province);
+				
+						if (pIndex != -1) {
+							let cities = this.getCity(c.provinceid).map(item => item.city);
+							let cIndex = cities.findIndex(item => item == city);
+							this.multiIndex = [pIndex, Math.max(0, cIndex)];
+							this.multiArray = [provinces, cities];
+							this.$emit("getcity", {
+								cityid: this.currentCityId,
+							})
+						}
+					},
+					fail:()=>{
+						this.tt && clearTimeout(this.tt);
+						this.tt = setTimeout(()=>{
+							this.drawinit();
+						},1000)
+					}
+					
+				});
+			},
 			getCity(provinceId) {
 				return this.$store.state.cities.filter(item => item.provinceid == provinceId);
-
 			},
 			cityChooseChange(e) {
 				console.log(e);
