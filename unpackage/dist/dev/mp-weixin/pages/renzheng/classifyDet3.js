@@ -153,7 +153,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! @/pages/components/pickcity/pickcity.vue */ 480));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var tankuang = function tankuang() {__webpack_require__.e(/*! require.ensure | pages/components/tankuang/tankuang */ "pages/components/tankuang/tankuang").then((function () {return resolve(__webpack_require__(/*! ../components/tankuang/tankuang.vue */ 520));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! ../components/pickcity/pickcity.vue */ 480));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var tankuang = function tankuang() {__webpack_require__.e(/*! require.ensure | pages/components/tankuang/tankuang */ "pages/components/tankuang/tankuang").then((function () {return resolve(__webpack_require__(/*! ../components/tankuang/tankuang.vue */ 527));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -266,8 +266,8 @@ __webpack_require__.r(__webpack_exports__);
         that.mobile = e.data.mobile;
         that.gender = e.data.gender;
         that.photo = e.data.photo;
-        that.idcard = e.data.idcard;
-        that.idcard_fan = e.data.idcard_fan;
+        // that.idcard = e.data.idcard
+        // that.idcard_fan = e.data.idcard_fan
       } });
 
     uni.getStorage({
@@ -338,8 +338,8 @@ __webpack_require__.r(__webpack_exports__);
           mobile: that.mobile,
           gender: that.gender,
           photo: that.photo,
-          idcard: that.idcard,
-          idcard_fan: that.idcard_fan,
+          // idcard:that.idcard,
+          // idcard_fan:that.idcard_fan,
           zhiyezhenghao: that.zhiyezhenghao,
           zhiyenianxian: that.zhiyenianxian,
           shehuizhiwu: that.shehuizhiwu,

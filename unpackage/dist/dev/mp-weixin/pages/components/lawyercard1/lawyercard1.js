@@ -227,13 +227,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 var _default =
 {
   components: {},
-  props: ['lawyerlist', 'zixun', 'isbuy', 'updatefollow', 'follow'],
+  props: ['lawyerlist', 'zixun', 'isbuy', 'updatefollow', 'follow', 'showline'],
   data: function data() {
     return {};
 
@@ -302,6 +299,7 @@ var _default =
                     method: 'GET',
                     data: data }));case 11:res = _context.sent;
 
+                console.log("电话");
                 console.log(res);
                 uni.hideLoading();
                 if (res && res.code == -1) {
@@ -323,7 +321,7 @@ var _default =
 
                   });
 
-                }case 15:case "end":return _context.stop();}}}, _callee);}))();
+                }case 16:case "end":return _context.stop();}}}, _callee);}))();
 
 
 

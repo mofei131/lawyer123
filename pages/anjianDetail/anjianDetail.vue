@@ -1,13 +1,13 @@
 <template>
 	<view>
 		<!-- 页面主体 -->
-		<view class="flex-column mx-center sx-center" slot="gBody" style="width: 100%;  background-color: #FFFFFF">
+		<view class="flex-column mx-start sx-stretch" slot="gBody" style="width: 100%;  background-color: #F4F7F7;min-height: 1200rpx;">
 
 
 			<view style="width: 100%;">
 
 				<!-- IM 消息展示区 -->
-				<gui-im-message background="#FFFFFF" :msgs="msgs" group="group1" :rightname='true' :userid="user_id">
+				<gui-im-message background="#F4F7F7" :msgs="msgs" group="group1" :rightname='false' :userid="user_id">
 				</gui-im-message>
 				<!-- 底部提交区 -->
 				<gui-im-input v-if="false"  @sendText="sendText"></gui-im-input>

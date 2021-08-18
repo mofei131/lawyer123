@@ -212,7 +212,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _anli = _interopRequireDefault(__webpack_require__(/*! ../components/anli/anli.vue */ 26));
 
 
@@ -405,6 +404,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
   methods: _objectSpread(_objectSpread(_objectSpread({
     getPhoneNumber: function getPhoneNumber(e) {
+
       var that = this;
       uni.login({
         provider: 'weixin',
@@ -427,6 +427,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
         } });
 
     } },
+
   (0, _vuex.mapMutations)(['commitWindowHeight'])),
   (0, _vuex.mapActions)([
   'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`

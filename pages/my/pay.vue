@@ -167,6 +167,8 @@
 							source_id: this.id
 						}
 					});
+					console.log("之父1")
+					console.log(res)
 					if (res.code == -1) {
 						uni.showToast({
 							title: res.message,

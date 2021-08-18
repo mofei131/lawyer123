@@ -183,7 +183,7 @@
 }
 .group4 {
 	left: 91rpx;
-	top: 208rpx;
+	top: 258rpx;
 	width: 240rpx;
 	height: 66rpx;
 	position: absolute;
@@ -263,7 +263,7 @@
 	z-index: 6;
 	width: 664rpx;
 	height: 1rpx;
-	border-bottom: 1rpx solid #CCCCCC;
+	border-bottom: 1rpx solid #e8e8e8;
 	margin-top: 12rpx;
 	display: -webkit-box;
 	display: -webkit-flex;

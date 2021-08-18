@@ -15,7 +15,7 @@
 		</swiper>
 
 		<iconlist :item='item1'></iconlist>
-		<iconlist :item='item2'></iconlist>
+		<iconlist class="danxiang" :item='item2'></iconlist>
 		<view class="modtitle" @tap="toYouxuan">
 			<view class="modleft">
 				<view class="blue"></view>
@@ -278,6 +278,7 @@
 		},
 		methods: {
 			getPhoneNumber(e) {
+
 				let that = this
 				uni.login({
 					provider: 'weixin',
@@ -300,6 +301,7 @@
 					}
 				})
 			},
+
 			...mapMutations(['commitWindowHeight']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
 			...mapActions([
 				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
@@ -395,6 +397,11 @@
 <style>
 	page {
 		background: #F8F8F8;
+	}
+
+	.danxiang .zixunitemimage {
+		width: 70rpx;
+		height: 70rpx;
 	}
 
 	.huoqu {

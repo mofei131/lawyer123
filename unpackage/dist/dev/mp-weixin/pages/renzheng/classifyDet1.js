@@ -210,25 +210,26 @@ var _default =
                 that.zipai = JSON.parse(res.data).data.url;
               } });
 
-          } else if (e == 2) {
-            uni.uploadFile({
-              url: 'https://layer.boyaokj.cn/api/file/upload',
-              filePath: res.tempFilePaths[0],
-              name: 'file',
-              success: function success(res) {
-                that.zheng = JSON.parse(res.data).data.url;
-              } });
-
-          } else {
-            uni.uploadFile({
-              url: 'https://layer.boyaokj.cn/api/file/upload',
-              filePath: res.tempFilePaths[0],
-              name: 'file',
-              success: function success(res) {
-                that.fan = JSON.parse(res.data).data.url;
-              } });
-
           }
+          // else if(e == 2){
+          // 	uni.uploadFile({
+          // 		url:'https://layer.boyaokj.cn/api/file/upload',
+          // 		filePath: res.tempFilePaths[0],
+          // 		name: 'file',
+          // 		success(res) {
+          // 			that.zheng = JSON.parse(res.data).data.url
+          // 		}
+          // 	})
+          // }else{
+          // 	uni.uploadFile({
+          // 		url:'https://layer.boyaokj.cn/api/file/upload',
+          // 		filePath: res.tempFilePaths[0],
+          // 		name: 'file',
+          // 		success(res) {
+          // 			that.fan = JSON.parse(res.data).data.url
+          // 		}
+          // 	})
+          // }
         } });
 
     },
@@ -257,20 +258,20 @@ var _default =
 
         return;
       }
-      if (!this.zheng) {
-        uni.showToast({
-          title: '请上传身份证正面照片',
-          icon: 'none' });
-
-        return;
-      }
-      if (!this.fan) {
-        uni.showToast({
-          title: '请上传身份证反面照片',
-          icon: 'none' });
-
-        return;
-      }
+      // if (!this.zheng) {
+      // 	uni.showToast({
+      // 		title: '请上传身份证正面照片',
+      // 		icon: 'none',
+      // 	})
+      // 	return
+      // }
+      // if (!this.fan) {
+      // 	uni.showToast({
+      // 		title: '请上传身份证反面照片',
+      // 		icon: 'none',
+      // 	})
+      // 	return
+      // }
       uni.setStorage(
       {
         key: 'cache1',
@@ -278,10 +279,10 @@ var _default =
           name: this.name,
           mobile: this.phone,
           gender: this.index1,
-          photo: this.zipai,
-          idcard: this.zheng,
-          idcard_fan: this.fan } });
-
+          photo: this.zipai
+          // idcard:this.zheng,
+          // idcard_fan:this.fan
+        } });
 
 
       uni.navigateTo({

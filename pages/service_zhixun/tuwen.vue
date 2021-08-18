@@ -1,14 +1,14 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="padding: 20rpx;">
 		<view class="flex-row" style="margin-bottom: 20rpx;">
-			<textarea v-model="content" placeholder-style="color:gray; font-size:28rpx" auto-height
+			<textarea v-model="content" placeholder-style="color: rgba(153,153,153,1);font-size: 28rpx;font-family: PingFangSC-Regular;"
 				placeholder="请输入您的问题,以便更好的为您推荐律师"
-				style="flex: 1 1 auto;padding: 20rpx;min-height: 400rpx;background-color: #F4F4F4;border-radius: 20rpx;font-size:28rpx" />
+				style="flex: 1 1 auto;padding: 18rpx 0 0 25rpx;height:280rpx;background-color: #F4F4F4;border-radius: 8rpx;font-size:28rpx" />
 		</view>
 
 		<view class="flex-column mx-start sx-stretch"
-			style="padding: 20rpx;background-color: #F4F4F4;border-radius: 20rpx;">
-			<view style="margin:0 0 20rpx 10rpx;color: gray;">
+			style="padding: 20rpx;background-color: #F4F4F4;border-radius: 8rpx;">
+			<view style="margin:0 0 20rpx 10rpx;color: rgba(106,106,106,1);font-size: 24rpx;font-family: PingFangSC-Medium;">
 				请选择事类型
 			</view>
 			<view class="flex-row mx-evenly sx-start wrap" style="align-items: flex-start;">
@@ -19,15 +19,13 @@
 
 		</view>
 		<view class="flex-column mx-center sx-stretch"
-			style="margin-top: 20rpx;flex: 0 0 140rpx;padding: 20rpx;background-color: #F4F4F4;border-radius: 20rpx;">
-			<view style="margin:0 0 20rpx 0;color: gray;">
-				请输入事发地
-			</view>
+			style="margin-top: 20rpx;flex: 0 0 auto;padding: 20rpx;background-color: #F4F4F4;border-radius: 8rpx;color: #6A6A6A;font-size: 24rpx;font-family: PingFangSC-Regular;">
 			<view class="flex-row mx-center sx-center">
-				<input class="uni-input" disabled="true" v-model="address" placeholder-style="font-size:28rpx"
-					placeholder="请选择事发地,精确到街道" style="flex:1 1 auto;padding-left: 20rpx;font-size: 28rpx;">
-				<view style="margin: 0 20rpx;" @tap="searchKeyWord">
-					<fa-icon type="telegram" color="gray"></fa-icon>
+				<input class="uni-input" disabled="true" v-model="address" placeholder-style="font-size:24rpx;color:#6A6A6A"
+					placeholder="请选择事发地" style="flex:1 1 auto;">
+				<view class="flex-row mx-center sx-center" style="flex: 0 0 auto;margin-left:20rpx;" @tap="searchKeyWord">
+					<view style="flex: 0 0 auto;margin-right: 10rpx;">请选择事发地</view>
+					<fa-icon type="angle-right" color="#6A6A6A"></fa-icon>
 				</view>
 			</view>
 		</view>
@@ -42,7 +40,7 @@
 				:markers="markers" @tap="tap">
 			</map>
 		</view> -->
-		<view class="flex-row mx-center sx-center">
+		<view class="flex-row mx-center sx-center" style="">
 			<view class="flex-txt-center" @tap="commit"
 				style="flex: 1 1 auto;margin: 20rpx;height: 60rpx;border-radius:30rpx;background-color: #57A9FF;color: #FFFFFF;">
 				提交咨询
@@ -246,7 +244,7 @@
 		margin: 0 10rpx 10rpx 0;
 		background-color: #E6E6E6;
 		font-size: 24rpx;
-		color: gray;
+		color: rgba(102,102,102,1);
 		text-align: center;
 		border-radius: 10rpx;
 		border: 2rpx solid #E6E6E6;
@@ -254,7 +252,7 @@
 	}
 
 	.item_on {
-		border: 2rpx solid #007AFF;
-		color: #007AFF;
+		border: 2rpx solid rgba(64,169,255,1); 
+		color: rgba(64,169,255,1);
 	}
 </style>

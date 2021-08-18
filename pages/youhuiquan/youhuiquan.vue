@@ -1,25 +1,25 @@
 <template>
-	<view class="flex-column mx-start sx-stretch" style="padding: 20rpx;min-height: 1000rpx;">
-		<view class="flex-row mx-start sx-center">
+	<view class="flex-column mx-start sx-stretch" style="min-height: 1000rpx;">
+		<view class="flex-row mx-center sx-center" style="background-color: #FFFFFF;flex: 0 0 104rpx;padding: 0 20rpx 18rpx 20rpx;">
 			<view style="flex: 0 0 auto;">
 
-				<pickcity @getcity="getCity"></pickcity>
+				<pickcity :angelesick="true" @getcity="getCity"></pickcity>
 
 			</view>
-			<uni-search-bar style="flex:1 1 auto;" border="1rpx solid rgba(244,244,244,1)" placeholder="请输入商家名称"
+			<uni-search-bar style="flex:1 1 auto;" border="1rpx solid rgba(244,244,244,1)" placeholder="请输入商家名称" 
 				bgColor="rgba(244,244,244,1)" :cancel-text="closeText" radius="100" @confirm="search" :focus="true"
 				v-model="searchValue" @input="input" @clear="clear">
 			</uni-search-bar>
 		</view>
 
-		<view class="flex-row mx-center sx-center" >
+		<!-- <view class="flex-row mx-center sx-center" >
 			<view :class="{quan_on:flag==1,quan_off:flag!=1}"
 				style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 30rpx 0 0 30rpx;"
 				@tap="changeFlage(1)">未使用</view>
 			<view :class="{quan_on:flag==2,quan_off:flag!=2}"
 				style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 0 30rpx 30rpx 0;"
 				@tap="changeFlage(2)">不可用</view>
-		</view>
+		</view> -->
 		<view v-for="(item,index) in dataSource" :key='index' v-if="!item.status"
 			class="flex-row mx-start sx-stretch backImgFull youhuiquan"
 			:style="{backgroundImage:item.status >= 0 && item.status <= 0?bj1:bj2,color: itme.status>=0 && item.status<=2?'#fff':'#ccc'}">
@@ -42,7 +42,7 @@
 							style="color: rgba(255,255,255,0.5);font-size: 24rpx;">{{usertime(item.starttime,item.endtime)}}</text>
 
 					</view>
-					<view v-if="item.status==0 || item.status==1 || item.status==2" class="flex-row mx-center sx-center" style="align-self: center;margin-right: 20rpx;">
+					<view v-if="item.status==0 || item.status==1 || item.status==2" class="flex-row mx-center sx-center" style="margin-bottom: 15rpx;margin-right: 20rpx;">
 						<!-- <view @tap="shiyong(item)" v-if="item.status>0" class="flex-txt-center lingqu"
 							:style="{backgroundColor: item.status==1?'rgba(182,100,247,1)':'#B6B6B6'}">
 							<text v-if="item.status==1" style="font-size: 24rpx;">未使用</text>
@@ -53,16 +53,20 @@
 
 						<view @tap="lingqu(item)" v-if="item.status==0" class="flex-txt-center lingqu"
 							:style="{backgroundColor:'rgba(182,100,247,1)'}">
-							<text style="font-size: 24rpx;color: #fff;">领取</text>
+							<text style="font-size: 24rpx;color: #fff;">立即领取</text>
 						</view>
-						<view @tap="shiyong(item)" v-else-if="item.status==1" class="flex-txt-center lingqu"
+						<view  v-else class="flex-txt-center lingqu"
+							:style="{backgroundColor:'#B6B6B6'}">
+							<text style="font-size: 24rpx;color: #fff;">已领取</text>
+						</view>
+						<!-- <view @tap="shiyong(item)" v-else-if="item.status==1" class="flex-txt-center lingqu"
 							:style="{backgroundColor:'rgba(182,100,247,1)'}">
 							<text style="font-size: 24rpx;">未使用</text>
 						</view>
 						<view v-else-if="item.status==2" class="flex-txt-center lingqu"
 							:style="{backgroundColor:'rgba(182,100,247,1)'}">
 							<text style="font-size: 24rpx;">已使用</text>
-						</view>
+						</view> -->
 					</view>
 					<!-- <view v-else class="backImgCenter"
 						style="position: absolute;top: 20rpx;right: 10rpx;width: 121rpx;height: 121rpx;background-image: url(/static/images/youhuiquan2.png);">
@@ -70,7 +74,7 @@
 					</view> -->
 					<image v-else class="backImgCenter" style="position: absolute;top: 20rpx;right: 10rpx;width: 121rpx;height: 121rpx;" src="../../static/images/youhuiquan2.png"></image>
 				</view>
-				<text lines="1" class="ellipsis" style="width:400rpx;color: rgba(255,255,255,0.5);margin-bottom: 20rpx;
+				<text lines="1" class="ellipsis" style="width:400rpx;color: rgba(255,255,255,0.5);margin-bottom: 14rpx;
 										font-size: 24rpx;">{{item.address}}</text>
 
 			</view>
@@ -286,6 +290,7 @@
 
 	.youhuiquan {
 		flex: 0 0 173rpx;
+		margin: 0 20rpx;
 		margin-bottom: 20rpx;
 	}
 

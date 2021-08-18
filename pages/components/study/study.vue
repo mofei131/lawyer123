@@ -7,7 +7,7 @@
 			</view>
 			<view class="studyitemright flex-column mx-start sx-stretch">
 				<view class="studytitle ellipsis">{{item.title}}</view>
-				<view class="studycontent">{{item.content}}</view>
+				<view class="studycontent">{{item.desc}}</view>
 				<view class="figure flex-row mx-start sx-center" style="margin-top: 15rpx;">
 					<view>已更新{{item.num || 1}}期</view>
 					<view class="ellipsis" style="flex: 1 1 auto;width: 1rpx;">{{item.subtitle}}</view>

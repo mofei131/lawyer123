@@ -79,10 +79,14 @@
 }
 
 
-page{
+page {
 	background: #F8F8F8;
 }
-.huoqu{
+.danxiang .zixunitemimage {
+	width: 70rpx;
+	height: 70rpx;
+}
+.huoqu {
 	position: fixed;
 	top: 0;
 	background-color: #fff;
@@ -94,20 +98,20 @@ page{
 	padding-top: 60%;
 	z-index: 50;
 }
-.huoqu image{
+.huoqu image {
 	width: 200rpx;
 	height: 200rpx;
 	margin: auto;
 	display: block;
 }
-.shao{
+.shao {
 	color: #333;
 	text-align: center;
 	font-size: 32rpx;
 	margin-top: 80rpx;
 	margin-bottom: 60rpx;
 }
-.btnbor{
+.btnbor {
 	width: 680rpx;
 	margin: 20rpx auto;
 	height: 1rpx;
@@ -115,7 +119,7 @@ page{
 	opacity: .5;
 	margin-top: 80rpx;
 }
-.huoqu button{
+.huoqu button {
 	background: #67c23a;
 	color: #fff;
 	font: 32rpx;
@@ -132,16 +136,16 @@ page{
 	-webkit-align-items: center;
 	        align-items: center;
 	border: 1rpx solid #67c23a;
-	border: 0!important;
+	border: 0 !important;
 	border-radius: 40rpx;
 }
-.fourcard{
+.fourcard {
 	background: #fff;
-	width: 710rpx!important;
+	width: 710rpx !important;
 	padding-bottom: 29rpx;
 	border: 0 0 14rpx 14rpx;
 }
-.backImgFull{
+.backImgFull {
 	width: 100%;
 }
 .swiper {
@@ -306,6 +310,7 @@ page{
 .top-menu-view .menu-topic-view .menu-topic:first-child {
 	margin-left: 30rpx;
 }
+
 /* .top-menu-view .menu-topic-view:last-child  .menu-topic{
      margin-right: 80rpx;
  } */

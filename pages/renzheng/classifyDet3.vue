@@ -48,7 +48,7 @@
 </template>
 
 <script>
-	import pickcity from '@/pages/components/pickcity/pickcity.vue'
+	import pickcity from '../components/pickcity/pickcity.vue'
 	import tankuang from '../components/tankuang/tankuang.vue'
 	export default{
 		components:{
@@ -111,8 +111,8 @@
 				that.mobile = e.data.mobile
 				that.gender = e.data.gender
 				that.photo = e.data.photo
-				that.idcard = e.data.idcard
-				that.idcard_fan = e.data.idcard_fan
+				// that.idcard = e.data.idcard
+				// that.idcard_fan = e.data.idcard_fan
 				}
 				})
 				 uni.getStorage({
@@ -183,8 +183,8 @@
 						mobile:that.mobile,
 						gender:that.gender,
 						photo:that.photo,
-						idcard:that.idcard,
-						idcard_fan:that.idcard_fan,
+						// idcard:that.idcard,
+						// idcard_fan:that.idcard_fan,
 						zhiyezhenghao:that.zhiyezhenghao,
 						zhiyenianxian:that.zhiyenianxian,
 						shehuizhiwu:that.shehuizhiwu,

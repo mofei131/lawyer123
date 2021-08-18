@@ -56,7 +56,7 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  height: 55rpx;
+  height: 64rpx;
   padding: 5px 8px 5px 0px;
   border-width: 0.5px;
   border-style: solid;
@@ -100,7 +100,7 @@
 }
 .uni-searchbar__cancel.data-v-180dbe05 {
   padding-left: 10px;
-  line-height: 55rpx;
+  line-height: 64rpx;
   font-size: 14px;
   color: #333;
 }

@@ -1,21 +1,26 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
-		<!-- <view class="">
+		<view class="" style="position: fixed;z-index: 9999;top:40rpx;left: 0;margin: 0 auto;font-size: 36rpx;background-color: #ffffff00;">
 			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" :title="typeData && typeData.name"
-				color="#333333" background-color="#FFFFFF" @clickLeft="back">
+				color="#fff" background-color="#ffffff00" @clickLeft="back">
 
 			</uni-nav-bar>
-		</view> -->
+		</view>
 
 		<view class="page">
 			<view class="mod1" style="position: relative;">
-				<image style="width: 100%;height: 332rpx;" mode="scaleToFill" src="/static/icon/cooper_back111.png">
+				<image style="width: 100%;height: 379rpx;" mode="scaleToFill" src="/static/icon/cooper_back111.png">
 				</image>
-				<view style="position: absolute;top: 58px;left: 110rpx;">
+				<view style="position: absolute;top: 145rpx;left: 110rpx;">
 					<text lines="1" class="info3">{{name}}</text>
 				</view>
 				<view class="group4">
-					<text lines="1" class="paragraph1">专业律师为您审查合同,最大限度保障您的利益</text>
+					<text v-if="id == 5" lines="1" class="paragraph1">帮您绕开别人掉过的“坑”，让您放心大胆前行</text>
+					<text v-else-if="id == 6" lines="1" class="paragraph1">用法律手段将欠款追回，向对方提出正式警告，促成纠纷解决</text>
+					<text v-else-if="id == 7" lines="1" class="paragraph1">通过专业的谈判技巧迫使债务人偿还欠款</text>
+					<text v-else-if="id == 8" lines="1" class="paragraph1">让法官更好的明了案情，理解当事人的诉求，争取主动</text>
+					<text v-else-if="id == 9" lines="1" class="paragraph1">让借贷关系更清楚、明了，专业性强</text>
+					<text v-else-if="id == 10" lines="1" class="paragraph1">专业刑事律师代理看守所会见，保护嫌疑人的合法利益</text>
 				</view>
 			</view>
 			<view class="block2">
@@ -31,16 +36,16 @@
 				<view class="group8">
 					<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 					<view class="bd2"></view>
-					<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;">
+					<view class="flex-column" style="overflow: auto;font-size: 24rpx;color: gray;">
 						<rich-text :nodes="dataSource.service"></rich-text>
 
 					</view>
 
 				</view>
 			</view>
-			<view class="block4">
-				<view class="mod3">
-					<text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
+			<view class="block4" style="padding-top: 0;">
+				<!-- <view class="mod3"> -->
+					<!-- <text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
 					<view class="mod4"></view>
 					<view class="mod5">
 						<image src="/static/icon/cooper_p3.png" class="img1"></image>
@@ -56,8 +61,11 @@
 						<text lines="1" class="txt4">律师接单</text>
 						<text lines="1" class="info8">律师服务</text>
 						<text lines="1" class="info9">回访评价</text>
-					</view>
-				</view>
+					</view> -->
+					<image v-if="id == 5" mode="widthFix" src="../../static/images/liucheng1.png" style="width: 100%;border-radius: 20rpx;"></image>
+					<image v-else-if="id == 6" mode="widthFix" src="../../static/images/liucheng2.png" style="width: 100%;border-radius: 20rpx;"></image>
+					<image v-else mode="widthFix" src="../../static/images/liucheng3.png" style="width: 100%;border-radius: 20rpx;"></image>
+				<!-- </view> -->
 
 			</view>
 
@@ -76,7 +84,7 @@
 			</view> -->
 
 
-			<view class="mod8">
+			<!-- <view class="mod8">
 				<view class="box3">
 					<view class="mod9" @tap="kefu">
 						<view class="mod10">
@@ -88,7 +96,7 @@
 						<text lines="1" class="word11">立即购买</text>
 					</button>
 				</view>
-			</view>
+			</view> -->
 		</view>
 
 
@@ -487,7 +495,7 @@
 		display: block;
 		overflow-wrap: break-word;
 		color: rgba(106, 106, 106, 1);
-		font-size: 22rpx;
+		font-size: 24rpx;
 		font-family: PingFangSC-Regular;
 		line-height: 30rpx;
 		text-align: left;

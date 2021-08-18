@@ -27,7 +27,7 @@
 							<view v-if="item.contentType == 'txt'" 
 							:class="[userid == item.uindex ? 'gui-im-flex-end' : '']">
 								<view class="gui-im-content-txt" 
-								:class="[userid == item.uindex ? 'gui-bg-green' : '']">
+								:class="[userid == item.uindex ? 'rightMessage' : '']">
 									<text :style="txtContentStyle" 
 									:class="[userid == item.uindex ? 'gui-color-white' : '']">{{item.content}}</text>
 								</view>
@@ -78,7 +78,7 @@ export default {
 		group            : { type : String, default : "" },
 		background       : { type : String, default : "#F7FBFE" },
 		unameStyle       : { type : String, default : 'line-height:28rpx; height:28rpx; font-size:26rpx; color:#666666;'},
-		txtContentStyle  : { type : String, default : 'line-height:38rpx; font-size:30rpx; color:#2B2E3D;'}
+		txtContentStyle  : { type : String, default : 'line-height:38rpx;font-size: 28rpx;font-family: PingFangSC-Regular;'}
 	},
 	data() {
 		return {
@@ -144,12 +144,21 @@ export default {
 .gui-im{padding:30rpx;}
 .gui-im-system-msg{color:#FFFFFF; font-size:26rpx; line-height:38rpx; padding:5px 10px; display:block; border-radius:6rpx;}
 .gui-im-msg{margin-bottom:28px; display:flex; flex-direction:row; flex-wrap:nowrap;}
-.gui-im-face{width:88rpx; height:88rpx; overflow:hidden; flex-shrink:0; border-radius:6rpx; overflow:hidden; font-size:0;}
-.gui-im-face-image{width:88rpx;}
+.gui-im-face{width:80rpx; height:80rpx; overflow:hidden; flex-shrink:0; border-radius:6rpx; overflow:hidden; font-size:0;}
+.gui-im-face-image{width:80rpx;border-radius: 50%;}
 .gui-im-name{padding-bottom:10rpx; margin-top:-5rpx; }
-.gui-im-content-spacing{width:25rpx; height:50rpx; flex-shrink:0;}
+.gui-im-content-spacing{width:15rpx; height:50rpx; flex-shrink:0;}
 .gui-im-content-in{ overflow:hidden;} /* width:600rpx; */
-.gui-im-content-txt{background-color:#E7F0F3; padding:15rpx 20rpx; border-radius:6rpx; min-width:100rpx;}
+.gui-im-content-txt{background-color:rgba(255,255,255,1); padding:15rpx 20rpx; border-radius:2.5rpx  20rpx  20rpx  20rpx ; min-width:100rpx;color: rgba(81,86,93,1);
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  line-height: 42rpx;}
+.rightMessage{
+
+	background-color: #40A9FF;
+	border-radius:20rpx 3rpx  20rpx 20rpx;
+
+}
 .gui-im-msg-right{flex-direction:row-reverse;}
 .gui-im-timer{margin-top:5px; line-height:30rpx; font-size:22rpx; color:#8788A3;}
 .gui-im-img{width:358rpx; border-radius:6rpx;}

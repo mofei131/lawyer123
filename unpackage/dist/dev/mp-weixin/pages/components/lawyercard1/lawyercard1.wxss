@@ -1,11 +1,8 @@
 
 .list-item {
 	padding: 20rpx;
-	
 	-webkit-box-flex: 0;
-	
 	-webkit-flex: 0 0 auto;
-	
 	        flex: 0 0 auto;
 	background-color: #FFFFFF;
 	border-radius: 20rpx;
@@ -15,10 +12,20 @@
 	width: 14rpx;height: 14rpx;border-radius: 50%
 }
 .serviceBtn {
-	border: 2rpx solid #4CA2FF;
+	/* border: 2rpx solid #4CA2FF;
 	padding: 0 5rpx;
-	font-size: 22rpx;
-	color: #4CA2FF;
+	font-size: 28rpx;
+	color: #4CA2FF; */
+	-webkit-box-flex:0;
+	-webkit-flex:0 0 auto;
+	        flex:0 0 auto;
+	border-radius: 4rpx;
+	border: 1px solid #40A9FF;
+	font-size: 21rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #40A9FF;
+	padding: 8rpx;
 }
 .field {
 	display: -webkit-box;

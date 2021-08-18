@@ -1,12 +1,18 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
+		<view class="" style="position: fixed;z-index: 9999;top:40rpx;left: 0;margin: 0 auto;font-size: 36rpx;background-color: #ffffff00;">
+			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="其他服务"
+				color="#fff" background-color="#ffffff00" @clickLeft="back">
+		
+			</uni-nav-bar>
+		</view>
 
 		<view class="page">
 			<view class="mod1">
-				<view style="position: relative;height: 332rpx;width: 100%;background-color: rgba(64, 169, 255, 1);">
-					<image style="width: 100%;height: 332rpx;" mode="scaleToFill" src="/static/icon/cooper_back112.png">
+				<view style="position: relative;height: 379rpx;width: 100%;">
+					<image style="width: 100%;height: 379rpx;" mode="scaleToFill" src="/static/icon/cooper_back112.png">
 					</image>
-					<view style="position: absolute;top: 61px;left: 43px;">
+					<view style="position: absolute;top: 195rpx;left: 110rpx;">
 						<text lines="1" class="info3">超值套餐</text>
 					</view>
 					<view class="group4">
@@ -14,21 +20,21 @@
 					</view>
 				</view>
 				
-				<view class="block2" v-for="(item,index) in dataSource" :key="index">
+				<view class="block2" v-for="(item,index) in dataSource" :key="index" @tap="toPay(item)">
 					<view class="group7">
 						<text lines="1" decode="true" class="info4">～&nbsp;套餐{{index+1}}&nbsp;～</text>
 						<view class="bd1"></view>
-						<view class="ellipsis" style="width: 500rpx;margin: 10rpx 0;">{{item.name}}</view>
+						<view class="ellipsis" style="width: 500rpx;margin: 10rpx 0;  color: rgba(106,106,106,1);font-size: 24rpx;font-family: PingFangSC-Semibold;">{{item.name}}</view>
 						<view
-							class="ellipsis-3 info5">
+							class="info5" style="height: 87rpx;overflow: auto;">
 							<rich-text :nodes="item.intro"></rich-text>
 							</view>
 					</view>
 					<view class="flex-row mx-between sx-center" style="width: 664rpx;;padding: 10rpx 20rpx;">
 						<text style="color: #FF4D4F;">￥{{item.price}}</text>
-						<view @tap="toPay(item)"
+						<!-- <view 
 							style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
-							立即购买</view>
+							立即购买</view> -->
 					</view>
 				</view>
 
@@ -267,7 +273,7 @@
 
 	.group4 {
 		left: 91rpx;
-		top: 208rpx;
+		top: 258rpx;
 		width: 240rpx;
 		height: 66rpx;
 		position: absolute;
@@ -332,7 +338,7 @@
 		z-index: 6;
 		width: 664rpx;
 		height: 1rpx;
-		border-bottom: 1rpx solid #CCCCCC;
+		border-bottom: 1rpx solid #e8e8e8;
 		margin-top: 12rpx;
 		display: flex;
 		flex-direction: column;

@@ -29,7 +29,7 @@
 				<image class="classfiyimg" src="../../static/images/classfiyimg1.png" v-if="zipai == ''" @click="chooseImage(1)"></image>
 				<image class="classfiyimg" :src="zipai" v-else @click="chooseImage(1)"></image>
 			</view>
-			<view class="imgitem">
+			<!-- <view class="imgitem">
 				<view class="imgtitle">请上传身份证人像面</view>
 				<image class="classfiyimg" src="../../static/images/classfiyimg2.png" v-if="zheng == ''" @click="chooseImage(2)"></image>
 				<image class="classfiyimg" :src="zheng" v-else @click="chooseImage(2)"></image>
@@ -38,7 +38,7 @@
 				<view class="imgtitle">请上传身份证国徽面</view>
 				<image class="classfiyimg" src="../../static/images/classfiyimg3.png" v-if="fan == ''" @click="chooseImage(3)"></image>
 				<image class="classfiyimg" :src="fan" v-else @click="chooseImage(3)"></image>
-			</view>
+			</view> -->
 	</view>
 	<view class="next" @tap="toUrl()">下一步</view>
 	</view>
@@ -78,25 +78,26 @@
 												that.zipai = JSON.parse(res.data).data.url
 											}
 										})
-									}else if(e == 2){
-										uni.uploadFile({
-											url:'https://layer.boyaokj.cn/api/file/upload',
-											filePath: res.tempFilePaths[0],
-											name: 'file',
-											success(res) {
-												that.zheng = JSON.parse(res.data).data.url
-											}
-										})
-									}else{
-										uni.uploadFile({
-											url:'https://layer.boyaokj.cn/api/file/upload',
-											filePath: res.tempFilePaths[0],
-											name: 'file',
-											success(res) {
-												that.fan = JSON.parse(res.data).data.url
-											}
-										})
 									}
+									// else if(e == 2){
+									// 	uni.uploadFile({
+									// 		url:'https://layer.boyaokj.cn/api/file/upload',
+									// 		filePath: res.tempFilePaths[0],
+									// 		name: 'file',
+									// 		success(res) {
+									// 			that.zheng = JSON.parse(res.data).data.url
+									// 		}
+									// 	})
+									// }else{
+									// 	uni.uploadFile({
+									// 		url:'https://layer.boyaokj.cn/api/file/upload',
+									// 		filePath: res.tempFilePaths[0],
+									// 		name: 'file',
+									// 		success(res) {
+									// 			that.fan = JSON.parse(res.data).data.url
+									// 		}
+									// 	})
+									// }
 								},
 							});
 						},
@@ -125,20 +126,20 @@
 					})
 					return
 				}
-				if (!this.zheng) {
-					uni.showToast({
-						title: '请上传身份证正面照片',
-						icon: 'none',
-					})
-					return
-				}
-				if (!this.fan) {
-					uni.showToast({
-						title: '请上传身份证反面照片',
-						icon: 'none',
-					})
-					return
-				}
+				// if (!this.zheng) {
+				// 	uni.showToast({
+				// 		title: '请上传身份证正面照片',
+				// 		icon: 'none',
+				// 	})
+				// 	return
+				// }
+				// if (!this.fan) {
+				// 	uni.showToast({
+				// 		title: '请上传身份证反面照片',
+				// 		icon: 'none',
+				// 	})
+				// 	return
+				// }
 				uni.setStorage(
 				{
 					key:'cache1',
@@ -147,8 +148,8 @@
 						mobile:this.phone,
 						gender:this.index1,
 						photo:this.zipai,
-						idcard:this.zheng,
-						idcard_fan:this.fan
+						// idcard:this.zheng,
+						// idcard_fan:this.fan
 					}
 				}
 				)

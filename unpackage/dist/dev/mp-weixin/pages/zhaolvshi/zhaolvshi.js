@@ -270,8 +270,10 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
   // 		uni.hideNavigationBarLoading()
   // 	}, 2000);
   // },
-  methods: _objectSpread(_objectSpread({},
-
+  methods: _objectSpread(_objectSpread({
+    updateFollow: function updateFollow(fllow) {
+      this.lawyerList[0].follow = fllow == 1 ? 0 : 1;
+    } },
   (0, _vuex.mapActions)([
   'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
   'getBussinessTypes',
@@ -371,6 +373,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
 
                 uni.hideLoading();
+                console.log("律师列表");
                 console.log(res);
                 if (res && res.data) {
 
@@ -391,7 +394,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                   }
                   console.log(_this5.lawyerList);
 
-                }case 22:case "end":return _context3.stop();}}}, _callee3);}))();
+                }case 23:case "end":return _context3.stop();}}}, _callee3);}))();
     },
     buy: function buy(e) {
       console.log(e);

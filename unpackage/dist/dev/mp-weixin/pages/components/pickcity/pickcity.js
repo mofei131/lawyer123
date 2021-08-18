@@ -145,6 +145,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
 var _default =
 
 {
@@ -159,7 +160,11 @@ var _default =
 
     anglecolor: {
       type: String,
-      default: 'gray' } },
+      default: 'gray' },
+
+    angelesick: {
+      type: Boolean,
+      default: false } },
 
 
   mounted: function mounted() {

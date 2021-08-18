@@ -1,6 +1,13 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
+		
+		<view class="" style="position: fixed;z-index: 9999;top:40rpx;left: 0;margin: 0 auto;font-size: 36rpx;background-color: #ffffff00;">
+			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="见面咨询"
+				color="#fff" background-color="#ffffff00" @clickLeft="back">
 
+			</uni-nav-bar>
+		</view>
+		
 		<view class="page">
 			<view class="mod1">
 				<view style="z-index: 78;
@@ -14,10 +21,10 @@
 		display: flex;
 		flex-direction: column;">
 
-					<view class="group3">
+					<view class="group3" style="position: relative;top: 132rpx;left: 50rpx;">
 						<text lines="1" class="info3">面对面咨询</text>
 					</view>
-					<view class="group4">
+					<view class="group4" style="position: relative;top: 124rpx;left: 50rpx;">
 						<text lines="1" class="paragraph1">自由约定见面的时间和地点</text>
 					</view>
 					<view style="z-index: 79;
@@ -65,7 +72,7 @@
 					<view class="group8">
 						<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 						<view class="bd2"></view>
-						<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;">
+						<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;margin-top: 20rpx;">
 							<rich-text :nodes="dataSource.service"></rich-text>
 						</view>
 
@@ -388,7 +395,7 @@
 
 	.paragraph1 {
 		z-index: 84;
-		width: 240rpx;
+		width: 200rpx;
 		height: 66rpx;
 		display: block;
 		overflow-wrap: break-word;
@@ -409,7 +416,7 @@
 		z-index: 82;
 		position: absolute;
 		left: 419rpx;
-		top: 91rpx;
+		top: 71rpx;
 		width: 294rpx;
 		height: 210rpx;
 	}

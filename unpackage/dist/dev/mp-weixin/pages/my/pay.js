@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var tankuang = function tankuang() {__webpack_require__.e(/*! require.ensure | pages/components/tankuang/tankuang */ "pages/components/tankuang/tankuang").then((function () {return resolve(__webpack_require__(/*! ../components/tankuang/tankuang.vue */ 520));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var tankuang = function tankuang() {__webpack_require__.e(/*! require.ensure | pages/components/tankuang/tankuang */ "pages/components/tankuang/tankuang").then((function () {return resolve(__webpack_require__(/*! ../components/tankuang/tankuang.vue */ 527));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -283,7 +283,7 @@ __webpack_require__.r(__webpack_exports__);
                 _this.agreement == false)) {_context.next = 6;break;}
                 uni.showToast({
                   title: "请勾选支付方式",
-                  icon: 'none' });_context.next = 12;break;case 6:
+                  icon: 'none' });_context.next = 14;break;case 6:
 
 
                 console.log("支付---------");
@@ -299,6 +299,8 @@ __webpack_require__.r(__webpack_exports__);
                       source_id: _this.id } }));case 10:res = _context.sent;
 
 
+                console.log("之父1");
+                console.log(res);
                 if (res.code == -1) {
                   uni.showToast({
                     title: res.message,
@@ -344,7 +346,7 @@ __webpack_require__.r(__webpack_exports__);
                     } });
 
 
-                }case 12:case "end":return _context.stop();}}}, _callee);}))();
+                }case 14:case "end":return _context.stop();}}}, _callee);}))();
 
 
 

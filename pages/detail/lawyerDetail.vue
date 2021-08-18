@@ -4,30 +4,34 @@
 
 		<view class="flex-column mx-start sx-stretch" style="border-radius: 20rpx;background-color: #FFFFFF;">
 			<view class="flex-row mx-start sx-center ld_title_wrap">
-				<view style="background-color: #007AFF;width: 8rpx;height: 40rpx;margin:0 10rpx 0 20rpx;"></view>
-				<view style="">个人介绍</view>
+				<view
+					style="background-color:  rgba(64,169,255,1);width: 6rpx;height: 25rpx;border-radius: 1rpx;margin:0 10rpx 0 20rpx;">
+				</view>
+				<view style="color: rgba(51,51,51,1);
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;">个人介绍</view>
 			</view>
 			<view class="flex-column mx-start sx-stretch"
 				style="flex: 0 0 400rpx;padding: 20rpx;line-height: 36rpx;font-size: 25rpx ;color: rgba(153,153,153,1);">
 				<view class="flex-row mx-start sx-center">
-					<view style="flex: 0 0 140rpx;">毕业院校：</view>
-					<view style="flex: 1 1 auto"> {{lawyerList[0] && lawyerList[0].school}}</view>
+					<view class="intro_title" style="flex: 0 0 140rpx;">毕业院校：</view>
+					<view style="flex: 1 1 auto;color: rgba(102,102,102,1);"> {{lawyerList[0] && lawyerList[0].school}}</view>
 				</view>
 				<view class="flex-row mx-start sx-center">
-					<view style="flex: 0 0 140rpx;">学历：</view>
-					<view style="flex: 1 1 auto"> {{lawyerList[0] && lawyerList[0].xueli}}</view>
+					<view class="intro_title" style="flex: 0 0 140rpx;">学历：</view>
+					<view style="flex: 1 1 auto;color: rgba(102,102,102,1);"> {{lawyerList[0] && lawyerList[0].xueli}}</view>
 				</view>
 				<view class="flex-row mx-start sx-center">
-					<view style="flex: 0 0 140rpx;">就读专业：</view>
-					<view style="flex: 1 1 auto"> {{lawyerList[0] && lawyerList[0].zhuanye}}</view>
+					<view class="intro_title" style="flex: 0 0 140rpx;">就读专业：</view>
+					<view style="flex: 1 1 auto;color: rgba(102,102,102,1);"> {{lawyerList[0] && lawyerList[0].zhuanye}}</view>
 				</view>
 				<view class="flex-row mx-start sx-center">
-					<view style="flex: 0 0 140rpx;">就职律所：</view>
-					<view style="flex: 1 1 auto"> {{lawyerList[0] && lawyerList[0].lvsuo}}</view>
+					<view class="intro_title" style="flex: 0 0 140rpx;">就职律所：</view>
+					<view style="flex: 1 1 auto;color: rgba(102,102,102,1);"> {{lawyerList[0] && lawyerList[0].lvsuo}}</view>
 				</view>
 				<view class="flex-row mx-start sx-start" style="margin-top: 20rpx;">
-					<view style="flex: 0 0 140rpx;">个人简介：</view>
-					<view style="flex: 1 1 auto ;height: 200rpx;overflow: auto;">
+					<view class="intro_title" style="flex: 0 0 140rpx;">个人简介：</view>
+					<view style="flex: 1 1 auto ;height: 200rpx;overflow: auto;color: rgba(102,102,102,1);">
 						{{lawyerList[0] && lawyerList[0].jianjie}}
 					</view>
 				</view>
@@ -40,8 +44,9 @@
 				<!-- <view class="backImgCenter"
 					style="background-image: url(/static/icon/icon1.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
 				</view> -->
-				<image style="flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;" mode="aspectFit" src="/static/icon/icon1.png"></image>
-				
+				<image style="flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;" mode="aspectFit"
+					src="/static/icon/icon1.png"></image>
+
 				<view class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
 					<text>图文详情</text>
 					<text>￥{{lawyerList[0] && lawyerList[0].price && lawyerList[0] && lawyerList[0].price.tuwen}}元</text>
@@ -53,8 +58,9 @@
 				<!-- <view class="backImgCenter"
 					style="background-image: url(/static/icon/icon2.png);flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;">
 				</view> -->
-				<image style="flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;" mode="aspectFit" src="/static/icon/icon2.png"></image>
-				<view  class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
+				<image style="flex: 0 0 92rpx;height: 92rpx;margin: 10rpx;" mode="aspectFit"
+					src="/static/icon/icon2.png"></image>
+				<view class="flex-column" style="flex: 1 1 auto;line-height: 36rpx;font-size: 26rpx;">
 					<text>电话沟通</text>
 					<text>{{lawyerList[0] && lawyerList[0].price && lawyerList[0] && lawyerList[0].price.dianhua}}元</text>
 				</view>
@@ -64,13 +70,19 @@
 
 		<view class="flex-column mx-start sx-stretch" style="border-radius: 20rpx;background-color: #FFFFFF;">
 			<view class="flex-row mx-start sx-center ld_title_wrap">
-				<view style="background-color: #007AFF;width: 8rpx;height: 40rpx;margin:0 10rpx 0 20rpx;"></view>
-				<view style="">成功案例</view>
+				<view
+					style="background-color:  rgba(64,169,255,1);width: 6rpx;height: 25rpx;border-radius: 1rpx;margin:0 10rpx 0 20rpx;">
+				</view>
+				<view style="color: rgba(51,51,51,1);
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;">成功案例</view>
 			</view>
 			<anli :anli="anli"></anli>
+			<view v-if="anli.length<1" style="text-align: center;font-size: 36rpx;color: gray;margin: 20rpx;">
+				没有数据哦！</view>
 
 		</view>
-		<view class="flex-row mx-center sx-center">
+		<!-- <view class="flex-row mx-center sx-center">
 			<view class="flex-txt-center" @tap="tuTuwenPage"
 				style="flex: 1 1 auto;margin: 20rpx;height: 60rpx;border-radius:30rpx;background-color: rgba(255,96,96,1);;color: #FFFFFF;">
 				图文咨询
@@ -79,7 +91,7 @@
 				style="flex: 1 1 auto;margin: 20rpx;height: 60rpx;border-radius:30rpx;background-color: #57A9FF;color: #FFFFFF;">
 				电话咨询
 			</view>
-		</view>
+		</view> -->
 
 
 	</view>
@@ -128,18 +140,19 @@
 					})
 				}
 			},
-			async getLawyer(){
+			async getLawyer() {
 				this.lawyerList = [];
 				let res = this.$myRequest({
 					url: 'layer/detail',
 					methods: 'GET',
 					data: {
-						layer_id:this.lawyerid,
+						layer_id: this.lawyerid,
 						user_id: this.$store.state.userInfo.user_id
 					}
 				});
 				res.then(data => {
 					if (data.code == 200) {
+						console.log("律师详情")
 						console.log(data);
 						this.lawyerList.push(data.data)
 					} else {
@@ -150,8 +163,8 @@
 					}
 				})
 			},
-			updateFollow(fllow){
-				this.lawyerList[0].follow = fllow==1?0:1;
+			updateFollow(fllow) {
+				this.lawyerList[0].follow = fllow == 1 ? 0 : 1;
 			},
 			tuTuwenPage() {
 				let lawyer = this.lawyerList[0];
@@ -197,13 +210,13 @@
 					//跳转收银台
 					uni.navigateTo({
 						url: '../my/pay?id=' + res.data.service_id + '&price=' + lawyer.price.dianhua +
-							'&typeId=2'+'&emitName=callphone'
+							'&typeId=2' + '&emitName=callphone'
 					})
-					uni.$on('callphone',()=>{
+					uni.$on('callphone', () => {
 						uni.makePhoneCall({
-							 phoneNumber: lawyer.mobile, 
+							phoneNumber: lawyer.mobile,
 						})
-						
+
 					})
 
 				}
@@ -224,6 +237,13 @@
 	.ld_title_wrap {
 		background-color: rgba(9, 109, 217, 0.1);
 		flex: 0 0 97rpx;
+		border-radius: 16rpx 16rpx 0 0;
 
+	}
+
+	.intro_title {
+		font-size: 25rpx;
+		font-family: PingFangSC-Regular;
+		color: rgba(153, 153, 153, 1);
 	}
 </style>
