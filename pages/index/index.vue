@@ -2,8 +2,7 @@
 	<view>
 		<search></search>
 
-		<swiper class="swiper flex-column mx-start sx-stretch" circular :autoplay="true"
-			interval="3000" duration="500">
+		<swiper class="swiper flex-column mx-start sx-stretch" circular :autoplay="true" interval="3000" duration="500">
 			<swiper-item class="flex-column mx-start sx-stretch">
 				<!-- <view class="swiper-item backImgFull" mode="widthFix" :style="{backgroundImage: 'url(/static/images/banner.png)'}">
 				</view> -->
@@ -110,7 +109,7 @@
 				scrollLeft: 0,
 				isClickChange: false,
 				currentTab: 0,
-				xian:false,
+				xian: false,
 				item1: {
 					title: '咨询律师',
 					zixun: [{
@@ -254,10 +253,10 @@
 					this.commitWindowHeight(res.windowHeight);
 				}
 			})
-			if(!uni.getStorageSync('move')){
+			if (!uni.getStorageSync('move')) {
 				this.xian = !this.xian
 			}
-			
+
 		},
 		computed: {
 			// 使用对象展开运算符将 getter 混入 computed 对象中
@@ -277,30 +276,30 @@
 			// }),
 
 		},
-		methods: { 
+		methods: {
 			getPhoneNumber(e) {
-							 let that = this 
-								uni.login({
-									provider: 'weixin',
-									success(res) {
-										// console.log(res)
-										uni.request({
-											url:'https://layer.boyaokj.cn/api/wechat/setMobile',
-											method:'GET',
-											data:{
-												user_id:uni.getStorageSync('userInfo').user_id,
-												code:res.code,
-												iv:e.detail.iv,
-												encrypteddata:e.detail.encryptedData
-											},
-											success(res) {
-												that.xian = !that.xian
-												uni.setStorageSync('move',1)
-											}
-										})
-									}
-								})
-			           },
+				let that = this
+				uni.login({
+					provider: 'weixin',
+					success(res) {
+						// console.log(res)
+						uni.request({
+							url: 'https://layer.boyaokj.cn/api/wechat/setMobile',
+							method: 'GET',
+							data: {
+								user_id: uni.getStorageSync('userInfo').user_id,
+								code: res.code,
+								iv: e.detail.iv,
+								encrypteddata: e.detail.encryptedData
+							},
+							success(res) {
+								that.xian = !that.xian
+								uni.setStorageSync('move', 1)
+							}
+						})
+					}
+				})
+			},
 			...mapMutations(['commitWindowHeight']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
 			...mapActions([
 				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
@@ -394,10 +393,11 @@
 </script>
 
 <style>
-	page{
+	page {
 		background: #F8F8F8;
 	}
-	.huoqu{
+
+	.huoqu {
 		position: fixed;
 		top: 0;
 		background-color: #fff;
@@ -408,20 +408,23 @@
 		padding-top: 60%;
 		z-index: 50;
 	}
-	.huoqu image{
+
+	.huoqu image {
 		width: 200rpx;
 		height: 200rpx;
 		margin: auto;
 		display: block;
 	}
-	.shao{
+
+	.shao {
 		color: #333;
 		text-align: center;
 		font-size: 32rpx;
 		margin-top: 80rpx;
 		margin-bottom: 60rpx;
 	}
-	.btnbor{
+
+	.btnbor {
 		width: 680rpx;
 		margin: 20rpx auto;
 		height: 1rpx;
@@ -429,7 +432,8 @@
 		opacity: .5;
 		margin-top: 80rpx;
 	}
-	.huoqu button{
+
+	.huoqu button {
 		background: #67c23a;
 		color: #fff;
 		font: 32rpx;
@@ -440,18 +444,21 @@
 		justify-content: center;
 		align-items: center;
 		border: 1rpx solid #67c23a;
-		border: 0!important;
+		border: 0 !important;
 		border-radius: 40rpx;
 	}
-	.fourcard{
+
+	.fourcard {
 		background: #fff;
-		width: 710rpx!important;
+		width: 710rpx !important;
 		padding-bottom: 29rpx;
 		border: 0 0 14rpx 14rpx;
 	}
-	.backImgFull{
+
+	.backImgFull {
 		width: 100%;
 	}
+
 	.swiper {
 		height: 400rpx;
 	}
@@ -495,7 +502,7 @@
 		border-radius: 2rpx;
 		margin-top: 8rpx;
 		box-sizing: border-box;
-		
+
 	}
 
 	.modone {
