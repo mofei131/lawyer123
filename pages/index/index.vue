@@ -16,7 +16,7 @@
 		</swiper>
 
 		<iconlist :item='item1'></iconlist>
-		<iconlist :item='item2'></iconlist>
+		<iconlist class="danxiang" :item='item2'></iconlist>
 		<view class="modtitle" @tap="toYouxuan">
 			<view class="modleft">
 				<view class="blue"></view>
@@ -293,8 +293,8 @@
 												encrypteddata:e.detail.encryptedData
 											},
 											success(res) {
-												that.xian = !that.xian
-												uni.setStorageSync('move',1)
+												// that.xian = !that.xian
+												// uni.setStorageSync('move',1)
 											}
 										})
 									}
@@ -395,6 +395,10 @@
 <style>
 	page{
 		background: #F8F8F8;
+	}
+	.danxiang .zixunitemimage{
+		width: 70rpx;
+		height: 70rpx;
 	}
 	.huoqu{
 		position: fixed;

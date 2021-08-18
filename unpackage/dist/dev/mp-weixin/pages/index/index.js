@@ -419,8 +419,8 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
               encrypteddata: e.detail.encryptedData },
 
             success: function success(res) {
-              that.xian = !that.xian;
-              uni.setStorageSync('move', 1);
+              // that.xian = !that.xian
+              // uni.setStorageSync('move',1)
             } });
 
         } });

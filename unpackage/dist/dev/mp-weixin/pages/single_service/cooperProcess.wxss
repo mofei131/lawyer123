@@ -290,7 +290,7 @@
 	display: block;
 	overflow-wrap: break-word;
 	color: rgba(106, 106, 106, 1);
-	font-size: 22rpx;
+	font-size: 24rpx;
 	font-family: PingFangSC-Regular;
 	line-height: 30rpx;
 	text-align: left;

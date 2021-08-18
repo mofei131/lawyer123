@@ -82,6 +82,10 @@
 page{
 	background: #F8F8F8;
 }
+.danxiang .zixunitemimage{
+	width: 70rpx;
+	height: 70rpx;
+}
 .huoqu{
 	position: fixed;
 	top: 0;

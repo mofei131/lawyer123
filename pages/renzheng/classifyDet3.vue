@@ -48,7 +48,7 @@
 </template>
 
 <script>
-	import pickcity from '@/pages/components/pickcity/pickcity.vue'
+	import pickcity from '../components/pickcity/pickcity.vue'
 	import tankuang from '../components/tankuang/tankuang.vue'
 	export default{
 		components:{

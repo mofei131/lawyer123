@@ -284,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
                 _this.agreement == false)) {_context.next = 6;break;}
                 uni.showToast({
                   title: "请勾选支付方式",
-                  icon: 'none' });_context.next = 12;break;case 6:
+                  icon: 'none' });_context.next = 14;break;case 6:
 
 
                 console.log("支付---------");
@@ -300,6 +300,8 @@ __webpack_require__.r(__webpack_exports__);
                       source_id: _this.id } }));case 10:res = _context.sent;
 
 
+                console.log("之父1");
+                console.log(res);
                 if (res.code == -1) {
                   uni.showToast({
                     title: res.message,
@@ -345,7 +347,7 @@ __webpack_require__.r(__webpack_exports__);
                     } });
 
 
-                }case 12:case "end":return _context.stop();}}}, _callee);}))();
+                }case 14:case "end":return _context.stop();}}}, _callee);}))();
 
 
 

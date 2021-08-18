@@ -31,16 +31,16 @@
 				<view class="group8">
 					<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 					<view class="bd2"></view>
-					<view class="flex-column" style="overflow: auto;font-size: 26rpx;color: gray;">
+					<view class="flex-column" style="overflow: auto;font-size: 24rpx;color: gray;">
 						<rich-text :nodes="dataSource.service"></rich-text>
 
 					</view>
 
 				</view>
 			</view>
-			<view class="block4">
-				<view class="mod3">
-					<text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
+			<view class="block4" style="padding-top: 0;">
+				<!-- <view class="mod3"> -->
+					<!-- <text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
 					<view class="mod4"></view>
 					<view class="mod5">
 						<image src="/static/icon/cooper_p3.png" class="img1"></image>
@@ -56,8 +56,11 @@
 						<text lines="1" class="txt4">律师接单</text>
 						<text lines="1" class="info8">律师服务</text>
 						<text lines="1" class="info9">回访评价</text>
-					</view>
-				</view>
+					</view> -->
+					<image v-if="id == 5" mode="widthFix" src="../../static/images/liucheng1.png" style="width: 100%;border-radius: 20rpx;"></image>
+					<image v-else-if="id == 6" mode="widthFix" src="../../static/images/liucheng2.png" style="width: 100%;border-radius: 20rpx;"></image>
+					<image v-else mode="widthFix" src="../../static/images/liucheng3.png" style="width: 100%;border-radius: 20rpx;"></image>
+				<!-- </view> -->
 
 			</view>
 
@@ -487,7 +490,7 @@
 		display: block;
 		overflow-wrap: break-word;
 		color: rgba(106, 106, 106, 1);
-		font-size: 22rpx;
+		font-size: 24rpx;
 		font-family: PingFangSC-Regular;
 		line-height: 30rpx;
 		text-align: left;

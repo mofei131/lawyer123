@@ -155,6 +155,7 @@
 					method:'GET',
 					data
 				});
+				console.log("电话")
 				console.log(res);
 				uni.hideLoading();
 				if(res && res.code==-1){
@@ -232,7 +233,7 @@
 	.serviceBtn {
 		border: 2rpx solid #4CA2FF;
 		padding: 0 5rpx;
-		font-size: 22rpx;
+		font-size: 28rpx;
 		color: #4CA2FF;
 	}
 
