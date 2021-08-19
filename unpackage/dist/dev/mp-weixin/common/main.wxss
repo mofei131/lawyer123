@@ -83,7 +83,6 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-	padding-bottom: 20rpx;
 }
 .flex-row.sx-stretch, .flex-column.sx-stretch {
   -webkit-box-align: stretch;

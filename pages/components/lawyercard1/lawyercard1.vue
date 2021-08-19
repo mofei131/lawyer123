@@ -4,13 +4,11 @@
 			:style="{flex:'0 0 auto',order:item}">
 			<view class="flex-row mx-start sx-stretch" @tap="todetail(item)">
 
-				<view class="backImgCenter avator"
-					:style="{backgroundImage: `url(${item.photo||'/static/icon/girl.png'})`}">
-				</view>
+		
+				<image  mode="aspectFill" :src="item.photo||'/static/icon/girl.png'" style="border-radius: 50%;margin-right: 10rpx;flex: 0 0 125rpx;height:125rpx;"></image>
 				<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;line-height: 40rpx;width: 500rpx;">
 					<view class="flex-row mx-start sx-center">
-						<text
-							style="font-size: 26rpx;">{{item.name}}</text>
+						<text style="font-size: 26rpx;">{{item.name}}</text>
 						<view v-if="item.type_text" class="flex-txt-center"
 							style="margin-left: 10rpx;width: 52rpx;background-color: #FF4D4F;">
 							<text lines="1"
@@ -34,8 +32,6 @@
 							{{item.jianjie}}
 						</view>
 						<view v-if="follow" @tap.stop="guanzhu(item)" style="padding: 0 16rpx;font-size: 22rpx;flex: 0 0 auto ;border-radius: 40rpx;background-color: #6bc1f3;color: #FFFFFF;box-sizing: border-box;">{{item.follow==1?'取消关注':'关注'}}</view>
-						
-					
 					</view>
 
 					<view class="field">
@@ -60,7 +56,8 @@
 				</view>
 
 			</view>
-			<view v-if="item && zixun" class="flex-row mx-between sx-center" style="flex: 0 0 auto;margin-top: 20rpx;">
+			<view v-if="showline" style="flex:0 0 1rpx;background-color: #e6e6e6;margin-top: 5rpx;"></view>
+			<view v-if="item && zixun" class="flex-row mx-between sx-center wrap" style="flex: 0 0 auto;margin-top: 20rpx;">
 				<view class="serviceBtn flex-txt-center" @tap="tuwen(item)">
 					<text>图文咨询</text>
 					<text style="color: red;">￥{{item.price && item.price.tuwen}}</text>
@@ -86,7 +83,7 @@
 <script>
 	export default {
 		components: {},
-		props: ['lawyerlist', 'zixun', 'isbuy','updatefollow','follow'],
+		props: ['lawyerlist', 'zixun', 'isbuy','updatefollow','follow','showline'],
 		data() {
 			return {
 
@@ -234,15 +231,14 @@
 		padding: 0 5rpx;
 		font-size: 28rpx;
 		color: #4CA2FF; */
-		width: 150rpx;
+		flex:0 0 auto;
 		border-radius: 4rpx;
 		border: 1px solid #40A9FF;
 		font-size: 21rpx;
 		font-family: PingFangSC-Regular, PingFang SC;
 		font-weight: 400;
 		color: #40A9FF;
-		padding-top: 8rpx;
-		padding-bottom: 8rpx;
+		padding: 8rpx;
 	}
 
 	.field {

@@ -23,7 +23,7 @@
 		</view>
 
 
-
+<view class="botbai"></view>
 	</view>
 </template>
 
@@ -154,6 +154,13 @@
 </script>
 
 <style>
+	.botbai{
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		height: 160rpx;
+		background: #fff;
+	}
 	.btn{
 		width: 680rpx;
 		height: 80rpx;
@@ -168,5 +175,6 @@
 		position: fixed;
 		bottom: 40rpx;
 		margin: 0 auto;
+		z-index: 10;
 	}
 </style>

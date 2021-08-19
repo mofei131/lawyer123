@@ -16,15 +16,16 @@
 	padding: 0 5rpx;
 	font-size: 28rpx;
 	color: #4CA2FF; */
-	width: 150rpx;
+	-webkit-box-flex:0;
+	-webkit-flex:0 0 auto;
+	        flex:0 0 auto;
 	border-radius: 4rpx;
 	border: 1px solid #40A9FF;
 	font-size: 21rpx;
 	font-family: PingFangSC-Regular, PingFang SC;
 	font-weight: 400;
 	color: #40A9FF;
-	padding-top: 8rpx;
-	padding-bottom: 8rpx;
+	padding: 8rpx;
 }
 .field {
 	display: -webkit-box;

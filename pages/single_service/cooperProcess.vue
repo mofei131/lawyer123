@@ -1,17 +1,17 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
-		<!-- <view class="">
+		<view class="" style="position: fixed;z-index: 9999;top:40rpx;left: 0;margin: 0 auto;font-size: 36rpx;background-color: #ffffff00;">
 			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" :title="typeData && typeData.name"
-				color="#333333" background-color="#FFFFFF" @clickLeft="back">
+				color="#fff" background-color="#ffffff00" @clickLeft="back">
 
 			</uni-nav-bar>
-		</view> -->
+		</view>
 
 		<view class="page">
 			<view class="mod1" style="position: relative;">
-				<image style="width: 100%;height: 332rpx;" mode="scaleToFill" src="/static/icon/cooper_back111.png">
+				<image style="width: 100%;height: 379rpx;" mode="scaleToFill" src="/static/icon/cooper_back111.png">
 				</image>
-				<view style="position: absolute;top: 58px;left: 110rpx;">
+				<view style="position: absolute;top: 145rpx;left: 110rpx;">
 					<text lines="1" class="info3">{{name}}</text>
 				</view>
 				<view class="group4">
@@ -36,7 +36,7 @@
 				<view class="group8">
 					<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 					<view class="bd2"></view>
-					<view class="flex-column" style="overflow: auto;font-size: 24rpx;color: gray;">
+					<view class="flex-column" style="overflow: auto;font-size: 24rpx;color: gray;margin-top: 18rpx;">
 						<rich-text :nodes="dataSource.service"></rich-text>
 
 					</view>
@@ -84,7 +84,7 @@
 			</view> -->
 
 
-			<view class="mod8">
+			<!-- <view class="mod8">
 				<view class="box3">
 					<view class="mod9" @tap="kefu">
 						<view class="mod10">
@@ -96,7 +96,7 @@
 						<text lines="1" class="word11">立即购买</text>
 					</button>
 				</view>
-			</view>
+			</view> -->
 		</view>
 
 

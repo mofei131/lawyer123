@@ -8,10 +8,10 @@
 			</view>
 		</view>
 		<cooperTabar @searchChange="searchChange" style="position: fixed;top: 156rpx;width: 100%;left: 0;margin: auto;"></cooperTabar>
-		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;overflow: auto;margin-top: 256rpx;">
+		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;overflow: auto;margin-top: 236rpx;">
 
 
-			<lawyercard1 :zixun="true" @updatefollow="updateFollow" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
+			<lawyercard1 :showline="true" :zixun="true" @updatefollow="updateFollow" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
 
 			<view v-if="!isMore" style="text-align: center;font-size: 36rpx;color: gray;margin-top: 20rpx;">
 				没有数据了，切换选择试试!</view>
@@ -300,6 +300,7 @@
 		margin-left: 15rpx;
 		justify-content: center;
 		align-items: center;
+		margin-top: 16rpx;
 	}
 
 	.search image {

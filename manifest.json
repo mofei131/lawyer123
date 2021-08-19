@@ -56,7 +56,12 @@
                         "UniversalLinks" : ""
                     }
                 },
-                "maps" : {},
+                "maps" : {
+                    "amap" : {
+                        "appkey_ios" : "",
+                        "appkey_android" : ""
+                    }
+                },
                 "payment" : {
                     "weixin" : {
                         "__platform__" : [ "android" ],

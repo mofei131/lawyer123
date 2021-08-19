@@ -51,7 +51,6 @@
 
 .flex-row.sx-center, .flex-column.sx-center {
   align-items: center;
-	padding-bottom: 20rpx;
 }
 
 .flex-row.sx-stretch, .flex-column.sx-stretch {

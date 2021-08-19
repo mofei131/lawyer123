@@ -1,21 +1,28 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="padding: 20rpx;font-size: 32rpx;">
 		<view class="flex-column mx-center sx-stretch"
-			style="margin-bottom: 20rpx;flex: 0 0 80rpx;padding: 20rpx;background-color: #F4F4F4;border-radius: 20rpx;">
-			<input class="uni-input" v-model="title" placeholder="请输案件标题,如婚姻家庭或交通事故"
-				style="flex:1 1 auto;background-color: #FFFFFF;padding-left: 20rpx;">
-		</view>
-		<view class="flex-row" style="margin-bottom: 20rpx;">
-			<textarea v-model="content" placeholder-style="color:gray" auto-height placeholder="请输入您的问题,以便更好的为您推荐律师"
-				style="flex: 1 1 auto;padding: 20rpx;min-height: 400rpx;background-color: #F4F4F4;border-radius: 20rpx;" />
+			style="margin-bottom: 20rpx;flex: 0 0 76rpx;background-color: #F4F4F4;border-radius: 15rpx;">
+			<input class="uni-input" v-model="title" placeholder="请输入案情标题（如：婚姻家庭、交通事故）" placeholder-style="color: #6A6A6A;font-size: 24rpx;font-family: PingFangSC-Regular;"
+				style="flex:1 1 auto;background-color: #F4F4F4;padding-left: 20rpx;border-radius: 20rpx;color: #6A6A6A;font-size: 24rpx;">
 		</view>
 
-		<view class="flex-row mx-center sx-center" style="background-color: #F4F4F4;height: 60rpx;padding: 10rpx 0;"
-			@tap="searchKeyWord">
-			<input class="uni-input" disabled="true" v-model="address" placeholder-style="font-size:32rpx"
-				placeholder="请选择事发地,精确到街道" style="flex:1 1 auto;padding-left: 20rpx;font-size: 32rpx;">
-			<view style="margin: 0 20rpx;">
-				<fa-icon type="telegram" color="gray"></fa-icon>
+		<view class="flex-row" style="margin-bottom: 20rpx;">
+			<textarea v-model="content"
+				placeholder-style="color: rgba(153,153,153,1);font-size: 28rpx;font-family: PingFangSC-Regular;"
+				placeholder="请简要描述案情和要求，律师首先会帮您做案情分析"
+				style="flex: 1 1 auto;padding: 18rpx 0 0 25rpx;height:407rpx;background-color: #F4F4F4;border-radius: 8rpx;font-size:28rpx" />
+		</view>
+
+		<view class="flex-column mx-center sx-stretch"
+			style="margin-top: 20rpx;flex: 0 0 auto;padding: 20rpx;background-color: #F4F4F4;border-radius: 8rpx;color: #6A6A6A;font-size: 24rpx;font-family: PingFangSC-Regular;">
+			<view class="flex-row mx-center sx-center">
+				<input class="uni-input" disabled="true" v-model="address"
+					placeholder-style="font-size:24rpx;color:#6A6A6A" placeholder="请选择事发地" style="flex:1 1 auto;">
+				<view class="flex-row mx-center sx-center" style="flex: 0 0 auto;margin-left:20rpx;"
+					@tap="searchKeyWord">
+					<view style="flex: 0 0 auto;margin-right: 10rpx;">请选择事发地</view>
+					<fa-icon type="angle-right" color="#6A6A6A"></fa-icon>
+				</view>
 			</view>
 		</view>
 		<view class="flex-row mx-center sx-center">
@@ -54,7 +61,7 @@
 			}
 		},
 		methods: {
-			submit(){
+			submit() {
 				let {
 					layer_id,
 					user_id,
@@ -94,37 +101,44 @@
 				}
 				let that = this
 				uni.showModal({
-				    title: '风险友情提示',
-				    content: '本次付费为聘请律师的定金费用，律师费差额请转账到山东一二三法律服务集团名下对公账户，否则产生的一切损失由客户自行承担',
-				    success: function (res) {
-				        if (res.confirm) {
-				            that.commit()
-				        }
-				    }
+					title: '风险友情提示',
+					content: '本次付费为聘请律师的定金费用，律师费差额请转账到山东一二三法律服务集团名下对公账户，否则产生的一切损失由客户自行承担',
+					success: function(res) {
+						if (res.confirm) {
+							that.commit()
+						}
+					}
 				});
 			},
 			async commit() {
-				
-				//跳转支付页面
-				
-				let data = {
-					layer_id,
-					user_id,
-					content,
-					title,
-					address,
-					lng,
-					lat
-				}
-				
-				console.log(data);
+				let that = this
+				// let data = {
+				// 	that.layer_id,
+				// 	that.user_id,
+				// 	that.content,
+				// 	that.title,
+				// 	that.address,
+				// 	that.lng,
+				// 	that.lat
+				// }
+
+				// console.log(data);
 				uni.showLoading({
 					title: '正在提交...'
 				})
 				let res = await this.$myRequest({
 					url: 'service/pinqing',
-					data
+					data:{
+						layer_id:that.layer_id,
+						user_id:that.user_id,
+						content:that.content,
+						title:that.title,
+						address:that.address,
+						lng:that.lng,
+						lat:that.lat
+					}
 				});
+				console.log(res)
 				uni.hideLoading()
 				if (res && res.code == -1) {
 					uni.showToast({
@@ -135,7 +149,7 @@
 					if (res && res.code == 200) {
 						console.log(res);
 						uni.navigateTo({
-							url: '../my/pay?id=' + res.data.service_id + '&price=' + this.price+'&typeId=10'
+							url: '../my/pay?id=' + res.data.service_id + '&price=' + this.price + '&typeId=10'
 						})
 					} else {
 						uni.showToast({

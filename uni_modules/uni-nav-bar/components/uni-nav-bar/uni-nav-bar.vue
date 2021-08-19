@@ -139,7 +139,7 @@
 		font-size: 34rpx;
 		/* #endif */
 		/* #ifndef APP-PLUS */
-		font-size: $uni-font-size-lg;
+		font-size: $uni-font-size-sm;
 		/* #endif */
 	}
 

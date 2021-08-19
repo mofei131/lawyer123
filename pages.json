@@ -78,6 +78,7 @@
 		}, {
 			"path": "pages/single_service/otherService",
 			"style": {
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "其他服务",
 				"enablePullDownRefresh": false
 			}
@@ -92,6 +93,7 @@
 		}, {
 			"path": "pages/service_zhixun/jianmian",
 			"style": {
+				"navigationStyle":"custom",
 				"navigationBarTitleText": "见面咨询",
 				"enablePullDownRefresh": false
 			}
@@ -299,6 +301,7 @@
 			"path": "pages/single_service/cooperProcess",
 			"style": {
 				"navigationBarTitleText": "合同审核",
+				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
 

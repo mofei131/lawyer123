@@ -182,6 +182,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   onLoad: function onLoad(param) {
@@ -256,28 +263,35 @@ var _default =
         } });
 
     },
-    commit: function commit() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var data, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    commit: function commit() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var that, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                that = _this;
+                // let data = {
+                // 	that.layer_id,
+                // 	that.user_id,
+                // 	that.content,
+                // 	that.title,
+                // 	that.address,
+                // 	that.lng,
+                // 	that.lat
+                // }
 
-                //跳转支付页面
-
-                data = {
-                  layer_id: layer_id,
-                  user_id: user_id,
-                  content: content,
-                  title: title,
-                  address: address,
-                  lng: lng,
-                  lat: lat };
-
-
-                console.log(data);
+                // console.log(data);
                 uni.showLoading({
-                  title: '正在提交...' });_context.next = 5;return (
+                  title: '正在提交...' });_context.next = 4;return (
 
                   _this.$myRequest({
                     url: 'service/pinqing',
-                    data: data }));case 5:res = _context.sent;
+                    data: {
+                      layer_id: that.layer_id,
+                      user_id: that.user_id,
+                      content: that.content,
+                      title: that.title,
+                      address: that.address,
+                      lng: that.lng,
+                      lat: that.lat } }));case 4:res = _context.sent;
 
+
+                console.log(res);
                 uni.hideLoading();
                 if (res && res.code == -1) {
                   uni.showToast({

@@ -125,7 +125,7 @@
 
 	.zixunitemview {
 		color: #333;
-		font-size: 24rpx;
+		font-size: 28rpx;
 		font-weight: 500;
 		margin-top: 20rpx;
 		margin-bottom: 12rpx;

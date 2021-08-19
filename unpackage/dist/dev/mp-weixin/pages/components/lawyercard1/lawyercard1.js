@@ -227,13 +227,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 var _default =
 {
   components: {},
-  props: ['lawyerlist', 'zixun', 'isbuy', 'updatefollow', 'follow'],
+  props: ['lawyerlist', 'zixun', 'isbuy', 'updatefollow', 'follow', 'showline'],
   data: function data() {
     return {};
 

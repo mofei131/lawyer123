@@ -7,13 +7,13 @@
 	margin: 0 10rpx 10rpx 0;
 	background-color: #E6E6E6;
 	font-size: 24rpx;
-	color: gray;
+	color: rgba(102,102,102,1);
 	text-align: center;
 	border-radius: 10rpx;
 	border: 2rpx solid #E6E6E6;
 }
 .item_on {
-	border: 2rpx solid #007AFF;
-	color: #007AFF;
+	border: 2rpx solid rgba(64,169,255,1); 
+	color: rgba(64,169,255,1);
 }
 
