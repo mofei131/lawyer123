@@ -85,6 +85,12 @@
 			</view>
 		</view>
 	</view>
+	<view class="huoqu" v-if="xian">
+		<image src="../../static/icon/wxgficon.png" mode=""></image>
+		<view class="btnbor"></view>
+		<view class="shao">需要获取本机手机号</view>
+		<button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">授权登录</button>
+	</view>
 	</view>
 </template>
 
@@ -108,6 +114,7 @@
 					kefu:'400-8263-5078',
 					layer_status:0,
 				},
+				xian:false,
 				iconlist:{
 					zixun:[
 						{id:0,name:"我的订单",tourl:"./orderList",url:"data:image/png;base64,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"},
@@ -135,7 +142,7 @@
 					{
 						icon:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAo1JREFUOE+tlF9ozmEUx8/ze19hQ3q3JiVyIaWsiNy4wC1JK9wwsvyJcLHCXPDOv82fNFpvTbbiwgXlRrkhFO2GQhvjZhfStis18+79Peec53z1+807xrKbPfX01HOe8znnOd/nPI6mabhp4tCkoM6XuEWOFgHU/VWpNb/R6VQB/wF1dqPeGdXsW++udTzHtljREHs5cXLLzL7/wSaAOl+hhUC5EFDjGT1FiR5kjQZLKtdj797N+JRty+edTQYcB919j0oZoULDercnOXj9CVb6ku70TLWjXt8FizLMWFH01Nh1eFb/37AUdLsbOWW6o2qrYrEhESIWpNMrSJSWM9scUQx7oYxn+8xixOIGRnzm4MtLlYMpqP0ZjqmEG2VnDfQhZixnsezYXgJOHEGsYwHGp7pTr67Mv5yCrj4OJ1WttWwUpYuecZzF5rDCRNDrBbVeURTBADOWpdkKSBX5NzermlPQ+Ye8XwK1MVtFCgvUz4zFPslIAS+0QwQXglrbqLe9orQuOSeKUjA60VOobh8vduM9VEvs37DYElY0M1sjCyUZkQi+iGbrRj1vEcUZEUQhYFDIVn8s1AwlyUyQf39h9D6LbRelAS9YwGIZFhSLMY6a4XXMbpmGsBagJhA96i1Uby2rl4Lq279XAdlNJnaHFbNV0eQFpz1jriiKpdgaWO2thmhpJsIaEF0gopJFbneJ3dP+W7nhFLTrRvGsiuV/K4EfIlThxaJftSAYtcDRbiJa9OcbArl8b+FXsesuj5wNinxZYg3RkdiHFhabp5O+49+oCaDN50YOiISOsqTJqgFkmKpVE3t0qKeQ60ivtiGPLOJv+zxHC1mNeMpeHwvgQIM9fbkueuF02v6jn3Rb+CLi+hoLAAAAAElFTkSuQmCC',
 						title:'我的优惠券',
-						url:'../youhuiquan/youhuiquan'
+						url:'./yhqkeyong'
 					},{
 						icon:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAqVJREFUOE+tlEtIVFEYx393Xs6Mjq9QCSPTTUVSKhUptOgFYgZJuggjohBEqEUWWtgigoiMCqIooogEoaAgQVB70MJEsywqfJREQSIppjKj49x755449zJjk7oIOpvDOXzf7/t/j3MUIYTgPyxlKVAgBCOTMKuCYQg8LliRAokeZdGwC0AzIej+Ct8mQIrVwwJNA1WXuyA7DYo32EnyxgJjQON+6OiHoCowDNB0gaqJKETC5NllhyPbnWSl2aLqoiCZypP3FmQhAFTNQNXm4W6H4EyFm1SfBYuCng8IhsdkxIix5RhJSSrJTFVITVB4NaARDAkKcuyc2OuZB/nnoKnLMJ10XVC83ka6T+H2C43JgAQKtq51UFHoNJ1uts3R3qeZyu8eSyA92WYp+vRD0P7RcticY6NglUJKgsLjHo1nH3SzyDJIRZGL0o1OrrYEaXurmva1ZR52b4qzQJ1DBi/7w6YxQuCwQcO+OF5/0bnVHoqmd+Ggl6x0G5WX/IxOSHs4vMtNVbHHAklIxx+RZW1q97iw2+BUU9AEbct1cLTUQ2tviPMPZ001MrXqEg/VJV4L1DscprlTi2lzeaGLkgIHB64EWOZTaDwUz2xIsP/iNOPTBnrY6vzZynjKitwWaDIgON0cJKTKNluR8rPt1Jd7eDOsszrTbk52zQ0/PUOazN7qFNB2Lpnlqfb59l9rnaNrUI8OoCKg+aSPBLdi3jXcD9DWp8Y8j515Li5X+WLnaMJvcPzOjCk7Ms25Kx3k5zho6Znj+5gRA5Hz9KA+iYwUeyxInj6PhKm7F2Bsyoi23Fjkb5CQ6zWJrMtyLHwikRsJaXw0w9N3Kn9DZE125LmoK/dGlUT8lvxGRn+F6R7U+DllpZSRbGPLGqdZ2MXWkqB//et+A3mVv9qZdL9bAAAAAElFTkSuQmCC',
 						title:'律师认证',
@@ -188,6 +195,9 @@
 					// 			})
 					// 	  }
 					// })
+					if(!uni.getStorageSync('move')){
+						this.xian = !this.xian
+					}
 				},
 				onShow() {
 					let that = this
@@ -220,6 +230,7 @@
 							that.funct[3].kefu = res.data.data.data
 						}
 					})
+					
 				},
 		methods: {
 			takeOut(e){
@@ -241,9 +252,9 @@
 				uni.navigateTo({
 					url:url
 				})
-				uni.switchTab({
-					url:url
-				})
+				// uni.switchTab({
+				// 	url:url
+				// })
 				uni.makePhoneCall({
 					 phoneNumber: kefu, 
 				})
@@ -253,6 +264,28 @@
 					url:url
 				})
 			},
+			getPhoneNumber(e) {
+							 let that = this 
+								uni.login({
+									provider: 'weixin',
+									success(res) {
+										uni.request({
+											url:'https://layer.boyaokj.cn/api/wechat/setMobile',
+											method:'GET',
+											data:{
+												user_id:uni.getStorageSync('userInfo').user_id,
+												code:res.code,
+												iv:e.detail.iv,
+												encrypteddata:e.detail.encryptedData
+											},
+											success(res) {
+												that.xian = !that.xian
+												uni.setStorageSync('move',1)
+											}
+										})
+									}
+								})
+			           },
 		}
 	};
 </script>
@@ -260,6 +293,52 @@
 <style>
 	page{
 		background: #F8F8F8;
+	}
+	.huoqu{
+		position: fixed;
+		top: 0;
+		background-color: #fff;
+		/* height: 200rpx; */
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		padding-top: 60%;
+		z-index: 50;
+	}
+	.huoqu image{
+		width: 200rpx;
+		height: 200rpx;
+		margin: auto;
+		display: block;
+	}
+	.shao{
+		color: #333;
+		text-align: center;
+		font-size: 32rpx;
+		margin-top: 80rpx;
+		margin-bottom: 60rpx;
+	}
+	.btnbor{
+		width: 680rpx;
+		margin: 20rpx auto;
+		height: 1rpx;
+		background: #999;
+		opacity: .5;
+		margin-top: 80rpx;
+	}
+	.huoqu button{
+		background: #67c23a;
+		color: #fff;
+		font: 32rpx;
+		width: 600rpx;
+		height: 80rpx;
+		display: flex;
+		margin: auto;
+		justify-content: center;
+		align-items: center;
+		border: 1rpx solid #67c23a;
+		border: 0!important;
+		border-radius: 40rpx;
 	}
 	.functionlist{
 		padding-bottom: 60rpx;

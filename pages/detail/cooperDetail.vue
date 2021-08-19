@@ -4,6 +4,7 @@
 
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy == 0" @touchmove.stop.prevent="moveHandle">
 			<view v-html="content"></view>
+			<!-- <u-parse :content="content" @navigate="navigate"></u-parse> -->
 			<view class="btn" @tap="toPay()">立即购买</view>
 			<!-- <view class="flex-row mx-evenly sx-center" style="margin-top: 40rpx;">
 				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #4CD964; color: #FFFFFF;" @tap="toIndex">返回首页</view>
@@ -27,7 +28,11 @@
 </template>
 
 <script>
+	// import uParse from "@/components/feng-parse/parse.vue"
 	export default {
+	        // components:{
+	        //     uParse
+	        // },
 		async onLoad(p) {
 			console.log(p);
 			this.buy = p.buy

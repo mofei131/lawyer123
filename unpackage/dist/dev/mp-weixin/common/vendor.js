@@ -282,10 +282,14 @@ var promiseInterceptor = {
     if (!isPromise(res)) {
       return res;
     }
-    return res.then(function (res) {
-      return res[1];
-    }).catch(function (res) {
-      return res[0];
+    return new Promise(function (resolve, reject) {
+      res.then(function (res) {
+        if (res[0]) {
+          reject(res[0]);
+        } else {
+          resolve(res[1]);
+        }
+      });
     });
   } };
 
@@ -2060,9 +2064,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 11:
-/*!*********************************************!*\
-  !*** D:/咸鱼/20210806律师uniapp/store/index.js ***!
-  \*********************************************/
+/*!**********************************************!*\
+  !*** G:/mofei/item/lawyer123/store/index.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4244,9 +4248,9 @@ var index = {
 /***/ }),
 
 /***/ 16:
-/*!****************************************************!*\
-  !*** D:/咸鱼/20210806律师uniapp/store/modules/user.js ***!
-  \****************************************************/
+/*!*****************************************************!*\
+  !*** G:/mofei/item/lawyer123/store/modules/user.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4285,9 +4289,9 @@ module1;exports.default = _default;
 /***/ }),
 
 /***/ 17:
-/*!**************************************************!*\
-  !*** D:/咸鱼/20210806律师uniapp/store/modules/m2.js ***!
-  \**************************************************/
+/*!***************************************************!*\
+  !*** G:/mofei/item/lawyer123/store/modules/m2.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4323,9 +4327,9 @@ module2;exports.default = _default;
 /***/ }),
 
 /***/ 18:
-/*!*********************************************!*\
-  !*** D:/咸鱼/20210806律师uniapp/common/http.js ***!
-  \*********************************************/
+/*!**********************************************!*\
+  !*** G:/mofei/item/lawyer123/common/http.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4471,9 +4475,9 @@ var checkLogin = function checkLogin() {
 /***/ }),
 
 /***/ 19:
-/*!****************************************************!*\
-  !*** D:/咸鱼/20210806律师uniapp/common/SDK/amap-wx.js ***!
-  \****************************************************/
+/*!*****************************************************!*\
+  !*** G:/mofei/item/lawyer123/common/SDK/amap-wx.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9101,7 +9105,7 @@ function initProps (vm, propsOptions) {
       defineReactive$$1(props, key, value, function () {
         if (!isRoot && !isUpdatingChildComponent) {
           {
-            if(vm.mpHost === 'mp-baidu'){//百度 observer 在 setData callback 之后触发，直接忽略该 warn
+            if(vm.mpHost === 'mp-baidu' || vm.mpHost === 'mp-kuaishou'){//百度、快手 observer 在 setData callback 之后触发，直接忽略该 warn
                 return
             }
             //fixed by xxxxxx __next_tick_pending,uni://form-field 时不告警
@@ -10562,9 +10566,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!*****************************************!*\
-  !*** D:/咸鱼/20210806律师uniapp/pages.json ***!
-  \*****************************************/
+/*!******************************************!*\
+  !*** G:/mofei/item/lawyer123/pages.json ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10573,9 +10577,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 49:
-/*!*********************************************!*\
-  !*** D:/咸鱼/20210806律师uniapp/common/math.js ***!
-  \*********************************************/
+/*!**********************************************!*\
+  !*** G:/mofei/item/lawyer123/common/math.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10695,10 +10699,10 @@ var formatTime = function formatTime(number, format) {
 
 /***/ }),
 
-/***/ 546:
-/*!**********************************************************************************!*\
-  !*** D:/咸鱼/20210806律师uniapp/uni_modules/uni-icons/components/uni-icons/icons.js ***!
-  \**********************************************************************************/
+/***/ 554:
+/*!***********************************************************************************!*\
+  !*** G:/mofei/item/lawyer123/uni_modules/uni-icons/components/uni-icons/icons.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -342,7 +342,12 @@
                 "enablePullDownRefresh": false
             }
             
-        }
+        }, {
+			"path": "pages/my/yhqkeyong",
+			"style": {
+				"navigationBarTitleText": "优惠券"
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
