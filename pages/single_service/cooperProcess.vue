@@ -36,7 +36,7 @@
 				<view class="group8">
 					<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 					<view class="bd2"></view>
-					<view class="flex-column" style="overflow: auto;font-size: 24rpx;color: gray;">
+					<view class="flex-column" style="overflow: auto;font-size: 24rpx;color: gray;margin-top: 18rpx;">
 						<rich-text :nodes="dataSource.service"></rich-text>
 
 					</view>

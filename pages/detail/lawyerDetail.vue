@@ -78,7 +78,7 @@
   font-family: PingFangSC-Regular;">成功案例</view>
 			</view>
 			<anli :anli="anli"></anli>
-			<view v-if="anli.length<1" style="text-align: center;font-size: 36rpx;color: gray;margin: 20rpx;">
+			<view v-if="anli.length<1" style="text-align: center;font-size: 36rpx;color: gray;margin: 20rpx;height: 119rpx;">
 				没有数据哦！</view>
 
 		</view>
