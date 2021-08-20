@@ -36,9 +36,8 @@
 				<view class="group8">
 					<text lines="1" decode="true" class="txt1">～&nbsp;服务说明&nbsp;～</text>
 					<view class="bd2"></view>
-					<view class="flex-column danding" style="overflow: auto;color: gray;margin-top: 18rpx;">
+					<view class="flex-column danding" style="color: gray;margin-top: 18rpx;padding-bottom: 20rpx;">
 						<rich-text :nodes="dataSource.service"></rich-text>
-
 					</view>
 
 				</view>
@@ -510,7 +509,7 @@
 
 	.block3 {
 		z-index: 10;
-		height: 223rpx;
+		/* height: 223rpx; */
 		border-radius: 20rpx;
 		background-color: rgba(255, 255, 255, 1);
 		box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
@@ -527,7 +526,7 @@
 	.group8 {
 		z-index: auto;
 		width: 664rpx;
-		height: 184rpx;
+		/* height: 184rpx; */
 		display: flex;
 		flex-direction: column;
 	}

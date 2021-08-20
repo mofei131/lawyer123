@@ -1,4 +1,7 @@
 
+.ellipsis{
+	width: 512rpx;font-size: 26rpx;color: rgba(102,102,102,1);
+}
 .cooper_check_icon {
 	margin-right: 10rpx;
 	-webkit-box-flex: 0;

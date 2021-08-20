@@ -10,8 +10,14 @@
 
 				<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;" @click="goToPage">
 					<view>{{typeData && typeData.name}}</view>
-					<view class="ellipsis" style="width: 512rpx;font-size: 26rpx;color: rgba(102,102,102,1);">
-						399元/每千字以内，专业律师帮您奥凯合同的坑</view>
+					<!-- <view class="ellipsis">
+						399元/每千字以内，专业律师帮您奥凯合同的坑</view> -->
+						<view v-if="id == 5" lines="1" class="ellipsis">帮您绕开别人掉过的“坑”，让您放心大胆前行</view>
+						<view v-else-if="id == 6" lines="1" class="ellipsis">用法律手段将欠款追回，向对方提出正式警告，促成纠纷解决</view>
+						<view v-else-if="id == 7" lines="1" class="ellipsis">通过专业的谈判技巧迫使债务人偿还欠款</view>
+						<view v-else-if="id == 8" lines="1" class="ellipsis">让法官更好的明了案情，理解当事人的诉求，争取主动</view>
+						<view v-else-if="id == 9" lines="1" class="ellipsis">让借贷关系更清楚、明了，专业性强</view>
+						<view v-else-if="id == 10" lines="1" class="ellipsis">专业刑事律师代理看守所会见，保护嫌疑人的合法利益</view>
 				</view>
 				<fa-icon type="angle-right" color="gray"></fa-icon>
 			</view>
@@ -162,6 +168,9 @@
 </script>
 
 <style>
+	.ellipsis{
+		width: 512rpx;font-size: 26rpx;color: rgba(102,102,102,1);
+	}
 	.cooper_check_icon {
 		margin-right: 10rpx;
 		flex: 0 0 116rpx;

@@ -30,14 +30,11 @@
 					<view class="btn" @tap="over(item.source_id)">
 						<view>结束服务</view>
 					</view>
-						<view class="btn" @tap="tuwen(item)" v-if="item.status == 1">
+						<view class="btn" @tap="tuwen(item)" v-if="item.service_id == 1">
 							<view>联系客户</view>
 						</view>
 						<view class="btn" @tap="dianhau(item)"  v-else>
 							<view>联系客户</view>
-						</view>
-						<view class="btn" @tap="dianhau(item)"  v-if="item.status == 1">
-							<view>上传案件</view>
 						</view>
 					</view>
 				</view>
