@@ -353,12 +353,13 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
   },
   onLoad: function onLoad(p) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-              console.log("默认");
-              console.log(p.scene);
+              if (p && p.scene) {
+                _this.commitPid(p.scene);
+              }
               userInfo = _this.$store.state.userInfo;if (!(
-              !userInfo || !userInfo.user_id)) {_context.next = 7;break;}_context.next = 6;return (
-                _this.getWxCode());case 6:
-              console.log(_this.$store.state);case 7:
+              !userInfo || !userInfo.user_id)) {_context.next = 6;break;}_context.next = 5;return (
+                _this.getWxCode());case 5:
+              console.log(_this.$store.state);case 6:
 
               _this.getProvinceCity();
               _this.getBussinessTypes();
@@ -373,7 +374,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                 success: function success(res) {
                   // console.log(res);
                   _this.commitWindowHeight(res.windowHeight);
-                } });case 15:case "end":return _context.stop();}}}, _callee);}))();
+                } });case 14:case "end":return _context.stop();}}}, _callee);}))();
 
   },
   computed: _objectSpread({},
@@ -419,7 +420,8 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
         } });
 
     } },
-  (0, _vuex.mapMutations)(['commitWindowHeight'])),
+
+  (0, _vuex.mapMutations)(['commitWindowHeight', 'commitPid'])),
   (0, _vuex.mapActions)([
   'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
   'getBussinessTypes',

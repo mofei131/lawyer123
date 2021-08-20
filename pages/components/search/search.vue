@@ -6,7 +6,7 @@
 		 	</view>
 			<view class="search">
 				<image src="@/static/images/search.png"></image>
-				<input type="text" v-model="input" @change="inputChange" @input="searchName" placeholder="请输入搜索内容" placeholder-style="color:#fff;font-size:28rpx;"/>
+				<input type="text" v-model="input"  @input="searchName" placeholder="请输入搜索内容" placeholder-style="color:#fff;font-size:28rpx;"/>
 			</view>
 		 </view>
 	 </view>

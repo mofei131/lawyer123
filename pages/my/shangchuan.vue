@@ -2,7 +2,7 @@
 	<view>
 		<view class="dd">订单编号:{{dd}}</view>
 		<view class="box">
-			<textarea class="duoh" type="text" placeholder="请填写商品评价" placeholder-style="color: #676767;" v-model="pingjia"></textarea>
+			<textarea maxlength="200" class="duoh" type="text" placeholder="请填写商品评价" placeholder-style="color: #676767;" v-model="pingjia"></textarea>
 			<view class="xianzhi">{{pingjia.length}}/200</view>
 			<view class="upload">
 				<view class="yshangc" v-for="(item,index) in imgpth" :key="index">
@@ -70,13 +70,6 @@
 				if (!this.pingjia ) {
 					uni.showToast({
 						title: '请输入评价',
-						icon: 'none',
-					})
-					return
-				}
-				if (this.pingjia.length > 200) {
-					uni.showToast({
-						title: '文字输入请少于200字',
 						icon: 'none',
 					})
 					return

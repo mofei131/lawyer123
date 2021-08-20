@@ -57,8 +57,8 @@
 			</view>
 		</view>
 	</view>
-	<!-- <view class="tuigaung" v-if="user.lawyer == ''"> -->
-		<view class="tuigaung">
+	<view class="tuigaung" v-if="user.lawyer == ''">
+		<!-- <view class="tuigaung"> -->
 		<view class="tgtext">我的推广</view>
 		<view class="zixun">
 			<button class="yqbtn" open-type="share">

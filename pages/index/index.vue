@@ -227,8 +227,9 @@
 			}
 		},
 		async onLoad(p) {
-			console.log("默认")
-			console.log(p.scene)
+			if(p && p.scene){
+				this.commitPid(p.scene)
+			}
 			let userInfo = this.$store.state.userInfo;
 			if (!userInfo || !userInfo.user_id) {
 				await this.getWxCode();
@@ -293,7 +294,8 @@
 					}
 				})
 			},
-			...mapMutations(['commitWindowHeight']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
+
+			...mapMutations(['commitWindowHeight','commitPid']), // 将 `this.increment()` 映射为 `this.$store.commit('increment'); `
 			...mapActions([
 				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
 				'getBussinessTypes',

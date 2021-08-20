@@ -1,4 +1,7 @@
 
+.danding{
+	font-size: 24rpx;
+}
 .page {
 	z-index: 1;
 	position: relative;

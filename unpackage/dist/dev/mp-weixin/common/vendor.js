@@ -2096,11 +2096,14 @@ var store = new _vuex.default.Store({
     windowHeight: '750',
     websocketConnect: false,
     socketInfo: [],
-    code: '' },
+    code: '',
+    pid: 0 },
 
 
   mutations: {
-
+    commitPid: function commitPid(state, params) {
+      state.pid = params || 0;
+    },
     commitProvince: function commitProvince(state, params) {
       state.provinces = params;
     },
@@ -2229,7 +2232,7 @@ var store = new _vuex.default.Store({
                         _http.default.ajax({
                           url: 'wechat/login',
                           data: {
-                            pid: 0,
+                            pid: context.state.pid,
                             code: code } }));case 5:res1 = _context4.sent;
 
 

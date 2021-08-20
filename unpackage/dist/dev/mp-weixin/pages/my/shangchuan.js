@@ -206,13 +206,6 @@ var _default =
 
         return;
       }
-      if (this.pingjia.length > 200) {
-        uni.showToast({
-          title: '文字输入请少于200字',
-          icon: 'none' });
-
-        return;
-      }
       var that = this;
       var an = [];
       for (var i in that.imgpth) {
