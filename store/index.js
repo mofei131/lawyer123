@@ -23,11 +23,14 @@ const store = new Vuex.Store({
 		windowHeight:'750',
 		websocketConnect:false,
 		socketInfo:[],
-		code:''
+		code:'',
+		pid:0
 
 	},
 	mutations: {
-
+		commitPid(state, params){
+			state.pid = params||0;
+		},
 		commitProvince(state, params) {
 			state.provinces = params;
 		},
@@ -156,7 +159,7 @@ const store = new Vuex.Store({
 							let res1 = await http.ajax({
 								url: 'wechat/login',
 								data: {
-									pid: 0,
+									pid: context.state.pid,
 									code
 								}
 							});

@@ -358,11 +358,14 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       learn: [] };
 
   },
-  onLoad: function onLoad() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+  onLoad: function onLoad(p) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+              if (p && p.scene) {
+                _this.commitPid(p.scene);
+              }
               userInfo = _this.$store.state.userInfo;if (!(
-              !userInfo || !userInfo.user_id)) {_context.next = 5;break;}_context.next = 4;return (
-                _this.getWxCode());case 4:
-              console.log(_this.$store.state);case 5:
+              !userInfo || !userInfo.user_id)) {_context.next = 6;break;}_context.next = 5;return (
+                _this.getWxCode());case 5:
+              console.log(_this.$store.state);case 6:
 
               _this.getProvinceCity();
               _this.getBussinessTypes();
@@ -381,7 +384,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
               if (!uni.getStorageSync('move')) {
                 _this.xian = !_this.xian;
-              }case 14:case "end":return _context.stop();}}}, _callee);}))();
+              }case 15:case "end":return _context.stop();}}}, _callee);}))();
 
   },
   computed: _objectSpread({},
@@ -428,7 +431,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
     } },
 
-  (0, _vuex.mapMutations)(['commitWindowHeight'])),
+  (0, _vuex.mapMutations)(['commitWindowHeight', 'commitPid'])),
   (0, _vuex.mapActions)([
   'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
   'getBussinessTypes',
