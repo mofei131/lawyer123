@@ -123,7 +123,7 @@ var render = function() {
   var l0 = _vm.__map(_vm.dataSource, function(item, index) {
     var $orig = _vm.__get_orig(item)
 
-    var m0 = !item.status ? _vm.usertime(item.starttime, item.endtime) : null
+    var m0 = _vm.usertime(item.starttime, item.endtime)
     return {
       $orig: $orig,
       m0: m0
@@ -279,7 +279,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
   data: function data() {
     return {
-      flag: 1,
+      flag: null,
       closeText: '',
       searchValue: '',
       city_id: '',
@@ -359,6 +359,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                       // name: this.searchValue
                     } }));case 2:res = _context3.sent;
 
+                console.log(res);
                 if (res && res.code == 200) {
                   // if(!res.data[1].status){
                   // 	this.status = 1
@@ -370,7 +371,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                     title: '每日学法数据获取异常',
                     icon: 'none' });
 
-                }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
+                }case 5:case "end":return _context3.stop();}}}, _callee3);}))();
     },
     lingqu: function lingqu(item) {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
                   _this5.$myRequest({

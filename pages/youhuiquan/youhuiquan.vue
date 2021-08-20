@@ -20,9 +20,9 @@
 				style="line-height: 60rpx;text-align: center;flex: 0 0 200rpx;height: 60rpx;border-radius: 0 30rpx 30rpx 0;"
 				@tap="changeFlage(2)">不可用</view>
 		</view> -->
-		<view v-for="(item,index) in dataSource" :key='index' v-if="!item.status"
+		<view v-for="(item,index) in dataSource" :key='index' 
 			class="flex-row mx-start sx-stretch backImgFull youhuiquan"
-			:style="{backgroundImage:item.status >= 0 && item.status <= 0?bj1:bj2,color: itme.status>=0 && item.status<=2?'#fff':'#ccc'}">
+			:style="{backgroundImage:item.status == 0 || item.status ==1?bj1:bj2,color: itme.status>=0 && item.status<=2?'#fff':'#ccc'}">
 			
 			<view class="flex-column mx-center sx-center" style="flex: 0 0 218rpx;">
 				<view class="flex-row mx-center sx-center">
@@ -106,7 +106,7 @@
 		},
 		data() {
 			return {
-				flag: 1,
+				flag: null,
 				closeText: '',
 				searchValue: '',
 				city_id: '',
@@ -186,6 +186,7 @@
 						// name: this.searchValue
 					}
 				});
+				console.log(res);
 				if (res && res.code == 200) {
 					// if(!res.data[1].status){
 					// 	this.status = 1
