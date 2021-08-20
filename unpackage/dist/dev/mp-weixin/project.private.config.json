@@ -1,0 +1,30 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "我的",
+          "pathName": "pages/my/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "山传",
+          "pathName": "pages/my/shangchuan",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

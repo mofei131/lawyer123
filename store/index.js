@@ -23,7 +23,7 @@ const store = new Vuex.Store({
 		windowHeight:'750',
 		websocketConnect:false,
 		socketInfo:[],
-		code:''
+		code:'',
 
 	},
 	mutations: {

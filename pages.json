@@ -350,6 +350,11 @@
 			"style": {
 				"navigationBarTitleText": "优惠券"
 			}
+		}, {
+			"path": "pages/my/shangchuan",
+			"style": {
+				"navigationBarTitleText": "上传案件"
+			}
 		}
     ],
 	"globalStyle": {

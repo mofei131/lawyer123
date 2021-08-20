@@ -99,7 +99,7 @@
 
 <script>
 	import anli from '../components/anli/anli.vue'
-	import lawyercard1 from '@/pages/components/lawyercard1/lawyercard1.vue'
+	import lawyercard1 from '@/pages/components/lawyercard1/lawyercard2.vue'
 	export default {
 		onLoad(p) {
 			console.log(p.id + "=======" + this.$store.state.userInfo.user_id);

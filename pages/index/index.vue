@@ -226,7 +226,9 @@
 				learn: []
 			}
 		},
-		async onLoad() {
+		async onLoad(p) {
+			console.log("默认")
+			console.log(p.scene)
 			let userInfo = this.$store.state.userInfo;
 			if (!userInfo || !userInfo.user_id) {
 				await this.getWxCode();

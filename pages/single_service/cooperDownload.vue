@@ -125,8 +125,10 @@
 	.collapse-content {
 		height: 100rpx;
 		;
-		border-top: 2rpx solid #ccc;
+		border-top: 1rpx solid #e8e8e8;
 		padding: 0 20rpx;
+		width: 600rpx;
+		margin: auto;
 	}
 
 	.current {

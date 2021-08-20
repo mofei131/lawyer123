@@ -4,6 +4,6 @@
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon",
     "anli": "/pages/components/anli/anli",
-    "lawyercard1": "/pages/components/lawyercard1/lawyercard1"
+    "lawyercard1": "/pages/components/lawyercard1/lawyercard2"
   }
 }

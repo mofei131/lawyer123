@@ -27,7 +27,7 @@
 									style="margin-left:8rpx;color: red;font-size: 20rpx;">忙碌</text>
 						</view>
 					</view>
-					<view class="flex-row mx-between sx-center">
+					<view class="flex-row mx-between sx-center" style="margin-bottom: 5rpx;">
 						<view class="ellipsis" style="width: 512rpx;font-size: 22rpx;color: rgba(102,102,102,1);">
 							{{item.jianjie}}
 						</view>

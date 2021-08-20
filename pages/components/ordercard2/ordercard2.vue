@@ -30,12 +30,23 @@
 					<view class="btn" @tap="over(item.source_id)">
 						<view>结束服务</view>
 					</view>
-						<view class="btn" @tap="tuwen(item)" v-if="item.service_type == 1">
+						<view class="btn" @tap="tuwen(item)" v-if="item.status == 1">
 							<view>联系客户</view>
 						</view>
 						<view class="btn" @tap="dianhau(item)"  v-else>
 							<view>联系客户</view>
 						</view>
+						<view class="btn" @tap="dianhau(item)"  v-if="item.status == 1">
+							<view>上传案件</view>
+						</view>
+					</view>
+				</view>
+				<view v-if="item.status == 2">
+						<view class="bottom">
+								<view class="btn" @tap="shangchuan(item)">
+									<view>上传案件</view>
+									</view>
+								</view>
 					</view>
 				</view>
 			</view>
@@ -90,6 +101,11 @@
 			tuwen(item){
 				uni.navigateTo({
 					url:'../chat/chat?layer_id='+item.layer_id+"&source_id="+item.source_id
+				})
+			},
+			shangchuan(item){
+				uni.navigateTo({
+					url:'../my/shangchuan?dd='+item.orderno+'&id='+item.source_id,
 				})
 			}
 			}

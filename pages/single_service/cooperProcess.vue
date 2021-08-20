@@ -442,7 +442,8 @@
 
 	.block2 {
 		z-index: 4;
-		height: 318rpx;
+		/* height: 318rpx; */
+		padding-bottom: 20rpx;
 		border-radius: 20rpx;
 		background-color: rgba(255, 255, 255, 1);
 		box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
@@ -459,7 +460,7 @@
 	.group7 {
 		z-index: auto;
 		width: 664rpx;
-		height: 272rpx;
+		/* height: 272rpx; */
 		display: flex;
 		flex-direction: column;
 	}
@@ -491,7 +492,7 @@
 	.info5 {
 		z-index: 7;
 		width: 664rpx;
-		height: 210rpx;
+		/* height: 210rpx; */
 		display: block;
 		overflow-wrap: break-word;
 		color: rgba(106, 106, 106, 1);

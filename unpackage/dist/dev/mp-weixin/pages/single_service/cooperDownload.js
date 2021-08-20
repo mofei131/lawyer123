@@ -96,13 +96,13 @@ var components
 try {
   components = {
     uniSearchBar: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */ "uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 481))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */ "uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 489))
     },
     uniCollapse: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse/uni-collapse */ "uni_modules/uni-collapse/components/uni-collapse/uni-collapse").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse/uni-collapse.vue */ 493))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse/uni-collapse */ "uni_modules/uni-collapse/components/uni-collapse/uni-collapse").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse/uni-collapse.vue */ 501))
     },
     uniCollapseItem: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item */ "uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item.vue */ 500))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item */ "uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item.vue */ 508))
     }
   }
 } catch (e) {
