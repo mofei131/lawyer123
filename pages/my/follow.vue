@@ -1,6 +1,6 @@
 <template>
 	<view class="box">
-		<lawyercard1 :zixun="true" :lawyerlist="lawyerList" @buy="buy" class="dis"></lawyercard1>
+		<lawyercard1 :showline="true" :zixun="true"  @updatefollow="updateFollow" :lawyerlist="lawyerList" @buy="buy" class="dis"></lawyercard1>
 	</view>
 </template>
 
@@ -37,6 +37,7 @@
 					limit:10
 				},
 				success(res) {
+					console.log(res.data.data)
 					that.lawyerList = res.data.data
 				}
 			})
@@ -46,6 +47,9 @@
 		  that.getnewsList();
 		},
 		methods:{
+			updateFollow(fllow){
+				this.lawyerList[0].follow = fllow==1?0:1;
+			},
 			getnewsList(){
 				let that = this
 				that.page++

@@ -11,7 +11,7 @@
 			<view class="mod1" style="position: relative;">
 				<image style="width: 100%;height: 379rpx;" mode="scaleToFill" src="/static/icon/cooper_back111.png">
 				</image>
-				<view style="position: absolute;top: 145rpx;left: 110rpx;">
+				<view style="position: absolute;top: 145rpx;" class="yuai">
 					<text lines="1" class="info3">{{name}}</text>
 				</view>
 				<view class="group4">
@@ -42,9 +42,24 @@
 
 				</view>
 			</view>
-			<view class="block4" style="padding-top: 0;">
-				<!-- <view class="mod3"> -->
-					<!-- <text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
+			<view class="block3">
+				<view class="group8">
+					<text lines="1" decode="true" class="txt1">～&nbsp;服务流程&nbsp;～</text>
+					<view class="bd2"></view>
+					<view class="imgbox">
+						<image v-if="id == 5" mode="widthFix" src="../../static/images/liucheng1.png" ></image>
+						<image v-else-if="id == 6" mode="widthFix" src="../../static/images/liucheng2.png"></image>
+						<image v-else mode="widthFix" src="../../static/images/liucheng3.png"></image>
+					</view>
+					<!-- <view class="flex-column danding" style="color: gray;margin-top: 18rpx;padding-bottom: 20rpx;">
+						<rich-text :nodes="dataSource.service"></rich-text>
+					</view> -->
+			
+				</view>
+			</view>
+			<!-- <view class="block4" style="padding-top: 0;">
+				<view class="mod3">
+					<text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
 					<view class="mod4"></view>
 					<view class="mod5">
 						<image src="/static/icon/cooper_p3.png" class="img1"></image>
@@ -60,41 +75,12 @@
 						<text lines="1" class="txt4">律师接单</text>
 						<text lines="1" class="info8">律师服务</text>
 						<text lines="1" class="info9">回访评价</text>
-					</view> -->
+					</view>
 					<image v-if="id == 5" mode="widthFix" src="../../static/images/liucheng1.png" style="width: 100%;border-radius: 20rpx;"></image>
 					<image v-else-if="id == 6" mode="widthFix" src="../../static/images/liucheng2.png" style="width: 100%;border-radius: 20rpx;"></image>
 					<image v-else mode="widthFix" src="../../static/images/liucheng3.png" style="width: 100%;border-radius: 20rpx;"></image>
-				<!-- </view> -->
-
-			</view>
-
-
-
-			<!-- <view class="block5">
-				<view class="mod7">
-					<text lines="1" decode="true" class="word7">～&nbsp;常见问题&nbsp;～</text>
-					<view class="block6"></view>
-					<view class="flex-column" style="overflow: auto;padding-bottom: 60rpx;">
-						<rich-text v-html='content'></rich-text>
-					</view>
 				</view>
 
-
-			</view> -->
-
-
-			<!-- <view class="mod8">
-				<view class="box3">
-					<view class="mod9" @tap="kefu">
-						<view class="mod10">
-							<image src="/static/icon/cooper_p4.png" class="icon2"></image>
-							<text lines="1" class="word10">客服</text>
-						</view>
-					</view>
-					<button @tap="toPay" class="mod11">
-						<text lines="1" class="word11">立即购买</text>
-					</button>
-				</view>
 			</view> -->
 		</view>
 
@@ -243,8 +229,16 @@
 </script>
 
 <style>
+	.imgbox image{
+		margin-top: 9rpx;
+		width: 100%;
+		margin-bottom: 9rpx;
+	}
+	.yuai{
+		left: 40rpx;
+	}
 	.danding{
-		font-size: 24rpx;
+		font-size: 28rpx;
 	}
 	.page {
 		z-index: 1;
@@ -405,9 +399,9 @@
 
 	.group4 {
 
-		left: 91rpx;
+		left: 40rpx;
 		top: 208rpx;
-		width: 240rpx;
+		/* width: 300rpx; */
 		height: 66rpx;
 		position: absolute;
 		flex-direction: row;
@@ -416,7 +410,7 @@
 
 	.paragraph1 {
 		z-index: 84;
-		width: 240rpx;
+		width: 300rpx;
 		height: 66rpx;
 		display: block;
 		overflow-wrap: break-word;
@@ -424,9 +418,10 @@
 		font-size: 24rpx;
 		font-family: PingFangSC-Medium;
 		line-height: 33rpx;
-		text-align: center;
+		text-align: start;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		text-justify: auto;
 	}
 
 
@@ -469,11 +464,11 @@
 
 	.info4 {
 		z-index: 5;
-		width: 160rpx;
+		width: 220rpx;
 		display: block;
 		overflow-wrap: break-word;
 		color: rgba(64, 169, 255, 1);
-		font-size: 24rpx;
+		font-size: 32rpx;
 		font-family: PingFangSC-Medium;
 		white-space: nowrap;
 		line-height: 33rpx;
@@ -490,7 +485,14 @@
 		display: flex;
 		flex-direction: column;
 	}
-
+.info5 rich-text{
+	line-height: 40rpx;
+	letter-spacing: 4rpx;
+}
+.danding rich-text{
+	line-height: 40rpx;
+	letter-spacing: 4rpx;
+}
 	.info5 {
 		z-index: 7;
 		width: 664rpx;
@@ -498,12 +500,12 @@
 		display: block;
 		overflow-wrap: break-word;
 		color: rgba(106, 106, 106, 1);
-		font-size: 24rpx;
+		font-size: 28rpx;
 		font-family: PingFangSC-Regular;
 		line-height: 30rpx;
 		text-align: left;
 		margin-top: 16rpx;
-		overflow: auto;
+		/* overflow: auto; */
 		text-overflow: ellipsis;
 	}
 
@@ -533,11 +535,11 @@
 
 	.txt1 {
 		z-index: 11;
-		width: 160rpx;
+		width: 220rpx;
 		display: block;
 		overflow-wrap: break-word;
 		color: rgba(64, 169, 255, 1);
-		font-size: 24rpx;
+		font-size: 32rpx;
 		font-family: PingFangSC-Medium;
 		white-space: nowrap;
 		line-height: 33rpx;

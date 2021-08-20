@@ -69,11 +69,10 @@
 					method:'GET',
 					data:{
 						user_id:uni.getStorageSync('userInfo').user_id,
-						page:that.page,
+						page:1,
 						limit:that.limit
 					},
 					success(res) {
-						// console.log(res.data.data)
 						that.list = res.data.data
 					}
 				})

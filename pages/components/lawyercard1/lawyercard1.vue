@@ -189,7 +189,7 @@
 			pinglvshi(item) {
 				console.log(item);
 				uni.navigateTo({
-					url: '../service_zhixun/pinglvshi?layer_id='+item.id+'&price='+item.price.pinqing+'&typeId=10'
+					url: '../service_zhixun/pinlvshi?layer_id='+item.id+'&price='+item.price.pinqing+'&typeId=10'
 				})
 			},
 			todetail(item) {

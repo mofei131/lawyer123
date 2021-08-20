@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ordercard = function ordercard() {__webpack_require__.e(/*! require.ensure | pages/components/ordercard2/ordercard2 */ "pages/components/ordercard2/ordercard2").then((function () {return resolve(__webpack_require__(/*! ../components/ordercard2/ordercard2.vue */ 564));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ordercard = function ordercard() {__webpack_require__.e(/*! require.ensure | pages/components/ordercard2/ordercard2 */ "pages/components/ordercard2/ordercard2").then((function () {return resolve(__webpack_require__(/*! ../components/ordercard2/ordercard2.vue */ 580));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -162,6 +162,7 @@ __webpack_require__.r(__webpack_exports__);
       success: function success(res) {
         console.log(res.data.data);
         that.list = res.data.data;
+        that.id = res.data.data.source_id;
       } });
 
   },
@@ -170,6 +171,14 @@ __webpack_require__.r(__webpack_exports__);
     that.getnewsList();
   },
   methods: {
+    child: function child() {
+      this.$refs.child.det();
+    },
+    det: function det(id) {
+      uni.navigateTo({
+        url: './fwdet?id=' + id });
+
+    },
     getnewsList: function getnewsList() {
       var that = this;
       that.page++;

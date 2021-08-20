@@ -2,6 +2,12 @@
 page{
 	background: #F8F8F8;
 }
+.functionlist {
+	margin-top: 24rpx;
+}
+.buke{
+	pointer-events: none;
+}
 .bendi{
 	background: #4169E1;
 	color: #fff;
@@ -99,6 +105,7 @@ page{
 	outline: none;
 	line-height: 1.2;
 	width: 142rpx;
+	padding: 0;
 }
 .yqbtn::after{
 	border: none;
@@ -177,22 +184,24 @@ page{
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 	box-sizing: border-box;
-	padding-bottom: 135rpx;
+	padding-bottom: 120rpx;
 }
 .with image{
-	width: 32rpx;
-	height: 19rpx;
-	-webkit-transform:rotate(-90deg);
-	        transform:rotate(-90deg);
-	margin-left: 13rpx;
-	margin-top: 5rpx;
+	width: 24rpx;
+	    height: 12rpx;
+	    /* -webkit-transform: rotate(-90deg); */
+	    -webkit-transform: rotate(-90deg);
+	            transform: rotate(-90deg);
+	    margin-left: 7rpx;
+	    margin-top: 11rpx;
 }
 .balance view:nth-child(1){
-	font-size: 50rpx;
+	font-size: 40rpx;
 	font-family: DINCondensed-Bold, DINCondensed;
 	font-weight: bold;
 	color: #E1B12F;
 	text-align: center;
+	    margin-top: 15rpx;
 }
 .balance view:nth-child(2){
 	font-size: 24rpx;
@@ -231,7 +240,7 @@ page{
 	margin-top: 20rpx;
 }
 .with view{
-	font-size: 20rpx;
+	font-size: 22rpx;
 	font-family: PingFangSC-Medium, PingFang SC;
 	font-weight: 500;
 	color: #FFFFFF;
@@ -316,7 +325,7 @@ page{
 }
 .tuigaung .zixunitemview {
 	color: #6A6A6A;
-	font-size: 17rpx;
+	font-size: 22rpx;
 }
 .itemleft,.itemright{
 	display: -webkit-box;

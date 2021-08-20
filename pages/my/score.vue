@@ -49,13 +49,13 @@
 					 						success() {
 												uni.showToast({
 													title:'评价成功',
-													duration:1000
+													success() {
+														uni.navigateBack({
+														
+														});
+													}
 												})
-												setTimeout(function() {
-												uni.navigateBack({
 												
-												});
-												},1000)
 					 						}
 					 })
 				 }
@@ -96,16 +96,19 @@
 	}
 	.btn{
 		width: 680rpx;
-		height: 70rpx;
+		height: 76rpx;
 		background: #059EFF;
 		border-radius: 35rpx;
 		margin: auto;
 		font-size: 28rpx;
 		font-family: Helvetica;
 		color: #FFFFFF;
-		padding-top: 15rpx;
+		/* padding-top: 15rpx; */
 		text-align: center;
 		box-sizing: border-box;
 		margin-top: 300rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 </style>

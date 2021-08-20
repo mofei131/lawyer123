@@ -141,25 +141,38 @@ __webpack_require__.r(__webpack_exports__);
 var _default =
 {
   onLoad: function onLoad(p) {
+    console.log(p);
     this.emitName = p.emitName;
+    this.phone = p.phone;
   },
   data: function data() {
     return {
-      emitName: '' };
+      emitName: '',
+      phone: '' };
 
   },
   methods: {
 
     back: function back() {
-      // if (this.emitName) {
-      // 	uni.$emit(this.emitName, {
-      // 		ispay: true
-      // 	});
-      // } else {
-      uni.switchTab({
-        url: '../index/index' });
+      console.log(this.emitName);
+      if (this.emitName && this.emitName != "undefined") {
+        console.log("到了吗");
+        uni.$emit(this.emitName, {
+          ispay: true });
 
-      // }
+      } else if (this.phone) {
+        console.log(111);
+        uni.makePhoneCall({
+          phoneNumber: this.phone });
+
+        uni.switchTab({
+          url: '../index/index' });
+
+      } else {
+        uni.switchTab({
+          url: '../index/index' });
+
+      }
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

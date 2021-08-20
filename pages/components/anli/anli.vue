@@ -65,8 +65,6 @@
 		background-color: #FFFFFF;
 		/* border-radius: 20rpx; */
 		padding: 20rpx;
-
-
 		/* border: 1px solid; */
 	}
 

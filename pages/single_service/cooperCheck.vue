@@ -174,6 +174,6 @@
 	.cooper_check_icon {
 		margin-right: 10rpx;
 		flex: 0 0 116rpx;
-		height: 116rpx;
+		height: 92.8rpx;
 	}
 </style>

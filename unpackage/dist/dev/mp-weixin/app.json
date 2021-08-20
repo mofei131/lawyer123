@@ -52,7 +52,9 @@
     "pages/components/tankuang/xiyipingtai",
     "pages/components/tankuang/xiyichangnian",
     "pages/my/yhqkeyong",
-    "pages/my/shangchuan"
+    "pages/my/shangchuan",
+    "pages/service_zhixun/pinlvshi",
+    "pages/my/fwdet"
   ],
   "subPackages": [],
   "window": {

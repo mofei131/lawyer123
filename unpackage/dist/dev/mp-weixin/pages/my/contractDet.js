@@ -130,7 +130,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} //
+//
+//
 //
 //
 //
@@ -140,13 +142,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
-  data: function data() {
-    return {
-      content: '' };
+  data: function data() {var _ref;
+    return _ref = {
+      content: '' }, _defineProperty(_ref, "content",
+    ''), _defineProperty(_ref, "buy",
+    ''), _defineProperty(_ref, "price",
+    ''), _defineProperty(_ref, "id",
+    ''), _defineProperty(_ref, "link",
+    ''), _defineProperty(_ref, "image",
+    ''), _ref;
 
   },
   onLoad: function onLoad(p) {
     var that = this;
+    that.link = this.$store.state.link;
     uni.request({
       url: 'https://layer.boyaokj.cn/api/agreement/detail',
       method: 'GET',
@@ -155,11 +164,46 @@ var _default =
         user_id: uni.getStorageSync('userInfo').user_id },
 
       success: function success(res) {
-        // console.log(res.data.data.content)
-        that.content = res.data.data.content;
+        console.log(res.data.data);
+        // that.content = res.data.data.content
+        that.link = res.data.data.link;
+        that.image = res.data.data.image;
       } });
 
-  } };exports.default = _default;
+  },
+  methods: {
+    download: function download() {
+      console.log(this.$store.state.link);
+      uni.downloadFile({
+        url: this.link, //文件链接
+        success: function success(res) {
+          //statusCode状态为200表示请求成功，tempFIlePath临时路径
+          if (res.statusCode == 200) {
+            console.log("ccc", res.tempFilePath);
+            //保存到本地
+            uni.saveFile({
+              tempFilePath: res.tempFilePath,
+              success: function success(res) {
+                //res.savedFilePath文件的保存路径
+                //保存成功并打开文件
+                uni.openDocument({
+                  filePath: res.savedFilePath,
+                  success: function success(res) {return console.log('成功打开文档');} });
+
+                console.log("bbb", res);
+              },
+              fail: function fail() {
+                console.log('打开失败');
+              } });
+
+          }
+          console.log("aaa", res);
+        },
+        fail: function fail() {
+          console.log('下载失败');
+        } });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

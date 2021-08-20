@@ -37,6 +37,20 @@
 			this.layer_id = p.layer_id;
 			this.user_id = this.$store.state.userInfo.user_id;
 			console.log('用户id：',this.user_id);
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/layer/detail',
+				method:'GET',
+				data:{
+					user_id:'',
+					layer_id:p.layer_id
+				},
+				success(res) {
+					console.log(res.data.data.photo)
+					that.lawyerAvator = res.data.data.photo
+					that.lawyerName = res.data.data.name
+				}
+			})
 			if (this.$store.state.websocketConnect) {
 				uni.sendSocketMessage({
 					data: JSON.stringify({
@@ -55,7 +69,7 @@
 				uni.onSocketMessage((res) => {
 					console.log('收到服务器内容：');
 					let d = JSON.parse(res.data)
-					console.log(d);
+					console.log(11,d);
 					if (d.type) return;
 					let data = d.data;
 					if (data.source_id) {
@@ -65,7 +79,7 @@
 							contentType: 'txt',
 							uname: data.user_id == this.user_id ? this.userName : this.lawyerName,
 							content: data.message,
-							uface: data.user_id == this.user_id ? this.$store.state.userInfo.avater : this.lawyerAvator || "https://layer.boyaokj.cn/upload/20210813/1b54fb67409ad93d2eaf28ea20faa644.jpg"
+							uface: data.user_id == this.user_id ? this.$store.state.userInfo.avater : this.lawyerAvator
 						};
 						this.msgs.push(item);
 						this.pageScroll()
@@ -96,9 +110,7 @@
 				user_id: '',
 				source_id: '',
 				layer_id: '',
-				msgs: [
-
-				]
+				msgs: [],
 			}
 		},
 		methods: {

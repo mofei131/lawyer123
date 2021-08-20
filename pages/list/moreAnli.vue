@@ -111,6 +111,9 @@
 </script>
 
 <style lang="scss" scoped>
+	.anlilist view{
+		border-radius: 18rpx;
+	}
 	.b{
 		background-color: $uni-bg-color;
 	}

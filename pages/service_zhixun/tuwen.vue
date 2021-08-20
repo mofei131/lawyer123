@@ -41,8 +41,8 @@
 			</map>
 		</view> -->
 		<view class="flex-row mx-center sx-center" style="">
-			<view class="flex-txt-center" @tap="commit"
-				style="flex: 1 1 auto;margin: 20rpx;height: 60rpx;border-radius:30rpx;background-color: #57A9FF;color: #FFFFFF;">
+			<view class="flex-txt-center tijiao" @tap="commit"
+				style="flex: 1 1 auto;margin: 20rpx;background-color: #57A9FF;color: #FFFFFF;">
 				提交咨询
 			</view>
 		</view>
@@ -238,6 +238,9 @@
 </script>
 
 <style>
+	.tijiao{
+		height: 76rpx;border-radius:40rpx;
+	}
 	.choose_item {
 		flex: 0 0 120rpx;
 		padding: 10rpx 10rpx;

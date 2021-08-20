@@ -355,6 +355,16 @@
 			"style": {
 				"navigationBarTitleText": "上传案件"
 			}
+		}, {
+			"path": "pages/service_zhixun/pinlvshi",
+			"style": {
+				"navigationBarTitleText": "聘请律师"
+			}
+		}, {
+			"path": "pages/my/fwdet",
+			"style": {
+				"navigationBarTitleText": "聘请律师"
+			}
 		}
     ],
 	"globalStyle": {

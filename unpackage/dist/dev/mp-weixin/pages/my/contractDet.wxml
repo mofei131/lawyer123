@@ -1,1 +1,1 @@
-<view><view class="contractdet"><view><rich-text nodes="{{content}}"></rich-text></view></view></view>
+<view><view class="contractdet"><image src="{{image}}" mode="widthFix"></image></view><view data-event-opts="{{[['tap',[['download',['$event']]]]]}}" class="btn" bindtap="__e">立即下载</view></view>

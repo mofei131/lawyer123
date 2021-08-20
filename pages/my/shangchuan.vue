@@ -190,7 +190,7 @@
 	}
 	.btn{
 		width: 686rpx;
-		height: 70rpx;
+		height: 76rpx;
 		background: #30AEFF;
 		border-radius: 35rpx;
 		font-size: 28rpx;

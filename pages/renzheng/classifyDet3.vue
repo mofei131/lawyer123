@@ -65,19 +65,19 @@
 				unit:'',
 				college:'',
 				array1: [{
-					record: '无',
+					record: '无',id:0
 				}, {
-					record: '小学',
+					record: '小学',id:1
 				}, {
-					record: '中学',
+					record: '中学',id:2
 				}, {
-					record: '专科',
+					record: '专科',id:3
 				}, {
-					record: '本科',
+					record: '本科',id:4
 				}, {
-					record: '硕士',
+					record: '硕士',id:5
 				}, {
-					record: '博士',
+					record: '博士',id:6
 				}],
 				index1: 0,
 				major:'',
@@ -193,7 +193,7 @@
 						city:that.city,
 						lvsuo:that.unit,
 						school:that.college,
-						xueli:that.index1,
+						xueli:that.array1[that.index1].id,
 						zhuanye:that.major,
 						jianjie:that.mark
 					},

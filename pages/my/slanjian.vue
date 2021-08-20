@@ -30,6 +30,7 @@
 				success(res) {
 					console.log(res.data.data)
 					that.list = res.data.data
+					that.id = res.data.data.source_id
 				}
 			})
 		},
@@ -38,6 +39,14 @@
 		  that.getnewsList();
 		},
 		methods:{
+			child(){
+				this.$refs.child.det()
+			},
+			det(id){
+				uni.navigateTo({
+					url:'./fwdet?id='+id
+				})
+			},
 			getnewsList(){
 				let that = this
 				that.page++

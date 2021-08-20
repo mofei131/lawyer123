@@ -112,7 +112,7 @@
 	margin-top: 18rpx;
 }
 .option{
-	width: 480rpx;
+	width: 470rpx;
 	height: 63rpx;
 	border-radius: 34rpx;
 	border: 1px solid #40A9FF;

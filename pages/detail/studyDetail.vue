@@ -75,7 +75,6 @@
 		z-index: 1;
 		position: relative;
 		width: 750rpx;
-		height: 1623rpx;
 		background-color: rgba(255, 255, 255, 1);
 		overflow: hidden;
 		display: flex;
@@ -85,7 +84,6 @@
 	.section1 {
 		z-index: auto;
 		width: 750rpx;
-		height: 1623rpx;
 		display: flex;
 		flex-direction: column;
 	}
@@ -123,7 +121,6 @@
 	.paragraph1 {
 		z-index: 9;
 		width: 680rpx;
-		height: 900rpx;
 		display: block;
 		overflow-wrap: break-word;
 		color: rgba(81, 86, 93, 1);

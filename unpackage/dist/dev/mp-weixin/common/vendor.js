@@ -2097,7 +2097,8 @@ var store = new _vuex.default.Store({
     websocketConnect: false,
     socketInfo: [],
     code: '',
-    pid: 0 },
+    pid: 0,
+    link: '' },
 
 
   mutations: {
@@ -10702,7 +10703,7 @@ var formatTime = function formatTime(number, format) {
 
 /***/ }),
 
-/***/ 576:
+/***/ 592:
 /*!***********************************************************************************!*\
   !*** G:/mofei/item/lawyer123/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \***********************************************************************************/

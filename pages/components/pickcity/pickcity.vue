@@ -2,7 +2,7 @@
 	<picker mode="multiSelector" @change="cityChooseChange" @columnchange="bindMultiPickerColumnChange"
 		:value="multiIndex" :range="multiArray">
 		<view class="flex-row mx-center sx-center" style="min-width: 100rpx;">
-			<text style="flex: 0 0 auto;font-size: 26rpx;">{{currentCityName}}</text>
+			<text style="flex: 0 0 auto;font-size: 28rpx;">{{currentCityName}}</text>
 			<fa-icon v-if="angelesick" type="caret-down" :color="anglecolor" style="flex: 0 0 auto;margin-left:14rpx;"></fa-icon>
 			<fa-icon v-else type="angle-down" :color="anglecolor" style="flex: 0 0 auto;margin-left:14rpx;"></fa-icon>
 		</view>

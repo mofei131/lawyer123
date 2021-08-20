@@ -3,7 +3,10 @@
 
 
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy == 0" @touchmove.stop.prevent="moveHandle">
-			<view v-html="content"></view>
+			<!-- <view v-html="content"></view> -->
+			<view class="image">
+				<image :src="image" mode="widthFix"></image>
+			</view>
 			<!-- <u-parse :content="content" @navigate="navigate"></u-parse> -->
 			<view class="btn" @tap="toPay()">立即购买</view>
 			<!-- <view class="flex-row mx-evenly sx-center" style="margin-top: 40rpx;">
@@ -13,7 +16,10 @@
 			
 		</view>
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy == 1" >
-			<view v-html="content"></view>
+			<!-- <view v-html="content"></view> -->
+			<view class="image">
+				<image :src="image"></image>
+			</view>
 			<view class="btn" @tap="download">立即下载</view>
 			<!-- <view class="flex-row mx-evenly sx-center" style="margin-top: 40rpx;">
 				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #4CD964; color: #FFFFFF;" @tap="toIndex">返回首页</view>
@@ -39,6 +45,8 @@
 			this.id = p.coopid
 			this.price = p.price
 			this.link = p.link
+			// this.$store.state.link = p.link
+			// uni.getStorageSync('link',p.link)
 			// console.log(p)
 			let res = await this.$myRequest({
 				url: 'agreement/detail',
@@ -54,8 +62,9 @@
 				})
 				return;
 			}else{
-				// console.log(res.data.content)
+				console.log(res.data)
 				this.content = res.data.content;
+				this.image = res.data.image
 			}
 		},
 		// onShow() {
@@ -67,7 +76,8 @@
 				buy:'',
 				price:'',
 				id:'',
-				link:''
+				link:'',
+				image:''
 			}
 		},
 		methods: {
@@ -163,7 +173,7 @@
 	}
 	.btn{
 		width: 680rpx;
-		height: 80rpx;
+		height: 76rpx;
 		border-radius: 40rpx;
 		color: #fff;
 		background: #40a9ff;

@@ -9,17 +9,17 @@
 					<text>{{item.name}}</text>
 				</view>
 				<view class="ellipsis-3" style="flex: 0 0 90rpx;font-size: 22rpx;margin-top: 9rpx;color: rgba(106,106,106,1);">
-					{{item.intro}}水电费送到送到防守打法送到发送到发送到发送到发送到付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付地方发发发发发发付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付
+					{{item.intro}}
 				</view>
 				<view class="flex-row mx-between sx-center" style="flex: 0 0 auto;margin-top: 20rpx;padding: 0;">
 					<text style="color: rgba(255,77,79,1);font-size: 36rpx;">￥{{item.price}}</text>
 
-					<!-- <view v-if="item.buy"
+					<view v-if="item.buy"
 						style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
 						已购买</view>
 					<view v-else @tap="toPay(item)"
 						style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
-						立即购买</view> -->
+						立即购买</view>
 				</view>
 			</view>
 			<view v-if="dataSource.length<1" style="text-align: center;font-size: 36rpx;color: gray;margin-top: 20rpx;">

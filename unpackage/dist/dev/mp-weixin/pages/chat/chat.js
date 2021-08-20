@@ -147,7 +147,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 536));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 543));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var guiImMessage = function guiImMessage() {__webpack_require__.e(/*! require.ensure | components/gui-im-message */ "components/gui-im-message").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-message.vue */ 552));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var guiImInput = function guiImInput() {__webpack_require__.e(/*! require.ensure | components/gui-im-input */ "components/gui-im-input").then((function () {return resolve(__webpack_require__(/*! ../../components/gui-im-input.vue */ 559));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -167,6 +167,20 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
     this.layer_id = p.layer_id;
     this.user_id = this.$store.state.userInfo.user_id;
     console.log('用户id：', this.user_id);
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/layer/detail',
+      method: 'GET',
+      data: {
+        user_id: '',
+        layer_id: p.layer_id },
+
+      success: function success(res) {
+        console.log(res.data.data.photo);
+        that.lawyerAvator = res.data.data.photo;
+        that.lawyerName = res.data.data.name;
+      } });
+
     if (this.$store.state.websocketConnect) {
       uni.sendSocketMessage({
         data: JSON.stringify({
@@ -185,7 +199,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       uni.onSocketMessage(function (res) {
         console.log('收到服务器内容：');
         var d = JSON.parse(res.data);
-        console.log(d);
+        console.log(11, d);
         if (d.type) return;
         var data = d.data;
         if (data.source_id) {
@@ -195,7 +209,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
             contentType: 'txt',
             uname: data.user_id == _this.user_id ? _this.userName : _this.lawyerName,
             content: data.message,
-            uface: data.user_id == _this.user_id ? _this.$store.state.userInfo.avater : _this.lawyerAvator || "https://layer.boyaokj.cn/upload/20210813/1b54fb67409ad93d2eaf28ea20faa644.jpg" };
+            uface: data.user_id == _this.user_id ? _this.$store.state.userInfo.avater : _this.lawyerAvator };
 
           _this.msgs.push(item);
           _this.pageScroll();
@@ -227,8 +241,6 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       source_id: '',
       layer_id: '',
       msgs: [] };
-
-
 
   },
   methods: _objectSpread(_objectSpread({},

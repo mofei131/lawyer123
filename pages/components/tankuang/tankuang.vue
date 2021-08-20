@@ -2,9 +2,9 @@
 	<view class="xiyibox">
 		<view class="boxwite">
 			<view class="tishi">提示</view>
-			<view class="yuedu">请阅读并同意<text class="shixia">{{box.title}}</text></view>
+			<view class="yuedu">请阅读并同意<text class="shixia" @tap="cak()">{{box.title}}</text></view>
 			<view class="binglie">
-				<view class="ck" @tap="cak()">查看协议</view>
+				<!-- <view class="ck" @tap="cak()">查看协议</view> -->
 				<view class="ty" @tap="submit()">同意协议</view>
 			</view>
 			<image src="@/static/icon/closeicon.png" class="close" @tap="show()"></image>
@@ -107,6 +107,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		margin: auto;
 		
 	}
 </style>

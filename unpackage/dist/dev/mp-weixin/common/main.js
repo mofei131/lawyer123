@@ -57,7 +57,7 @@ uni.onSocketClose(function (res) {
 
 _vue.default.config.productionTip = false;
 // 图标组件
-var faicon = function faicon() {__webpack_require__.e(/*! require.ensure | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then((function () {return resolve(__webpack_require__(/*! @/components/fa-icon/fa-icon.vue */ 433));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var faicon = function faicon() {__webpack_require__.e(/*! require.ensure | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then((function () {return resolve(__webpack_require__(/*! @/components/fa-icon/fa-icon.vue */ 449));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 _vue.default.component('fa-icon', faicon);
 _App.default.mpType = 'app';
 

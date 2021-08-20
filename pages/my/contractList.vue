@@ -3,7 +3,7 @@
 		<view class="contractlist">
 			<view class="contractitem" v-for="(item,index) in contract" @click="toUrl(item.agreement_id)" :key="index">
 				<view>{{item.name}}</view>
-				<image src="../../static/icon/myrighticon.png"></image>
+				<image src="../../static/images/righticon.png"></image>
 			</view>
 		</view>
 	</view>

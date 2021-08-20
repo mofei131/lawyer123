@@ -1,7 +1,7 @@
 <template>
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
 		<view class="" style="position: fixed;z-index: 9999;top:40rpx;left: 0;margin: 0 auto;font-size: 36rpx;background-color: #ffffff00;">
-			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="其他服务"
+			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="个人/企业套餐"
 				color="#fff" background-color="#ffffff00" @clickLeft="back">
 		
 			</uni-nav-bar>
@@ -20,7 +20,7 @@
 					</view>
 				</view>
 				
-				<view class="block2" v-for="(item,index) in dataSource" :key="index" @tap="toPay(item)">
+				<view class="block2" v-for="(item,index) in dataSource" :key="index" @tap="toDetail()">
 					<view class="group7">
 						<text lines="1" decode="true" class="info4">～&nbsp;套餐{{index+1}}&nbsp;～</text>
 						<view class="bd1"></view>
@@ -32,9 +32,9 @@
 					</view>
 					<view class="flex-row mx-between sx-center" style="width: 664rpx;;padding: 10rpx 20rpx;">
 						<text style="color: #FF4D4F;">￥{{item.price}}</text>
-						<!-- <view 
+						<view @tap="toPay(item)"
 							style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
-							立即购买</view> -->
+							立即购买</view>
 					</view>
 				</view>
 

@@ -186,13 +186,11 @@ var _default =
 
   },
   methods: {
+    decide2: function decide2() {
+      this.judge = false;
+    },
     decide: function decide() {
-      // console.log(this.judge)
-      if (this.judge) {
-        this.judge = false;
-      } else {
-        this.judge = true;
-      }
+      this.judge = true;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

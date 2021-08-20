@@ -159,6 +159,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 // import uParse from "@/components/feng-parse/parse.vue"
 var _default = {
@@ -171,6 +177,8 @@ var _default = {
               _this.id = p.coopid;
               _this.price = p.price;
               _this.link = p.link;
+              // this.$store.state.link = p.link
+              // uni.getStorageSync('link',p.link)
               // console.log(p)
               _context.next = 7;return _this.$myRequest({
                 url: 'agreement/detail',
@@ -186,8 +194,9 @@ var _default = {
 
 
 
-              // console.log(res.data.content)
-              _this.content = res.data.content;case 14:case "end":return _context.stop();}}}, _callee);}))();
+              console.log(res.data);
+              _this.content = res.data.content;
+              _this.image = res.data.image;case 16:case "end":return _context.stop();}}}, _callee);}))();
 
   },
   // onShow() {
@@ -199,7 +208,8 @@ var _default = {
       buy: '',
       price: '',
       id: '',
-      link: '' };
+      link: '',
+      image: '' };
 
   },
   methods: {

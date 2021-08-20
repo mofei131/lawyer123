@@ -9,25 +9,38 @@
 <script>
 	export default {
 		onLoad(p) {
+			console.log(p)
 			this.emitName = p.emitName;
+			this.phone = p.phone
 		},
 		data() {
 			return {
-				emitName: ''
+				emitName: '',
+				phone:''
 			}
 		},
 		methods: {
 
 			back() {
-				// if (this.emitName) {
-				// 	uni.$emit(this.emitName, {
-				// 		ispay: true
-				// 	});
-				// } else {
+				console.log(this.emitName)
+				if (this.emitName && this.emitName != "undefined") {
+					console.log("到了吗")
+					uni.$emit(this.emitName, {
+						ispay: true,
+					});
+				}else if(this.phone){
+					console.log(111)
+					uni.makePhoneCall({
+						 phoneNumber: this.phone, 
+					})
 					uni.switchTab({
 						url: '../index/index'
 					})
-				// }
+				} else {
+					uni.switchTab({
+						url: '../index/index'
+					})
+				}
 
 			}
 		}

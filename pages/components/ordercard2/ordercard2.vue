@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="orderlist">
-			<view class="orderitem" v-for="(item,index) in list" :key="index">
+			<view class="orderitem" v-for="(item,index) in list" :key="index" >
 				<view class="top">
 					<view>订单号:{{item.orderno}}</view>
 					<!-- 服务订单 -->
@@ -10,15 +10,15 @@
 					<view class="state" v-else-if="item.status == 2">服务结束</view>
 					<view class="state" v-else>已完成</view>
 				</view>
-				<view class="cont">
+				<view class="cont" @tap="det(item)">
 					<view class="contleft" v-if="item.type == 2">
 						<image src="@/static/icon/icon5.png"></image>
 					</view>
 					<view class="contleft" v-else>
-						<image :src="item.layer_photo"></image>
+						<image :src="item.avater"></image>
 					</view>
 					<view class="contright">
-						<view>{{item.layer_name}}</view>
+						<view>{{item.nickname}}</view>
 						<view v-if="item.state == -1">时限:{{item.service}}年</view>
 						<view v-else>{{item.service_name}}</view>
 						<view v-if="item.type == 2">{{item.realprice}}</view>
@@ -30,21 +30,17 @@
 					<view class="btn" @tap="over(item.source_id)">
 						<view>结束服务</view>
 					</view>
-						<view class="btn" @tap="tuwen(item)" v-if="item.service_id == 1">
+						<view class="btn" @tap="tuwen(item)" v-if="item.service_type == 1">
 							<view>联系客户</view>
 						</view>
-						<view class="btn" @tap="dianhau(item)"  v-else>
+						<view class="btn" @tap="dianhau(item)"  v-if="item.service_type == 2">
 							<view>联系客户</view>
 						</view>
+						<view class="btn" @tap="shangchuan(item)" v-if="item.service_type == 10">
+							<view>上传案件</view>
+							</view>
 					</view>
 				</view>
-				<view v-if="item.status == 2">
-						<view class="bottom">
-								<view class="btn" @tap="shangchuan(item)">
-									<view>上传案件</view>
-									</view>
-								</view>
-					</view>
 				</view>
 			</view>
 		</view>
@@ -89,11 +85,24 @@
 				})
 				this.$emit("getChild1",this.type);
 			},
-			dianhau(item){
-				console.log(item.mobile)
-				uni.makePhoneCall({
-					 phoneNumber: item.mobile, 
+			det(item){
+				// console.log("yes")
+				// this.$emit("det");
+				uni.navigateTo({
+					url:'./fwdet?id='+item.source_id
 				})
+			},
+			dianhau(item){
+				if(item.mobile == ''){
+					uni.showToast({
+						title: '该用户未设置联系方式',
+						duration:1000
+					})
+				}else{
+					uni.makePhoneCall({
+						 phoneNumber: item.mobile, 
+					})
+				}
 			},
 			tuwen(item){
 				uni.navigateTo({

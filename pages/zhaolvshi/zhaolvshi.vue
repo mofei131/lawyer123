@@ -92,7 +92,7 @@
 					},
 					{
 						id: 3,
-						name: "聘请律师",
+						name: "案件委托",
 						url: "/static/icon/icon4.png"
 					},
 

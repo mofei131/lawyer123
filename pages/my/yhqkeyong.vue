@@ -144,62 +144,74 @@
 			},
 			shiyong(id){
 				let that = this
-				uni.request({
-					url:'https://layer.boyaokj.cn/api/coupon/useCoupon',
-					method:'GET',
-					data:{
-						user_id:uni.getStorageSync('userInfo').user_id,
-						coupon_id:id
-					},
-					success(res){
-						uni.showToast({
-							title: '使用成功',
-							duration:1000
-						})
-						setTimeout(function() {
-						uni.request({
-									url:'https://layer.boyaokj.cn/api/coupon/myCoupon',
-									method:'GET',
-									data:{
-										user_id:uni.getStorageSync('userInfo').user_id,
-										status:2
-									},
-									success(res) {
-										for(let i in res.data.data){
-										console.log(res.data.data[i].starttime)
-										that.keyong2 = res.data.data
-										let date = new Date(res.data.data[i].starttime * 1000);
-										 let y = date.getFullYear();
-						        let MM = date.getMonth() + 1;
-						        MM = MM < 10 ? ('0' + MM) : MM;//月补0
-						        let d = date.getDate();
-						        d = d < 10 ? ('0' + d) : d;//天补0
-						        let h = date.getHours();
-						        h = h < 10 ? ('0' + h) : h;//小时补0
-						        let m = date.getMinutes();
-						        m = m < 10 ? ('0' + m) : m;//分钟补0
-						        let s = date.getSeconds();
-						        s = s < 10 ? ('0' + s) : s;//秒补0
-										that.keyong2[i].starttime = y + '.' + MM + '.' + d;
-										let date2 = new Date(res.data.data[i].endtime * 1000);
-										 let y2 = date2.getFullYear();
-						        let MM2 = date2.getMonth() + 1;
-						        MM2 = MM2 < 10 ? ('0' + MM2) : MM2;//月补0
-						        let d2 = date2.getDate();
-						        d2 = d2 < 10 ? ('0' + d2) : d2;//天补0
-						        let h2 = date2.getHours();
-						        h2 = h2 < 10 ? ('0' + h2) : h2;//小时补0
-						        let m2 = date.getMinutes();
-						        m2 = m2 < 10 ? ('0' + m2) : m2;//分钟补0
-						        let s2 = date.getSeconds();
-						        s2 = s2 < 10 ? ('0' + s2) : s2;//秒补0
-										that.keyong2[i].endtime = y2 + '.' + MM2 + '.' + d2;
-									}
-									}
-								})
-						},1000)
-					}
-				})
+				uni.showModal({
+				    title: '提示',
+				    content: '确定使用优惠券',
+				    success: function (res) {
+				        if (res.confirm) {
+				            uni.request({
+				            	url:'https://layer.boyaokj.cn/api/coupon/useCoupon',
+				            	method:'GET',
+				            	data:{
+				            		user_id:uni.getStorageSync('userInfo').user_id,
+				            		coupon_id:id
+				            	},
+				            	success(res){
+												console.log("使用更新")
+				            		uni.showToast({
+				            			title: '使用成功',
+				            			success() {
+				            				uni.request({
+				            							url:'https://layer.boyaokj.cn/api/coupon/myCoupon',
+				            							method:'GET',
+				            							data:{
+				            								user_id:uni.getStorageSync('userInfo').user_id,
+				            								status:1
+				            							},
+				            							success(res) {
+																		console.log("数据")
+																		console.log(res.data.data)
+				            								for(let i in res.data.data){
+				            								console.log(res.data.data[i].starttime)
+				            								that.keyong = res.data.data
+				            								let date = new Date(res.data.data[i].starttime * 1000);
+				            								 let y = date.getFullYear();
+				            				        let MM = date.getMonth() + 1;
+				            				        MM = MM < 10 ? ('0' + MM) : MM;//月补0
+				            				        let d = date.getDate();
+				            				        d = d < 10 ? ('0' + d) : d;//天补0
+				            				        let h = date.getHours();
+				            				        h = h < 10 ? ('0' + h) : h;//小时补0
+				            				        let m = date.getMinutes();
+				            				        m = m < 10 ? ('0' + m) : m;//分钟补0
+				            				        let s = date.getSeconds();
+				            				        s = s < 10 ? ('0' + s) : s;//秒补0
+				            								that.keyong[i].starttime = y + '.' + MM + '.' + d;
+				            								let date2 = new Date(res.data.data[i].endtime * 1000);
+				            								 let y2 = date2.getFullYear();
+				            				        let MM2 = date2.getMonth() + 1;
+				            				        MM2 = MM2 < 10 ? ('0' + MM2) : MM2;//月补0
+				            				        let d2 = date2.getDate();
+				            				        d2 = d2 < 10 ? ('0' + d2) : d2;//天补0
+				            				        let h2 = date2.getHours();
+				            				        h2 = h2 < 10 ? ('0' + h2) : h2;//小时补0
+				            				        let m2 = date.getMinutes();
+				            				        m2 = m2 < 10 ? ('0' + m2) : m2;//分钟补0
+				            				        let s2 = date.getSeconds();
+				            				        s2 = s2 < 10 ? ('0' + s2) : s2;//秒补0
+				            								that.keyong[i].endtime = y2 + '.' + MM2 + '.' + d2;
+				            							}
+				            							}
+				            						})
+				            			}
+				            		})
+				            	}
+				            })
+				        } else if (res.cancel) {
+				           
+				        }
+				    }
+				});
 			}
 		}
 	}
@@ -305,7 +317,7 @@
 		margin-top: 18rpx;
 	}
 	.option{
-		width: 480rpx;
+		width: 470rpx;
 		height: 63rpx;
 		border-radius: 34rpx;
 		border: 1px solid #40A9FF;

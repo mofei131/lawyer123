@@ -23,6 +23,24 @@
           "pathName": "pages/my/shangchuan",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "服务设置",
+          "pathName": "pages/my/serviceSet",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "案件委托",
+          "pathName": "pages/service_zhixun/pinlvshi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/finish",
+          "pathName": "pages/my/finish",
+          "query": "emitName=undefined&phone=17616134289",
+          "scene": null
         }
       ]
     }

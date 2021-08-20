@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var lawyercard1 = function lawyercard1() {Promise.all(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/components/lawyercard1/lawyercard1")]).then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 475));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var lawyercard1 = function lawyercard1() {Promise.all(/*! require.ensure | pages/components/lawyercard1/lawyercard1 */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/components/lawyercard1/lawyercard1")]).then((function () {return resolve(__webpack_require__(/*! @/pages/components/lawyercard1/lawyercard1.vue */ 491));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -169,6 +169,7 @@ __webpack_require__.r(__webpack_exports__);
         limit: 10 },
 
       success: function success(res) {
+        console.log(res.data.data);
         that.lawyerList = res.data.data;
       } });
 
@@ -178,6 +179,9 @@ __webpack_require__.r(__webpack_exports__);
     that.getnewsList();
   },
   methods: {
+    updateFollow: function updateFollow(fllow) {
+      this.lawyerList[0].follow = fllow == 1 ? 0 : 1;
+    },
     getnewsList: function getnewsList() {
       var that = this;
       that.page++;

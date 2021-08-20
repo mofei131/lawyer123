@@ -42,6 +42,9 @@
 
 
 <style>
+	page{
+		background: #F8F8F8;
+	}
 	.guideitem{
 		display: flex;
 		justify-content: space-between;
@@ -52,6 +55,9 @@
 		border-radius: 14rpx;
 		margin: auto;
 		margin-top: 20rpx;
+	}
+	.guidecot{
+		padding-bottom: 20rpx;
 	}
 	.guideitem image{
 		width: 36rpx;

@@ -10,15 +10,15 @@
 					<view class="state" v-else-if="item.status == 2">服务结束</view>
 					<view class="state" v-else>已完成</view>
 				</view>
-				<view class="cont">
+				<view class="cont" @tap="det(item)">
 					<view class="contleft" v-if="item.type == 2">
 						<image src="@/static/icon/icon5.png"></image>
 					</view>
 					<view class="contleft" v-else>
-						<image :src="item.layer_photo"></image>
+						<image :src="item.avater"></image>
 					</view>
 					<view class="contright">
-						<view>{{item.layer_name}}</view>
+						<view>{{item.nickname}}</view>
 						<view v-if="item.state == -1">时限:{{item.service}}年</view>
 						<view v-else>{{item.service_name}}</view>
 						<view v-if="item.type == 2">{{item.realprice}}</view>
@@ -59,6 +59,11 @@
 			}
 		},
 		methods:{
+			det(item){
+				uni.navigateTo({
+					url:'./fwdet?id='+item.source_id
+				})
+			},
 			topay(item){
 				uni.navigateTo({
 					url:'./pay?id='+item.service_id+"&price="+item.service_price

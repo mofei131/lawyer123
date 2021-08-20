@@ -96,7 +96,7 @@ var components
 try {
   components = {
     faIcon: function() {
-      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 433))
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 449))
     }
   }
 } catch (e) {
@@ -153,7 +153,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! ../components/pickcity/pickcity.vue */ 496));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var tankuang = function tankuang() {__webpack_require__.e(/*! require.ensure | pages/components/tankuang/tankuang */ "pages/components/tankuang/tankuang").then((function () {return resolve(__webpack_require__(/*! ../components/tankuang/tankuang.vue */ 550));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var pickcity = function pickcity() {__webpack_require__.e(/*! require.ensure | pages/components/pickcity/pickcity */ "pages/components/pickcity/pickcity").then((function () {return resolve(__webpack_require__(/*! ../components/pickcity/pickcity.vue */ 512));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var tankuang = function tankuang() {__webpack_require__.e(/*! require.ensure | pages/components/tankuang/tankuang */ "pages/components/tankuang/tankuang").then((function () {return resolve(__webpack_require__(/*! ../components/tankuang/tankuang.vue */ 566));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -220,19 +220,19 @@ __webpack_require__.r(__webpack_exports__);
       unit: '',
       college: '',
       array1: [{
-        record: '无' },
+        record: '无', id: 0 },
       {
-        record: '小学' },
+        record: '小学', id: 1 },
       {
-        record: '中学' },
+        record: '中学', id: 2 },
       {
-        record: '专科' },
+        record: '专科', id: 3 },
       {
-        record: '本科' },
+        record: '本科', id: 4 },
       {
-        record: '硕士' },
+        record: '硕士', id: 5 },
       {
-        record: '博士' }],
+        record: '博士', id: 6 }],
 
       index1: 0,
       major: '',
@@ -348,7 +348,7 @@ __webpack_require__.r(__webpack_exports__);
           city: that.city,
           lvsuo: that.unit,
           school: that.college,
-          xueli: that.index1,
+          xueli: that.array1[that.index1].id,
           zhuanye: that.major,
           jianjie: that.mark },
 

@@ -117,7 +117,8 @@
 				agreement: true,
 				name:'',
 				price:'',
-				id:''
+				id:'',
+				phone:''
 			}
 		},
 		onLoad(options) {
@@ -129,6 +130,7 @@
 			this.emitName = options.emitName;
 			this.name = options.name;
 			this.id = options.id
+			this.phone = options.phone
 		},
 		computed: {
 
@@ -191,10 +193,9 @@
 									paySign,
 									success: (res) => {
 										//调整到成功页面
-										uni.navigateTo({
-											url:'/pages/my/finish?emitName='+emitName
+										uni.reLaunch({
+											url:'/pages/my/finish?emitName='+emitName+'&phone='+this.phone
 										})
-										
 									},fail(res) {
 										console.log(res);
 										console.log(emitName);

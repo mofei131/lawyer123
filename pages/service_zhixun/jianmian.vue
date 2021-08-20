@@ -3,7 +3,7 @@
 		
 		<view class="" style="position: fixed;z-index: 9999;top:40rpx;left: 0;margin: 0 auto;font-size: 36rpx;background-color: #ffffff00;">
 			<uni-nav-bar :fixed="true" :border="false" left-icon="arrowleft" title="见面咨询"
-				color="#fff" background-color="#ffffff00" @clickLeft="back">
+				color="#fff" background-color="#ffffff00" @clickLeft="back" >
 
 			</uni-nav-bar>
 		</view>
@@ -82,7 +82,7 @@
 					<view class="mod3">
 						<text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
 						<view class="mod4"></view>
-						<view class="mod5">
+						<!-- <view class="mod5">
 							<image src="/static/icon/cooper_p3.png" class="img1"></image>
 							<view class="group9"></view>
 							<image src="/static/icon/cooper_p1.png" class="pic3"></image>
@@ -96,7 +96,8 @@
 							<text lines="1" class="txt4">律师接单</text>
 							<text lines="1" class="info8">律师服务</text>
 							<text lines="1" class="info9">回访评价</text>
-						</view>
+						</view> -->
+						<image src="../../static/images/liucheng3.png" mode="widthFix"></image>
 					</view>
 				</view>
 				<!-- <view class="block5">
@@ -119,8 +120,8 @@
 					</view>
 				</view> -->
 				<view class="flex-row mx-center sx-center">
-					<view class="flex-txt-center" @tap="commit"
-						style="flex: 1 1 auto;margin: 20rpx;height: 60rpx;border-radius:30rpx;background-color: #57A9FF;color: #FFFFFF;">
+					<view class="flex-txt-center jjm" @tap="commit"
+						style="flex: 1 1 auto;margin: 20rpx;background-color: #57A9FF;color: #FFFFFF;">
 						立即购买
 					</view>
 				</view>
@@ -151,6 +152,11 @@
 			}
 		},
 		methods: {
+			back(){
+				uni.navigateBack({
+					
+				});
+			},
 			async init() {
 				let res = await this.$myRequest({
 					url: 'service/detail',
@@ -225,6 +231,9 @@
 </script>
 
 <style>
+	.jjm{
+		height: 76rpx;border-radius:40rpx;
+	}
 	.page {
 		z-index: 1;
 		position: relative;

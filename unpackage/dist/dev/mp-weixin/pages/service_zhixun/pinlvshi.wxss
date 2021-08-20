@@ -1,0 +1,91 @@
+
+page{
+	background: #F4F7F7;
+}
+.gather{
+	width:520rpx;
+	margin-left:30rpx;
+	color:#5D6168;
+	font-size:28rpx;
+}
+.btn{
+	width: 680rpx;
+	height: 76rpx;
+	background: #40A9FF;
+	border-radius: 39rpx;
+	margin: auto;
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #FFFFFF;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	margin-top: 270rpx;
+}
+.duoshuru textarea{
+	width: 681rpx;
+	height: 151rpx;
+	background: #F4F4F4;
+	border-radius: 8rpx;
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #999999;
+	padding: 18rpx 10rpx 18rpx 10rpx;
+	box-sizing: border-box;
+}
+.duoshuru{
+	width: 680rpx;
+	margin: auto;
+}
+.dstitle{
+	font-size: 28rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: #51565D;
+	margin: 33rpx 0 20rpx 0;
+}
+.item input{
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #5D6168;
+	margin-left: 30rpx;
+	width: 520rpx;
+}
+.title{
+	width: 168rpx;
+	text-align-last: justify;
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #51565D;
+}
+.box{
+	width: 720rpx;
+	background: #FFFFFF;
+	border-radius: 14rpx;
+	margin: 25rpx auto;
+	box-sizing: border-box;
+	padding-bottom: 39rpx;
+}
+.item{
+	height: 103rpx;
+	width: 680rpx;
+	margin: auto;
+	border-bottom: 1rpx solid #e8e8e8;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+

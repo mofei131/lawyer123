@@ -2,7 +2,7 @@
 	<view>
 		<view class="option">
 			<view class="real" :class="[judge?'qie':'']" @tap="decide()">直推（{{direct.length}}）</view>
-			<view class="empty" :class="[!judge?'qie':'']" @tap="decide()">间推（{{indirect.length}}）</view>
+			<view class="empty" :class="[!judge?'qie':'']" @tap="decide2()">间推（{{indirect.length}}）</view>
 		</view>
 		<view class="direct" v-if="judge">
 			<view class="directitem" v-for="(item,index) in direct" :key='index'>
@@ -54,13 +54,11 @@
 			})
 		},
 		methods:{
-			decide(){
-				// console.log(this.judge)
-				if(this.judge){
+			decide2(){
 					this.judge = false
-				}else{
+			},
+			decide(){
 					this.judge = true
-				}
 			}
 		}
 	}
@@ -71,7 +69,7 @@
 		background: #F4F7F7;
 	}
 	.option{
-		width: 480rpx;
+		width: 470rpx;
 		height: 63rpx;
 		border-radius: 34rpx;
 		border: 1px solid #40A9FF;
@@ -87,7 +85,7 @@
 		height: 63rpx;
 		background: #fff;
 		border-radius: 32px 0px 0px 32px;
-		border: 1px solid #40A9FF;
+		border: 2px solid #40A9FF;
 		font-size: 25rpx;
 		font-family: PingFangSC-Medium, PingFang SC;
 		font-weight: 500;
@@ -103,7 +101,7 @@
 		height: 63rpx;
 		background: #fff;
 		border-radius:0px 32px 32px 0px;
-		border: 1px solid #40A9FF;
+		border: 2px solid #40A9FF;
 		font-size: 25rpx;
 		font-family: PingFangSC-Medium, PingFang SC;
 		font-weight: 500;

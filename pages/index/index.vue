@@ -167,7 +167,7 @@
 						},
 						{
 							id: 11,
-							name: "其他",
+							name: "个人/企业套餐",
 							url: "/static/icon/icon12.png"
 						},
 					]
@@ -391,7 +391,40 @@
 	page {
 		background: #F8F8F8;
 	}
-
+	.studyitem:last-child{
+		border-bottom: 0rpx!important;
+	}
+	.anlilist{
+		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);
+		        border-radius: 18rpx 18rpx 18rpx 18rpx;
+	}
+	.anlilistitem:first-child{
+		border-radius: 18rpx 18rpx 0rpx 0rpx;
+	}
+	.study{
+		    padding: 7rpx!important;
+		    background-color: #fff;
+	}
+	.top-menu-view{
+		box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
+	}
+	.fourcard{
+		border-radius: 0rpx 0rpx 18rpx 18rpx!important;
+		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
+		    padding-left: 20rpx!important;
+	}
+	.study{
+		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);
+		    border-radius: 18rpx;
+				margin-bottom: 40rpx!important;
+	}
+	.studyitem{
+		    border-radius: 18rpx 18rpx 0 0;
+	}
+.study .studyitem{
+	margin-bottom: 0;
+	border-bottom: 1rpx solid #e8e8e8;
+}
 	.danxiang .zixunitemimage {
 		width: 70rpx;
 		height: 70rpx;
@@ -478,7 +511,6 @@
 		margin: auto;
 		box-sizing: border-box;
 		margin-top: 24rpx;
-		margin-bottom: 12rpx;
 	}
 
 	.modleft,
@@ -544,14 +576,14 @@
 	}
 
 	.case {
-		height: 80rpx;
+		/* height: 80rpx; */
 		border-radius: 14rpx 14rpx 0rpx 0rpx;
 		/* background: rgb(9, 109, 217, .1); */
 		background: #F8F8F8;
 		box-sizing: border-box;
 		width: 710rpx;
 		margin: auto;
-		padding-top: 10rpx;
+		/* padding-top: 10rpx; */
 		/* margin-top: 14rpx; */
 	}
 

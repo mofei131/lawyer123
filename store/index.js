@@ -24,7 +24,8 @@ const store = new Vuex.Store({
 		websocketConnect:false,
 		socketInfo:[],
 		code:'',
-		pid:0
+		pid:0,
+		link:''
 
 	},
 	mutations: {

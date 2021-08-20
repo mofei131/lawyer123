@@ -96,7 +96,7 @@ var components
 try {
   components = {
     faIcon: function() {
-      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 433))
+      return __webpack_require__.e(/*! import() | components/fa-icon/fa-icon */ "components/fa-icon/fa-icon").then(__webpack_require__.bind(null, /*! @/components/fa-icon/fa-icon.vue */ 449))
     }
   }
 } catch (e) {
@@ -269,9 +269,37 @@ var _default =
     uni.request({
       url: 'https://layer.boyaokj.cn/api/service/getOtherService',
       success: function success(res) {
+        console.log(res.data.data);
         that.array1 = res.data.data;
         that.zancun = res.data.data[0].name;
         that.zancunid = res.data.data[0].id;
+      } });
+
+  },
+  onShow: function onShow() {
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/layer/getSettting',
+      method: 'GET',
+      data: {
+        user_id: uni.getStorageSync('userInfo').user_id },
+
+      success: function success(res) {
+        console.log(res.data.data);
+        that.chat = res.data.data.tuwen;
+        that.phone = res.data.data.dianhua;
+        that.meet = res.data.data.jianmian;
+        that.emplay = res.data.data.pinqing;
+        for (var i in res.data.data.case_type) {
+          that.cardlist.push(res.data.data.case_type[i].id);
+        }
+        for (var y in res.data.data.more_service) {
+          that.sevedata.push({
+            id: res.data.data.more_service[y].service_id,
+            service: that.type[res.data.data.more_service[y].service_id].name,
+            price: res.data.data.more_service[y].price });
+
+        }
       } });
 
   },
@@ -330,7 +358,7 @@ var _default =
 
       }
       var paramsJson = JSON.stringify(setting);
-      console.log(paramsJson);
+      // console.log(paramsJson)
       // console.log(JSON.stringify(that.cardlist).replace(/\[|]/g, ''))
       uni.request({
         url: 'https://layer.boyaokj.cn/api/layer/setting',
@@ -364,9 +392,11 @@ var _default =
       }
     },
     anjianChange1: function anjianChange1(e) {
+      var that = this;
       this.index1 = e.detail.value;
       this.zancun = this.array1[e.detail.value].name;
       this.zancunid = this.array1[e.detail.value].id;
+      console.log(that.sevedata);
     },
     cancel: function cancel() {
       this.molde = !this.molde;

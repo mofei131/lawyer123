@@ -202,7 +202,7 @@
 	}
 	.btn{
 		width: 686rpx;
-		height: 71rpx;
+		height: 76rpx;
 		background: #049EFF;
 		border-radius: 35rpx;
 		margin: auto;

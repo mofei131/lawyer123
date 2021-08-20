@@ -8,8 +8,6 @@
 	background-color: #FFFFFF;
 	/* border-radius: 20rpx; */
 	padding: 20rpx;
-
-
 	/* border: 1px solid; */
 }
 .anlilistitem:last-child {
@@ -104,6 +102,9 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.anlilist view.data-v-27baf3f2 {
+  border-radius: 18rpx;
+}
 .b.data-v-27baf3f2 {
   background-color: #F4F7F7;
 }
