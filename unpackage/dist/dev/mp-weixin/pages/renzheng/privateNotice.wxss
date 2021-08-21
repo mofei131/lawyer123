@@ -5,7 +5,8 @@
 	border-radius: 8rpx;
 	margin: 20rpx auto;
 	padding: 25rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .btn{
 	width: 680rpx;
@@ -19,6 +20,7 @@
 	color: #FFFFFF;
 	text-align: center;
 	padding-top: 18rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 

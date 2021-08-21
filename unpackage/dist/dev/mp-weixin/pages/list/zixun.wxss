@@ -4,7 +4,8 @@
 	height: 176rpx;
 	background: #40A9FF;
 	padding-top: 80rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .search{
 	width: 500rpx;

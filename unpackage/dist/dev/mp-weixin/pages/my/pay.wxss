@@ -12,7 +12,8 @@
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 	padding-top: 54rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 
 /* .listitem view:nth-child(1){
@@ -39,7 +40,8 @@
 	height: 40rpx;
 	/* padding-top: 24rpx; */
 	margin-top: 24rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .paylist {
 	display: -webkit-box;

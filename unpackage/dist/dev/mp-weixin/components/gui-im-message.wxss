@@ -3,7 +3,7 @@
 .gui-im-system-msg.data-v-3edf3a2b{color:#FFFFFF; font-size:26rpx; line-height:38rpx; padding:5px 10px; display:block; border-radius:6rpx;}
 .gui-im-msg.data-v-3edf3a2b{margin-bottom:28px; display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:horizontal; -webkit-box-direction:normal; -webkit-flex-direction:row; flex-direction:row; -webkit-flex-wrap:nowrap; flex-wrap:nowrap;}
 .gui-im-face.data-v-3edf3a2b{width:80rpx; height:80rpx; overflow:hidden; -webkit-flex-shrink:0; flex-shrink:0; border-radius:6rpx; overflow:hidden; font-size:0;}
-.gui-im-face-image.data-v-3edf3a2b{width:80rpx;border-radius: 50%;}
+.gui-im-face-image.data-v-3edf3a2b{width:80rpx;height: 80rpx;border-radius: 50%;}
 .gui-im-name.data-v-3edf3a2b{padding-bottom:10rpx; margin-top:-5rpx;
 }
 .gui-im-content-spacing.data-v-3edf3a2b{width:15rpx; height:50rpx; -webkit-flex-shrink:0; flex-shrink:0;}

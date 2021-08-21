@@ -16,9 +16,11 @@ page{
 	width: 100%;
 	background: #fff;
 	padding: 17rpx 0 13rpx 0;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	margin-bottom: 20rpx;
-	box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
+	-webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
+	        box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 }
 .outtop view{
 	font-size: 28rpx;
@@ -59,7 +61,8 @@ page{
 }
 .inputbox{
 	width: 100%;
-	box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
+	-webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
+	        box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 	background: #fff;
 }
 .input{
@@ -116,7 +119,8 @@ page{
 	text-align: center;
 	/* line-height: 50rpx; */
 	padding-top: 15rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	margin-top: 145rpx;
 }
 

@@ -179,7 +179,7 @@
 					} else {
 						console.log(res);
 						let {appId,nonceStr,package:pp,paySign,signType,timeStamp,timestamp,orderno} = res.data;
-	
+
 						uni.getProvider({
 							service:'payment',
 							success:(res)=> {
