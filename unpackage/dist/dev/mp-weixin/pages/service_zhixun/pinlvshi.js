@@ -170,6 +170,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -243,6 +244,13 @@ var _default =
       if (!this.price) {
         uni.showToast({
           title: '请输入预算',
+          icon: 'none' });
+
+        return;
+      }
+      if (this.price < 2000) {
+        uni.showToast({
+          title: '请输入输入两千以上的预算',
           icon: 'none' });
 
         return;

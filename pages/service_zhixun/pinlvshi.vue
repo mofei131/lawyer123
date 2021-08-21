@@ -19,11 +19,12 @@
 					<view class="flex-row">
 						<text>{{array1[index1].name}}</text>
 					</view>
+					<image class="right" src="../../static/images/righticon.png"></image>
 				</picker>
 			</view>
 			<view class="item">
 				<view class="title">预算律师费:</view>
-				<input type="number" v-model="price" />
+				<input type="number" v-model="price" placeholder="请输入两千以上的预算"/>
 			</view>
 			<view class="duoshuru">
 				<view class="dstitle">诉求</view>
@@ -111,6 +112,13 @@
 				if (!this.price) {
 					uni.showToast({
 						title: '请输入预算',
+						icon: 'none',
+					})
+					return
+				}
+				if (this.price < 2000) {
+					uni.showToast({
+						title: '请输入输入两千以上的预算',
 						icon: 'none',
 					})
 					return
@@ -212,11 +220,19 @@
 	page{
 		background: #F4F7F7;
 	}
+	.right{
+		width: 14rpx;
+		    height: 20rpx;
+		    position: absolute;
+		    top: 6px;
+		    right: 10px;
+	}
 	.gather{
 		width:520rpx;
 		margin-left:30rpx;
 		color:#5D6168;
 		font-size:28rpx;
+		position: relative;
 	}
 	.btn{
 		width: 680rpx;

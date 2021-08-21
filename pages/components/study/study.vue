@@ -9,7 +9,8 @@
 				<view class="studytitle ellipsis">{{item.title}}</view>
 				<view class="studycontent">{{item.desc}}</view>
 				<view class="figure flex-row mx-start sx-center" style="margin-top: 15rpx;">
-					<view>已更新{{item.num || 1}}期</view>
+					<!-- <view>已更新{{item.num || 1}}期</view> -->
+					<view>更新时间:{{item.create_time}}</view>
 					<view class="ellipsis" style="flex: 1 1 auto;width: 1rpx;">{{item.subtitle}}</view>
 
 					<view
@@ -131,7 +132,7 @@
 	.studytitle {
 		color: #323232;
 		width: 500rpx;
-		font-size: 24rpx;
+		font-size: 28rpx;
 		margin-bottom: 15rpx;
 	}
 

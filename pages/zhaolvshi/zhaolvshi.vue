@@ -300,7 +300,8 @@
 		margin-left: 15rpx;
 		justify-content: center;
 		align-items: center;
-		margin-top: 16rpx;
+		/* margin-top: 16rpx; */
+		height: 54rpx;
 	}
 
 	.search image {

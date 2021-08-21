@@ -29,7 +29,7 @@
 .studytitle {
 	color: #323232;
 	width: 500rpx;
-	font-size: 24rpx;
+	font-size: 28rpx;
 	margin-bottom: 15rpx;
 }
 .studycontent {

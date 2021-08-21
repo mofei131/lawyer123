@@ -2,11 +2,19 @@
 page{
 	background: #F4F7F7;
 }
+.right{
+	width: 14rpx;
+	    height: 20rpx;
+	    position: absolute;
+	    top: 6px;
+	    right: 10px;
+}
 .gather{
 	width:520rpx;
 	margin-left:30rpx;
 	color:#5D6168;
 	font-size:28rpx;
+	position: relative;
 }
 .btn{
 	width: 680rpx;

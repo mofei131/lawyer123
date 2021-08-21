@@ -67,7 +67,7 @@
 		font-size: 24rpx;
 		display: flex;
 		position: absolute;
-		top: 70rpx;
+		top: 76rpx;
 		z-index: 10;
 		font-size: 24rpx;
 	}

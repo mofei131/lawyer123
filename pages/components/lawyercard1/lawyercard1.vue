@@ -8,7 +8,7 @@
 				<image  mode="aspectFill" :src="item.photo||'/static/icon/girl.png'" style="border-radius: 50%;margin-right: 10rpx;flex: 0 0 125rpx;height:125rpx;"></image>
 				<view class="flex-column mx-evenly sx-stretch" style="flex: 1 1 auto;line-height: 40rpx;width: 500rpx;">
 					<view class="flex-row mx-start sx-center">
-						<text style="font-size: 26rpx;">{{item.name}}</text>
+						<text style="font-size: 32rpx;">{{item.name}}</text>
 						<view v-if="item.type_text" class="flex-txt-center"
 							style="margin-left: 10rpx;width: 52rpx;background-color: #FF4D4F;">
 							<text lines="1"
@@ -28,9 +28,9 @@
 						</view>
 					</view>
 					<view class="flex-row mx-between sx-center" style="margin-bottom: 5rpx;">
-						<view class="ellipsis" style="width: 512rpx;font-size: 22rpx;color: rgba(102,102,102,1);">
+						<!-- <view class="ellipsis" style="width: 512rpx;font-size: 24rpx;color: rgba(102,102,102,1);">
 							{{item.jianjie}}
-						</view>
+						</view> -->
 						<view v-if="follow" @tap.stop="guanzhu(item)" style="padding: 0 16rpx;font-size: 22rpx;flex: 0 0 auto ;border-radius: 40rpx;background-color: #6bc1f3;color: #FFFFFF;box-sizing: border-box;">{{item.follow==1?'取消关注':'关注'}}</view>
 					</view>
 
@@ -40,7 +40,7 @@
 						</view>
 					</view>
 					<view class="flex-row mx-between sx-center"
-						style="flex: 0 0 auto;font-size: 20rpx;color: rgba(153,153,153,1);">
+						style="flex: 0 0 auto;font-size: 22rpx;color: rgba(153,153,153,1);">
 						<view class="flex-row">职业年限：{{item.zhiyenianxian && item.zhiyenianxian.name}}</view>
 						<view class="flex-row">已咨询：<text style="color: red;">{{item.case_num}}</text>件</view>
 						<view class="flex-row">好评：<text style="color: red;">{{praise||0}}</text>次</view>
@@ -233,8 +233,8 @@
 		color: #4CA2FF; */
 		flex:0 0 auto;
 		border-radius: 4rpx;
-		border: 1px solid #40A9FF;
-		font-size: 21rpx;
+		border: 1px solid rgb(64,169,255,.5);
+		font-size: 18rpx;
 		font-family: PingFangSC-Regular, PingFang SC;
 		font-weight: 400;
 		color: #40A9FF;
@@ -247,15 +247,13 @@
 	}
 
 	.label {
-		width: 56rpx;
-		height: 26rpx;
-		background: #26CD93;
-		border-radius: 2rpx;
-		font-size: 18rpx;
-		color: #fff;
-		line-height: 26rpx;
-		margin-right: 6rpx;
-		text-align: center;
+		    border-radius: 4rpx;
+		    font-size: 22rpx;
+		    color: #fff;
+		    line-height: 26rpx;
+		    margin-right: 6rpx;
+		    text-align: center;
+		    padding: 5rpx 5rpx 5rpx 5rpx;
 	}
 
 	.gree {

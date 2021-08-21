@@ -15,8 +15,8 @@
 					<text style="color: rgba(255,77,79,1);font-size: 36rpx;">￥{{item.price}}</text>
 
 					<view v-if="item.buy"
-						style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
-						已购买</view>
+						style="background-color: #FF4D4F;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
+						已经购买</view>
 					<view v-else @tap="toPay(item)"
 						style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
 						立即购买</view>

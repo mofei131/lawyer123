@@ -235,7 +235,7 @@
 		margin-bottom: 9rpx;
 	}
 	.yuai{
-		left: 40rpx;
+		left: 36rpx;
 	}
 	.danding{
 		font-size: 28rpx;
@@ -410,7 +410,7 @@
 
 	.paragraph1 {
 		z-index: 84;
-		width: 300rpx;
+		width: 380rpx;
 		height: 66rpx;
 		display: block;
 		overflow-wrap: break-word;
@@ -487,11 +487,11 @@
 	}
 .info5 rich-text{
 	line-height: 40rpx;
-	letter-spacing: 4rpx;
+	letter-spacing: 0rpx;
 }
 .danding rich-text{
 	line-height: 40rpx;
-	letter-spacing: 4rpx;
+	letter-spacing: 0rpx;
 }
 	.info5 {
 		z-index: 7;
