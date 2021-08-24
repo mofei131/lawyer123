@@ -348,7 +348,8 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
       lawyercard: [],
       anli: [],
-      learn: [] };
+      learn: [],
+      banner: [] };
 
   },
   onLoad: function onLoad(p) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
@@ -374,6 +375,19 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                   // console.log(res);
                   _this.commitWindowHeight(res.windowHeight);
                 } });case 14:case "end":return _context.stop();}}}, _callee);}))();
+
+  },
+  onShow: function onShow() {
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/index/banner',
+      method: 'GET',
+      success: function success(res) {
+        for (var i in res.data.data) {
+          that.banner = res.data.data;
+        }
+        // console.log(res.data.data)
+      } });
 
   },
   computed: _objectSpread({},

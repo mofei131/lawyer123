@@ -46,7 +46,8 @@ page{
 	font-weight: 400;
 	color: #999999;
 	padding: 18rpx 10rpx 18rpx 10rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .duoshuru{
 	width: 680rpx;
@@ -80,7 +81,8 @@ page{
 	background: #FFFFFF;
 	border-radius: 14rpx;
 	margin: 25rpx auto;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	padding-bottom: 39rpx;
 }
 .item{

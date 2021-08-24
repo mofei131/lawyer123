@@ -33,7 +33,8 @@
 	border-radius: 32rpx;
 	margin: auto;
 	margin-left: 10rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .search image{
 	width: 30rpx;
@@ -44,6 +45,7 @@
 	width: 300rpx;
 	margin: auto;
 	height: 60rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 

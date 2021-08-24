@@ -165,7 +165,7 @@
 						let service_id = res.data.service_id;
 						//跳转收银台
 						uni.navigateTo({
-							url: '../my/pay?id='+res.data.service_id+'&price='+item.price.dianhua+'&typeId=2'+'&emitName=callphone'
+							url: '../my/pay?id='+res.data.service_id+'&price='+item.price.dianhua+'&typeId=2'+'&phone='+item.mobile
 						})
 						uni.$on('callphone',()=>{
 							uni.makePhoneCall({
@@ -183,7 +183,7 @@
 			jianmian(item) {
 				console.log(item);
 				uni.navigateTo({
-					url: '../service_zhixun/jianmian?layer_id='+item.id+'&price='+item.price.jianmian+'&typeId=3'
+					url: '../service_zhixun/jianmian?layer_id='+item.id+'&price='+item.price.jianmian+'&typeId=3'+'&phone='+item.mobile
 				})
 			},
 			pinglvshi(item) {

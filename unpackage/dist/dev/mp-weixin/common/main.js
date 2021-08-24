@@ -7,7 +7,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni, createApp) {__webpack_require__(/*! uni-pages */ 4);var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 4);var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 var _index = _interopRequireDefault(__webpack_require__(/*! @/store/index */ 11));
 var _http = _interopRequireDefault(__webpack_require__(/*! @/common/http */ 18));
@@ -17,43 +17,6 @@ _vue.default.prototype.$amapPlugin = new _amapWx.default.AMapWX({
 
 _vue.default.prototype.$store = _index.default;
 _vue.default.prototype.$myRequest = _http.default.ajax;
-
-
-var socketTask = uni.connectSocket({
-  url: 'wss://layer.boyaokj.cn/wss',
-  header: {
-    'content-type': 'application/json' },
-
-  protocols: [],
-  method: 'GET' });
-
-_vue.default.prototype.$socketTask = socketTask;
-uni.onSocketOpen(function (res) {
-  console.log('WebSocket连接已打开！');
-  _index.default.commit('commitWebsocketConnect', true);
-});
-uni.onSocketError(function (res) {
-  console.log('WebSocket连接打开失败，请检查！');
-  // store.commit('commitWebsocketConnect', false)
-});
-
-// uni.onSocketMessage(function(res) {
-// 	console.log('收到服务器内容：');
-// 	let data = JSON.parse(res.data);
-// 	console.log(data)
-// 	if (data.code == 200) {
-// 		store.commit('commitSocketInfo', data.data)
-// 	}
-
-// });
-uni.onSocketClose(function (res) {
-  console.log('WebSocket 已关闭！');
-  _vue.default.prototype.$socketTask = null;
-  _index.default.commit('commitWebsocketConnect', false);
-});
-
-
-
 
 _vue.default.config.productionTip = false;
 // 图标组件
@@ -65,7 +28,7 @@ var app = new _vue.default(_objectSpread({},
 _App.default));
 
 createApp(app).$mount();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
 
 /***/ }),
 /* 1 */,

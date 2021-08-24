@@ -25,7 +25,7 @@
 						<view v-else>￥{{item.service_price}}</view>
 					</view>
 				</view>
-				<view class="cont" v-if="item.service_type != 10">
+				<view class="cont" v-if="item.service_type != 10" @tap="qiao(item)">
 					<view class="contleft" v-if="item.type == 2">
 						<image src="@/static/icon/icon5.png"></image>
 					</view>
@@ -131,6 +131,42 @@
 				uni.navigateTo({
 					url:'../my/shangchuan?dd='+item.orderno+'&id='+item.source_id,
 				})
+			},
+			qiao(item){
+				console.log(item.service_type)
+				if(item.service_type == 1){
+					uni.navigateTo({
+						url:'../service_zhixun/tuwen?source_id='+item.source_id
+					})
+				}if(item.service_type == 3){
+					uni.navigateTo({
+						url:'../service_zhixun/jianmian?layer_id='+item.layer_id
+					})
+				}else if(item.service_type == 4){
+					uni.navigateTo({
+						url:'../single_service/cooperProcess?id=5'
+					})
+				}else if(item.service_type == 5){
+					uni.navigateTo({
+						url:'../single_service/cooperProcess?id=6'
+					})
+				}else if(item.service_type == 6){
+					uni.navigateTo({
+						url:'../single_service/cooperProcess?id=7'
+					})
+				}else if(item.service_type == 7){
+					uni.navigateTo({
+						url:'../single_service/cooperProcess?id=8'
+					})
+				}else if(item.service_type == 8){
+					uni.navigateTo({
+						url:'../single_service/cooperProcess?id=9'
+					})
+				}else if(item.service_type == 9){
+					uni.navigateTo({
+						url:'../single_service/cooperProcess?id=10'
+					})
+				}
 			}
 			}
 		}

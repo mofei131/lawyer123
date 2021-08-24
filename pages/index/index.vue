@@ -3,10 +3,10 @@
 		<search></search>
 
 		<swiper class="swiper flex-column mx-start sx-stretch" circular :autoplay="true" interval="3000" duration="500">
-			<swiper-item class="flex-column mx-start sx-stretch">
+			<swiper-item class="flex-column mx-start sx-stretch" v-for="(item,index) in banner" :key="index">
 				<!-- <view class="swiper-item backImgFull" mode="widthFix" :style="{backgroundImage: 'url(/static/images/banner.png)'}">
 				</view> -->
-				<image class="swiper-item backImgFull" mode="widthFix" src="http://hlstore.yimetal.cn/0ea5d386-7937-4738-9bf1-8f6e149b3dfb.png"></image>
+				<image class="swiper-item backImgFull" mode="widthFix" :src="item.images"></image>
 			</swiper-item>
 			<!-- <swiper-item class="flex-column mx-start sx-stretch">
 				<image class="swiper-item backImgFull" mode="widthFix" src="@/static/images/banner.png"></image>
@@ -222,7 +222,8 @@
 				],
 				lawyercard: [],
 				anli: [],
-				learn: []
+				learn: [],
+				banner:[]
 			}
 		},
 		async onLoad(p) {
@@ -247,6 +248,19 @@
 				success: (res) => {
 					// console.log(res);
 					this.commitWindowHeight(res.windowHeight);
+				}
+			})
+		},
+		onShow() {
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/index/banner',
+				method:'GET',
+				success(res) {
+					for(let i in res.data.data){
+						that.banner = res.data.data
+					}
+					// console.log(res.data.data)
 				}
 			})
 		},

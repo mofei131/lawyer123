@@ -181,13 +181,13 @@
 				
 			},
 			jianmian(item) {
+				console.log("诀别")
 				console.log(item);
 				uni.navigateTo({
 					url: '../service_zhixun/jianmian?layer_id='+item.id+'&price='+item.price.jianmian+'&typeId=3'
 				})
 			},
 			pinglvshi(item) {
-				console.log(item);
 				uni.navigateTo({
 					url: '../service_zhixun/pinglvshi?layer_id='+item.id+'&price='+item.price.pinqing+'&typeId=10'
 				})

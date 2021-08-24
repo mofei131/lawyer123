@@ -13,7 +13,7 @@
 					<view class="gui-im-msg" 
 					:class="[userid == item.uindex ? 'gui-im-msg-right' : 'gui-im-msg-left']">
 						<view class="gui-im-face" v-if="item.uface">
-							<image class="gui-im-face-image" :src="item.uface" mode="widthFix"></image>
+							<image class="gui-im-face-image" :src="item.uface" mode="aspectFit"></image>
 						</view>
 						<view class="gui-im-content-spacing"></view>
 						<view class="gui-im-content-in">
@@ -145,7 +145,7 @@ export default {
 .gui-im-system-msg{color:#FFFFFF; font-size:26rpx; line-height:38rpx; padding:5px 10px; display:block; border-radius:6rpx;}
 .gui-im-msg{margin-bottom:28px; display:flex; flex-direction:row; flex-wrap:nowrap;}
 .gui-im-face{width:80rpx; height:80rpx; overflow:hidden; flex-shrink:0; border-radius:6rpx; overflow:hidden; font-size:0;}
-.gui-im-face-image{width:80rpx;border-radius: 50%;}
+.gui-im-face-image{width:80rpx;height: 80rpx;border-radius: 50%;}
 .gui-im-name{padding-bottom:10rpx; margin-top:-5rpx; }
 .gui-im-content-spacing{width:15rpx; height:50rpx; flex-shrink:0;}
 .gui-im-content-in{ overflow:hidden;} /* width:600rpx; */

@@ -297,13 +297,15 @@ var _default =
     this.layer_id = param.layer_id;
     this.user_id = userInfo.user_id;
     this.init();
+    this.phone = param.phone;
   },
   data: function data() {
     return {
       price: '',
       layer_id: '',
       user_id: '',
-      dataSource: {} };
+      dataSource: {},
+      phone: '' };
 
   },
   methods: {
@@ -368,7 +370,7 @@ var _default =
                   if (res && res.code == 200) {
                     console.log(res);
                     uni.navigateTo({
-                      url: '../my/pay?id=' + res.data.service_id + '&price=' + _this2.price + '&typeId=3' });
+                      url: '../my/pay?id=' + res.data.service_id + '&price=' + _this2.price + '&typeId=3' + '&phone=' + _this2.phone });
 
                   } else {
                     uni.showToast({

@@ -171,7 +171,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       hide: false,
       box: {
-        title: '常年法律顾问协议' },
+        title: '下单须知' },
 
       emitName: '',
       typeInfo: {
@@ -257,7 +257,6 @@ __webpack_require__.r(__webpack_exports__);
     this.arr.id = options.id;
     // this.arr.chapter = options.chapter
     this.arr.typeId = options.typeId || '';
-    console.log("抄查");
     console.log(options);
     this.arr.price = options.price;
     this.emitName = options.emitName;

@@ -59,7 +59,8 @@ page{
 	width: 680rpx;
 	margin: auto;
 	padding-top: 35rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .tips{
 	width: 170rpx;
@@ -116,7 +117,8 @@ page{
 	margin: 53rpx auto;
 	text-align: center;
 	padding-top: 20rpx;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 fa-icon{
 	margin-right: 20rpx;

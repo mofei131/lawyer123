@@ -215,6 +215,7 @@ var _default =
     this.userInfo = userInfo;
     this.layer_id = param.layer_id;
     this.user_id = userInfo.user_id;
+    this.source_id = param.source_id;
     // uni.getLocation({
     // 	type: 'wgs84',
     // 	geocode: true,
@@ -252,8 +253,8 @@ var _default =
       address: '',
       lng: '',
       lat: '',
-      price: ''
-
+      price: '',
+      source_id: ''
 
       // searchAddress: '',
       // title: 'map',
@@ -267,6 +268,27 @@ var _default =
 
       // ],
     };
+  },
+  onShow: function onShow() {
+    var that = this;
+    uni.request({
+      url: 'https://layer.boyaokj.cn/api/service/getSourceDetail',
+      method: 'GET',
+      data: {
+        source_id: this.source_id },
+
+      success: function success(res) {
+        console.log(res.data.data);
+        that.content = res.data.data.content;
+        that.address = res.data.data.address;
+        that.case_type = res.data.data.case_type;
+        // for(let i in that.bussinessTypes){
+        // 	if(that.bussinessTypes[i].id == res.data.data.case_type){
+        // 		console.log(that.bussinessTypes.index())
+        // 	}
+        // }
+      } });
+
   },
   methods: {
     caseTypeChange: function caseTypeChange(e) {

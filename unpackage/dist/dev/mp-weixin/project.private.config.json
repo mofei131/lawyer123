@@ -101,6 +101,12 @@
           "pathName": "pages/my/problem",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/my/serviceList",
+          "pathName": "pages/my/serviceList",
+          "query": "",
+          "scene": null
         }
       ]
     }

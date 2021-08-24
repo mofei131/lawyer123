@@ -48,8 +48,8 @@
 					<view class="bd2"></view>
 					<view class="imgbox">
 						<image v-if="id == 5" mode="widthFix" src="http://hlstore.yimetal.cn/liucheng1.png" ></image>
-						<image v-else-if="id == 6" mode="widthFix" src="../../static/images/liucheng2.png"></image>
-						<image v-else mode="widthFix" src="http://hlstore.yimetal.cn/liucheng3.png"></image>
+						<image v-else-if="id == 6" mode="widthFix" src="http://hlstore.yimetal.cn/lc2.png"></image>
+						<image v-else mode="widthFix" src="http://hlstore.yimetal.cn/lc3.png"></image>
 					</view>
 					<!-- <view class="flex-column danding" style="color: gray;margin-top: 18rpx;padding-bottom: 20rpx;">
 						<rich-text :nodes="dataSource.service"></rich-text>

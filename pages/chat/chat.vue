@@ -24,76 +24,36 @@
 		mapActions
 	} from 'vuex'
 	export default {
-		
+
 		onUnload() {
 			uni.switchTab({
-				url:'/pages/index/index'
+				url: '/pages/index/index'
+			})
+			uni.closeSocket({
+				success() {
+					console.log('已关闭socket....');
+				}
 			})
 		},
-		onLoad(p) {
-			console.log(p);
+		async onLoad(p) {
+
+
 			console.log(this.$store.state.userInfo);
 			this.source_id = p.source_id;
 			this.layer_id = p.layer_id;
 			this.user_id = this.$store.state.userInfo.user_id;
-			console.log('用户id：',this.user_id);
-			let that = this
-			uni.request({
-				url:'https://layer.boyaokj.cn/api/layer/detail',
-				method:'GET',
-				data:{
-					user_id:'',
-					layer_id:p.layer_id
-				},
-				success(res) {
-					console.log(res.data.data.photo)
-					that.lawyerAvator = res.data.data.photo
-					that.lawyerName = res.data.data.name
-				}
-			})
-			if (this.$store.state.websocketConnect) {
-				uni.sendSocketMessage({
-					data: JSON.stringify({
-						"action": "bind",
-						"data": {
-							"source_id": this.source_id,
-						}
-					}),
-					fail(res) {
-						uni.showToast({
-							title: '聊天连接失败',
-							icon: 'none'
-						})
-					}
-				});
-				uni.onSocketMessage((res) => {
-					console.log('收到服务器内容：');
-					let d = JSON.parse(res.data)
-					console.log(11,d);
-					if (d.type) return;
-					let data = d.data;
-					if (data.source_id) {
-						var item = {
-							group: 'group1',
-							uindex: data.user_id,
-							contentType: 'txt',
-							uname: data.user_id == this.user_id ? this.userName : this.lawyerName,
-							content: data.message,
-							uface: data.user_id == this.user_id ? this.$store.state.userInfo.avater : this.lawyerAvator
-						};
-						this.msgs.push(item);
-						this.pageScroll()
-						console.log(this.msgs);
-					}
-
-				});
-
-			} else {
-				this.checkOpenSocket();
-			}
+			this.userAvator = this.$store.state.userInfo.avater;
+			this.userName = this.$store.state.userInfo.nickname;
+			await this.getMessage();
+			this.openConnection();
 		},
 		onShow() {
-			this.getMessage(this.source_id);
+			console.log("==show===socketTask====");
+			console.log(this.socketTask);
+		},
+		onHide() {
+			console.log("==hid===socketTask====");
+			console.log(this.socketTask);
 		},
 		components: {
 			guiImMessage,
@@ -111,32 +71,17 @@
 				source_id: '',
 				layer_id: '',
 				msgs: [],
+				faildMessage: '',
+				count:0,
 			}
 		},
 		methods: {
-
 			...mapMutations(['commitWebsocketConnect', 'commitSocketInfo']),
-			checkOpenSocket() {
-				uni.sendSocketMessage({
-					data: JSON.stringify({
-						"action": "bind",
-						"data": {
-							"source_id": this.source_id,
-						}
-					}),
-					success: res => {
-						return;
-					},
-					fail: err => {
-						// 未连接打开websocket连接
-						this.openConnection();
-					}
-				});
-			},
+
 			openConnection() {
 				// 打开连接
 				uni.closeSocket(); // 确保已经关闭后再重新打开
-				uni.connectSocket({
+				this.socketTask = uni.connectSocket({
 					url: 'wss://layer.boyaokj.cn/wss',
 					header: {
 						'content-type': 'application/json'
@@ -146,9 +91,18 @@
 						console.log('连接成功 connectSocket=', res);
 					},
 					fail: (err) => {
-
-						console.log('连接失败 connectSocket=从连');
-
+						this.count++;
+						uni.showToast({
+							title: '你的网络开小差了，重连中！',
+							icon: 'none',
+							duration: 3000
+						})
+						if(this.count<10){
+							setTimeout(() => {
+								this.openConnection();
+							}, 1000)
+						}
+						
 					}
 				});
 				uni.onSocketOpen(res => {
@@ -160,94 +114,88 @@
 								"source_id": this.source_id,
 							}
 						}),
-						fail(res) {
-							uni.showToast({
-								title: '聊天连接失败',
-								icon: 'none'
-							})
-						}
-					});
-
-				});
-				this.onSocketMessage(); // 打开成功监听服务器返回的消息
-			},
-			//	打开成功监听服务器返回的消息
-			onSocketMessage() {
-				// 消息
-				this.timeout = 30000;
-				this.timeoutObj = null;
-				uni.onSocketMessage(res => {
-					console.log(res)
-					console.log('收到服务器内容：');
-
-					this.getSocketMsg(res.data); // 监听到有新服务器消息
-				});
-			},
-			// 监听到有新服务器消息
-			getSocketMsg(reData) {
-				// 监听到服务器消息
-				let d = JSON.parse(reData)
-				if (d.type) return;
-				let data = d.data;
-				if (data.source_id) {
-					var item = {
-						group: 'group1',
-						uindex: data.user_id,
-						contentType: 'txt',
-						uname: data.user_id == this.user_id ? this.userName : this.lawyerName,
-						content: data.message,
-						uface: data.user_id == this.user_id ? this.$store.state.userInfo.avater : this.lawyerAvator || "https://layer.boyaokj.cn/upload/20210813/1b54fb67409ad93d2eaf28ea20faa644.jpg"
-					};
-					this.msgs.push(item);
-				}
-				console.log('收到服务器消息', reData);
-				// this.reset(); // 检测心跳reset,防止长时间连接导致连接关闭
-			},
-			// 检测心跳reset
-			reset() {
-				clearInterval(this.timeoutObj);
-				this.start(); // 启动心跳
-			},
-			// 启动心跳 start
-			start() {
-				this.timeoutObj = setInterval(function() {
-					uni.sendSocketMessage({
-						data: 'ping',
-						success: res => {
-							console.log('连接中....');
+						success:()=> {
+							if(this.faildMessage){
+								this.sendText(this.faildMessage)
+							}
 						},
-						fail: err => {
-							console.log('连接失败重新连接....');
-							this.openConnection();
+						fail:(res)=> {
+							this.count++;
+							uni.showToast({
+								title: '你的网络开小差了，重连中！',
+								icon: 'none',
+								duration: 3000
+							})
+							if(this.count<10){
+								setTimeout(() => {
+									this.openConnection();
+								}, 1000)
+							}
 						}
 					});
-				}, this.timeout);
+
+				});
+				uni.onSocketMessage(res => {
+					// this.getSocketMsg(res.data); // 监听到有新服务器消息
+					let d = JSON.parse(res.data)
+					if (d.type) return;
+					let data = d.data;
+					if (data && data.source_id) {
+						var item = {
+							group: 'group1',
+							uindex: data.user_id,
+							contentType: 'txt',
+							uname: data.user_id == this.user_id ? this.userName : this.lawyerName,
+							content: data.message,
+							uface: data.user_id == this.user_id ? this.userAvator : this.lawyerAvator
+						};
+						this.msgs.push(item);
+					}
+				});
+				uni.onSocketError((res) => {
+					this.count++;
+					uni.showToast({
+						title: '你的网络开小差了，重连中！',
+						icon: 'none',
+						duration: 3000
+					})
+					if(this.count<10){
+						setTimeout(() => {
+							this.openConnection();
+						}, 1000)
+					}
+				});
+
+
+
 			},
 
 
 			async sendText(msg) {
-				console.log(msg);
-				console.log(this.$store.state.userInfo.user_id);
-				console.log(this.source_id);
-				this.checkOpenSocket();
+				console.log('發送消息内容：', msg);
 				uni.sendSocketMessage({
 					data: JSON.stringify({
 						"action": "sendMessage",
 						"data": {
 							"source_id": this.source_id,
-							"user_id": this.$store.state.userInfo.user_id,
+							"user_id": this.user_id,
 							"message": msg
 						}
 					}),
-					success() {
+					success:()=> {
 						console.log('发消息成功');
+						this.faildMessage = '';
 					},
 					fail: (res) => {
-						uni.showToast({
-							title: '聊天连接失败',
-							icon: 'none'
-						})
-						this.openConnection()
+						this.faildMessage = msg;
+						// uni.showToast({
+						// 	title: '你的网络开小差了，重连中！',
+						// 	icon: 'none',
+						// 	duration: 3000
+						// })
+
+						this.openConnection();
+
 					}
 				});
 			},
@@ -261,37 +209,54 @@
 				}, 200);
 			},
 			async getMessage() {
-				let res = await this.$myRequest({
-					url: 'message/list',
-					methods: 'GET',
-					data: {
-						source_id: this.source_id
+				return new Promise(async (resolve, reject) => {
+					let result = await this.$myRequest({
+						url: 'layer/detail',
+						methods: 'GET',
+						data: {
+							user_id: '',
+							layer_id: this.layer_id
+						}
+					});
+					if (result && result.code == 200) {
+						this.lawyerAvator = result.data.photo;
+						this.lawyerName = result.data.name;
+						console.log('---------' + this.lawyerAvator);
+						console.log('---------' + this.lawyerName);
 					}
-				});
-				if (res && res.code == 200) {
-					console.log('=====================getmessage==============');
-					console.log(res);
-					res.data.forEach(item => {
-						if (item.user_id == this.user_id && (!this.userAvator || !this.userName)) {
-							this.userName = item.user.name;
-							this.userAvator = item.user.avater;
-						}
-						if (item.user_id != this.user_id && (!this.lawyerAvator || !this.lawyerName)) {
-							this.lawyerName = item.user.name;
-							this.lawyerAvator = item.user.avater;
-						}
-						let d = {
-							group: 'group1',
-							uindex: item.user_id,
-							uname: item.user_id == this.user_id ? item.user.name : item.user.name,
-							contentType: 'txt',
-							content: item.message || '',
-							uface: item.user_id == this.user_id ? item.user.avater : item.user.avater
-						};
-						this.msgs.push(d);
-					})
 
-				}
+					let res = await this.$myRequest({
+						url: 'message/list',
+						methods: 'GET',
+						data: {
+							source_id: this.source_id
+						}
+					});
+					if (res && res.code == 200) {
+						console.log('=====================getmessage==============');
+						console.log(res);
+						res.data.forEach(item => {
+							// 		if (item.user_id == this.user_id && (!this.userAvator || !this.userName)) {
+							// 			this.userName = item.user.name;
+							// 			this.userAvator = item.user.avater;
+							// 		}
+
+							let d = {
+								group: 'group1',
+								uindex: item.user_id,
+								uname: item.user_id == this.user_id ? this.userName : this
+									.lawyerName,
+								contentType: 'txt',
+								content: item.message || '',
+								uface: item.user_id == this.user_id ? this.userAvator : this
+									.lawyerAvator
+							};
+							this.msgs.push(d);
+						})
+					}
+					resolve(true);
+				});
+
 			}
 		}
 	}

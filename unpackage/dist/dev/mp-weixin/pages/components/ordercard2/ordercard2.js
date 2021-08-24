@@ -247,6 +247,42 @@ var _default =
       uni.navigateTo({
         url: '../my/shangchuan?dd=' + item.orderno + '&id=' + item.source_id });
 
+    },
+    qiao: function qiao(item) {
+      console.log(item.service_type);
+      if (item.service_type == 1) {
+        uni.navigateTo({
+          url: '../service_zhixun/tuwen?source_id=' + item.source_id });
+
+      }if (item.service_type == 3) {
+        uni.navigateTo({
+          url: '../service_zhixun/jianmian?layer_id=' + item.layer_id });
+
+      } else if (item.service_type == 4) {
+        uni.navigateTo({
+          url: '../single_service/cooperProcess?id=5' });
+
+      } else if (item.service_type == 5) {
+        uni.navigateTo({
+          url: '../single_service/cooperProcess?id=6' });
+
+      } else if (item.service_type == 6) {
+        uni.navigateTo({
+          url: '../single_service/cooperProcess?id=7' });
+
+      } else if (item.service_type == 7) {
+        uni.navigateTo({
+          url: '../single_service/cooperProcess?id=8' });
+
+      } else if (item.service_type == 8) {
+        uni.navigateTo({
+          url: '../single_service/cooperProcess?id=9' });
+
+      } else if (item.service_type == 9) {
+        uni.navigateTo({
+          url: '../single_service/cooperProcess?id=10' });
+
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
