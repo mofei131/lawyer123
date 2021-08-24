@@ -93,7 +93,8 @@
 				zhiyenianxian:'',
 				shehuizhiwu:'',
 				zhiyezhengshu_xingming:'',
-				zheyezhengshu_nianjian:''
+				zheyezhengshu_nianjian:'',
+				cifacongyezhezhengshu:''
 			}
 		},
 		onLoad(){
@@ -124,6 +125,7 @@
 						that.shehuizhiwu = e.data.shehuizhiwu
 						that.zhiyezhengshu_xingming = e.data.zhiyezhengshu_xingming
 						that.zheyezhengshu_nianjian = e.data.zheyezhengshu_nianjian
+						that.cifacongyezhezhengshu = e.data.cifacongyezhezhengshu
 					}
 				})
 		},
@@ -190,6 +192,7 @@
 						shehuizhiwu:that.shehuizhiwu,
 						zhiyezhengshu_xingming:that.zhiyezhengshu_xingming,
 						zheyezhengshu_nianjian:that.zheyezhengshu_nianjian,
+						cifacongyezhezhengshu:that.cifacongyezhezhengshu,
 						city:that.city,
 						lvsuo:that.unit,
 						school:that.college,
@@ -220,12 +223,13 @@
 							uni.removeStorage({key: 'type',})
 							uni.removeStorage({key: 'cache1',})
 							uni.removeStorage({key: 'cache2'})
-						}else{
-							uni.showToast({
-								title: '请确保信息完整',
-								icon:'error'
-							})
 						}
+						// else{
+						// 	uni.showToast({
+						// 		title: '请确保信息完整',
+						// 		icon:'error'
+						// 	})
+						// }
 					},fail(res){
 						uni.showToast({
 							title: '提交失败',

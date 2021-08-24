@@ -47,9 +47,9 @@
 					<text lines="1" decode="true" class="txt1">～&nbsp;服务流程&nbsp;～</text>
 					<view class="bd2"></view>
 					<view class="imgbox">
-						<image v-if="id == 5" mode="widthFix" src="../../static/images/liucheng1.png" ></image>
+						<image v-if="id == 5" mode="widthFix" src="http://hlstore.yimetal.cn/liucheng1.png" ></image>
 						<image v-else-if="id == 6" mode="widthFix" src="../../static/images/liucheng2.png"></image>
-						<image v-else mode="widthFix" src="../../static/images/liucheng3.png"></image>
+						<image v-else mode="widthFix" src="http://hlstore.yimetal.cn/liucheng3.png"></image>
 					</view>
 					<!-- <view class="flex-column danding" style="color: gray;margin-top: 18rpx;padding-bottom: 20rpx;">
 						<rich-text :nodes="dataSource.service"></rich-text>
@@ -57,6 +57,22 @@
 			
 				</view>
 			</view>
+			<!-- <view class="block3">
+				<view class="group8"> -->
+					<!-- <text lines="1" decode="true" class="txt1">～&nbsp;温馨提示&nbsp;～</text>
+					<view class="bd2"></view> -->
+					<!-- <view class="imgbox">
+						购买后，专属律师会为您一对一服务。
+					</view> -->
+					<!-- <view class="flex-column danding" style="color: gray;margin-top: 18rpx;padding-bottom: 20rpx;font-size: 12px;">
+						<text>温馨提示：下单成功后，专属律师会为您一对一服务。</text>
+					</view> -->
+					<!-- <view class="flex-column danding" style="color: gray;margin-top: 18rpx;padding-bottom: 20rpx;">
+						<rich-text :nodes="dataSource.service"></rich-text>
+					</view> -->
+			
+			<!-- 	</view>
+			</view> -->
 			<!-- <view class="block4" style="padding-top: 0;">
 				<view class="mod3">
 					<text lines="1" decode="true" class="info7">～&nbsp;服务流程&nbsp;～</text>
@@ -126,37 +142,37 @@
 				name:'',
 				list: [{
 						id: 5,
-						name: "合同审核",
+						name: "",
 						url: "/static/icon/icon6.png",
 						detailId: 4
 					},
 					{
 						id: 6,
-						name: "律师函",
+						name: "",
 						url: "/static/icon/icon7.png",
 						detailId: 5
 					},
 					{
 						id: 7,
-						name: "债务催收指导",
+						name: "",
 						url: "/static/icon/icon8.png",
 						detailId: 6
 					},
 					{
 						id: 8,
-						name: "起诉状/答辩状",
+						name: "",
 						url: "/static/icon/icon9.png",
 						detailId: 7
 					},
 					{
 						id: 9,
-						name: "代写借/欠条",
+						name: "",
 						url: "/static/icon/icon10.png",
 						detailId: 8
 					},
 					{
 						id: 10,
-						name: "刑事会见",
+						name: "",
 						url: "/static/icon/icon11.png",
 						detailId: 9
 					},

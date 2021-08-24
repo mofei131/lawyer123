@@ -20,7 +20,6 @@
 			}
 		},
 		methods: {
-
 			back() {
 				console.log(this.emitName)
 				if (this.emitName && this.emitName != "undefined") {

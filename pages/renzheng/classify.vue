@@ -2,14 +2,14 @@
 	<view>
 		<view class="order" @click="toservice()">
 			<view class="topflex">
-				<view>自有律师认证</view>
+				<view>平台自有律师认证</view>
 				<view>人工审核需要1-2天</view>
 			</view>
 			<image src="../../static/icon/fangicon.png"></image>
 		</view>
 		<view class="order" @click="todeal()">
 			<view class="topflex">
-				<view>平台律师认证</view>
+				<view>平台入驻律师认证</view>
 				<view>人工审核需要1-2天</view>
 			</view>
 			<image src="../../static/icon/fangicon.png"></image>

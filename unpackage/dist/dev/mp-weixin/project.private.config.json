@@ -41,6 +41,66 @@
           "pathName": "pages/my/finish",
           "query": "emitName=undefined&phone=17616134289",
           "scene": null
+        },
+        {
+          "name": "pages/my/pay",
+          "pathName": "pages/my/pay",
+          "query": "id=573&price=0.10&typeId=2&emitName=callphone",
+          "scene": null
+        },
+        {
+          "name": "pages/renzheng/classifyDet3",
+          "pathName": "pages/renzheng/classifyDet3",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/lawyerDetail",
+          "pathName": "pages/detail/lawyerDetail",
+          "query": "id=16",
+          "scene": null
+        },
+        {
+          "name": "pages/my/serviceList",
+          "pathName": "pages/my/serviceList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/single_service/otherService",
+          "pathName": "pages/single_service/otherService",
+          "query": "id=11",
+          "scene": null
+        },
+        {
+          "name": "pages/single_service/cooperProcess",
+          "pathName": "pages/single_service/cooperProcess",
+          "query": "id=5",
+          "scene": null
+        },
+        {
+          "name": "pages/service_zhixun/pinlvshi",
+          "pathName": "pages/service_zhixun/pinlvshi",
+          "query": "layer_id=16&price=0.10&typeId=10",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/lawyerDetail",
+          "pathName": "pages/detail/lawyerDetail",
+          "query": "id=16",
+          "scene": null
+        },
+        {
+          "name": "pages/my/serviceList",
+          "pathName": "pages/my/serviceList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/problem",
+          "pathName": "pages/my/problem",
+          "query": "",
+          "scene": null
         }
       ]
     }

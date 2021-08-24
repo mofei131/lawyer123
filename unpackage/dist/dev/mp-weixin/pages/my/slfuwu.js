@@ -151,6 +151,10 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onLoad: function onLoad(p) {
+
+
+  },
+  onShow: function onShow() {
     var that = this;
     uni.request({
       url: 'https://layer.boyaokj.cn/api/order/shouli_dingdan_list',
@@ -164,7 +168,6 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res.data.data);
         that.list = res.data.data;
       } });
-
 
   },
   onReachBottom: function onReachBottom() {

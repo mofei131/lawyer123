@@ -266,6 +266,9 @@ var _default =
         that.type = res.data.data;
       } });
 
+  },
+  onShow: function onShow() {
+    var that = this;
     uni.request({
       url: 'https://layer.boyaokj.cn/api/service/getOtherService',
       success: function success(res) {
@@ -273,34 +276,32 @@ var _default =
         that.array1 = res.data.data;
         that.zancun = res.data.data[0].name;
         that.zancunid = res.data.data[0].id;
+        uni.request({
+          url: 'https://layer.boyaokj.cn/api/layer/getSettting',
+          method: 'GET',
+          data: {
+            user_id: uni.getStorageSync('userInfo').user_id },
+
+          success: function success(res) {
+            that.chat = res.data.data.tuwen;
+            that.phone = res.data.data.dianhua;
+            that.meet = res.data.data.jianmian;
+            that.emplay = res.data.data.pinqing;
+            for (var i in res.data.data.case_type) {
+              that.cardlist.push(res.data.data.case_type[i].id);
+            }
+            for (var y in res.data.data.more_service) {
+              that.sevedata.push({
+                id: res.data.data.more_service[y].service_id,
+                service: that.array1[res.data.data.more_service[y].service_id - 4].name,
+                price: res.data.data.more_service[y].price });
+
+            }
+          } });
+
       } });
 
-  },
-  onShow: function onShow() {
-    var that = this;
-    uni.request({
-      url: 'https://layer.boyaokj.cn/api/layer/getSettting',
-      method: 'GET',
-      data: {
-        user_id: uni.getStorageSync('userInfo').user_id },
 
-      success: function success(res) {
-        console.log(res.data.data);
-        that.chat = res.data.data.tuwen;
-        that.phone = res.data.data.dianhua;
-        that.meet = res.data.data.jianmian;
-        that.emplay = res.data.data.pinqing;
-        for (var i in res.data.data.case_type) {
-          that.cardlist.push(res.data.data.case_type[i].id);
-        }
-        for (var y in res.data.data.more_service) {
-          that.sevedata.push({
-            id: res.data.data.more_service[y].service_id,
-            service: that.type[res.data.data.more_service[y].service_id].name,
-            price: res.data.data.more_service[y].price });
-
-        }
-      } });
 
   },
   methods: {

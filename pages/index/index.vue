@@ -6,12 +6,11 @@
 			<swiper-item class="flex-column mx-start sx-stretch">
 				<!-- <view class="swiper-item backImgFull" mode="widthFix" :style="{backgroundImage: 'url(/static/images/banner.png)'}">
 				</view> -->
-				<image class="swiper-item backImgFull" mode="widthFix" src="@/static/images/banner.png"></image>
+				<image class="swiper-item backImgFull" mode="widthFix" src="http://hlstore.yimetal.cn/0ea5d386-7937-4738-9bf1-8f6e149b3dfb.png"></image>
 			</swiper-item>
-			<swiper-item class="flex-column mx-start sx-stretch">
-				<!-- <view class="swiper-item backImgFull" style="background-image: url(/static/images/banner.png)" mode="widthFix"></view> -->
+			<!-- <swiper-item class="flex-column mx-start sx-stretch">
 				<image class="swiper-item backImgFull" mode="widthFix" src="@/static/images/banner.png"></image>
-			</swiper-item>
+			</swiper-item> -->
 		</swiper>
 
 		<iconlist :item='item1'></iconlist>

@@ -152,7 +152,6 @@ var _default =
 
   },
   methods: {
-
     back: function back() {
       console.log(this.emitName);
       if (this.emitName && this.emitName != "undefined") {

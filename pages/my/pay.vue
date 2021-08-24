@@ -125,6 +125,7 @@
 			this.arr.id = options.id
 			// this.arr.chapter = options.chapter
 			this.arr.typeId = options.typeId || ''
+			console.log("抄查")
 			console.log(options);
 			this.arr.price = options.price;
 			this.emitName = options.emitName;
@@ -192,17 +193,21 @@
 									signType,
 									paySign,
 									success: (res) => {
+										let that = this
 										//调整到成功页面
 										uni.reLaunch({
 											url:'/pages/my/finish?emitName='+emitName+'&phone='+this.phone
 										})
+										uni.switchTab({
+											url:'/pages/index/index'
+										})
 									},fail(res) {
 										console.log(res);
 										console.log(emitName);
-										// if(emitName){
-										// 	// console.log('---'+emitName);
-										// 	uni.$emit(emitName,{ispay:true});
-										// }
+										if(emitName){
+											// console.log('---'+emitName);
+											uni.$emit(emitName,{ispay:true});
+										}
 										
 									}
 								})

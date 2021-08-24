@@ -1,0 +1,106 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/zhaolvshi/zhaolvshi",
+    "pages/youhuiquan/youhuiquan",
+    "pages/my/mine",
+    "pages/single_service/cooperDownload",
+    "pages/detail/cooperDetail",
+    "pages/single_service/cooperCheck",
+    "pages/my/contractDet",
+    "pages/my/orderList",
+    "pages/my/serviceList",
+    "pages/single_service/otherService",
+    "pages/service_zhixun/tuwen",
+    "pages/service_zhixun/jianmian",
+    "pages/service_zhixun/dianhua",
+    "pages/service_zhixun/pinglvshi",
+    "pages/list/zixun",
+    "pages/detail/lawyerDetail",
+    "pages/components/anli/anli",
+    "pages/list/moreAnli",
+    "pages/chat/chat",
+    "pages/list/moreStudy",
+    "pages/detail/studyDetail",
+    "pages/my/dealList",
+    "pages/my/takeOut",
+    "pages/my/bill",
+    "pages/my/fenxiao",
+    "pages/my/guide",
+    "pages/renzheng/classify",
+    "pages/renzheng/privateNotice",
+    "pages/renzheng/commonNotice",
+    "pages/renzheng/classifyDet1",
+    "pages/renzheng/classifyDet2",
+    "pages/renzheng/classifyDet3",
+    "pages/my/about",
+    "pages/my/xieyi",
+    "pages/my/serviceSet",
+    "pages/my/score",
+    "pages/my/problem",
+    "pages/my/pay",
+    "pages/my/case",
+    "pages/my/slfuwu",
+    "pages/my/slanjian",
+    "pages/my/ticheng",
+    "pages/my/finish",
+    "pages/list/cooperModuleList",
+    "pages/single_service/cooperProcess",
+    "pages/my/contractList",
+    "pages/my/follow",
+    "pages/anjianDetail/anjianDetail",
+    "pages/components/tankuang/xiyipingtai",
+    "pages/components/tankuang/xiyichangnian",
+    "pages/my/yhqkeyong",
+    "pages/my/shangchuan",
+    "pages/service_zhixun/pinlvshi",
+    "pages/my/fwdet"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F4F7F7",
+    "navigationBarBackgroundColor": "#40A9FF"
+  },
+  "tabBar": {
+    "color": "#2F3034",
+    "selectedColor": "#40A9FF",
+    "font-size": "17rpx",
+    "box-shadow": "0px -1px 4px 0px rgba(224, 224, 224, 0.5)",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/fotbar1.png",
+        "selectedIconPath": "static/images/fotbar11.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/zhaolvshi/zhaolvshi",
+        "iconPath": "static/images/fotbar2.png",
+        "selectedIconPath": "static/images/fotbar21.png",
+        "text": "找律师"
+      },
+      {
+        "pagePath": "pages/youhuiquan/youhuiquan",
+        "iconPath": "static/images/fotbar3.png",
+        "selectedIconPath": "static/images/fotbar31.png",
+        "text": "优惠券"
+      },
+      {
+        "pagePath": "pages/my/mine",
+        "iconPath": "static/images/fotbar4.png",
+        "selectedIconPath": "static/images/fotbar41.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "定位您的所在的城市"
+    }
+  },
+  "usingComponents": {
+    "fa-icon": "/components/fa-icon/fa-icon"
+  },
+  "sitemapLocation": "sitemap.json"
+}

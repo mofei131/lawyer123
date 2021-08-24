@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "更多案例",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "anli": "/pages/components/anli/anli"
+  }
+}

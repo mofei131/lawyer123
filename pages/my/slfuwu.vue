@@ -19,6 +19,10 @@
 			}
 		},
 		onLoad(p) {
+			
+			
+		},
+		onShow() {
 			let that = this
 			uni.request({
 				url:'https://layer.boyaokj.cn/api/order/shouli_dingdan_list',
@@ -33,7 +37,6 @@
 					that.list = res.data.data
 				}
 			})
-			
 		},
 		onReachBottom() {
 			let that = this

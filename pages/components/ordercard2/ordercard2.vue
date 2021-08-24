@@ -51,8 +51,11 @@
 						<view class="btn" @tap="dianhau(item)"  v-if="item.service_type == 2">
 							<view>联系客户</view>
 						</view>
-						<view class="btn" @tap="shangchuan(item)" v-if="item.service_type == 10">
+						<view class="btn" @tap="shangchuan(item)" v-if="item.service_type == 10 && item.text == 0">
 							<view>上传案件</view>
+							</view>
+						<view class="btn" v-if="item.text == 1">
+							<view>案件已上传</view>
 							</view>
 					</view>
 				</view>

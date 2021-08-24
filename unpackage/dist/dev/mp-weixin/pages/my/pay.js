@@ -257,6 +257,7 @@ __webpack_require__.r(__webpack_exports__);
     this.arr.id = options.id;
     // this.arr.chapter = options.chapter
     this.arr.typeId = options.typeId || '';
+    console.log("抄查");
     console.log(options);
     this.arr.price = options.price;
     this.emitName = options.emitName;
@@ -324,17 +325,21 @@ __webpack_require__.r(__webpack_exports__);
                         signType: signType,
                         paySign: paySign,
                         success: function success(res) {
+                          var that = _this;
                           //调整到成功页面
                           uni.reLaunch({
                             url: '/pages/my/finish?emitName=' + emitName + '&phone=' + _this.phone });
 
+                          uni.switchTab({
+                            url: '/pages/index/index' });
+
                         }, fail: function fail(res) {
                           console.log(res);
                           console.log(emitName);
-                          // if(emitName){
-                          // 	// console.log('---'+emitName);
-                          // 	uni.$emit(emitName,{ispay:true});
-                          // }
+                          if (emitName) {
+                            // console.log('---'+emitName);
+                            uni.$emit(emitName, { ispay: true });
+                          }
 
                         } });
 

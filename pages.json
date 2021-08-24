@@ -201,12 +201,12 @@
 		}, {
 			"path": "pages/renzheng/privateNotice",
 			"style": {
-				"navigationBarTitleText": "自有律师"
+				"navigationBarTitleText": "平台自有律师"
 			}
 		}, {
 			"path": "pages/renzheng/commonNotice",
 			"style": {
-				"navigationBarTitleText": "平台律师"
+				"navigationBarTitleText": "平台入驻律师"
 			}
 		}, {
 			"path": "pages/renzheng/classifyDet1",

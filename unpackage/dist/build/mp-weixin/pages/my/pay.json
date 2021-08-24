@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "支付",
+  "usingComponents": {
+    "tankuang": "/pages/components/tankuang/tankuang"
+  }
+}

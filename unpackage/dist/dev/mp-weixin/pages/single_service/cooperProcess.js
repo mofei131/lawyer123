@@ -244,6 +244,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   onLoad: function onLoad(p) {var _this = this;
@@ -281,37 +297,37 @@ var _default =
     ''), _defineProperty(_ref, "list",
     [{
       id: 5,
-      name: "合同审核",
+      name: "",
       url: "/static/icon/icon6.png",
       detailId: 4 },
 
     {
       id: 6,
-      name: "律师函",
+      name: "",
       url: "/static/icon/icon7.png",
       detailId: 5 },
 
     {
       id: 7,
-      name: "债务催收指导",
+      name: "",
       url: "/static/icon/icon8.png",
       detailId: 6 },
 
     {
       id: 8,
-      name: "起诉状/答辩状",
+      name: "",
       url: "/static/icon/icon9.png",
       detailId: 7 },
 
     {
       id: 9,
-      name: "代写借/欠条",
+      name: "",
       url: "/static/icon/icon10.png",
       detailId: 8 },
 
     {
       id: 10,
-      name: "刑事会见",
+      name: "",
       url: "/static/icon/icon11.png",
       detailId: 9 }]), _defineProperty(_ref, "typeData",
 

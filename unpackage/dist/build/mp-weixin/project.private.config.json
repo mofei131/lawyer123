@@ -1,0 +1,23 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/renzheng/classifyDet3",
+          "pathName": "pages/renzheng/classifyDet3",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

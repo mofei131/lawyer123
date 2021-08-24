@@ -1,0 +1,1 @@
+.quan_on{border:2rpx solid #40a9ff;background-color:#40a9ff;color:#fff}.quan_off{border:2rpx solid #40a9ff;background-color:#fff;color:grey}.youhuiquan{-webkit-box-flex:0;-webkit-flex:0 0 173rpx;flex:0 0 173rpx;margin:0 20rpx;margin-bottom:20rpx}.quan_title{width:270rpx;color:#fff;font-size:26rpx;margin-bottom:10rpx}.lingqu{height:48rpx;border-radius:24rpx;width:139rpx}

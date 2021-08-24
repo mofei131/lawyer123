@@ -150,6 +150,9 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onLoad: function onLoad(p) {
+
+  },
+  onShow: function onShow() {
     var that = this;
     uni.request({
       url: 'https://layer.boyaokj.cn/api/order/shouli_anjian_list',

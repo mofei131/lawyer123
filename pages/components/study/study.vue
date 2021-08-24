@@ -3,7 +3,7 @@
 		<view class="studyitem flex-row mx-center sx-center" v-for="(item,index) in learn" :key="index"
 			:style="{marginBottom: marginBottom}" @click="todetail(item)">
 			<view class="studyitemleft">
-				<image style="width: 120rpx;height: 120rpx;" :src="item.image"></image>
+				<image style="width: 180rpx;height: 120rpx;" :src="item.image"></image>
 			</view>
 			<view class="studyitemright flex-column mx-start sx-stretch">
 				<view class="studytitle ellipsis">{{item.title}}</view>

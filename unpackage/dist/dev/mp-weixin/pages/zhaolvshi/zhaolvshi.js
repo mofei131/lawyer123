@@ -257,7 +257,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
     setTimeout(function () {
       uni.hideNavigationBarLoading();
     }, 500);
-
+    this.page += 1;
   },
   // 上拉加载
   // onReachBottom() {
@@ -325,7 +325,6 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
     },
     searchChange: function searchChange(e) {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var case_type, cityid, level, age, res, _iterator, _step, _loop;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
                 console.log('----请求律师列表的信息 ------>');if (!
-
                 e) {_context3.next = 14;break;}
 
                 case_type =
@@ -360,7 +359,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
                   _this5.$myRequest({
                     url: 'layer/list',
-                    method: 'GET',
+                    method: 'POST',
                     data: {
                       page: _this5.page,
                       limit: _this5.limit,
@@ -375,8 +374,8 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                 uni.hideLoading();
                 console.log("律师列表");
                 console.log(res);
+                _this5.lawyerList = res.data;
                 if (res && res.data) {
-
                   // this.lawyerList = res.data;
                   if (res.data.length > 0) {
                     console.log('有数据');_iterator = _createForOfIteratorHelper(
@@ -386,15 +385,15 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                         if (!f) {
                           _this5.lawyerList.push(s);
                         }};for (_iterator.s(); !(_step = _iterator.n()).done;) {_loop();
-                      }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
-                    _this5.page += 1;
-                  } else {
+                      }
+                      // this.page += 1;
+                    } catch (err) {_iterator.e(err);} finally {_iterator.f();}} else {
                     console.log('无数据');
                     _this5.isMore = false;
                   }
                   console.log(_this5.lawyerList);
 
-                }case 23:case "end":return _context3.stop();}}}, _callee3);}))();
+                }case 24:case "end":return _context3.stop();}}}, _callee3);}))();
     },
     buy: function buy(e) {
       console.log(e);

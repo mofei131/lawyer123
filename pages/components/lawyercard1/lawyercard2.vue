@@ -14,7 +14,12 @@
 							<text lines="1"
 								style="color: #FFFFFF;height: 26rpx;line-height: 26rpx;text-align: center;font-size: 17rpx;">{{item.type_text && item.type_text.name}}</text>
 						</view>
-						
+						<view class="flex-row mx-between sx-center" style="margin-bottom: 5rpx;">
+							<!-- <view class="ellipsis" style="width: 512rpx;font-size: 24rpx;color: rgba(102,102,102,1);">
+								{{item.jianjie}}
+							</view> -->
+							<view v-if="follow" @tap.stop="guanzhu(item)" style="margin-left: 25px; padding: 0 16rpx;font-size: 22rpx;flex: 0 0 auto ;border-radius: 40rpx;background-color: #6bc1f3;color: #FFFFFF;box-sizing: border-box;">{{item.follow==1?'取消关注':'关注'}}</view>
+						</view>
 						<view v-if="item.busy" class="flex-row mx-end sx-center" style="flex:1 1 auto">
 							<view class="statuSDot"
 								:style="{backgroundColor: item.busy==1?'#26CD93': 'red'}">
@@ -27,12 +32,7 @@
 									style="margin-left:8rpx;color: red;font-size: 20rpx;">忙碌</text>
 						</view>
 					</view>
-					<view class="flex-row mx-between sx-center" style="margin-bottom: 5rpx;">
-						<!-- <view class="ellipsis" style="width: 512rpx;font-size: 24rpx;color: rgba(102,102,102,1);">
-							{{item.jianjie}}
-						</view> -->
-						<view v-if="follow" @tap.stop="guanzhu(item)" style="padding: 0 16rpx;font-size: 22rpx;flex: 0 0 auto ;border-radius: 40rpx;background-color: #6bc1f3;color: #FFFFFF;box-sizing: border-box;">{{item.follow==1?'取消关注':'关注'}}</view>
-					</view>
+					
 
 					<view class="field">
 						<view class="label" v-for="(ct,index1) in item.case_type" :key="ct.id" :class="[caseClass(ct)]">

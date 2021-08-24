@@ -1,0 +1,1 @@
+<view class="finish"><image src="../../static/icon/wxicon2.png"></image><view>支付成功</view><button type="default" data-event-opts="{{[['tap',[['back']]]]}}" bindtap="__e">确定</button></view>

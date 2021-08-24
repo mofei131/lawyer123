@@ -52,7 +52,8 @@
 			}
 		},
 		onShow() {
-			let that = this
+			let that = this;
+			that.keyong = [];
 			uni.request({
 				url:'https://layer.boyaokj.cn/api/coupon/myCoupon',
 				method:'GET',

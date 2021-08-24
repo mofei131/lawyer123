@@ -8,7 +8,7 @@
 			</view>
 		</view>
 		<cooperTabar @searchChange="searchChange" style="position: fixed;top: 156rpx;width: 100%;left: 0;margin: auto;"></cooperTabar>
-		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;overflow: auto;margin-top: 236rpx;">
+		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 35rpx;overflow: auto;margin-top: 236rpx;">
 
 
 			<lawyercard1 :showline="true" :zixun="true" @updatefollow="updateFollow" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
@@ -125,7 +125,7 @@
 			setTimeout(function() {
 				uni.hideNavigationBarLoading()
 			}, 500);
-
+			this.page += 1;
 		},
 		// 上拉加载
 		// onReachBottom() {
@@ -193,7 +193,6 @@
 			},
 			async searchChange(e) {
 				console.log('----请求律师列表的信息 ------>');
-
 				if (e) {
 					let {
 						case_type,
@@ -228,7 +227,7 @@
 				});
 				let res = await this.$myRequest({
 					url: 'layer/list',
-					method: 'GET',
+					method: 'POST',
 					data: {
 						page: this.page,
 						limit: this.limit,
@@ -242,9 +241,9 @@
 				});
 				uni.hideLoading();
 				console.log("律师列表")
-				console.log(res);
+				console.log(res);	
+				this.lawyerList = res.data;
 				if (res && res.data) {
-
 					// this.lawyerList = res.data;
 					if (res.data.length > 0) {
 						console.log('有数据');
@@ -255,7 +254,7 @@
 								this.lawyerList.push(s)
 							}
 						}
-						this.page += 1;
+						// this.page += 1;
 					} else {
 						console.log('无数据');
 						this.isMore = false;

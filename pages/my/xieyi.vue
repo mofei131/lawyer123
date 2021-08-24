@@ -55,11 +55,11 @@
 		background: #F4F7F7;
 	}
 	.about{
-		width: 720rpx;
+		width: 640rpx;
 		margin: auto;
 		border-radius: 10rpx;
 		background: #fff;
-		padding: 20rpx;
+		padding: 18rpx;
 		user-select: none;
 		height: 100%;
 	}

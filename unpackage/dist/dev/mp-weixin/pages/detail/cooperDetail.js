@@ -171,7 +171,7 @@ var _default = {
   // components:{
   //     uParse
   // },
-  onLoad: function onLoad(p) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+  onLoad: function onLoad(p) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
               console.log(p);
               _this.buy = p.buy;
               _this.id = p.coopid;
@@ -180,36 +180,39 @@ var _default = {
               // this.$store.state.link = p.link
               // uni.getStorageSync('link',p.link)
               // console.log(p)
-              _context.next = 7;return _this.$myRequest({
-                url: 'agreement/detail',
-                data: {
-                  id: p.coopid,
-                  user_id: _this.$store.state.userInfo.user_id } });case 7:res = _context.sent;if (!(
+            case 5:case "end":return _context.stop();}}}, _callee);}))();
+  },
+  onShow: function onShow() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                _this2.$myRequest({
+                  url: 'agreement/detail',
+                  data: {
+                    id: _this2.id,
+                    user_id: _this2.$store.state.userInfo.user_id } }));case 2:res = _context2.sent;if (!(
 
 
-              res && res.code == -1)) {_context.next = 13;break;}
+              res && res.code == -1)) {_context2.next = 8;break;}
               uni.showToast({
                 title: res.message,
-                icon: 'none' });return _context.abrupt("return");case 13:
+                icon: 'none' });return _context2.abrupt("return");case 8:
 
 
 
               console.log(res.data);
-              _this.content = res.data.content;
-              _this.image = res.data.image;case 16:case "end":return _context.stop();}}}, _callee);}))();
+              _this2.content = res.data.content;
+              _this2.image = res.data.image;
+              _this2.buy1 = res.data.buy;case 12:case "end":return _context2.stop();}}}, _callee2);}))();
 
   },
-  // onShow() {
-
-  // }
   data: function data() {
     return {
       content: '',
-      buy: '',
+      buy1: '',
       price: '',
       id: '',
       link: '',
-      image: '' };
+      image: '',
+      buy: '' };
+
 
   },
   methods: {
@@ -260,26 +263,26 @@ var _default = {
         } });
 
     },
-    toPay: function toPay() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+    toPay: function toPay() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
 
 
-                  _this2.$myRequest({
+                  _this3.$myRequest({
                     url: 'service/agreement',
                     methods: 'GET',
                     data: {
-                      user_id: _this2.$store.state.userInfo.user_id,
-                      agreement_id: _this2.id } }));case 2:res = _context2.sent;
+                      user_id: _this3.$store.state.userInfo.user_id,
+                      agreement_id: _this3.id } }));case 2:res = _context3.sent;
 
 
                 if (res.code == 200) {
                   // console.log(res);
 
                   uni.navigateTo({
-                    url: '../my/pay?id=' + res.data.service_id + '&price=' + _this2.price + '&typeId=11' + "&emitName=goCoodetail" });
+                    url: '../my/pay?id=' + res.data.service_id + '&price=' + _this3.price + '&typeId=11' + "&emitName=goCoodetail" });
 
                   uni.$on('goCoodetail', function (res) {
                     uni.navigateTo({
-                      url: '/pages/detail/cooperDetail?coopid=' + _this2.id });
+                      url: '/pages/detail/cooperDetail?coopid=' + _this3.id });
 
                   });
 
@@ -289,7 +292,7 @@ var _default = {
                     title: res.message,
                     icon: 'none' });
 
-                }case 4:case "end":return _context2.stop();}}}, _callee2);}))();
+                }case 4:case "end":return _context3.stop();}}}, _callee3);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
