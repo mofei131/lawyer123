@@ -128,10 +128,23 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
 var _default =
 {
   props: ['box'],
+  data: function data() {
+    return {
+      agreement: true };
+
+  },
   methods: {
+    agreementSuccess: function agreementSuccess() {
+      this.agreement = !this.agreement;
+    },
     cak: function cak() {
       this.$emit("cak");
     },

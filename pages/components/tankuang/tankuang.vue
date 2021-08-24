@@ -2,10 +2,15 @@
 	<view class="xiyibox">
 		<view class="boxwite">
 			<view class="tishi">提示</view>
-			<view class="yuedu">请阅读并同意<text class="shixia" @tap="cak()">{{box.title}}</text></view>
+			<view class="flec">
+				<image @tap="agreementSuccess" class="fix"
+					:src="agreement==true?'../../../static/icon/ty0.png':'../../../static/icon/ty1.png'"></image>
+			<view class="yuedu">请阅读并同意<text class="shixia" @tap="cak()">《{{box.title}}》</text></view>
+			</view>
 			<view class="binglie">
 				<!-- <view class="ck" @tap="cak()">查看协议</view> -->
-				<view class="ty" @tap="submit()">同意协议</view>
+				<view class="ty2"  v-if="agreement==true">同意协议</view>
+					<view class="ty" @tap="submit()"  v-if="agreement==false">同意协议</view>
 			</view>
 			<image src="@/static/icon/closeicon.png" class="close" @tap="show()"></image>
 		</view>
@@ -15,7 +20,15 @@
 <script>
 	export default{
 		props:['box'],
+		data(){
+			return{
+				agreement:true
+			}
+		},
 		methods:{
+			agreementSuccess() {
+				this.agreement = !this.agreement;
+			},
 			cak(){
 				this.$emit("cak")
 			},
@@ -30,6 +43,13 @@
 </script>
 
 <style>
+	.fix{
+		margin-top: 0;
+	}
+	.flec{
+		display: flex;
+		    justify-content: center;
+	}
 	.close{
 		width: 66rpx;
 		height: 66rpx;
@@ -39,8 +59,8 @@
 		z-index: 20;
 	}
 	.shixia{
-		color: #A3A3A3;
-		border-bottom: 1rpx solid #666;
+		color: #1890FF;
+		/* border-bottom: 1rpx solid #666; */
 	}
 	.tishi,.yuedu{
 		font-size: 28rpx;
@@ -100,6 +120,21 @@
 		border-radius: 39rpx;
 		border: 1px solid #1890FF;
 		background: #1890FF;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: auto;
+		
+	}
+	.ty2{
+		height: 76rpx;
+		border-radius: 39rpx;
+		border: 1px solid #BDBDBD;
+		background: #BDBDBD;
 		font-size: 28rpx;
 		font-family: PingFangSC-Regular, PingFang SC;
 		font-weight: 400;

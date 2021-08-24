@@ -37,7 +37,8 @@ to {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
-	margin-top: 16rpx;
+	/* margin-top: 16rpx; */
+	height: 54rpx;
 }
 .search image {
 	width: 26rpx;

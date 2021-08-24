@@ -30,31 +30,33 @@
 				url: '/pages/index/index'
 			})
 			uni.closeSocket({
-				success() {
+				success:()=> {
 					console.log('已关闭socket....');
+					console.log("-------");
+					console.log(this.socketTask);
 				}
 			})
 		},
 		async onLoad(p) {
 
-
+			console.log("----p---");
+			console.log(p);
 			console.log(this.$store.state.userInfo);
 			this.source_id = p.source_id;
 			this.layer_id = p.layer_id;
 			this.user_id = this.$store.state.userInfo.user_id;
 			this.userAvator = this.$store.state.userInfo.avater;
 			this.userName = this.$store.state.userInfo.nickname;
+		},
+		async onShow() {
+			this.msgs=[];
 			await this.getMessage();
-			this.openConnection();
+			if(!this.socketTask || this.socketTask.readyState!=1){
+				this.openConnection();
+			}
+			
 		},
-		onShow() {
-			console.log("==show===socketTask====");
-			console.log(this.socketTask);
-		},
-		onHide() {
-			console.log("==hid===socketTask====");
-			console.log(this.socketTask);
-		},
+		onHide() {},
 		components: {
 			guiImMessage,
 			guiImInput
@@ -105,8 +107,8 @@
 						
 					}
 				});
+				
 				uni.onSocketOpen(res => {
-					console.log('====================连接成功==================');
 					uni.sendSocketMessage({
 						data: JSON.stringify({
 							"action": "bind",
@@ -150,6 +152,7 @@
 							uface: data.user_id == this.user_id ? this.userAvator : this.lawyerAvator
 						};
 						this.msgs.push(item);
+						this.pageScroll();
 					}
 				});
 				uni.onSocketError((res) => {
@@ -165,14 +168,9 @@
 						}, 1000)
 					}
 				});
-
-
-
 			},
 
-
 			async sendText(msg) {
-				console.log('發送消息内容：', msg);
 				uni.sendSocketMessage({
 					data: JSON.stringify({
 						"action": "sendMessage",
@@ -183,16 +181,16 @@
 						}
 					}),
 					success:()=> {
-						console.log('发消息成功');
+						this.pageScroll();
 						this.faildMessage = '';
 					},
 					fail: (res) => {
 						this.faildMessage = msg;
-						// uni.showToast({
-						// 	title: '你的网络开小差了，重连中！',
-						// 	icon: 'none',
-						// 	duration: 3000
-						// })
+						uni.showToast({
+							title: '你的网络开小差了，重连中！',
+							icon: 'none',
+							duration: 3000
+						})
 
 						this.openConnection();
 
@@ -221,8 +219,6 @@
 					if (result && result.code == 200) {
 						this.lawyerAvator = result.data.photo;
 						this.lawyerName = result.data.name;
-						console.log('---------' + this.lawyerAvator);
-						console.log('---------' + this.lawyerName);
 					}
 
 					let res = await this.$myRequest({
@@ -254,6 +250,7 @@
 							this.msgs.push(d);
 						})
 					}
+					this.pageScroll();
 					resolve(true);
 				});
 

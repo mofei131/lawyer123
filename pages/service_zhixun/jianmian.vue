@@ -21,11 +21,11 @@
 		display: flex;
 		flex-direction: column;">
 
-					<view class="group3" style="position: relative;top: 132rpx;left: 50rpx;">
+					<view class="group3" style="position: relative;top: 74rpx;">
 						<text lines="1" class="info3">面对面咨询</text>
 					</view>
-					<view class="group4" style="position: relative;top: 124rpx;left: 50rpx;">
-						<text lines="1" class="paragraph1">自由约定见面的时间和地点</text>
+					<view class="group4" style="position: relative;top: 74rpx;">
+						<text lines="1" class="paragraph1" >自由约定见面的时间和地点</text>
 					</view>
 					<view style="z-index: 79;
 		position: absolute;
@@ -97,7 +97,7 @@
 							<text lines="1" class="info8">律师服务</text>
 							<text lines="1" class="info9">回访评价</text>
 						</view> -->
-						<image src="../../static/images/liucheng3.png" mode="widthFix"></image>
+						<image src="../../static/images/liucheng3.png" style="margin: auto;" mode="widthFix"></image>
 					</view>
 				</view>
 				<!-- <view class="block5">
@@ -231,6 +231,31 @@
 </script>
 
 <style>
+	/* .group3{
+		z-index: 83;
+		    width: 144rpx;
+		    display: block;
+		    overflow-wrap: break-word;
+		    color: rgba(255, 255, 255, 1);
+		    font-size: 36rpx;
+		    font-family: PingFangSC-Semibold;
+		    white-space: nowrap;
+		    line-height: 50rpx;
+		    text-align: center;
+	}
+	.paragraph1 {
+		left: 40rpx;
+		    top: 208rpx;
+		    height: 66rpx;
+		    position: absolute;
+		    -webkit-box-orient: horizontal;
+		    -webkit-box-direction: normal;
+		    -webkit-flex-direction: row;
+		    flex-direction: row;
+		    display: -webkit-box;
+		    display: -webkit-flex;
+		    display: flex;
+	} */
 	.jjm{
 		height: 76rpx;border-radius:40rpx;
 	}
@@ -412,7 +437,7 @@
 		font-size: 24rpx;
 		font-family: PingFangSC-Medium;
 		line-height: 33rpx;
-		text-align: center;
+		text-align: start;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}

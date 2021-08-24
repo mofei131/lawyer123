@@ -155,36 +155,38 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
 {
 
-  onUnload: function onUnload() {
+  onUnload: function onUnload() {var _this = this;
     uni.switchTab({
       url: '/pages/index/index' });
 
     uni.closeSocket({
       success: function success() {
         console.log('已关闭socket....');
+        console.log("-------");
+        console.log(_this.socketTask);
       } });
 
   },
-  onLoad: function onLoad(p) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+  onLoad: function onLoad(p) {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
 
+              console.log("----p---");
+              console.log(p);
+              console.log(_this2.$store.state.userInfo);
+              _this2.source_id = p.source_id;
+              _this2.layer_id = p.layer_id;
+              _this2.user_id = _this2.$store.state.userInfo.user_id;
+              _this2.userAvator = _this2.$store.state.userInfo.avater;
+              _this2.userName = _this2.$store.state.userInfo.nickname;case 8:case "end":return _context.stop();}}}, _callee);}))();
+  },
+  onShow: function onShow() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+              _this3.msgs = [];_context2.next = 3;return (
+                _this3.getMessage());case 3:
+              if (!_this3.socketTask || _this3.socketTask.readyState != 1) {
+                _this3.openConnection();
+              }case 4:case "end":return _context2.stop();}}}, _callee2);}))();
 
-              console.log(_this.$store.state.userInfo);
-              _this.source_id = p.source_id;
-              _this.layer_id = p.layer_id;
-              _this.user_id = _this.$store.state.userInfo.user_id;
-              _this.userAvator = _this.$store.state.userInfo.avater;
-              _this.userName = _this.$store.state.userInfo.nickname;_context.next = 8;return (
-                _this.getMessage());case 8:
-              _this.openConnection();case 9:case "end":return _context.stop();}}}, _callee);}))();
   },
-  onShow: function onShow() {
-    console.log("==show===socketTask====");
-    console.log(this.socketTask);
-  },
-  onHide: function onHide() {
-    console.log("==hid===socketTask====");
-    console.log(this.socketTask);
-  },
+  onHide: function onHide() {},
   components: {
     guiImMessage: guiImMessage,
     guiImInput: guiImInput },
@@ -208,7 +210,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
   methods: _objectSpread(_objectSpread({},
   (0, _vuex.mapMutations)(['commitWebsocketConnect', 'commitSocketInfo'])), {}, {
 
-    openConnection: function openConnection() {var _this2 = this;
+    openConnection: function openConnection() {var _this4 = this;
       // 打开连接
       uni.closeSocket(); // 确保已经关闭后再重新打开
       this.socketTask = uni.connectSocket({
@@ -221,44 +223,44 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
           console.log('连接成功 connectSocket=', res);
         },
         fail: function fail(err) {
-          _this2.count++;
+          _this4.count++;
           uni.showToast({
             title: '你的网络开小差了，重连中！',
             icon: 'none',
             duration: 3000 });
 
-          if (_this2.count < 10) {
+          if (_this4.count < 10) {
             setTimeout(function () {
-              _this2.openConnection();
+              _this4.openConnection();
             }, 1000);
           }
 
         } });
 
+
       uni.onSocketOpen(function (res) {
-        console.log('====================连接成功==================');
         uni.sendSocketMessage({
           data: JSON.stringify({
             "action": "bind",
             "data": {
-              "source_id": _this2.source_id } }),
+              "source_id": _this4.source_id } }),
 
 
           success: function success() {
-            if (_this2.faildMessage) {
-              _this2.sendText(_this2.faildMessage);
+            if (_this4.faildMessage) {
+              _this4.sendText(_this4.faildMessage);
             }
           },
           fail: function fail(res) {
-            _this2.count++;
+            _this4.count++;
             uni.showToast({
               title: '你的网络开小差了，重连中！',
               icon: 'none',
               duration: 3000 });
 
-            if (_this2.count < 10) {
+            if (_this4.count < 10) {
               setTimeout(function () {
-                _this2.openConnection();
+                _this4.openConnection();
               }, 1000);
             }
           } });
@@ -275,58 +277,54 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
             group: 'group1',
             uindex: data.user_id,
             contentType: 'txt',
-            uname: data.user_id == _this2.user_id ? _this2.userName : _this2.lawyerName,
+            uname: data.user_id == _this4.user_id ? _this4.userName : _this4.lawyerName,
             content: data.message,
-            uface: data.user_id == _this2.user_id ? _this2.userAvator : _this2.lawyerAvator };
+            uface: data.user_id == _this4.user_id ? _this4.userAvator : _this4.lawyerAvator };
 
-          _this2.msgs.push(item);
+          _this4.msgs.push(item);
+          _this4.pageScroll();
         }
       });
       uni.onSocketError(function (res) {
-        _this2.count++;
+        _this4.count++;
         uni.showToast({
           title: '你的网络开小差了，重连中！',
           icon: 'none',
           duration: 3000 });
 
-        if (_this2.count < 10) {
+        if (_this4.count < 10) {
           setTimeout(function () {
-            _this2.openConnection();
+            _this4.openConnection();
           }, 1000);
         }
       });
-
-
-
     },
 
-
-    sendText: function sendText(msg) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                console.log('發送消息内容：', msg);
+    sendText: function sendText(msg) {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
                 uni.sendSocketMessage({
                   data: JSON.stringify({
                     "action": "sendMessage",
                     "data": {
-                      "source_id": _this3.source_id,
-                      "user_id": _this3.user_id,
+                      "source_id": _this5.source_id,
+                      "user_id": _this5.user_id,
                       "message": msg } }),
 
 
                   success: function success() {
-                    console.log('发消息成功');
-                    _this3.faildMessage = '';
+                    _this5.pageScroll();
+                    _this5.faildMessage = '';
                   },
                   fail: function fail(res) {
-                    _this3.faildMessage = msg;
-                    // uni.showToast({
-                    // 	title: '你的网络开小差了，重连中！',
-                    // 	icon: 'none',
-                    // 	duration: 3000
-                    // })
+                    _this5.faildMessage = msg;
+                    uni.showToast({
+                      title: '你的网络开小差了，重连中！',
+                      icon: 'none',
+                      duration: 3000 });
 
-                    _this3.openConnection();
 
-                  } });case 2:case "end":return _context2.stop();}}}, _callee2);}))();
+                    _this5.openConnection();
+
+                  } });case 1:case "end":return _context3.stop();}}}, _callee3);}))();
 
     },
     // 滚动条滚动 [ 有新消息可以自动滚动到底部 ]
@@ -338,28 +336,26 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
       }, 200);
     },
-    getMessage: function getMessage() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:return _context4.abrupt("return",
-                new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(resolve, reject) {var result, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
-                              _this4.$myRequest({
+    getMessage: function getMessage() {var _this6 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:return _context5.abrupt("return",
+                new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(resolve, reject) {var result, res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
+                              _this6.$myRequest({
                                 url: 'layer/detail',
                                 methods: 'GET',
                                 data: {
                                   user_id: '',
-                                  layer_id: _this4.layer_id } }));case 2:result = _context3.sent;
+                                  layer_id: _this6.layer_id } }));case 2:result = _context4.sent;
 
 
                             if (result && result.code == 200) {
-                              _this4.lawyerAvator = result.data.photo;
-                              _this4.lawyerName = result.data.name;
-                              console.log('---------' + _this4.lawyerAvator);
-                              console.log('---------' + _this4.lawyerName);
-                            }_context3.next = 6;return (
+                              _this6.lawyerAvator = result.data.photo;
+                              _this6.lawyerName = result.data.name;
+                            }_context4.next = 6;return (
 
-                              _this4.$myRequest({
+                              _this6.$myRequest({
                                 url: 'message/list',
                                 methods: 'GET',
                                 data: {
-                                  source_id: _this4.source_id } }));case 6:res = _context3.sent;
+                                  source_id: _this6.source_id } }));case 6:res = _context4.sent;
 
 
                             if (res && res.code == 200) {
@@ -374,17 +370,18 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                                 var d = {
                                   group: 'group1',
                                   uindex: item.user_id,
-                                  uname: item.user_id == _this4.user_id ? _this4.userName : _this4.
+                                  uname: item.user_id == _this6.user_id ? _this6.userName : _this6.
                                   lawyerName,
                                   contentType: 'txt',
                                   content: item.message || '',
-                                  uface: item.user_id == _this4.user_id ? _this4.userAvator : _this4.
+                                  uface: item.user_id == _this6.user_id ? _this6.userAvator : _this6.
                                   lawyerAvator };
 
-                                _this4.msgs.push(d);
+                                _this6.msgs.push(d);
                               });
                             }
-                            resolve(true);case 9:case "end":return _context3.stop();}}}, _callee3);}));return function (_x, _x2) {return _ref.apply(this, arguments);};}()));case 1:case "end":return _context4.stop();}}}, _callee4);}))();
+                            _this6.pageScroll();
+                            resolve(true);case 10:case "end":return _context4.stop();}}}, _callee4);}));return function (_x, _x2) {return _ref.apply(this, arguments);};}()));case 1:case "end":return _context5.stop();}}}, _callee5);}))();
 
 
     } }) };exports.default = _default;

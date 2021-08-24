@@ -10,8 +10,11 @@
 					<view class="state" v-else-if="item.status == 2">服务结束</view>
 					<view class="state" v-else>已完成</view>
 				</view>
-				<view class="cont" @tap="det(item)">
+				<view class="cont" @tap="det(item)" v-if="item.service_type == 10">
 					<view class="contleft" v-if="item.type == 2">
+						<image src="@/static/icon/icon5.png"></image>
+					</view>
+					<view class="contleft" v-else-if="item.type == 3">
 						<image src="@/static/icon/icon5.png"></image>
 					</view>
 					<view class="contleft" v-else>
@@ -22,6 +25,26 @@
 						<view v-if="item.state == -1">时限:{{item.service}}年</view>
 						<view v-else>{{item.service_name}}</view>
 						<view v-if="item.type == 2">{{item.realprice}}</view>
+						<view v-else-if="item.type == 3">{{item.realprice}}</view>
+						<view v-else>￥{{item.service_price}}</view>
+					</view>
+				</view>
+				<view class="cont" v-if="item.service_type != 10">
+					<view class="contleft" v-if="item.type == 2">
+						<image src="@/static/icon/icon5.png"></image>
+					</view>
+					<view class="contleft" v-else-if="item.type == 3">
+						<image src="@/static/icon/icon5.png"></image>
+					</view>
+					<view class="contleft" v-else>
+						<image :src="item.avater"></image>
+					</view>
+					<view class="contright">
+						<view>{{item.nickname}}</view>
+						<view v-if="item.state == -1">时限:{{item.service}}年</view>
+						<view v-else>{{item.service_name}}</view>
+						<view v-if="item.type == 2">{{item.realprice}}</view>
+						<view v-else-if="item.type == 3">{{item.realprice}}</view>
 						<view v-else>￥{{item.service_price}}</view>
 					</view>
 				</view>
