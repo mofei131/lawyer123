@@ -52,8 +52,10 @@
 				phone:'',
 				array1: [{
 					sex: '女',
+					id:0
 				}, {
 					sex: '男',
+					id:1
 				}],
 				index1: 1,
 				zipai:'',
@@ -146,7 +148,7 @@
 					data:{
 						name:this.name,
 						mobile:this.phone,
-						gender:this.index1,
+						gender:this.array1[this.index1].id,
 						photo:this.zipai,
 						// idcard:this.zheng,
 						// idcard_fan:this.fan

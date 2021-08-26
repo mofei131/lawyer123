@@ -257,7 +257,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
     setTimeout(function () {
       uni.hideNavigationBarLoading();
     }, 500);
-    this.page += 1;
+
   },
   // 上拉加载
   // onReachBottom() {
@@ -371,12 +371,16 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                       service_id: '' } }));case 18:res = _context3.sent;
 
 
+                // if(this.name != ""){
+                // 	this.lawyerList = res.data;
+                // }
                 uni.hideLoading();
                 console.log("律师列表");
                 console.log(res);
                 _this5.lawyerList = res.data;
                 if (res && res.data) {
                   // this.lawyerList = res.data;
+
                   if (res.data.length > 0) {
                     console.log('有数据');_iterator = _createForOfIteratorHelper(
                     res.data);try {_loop = function _loop() {var s = _step.value;
@@ -385,9 +389,9 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                         if (!f) {
                           _this5.lawyerList.push(s);
                         }};for (_iterator.s(); !(_step = _iterator.n()).done;) {_loop();
-                      }
-                      // this.page += 1;
-                    } catch (err) {_iterator.e(err);} finally {_iterator.f();}} else {
+                      }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
+                    _this5.page += 1;
+                  } else {
                     console.log('无数据');
                     _this5.isMore = false;
                   }

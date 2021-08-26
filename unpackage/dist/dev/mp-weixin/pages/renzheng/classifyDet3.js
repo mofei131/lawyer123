@@ -205,6 +205,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   components: {
     pickcity: pickcity,
@@ -213,6 +230,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       hide: false,
+      agreement: true,
       box: {
         title: '平台律师服务协议' },
 
@@ -285,6 +303,9 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
+    agreementSuccess: function agreementSuccess() {
+      this.agreement = !this.agreement;
+    },
     cak: function cak() {
       uni.navigateTo({
         url: '../components/tankuang/xiyipingtai' });
@@ -378,13 +399,13 @@ __webpack_require__.r(__webpack_exports__);
             uni.removeStorage({ key: 'type' });
             uni.removeStorage({ key: 'cache1' });
             uni.removeStorage({ key: 'cache2' });
+          } else
+          {
+            uni.showToast({
+              title: '请确保信息完整',
+              icon: 'error' });
+
           }
-          // else{
-          // 	uni.showToast({
-          // 		title: '请确保信息完整',
-          // 		icon:'error'
-          // 	})
-          // }
         }, fail: function fail(res) {
           uni.showToast({
             title: '提交失败' });

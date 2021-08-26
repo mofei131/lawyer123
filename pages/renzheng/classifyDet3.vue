@@ -43,7 +43,24 @@
 			
 	</view>
 	<view class="next" @tap="show()">提交</view>
-	<tankuang :box='box' v-show="hide" v-on:submit="submit" v-on:show="show" v-on:cak="cak"></tankuang>
+	<!-- <tankuang :box='box' v-show="hide" v-on:submit="submit" v-on:show="show" v-on:cak="cak"></tankuang> -->
+	<view class="xiyibox" v-show="hide">
+		<view class="boxwite">
+			<view class="tishi">提示</view>
+			<view class="flec">
+				<image @tap="agreementSuccess" class="fix"
+					:src="agreement==true?'../../static/icon/ty0.png':'../../static/icon/ty1.png'" style="width: 46rpx;
+	  height: 46rpx;"></image>
+			<view class="yuedu">请阅读并同意<text class="shixia" @tap="cak()">《{{box.title}}》</text></view>
+			</view>
+			<view class="binglie">
+				<!-- <view class="ck" @tap="cak()">查看协议</view> -->
+				<view class="ty2"  v-if="agreement==true">同意协议</view>
+					<view class="ty" @tap="submit()"  v-if="agreement==false">同意协议</view>
+			</view>
+			<image src="@/static/icon/closeicon.png" class="close" @tap="show()"></image>
+		</view>
+	</view>
 	</view>
 </template>
 
@@ -58,6 +75,7 @@
 		data(){
 			return{
 				hide:false,
+				agreement:true,
 				box:{
 					title:'平台律师服务协议'
 				},
@@ -130,6 +148,9 @@
 				})
 		},
 		methods:{
+			agreementSuccess() {
+				this.agreement = !this.agreement;
+			},
 			cak(){
 				uni.navigateTo({
 					url:'../components/tankuang/xiyipingtai'
@@ -224,12 +245,12 @@
 							uni.removeStorage({key: 'cache1',})
 							uni.removeStorage({key: 'cache2'})
 						}
-						// else{
-						// 	uni.showToast({
-						// 		title: '请确保信息完整',
-						// 		icon:'error'
-						// 	})
-						// }
+						else{
+							uni.showToast({
+								title: '请确保信息完整',
+								icon:'error'
+							})
+						}
 					},fail(res){
 						uni.showToast({
 							title: '提交失败',
@@ -359,5 +380,109 @@
 		font-size: 28rpx;
 		font-family: PingFangSC-Regular, PingFang SC;
 		font-weight: 400;
+	}
+	
+	
+	.fix{
+		margin-top: 0;
+	}
+	.flec{
+		display: flex;
+		    justify-content: center;
+	}
+	.close{
+		width: 66rpx;
+		height: 66rpx;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 20;
+	}
+	.shixia{
+		color: #1890FF;
+		/* border-bottom: 1rpx solid #666; */
+	}
+	.tishi,.yuedu{
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #666666;
+		text-align: center;
+	}
+	.tishi{
+		margin-bottom: 40rpx;
+	}
+	.xiyibox{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		background: rgb(0,0,0,.5);
+		z-index: 10;
+		box-sizing: border-box;
+		padding-top: 60%;
+	}
+	.boxwite{
+		width: 720rpx;
+		/* height: 368px; */
+		background: #FFFFFF;
+		border-radius: 14rpx;
+		box-sizing: border-box;
+		padding-top: 68rpx;
+		margin: auto;
+		height: 368rpx;
+		position: relative;
+	}
+	.binglie{
+		display: flex;
+		justify-content: space-between;
+		width: 680rpx;
+		margin: auto;
+		margin-top: 79rpx;
+	}
+	.binglie view{
+		width: 334rpx;
+	}
+	.ck{
+		height: 76rpx;
+		border-radius: 39rpx;
+		border: 1px solid #1890FF;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #1890FF;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.ty{
+		height: 76rpx;
+		border-radius: 39rpx;
+		border: 1px solid #1890FF;
+		background: #1890FF;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: auto;
+		
+	}
+	.ty2{
+		height: 76rpx;
+		border-radius: 39rpx;
+		border: 1px solid #BDBDBD;
+		background: #BDBDBD;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: auto;
+		
 	}
 </style>

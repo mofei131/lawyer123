@@ -125,7 +125,7 @@
 			setTimeout(function() {
 				uni.hideNavigationBarLoading()
 			}, 500);
-			this.page += 1;
+			
 		},
 		// 上拉加载
 		// onReachBottom() {
@@ -239,12 +239,16 @@
 						service_id: ''
 					}
 				});
+				// if(this.name != ""){
+				// 	this.lawyerList = res.data;
+				// }
 				uni.hideLoading();
 				console.log("律师列表")
 				console.log(res);	
 				this.lawyerList = res.data;
 				if (res && res.data) {
 					// this.lawyerList = res.data;
+					
 					if (res.data.length > 0) {
 						console.log('有数据');
 						for (let s of res.data) {
@@ -254,13 +258,13 @@
 								this.lawyerList.push(s)
 							}
 						}
-						// this.page += 1;
+						this.page += 1;
 					} else {
 						console.log('无数据');
 						this.isMore = false;
 					}
 					console.log(this.lawyerList);
-
+					
 				}
 			},
 			buy(e) {

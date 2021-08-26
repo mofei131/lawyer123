@@ -17,14 +17,14 @@
 						
 						<view v-if="item.busy" class="flex-row mx-end sx-center" style="flex:1 1 auto">
 							<view class="statuSDot"
-								:style="{backgroundColor: item.busy==1?'#26CD93': 'red'}">
+								:style="{backgroundColor: item.busy==1?'#26CD93':item.busy==2?'#E1B12F':'#FF4D4F'}">
 							</view>
 							<text v-if="item.busy==1"
-								style="margin-left:8rpx;color: green;font-size: 20rpx;">在线</text>
+								style="margin-left:8rpx;color: #26CD93;font-size: 20rpx;">在线</text>
 							<text v-else-if="item.busy==2"
-								style="margin-left:8rpx;color: red;font-size: 20rpx;">开庭</text>
+								style="margin-left:8rpx;color: #E1B12F;font-size: 20rpx;">繁忙</text>
 								<text v-else-if="item.busy==3"
-									style="margin-left:8rpx;color: red;font-size: 20rpx;">忙碌</text>
+									style="margin-left:8rpx;color: #FF4D4F;font-size: 20rpx;">开庭</text>
 						</view>
 					</view>
 					<view class="flex-row mx-between sx-center" style="margin-bottom: 5rpx;">
