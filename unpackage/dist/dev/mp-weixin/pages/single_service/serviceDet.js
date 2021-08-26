@@ -164,9 +164,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 var _default =
 {
   onLoad: function onLoad(param) {
@@ -194,21 +191,6 @@ var _default =
       dianhua: '' };
 
   },
-  // onShow() {
-  // 	let that = this
-  // 	uni.request({
-  // 		url:'https://layer.boyaokj.cn/api/service/packageDetail',
-  // 		method:'GET',
-  // 		data:{
-  // 			id: that.id
-
-  // 		},
-  // 		success(res) {
-  // 			console.log(res.data)
-  // 			that.dataSource = res.data;
-  // 		}
-  // 	})
-  // },
   methods: {
     back: function back() {
       uni.navigateBack({});

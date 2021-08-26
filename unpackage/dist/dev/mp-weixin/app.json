@@ -47,6 +47,7 @@
     "pages/list/cooperModuleList",
     "pages/single_service/cooperProcess",
     "pages/my/contractList",
+    "pages/my/zhuangtai",
     "pages/my/follow",
     "pages/anjianDetail/anjianDetail",
     "pages/components/tankuang/xiyipingtai",
@@ -102,6 +103,5 @@
   },
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

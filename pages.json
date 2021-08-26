@@ -312,9 +312,14 @@
 				"enablePullDownRefresh": true
 			}
 
-		}
+		}, {
+			"path": "pages/my/zhuangtai",
+			"style": {
+				"navigationBarTitleText": "状态选择",
+				"enablePullDownRefresh": true
+			}
 
-		
+		}
 		, {
 			"path": "pages/my/follow",
 			"style": {

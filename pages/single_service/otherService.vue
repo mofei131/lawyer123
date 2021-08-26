@@ -27,7 +27,7 @@
 						<view class="ellipsis" style="width: 500rpx;margin: 10rpx 0;  color: rgba(106,106,106,1);font-size: 24rpx;font-family: PingFangSC-Semibold;">{{item.name}}</view>
 						<view
 							class="info5" style="height: 87rpx;overflow: auto;">
-							<rich-text :nodes="item.intro"></rich-text>
+							<rich-text :nodes="item.service"></rich-text>
 							</view>
 					</view>
 					<view class="flex-row mx-between sx-center" style="width: 664rpx;;padding: 10rpx 20rpx;">
@@ -71,6 +71,7 @@
 					data: {}
 				});
 				if (res && res.code==200) {
+					console.log("简介")
 					console.log(res);
 					this.dataSource = res.data;
 				}else{

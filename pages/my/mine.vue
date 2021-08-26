@@ -38,7 +38,7 @@
 				<view>123法律VIP</view>
 				<view>开通即尊享20+项专属特权</view>
 			</view>
-			<view class="vipname" v-else @tap="open()" >{{user.package.name}}</view>
+			<view class="vipname" v-else >{{user.package.name}}</view>
 			<view class="kaitongbtn" @tap="open()" v-if="user.package == ''">立即开通</view>
 			<view class="kaitongbtn" v-else>已开通</view>
 		</view>
@@ -82,6 +82,22 @@
 				<view>我的优惠券</view>
 			</view>
 			<view class="itemright">
+				<image src="../../static/icon/myrighticon.png" mode=""></image>
+			</view>
+		</view>
+		<view class="functionitem"@tap="toUrl7()" v-if="user.lawyer != ''" :class="[user.layer_status == 2?'':'buke']">
+			<view class="itemleft">
+				<image src="../../static/icon/myicon7.png"></image>
+				<view>律师状态</view>
+			</view>
+			<view class="itemright">
+				<view class="renzheng" v-if="user.layer_status == 0">未认证</view>
+				<view class="renzheng" v-if="user.layer_status == 1">认证中</view>
+				<view v-if="user.layer_status == 2">
+					<view class="renzheng" v-if="user.busy == 1" style="color: #26CD93!important;">在线</view>
+					<view class="renzheng" v-if="user.busy == 2" style="color: #E1B12F!important;">繁忙</view>
+					<view class="renzheng" v-if="user.busy == 3" style="color: #FF4D4F!important;">开庭</view>
+				</view>
 				<image src="../../static/icon/myrighticon.png" mode=""></image>
 			</view>
 		</view>
@@ -171,6 +187,7 @@
 					vipname:'套餐二',//已开通vip名称
 					kefu:'',
 					layer_status:0,
+					busy:'',
 				},
 				ewm:false,
 				ewmimage:'',
@@ -222,12 +239,12 @@
 							user_id:user.user_id
 						},
 						success(res) {
-							console.log("状态")
-							console.log(res.data.data)
+							uni.setStorageSync('userInfo',res.data.data);
 							that.user.name = res.data.data.nickname
 							that.user.headimg = res.data.data.avater
 							that.user.balance = res.data.data.wallet
 							that.user.layer_status = res.data.data.layer_status
+							that.user.busy = res.data.data.layer.busy
 							if(!res.data.data.layer){
 							}else{
 								that.user.lawyer = res.data.data.layer
@@ -296,18 +313,14 @@
 			                title: '提示',
 			                content: '确定保存到相册吗',
 			                success: function (res) {
-												console.log("第一步")
 			                    if (res.confirm) {
-														console.log("第二步")
 			                        uni.downloadFile({
 			                                url: that.ewmimage,//图片地址
 			                                success: (res) =>{
-																				console.log("第三步")
 			                                    if (res.statusCode === 200){
 			                                        uni.saveImageToPhotosAlbum({
 			                                            filePath: res.tempFilePath,
 			                                            success: function() {
-																										console.log("第四步")
 			                                                uni.showToast({
 			                                                    title: "保存成功",
 			                                                    icon: "none"
@@ -382,6 +395,11 @@
 			toUrl6(){
 				uni.navigateTo({
 					url:'./xieyi'
+				})
+			},
+			toUrl7(){
+				uni.navigateTo({
+					url:'./zhuangtai'
 				})
 			},
 			toPage(url){

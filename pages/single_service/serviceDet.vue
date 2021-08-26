@@ -7,9 +7,6 @@
 						<view class="info5">
 							<rich-text :nodes="dataSource.intro"></rich-text>
 						</view>
-						
-						
-		
 					</view>
 				</view>
 				<view class="form">
@@ -62,21 +59,6 @@
 				dianhua:''
 			}
 		},
-		// onShow() {
-		// 	let that = this
-		// 	uni.request({
-		// 		url:'https://layer.boyaokj.cn/api/service/packageDetail',
-		// 		method:'GET',
-		// 		data:{
-		// 			id: that.id
-					
-		// 		},
-		// 		success(res) {
-		// 			console.log(res.data)
-		// 			that.dataSource = res.data;
-		// 		}
-		// 	})
-		// },
 		methods: {
 			back(){
 				uni.navigateBack({
@@ -450,6 +432,7 @@
 		margin-top: 16rpx;
 		overflow: auto;
 		text-overflow: ellipsis;
+		padding-top: 10rpx;
 	}
 
 	.block3 {

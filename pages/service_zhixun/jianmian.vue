@@ -233,31 +233,6 @@
 </script>
 
 <style>
-	/* .group3{
-		z-index: 83;
-		    width: 144rpx;
-		    display: block;
-		    overflow-wrap: break-word;
-		    color: rgba(255, 255, 255, 1);
-		    font-size: 36rpx;
-		    font-family: PingFangSC-Semibold;
-		    white-space: nowrap;
-		    line-height: 50rpx;
-		    text-align: center;
-	}
-	.paragraph1 {
-		left: 40rpx;
-		    top: 208rpx;
-		    height: 66rpx;
-		    position: absolute;
-		    -webkit-box-orient: horizontal;
-		    -webkit-box-direction: normal;
-		    -webkit-flex-direction: row;
-		    flex-direction: row;
-		    display: -webkit-box;
-		    display: -webkit-flex;
-		    display: flex;
-	} */
 	.jjm{
 		height: 76rpx;border-radius:40rpx;
 	}
@@ -476,7 +451,6 @@
 	.group7 {
 		z-index: auto;
 		width: 664rpx;
-		height: 272rpx;
 		display: flex;
 		flex-direction: column;
 	}
@@ -523,7 +497,6 @@
 
 	.block3 {
 		z-index: 10;
-		height: 223rpx;
 		border-radius: 20rpx;
 		background-color: rgba(255, 255, 255, 1);
 		box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
@@ -540,7 +513,6 @@
 	.group8 {
 		z-index: auto;
 		width: 664rpx;
-		height: 184rpx;
 		display: flex;
 		flex-direction: column;
 	}

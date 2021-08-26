@@ -226,6 +226,7 @@ var _default =
                     data: {} }));case 2:res = _context.sent;
 
                 if (res && res.code == 200) {
+                  console.log("简介");
                   console.log(res);
                   _this.dataSource = res.data;
                 } else {

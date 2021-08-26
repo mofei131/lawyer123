@@ -332,6 +332,7 @@ page{
 	margin-top: 16rpx;
 	overflow: auto;
 	text-overflow: ellipsis;
+	padding-top: 10rpx;
 }
 .block3 {
 	z-index: 10;

@@ -286,6 +286,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   components: {
     iconlist: iconlist },
@@ -302,7 +318,8 @@ __webpack_require__.r(__webpack_exports__);
         package: '',
         vipname: '套餐二', //已开通vip名称
         kefu: '',
-        layer_status: 0 },
+        layer_status: 0,
+        busy: '' },
 
       ewm: false,
       ewmimage: '',
@@ -354,12 +371,12 @@ __webpack_require__.r(__webpack_exports__);
         user_id: user.user_id },
 
       success: function success(res) {
-        console.log("状态");
-        console.log(res.data.data);
+        uni.setStorageSync('userInfo', res.data.data);
         that.user.name = res.data.data.nickname;
         that.user.headimg = res.data.data.avater;
         that.user.balance = res.data.data.wallet;
         that.user.layer_status = res.data.data.layer_status;
+        that.user.busy = res.data.data.layer.busy;
         if (!res.data.data.layer) {
         } else {
           that.user.lawyer = res.data.data.layer;
@@ -428,18 +445,14 @@ __webpack_require__.r(__webpack_exports__);
         title: '提示',
         content: '确定保存到相册吗',
         success: function success(res) {
-          console.log("第一步");
           if (res.confirm) {
-            console.log("第二步");
             uni.downloadFile({
               url: that.ewmimage, //图片地址
               success: function success(res) {
-                console.log("第三步");
                 if (res.statusCode === 200) {
                   uni.saveImageToPhotosAlbum({
                     filePath: res.tempFilePath,
                     success: function success() {
-                      console.log("第四步");
                       uni.showToast({
                         title: "保存成功",
                         icon: "none" });
@@ -514,6 +527,11 @@ __webpack_require__.r(__webpack_exports__);
     toUrl6: function toUrl6() {
       uni.navigateTo({
         url: './xieyi' });
+
+    },
+    toUrl7: function toUrl7() {
+      uni.navigateTo({
+        url: './zhuangtai' });
 
     },
     toPage: function toPage(url) {
