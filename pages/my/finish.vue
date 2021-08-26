@@ -27,7 +27,7 @@
 					uni.$emit(this.emitName, {
 						ispay: true,
 					});
-				}else if(this.phone){
+				}else if(this.phone != "undefined"){
 					console.log(111)
 					uni.makePhoneCall({
 						 phoneNumber: this.phone, 

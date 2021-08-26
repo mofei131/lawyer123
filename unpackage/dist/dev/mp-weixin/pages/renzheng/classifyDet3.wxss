@@ -46,8 +46,7 @@ page{
 	width: 680rpx;
 	margin: auto;
 	padding-top: 35rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .tips{
 	width: 170rpx;
@@ -104,8 +103,7 @@ page{
 	margin: 53rpx auto;
 	text-align: center;
 	padding-top: 20rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 fa-icon{
 	margin-right: 20rpx;
@@ -124,8 +122,7 @@ fa-icon{
 	background: #F4F4F4;
 	border-radius: 8rpx;
 	margin: 20rpx auto;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	padding: 20rpx 30rpx 20rpx 30rpx;
 	font-size: 28rpx;
 	font-family: PingFangSC-Regular, PingFang SC;

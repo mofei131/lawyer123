@@ -20,7 +20,7 @@
 					</view>
 				</view>
 				
-				<view class="block2" v-for="(item,index) in dataSource" :key="index">
+				<view class="block2" v-for="(item,index) in dataSource" :key="index" @tap="det(item)">
 					<view class="group7">
 						<text lines="1" decode="true" class="info4">～&nbsp;套餐{{index+1}}&nbsp;～</text>
 						<view class="bd1"></view>
@@ -106,6 +106,12 @@
 						icon:'none'
 					})
 				}
+			},
+			det(item){
+				console.log(item)
+				uni.navigateTo({
+					url:'./serviceDet?id='+item.id+ '&price=' + item.price + '&typeId=' + item.id+'&name='+item.name
+				})
 			}
 		}
 	}

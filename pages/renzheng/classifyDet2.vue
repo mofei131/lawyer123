@@ -162,13 +162,6 @@
 					})
 					return
 				}
-				if (!this.zhiyear && !this.dian) {
-					uni.showToast({
-						title: '请上传执业证书年检页',
-						icon: 'none',
-					})
-					return
-				}
 				if (!this.cfcong && !this.dian) {
 					uni.showToast({
 						title: '请上传司法从业者证书',

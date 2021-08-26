@@ -365,6 +365,16 @@
 			"style": {
 				"navigationBarTitleText": "聘请律师"
 			}
+		}, {
+			"path": "pages/single_service/serviceDet",
+			"style": {
+				"navigationStyle": "custom",
+				"onReachBottomDistance": 50,
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": false
+				}
+			}
 		}
     ],
 	"globalStyle": {

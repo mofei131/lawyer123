@@ -1,4 +1,13 @@
 
+.diqu{
+	text-align: center;
+	font-size: 24rpx;
+	color: #333;
+	width: 370rpx;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
 .quan_on {
 	border: 2rpx solid #40A9FF;
 	background-color: #40A9FF;

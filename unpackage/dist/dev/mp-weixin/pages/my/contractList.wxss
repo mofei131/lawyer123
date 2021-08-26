@@ -17,8 +17,7 @@ page{
 	        justify-content: space-between;
 	padding-left: 27rpx;
 	padding-right: 27rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	padding-top: 27rpx;
 }
 .contractitem image{

@@ -40,8 +40,7 @@
 	color: #1890FF;
 	text-align: center;
 	padding-top: 18rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .twobtn view:nth-child(2){
 	width: 334rpx;
@@ -55,8 +54,7 @@
 	color: #fff;
 	text-align: center;
 	padding-top: 18rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .twobtn{
 	display: -webkit-box;
@@ -97,8 +95,7 @@
 	top: 25%;
 	margin-left: 15rpx;
 	padding-top: 68rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .molde{
 	position: absolute;
@@ -145,8 +142,7 @@ page{
 	width: 680rpx;
 	margin: auto;
 	padding-top: 35rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .tips{
 	width: 170rpx;
@@ -217,8 +213,7 @@ page{
 	margin: 53rpx auto;
 	text-align: center;
 	padding-top: 20rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .labellist{
 	width: 680rpx;

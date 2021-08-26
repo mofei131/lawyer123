@@ -97,7 +97,7 @@
 							<text lines="1" class="info8">律师服务</text>
 							<text lines="1" class="info9">回访评价</text>
 						</view> -->
-						<image src="http://hlstore.yimetal.cn/liucheng3.png" style="margin: auto;" mode="widthFix"></image>
+						<image src="http://hlstore.yimetal.cn/lc3.png" style="margin: auto;" mode="widthFix"></image>
 					</view>
 				</view>
 				<!-- <view class="block5">
