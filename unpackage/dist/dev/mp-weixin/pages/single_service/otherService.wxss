@@ -222,8 +222,7 @@
 	z-index: 4;
 	border-radius: 20rpx;
 	background-color: rgba(255, 255, 255, 1);
-	-webkit-box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
-	        box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
+	box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.11);
 	-webkit-align-self: center;
 	        align-self: center;
 	margin-top: 20rpx;

@@ -39,8 +39,7 @@
 	top: 0;
 	background: rgb(0,0,0,.5);
 	z-index: 10;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	padding-top: 60%;
 }
 .boxwite{
@@ -48,8 +47,7 @@
 	/* height: 368px; */
 	background: #FFFFFF;
 	border-radius: 14rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	padding-top: 68rpx;
 	margin: auto;
 	height: 368rpx;

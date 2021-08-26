@@ -84,8 +84,7 @@ page {
 		border-bottom: 0rpx!important;
 }
 .anlilist{
-		    -webkit-box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);
-		            box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);
+		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);
 		        border-radius: 18rpx 18rpx 18rpx 18rpx;
 }
 .anlilistitem:first-child{
@@ -96,18 +95,15 @@ page {
 		    background-color: #fff;
 }
 .top-menu-view{
-		-webkit-box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
-		        box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
+		box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
 }
 .fourcard{
 		border-radius: 0rpx 0rpx 18rpx 18rpx!important;
-		    -webkit-box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
-		            box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
+		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
 		    padding-left: 20rpx!important;
 }
 .study{
-		    -webkit-box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);
-		            box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);
+		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);
 		    border-radius: 18rpx;
 				margin-bottom: 40rpx!important;
 }
@@ -129,8 +125,7 @@ page {
 		/* height: 200rpx; */
 		width: 100%;
 		height: 100%;
-		-webkit-box-sizing: border-box;
-		        box-sizing: border-box;
+		box-sizing: border-box;
 		padding-top: 60%;
 		z-index: 50;
 }
@@ -204,8 +199,7 @@ page {
 		        justify-content: space-between;
 		width: 690rpx;
 		margin: auto;
-		-webkit-box-sizing: border-box;
-		        box-sizing: border-box;
+		box-sizing: border-box;
 		margin-top: 24rpx;
 }
 .modleft,
@@ -213,8 +207,7 @@ page {
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: flex;
-		-webkit-box-sizing: border-box;
-		        box-sizing: border-box;
+		box-sizing: border-box;
 		margin-bottom: 12rpx;
 }
 .more image {
@@ -229,8 +222,7 @@ page {
 		background: #40A9FF;
 		border-radius: 2rpx;
 		margin-top: 8rpx;
-		-webkit-box-sizing: border-box;
-		        box-sizing: border-box;
+		box-sizing: border-box;
 }
 .modone {
 		color: #51565D;
@@ -252,8 +244,7 @@ page {
 		height: 80rpx;
 		border-radius: 14rpx 14rpx 0rpx 0rpx;
 		background: rgb(9, 109, 217, .1);
-		-webkit-box-sizing: border-box;
-		        box-sizing: border-box;
+		box-sizing: border-box;
 }
 .beglist {
 		width: 177.5rpx;
@@ -271,8 +262,7 @@ page {
 		border-radius: 14rpx 14rpx 0rpx 0rpx;
 		/* background: rgb(9, 109, 217, .1); */
 		background: #F8F8F8;
-		-webkit-box-sizing: border-box;
-		        box-sizing: border-box;
+		box-sizing: border-box;
 		width: 710rpx;
 		margin: auto;
 		/* padding-top: 10rpx; */

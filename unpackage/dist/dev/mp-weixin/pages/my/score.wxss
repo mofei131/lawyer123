@@ -42,8 +42,7 @@ page{
 	color: #FFFFFF;
 	/* padding-top: 15rpx; */
 	text-align: center;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	margin-top: 300rpx;
 	display: -webkit-box;
 	display: -webkit-flex;

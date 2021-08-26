@@ -41,8 +41,7 @@
 	font-weight: 400;
 	color: #676767;
 	padding-top: 8rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .zhangshu{
 	position: absolute;

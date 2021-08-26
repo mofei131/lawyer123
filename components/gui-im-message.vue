@@ -35,7 +35,7 @@
 							<!-- 图片消息 -->
 							<view v-if="item.contentType == 'img'" 
 							:class="[userid == item.uindex ? 'gui-im-flex-end' : '']">
-								<view class="gui-img-in gui-im-img">									<image class="gui-im-img" 									:src="item.content" :data-img="item.content" 									@tap="showImgs" mode="widthFix"></image>								</view>
+								<view class="gui-img-in gui-im-img">									<image class="gui-im-img" 									:src="item.content" :data-img="item.content" 									@tap="showImgs" mode="aspectFill"></image>								</view>
 							</view>
 							<!-- 语言消息 -->
 							<view v-if="item.contentType == 'voice'" 
@@ -161,7 +161,7 @@ export default {
 }
 .gui-im-msg-right{flex-direction:row-reverse;}
 .gui-im-timer{margin-top:5px; line-height:30rpx; font-size:22rpx; color:#8788A3;}
-.gui-im-img{width:358rpx; border-radius:6rpx;}
+.gui-im-img{width:358rpx;height: 358rpx; border-radius:6rpx;}
 .gui-im-flex-end{display:flex; flex-direction:row; flex-wrap:nowrap; justify-content:flex-end;}
 .gui-im-voice-msg{height:80rpx; padding:0 20rpx; background-color:#E7F0F3; border-radius:6rpx; color:#2B2E3D; min-width:100rpx; max-width:400rpx;}
 .gui-im-voice-msg-text{font-size:22rpx; margin:0 5rpx;}
