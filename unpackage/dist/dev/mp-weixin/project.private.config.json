@@ -113,6 +113,18 @@
           "pathName": "pages/youhuiquan/youhuiquan",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "详情",
+          "pathName": "pages/single_service/serviceDet",
+          "query": "id=17&price=99.00&typeId=17&name=%E7%A7%81%E4%BA%BA%E5%BE%8B%E5%B8%8830%E5%A4%A9",
+          "scene": null
+        },
+        {
+          "name": "套餐详情",
+          "pathName": "pages/single_service/serviceDet",
+          "query": "id=20&price=0.01&typeId=20&name=%E6%B5%8B%E8%AF%95%E5%A5%97%E9%A4%90",
+          "scene": null
         }
       ]
     }

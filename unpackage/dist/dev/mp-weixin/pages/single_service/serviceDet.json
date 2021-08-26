@@ -1,8 +1,4 @@
 {
-  "navigationStyle": "custom",
-  "onReachBottomDistance": 50,
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "uni-nav-bar": "/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar"
-  }
+  "navigationBarTitleText": "合同详情",
+  "usingComponents": {}
 }

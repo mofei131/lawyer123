@@ -32,7 +32,8 @@
 					</view>
 					<view class="flex-row mx-between sx-center" style="width: 664rpx;;padding: 10rpx 20rpx;">
 						<text style="color: #FF4D4F;">￥{{item.price}}</text>
-						<view @tap="toPay(item)"
+						<!-- @tap="toPay(item)" -->
+						<view 
 							style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
 							立即购买</view>
 					</view>

@@ -93,29 +93,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
-try {
-  components = {
-    uniNavBar: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar.vue */ 547))
-    }
-  }
-} catch (e) {
-  if (
-    e.message.indexOf("Cannot find module") !== -1 &&
-    e.message.indexOf(".vue") !== -1
-  ) {
-    console.error(e.message)
-    console.error("1. 排查组件名称拼写是否正确")
-    console.error(
-      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
-    )
-    console.error(
-      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
-    )
-  } else {
-    throw e
-  }
-}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -190,71 +167,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   onLoad: function onLoad(param) {
@@ -276,7 +188,10 @@ var _default =
       dataSource: {},
       phone: '',
       id: '',
-      name: '' };
+      name: '',
+      unit: '',
+      xingm: '',
+      dianhua: '' };
 
   },
   // onShow() {
@@ -323,57 +238,38 @@ var _default =
                   }
                 }case 6:case "end":return _context.stop();}}}, _callee);}))();
     },
-    commit: function commit() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var that, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                //跳转支付页面
-                // let {
-                // 	layer_id,
-                // 	user_id,
-                // } = this.$data;
-                // if (!layer_id || !user_id) {
-                // 	uni.showToast({
-                // 		title: '用户数据异常，请重新登录',
-                // 		icon: 'none'
-                // 	})
-                // 	return;
-                // }
-                // let data = {
-                // 	layer_id,
-                // 	user_id,
-                // }
-                // console.log(data);
-                // uni.showLoading({
-                // 	title: '正在提交...'
-                // })
-                // let res = await this.$myRequest({
-                // 	url: 'service/jianmian',
-                // 	method:'GET',
-                // 	data
-                // });
-                // if(res && res.code==-1){
-                // 	uni.showToast({
-                // 		title:res.message,
-                // 		icon:'none'
-                // 	})
-                // }else{
-                // 	if(res && res.code==200){
-                // 		console.log(res);
-                // 		uni.navigateTo({
-                // 			url:'../my/pay?id='+res.data.service_id+'&price='+this.price+'&typeId=3'+'&phone='+this.phone
-                // 		})
-                // 	}else{
-                // 		uni.showToast({
-                // 			title:res.message,
-                // 			icon:'none'
-                // 		})
-                // 	}
-                // }
-                that = _this2;_context2.next = 3;return (
+    commit: function commit() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var that, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (
+                _this2.unit) {_context2.next = 3;break;}
+                uni.showToast({
+                  title: '请输入公司名称',
+                  icon: 'none' });return _context2.abrupt("return");case 3:if (
+
+
+
+                _this2.xingm) {_context2.next = 6;break;}
+                uni.showToast({
+                  title: '请输入姓名',
+                  icon: 'none' });return _context2.abrupt("return");case 6:if (
+
+
+
+                _this2.dianhua) {_context2.next = 9;break;}
+                uni.showToast({
+                  title: '请输入手机号',
+                  icon: 'none' });return _context2.abrupt("return");case 9:
+
+
+
+                that = _this2;_context2.next = 12;return (
                   _this2.$myRequest({
                     url: 'service/buyPackage',
                     methods: 'GET',
                     data: {
                       package_id: that.id,
-                      user_id: _this2.$store.state.userInfo.user_id } }));case 3:res = _context2.sent;
+                      user_id: _this2.$store.state.userInfo.user_id,
+                      company: _this2.unit,
+                      name: _this2.xingm,
+                      mobile: _this2.dianhua } }));case 12:res = _context2.sent;
 
 
 
@@ -387,7 +283,7 @@ var _default =
                     title: res.message,
                     icon: 'none' });
 
-                }case 5:case "end":return _context2.stop();}}}, _callee2);}))();
+                }case 14:case "end":return _context2.stop();}}}, _callee2);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
