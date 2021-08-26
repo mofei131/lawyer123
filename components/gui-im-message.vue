@@ -13,7 +13,7 @@
 					<view class="gui-im-msg" 
 					:class="[userid == item.uindex ? 'gui-im-msg-right' : 'gui-im-msg-left']">
 						<view class="gui-im-face" v-if="item.uface">
-							<image class="gui-im-face-image" :src="item.uface" mode="aspectFit"></image>
+							<image class="gui-im-face-image" :src="item.uface" mode="aspectFill"></image>
 						</view>
 						<view class="gui-im-content-spacing"></view>
 						<view class="gui-im-content-in">

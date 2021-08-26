@@ -64,6 +64,7 @@
 				})
 			},
 			getChild1(e){
+				console.log("延迟")
 				this.type = e
 				let that = this
 				if(that.type == 2){
@@ -76,7 +77,12 @@
 						limit:that.limit
 					},
 					success(res) {
+						console.log("延迟2")
+						console.log(res.data.data)
 						that.list = res.data.data
+						// uni.navigateTo({
+						// 	url:'./mine'
+						// })
 					}
 				})
 				}

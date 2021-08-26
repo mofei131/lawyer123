@@ -173,10 +173,8 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
               console.log(p);
               console.log(_this2.$store.state.userInfo);
               _this2.source_id = p.source_id;
-              _this2.layer_id = p.layer_id;
-              _this2.user_id = _this2.$store.state.userInfo.user_id;
-              _this2.userAvator = _this2.$store.state.userInfo.avater;
-              _this2.userName = _this2.$store.state.userInfo.nickname;case 8:case "end":return _context.stop();}}}, _callee);}))();
+              // this.layer_id = p.layer_id;
+              _this2.user_id = _this2.$store.state.userInfo.user_id;case 5:case "end":return _context.stop();}}}, _callee);}))();
   },
   onShow: function onShow() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
               _this3.msgs = [];_context2.next = 3;return (
@@ -193,15 +191,9 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
   data: function data() {
     return {
-      userName: '',
-      userAvator: '',
-      lawyerName: '',
-      lawyerAvator: '',
-      page: 1,
-      limit: 10,
       user_id: '',
       source_id: '',
-      layer_id: '',
+      // layer_id: '',
       msgs: [],
       faildMessage: '',
       count: 0 };
@@ -277,9 +269,9 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
             group: 'group1',
             uindex: data.user_id,
             contentType: 'txt',
-            uname: data.user_id == _this4.user_id ? _this4.userName : _this4.lawyerName,
+            uname: data.userinfo.name,
             content: data.message,
-            uface: data.user_id == _this4.user_id ? _this4.userAvator : _this4.lawyerAvator };
+            uface: data.userinfo.avater };
 
           _this4.msgs.push(item);
           _this4.pageScroll();
@@ -337,51 +329,31 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
       }, 200);
     },
     getMessage: function getMessage() {var _this6 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:return _context5.abrupt("return",
-                new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(resolve, reject) {var result, res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
-                              _this6.$myRequest({
-                                url: 'layer/detail',
-                                methods: 'GET',
-                                data: {
-                                  user_id: '',
-                                  layer_id: _this6.layer_id } }));case 2:result = _context4.sent;
-
-
-                            if (result && result.code == 200) {
-                              _this6.lawyerAvator = result.data.photo;
-                              _this6.lawyerName = result.data.name;
-                            }_context4.next = 6;return (
-
+                new Promise( /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(resolve, reject) {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
                               _this6.$myRequest({
                                 url: 'message/list',
                                 methods: 'GET',
                                 data: {
-                                  source_id: _this6.source_id } }));case 6:res = _context4.sent;
+                                  source_id: _this6.source_id } }));case 2:res = _context4.sent;
 
 
                             if (res && res.code == 200) {
                               console.log('=====================getmessage==============');
                               console.log(res);
                               res.data.forEach(function (item) {
-                                // 		if (item.user_id == this.user_id && (!this.userAvator || !this.userName)) {
-                                // 			this.userName = item.user.name;
-                                // 			this.userAvator = item.user.avater;
-                                // 		}
-
                                 var d = {
                                   group: 'group1',
                                   uindex: item.user_id,
-                                  uname: item.user_id == _this6.user_id ? _this6.userName : _this6.
-                                  lawyerName,
+                                  uname: item.user.name,
                                   contentType: 'txt',
                                   content: item.message || '',
-                                  uface: item.user_id == _this6.user_id ? _this6.userAvator : _this6.
-                                  lawyerAvator };
+                                  uface: item.user.avater };
 
                                 _this6.msgs.push(d);
                               });
                             }
                             _this6.pageScroll();
-                            resolve(true);case 10:case "end":return _context4.stop();}}}, _callee4);}));return function (_x, _x2) {return _ref.apply(this, arguments);};}()));case 1:case "end":return _context5.stop();}}}, _callee5);}))();
+                            resolve(true);case 6:case "end":return _context4.stop();}}}, _callee4);}));return function (_x, _x2) {return _ref.apply(this, arguments);};}()));case 1:case "end":return _context5.stop();}}}, _callee5);}))();
 
 
     } }) };exports.default = _default;

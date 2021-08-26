@@ -43,10 +43,8 @@
 			console.log(p);
 			console.log(this.$store.state.userInfo);
 			this.source_id = p.source_id;
-			this.layer_id = p.layer_id;
+			// this.layer_id = p.layer_id;
 			this.user_id = this.$store.state.userInfo.user_id;
-			this.userAvator = this.$store.state.userInfo.avater;
-			this.userName = this.$store.state.userInfo.nickname;
 		},
 		async onShow() {
 			this.msgs=[];
@@ -63,15 +61,9 @@
 		},
 		data() {
 			return {
-				userName: '',
-				userAvator: '',
-				lawyerName: '',
-				lawyerAvator: '',
-				page: 1,
-				limit: 10,
 				user_id: '',
 				source_id: '',
-				layer_id: '',
+				// layer_id: '',
 				msgs: [],
 				faildMessage: '',
 				count:0,
@@ -147,9 +139,9 @@
 							group: 'group1',
 							uindex: data.user_id,
 							contentType: 'txt',
-							uname: data.user_id == this.user_id ? this.userName : this.lawyerName,
+							uname: data.userinfo.name,
 							content: data.message,
-							uface: data.user_id == this.user_id ? this.userAvator : this.lawyerAvator
+							uface: data.userinfo.avater
 						};
 						this.msgs.push(item);
 						this.pageScroll();
@@ -208,19 +200,6 @@
 			},
 			async getMessage() {
 				return new Promise(async (resolve, reject) => {
-					let result = await this.$myRequest({
-						url: 'layer/detail',
-						methods: 'GET',
-						data: {
-							user_id: '',
-							layer_id: this.layer_id
-						}
-					});
-					if (result && result.code == 200) {
-						this.lawyerAvator = result.data.photo;
-						this.lawyerName = result.data.name;
-					}
-
 					let res = await this.$myRequest({
 						url: 'message/list',
 						methods: 'GET',
@@ -232,20 +211,13 @@
 						console.log('=====================getmessage==============');
 						console.log(res);
 						res.data.forEach(item => {
-							// 		if (item.user_id == this.user_id && (!this.userAvator || !this.userName)) {
-							// 			this.userName = item.user.name;
-							// 			this.userAvator = item.user.avater;
-							// 		}
-
 							let d = {
 								group: 'group1',
 								uindex: item.user_id,
-								uname: item.user_id == this.user_id ? this.userName : this
-									.lawyerName,
+								uname: item.user.name,
 								contentType: 'txt',
 								content: item.message || '',
-								uface: item.user_id == this.user_id ? this.userAvator : this
-									.lawyerAvator
+								uface: item.user.avater
 							};
 							this.msgs.push(d);
 						})

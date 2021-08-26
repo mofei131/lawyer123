@@ -281,8 +281,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     submit: function submit() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var emitName, res, _res$data, appId, nonceStr, pp, paySign, signType, timeStamp, timestamp, orderno;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 emitName = _this.emitName;
-                console.log(emitName);if (!(
-                _this.agreement == false)) {_context.next = 6;break;}
+                console.log(emitName);
+                //////////////////
+                // uni.reLaunch({
+                // 	url:'/pages/my/finish?emitName='+emitName+'&phone='+this.phone
+                // })
+                // return
+                //////////////////
+                if (!(_this.agreement == false)) {_context.next = 6;break;}
                 uni.showToast({
                   title: "请勾选支付方式",
                   icon: 'none' });_context.next = 14;break;case 6:

@@ -180,16 +180,50 @@
 
 
 			searchName() {
+				let that = this
 				// this.isMore = true;
 				if (this.ttt) {
 					clearTimeout(this.ttt);
 				}
 				this.ttt = setTimeout(item => {
-					this.searchChange()
+					uni.request({
+						url: 'https://layer.boyaokj.cn/api/layer/list',
+						method: 'POST',
+						data: {
+							page: 1,
+							limit: 100,
+							name: this.name,
+							case_type: this.case_type,
+							cityid: this.cityid,
+							level: this.level,
+							age: this.age,
+							service_id: ''
+						},
+						success(res) {
+							that.lawyerList = res.data.data;
+						}
+					})
 				}, 1000)
 			},
 			inputChange() {
-				this.searchChange();
+				let that = this
+				uni.request({
+					url: 'https://layer.boyaokj.cn/api/layer/list',
+					method: 'POST',
+					data: {
+						page: 1,
+						limit: 100,
+						name: this.name,
+						case_type: this.case_type,
+						cityid: this.cityid,
+						level: this.level,
+						age: this.age,
+						service_id: ''
+					},
+					success(res) {
+						that.lawyerList = res.data.data;
+					}
+				})
 			},
 			async searchChange(e) {
 				console.log('----请求律师列表的信息 ------>');
@@ -245,7 +279,7 @@
 				uni.hideLoading();
 				console.log("律师列表")
 				console.log(res);	
-				this.lawyerList = res.data;
+				// this.lawyerList = res.data;
 				if (res && res.data) {
 					// this.lawyerList = res.data;
 					

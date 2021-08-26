@@ -87,6 +87,7 @@
 			},
 			over(e){
 				// console.log(e)
+				let that = this
 				uni.request({
 					url:'https://layer.boyaokj.cn/api/order/endService',
 					method:'GET',
@@ -99,9 +100,10 @@
 								title: '结束成功',
 								duration:1000
 							})
+							that.$emit("getChild1",that.type);
 					}
 				})
-				this.$emit("getChild1",this.type);
+				
 			},
 			det(item){
 				// console.log("yes")

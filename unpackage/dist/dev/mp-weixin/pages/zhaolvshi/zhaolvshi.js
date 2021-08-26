@@ -312,16 +312,50 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
 
 
     searchName: function searchName() {var _this4 = this;
+      var that = this;
       // this.isMore = true;
       if (this.ttt) {
         clearTimeout(this.ttt);
       }
       this.ttt = setTimeout(function (item) {
-        _this4.searchChange();
+        uni.request({
+          url: 'https://layer.boyaokj.cn/api/layer/list',
+          method: 'POST',
+          data: {
+            page: 1,
+            limit: 100,
+            name: _this4.name,
+            case_type: _this4.case_type,
+            cityid: _this4.cityid,
+            level: _this4.level,
+            age: _this4.age,
+            service_id: '' },
+
+          success: function success(res) {
+            that.lawyerList = res.data.data;
+          } });
+
       }, 1000);
     },
     inputChange: function inputChange() {
-      this.searchChange();
+      var that = this;
+      uni.request({
+        url: 'https://layer.boyaokj.cn/api/layer/list',
+        method: 'POST',
+        data: {
+          page: 1,
+          limit: 100,
+          name: this.name,
+          case_type: this.case_type,
+          cityid: this.cityid,
+          level: this.level,
+          age: this.age,
+          service_id: '' },
+
+        success: function success(res) {
+          that.lawyerList = res.data.data;
+        } });
+
     },
     searchChange: function searchChange(e) {var _this5 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var case_type, cityid, level, age, res, _iterator, _step, _loop;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
                 console.log('----请求律师列表的信息 ------>');if (!
@@ -377,7 +411,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                 uni.hideLoading();
                 console.log("律师列表");
                 console.log(res);
-                _this5.lawyerList = res.data;
+                // this.lawyerList = res.data;
                 if (res && res.data) {
                   // this.lawyerList = res.data;
 
@@ -397,7 +431,7 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                   }
                   console.log(_this5.lawyerList);
 
-                }case 24:case "end":return _context3.stop();}}}, _callee3);}))();
+                }case 23:case "end":return _context3.stop();}}}, _callee3);}))();
     },
     buy: function buy(e) {
       console.log(e);

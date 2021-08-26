@@ -203,6 +203,7 @@ var _default =
     },
     over: function over(e) {
       // console.log(e)
+      var that = this;
       uni.request({
         url: 'https://layer.boyaokj.cn/api/order/endService',
         method: 'GET',
@@ -215,9 +216,10 @@ var _default =
             title: '结束成功',
             duration: 1000 });
 
+          that.$emit("getChild1", that.type);
         } });
 
-      this.$emit("getChild1", this.type);
+
     },
     det: function det(item) {
       // console.log("yes")

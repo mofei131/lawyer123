@@ -196,6 +196,7 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     getChild1: function getChild1(e) {
+      console.log("延迟");
       this.type = e;
       var that = this;
       if (that.type == 2) {
@@ -208,7 +209,12 @@ __webpack_require__.r(__webpack_exports__);
             limit: that.limit },
 
           success: function success(res) {
+            console.log("延迟2");
+            console.log(res.data.data);
             that.list = res.data.data;
+            // uni.navigateTo({
+            // 	url:'./mine'
+            // })
           } });
 
       }

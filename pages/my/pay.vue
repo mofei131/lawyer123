@@ -150,6 +150,12 @@
 			async submit() {
 				let emitName = this.emitName;
 				console.log(emitName);
+				//////////////////
+				// uni.reLaunch({
+				// 	url:'/pages/my/finish?emitName='+emitName+'&phone='+this.phone
+				// })
+				// return
+				//////////////////
 				if (this.agreement == false) {
 					uni.showToast({
 						title: "请勾选支付方式",
