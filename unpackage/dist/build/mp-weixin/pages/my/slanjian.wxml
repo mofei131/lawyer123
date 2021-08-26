@@ -1,0 +1,1 @@
+<view><ordercard vue-id="990bb60c-1" list="{{list}}" bind:__l="__l"></ordercard></view>

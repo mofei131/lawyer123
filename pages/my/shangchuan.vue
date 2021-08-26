@@ -100,7 +100,7 @@
 											duration:1000
 										})
 										setTimeout(function() {
-										uni.switchTab({
+										uni.navigateTo({
 											url:'./slanjian'
 										})
 										},1000)

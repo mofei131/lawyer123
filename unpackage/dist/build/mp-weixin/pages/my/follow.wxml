@@ -1,0 +1,1 @@
+<view class="box"><lawyercard1 class="dis" vue-id="44455b1b-1" showline="{{true}}" zixun="{{true}}" lawyerlist="{{lawyerList}}" data-event-opts="{{[['^updatefollow',[['updateFollow']]],['^buy',[['buy']]]]}}" bind:updatefollow="__e" bind:buy="__e" bind:__l="__l"></lawyercard1></view>

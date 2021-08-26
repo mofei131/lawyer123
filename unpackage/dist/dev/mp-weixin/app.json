@@ -54,7 +54,8 @@
     "pages/my/yhqkeyong",
     "pages/my/shangchuan",
     "pages/service_zhixun/pinlvshi",
-    "pages/my/fwdet"
+    "pages/my/fwdet",
+    "pages/single_service/serviceDet"
   ],
   "subPackages": [],
   "window": {

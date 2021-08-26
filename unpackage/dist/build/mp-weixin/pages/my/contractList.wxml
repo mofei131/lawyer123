@@ -1,0 +1,1 @@
+<view><view class="contractlist"><block wx:for="{{contract}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view data-event-opts="{{[['tap',[['toUrl',['$0'],[[['contract','',index,'agreement_id']]]]]]]}}" class="contractitem" bindtap="__e"><view>{{item.name}}</view><image src="../../static/images/righticon.png"></image></view></block></view></view>

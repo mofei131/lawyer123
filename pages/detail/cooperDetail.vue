@@ -2,7 +2,7 @@
 	<view class="flex-column mx-start sx-stretch" style="background-color: #F4F7F7;min-height: 750px;">
 
 
-		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy == 0" @touchmove.stop.prevent="moveHandle">
+		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy1 == 0" @touchmove.stop.prevent="moveHandle">
 			<!-- <view v-html="content"></view> -->
 			<view class="image">
 				<image :src="image" mode="widthFix"></image>
@@ -15,7 +15,7 @@
 			</view> -->
 			
 		</view>
-		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy == 1" >
+		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy1 == 1" >
 			<!-- <view v-html="content"></view> -->
 			<view class="image">
 				<image :src="image"></image>
@@ -48,10 +48,13 @@
 			// this.$store.state.link = p.link
 			// uni.getStorageSync('link',p.link)
 			// console.log(p)
+			
+		},
+		async onShow() {
 			let res = await this.$myRequest({
 				url: 'agreement/detail',
 				data: {
-					id: p.coopid,
+					id: this.id,
 					user_id: this.$store.state.userInfo.user_id
 				}
 			});
@@ -65,19 +68,19 @@
 				console.log(res.data)
 				this.content = res.data.content;
 				this.image = res.data.image
+				this.buy1 = res.data.buy
 			}
 		},
-		// onShow() {
-			
-		// }
 		data() {
 			return {
 				content:'',
-				buy:'',
+				buy1:'',
 				price:'',
 				id:'',
 				link:'',
-				image:''
+				image:'',
+				buy:'',
+				
 			}
 		},
 		methods: {

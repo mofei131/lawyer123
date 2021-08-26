@@ -247,11 +247,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: 270rpx;
 	}
 	.duoshuru textarea{
 		width: 681rpx;
-		height: 151rpx;
+		height: 260rpx;
 		background: #F4F4F4;
 		border-radius: 8rpx;
 		font-size: 28rpx;

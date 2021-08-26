@@ -20,7 +20,7 @@
 }
 .gui-im-msg-right.data-v-3edf3a2b{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-webkit-flex-direction:row-reverse;flex-direction:row-reverse;}
 .gui-im-timer.data-v-3edf3a2b{margin-top:5px; line-height:30rpx; font-size:22rpx; color:#8788A3;}
-.gui-im-img.data-v-3edf3a2b{width:358rpx;height: 358rpx; border-radius:6rpx;}
+.gui-im-img.data-v-3edf3a2b{width:358rpx; border-radius:6rpx;}
 .gui-im-flex-end.data-v-3edf3a2b{display:-webkit-box;display:-webkit-flex;display:flex; -webkit-box-orient:horizontal; -webkit-box-direction:normal; -webkit-flex-direction:row; flex-direction:row; -webkit-flex-wrap:nowrap; flex-wrap:nowrap; -webkit-box-pack:end; -webkit-justify-content:flex-end; justify-content:flex-end;}
 .gui-im-voice-msg.data-v-3edf3a2b{height:80rpx; padding:0 20rpx; background-color:#E7F0F3; border-radius:6rpx; color:#2B2E3D; min-width:100rpx; max-width:400rpx;}
 .gui-im-voice-msg-text.data-v-3edf3a2b{font-size:22rpx; margin:0 5rpx;}

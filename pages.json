@@ -201,12 +201,12 @@
 		}, {
 			"path": "pages/renzheng/privateNotice",
 			"style": {
-				"navigationBarTitleText": "自有律师"
+				"navigationBarTitleText": "平台自有律师"
 			}
 		}, {
 			"path": "pages/renzheng/commonNotice",
 			"style": {
-				"navigationBarTitleText": "平台律师"
+				"navigationBarTitleText": "平台入驻律师"
 			}
 		}, {
 			"path": "pages/renzheng/classifyDet1",
@@ -341,7 +341,7 @@
             "path" : "pages/components/tankuang/xiyichangnian",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "常年法律顾问协议",
+                "navigationBarTitleText": "下单须知",
                 "enablePullDownRefresh": false
             }
             
@@ -364,6 +364,11 @@
 			"path": "pages/my/fwdet",
 			"style": {
 				"navigationBarTitleText": "聘请律师"
+			}
+		}, {
+			"path": "pages/single_service/serviceDet",
+			"style": {
+				"navigationBarTitleText": "合同详情"
 			}
 		}
     ],

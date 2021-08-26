@@ -4,7 +4,8 @@
 			<view class="tishi">提示</view>
 			<view class="flec">
 				<image @tap="agreementSuccess" class="fix"
-					:src="agreement==true?'../../../static/icon/ty0.png':'../../../static/icon/ty1.png'"></image>
+					:src="agreement==true?'../../../static/icon/ty0.png':'../../../static/icon/ty1.png'" style="width: 46rpx;
+    height: 46rpx;"></image>
 			<view class="yuedu">请阅读并同意<text class="shixia" @tap="cak()">《{{box.title}}》</text></view>
 			</view>
 			<view class="binglie">

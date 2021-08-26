@@ -40,7 +40,7 @@
 				:markers="markers" @tap="tap">
 			</map>
 		</view> -->
-		<view class="flex-row mx-center sx-center" style="">
+		<view class="flex-row mx-center sx-center" style="" v-if="source_id == '' ">
 			<view class="flex-txt-center tijiao" @tap="commit"
 				style="flex: 1 1 auto;margin: 20rpx;background-color: #57A9FF;color: #FFFFFF;">
 				提交咨询
@@ -60,6 +60,7 @@
 			this.userInfo = userInfo;
 			this.layer_id = param.layer_id;
 			this.user_id = userInfo.user_id;
+			this.source_id = param.source_id
 			// uni.getLocation({
 			// 	type: 'wgs84',
 			// 	geocode: true,
@@ -97,8 +98,8 @@
 				address: '',
 				lng: '',
 				lat: '',
-				price:''
-
+				price:'',
+				source_id:''
 
 				// searchAddress: '',
 				// title: 'map',
@@ -112,6 +113,27 @@
 
 				// ],
 			}
+		},
+		onShow() {
+			let that = this
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/service/getSourceDetail',
+				method:'GET',
+				data:{
+					source_id:this.source_id
+				},
+				success(res) {
+					console.log(res.data.data)
+					that.content = res.data.data.content
+					that.address = res.data.data.address
+					that.case_type = res.data.data.case_type
+					// for(let i in that.bussinessTypes){
+					// 	if(that.bussinessTypes[i].id == res.data.data.case_type){
+					// 		console.log(that.bussinessTypes.index())
+					// 	}
+					// }
+				}
+			})
 		},
 		methods: {
 			caseTypeChange(e) {

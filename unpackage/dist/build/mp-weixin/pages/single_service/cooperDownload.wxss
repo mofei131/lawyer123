@@ -1,0 +1,1 @@
+.collapse-item{margin-bottom:20rpx;background-color:#fff;border-radius:20rpx}.collapse-line{height:100rpx;padding:0 18rpx}.collapse-content{height:100rpx;border-top:1rpx solid #e8e8e8;padding:0 20rpx;width:600rpx;margin:auto}.current{color:#40a9ff}

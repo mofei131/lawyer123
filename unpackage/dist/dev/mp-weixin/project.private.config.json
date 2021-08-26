@@ -41,6 +41,90 @@
           "pathName": "pages/my/finish",
           "query": "emitName=undefined&phone=17616134289",
           "scene": null
+        },
+        {
+          "name": "pages/my/pay",
+          "pathName": "pages/my/pay",
+          "query": "id=573&price=0.10&typeId=2&emitName=callphone",
+          "scene": null
+        },
+        {
+          "name": "pages/renzheng/classifyDet3",
+          "pathName": "pages/renzheng/classifyDet3",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/lawyerDetail",
+          "pathName": "pages/detail/lawyerDetail",
+          "query": "id=16",
+          "scene": null
+        },
+        {
+          "name": "pages/my/serviceList",
+          "pathName": "pages/my/serviceList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/single_service/otherService",
+          "pathName": "pages/single_service/otherService",
+          "query": "id=11",
+          "scene": null
+        },
+        {
+          "name": "pages/single_service/cooperProcess",
+          "pathName": "pages/single_service/cooperProcess",
+          "query": "id=5",
+          "scene": null
+        },
+        {
+          "name": "pages/service_zhixun/pinlvshi",
+          "pathName": "pages/service_zhixun/pinlvshi",
+          "query": "layer_id=16&price=0.10&typeId=10",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/lawyerDetail",
+          "pathName": "pages/detail/lawyerDetail",
+          "query": "id=16",
+          "scene": null
+        },
+        {
+          "name": "pages/my/serviceList",
+          "pathName": "pages/my/serviceList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/problem",
+          "pathName": "pages/my/problem",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/serviceList",
+          "pathName": "pages/my/serviceList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "优惠券",
+          "pathName": "pages/youhuiquan/youhuiquan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "详情",
+          "pathName": "pages/single_service/serviceDet",
+          "query": "id=17&price=99.00&typeId=17&name=%E7%A7%81%E4%BA%BA%E5%BE%8B%E5%B8%8830%E5%A4%A9",
+          "scene": null
+        },
+        {
+          "name": "套餐详情",
+          "pathName": "pages/single_service/serviceDet",
+          "query": "id=20&price=0.01&typeId=20&name=%E6%B5%8B%E8%AF%95%E5%A5%97%E9%A4%90",
+          "scene": null
         }
       ]
     }

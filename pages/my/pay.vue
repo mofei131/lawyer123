@@ -39,7 +39,7 @@
 			return {
 				hide:false,
 				box:{
-					title:'常年法律顾问协议'
+					title:'下单须知'
 				},
 				emitName:'',
 				typeInfo: {
@@ -150,6 +150,12 @@
 			async submit() {
 				let emitName = this.emitName;
 				console.log(emitName);
+				//////////////////
+				uni.reLaunch({
+					url:'/pages/my/finish?emitName='+emitName+'&phone='+this.phone
+				})
+				return
+				//////////////////
 				if (this.agreement == false) {
 					uni.showToast({
 						title: "请勾选支付方式",
@@ -192,17 +198,21 @@
 									signType,
 									paySign,
 									success: (res) => {
+										let that = this
 										//调整到成功页面
 										uni.reLaunch({
 											url:'/pages/my/finish?emitName='+emitName+'&phone='+this.phone
 										})
+										uni.switchTab({
+											url:'/pages/index/index'
+										})
 									},fail(res) {
 										console.log(res);
 										console.log(emitName);
-										// if(emitName){
-										// 	// console.log('---'+emitName);
-										// 	uni.$emit(emitName,{ispay:true});
-										// }
+										if(emitName){
+											// console.log('---'+emitName);
+											uni.$emit(emitName,{ispay:true});
+										}
 										
 									}
 								})

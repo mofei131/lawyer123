@@ -59,7 +59,7 @@
 				id: '',
 				list: [{
 						id: 5,
-						name: "合同审核",
+						name: "合同审核/起草",
 						url: "/static/icon/icon6.png",
 						detailId: 4
 					},
@@ -143,7 +143,7 @@
 				});
 				if (res && res.code==200) {
 					uni.navigateTo({
-						url: '../my/pay?id=' + res.data.service_id + '&price=' + item.service_price + '&typeId=' + this.detailId
+						url: '../my/pay?id=' + res.data.service_id + '&price=' + item.service_price + '&typeId=' + this.detailId + '&phone='+item.mobile
 					})
 				}else{
 					uni.showToast({

@@ -97,7 +97,7 @@
 							<text lines="1" class="info8">律师服务</text>
 							<text lines="1" class="info9">回访评价</text>
 						</view> -->
-						<image src="../../static/images/liucheng3.png" style="margin: auto;" mode="widthFix"></image>
+						<image src="http://hlstore.yimetal.cn/lc3.png" style="margin: auto;" mode="widthFix"></image>
 					</view>
 				</view>
 				<!-- <view class="block5">
@@ -119,7 +119,7 @@
 
 					</view>
 				</view> -->
-				<view class="flex-row mx-center sx-center">
+				<view class="flex-row mx-center sx-center" v-if="price != '' ">
 					<view class="flex-txt-center jjm" @tap="commit"
 						style="flex: 1 1 auto;margin: 20rpx;background-color: #57A9FF;color: #FFFFFF;">
 						立即购买
@@ -142,6 +142,7 @@
 			this.layer_id = param.layer_id;
 			this.user_id = userInfo.user_id;
 			this.init();
+			this.phone = param.phone
 		},
 		data() {
 			return {
@@ -149,6 +150,7 @@
 				layer_id: '',
 				user_id: '',
 				dataSource:{},
+				phone:''
 			}
 		},
 		methods: {
@@ -213,7 +215,7 @@
 					if(res && res.code==200){
 						console.log(res);
 						uni.navigateTo({
-							url:'../my/pay?id='+res.data.service_id+'&price='+this.price+'&typeId=3'
+							url:'../my/pay?id='+res.data.service_id+'&price='+this.price+'&typeId=3'+'&phone='+this.phone
 						})
 					}else{
 						uni.showToast({
