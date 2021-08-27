@@ -23,13 +23,14 @@
 							:class="['flex-row','mx-between', 'sx-center','collapse-line',currentIndex!='' && currentIndex==0?'current':'']">
 							<view>{{item.name}}</view>
 							<!-- <view>{{item.value}}</view> -->
+							<view style="color: #40A9FF;">{{item.count}}</view>
 						</view>
 
 					</template>
 					<view class="content flex-column">
 						<view @tap="todetail(item1)" v-for="(item1,index1) in item.child" :key="item1.id"
 							class="collapse-content flex-txt-left-center">
-							{{item1.name}}
+							{{item1.name}}<text class="shuzi">{{item1.count}}</text>
 						</view>
 					</view>
 				</uni-collapse-item>
@@ -111,6 +112,23 @@
 </script>
 
 <style>
+	.content{
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: inherit;
+	}
+	.shuzi{
+		color: #40A9FF;
+		margin-left: 10rpx;
+	}
+	.collapse-content{
+		width: 350rpx!important;
+		box-sizing: border-box;
+		justify-content: center;
+		height: 80rpx!important;
+		margin: unset!important;
+		
+	}
 	.collapse-item {
 		margin-bottom: 20rpx;
 		background-color: #FFFFFF;

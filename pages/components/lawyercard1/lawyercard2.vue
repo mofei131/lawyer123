@@ -35,7 +35,7 @@
 					
 
 					<view class="field">
-						<view class="label" v-for="(ct,index1) in item.case_type" :key="ct.id" :class="[caseClass(ct)]">
+						<view class="label" v-for="(ct,index1) in item.case_type" :key="ct.id" :class="[caseClass(index1+1)]">
 							{{ct.name && ct.name.substr(0,2)}}
 						</view>
 					</view>
@@ -92,9 +92,11 @@
 		},
 		computed:{
 			caseClass(e){
+				console.log("属性")
+				console.log(e)
 				return (e)=>{
 					let clazz = 'green';
-					switch(e.id){
+					switch(e){
 						case 1:
 						clazz ='blue';
 						break;
@@ -109,6 +111,38 @@
 						break;
 						case 5:
 						clazz ='yellow';
+						break;
+						case 6:
+						clazz ='blue';
+						break;
+						case 7:
+						clazz ='green';
+						break;
+						case 8:
+						clazz ='pink';
+						break;
+						case 9:
+						clazz ='purple';
+						break;
+						case 10:
+						clazz ='yellow';
+						break;
+						case 11:
+						clazz ='blue';
+						break;
+						case 12:
+						clazz ='green';
+						break;
+						case 13:
+						clazz ='pink';
+						break;
+						case 14:
+						clazz ='purple';
+						break;
+						case 15:
+						clazz ='yellow';
+						case 16:
+						clazz ='blue';
 						break;
 						default: clazz ="red"
 					}
@@ -256,7 +290,7 @@
 		    padding: 5rpx 5rpx 5rpx 5rpx;
 	}
 
-	.gree {
+	.green {
 		background: #26CD93;
 	}
 

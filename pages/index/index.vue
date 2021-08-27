@@ -326,6 +326,10 @@
 				if (this.currentTab == current) {
 					return false;
 				} else {
+					console.log(this.currentTab)
+					console.log(current)
+					console.log(this.youXuanList)
+					console.log(this.youXuanList[this.currentTab].layer)
 					this.currentTab = current;
 					//更新card
 
@@ -344,7 +348,8 @@
 					data: {}
 				});
 				if (res && res.code == 200) {
-					// console.log(res.data);
+					console.log("刘")
+					console.log(res.data);
 					this.youXuanList = res.data;
 					this.lawyercard = res.data[this.currentTab].layer || [];
 				} else {
@@ -424,7 +429,8 @@
 	.fourcard{
 		border-radius: 0rpx 0rpx 18rpx 18rpx!important;
 		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
-		    padding-left: 20rpx!important;
+		    padding-left: 10rpx!important;
+				padding-right: 10rpx!important;
 	}
 	.study{
 		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);

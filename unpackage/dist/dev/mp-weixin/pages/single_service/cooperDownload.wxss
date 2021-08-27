@@ -1,4 +1,28 @@
 
+.content{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-orient: inherit;
+	-webkit-box-direction: inherit;
+	-webkit-flex-direction: inherit;
+	        flex-direction: inherit;
+}
+.shuzi{
+	color: #40A9FF;
+	margin-left: 10rpx;
+}
+.collapse-content{
+	width: 350rpx!important;
+	box-sizing: border-box;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	height: 80rpx!important;
+	margin: unset!important;
+}
 .collapse-item {
 	margin-bottom: 20rpx;
 	background-color: #FFFFFF;

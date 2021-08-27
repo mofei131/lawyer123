@@ -125,6 +125,12 @@
           "pathName": "pages/single_service/serviceDet",
           "query": "id=20&price=0.01&typeId=20&name=%E6%B5%8B%E8%AF%95%E5%A5%97%E9%A4%90",
           "scene": null
+        },
+        {
+          "name": "合同",
+          "pathName": "pages/single_service/cooperDownload",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -100,7 +100,8 @@ page {
 .fourcard{
 		border-radius: 0rpx 0rpx 18rpx 18rpx!important;
 		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5)!important;
-		    padding-left: 20rpx!important;
+		    padding-left: 10rpx!important;
+				padding-right: 10rpx!important;
 }
 .study{
 		    box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);

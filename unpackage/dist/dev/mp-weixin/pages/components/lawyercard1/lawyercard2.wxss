@@ -42,7 +42,7 @@
 	    text-align: center;
 	    padding: 5rpx 5rpx 5rpx 5rpx;
 }
-.gree {
+.green {
 	background: #26CD93;
 }
 .blue {
