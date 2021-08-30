@@ -8,9 +8,9 @@
 				<view class="ellipsis" style="flex:0 0 auto;font-size: 24rpx;width: 600rpx;font-family:PingFangSC-Semibold;">
 					<text>{{item.name}}</text>
 				</view>
-				<view class="ellipsis-3" style="flex: 0 0 90rpx;font-size: 22rpx;margin-top: 9rpx;color: rgba(106,106,106,1);">
+				<!-- <view class="ellipsis-3" style="flex: 0 0 90rpx;font-size: 22rpx;margin-top: 9rpx;color: rgba(106,106,106,1);">
 					{{item.intro}}
-				</view>
+				</view> -->
 				<view class="flex-row mx-between sx-center" style="flex: 0 0 auto;margin-top: 20rpx;padding: 0;">
 					<text style="color: rgba(255,77,79,1);font-size: 36rpx;">￥{{item.price}}</text>
 
@@ -54,10 +54,41 @@
 				user_id: null,
 				dataSource: [],
 				// isPay: false,
+				page:1,
+				limit:10
 			}
 		},
+		onReachBottom() {
+			console.log("触发")
+			this.page++
+				this.searchChange()
+		},
 		methods: {
-
+			searchChange(){
+				let that = this
+				uni.request({
+					url:'https://layer.boyaokj.cn/api/agreement/list',
+					method:'GET',
+					data:{
+						user_id: this.user_id,
+						page:this.page,
+						limit:this.limit
+					},
+					success(res) {
+						if(res.data.data == ''){
+							uni.showToast({
+								title: '没有了',
+								icon: 'none',
+							})
+						}else{
+							for(let i in res.data.data){
+								that.dataSource.push(res.data.data[i])
+							}
+						}
+						
+					}
+				})
+			},
 			async drawInit(cid, name) {
 				console.log({
 					cid,

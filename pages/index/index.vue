@@ -348,8 +348,6 @@
 					data: {}
 				});
 				if (res && res.code == 200) {
-					console.log("刘")
-					console.log(res.data);
 					this.youXuanList = res.data;
 					this.lawyercard = res.data[this.currentTab].layer || [];
 				} else {

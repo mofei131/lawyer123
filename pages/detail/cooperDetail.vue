@@ -18,7 +18,7 @@
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy1 == 1" >
 			<!-- <view v-html="content"></view> -->
 			<view class="image">
-				<image :src="image"></image>
+				<image :src="image" mode="widthFix"></image>
 			</view>
 			<view class="btn" @tap="download">立即下载</view>
 			<!-- <view class="flex-row mx-evenly sx-center" style="margin-top: 40rpx;">
@@ -44,7 +44,7 @@
 			this.buy = p.buy
 			this.id = p.coopid
 			this.price = p.price
-			this.link = p.link
+			// this.link = p.link
 			// this.$store.state.link = p.link
 			// uni.getStorageSync('link',p.link)
 			// console.log(p)
@@ -69,6 +69,7 @@
 				this.content = res.data.content;
 				this.image = res.data.image
 				this.buy1 = res.data.buy
+				this.link = res.data.link
 			}
 		},
 		data() {
@@ -167,6 +168,11 @@
 </script>
 
 <style>
+	.image image{
+		width: 100%;
+		/* height: auto !important;
+		margin: auto; */
+	}
 	.botbai{
 		position: fixed;
 		bottom: 0;

@@ -182,12 +182,43 @@ var _default =
     return {
       // id: null,
       user_id: null,
-      dataSource: []
+      dataSource: [],
       // isPay: false,
-    };
+      page: 1,
+      limit: 10 };
+
+  },
+  onReachBottom: function onReachBottom() {
+    console.log("触发");
+    this.page++;
+    this.searchChange();
   },
   methods: {
+    searchChange: function searchChange() {
+      var that = this;
+      uni.request({
+        url: 'https://layer.boyaokj.cn/api/agreement/list',
+        method: 'GET',
+        data: {
+          user_id: this.user_id,
+          page: this.page,
+          limit: this.limit },
 
+        success: function success(res) {
+          if (res.data.data == '') {
+            uni.showToast({
+              title: '没有了',
+              icon: 'none' });
+
+          } else {
+            for (var i in res.data.data) {
+              that.dataSource.push(res.data.data[i]);
+            }
+          }
+
+        } });
+
+    },
     drawInit: function drawInit(cid, name) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 console.log({
                   cid: cid,

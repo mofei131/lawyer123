@@ -176,11 +176,11 @@ var _default = {
               _this.buy = p.buy;
               _this.id = p.coopid;
               _this.price = p.price;
-              _this.link = p.link;
+              // this.link = p.link
               // this.$store.state.link = p.link
               // uni.getStorageSync('link',p.link)
               // console.log(p)
-            case 5:case "end":return _context.stop();}}}, _callee);}))();
+            case 4:case "end":return _context.stop();}}}, _callee);}))();
   },
   onShow: function onShow() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
                 _this2.$myRequest({
@@ -200,7 +200,8 @@ var _default = {
               console.log(res.data);
               _this2.content = res.data.content;
               _this2.image = res.data.image;
-              _this2.buy1 = res.data.buy;case 12:case "end":return _context2.stop();}}}, _callee2);}))();
+              _this2.buy1 = res.data.buy;
+              _this2.link = res.data.link;case 13:case "end":return _context2.stop();}}}, _callee2);}))();
 
   },
   data: function data() {

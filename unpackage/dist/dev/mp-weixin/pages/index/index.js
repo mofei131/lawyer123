@@ -474,8 +474,6 @@ var _vuex = __webpack_require__(/*! vuex */ 15);function _interopRequireDefault(
                     data: {} }));case 2:res = _context3.sent;
 
                 if (res && res.code == 200) {
-                  console.log("刘");
-                  console.log(res.data);
                   _this2.youXuanList = res.data;
                   _this2.lawyercard = res.data[_this2.currentTab].layer || [];
                 } else {

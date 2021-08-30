@@ -1,4 +1,9 @@
 
+.image image{
+	width: 100%;
+	/* height: auto !important;
+	margin: auto; */
+}
 .botbai{
 	position: fixed;
 	bottom: 0;
