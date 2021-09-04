@@ -57,12 +57,21 @@ page{
 	margin: auto;
 	display: block;
 }
+.deng{
+	color: #333;
+	text-align: center;
+	font-size: 32rpx;
+	margin-bottom: 40rpx;
+}
+.wuyi{
+	color: #4169E1;
+}
 .shao{
 	color: #333;
 	text-align: center;
 	font-size: 32rpx;
 	margin-top: 80rpx;
-	margin-bottom: 60rpx;
+	margin-bottom: 20rpx;
 }
 .btnbor{
 	width: 680rpx;

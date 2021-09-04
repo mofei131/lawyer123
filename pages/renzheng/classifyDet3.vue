@@ -15,6 +15,11 @@
 				<input class="gather" type="text" value="" placeholder="请输入所属律所" v-model="unit" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
+			<view class="intitem">
+				<view class="tips">律所地址：</view>
+				<input class="gather" type="text" value="" placeholder="请输入律所地址" v-model="dizhi" placeholder-style="color: #C1C2C3;"/>
+			</view>
+		<view class="boder"></view>
 		<view class="intitem">
 			<view class="tips">毕业院校：</view>
 			<input class="gather" type="text" value="" placeholder="请输入毕业院校" v-model="college" placeholder-style="color: #C1C2C3;"/>
@@ -112,7 +117,8 @@
 				shehuizhiwu:'',
 				zhiyezhengshu_xingming:'',
 				zheyezhengshu_nianjian:'',
-				cifacongyezhezhengshu:''
+				cifacongyezhezhengshu:'',
+				dizhi:''
 			}
 		},
 		onLoad(){
@@ -219,7 +225,8 @@
 						school:that.college,
 						xueli:that.array1[that.index1].id,
 						zhuanye:that.major,
-						jianjie:that.mark
+						jianjie:that.mark,
+						lvsuodizhi:that.dizhi
 					},
 					success(res){
 						that.hide = !that.hide

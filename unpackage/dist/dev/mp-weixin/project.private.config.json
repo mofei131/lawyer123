@@ -131,6 +131,42 @@
           "pathName": "pages/single_service/cooperDownload",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "合同",
+          "pathName": "pages/detail/cooperDetail",
+          "query": "coopid=74&buy=0&price=19.90&link=https%3A%2F%2Flayer.boyaokj.cn%2Fupload%2F20210830%2F53dd0f1cb131825ad353eec3799455ec.doc",
+          "scene": null
+        },
+        {
+          "name": "供油",
+          "pathName": "pages/detail/cooperDetail",
+          "query": "coopid=51&buy=1&price=0.19&link=https%3A%2F%2Flayer.boyaokj.cn%2Fupload%2F20210828%2F47838259f94a4b4475a121dd52256fa1.doc",
+          "scene": null
+        },
+        {
+          "name": "找律师",
+          "pathName": "pages/zhaolvshi/zhaolvshi",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "频率是",
+          "pathName": "pages/service_zhixun/pinlvshi",
+          "query": "layer_id=25&price=0.01&typeId=10",
+          "scene": null
+        },
+        {
+          "name": "支付完成",
+          "pathName": "pages/my/finish",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/lbdet",
+          "pathName": "pages/index/lbdet",
+          "query": "",
+          "scene": null
         }
       ]
     }

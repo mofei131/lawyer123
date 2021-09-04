@@ -96,13 +96,13 @@ var components
 try {
   components = {
     uniSearchBar: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */ "uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 522))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */ "uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 530))
     },
     uniCollapse: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse/uni-collapse */ "uni_modules/uni-collapse/components/uni-collapse/uni-collapse").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse/uni-collapse.vue */ 534))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse/uni-collapse */ "uni_modules/uni-collapse/components/uni-collapse/uni-collapse").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse/uni-collapse.vue */ 542))
     },
     uniCollapseItem: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item */ "uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item.vue */ 541))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item */ "uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item.vue */ 549))
     }
   }
 } catch (e) {
@@ -258,6 +258,7 @@ var _default =
     },
 
     todetail: function todetail(item1) {
+      // console.log(this.name)
       if (item1) {
         this.cid = item1.id;
         // this.name = item1.name;
@@ -266,6 +267,9 @@ var _default =
       uni.navigateTo({
         url: "../list/cooperModuleList?cid=".concat(this.cid, "&name=").concat(this.name) });
 
+      // uni.navigateTo({
+      // 	url:'../list/cooperModuleList?name='+this.name
+      // })
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

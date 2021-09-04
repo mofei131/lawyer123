@@ -142,7 +142,13 @@
 				})
 			},
 			show(){
-				this.hide = !this.hide
+				if(uni.getStorageSync('userInfo').mobile == null){
+					uni.switchTab({
+					   url:'./mine'
+					});
+				}else{
+					this.hide = !this.hide
+				}
 			},
 			agreementSuccess() {
 				this.agreement = !this.agreement;

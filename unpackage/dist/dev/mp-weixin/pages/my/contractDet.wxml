@@ -1,1 +1,1 @@
-<view><view class="contractdet"><image src="{{image}}" mode="widthFix"></image></view><view data-event-opts="{{[['tap',[['download',['$event']]]]]}}" class="btn" bindtap="__e">立即下载</view></view>
+<view><view class="contractdet"><image src="{{image}}" mode="widthFix"></image></view><view data-event-opts="{{[['tap',[['copy']]]]}}" class="btn" bindtap="__e">复制下载链接</view></view>

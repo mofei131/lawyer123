@@ -171,6 +171,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -185,7 +197,8 @@ var _default =
       anjian: '',
       mone: '',
       lsdh: '',
-      layer_id: '' };
+      layer_id: '',
+      show: false };
 
   },
   onLoad: function onLoad(p) {
@@ -216,6 +229,14 @@ var _default =
 
   },
   methods: {
+    zai: function zai() {
+      uni.switchTab({
+        url: '../index/index' });
+
+    },
+    zai2: function zai2() {
+      this.commit();
+    },
     anjianChange: function anjianChange(e) {
       this.index1 = e.detail.value;
     },
@@ -270,15 +291,20 @@ var _default =
         return;
       }
       var that = this;
-      uni.showModal({
-        title: '风险友情提示',
-        content: '本次付费为聘请律师的定金费用，律师费差额请转账到山东一二三法律服务集团名下对公账户，否则产生的一切损失由客户自行承担',
-        success: function success(res) {
-          if (res.confirm) {
-            that.commit();
-          }
-        } });
-
+      // uni.showModal({
+      // 	title: '风险友情提示',
+      // 	content: '本次付费为聘请律师的定金费用，律师费差额请转账到山东一二三法律服务集团名下对公账户，否则产生的一切损失由客户自行承担',
+      // 	success: function(res) {
+      // 		if (res.confirm) {
+      // 			that.commit()
+      // 		}else if (res.cancel) {
+      //         uni.switchTab({
+      //         	url:'../index/index'
+      //         })
+      // 	}
+      // 	}
+      // });
+      this.show = true;
     },
     commit: function commit() {
       var that = this;

@@ -161,19 +161,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   onLoad: function onLoad(p) {
     console.log(p);
     var userInfo = this.$store.state.userInfo;
     console.log(userInfo);
-    if (!p || !p.cid || !userInfo) {
-      uni.showToast({
-        title: '参数有误！',
-        icon: 'none' });
-
-      return;
-    }
+    // if (!p || !p.cid || !userInfo) {
+    // 	uni.showToast({
+    // 		title: '参数有误！',
+    // 		icon: 'none'
+    // 	})
+    // 	return;
+    // }
     this.id = p.cid;
     this.user_id = userInfo.user_id;
     this.drawInit(p.cid, p.name);
@@ -202,7 +203,8 @@ var _default =
         data: {
           user_id: this.user_id,
           page: this.page,
-          limit: this.limit },
+          limit: this.limit,
+          cid: this.id },
 
         success: function success(res) {
           if (res.data.data == '') {

@@ -48,11 +48,10 @@
 	right: 17rpx;
 }
 .left{
-	margin-left: 20rpx;
-	width: 160rpx;
+	width: 224rpx;
 }
 .right{
-	margin-left: 83rpx;
+	margin-left: 10rpx;
 }
 .name{
 	font-size: 26rpx;

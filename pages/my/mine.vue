@@ -157,6 +157,7 @@
 		<image src="../../static/icon/wxgficon.png" mode=""></image>
 		<view class="btnbor"></view>
 		<view class="shao">需要获取本机手机号</view>
+		<view class="deng">登录即表示已阅读并同意<text class="wuyi" @tap="fuxy">《服务协议》</text></view>
 		<button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">授权登录</button>
 	</view>
 	<view class="jds" @tap="ancl()" v-if="ewm">
@@ -225,7 +226,7 @@
 		      }
 		    },
 				onLoad(){
-					if(!uni.getStorageSync('move')){
+					if(uni.getStorageSync('userInfo').mobile == null){
 						this.xian = !this.xian
 					}
 				},
@@ -276,6 +277,11 @@
 					})
 				},
 		methods: {
+			fuxy(){
+				uni.navigateTo({
+					url:'xieyi'
+				})
+			},
 			//微信小程序保存到相册
 			        handleSetting(e){
 								let that = this
@@ -495,12 +501,21 @@
 		margin: auto;
 		display: block;
 	}
+	.deng{
+		color: #333;
+		text-align: center;
+		font-size: 32rpx;
+		margin-bottom: 40rpx;
+	}
+	.wuyi{
+		color: #4169E1;
+	}
 	.shao{
 		color: #333;
 		text-align: center;
 		font-size: 32rpx;
 		margin-top: 80rpx;
-		margin-bottom: 60rpx;
+		margin-bottom: 20rpx;
 	}
 	.btnbor{
 		width: 680rpx;

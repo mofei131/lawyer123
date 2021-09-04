@@ -36,6 +36,18 @@
 			</view>
 		</view>
 		<view class="btn" @tap="tijiao()">提交</view>
+		<view class="tanbox" v-if="show">
+			<view class="baibox">
+			<view class="top">
+				<view>风险友情提示</view>
+				<view>本次付费为案件咨询费，案件委托律师费以实际案件收费为准，请联系客服转账到平台对公账户，因其它交易方式产生的损失及纠纷，平台概不负责。</view>
+			</view>
+			<view class="bottom">
+				<view @tap="zai()">取消</view>
+				<view @tap="zai2()">确定</view>
+			</view>
+		</view>
+		</view>
 	</view>
 </template>
 
@@ -53,7 +65,8 @@
 				anjian:'',
 				mone:'',
 				lsdh:'',
-				layer_id:''
+				layer_id:'',
+				show:false
 			}
 		},
 		onLoad(p) {
@@ -84,6 +97,14 @@
 			})
 		},
 		methods:{
+			zai(){
+				uni.switchTab({
+					url:'../index/index'
+				})
+			},
+			zai2(){
+				this.commit()
+			},
 			anjianChange(e) {
 				this.index1 = e.detail.value;
 			},
@@ -138,15 +159,20 @@
 					return
 				}
 				let that = this
-				uni.showModal({
-					title: '风险友情提示',
-					content: '本次付费为聘请律师的定金费用，律师费差额请转账到山东一二三法律服务集团名下对公账户，否则产生的一切损失由客户自行承担',
-					success: function(res) {
-						if (res.confirm) {
-							that.commit()
-						}
-					}
-				});
+				// uni.showModal({
+				// 	title: '风险友情提示',
+				// 	content: '本次付费为聘请律师的定金费用，律师费差额请转账到山东一二三法律服务集团名下对公账户，否则产生的一切损失由客户自行承担',
+				// 	success: function(res) {
+				// 		if (res.confirm) {
+				// 			that.commit()
+				// 		}else if (res.cancel) {
+    //         uni.switchTab({
+    //         	url:'../index/index'
+    //         })
+				// 	}
+				// 	}
+				// });
+				this.show = true
 			},
 			commit(){
 				let that = this
@@ -217,6 +243,59 @@
 </script>
 
 <style>
+	.bottom view:nth-child(2){
+		border-left: 1rpx solid #e8e8e8;
+		color: 	#4682B4;
+	}
+	.bottom view{
+		width: 330rpx;
+		font-size: 32rpx;
+		color: #000000;
+		border-top: 1rpx solid #e8e8e8;
+		text-align: center;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
+	.bottom{
+		display: flex;
+		height: 100rpx;
+		justify-content: space-between;
+		margin-top: 60rpx;
+	}
+	.top view:nth-child(1){
+		font-size: 32rpx;
+		text-align: center;
+		color: #000;
+		font-weight: bold;
+		padding-top: 80rpx;
+	}
+	.top view:nth-child(2){
+		font-size: 28rpx;
+		text-align: start;
+		color: #333;
+		padding-top: 30rpx;
+		width: 580rpx;
+		margin: auto;
+		text-indent: 56rpx;
+	}
+	.baibox{
+		width: 660rpx;
+		height: 465rpx;
+		margin: auto;
+		margin-top: 50%;
+		background-color: #fff;
+		border-radius: 18rpx;
+	}
+	.tanbox{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(0,0,0,.2);
+		z-index: 5;
+	}
 	page{
 		background: #F4F7F7;
 	}

@@ -1,4 +1,12 @@
 
+.xiaw{
+	text-align: center;
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #666666;
+	margin-top: 10rpx;
+}
 .fix{
 	margin-top: 0;
 }
@@ -62,7 +70,7 @@
 	        justify-content: space-between;
 	width: 680rpx;
 	margin: auto;
-	margin-top: 79rpx;
+	margin-top: 29rpx;
 }
 .binglie view{
 	width: 334rpx;

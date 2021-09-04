@@ -40,7 +40,7 @@
 	.cardone{
 		/* width: 338rpx; */
 		display: flex;
-		margin-top: 28rpx;
+		margin-top: 48rpx;
 		margin-left: 32rpx;
 	}
 	.cardoneleft image{

@@ -56,7 +56,8 @@
     "pages/my/shangchuan",
     "pages/service_zhixun/pinlvshi",
     "pages/my/fwdet",
-    "pages/single_service/serviceDet"
+    "pages/single_service/serviceDet",
+    "pages/index/lbdet"
   ],
   "subPackages": [],
   "window": {
@@ -103,6 +104,5 @@
   },
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

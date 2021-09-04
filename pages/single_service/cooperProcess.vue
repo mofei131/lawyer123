@@ -15,7 +15,7 @@
 					<text lines="1" class="info3">{{name}}</text>
 				</view>
 				<view class="group4">
-					<text v-if="id == 5" lines="1" class="paragraph1">帮您绕开别人掉过的“坑”，让您放心大胆前行</text>
+					<text v-if="id == 5" lines="1" class="paragraph1">帮您绕开别人掉过的“坑”，让您放心前行</text>
 					<text v-else-if="id == 6" lines="1" class="paragraph1">用法律手段将欠款追回，向对方提出正式警告，促成纠纷解决</text>
 					<text v-else-if="id == 7" lines="1" class="paragraph1">通过专业的谈判技巧迫使债务人偿还欠款</text>
 					<text v-else-if="id == 8" lines="1" class="paragraph1">让法官更好的明了案情，理解当事人的诉求，争取主动</text>
@@ -410,7 +410,7 @@
 		font-family: PingFangSC-Semibold;
 		white-space: nowrap;
 		line-height: 50rpx;
-		text-align: center;
+		text-align: start;
 	}
 
 	.group4 {

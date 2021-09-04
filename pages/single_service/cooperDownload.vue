@@ -97,6 +97,7 @@
 			},
 
 			todetail(item1){
+				// console.log(this.name)
 				if(item1){
 					this.cid = item1.id;
 					// this.name = item1.name;
@@ -105,6 +106,9 @@
 				uni.navigateTo({
 					url: `../list/cooperModuleList?cid=${this.cid}&name=${this.name}`
 				})
+				// uni.navigateTo({
+				// 	url:'../list/cooperModuleList?name='+this.name
+				// })
 			}
 
 		}

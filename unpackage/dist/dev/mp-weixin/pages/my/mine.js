@@ -130,7 +130,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 480));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var iconlist = function iconlist() {__webpack_require__.e(/*! require.ensure | pages/components/iconlist/iconlist */ "pages/components/iconlist/iconlist").then((function () {return resolve(__webpack_require__(/*! ../components/iconlist/iconlist.vue */ 488));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -357,7 +358,7 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onLoad: function onLoad() {
-    if (!uni.getStorageSync('move')) {
+    if (uni.getStorageSync('userInfo').mobile == null) {
       this.xian = !this.xian;
     }
   },
@@ -408,6 +409,11 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
+    fuxy: function fuxy() {
+      uni.navigateTo({
+        url: 'xieyi' });
+
+    },
     //微信小程序保存到相册
     handleSetting: function handleSetting(e) {
       var that = this;

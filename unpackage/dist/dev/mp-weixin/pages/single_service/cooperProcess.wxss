@@ -188,7 +188,7 @@
 		font-family: PingFangSC-Semibold;
 		white-space: nowrap;
 		line-height: 50rpx;
-		text-align: center;
+		text-align: start;
 }
 .group4 {
 

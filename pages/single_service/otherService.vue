@@ -12,7 +12,7 @@
 				<view style="position: relative;height: 379rpx;width: 100%;">
 					<image style="width: 100%;height: 379rpx;" mode="scaleToFill" src="/static/icon/cooper_back112.png">
 					</image>
-					<view style="position: absolute;top: 195rpx;left: 110rpx;">
+					<view style="position: absolute;top: 195rpx;left: 60rpx;">
 						<text lines="1" class="info3">超值套餐</text>
 					</view>
 					<view class="group4">
@@ -22,11 +22,12 @@
 				
 				<view class="block2" v-for="(item,index) in dataSource" :key="index" @tap="det(item)">
 					<view class="group7">
-						<text lines="1" decode="true" class="info4">～&nbsp;套餐{{index+1}}&nbsp;～</text>
+						<!-- <text lines="1" decode="true" class="info4">～&nbsp;套餐{{index+1}}&nbsp;～</text> -->
+						<text lines="1" decode="true" class="info4">～{{item.name}}～</text>
 						<view class="bd1"></view>
-						<view class="ellipsis" style="width: 500rpx;margin: 10rpx 0;  color: rgba(106,106,106,1);font-size: 24rpx;font-family: PingFangSC-Semibold;">{{item.name}}</view>
+						<view class="ellipsis" style="width: 500rpx;margin: 10rpx 0;  color: rgba(106,106,106,1);font-size: 28rpx;font-family: PingFangSC-Semibold;">{{item.name}}</view>
 						<view
-							class="info5" style="height: 87rpx;overflow: auto;">
+							class="info5" style="overflow: auto;">
 							<rich-text :nodes="item.service"></rich-text>
 							</view>
 					</view>
@@ -35,7 +36,7 @@
 						<!-- @tap="toPay(item)" -->
 						<view 
 							style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
-							立即购买</view>
+							立即查看</view>
 					</view>
 				</view>
 
@@ -125,9 +126,10 @@
 		  overflow: hidden;
 		  text-overflow: ellipsis;
 		  display: -webkit-box;
-		  -webkit-line-clamp: 2;
-		  line-clamp: 2;
+		  -webkit-line-clamp: 5;
+		  line-clamp: 5;
 		  -webkit-box-orient: vertical;
+			line-height: 38rpx;
 	}
 	.page {
 		z-index: 1;
@@ -285,13 +287,13 @@
 		font-family: PingFangSC-Semibold;
 		white-space: nowrap;
 		line-height: 50rpx;
-		text-align: center;
+		text-align: start;
+		margin-left: -20rpx;
 	}
 
 	.group4 {
-		left: 91rpx;
+		left: 40rpx;
 		top: 258rpx;
-		width: 240rpx;
 		height: 66rpx;
 		position: absolute;
 		flex-direction: row;
@@ -300,7 +302,7 @@
 
 	.paragraph1 {
 		z-index: 84;
-		width: 200rpx;
+		width: 380rpx;
 		height: 66rpx;
 		display: block;
 		overflow-wrap: break-word;
@@ -308,7 +310,7 @@
 		font-size: 24rpx;
 		font-family: PingFangSC-Medium;
 		line-height: 33rpx;
-		text-align: center;
+		text-align: start;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
@@ -339,11 +341,11 @@
 
 	.info4 {
 		z-index: 5;
-		width: 160rpx;
+		/* width: 160rpx; */
 		display: block;
 		overflow-wrap: break-word;
 		color: rgba(64, 169, 255, 1);
-		font-size: 24rpx;
+		font-size: 28rpx;
 		font-family: PingFangSC-Medium;
 		white-space: nowrap;
 		line-height: 33rpx;
@@ -365,7 +367,7 @@
 		z-index: 7;
 		width: 664rpx;
 		color: rgba(106, 106, 106, 1);
-		font-size: 22rpx;
+		font-size: 26rpx;
 		font-family: PingFangSC-Regular;
 		line-height: 30rpx;
 		text-align: left;

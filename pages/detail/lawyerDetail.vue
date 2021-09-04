@@ -29,6 +29,10 @@
 					<view class="intro_title" style="flex: 0 0 140rpx;">就职律所：</view>
 					<view style="flex: 1 1 auto;color: rgba(102,102,102,1);"> {{lawyerList[0] && lawyerList[0].lvsuo}}</view>
 				</view>
+				<view class="flex-row mx-start sx-center">
+					<view class="intro_title" style="flex: 0 0 140rpx;">律所地址：</view>
+					<view style="flex: 1 1 auto;color: rgba(102,102,102,1);"> {{lawyerList[0] && lawyerList[0].lvsuodizhi}}</view>
+				</view>
 				<view class="flex-row mx-start sx-start" style="margin-top: 20rpx;">
 					<view class="intro_title" style="flex: 0 0 140rpx;">个人简介：</view>
 					<view style="flex: 1 1 auto ;height: 200rpx;overflow: auto;color: rgba(102,102,102,1);">

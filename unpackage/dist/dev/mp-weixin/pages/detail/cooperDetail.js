@@ -165,6 +165,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 // import uParse from "@/components/feng-parse/parse.vue"
 var _default = {
@@ -233,37 +235,67 @@ var _default = {
         url: "../detail/cooperDetail?id=1" });
 
     },
-    download: function download() {
-      uni.downloadFile({
-        url: this.link, //文件链接
-        success: function success(res) {
-          //statusCode状态为200表示请求成功，tempFIlePath临时路径
-          if (res.statusCode == 200) {
-            console.log("ccc", res.tempFilePath);
-            //保存到本地
-            uni.saveFile({
-              tempFilePath: res.tempFilePath,
-              success: function success(res) {
-                //res.savedFilePath文件的保存路径
-                //保存成功并打开文件
-                uni.openDocument({
-                  filePath: res.savedFilePath,
-                  success: function success(res) {return console.log('成功打开文档');} });
+    copy: function copy() {
+      uni.setClipboardData({
+        data: this.link,
+        success: function success() {
+          uni.showModal({
+            title: '提示',
+            content: '文件下载链接已复制',
+            showCancel: false,
+            success: function success(res) {
+              if (res.confirm) {
+                // uni.navigateBack({
 
-                console.log("bbb", res);
-              },
-              fail: function fail() {
-                console.log('打开失败');
-              } });
+                // })
+              }
+            } });
 
-          }
-          console.log("aaa", res);
-        },
-        fail: function fail() {
-          console.log('下载失败');
         } });
 
     },
+    // download(){
+    // 	  uni.downloadFile({
+    // 	        url:this.link, //文件链接
+    // 	        success: function(res) {
+    // 	            //statusCode状态为200表示请求成功，tempFIlePath临时路径
+    // 	            if (res.statusCode == 200) {
+    // 	                console.log("ccc", res.tempFilePath);
+    // 	                //保存到本地
+    // 									// uni.showModal({
+    // 									// 	title: '已保存到',
+    // 									// 	content: res.tempFilePath,
+    // 									// 	success: function (res) {
+    // 									// 	        if (res.confirm) {
+
+    // 									// 	        } else if (res.cancel) {
+    // 									// 	            console.log('用户点击取消');
+    // 									// 	        }
+    // 									// 	    }
+    // 									// })
+    // 	                uni.saveFile({
+    // 	                    tempFilePath: res.tempFilePath,
+    // 	                    success: function(res) {
+    // 	                        // res.savedFilePath文件的保存路径
+    // 	                        // 保存成功并打开文件
+    // 	                				uni.openDocument({
+    // 	                				    filePath: res.savedFilePath,
+    // 	                				    success: (res) => console.log('成功打开文档')
+    // 	                				})
+    // 	                        console.log("bbb", res);
+    // 	                    },
+    // 	                    fail() {
+    // 	                        console.log('打开失败')
+    // 	                    }
+    // 	                })
+    // 	            }
+    // 	            console.log("aaa", res);
+    // 	        },
+    // 	        fail() {
+    // 	            console.log('下载失败')
+    // 	        }
+    // 	    })
+    // },
     toPay: function toPay() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
 
 

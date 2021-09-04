@@ -304,9 +304,9 @@ var _default =
                       success: function success(res) {
                         console.log("数据");
                         console.log(res.data.data);
+                        that.keyong = res.data.data;
                         for (var i in res.data.data) {
                           console.log(res.data.data[i].starttime);
-                          that.keyong = res.data.data;
                           var date = new Date(res.data.data[i].starttime * 1000);
                           var y = date.getFullYear();
                           var MM = date.getMonth() + 1;

@@ -4,7 +4,8 @@
 			<!-- <view  v-html="content"></view> -->
 			<image :src="image" mode="widthFix"></image>
 		</view>
-		<view class="btn" @tap="download">立即下载</view>
+		<!-- <view class="btn" @tap="download">立即下载</view> -->
+		<view class="btn" @tap="copy()">复制下载链接</view>
 	</view>
 </template>
 
@@ -40,38 +41,57 @@
 			})
 		},
 		methods:{
-			download(){
-				console.log(this.$store.state.link)
-				  uni.downloadFile({
-				        url:this.link, //文件链接
-				        success: function(res) {
-				            //statusCode状态为200表示请求成功，tempFIlePath临时路径
-				            if (res.statusCode == 200) {
-				                console.log("ccc", res.tempFilePath);
-				                //保存到本地
-				                uni.saveFile({
-				                    tempFilePath: res.tempFilePath,
-				                    success: function(res) {
-				                        //res.savedFilePath文件的保存路径
-				                        //保存成功并打开文件
-				                        uni.openDocument({
-				                            filePath: res.savedFilePath,
-				                            success: (res) => console.log('成功打开文档')
-				                        })
-				                        console.log("bbb", res);
-				                    },
-				                    fail() {
-				                        console.log('打开失败')
-				                    }
-				                })
-				            }
-				            console.log("aaa", res);
-				        },
-				        fail() {
-				            console.log('下载失败')
-				        }
-				    })
+			copy(){
+				uni.setClipboardData({
+					data:this.link,
+					success() {
+						uni.showModal({
+								title: '提示',
+								content: '文件下载链接已复制',
+								showCancel:false,
+								success: function (res) {
+												if (res.confirm) {
+													// uni.navigateBack({
+														
+													// })
+												}
+										}
+							})
+					}
+				})
 			},
+			// download(){
+			// 	console.log(this.$store.state.link)
+			// 	  uni.downloadFile({
+			// 	        url:this.link, //文件链接
+			// 	        success: function(res) {
+			// 	            //statusCode状态为200表示请求成功，tempFIlePath临时路径
+			// 	            if (res.statusCode == 200) {
+			// 	                console.log("ccc", res.tempFilePath);
+			// 	                //保存到本地
+			// 	                uni.saveFile({
+			// 	                    tempFilePath: res.tempFilePath,
+			// 	                    success: function(res) {
+			// 	                        //res.savedFilePath文件的保存路径
+			// 	                        //保存成功并打开文件
+			// 	                        uni.openDocument({
+			// 	                            filePath: res.savedFilePath,
+			// 	                            success: (res) => console.log('成功打开文档')
+			// 	                        })
+			// 	                        console.log("bbb", res);
+			// 	                    },
+			// 	                    fail() {
+			// 	                        console.log('打开失败')
+			// 	                    }
+			// 	                })
+			// 	            }
+			// 	            console.log("aaa", res);
+			// 	        },
+			// 	        fail() {
+			// 	            console.log('下载失败')
+			// 	        }
+			// 	    })
+			// },
 		}
 	}
 </script>

@@ -6,12 +6,13 @@
 				<image @tap="agreementSuccess" class="fix"
 					:src="agreement==true?'../../../static/icon/ty0.png':'../../../static/icon/ty1.png'" style="width: 46rpx;
     height: 46rpx;"></image>
-			<view class="yuedu">请阅读并同意<text class="shixia" @tap="cak()">《{{box.title}}》</text></view>
+			<view class="yuedu">请仔细阅读并同意<text class="shixia" @tap="cak()">《{{box.title}}》</text></view>
 			</view>
+			<!-- <view class="xiaw">律师已接单，请您耐心等待，注意接听律师电话。</view> -->
 			<view class="binglie">
 				<!-- <view class="ck" @tap="cak()">查看协议</view> -->
-				<view class="ty2"  v-if="agreement==true">同意协议</view>
-					<view class="ty" @tap="submit()"  v-if="agreement==false">同意协议</view>
+				<view class="ty2"  v-if="agreement==true">确认</view>
+					<view class="ty" @tap="submit()"  v-if="agreement==false">确认</view>
 			</view>
 			<image src="@/static/icon/closeicon.png" class="close" @tap="show()"></image>
 		</view>
@@ -44,6 +45,14 @@
 </script>
 
 <style>
+	.xiaw{
+		text-align: center;
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #666666;
+		margin-top: 10rpx;
+	}
 	.fix{
 		margin-top: 0;
 	}
@@ -99,7 +108,7 @@
 		justify-content: space-between;
 		width: 680rpx;
 		margin: auto;
-		margin-top: 79rpx;
+		margin-top: 29rpx;
 	}
 	.binglie view{
 		width: 334rpx;

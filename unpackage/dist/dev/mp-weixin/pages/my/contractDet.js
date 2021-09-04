@@ -140,6 +140,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {var _ref;
@@ -172,38 +173,58 @@ var _default =
 
   },
   methods: {
-    download: function download() {
-      console.log(this.$store.state.link);
-      uni.downloadFile({
-        url: this.link, //文件链接
-        success: function success(res) {
-          //statusCode状态为200表示请求成功，tempFIlePath临时路径
-          if (res.statusCode == 200) {
-            console.log("ccc", res.tempFilePath);
-            //保存到本地
-            uni.saveFile({
-              tempFilePath: res.tempFilePath,
-              success: function success(res) {
-                //res.savedFilePath文件的保存路径
-                //保存成功并打开文件
-                uni.openDocument({
-                  filePath: res.savedFilePath,
-                  success: function success(res) {return console.log('成功打开文档');} });
+    copy: function copy() {
+      uni.setClipboardData({
+        data: this.link,
+        success: function success() {
+          uni.showModal({
+            title: '提示',
+            content: '文件下载链接已复制',
+            showCancel: false,
+            success: function success(res) {
+              if (res.confirm) {
+                // uni.navigateBack({
 
-                console.log("bbb", res);
-              },
-              fail: function fail() {
-                console.log('打开失败');
-              } });
+                // })
+              }
+            } });
 
-          }
-          console.log("aaa", res);
-        },
-        fail: function fail() {
-          console.log('下载失败');
         } });
 
-    } } };exports.default = _default;
+    }
+    // download(){
+    // 	console.log(this.$store.state.link)
+    // 	  uni.downloadFile({
+    // 	        url:this.link, //文件链接
+    // 	        success: function(res) {
+    // 	            //statusCode状态为200表示请求成功，tempFIlePath临时路径
+    // 	            if (res.statusCode == 200) {
+    // 	                console.log("ccc", res.tempFilePath);
+    // 	                //保存到本地
+    // 	                uni.saveFile({
+    // 	                    tempFilePath: res.tempFilePath,
+    // 	                    success: function(res) {
+    // 	                        //res.savedFilePath文件的保存路径
+    // 	                        //保存成功并打开文件
+    // 	                        uni.openDocument({
+    // 	                            filePath: res.savedFilePath,
+    // 	                            success: (res) => console.log('成功打开文档')
+    // 	                        })
+    // 	                        console.log("bbb", res);
+    // 	                    },
+    // 	                    fail() {
+    // 	                        console.log('打开失败')
+    // 	                    }
+    // 	                })
+    // 	            }
+    // 	            console.log("aaa", res);
+    // 	        },
+    // 	        fail() {
+    // 	            console.log('下载失败')
+    // 	        }
+    // 	    })
+    // },
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

@@ -43,7 +43,7 @@
 						style="flex: 0 0 auto;font-size: 22rpx;color: rgba(153,153,153,1);">
 						<view class="flex-row">职业年限：{{item.zhiyenianxian && item.zhiyenianxian.name}}</view>
 						<view class="flex-row">已咨询：<text style="color: red;">{{item.case_num}}</text>件</view>
-						<view class="flex-row">好评：<text style="color: red;">{{praise||0}}</text>次</view>
+						<view class="flex-row">好评：<text style="color: red;">{{item.praise||0}}</text>次</view>
 					</view>
 
 					<view v-if="isbuy" class="flex-row mx-between sx-center" style="flex: 0 0 auto;">

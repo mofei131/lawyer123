@@ -3,10 +3,11 @@
 
 
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy1 == 0" @touchmove.stop.prevent="moveHandle">
-			<!-- <view v-html="content"></view> -->
-			<view class="image">
+			<!-- <view class="txt"></view> -->
+			<view class="txt" v-html="content"></view>
+			<!-- <view class="image">
 				<image :src="image" mode="widthFix"></image>
-			</view>
+			</view> -->
 			<!-- <u-parse :content="content" @navigate="navigate"></u-parse> -->
 			<view class="btn" @tap="toPay()">立即购买</view>
 			<!-- <view class="flex-row mx-evenly sx-center" style="margin-top: 40rpx;">
@@ -16,11 +17,12 @@
 			
 		</view>
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy1 == 1" >
-			<!-- <view v-html="content"></view> -->
-			<view class="image">
+			<view v-html="content"></view>
+			<!-- <view class="image">
 				<image :src="image" mode="widthFix"></image>
-			</view>
-			<view class="btn" @tap="download">立即下载</view>
+			</view> -->
+			<!-- @tap="download" -->
+			<view class="btn" @tap="copy()">复制下载链接</view>
 			<!-- <view class="flex-row mx-evenly sx-center" style="margin-top: 40rpx;">
 				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #4CD964; color: #FFFFFF;" @tap="toIndex">返回首页</view>
 				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #6CA5FF; color: #FFFFFF;" @tap="download">立即下载</view>
@@ -101,37 +103,67 @@
 					url: "../detail/cooperDetail?id=1"
 				})
 			},
-			download(){
-				  uni.downloadFile({
-				        url:this.link, //文件链接
-				        success: function(res) {
-				            //statusCode状态为200表示请求成功，tempFIlePath临时路径
-				            if (res.statusCode == 200) {
-				                console.log("ccc", res.tempFilePath);
-				                //保存到本地
-				                uni.saveFile({
-				                    tempFilePath: res.tempFilePath,
-				                    success: function(res) {
-				                        //res.savedFilePath文件的保存路径
-				                        //保存成功并打开文件
-				                        uni.openDocument({
-				                            filePath: res.savedFilePath,
-				                            success: (res) => console.log('成功打开文档')
-				                        })
-				                        console.log("bbb", res);
-				                    },
-				                    fail() {
-				                        console.log('打开失败')
-				                    }
-				                })
-				            }
-				            console.log("aaa", res);
-				        },
-				        fail() {
-				            console.log('下载失败')
-				        }
-				    })
+			copy(){
+				uni.setClipboardData({
+					data:this.link,
+					success() {
+						uni.showModal({
+								title: '提示',
+								content: '文件下载链接已复制',
+								showCancel:false,
+								success: function (res) {
+												if (res.confirm) {
+													// uni.navigateBack({
+														
+													// })
+												}
+										}
+							})
+					}
+				})
 			},
+			// download(){
+			// 	  uni.downloadFile({
+			// 	        url:this.link, //文件链接
+			// 	        success: function(res) {
+			// 	            //statusCode状态为200表示请求成功，tempFIlePath临时路径
+			// 	            if (res.statusCode == 200) {
+			// 	                console.log("ccc", res.tempFilePath);
+			// 	                //保存到本地
+			// 									// uni.showModal({
+			// 									// 	title: '已保存到',
+			// 									// 	content: res.tempFilePath,
+			// 									// 	success: function (res) {
+			// 									// 	        if (res.confirm) {
+													          
+			// 									// 	        } else if (res.cancel) {
+			// 									// 	            console.log('用户点击取消');
+			// 									// 	        }
+			// 									// 	    }
+			// 									// })
+			// 	                uni.saveFile({
+			// 	                    tempFilePath: res.tempFilePath,
+			// 	                    success: function(res) {
+			// 	                        // res.savedFilePath文件的保存路径
+			// 	                        // 保存成功并打开文件
+			// 	                				uni.openDocument({
+			// 	                				    filePath: res.savedFilePath,
+			// 	                				    success: (res) => console.log('成功打开文档')
+			// 	                				})
+			// 	                        console.log("bbb", res);
+			// 	                    },
+			// 	                    fail() {
+			// 	                        console.log('打开失败')
+			// 	                    }
+			// 	                })
+			// 	            }
+			// 	            console.log("aaa", res);
+			// 	        },
+			// 	        fail() {
+			// 	            console.log('下载失败')
+			// 	        }
+			// 	    })
+			// },
 			async toPay() {
 				// console.log(item);
 				//跳转到支付页面；支付成功，请求
@@ -168,10 +200,34 @@
 </script>
 
 <style>
+	.txt{
+		position: relative;
+		/* background-color: rgb(220,220,220,.98);
+		filter: blur(60px);
+		bottom: 0;
+		filter:blur(5px);
+		margin-left: -20rpx; */
+		
+		filter: blur(5rpx);
+		user-select: none;
+		    /* position: fixed;
+		    bottom: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 60%;
+		    z-index: 1; */
+	}
+	.txt::after{
+		background-color: rgb(253,253,253,.2);
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		z-index: 1;
+		width: 100%;
+		height: 60%;
+	}
 	.image image{
 		width: 100%;
-		/* height: auto !important;
-		margin: auto; */
 	}
 	.botbai{
 		position: fixed;

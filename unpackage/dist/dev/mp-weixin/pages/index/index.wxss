@@ -77,6 +77,55 @@
 }
 
 
+.ssright swiper-item{
+		padding-top: 8rpx;
+		box-sizing: border-box;
+}
+.ssright swiper{
+		height: 75rpx;
+}
+.sslayer{
+		color: #597EF7;
+}
+.ssname{
+		color: #40A9FF;
+}
+.hul{
+		font-size: 22rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #333;
+		 white-space:nowrap;
+		 overflow:hidden;
+		 text-overflow:ellipsis;
+		 width: 572rpx;
+}
+.ssright{
+		margin-left: 132rpx;
+}
+.ssleft{
+		position: absolute;
+		top: 7rpx;
+		left: 11rpx;
+}
+.ssleft image{
+		width: 102rpx;
+		height: 65rpx;
+}
+.shishi{
+		width: 710rpx;
+		height: 80rpx;
+		background: #FFFFFF;
+		border-radius: 14rpx;
+		margin: auto;
+		/* display: flex;
+		justify-content: left;
+		align-items: center; */
+		box-sizing: border-box;
+		margin-top: 24rpx;
+		position: relative;
+		box-shadow: 0px 2px 4px 0px rgba(147, 147, 147, 0.5);
+}
 page {
 		background: #F8F8F8;
 }

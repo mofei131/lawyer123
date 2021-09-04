@@ -172,9 +172,9 @@
 				            							success(res) {
 																		console.log("数据")
 																		console.log(res.data.data)
+																		that.keyong = res.data.data
 				            								for(let i in res.data.data){
 				            								console.log(res.data.data[i].starttime)
-				            								that.keyong = res.data.data
 				            								let date = new Date(res.data.data[i].starttime * 1000);
 				            								 let y = date.getFullYear();
 				            				        let MM = date.getMonth() + 1;
@@ -258,11 +258,10 @@
 		right: 17rpx;
 	}
 	.left{
-		margin-left: 20rpx;
-		width: 160rpx;
+		width: 224rpx;
 	}
 	.right{
-		margin-left: 83rpx;
+		margin-left: 10rpx;
 	}
 	.name{
 		font-size: 26rpx;

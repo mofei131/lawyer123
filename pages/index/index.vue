@@ -3,7 +3,7 @@
 		<search></search>
 
 		<swiper class="swiper flex-column mx-start sx-stretch" circular :autoplay="true" interval="3000" duration="500">
-			<swiper-item class="flex-column mx-start sx-stretch" v-for="(item,index) in banner" :key="index">
+			<swiper-item class="flex-column mx-start sx-stretch" v-for="(item,index) in banner" :key="index" @tap="toyh(item)">
 				<!-- <view class="swiper-item backImgFull" mode="widthFix" :style="{backgroundImage: 'url(/static/images/banner.png)'}">
 				</view> -->
 				<image class="swiper-item backImgFull" mode="widthFix" :src="item.images"></image>
@@ -15,6 +15,19 @@
 
 		<iconlist :item='item1'></iconlist>
 		<iconlist class="danxiang" :item='item2'></iconlist>
+		<view class="shishi">
+			<view class="ssleft">
+				<image src="../../static/icon/shishi.png"></image>
+			</view>
+			<view class="ssright">
+				<swiper vertical="true" display-multiple-items=2 circular="true" autoplay="true" >
+					<swiper-item v-for="(item,index) in xiaoxi" :key="index" @touchmove.stop='stopTouchMove'>
+						<view class="hul" v-if="item.layer == ''"><text class="ssname">{{item.nickname}} </text>购买了 {{item.service}}</view>
+						<view class="hul" v-else><text class="ssname">{{item.nickname}} </text>向<text class="sslayer"> {{item.layer}}  </text> 发起了 {{item.service}}</view>
+					</swiper-item>
+				</swiper>
+			</view>
+		</view>
 		<view class="modtitle" @tap="toYouxuan">
 			<view class="modleft">
 				<view class="blue"></view>
@@ -98,6 +111,7 @@
 		},
 		data() {
 			return {
+				xiaoxi:[],
 				youXuanList: [],
 				scrollLeft: 0,
 				isClickChange: false,
@@ -263,6 +277,25 @@
 					// console.log(res.data.data)
 				}
 			})
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/order/orderScroll',
+				method:'GET',
+				success(res) {
+					that.xiaoxi = res.data.data
+					// console.log(res.data.data)
+				}
+			})
+			let user = uni.getStorageSync('userInfo');
+			uni.request({
+				url:'https://layer.boyaokj.cn/api/wechat/getUserinfo',
+				method:'GET',
+				data:{
+					user_id:user.user_id
+				},
+				success(res) {
+					uni.setStorageSync('userInfo',res.data.data);
+				}
+			})
 		},
 		computed: {
 			// 使用对象展开运算符将 getter 混入 computed 对象中
@@ -283,6 +316,20 @@
 
 		},
 		methods: {
+			toyh(item){
+				if(item.link == ""){
+					uni.navigateTo({
+						url:'./lbdet?id='+item.id
+					})
+				}else{
+					uni.switchTab({
+						url:item.link
+					})
+				}
+			},
+			stopTouchMove(){
+				return true
+			},
 			getPhoneNumber(e) {
 
 				let that = this
@@ -404,6 +451,55 @@
 </script>
 
 <style>
+	.ssright swiper-item{
+		padding-top: 8rpx;
+		box-sizing: border-box;
+	}
+	.ssright swiper{
+		height: 75rpx;
+	}
+	.sslayer{
+		color: #597EF7;
+	}
+	.ssname{
+		color: #40A9FF;
+	}
+	.hul{
+		font-size: 22rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #333;
+		 white-space:nowrap;
+		 overflow:hidden;
+		 text-overflow:ellipsis;
+		 width: 572rpx;
+	}
+	.ssright{
+		margin-left: 132rpx;
+	}
+	.ssleft{
+		position: absolute;
+		top: 7rpx;
+		left: 11rpx;
+	}
+	.ssleft image{
+		width: 102rpx;
+		height: 65rpx;
+	}
+	.shishi{
+		width: 710rpx;
+		height: 80rpx;
+		background: #FFFFFF;
+		border-radius: 14rpx;
+		margin: auto;
+		/* display: flex;
+		justify-content: left;
+		align-items: center; */
+		box-sizing: border-box;
+		margin-top: 24rpx;
+		position: relative;
+		box-shadow: 0px 2px 4px 0px rgba(147, 147, 147, 0.5);
+	}
 	page {
 		background: #F8F8F8;
 	}

@@ -17,9 +17,10 @@
 					<view v-if="item.buy"
 						style="background-color: #FF4D4F;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
 						已经购买</view>
-					<view v-else @tap="toPay(item)"
+						<!-- @tap="toPay(item)" -->
+					<view v-else 
 						style="background-color: #40A9FF;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
-						立即购买</view>
+						立即查看</view>
 				</view>
 			</view>
 			<view v-if="dataSource.length<1" style="text-align: center;font-size: 36rpx;color: gray;margin-top: 20rpx;">
@@ -37,13 +38,13 @@
 			console.log(p);
 			let userInfo = this.$store.state.userInfo;
 			console.log(userInfo);
-			if (!p || !p.cid || !userInfo) {
-				uni.showToast({
-					title: '参数有误！',
-					icon: 'none'
-				})
-				return;
-			}
+			// if (!p || !p.cid || !userInfo) {
+			// 	uni.showToast({
+			// 		title: '参数有误！',
+			// 		icon: 'none'
+			// 	})
+			// 	return;
+			// }
 			this.id = p.cid;
 			this.user_id = userInfo.user_id;
 			this.drawInit(p.cid, p.name);
@@ -72,7 +73,8 @@
 					data:{
 						user_id: this.user_id,
 						page:this.page,
-						limit:this.limit
+						limit:this.limit,
+						cid:this.id
 					},
 					success(res) {
 						if(res.data.data == ''){

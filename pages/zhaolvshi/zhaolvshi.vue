@@ -7,8 +7,31 @@
 					placeholder-style="color:#fff;font-size:20rpx;" />
 			</view>
 		</view>
-		<cooperTabar @searchChange="searchChange" style="position: fixed;top: 156rpx;width: 100%;left: 0;margin: auto;"></cooperTabar>
-		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 35rpx;overflow: auto;margin-top: 236rpx;">
+		<view class="baiboc">
+		<view class="option">
+			<view class="real" :class="[type == 1?'qie':'']" @tap="decide()">平台自有律师</view>
+			<view class="empty" :class="[type == 2?'qie':'']" @tap="decide2()">平台入驻律师</view>
+		</view>
+		</view>
+		<cooperTabar @searchChange="searchChange" style="position: fixed;top: 256rpx;width: 100%;left: 0;margin: auto;"></cooperTabar>
+		<!-- <view class="qihuan">
+			<view class="left">
+				<image src="../../static/icon/lsicon.png"></image>
+				<view class="shangx" v-if="type == 1">
+					<view>平台律师</view>
+					<view>平台律师简介</view>
+				</view>
+				<view class="shangx" v-if="type == 2">
+					<view>自有律师</view>
+					<view>自有律师简介</view>
+				</view>
+			</view>
+			<view class="right">
+				<view class="zi" @tap="qie()">进入</view>
+			</view>
+		</view> -->
+		
+		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 35rpx;overflow: auto; padding-top: 42rpx;margin-top: 320rpx;">
 
 
 			<lawyercard1 :showline="true" :zixun="true" @updatefollow="updateFollow" :lawyerlist="lawyerList" @buy="buy"></lawyercard1>
@@ -66,6 +89,7 @@
 		data() {
 			return {
 				isMore: true,
+				judge:true,
 				page: 1,
 				limit: 10,
 				lawyerList: [],
@@ -75,6 +99,7 @@
 				cityid: '',
 				level: '',
 				age: '',
+				type:1,
 				list: [{
 						id: 0,
 						name: "图文咨询",
@@ -139,6 +164,48 @@
 		// 	}, 2000);
 		// },
 		methods: {
+			decide2(){
+				if(this.type == 1){
+					this.type = 2
+					this.dian();
+				}
+			},
+			decide(){
+				if(this.type == 2){
+					this.type = 1
+					this.dian();
+				}
+			},
+			// qie(){
+			// 	if(this.type == 1){
+			// 		this.type = 2
+			// 		this.dian();
+			// 	}else{
+			// 		this.type = 1
+			// 		this.dian();
+			// 	}
+			// },
+			dian(){
+				let that = this
+				uni.request({
+					url:'https://layer.boyaokj.cn/api/layer/list',
+					method:'GET',
+					data:{
+						page: 1,
+						limit: 10,
+						name: that.name,
+						case_type: that.case_type,
+						cityid: that.cityid,
+						level: that.level,
+						age: that.age,
+						service_id: '',
+						type:that.type
+					},
+					success(res) {
+						that.lawyerList = res.data.data
+					}
+				})
+			},
 			updateFollow(fllow){
 				this.lawyerList[0].follow = fllow==1?0:1;
 			},
@@ -197,7 +264,8 @@
 							cityid: this.cityid,
 							level: this.level,
 							age: this.age,
-							service_id: ''
+							service_id: '',
+							type:this.type
 						},
 						success(res) {
 							that.lawyerList = res.data.data;
@@ -218,7 +286,8 @@
 						cityid: this.cityid,
 						level: this.level,
 						age: this.age,
-						service_id: ''
+						service_id: '',
+						type:this.type
 					},
 					success(res) {
 						that.lawyerList = res.data.data;
@@ -257,7 +326,8 @@
 					case_type: this.case_type,
 					cityid: this.cityid,
 					level: this.level,
-					age: this.age
+					age: this.age,
+					type:this.type
 				});
 				let res = await this.$myRequest({
 					url: 'layer/list',
@@ -270,7 +340,8 @@
 						cityid: this.cityid,
 						level: this.level,
 						age: this.age,
-						service_id: ''
+						service_id: '',
+						type:this.type
 					}
 				});
 				// if(this.name != ""){
@@ -311,6 +382,108 @@
 </script>
 
 <style>
+	.empty{
+		width: 240rpx;
+		height: 63rpx;
+		background: #fff;
+		border-radius:0px 26px 26px 0px;
+		border: 1px solid #40A9FF;
+		font-size: 28rpx;
+		font-family: PingFangSC-Medium, PingFang SC;
+		font-weight: 500;
+		color: #464646;
+		text-align: center;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.baiboc{
+		position: fixed;
+		top: 150rpx;
+		justify-content: center;
+		background-color: #fff;
+		width: 750rpx;
+		height: 160rpx;
+	}
+	.option{
+		width: 470rpx;
+		height: 63rpx;
+		border-radius: 60rpx;
+		/* border: 1px solid #40A9FF; */
+		display: flex;
+		margin: 0 auto;
+		margin-top: 20rpx;
+	}
+	.qie{
+		background: #40A9FF!important;
+		color: #FFFFFF!important;
+	}
+	.real{
+		width: 240rpx;
+		height: 63rpx;
+		background: #fff;
+		border-radius: 26px 0px 0px 26px;
+		border: 1px solid #40A9FF;
+		font-size: 28rpx;
+		font-family: PingFangSC-Medium, PingFang SC;
+		font-weight: 500;
+		color: #464646;
+		text-align: center;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.zi{
+		width: 106rpx;
+		height: 35rpx;
+		background: #6765FF;
+		box-shadow: 0px 2px 4px 0px rgba(109, 109, 109, 0.5);
+		border-radius: 21rpx;
+		font-size: 22rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #FFFFFF;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.shangx view:nth-child(2){
+		font-size: 24rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #666666;
+	}
+	.shangx view:nth-child(1){
+		font-size: 28rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		font-weight: 400;
+		color: #333333;
+	}
+	.left{
+		display: flex;
+		align-items: center;
+	}
+	.left image{
+		width: 89rpx;
+		height: 89rpx;
+		margin: 0 16rpx 0 25rpx;
+	}
+	.qihuan{
+		width: 710rpx;
+		height: 145rpx;
+		background: #B5DEFF;
+		border-radius: 11rpx;
+		margin: 0 auto;
+		margin-top: 260rpx;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		box-sizing: border-box;
+		padding-right: 30rpx;
+	}
 	@keyframes mymove {
 		from {
 			height: 0px

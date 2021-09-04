@@ -138,6 +138,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   onLoad: function onLoad(p) {
@@ -148,10 +159,16 @@ var _default =
   data: function data() {
     return {
       emitName: '',
-      phone: '' };
+      phone: '',
+      show: false };
 
   },
   methods: {
+    zai: function zai() {
+      uni.switchTab({
+        url: '../index/index' });
+
+    },
     back: function back() {
       console.log(this.emitName);
       if (this.emitName && this.emitName != "undefined") {
@@ -161,12 +178,22 @@ var _default =
 
       } else if (this.phone != "undefined") {
         console.log(111);
-        uni.makePhoneCall({
-          phoneNumber: this.phone });
-
-        uni.switchTab({
-          url: '../index/index' });
-
+        // uni.makePhoneCall({
+        // 	 phoneNumber: this.phone,
+        // })
+        // uni.showModal({
+        //     title: '友情提示',
+        //     content: '您已下单成功，律师会在5-30分钟来电，请注意接听。',
+        // 		showCancel:false,
+        //     success: function (res) {
+        //         if (res.confirm) {
+        //             uni.switchTab({
+        //             	url: '../index/index'
+        //             })
+        //         }
+        //     }
+        // });
+        this.show = true;
       } else {
         uni.switchTab({
           url: '../index/index' });

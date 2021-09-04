@@ -370,10 +370,15 @@
 			"style": {
 				"navigationBarTitleText": "聘请律师"
 			}
-		}, {
+		},{
 			"path": "pages/single_service/serviceDet",
 			"style": {
 				"navigationBarTitleText": "合同详情"
+			}
+		},{
+			"path": "pages/index/lbdet",
+			"style": {
+				"navigationBarTitleText": "业务介绍"
 			}
 		}
     ],
