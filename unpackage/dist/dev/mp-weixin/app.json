@@ -57,7 +57,16 @@
     "pages/service_zhixun/pinlvshi",
     "pages/my/fwdet",
     "pages/single_service/serviceDet",
-    "pages/index/lbdet"
+    "pages/index/lbdet",
+    "pages/youhuiquan/huodong",
+    "pages/youhuiquan/huodongDet",
+    "pages/youhuiquan/hdpay",
+    "pages/youhuiquan/hdnew",
+    "pages/youhuiquan/hddet",
+    "pages/youhuiquan/hdwan",
+    "pages/youhuiquan/hdcon",
+    "pages/my/bandet",
+    "pages/my/bandet2"
   ],
   "subPackages": [],
   "window": {
@@ -84,10 +93,10 @@
         "text": "找律师"
       },
       {
-        "pagePath": "pages/youhuiquan/youhuiquan",
+        "pagePath": "pages/youhuiquan/hdnew",
         "iconPath": "static/images/fotbar3.png",
         "selectedIconPath": "static/images/fotbar31.png",
-        "text": "优惠券"
+        "text": "活动"
       },
       {
         "pagePath": "pages/my/mine",
@@ -104,5 +113,6 @@
   },
   "usingComponents": {
     "fa-icon": "/components/fa-icon/fa-icon"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

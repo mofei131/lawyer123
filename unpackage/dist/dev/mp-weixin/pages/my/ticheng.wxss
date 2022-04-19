@@ -7,14 +7,10 @@ page{
 	background: #fff;
 }
 .billitem{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	width: 665rpx;
 	margin: auto;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	padding: 28rpx 0 30rpx 0;
 	box-sizing: border-box;
 	border-bottom: 1rpx solid #c4c4c4;

@@ -186,8 +186,6 @@
 					method:'GET',
 					data
 				});
-				console.log("电话")
-				console.log(res);
 				uni.hideLoading();
 				if(res && res.code==-1){
 					uni.showToast({
@@ -273,21 +271,30 @@
 		font-weight: 400;
 		color: #40A9FF;
 		padding: 8rpx;
+		flex-wrap: nowrap;
+		width: 138rpx;
+		display: block;
+		/* text-align: center; */
 	}
-
+	.serviceBtn text{
+		display: block;
+		text-align: center;
+	}
 	.field {
 		display: flex;
 		/* margin-bottom: 13rpx; */
+		flex-wrap: wrap;
 	}
 
 	.label {
-		    border-radius: 4rpx;
-		    font-size: 22rpx;
-		    color: #fff;
-		    line-height: 26rpx;
-		    margin-right: 6rpx;
-		    text-align: center;
-		    padding: 5rpx 5rpx 5rpx 5rpx;
+		border-radius: 4rpx;
+		font-size: 22rpx;
+		color: #fff;
+		line-height: 26rpx;
+		margin-right: 6rpx;
+		text-align: center;
+		padding: 5rpx 5rpx 5rpx 5rpx;
+		margin-top: 5rpx;
 	}
 
 	.green {

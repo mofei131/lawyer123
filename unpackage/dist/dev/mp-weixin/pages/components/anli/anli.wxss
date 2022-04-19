@@ -19,8 +19,6 @@
 	border-radius: 35rpx;
 }
 .floor1 {
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	overflow: hidden;
 	white-space: nowrap;
@@ -35,18 +33,12 @@
 	text-overflow: ellipsis;
 }
 .floor2 {
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	margin-top: 10rpx;
 	margin-bottom: 18rpx;
 }
 .mine {
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	color: #999999;
 	font-size: 24rpx;

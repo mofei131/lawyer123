@@ -197,6 +197,7 @@
 					url: 'service/tuwen',
 					data
 				});
+				console.log("提交支付")
 				console.log(res);
 				uni.hideLoading();
 				if (res && res.code==200) {
@@ -204,8 +205,9 @@
 					uni.navigateTo({
 						url:'../my/pay?id='+res.data.service_id+'&price='+this.price+'&typeId=1' +'&emitName='+'tochat'
 					})
-
+					
 					uni.$on('tochat',()=>{
+						console.log(res.data.service_id+'&layer_id='+this.layer_id+'&user_id='+this.user_id)
 						console.log('--------------------------');
 						console.log('--------------------------'+res.data.service_id+'&layer_id='+this.layer_id+'&user_id='+this.user_id);
 						uni.navigateTo({

@@ -1,12 +1,12 @@
 
 .gui-im.data-v-3edf3a2b{padding:30rpx;}
 .gui-im-system-msg.data-v-3edf3a2b{color:#FFFFFF; font-size:26rpx; line-height:38rpx; padding:5px 10px; display:block; border-radius:6rpx;}
-.gui-im-msg.data-v-3edf3a2b{margin-bottom:28px; display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:horizontal; -webkit-box-direction:normal; -webkit-flex-direction:row; flex-direction:row; -webkit-flex-wrap:nowrap; flex-wrap:nowrap;}
-.gui-im-face.data-v-3edf3a2b{width:80rpx; height:80rpx; overflow:hidden; -webkit-flex-shrink:0; flex-shrink:0; border-radius:6rpx; overflow:hidden; font-size:0;}
+.gui-im-msg.data-v-3edf3a2b{margin-bottom:28px; display:flex; flex-direction:row; flex-wrap:nowrap;}
+.gui-im-face.data-v-3edf3a2b{width:80rpx; height:80rpx; overflow:hidden; flex-shrink:0; border-radius:6rpx; overflow:hidden; font-size:0;}
 .gui-im-face-image.data-v-3edf3a2b{width:80rpx;height: 80rpx;border-radius: 50%;}
 .gui-im-name.data-v-3edf3a2b{padding-bottom:10rpx; margin-top:-5rpx;
 }
-.gui-im-content-spacing.data-v-3edf3a2b{width:15rpx; height:50rpx; -webkit-flex-shrink:0; flex-shrink:0;}
+.gui-im-content-spacing.data-v-3edf3a2b{width:15rpx; height:50rpx; flex-shrink:0;}
 .gui-im-content-in.data-v-3edf3a2b{ overflow:hidden;}
 /* width:600rpx; */
 .gui-im-content-txt.data-v-3edf3a2b{background-color:rgba(255,255,255,1); padding:15rpx 20rpx; border-radius:2.5rpx  20rpx  20rpx  20rpx ; min-width:100rpx;color: rgba(81,86,93,1);
@@ -18,10 +18,10 @@
 	background-color: #40A9FF;
 	border-radius:20rpx 3rpx  20rpx 20rpx;
 }
-.gui-im-msg-right.data-v-3edf3a2b{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-webkit-flex-direction:row-reverse;flex-direction:row-reverse;}
+.gui-im-msg-right.data-v-3edf3a2b{flex-direction:row-reverse;}
 .gui-im-timer.data-v-3edf3a2b{margin-top:5px; line-height:30rpx; font-size:22rpx; color:#8788A3;}
 .gui-im-img.data-v-3edf3a2b{width:358rpx; border-radius:6rpx;}
-.gui-im-flex-end.data-v-3edf3a2b{display:-webkit-box;display:-webkit-flex;display:flex; -webkit-box-orient:horizontal; -webkit-box-direction:normal; -webkit-flex-direction:row; flex-direction:row; -webkit-flex-wrap:nowrap; flex-wrap:nowrap; -webkit-box-pack:end; -webkit-justify-content:flex-end; justify-content:flex-end;}
+.gui-im-flex-end.data-v-3edf3a2b{display:flex; flex-direction:row; flex-wrap:nowrap; justify-content:flex-end;}
 .gui-im-voice-msg.data-v-3edf3a2b{height:80rpx; padding:0 20rpx; background-color:#E7F0F3; border-radius:6rpx; color:#2B2E3D; min-width:100rpx; max-width:400rpx;}
 .gui-im-voice-msg-text.data-v-3edf3a2b{font-size:22rpx; margin:0 5rpx;}
 .gui-color-white.data-v-3edf3a2b{

@@ -1,0 +1,11 @@
+
+.tishi{
+	height: 50rpx;
+	font-size: 22rpx;
+	color: #333;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff;
+}
+

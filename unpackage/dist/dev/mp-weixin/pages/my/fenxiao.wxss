@@ -2,13 +2,19 @@
 page{
 	background: #F4F7F7;
 }
+.option1{
+	width: 710rpx;
+	height: 63rpx;
+	border-radius: 34rpx;
+	/* border: 1px solid #40A9FF; */
+	display: flex;
+	margin: 25rpx auto;
+}
 .option{
 	width: 470rpx;
 	height: 63rpx;
 	border-radius: 34rpx;
-	border: 1px solid #40A9FF;
-	display: -webkit-box;
-	display: -webkit-flex;
+	/* border: 1px solid #40A9FF; */
 	display: flex;
 	margin: 25rpx auto;
 }
@@ -21,52 +27,53 @@ page{
 	height: 63rpx;
 	background: #fff;
 	border-radius: 32px 0px 0px 32px;
-	border: 2px solid #40A9FF;
+	border: 1px solid #40A9FF;
 	font-size: 25rpx;
 	font-family: PingFangSC-Medium, PingFang SC;
 	font-weight: 500;
 	color: #464646;
 	text-align: center;
 	box-sizing: border-box;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
+	justify-content: center;
+	align-items: center;
+}
+.empty2{
+	width: 240rpx;
+	height: 63rpx;
+	background: #fff;
+	border: 1px solid #40A9FF;
+	font-size: 25rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: #464646;
+	text-align: center;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .empty{
 	width: 240rpx;
 	height: 63rpx;
 	background: #fff;
 	border-radius:0px 32px 32px 0px;
-	border: 2px solid #40A9FF;
+	border: 1px solid #40A9FF;
 	font-size: 25rpx;
 	font-family: PingFangSC-Medium, PingFang SC;
 	font-weight: 500;
 	color: #464646;
 	text-align: center;
 	box-sizing: border-box;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
+	justify-content: center;
+	align-items: center;
 }
 .directitem{
 	width: 710rpx;
 	height: 108rpx;
 	background: #FFFFFF;
 	border-radius: 14rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	padding: 24rpx 0 24rpx 0;
 	margin: auto;

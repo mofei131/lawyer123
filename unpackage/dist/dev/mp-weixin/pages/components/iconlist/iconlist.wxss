@@ -1,7 +1,5 @@
 
 .childtitle {
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	width: 690rpx;
 	margin: auto;
@@ -26,16 +24,12 @@
 	background: #FFFFFF;
 	box-shadow: 0rpx 2rpx 4rpx 0rpx rgba(147, 147, 147, 0.5);
 	border-radius: 14rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-justify-content: space-around;
-	        justify-content: space-around;
+	justify-content: space-around;
 	margin: auto;
 	margin-top: 12rpx;
 	box-sizing: border-box;
-	-webkit-flex-wrap: wrap;
-	        flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 .zixunitem {
 	width: 177.5rpx;

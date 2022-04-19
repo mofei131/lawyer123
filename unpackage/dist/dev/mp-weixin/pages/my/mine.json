@@ -1,6 +1,7 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "iconlist": "/pages/components/iconlist/iconlist"
+    "iconlist": "/pages/components/iconlist/iconlist",
+    "auth-mode": "/pages/components/authMode/authMode"
   }
 }

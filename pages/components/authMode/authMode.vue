@@ -63,7 +63,7 @@
 		height: 100%;
 		background: rgb(0, 0, 0, 0.5);
 		top: 0;
-		z-index: 5;
+		z-index: 50;
 		display: flex;
 		justify-content: center;
 		align-items: center;

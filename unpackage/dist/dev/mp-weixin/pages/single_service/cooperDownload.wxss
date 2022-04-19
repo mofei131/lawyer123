@@ -1,14 +1,8 @@
 
 .content{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-flex-wrap: wrap;
-	        flex-wrap: wrap;
-	-webkit-box-orient: inherit;
-	-webkit-box-direction: inherit;
-	-webkit-flex-direction: inherit;
-	        flex-direction: inherit;
+	flex-wrap: wrap;
+	flex-direction: inherit;
 }
 .shuzi{
 	color: #40A9FF;
@@ -17,9 +11,7 @@
 .collapse-content{
 	width: 350rpx!important;
 	box-sizing: border-box;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
+	justify-content: center;
 	height: 80rpx!important;
 	margin: unset!important;
 }

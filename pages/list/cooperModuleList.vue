@@ -5,14 +5,14 @@
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 20rpx;">
 			<view class="flex-column mx-evenly sx-stretch" v-for="(item,index) in dataSource" :key="index"
 				style="flex: 0 0 auto;background-color: #FFFFFF;border-radius: 20rpx;padding: 20rpx;margin-bottom: 20rpx;" @click="toDetail(item)">
-				<view class="ellipsis" style="flex:0 0 auto;font-size: 24rpx;width: 600rpx;font-family:PingFangSC-Semibold;">
+				<view class="ellipsis" style="flex:0 0 auto;font-size: 32rpx;width: 600rpx;font-family:PingFangSC-Semibold;">
 					<text>{{item.name}}</text>
 				</view>
 				<!-- <view class="ellipsis-3" style="flex: 0 0 90rpx;font-size: 22rpx;margin-top: 9rpx;color: rgba(106,106,106,1);">
 					{{item.intro}}
 				</view> -->
 				<view class="flex-row mx-between sx-center" style="flex: 0 0 auto;margin-top: 20rpx;padding: 0;">
-					<text style="color: rgba(255,77,79,1);font-size: 36rpx;">￥{{item.price}}</text>
+					<text style="color: rgba(255,77,79,1);font-size: 28rpx;">￥{{item.price}}</text>
 
 					<view v-if="item.buy"
 						style="background-color: #FF4D4F;color: #FFFFFF; font-size: 26rpx;padding: 5rpx; border-radius: 6rpx;">
@@ -37,7 +37,7 @@
 		onLoad(p) {
 			console.log(p);
 			let userInfo = this.$store.state.userInfo;
-			console.log(userInfo);
+			console.log(p.cid, p.name);
 			// if (!p || !p.cid || !userInfo) {
 			// 	uni.showToast({
 			// 		title: '参数有误！',
@@ -47,6 +47,7 @@
 			// }
 			this.id = p.cid;
 			this.user_id = userInfo.user_id;
+			this.name = p.name,
 			this.drawInit(p.cid, p.name);
 		},
 		data() {
@@ -56,7 +57,8 @@
 				dataSource: [],
 				// isPay: false,
 				page:1,
-				limit:10
+				limit:10,
+				name:''
 			}
 		},
 		onReachBottom() {
@@ -74,7 +76,8 @@
 						user_id: this.user_id,
 						page:this.page,
 						limit:this.limit,
-						cid:this.id
+						cid:this.id,
+						name:this.name
 					},
 					success(res) {
 						if(res.data.data == ''){

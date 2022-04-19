@@ -10,7 +10,7 @@
 </template>
 
 <script>
-
+	import mmap from '@/common/SDK/amap-wx.130.js'
 	export default {
 		components: {
 
@@ -32,7 +32,14 @@
 		},
 		mounted() {
 			this.drawinit();
-
+			this.amapPlugin = new mmap.AMapWX({
+			            key: this.key,
+			        });  
+			this.amapPlugin.getRegeo({
+					success: (data) => {
+							this.currentCityName = data[0].regeocodeData.addressComponent.city;
+					}  
+			}); 
 		},
 		data() {
 			return {
@@ -45,8 +52,8 @@
 					[, ]
 				],
 				multiIndex: [0, 0],
-
-
+				amapPlugin: null,
+				key: '1bd296377a30e42f60736564fc62c6bf',  
 			}
 		},
 

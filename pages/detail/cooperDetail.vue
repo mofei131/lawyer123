@@ -3,35 +3,27 @@
 
 
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy1 == 0" @touchmove.stop.prevent="moveHandle">
-			<!-- <view class="txt"></view> -->
 			<view class="txt" v-html="content"></view>
-			<!-- <view class="image">
-				<image :src="image" mode="widthFix"></image>
-			</view> -->
-			<!-- <u-parse :content="content" @navigate="navigate"></u-parse> -->
 			<view class="btn" @tap="toPay()">立即购买</view>
-			<!-- <view class="flex-row mx-evenly sx-center" style="margin-top: 40rpx;">
-				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #4CD964; color: #FFFFFF;" @tap="toIndex">返回首页</view>
-				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #6CA5FF; color: #FFFFFF;" @tap="download">立即下载</view>
-			</view> -->
-			
 		</view>
 		<view class="flex-column mx-start sx-stretch" style="flex: 0 0 auto;padding: 40rpx;" v-if="buy1 == 1" >
 			<view v-html="content"></view>
-			<!-- <view class="image">
-				<image :src="image" mode="widthFix"></image>
-			</view> -->
-			<!-- @tap="download" -->
 			<view class="btn" @tap="copy()">复制下载链接</view>
-			<!-- <view class="flex-row mx-evenly sx-center" style="margin-top: 40rpx;">
-				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #4CD964; color: #FFFFFF;" @tap="toIndex">返回首页</view>
-				<view class="flex-txt-center" style="border-radius: 40rpx;flex:0 0 240rpx;background-color: #6CA5FF; color: #FFFFFF;" @tap="download">立即下载</view>
-			</view> -->
-			
 		</view>
 
 
 <view class="botbai"></view>
+<view class="tanbox" v-if="show">
+			<view class="baibox">
+			<view class="top">
+				<view>合同下载链接已复制到粘贴板</view>
+				<view>您可以直接复制到浏览器下载合同或发给朋友</view>
+			</view>
+			<view class="bottom">
+				<view @tap="zai()">确定</view>
+			</view>
+		</view>
+		</view>
 	</view>
 </template>
 
@@ -46,10 +38,6 @@
 			this.buy = p.buy
 			this.id = p.coopid
 			this.price = p.price
-			// this.link = p.link
-			// this.$store.state.link = p.link
-			// uni.getStorageSync('link',p.link)
-			// console.log(p)
 			
 		},
 		async onShow() {
@@ -83,10 +71,15 @@
 				link:'',
 				image:'',
 				buy:'',
-				
+				show:false
 			}
 		},
 		methods: {
+			zai(){
+				uni.switchTab({
+					url: '../index/index'
+				})
+			},
 			moveHandle() {},
 			toIndex(){
 				uni.switchTab({
@@ -104,21 +97,21 @@
 				})
 			},
 			copy(){
+				let that = this
 				uni.setClipboardData({
 					data:this.link,
 					success() {
-						uni.showModal({
-								title: '提示',
-								content: '文件下载链接已复制',
-								showCancel:false,
-								success: function (res) {
-												if (res.confirm) {
-													// uni.navigateBack({
-														
-													// })
-												}
-										}
-							})
+						uni.hideToast()
+						that.show = true
+						// uni.showModal({
+						// 		title: '合同下载链接已复制到粘贴板',
+						// 		content: '您可以直接复制到浏览器下载合同或发给朋友',
+						// 		showCancel:false,
+						// 		success: function (res) {
+						// 						if (res.confirm) {
+						// 						}
+						// 				}
+						// 	})
 					}
 				})
 			},
@@ -200,31 +193,55 @@
 </script>
 
 <style>
-	.txt{
-		position: relative;
-		/* background-color: rgb(220,220,220,.98);
-		filter: blur(60px);
-		bottom: 0;
-		filter:blur(5px);
-		margin-left: -20rpx; */
-		
-		filter: blur(5rpx);
-		user-select: none;
-		    /* position: fixed;
-		    bottom: 0;
-		    left: 0;
-		    width: 100%;
-		    height: 60%;
-		    z-index: 1; */
-	}
-	.txt::after{
-		background-color: rgb(253,253,253,.2);
-		bottom: 0;
-		left: 0;
-		position: fixed;
-		z-index: 1;
+	.bottom view{
 		width: 100%;
-		height: 60%;
+		font-size: 32rpx!important;
+		color: 	#4682B4;
+		border-top: 1rpx solid #e8e8e8;
+		text-align: center;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
+	.bottom{
+		display: flex;
+		height: 100rpx;
+		justify-content: space-between;
+		margin-top: 60rpx;
+	}
+	.top view:nth-child(1){
+		font-size: 32rpx;
+		text-align: center;
+		color: #000;
+		font-weight: bold;
+		padding-top: 80rpx;
+	}
+	.top view:nth-child(2){
+		font-size: 28rpx;
+		text-align: start;
+		color: #333;
+		padding-top: 30rpx;
+		width: 580rpx;
+		margin: auto;
+	}
+	.baibox{
+		width: 660rpx;
+		height: 350rpx;
+		margin: auto;
+		margin-top: 60%!important;
+		background-color: #fff;
+		border-radius: 18rpx;
+		z-index: 100;
+	}
+	.tanbox{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(0,0,0,.2);
+		z-index: 5;
+		margin-top: 0!important;
 	}
 	.image image{
 		width: 100%;

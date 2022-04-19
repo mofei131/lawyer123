@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<pickcity style="display: none;" @getcity="getCity"></pickcity>
 		<search></search>
 
 		<swiper class="swiper flex-column mx-start sx-stretch" circular :autoplay="true" interval="3000" duration="500">
@@ -11,7 +12,7 @@
 			<!-- <swiper-item class="flex-column mx-start sx-stretch">
 				<image class="swiper-item backImgFull" mode="widthFix" src="@/static/images/banner.png"></image>
 			</swiper-item> -->
-		</swiper>
+		</swiper>                                                 
 
 		<iconlist :item='item1'></iconlist>
 		<iconlist class="danxiang" :item='item2'></iconlist>
@@ -89,12 +90,12 @@
 </template>
 
 <script>
+	import pickcity from '@/pages/components/pickcity/pickcity.vue'
 	import search from '../components/search/search.vue'
 	import iconlist from '../components/iconlist/iconlist.vue'
 	import lawyercard from '../components/lawyercard/lawyercard.vue'
 	import anli from '../components/anli/anli.vue'
 	import study from '../components/study/study.vue'
-
 	import {
 		mapState,
 		mapGetters,
@@ -107,7 +108,7 @@
 			study,
 			iconlist,
 			anli,
-			lawyercard
+			lawyercard,
 		},
 		data() {
 			return {
@@ -241,8 +242,14 @@
 			}
 		},
 		async onLoad(p) {
+			if(p.scene){
+				uni.switchTab({
+					url:'../my/mine'
+				})
+			}
 			if(p && p.scene){
 				this.commitPid(p.scene)
+				uni.setStorageSync('scene',p.scene)
 			}
 			let userInfo = this.$store.state.userInfo;
 			if (!userInfo || !userInfo.user_id) {
@@ -256,8 +263,6 @@
 			this.getYouXuanLvshi();
 			this.getLearn();
 			this.getAnli();
-
-
 			uni.getSystemInfo({
 				success: (res) => {
 					// console.log(res);
@@ -316,14 +321,27 @@
 
 		},
 		methods: {
-			toyh(item){
-				if(item.link == ""){
+			getCity(e){
+				console.log(e)
+			}, 
+			toyh(e){
+				// if(item.link == ""){
+				// 	uni.navigateTo({
+				// 		url:'./lbdet?id='+item.id
+				// 	})
+				// }else{
+				// 	uni.switchTab({
+				// 		url:item.link
+				// 	})
+				// }
+				// if(e.name != null || e.content != null){
+				// 	uni.navigateTo({
+				// 		url:'../my/bandet?id='+e.id
+				// 	})
+				// }
+				if(e.content.length != 0){
 					uni.navigateTo({
-						url:'./lbdet?id='+item.id
-					})
-				}else{
-					uni.switchTab({
-						url:item.link
+						url:'../my/bandet?id='+e.id
 					})
 				}
 			},

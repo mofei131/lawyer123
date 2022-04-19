@@ -15,12 +15,8 @@ page{
 	border-radius: 11rpx;
 }
 .top{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	padding: 21rpx 37rpx 21rpx 40rpx;
 	box-sizing: border-box;
 }
@@ -37,8 +33,6 @@ page{
 	color: #059EFF;
 }
 .cont{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	width: 644rpx;
 	margin: auto;

@@ -117,7 +117,7 @@
 				shehuizhiwu:'',
 				zhiyezhengshu_xingming:'',
 				zheyezhengshu_nianjian:'',
-				cifacongyezhezhengshu:'',
+				sifacongyezhezhengshu:'',
 				dizhi:''
 			}
 		},
@@ -149,9 +149,32 @@
 						that.shehuizhiwu = e.data.shehuizhiwu
 						that.zhiyezhengshu_xingming = e.data.zhiyezhengshu_xingming
 						that.zheyezhengshu_nianjian = e.data.zheyezhengshu_nianjian
-						that.cifacongyezhezhengshu = e.data.cifacongyezhezhengshu
+						that.sifacongyezhezhengshu = e.data.sifacongyezhezhengshu
 					}
 				})
+		},
+		onShow() {
+			let that = this
+			if(uni.getStorageSync('rz') == 66){
+				uni.request({
+					url:'https://layer.boyaokj.cn/api/layer/authDetail',
+					method:'GET',
+					data:{
+						user_id:uni.getStorageSync('userInfo').id
+					},
+					success(res) {
+						let data = res.data.data
+						that.unit = data.lvsuo
+						that.dizhi = data.lvsuodizhi
+						that.college = data.school
+						// that.index1 = that.array1.findIndex(item => item.id === JSON.parse(data.xueli))
+						that.index1 = data.xueli
+						that.major = data.zhuanye
+						that.mark = data.jianjie
+						that.type = data.type
+					}
+				})
+			}
 		},
 		methods:{
 			agreementSuccess() {
@@ -219,7 +242,7 @@
 						shehuizhiwu:that.shehuizhiwu,
 						zhiyezhengshu_xingming:that.zhiyezhengshu_xingming,
 						zheyezhengshu_nianjian:that.zheyezhengshu_nianjian,
-						cifacongyezhezhengshu:that.cifacongyezhezhengshu,
+						sifacongyezhezhengshu:that.sifacongyezhezhengshu,
 						city:that.city,
 						lvsuo:that.unit,
 						school:that.college,

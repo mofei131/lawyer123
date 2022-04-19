@@ -3,8 +3,6 @@
 	width: 520rpx;
 	color: #fff;
 	font-size: 24rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	position: absolute;
 	top: 76rpx;
@@ -24,8 +22,6 @@
 	margin-left: 8rpx;
 }
 .search{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	width: 360rpx;
 	height: 60rpx;

@@ -25,8 +25,7 @@ const store = new Vuex.Store({
 		socketInfo:[],
 		code:'',
 		pid:0,
-		link:''
-
+		link:'',
 	},
 	mutations: {
 		commitPid(state, params){
@@ -153,6 +152,7 @@ const store = new Vuex.Store({
 				uni.login({
 					provider: 'weixin',
 					success: async function(res) {
+						console.log('初始加载信息')
 						console.log(res);
 						// uni.setStorageSync('code',res.code);
 						if (res.code) {
@@ -160,7 +160,8 @@ const store = new Vuex.Store({
 							let res1 = await http.ajax({
 								url: 'wechat/login',
 								data: {
-									pid: context.state.pid,
+									// pid: context.state.pid,
+									pid: uni.getStorageSync('scene'),
 									code
 								}
 							});
@@ -218,6 +219,8 @@ const store = new Vuex.Store({
 							uni.getUserProfile({
 								desc: '获取用户头像等信息',
 								success: async (res) => {
+									console.log("---->")
+									console.log(res)
 									let {avatarUrl,city,country,gender,language,nickName,province} = res.userInfo;
 									userInfo = uni.getStorageSync('userInfo');
 									if(!userInfo){
@@ -239,6 +242,9 @@ const store = new Vuex.Store({
 										data
 									});
 									if(res1.code==200){
+										console.log("用户头像2")
+										console.log(avatarUrl)
+										console.log(nickName)
 										userInfo.isAuthor = true;
 										userInfo.nickname = nickName;
 										userInfo.avater = avatarUrl;

@@ -28,13 +28,9 @@ page{
 	margin: 0 0 20rpx 49rpx;
 }
 .outbottom{
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 }
 .outbottom,.outleft,.outright{
-	display:-webkit-box;
-	display:-webkit-flex;
 	display:flex;
 }
 .outleft view{
@@ -82,8 +78,6 @@ page{
 	height: 75rpx;
 	border-bottom: 1rpx solid #D8D8D8;
 	margin-top: 24rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 }
 .entry view{

@@ -87,6 +87,29 @@
 				url:'https://layer.boyaokj.cn/api/layer/level',
 				success(res) {
 					that.array2 = res.data.data
+					if(uni.getStorageSync('rz') == 66){
+						uni.request({
+							url:'https://layer.boyaokj.cn/api/layer/authDetail',
+							method:'GET',
+							data:{
+								user_id:uni.getStorageSync('userInfo').id
+							},
+							success(res) {
+								let data = res.data.data
+								that.zhenghao = data.zhiyezhenghao
+								that.index1 = data.zhiyenianxian-1
+								that.index2 = that.array2.findIndex(item => item.id === JSON.parse(data.shehuizhiwu))
+								that.zhiname = data.zhiyezhengshu_xingming
+								that.zhiyear = data.zheyezhengshu_nianjian
+								that.cfcong = data.sifacongyezhezhengshu
+								if(data.sifacongyezhezhengshu.length != 0){
+									that.dian = false
+								}else{
+									that.dian = true
+								}
+							}
+						})
+					}
 				}
 			})
 			uni.request({
@@ -95,6 +118,10 @@
 					that.array1 = res.data.data
 				}
 			})
+		},
+		onShow() {
+			let that = this
+			
 		},
 		methods:{
 			dian1(){
@@ -178,7 +205,7 @@
 						shehuizhiwu:this.array2[this.index2].id,
 						zhiyezhengshu_xingming:this.zhiname,
 						zheyezhengshu_nianjian:this.zhiyear,
-						cifacongyezhezhengshu:this.cfcong,
+						sifacongyezhezhengshu:this.cfcong,
 					}
 				}
 				)

@@ -33,7 +33,6 @@
 		},
 		methods:{
 			pandaun(e){
-				// console.log(e)
 				this.ji = e
 			}
 		}

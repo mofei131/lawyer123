@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<view class="tishi">
+			<view>友情提示：客户已在本平台下单，本次沟通时间为30分钟，请高效沟通。</view>
+		</view>
 		<!-- 页面主体 -->
 		<view class="flex-column mx-center sx-center" style="width: 100%;  background-color: #FFFFFF;">
 			<view style="width: 100%;">
@@ -7,7 +10,7 @@
 				<gui-im-message background="#ffffff" :msgs="msgs" group="group1" :userid="user_id">
 				</gui-im-message>
 				<!-- 底部提交区 -->
-				<gui-im-input @sendText="sendText"></gui-im-input>
+				<gui-im-input @sendText="sendText" @chooseImage="chooseImage"></gui-im-input>
 			</view>
 
 		</view>
@@ -134,6 +137,7 @@
 					let d = JSON.parse(res.data)
 					if (d.type) return;
 					let data = d.data;
+					let reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\/])+$/;
 					if (data && data.source_id) {
 						var item = {
 							group: 'group1',
@@ -144,13 +148,18 @@
 							uface: data.userinfo.avater
 						};
 						this.msgs.push(item);
+						for(let i in this.msgs){
+							if(reg.test(this.msgs[i].content)){
+								this.msgs[i].contentType = 'img'
+							}
+						}
 						this.pageScroll();
 					}
 				});
 				uni.onSocketError((res) => {
 					this.count++;
 					uni.showToast({
-						title: '你的网络开小差了，重连中！',
+						title: '你的网络开小差了3，重连中！',
 						icon: 'none',
 						duration: 3000
 					})
@@ -161,7 +170,36 @@
 					}
 				});
 			},
-
+			async chooseImage(msg) {
+				let that = this
+				console.log("---->图片")
+				console.log(msg)
+				uni.sendSocketMessage({
+					data: JSON.stringify({
+						"action": "sendMessage",
+						"data": {
+							"source_id": this.source_id,
+							"user_id": this.user_id,
+							"message": msg
+						}
+					}),
+					success:()=> {
+						this.pageScroll();
+						this.faildMessage = '';
+					},
+					fail: (res) => {
+						this.faildMessage = msg;
+						uni.showToast({
+							title: '你的网络开小差了，重连中！',
+							icon: 'none',
+							duration: 3000
+						})
+				
+						this.openConnection();
+				
+					}
+				});
+			},
 			async sendText(msg) {
 				uni.sendSocketMessage({
 					data: JSON.stringify({
@@ -210,6 +248,7 @@
 					if (res && res.code == 200) {
 						console.log('=====================getmessage==============');
 						console.log(res);
+						let reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\/])+$/;
 						res.data.forEach(item => {
 							let d = {
 								group: 'group1',
@@ -221,6 +260,11 @@
 							};
 							this.msgs.push(d);
 						})
+						for(let i in this.msgs){
+							if(reg.test(this.msgs[i].content)){
+								this.msgs[i].contentType = 'img'
+							}
+						}
 					}
 					this.pageScroll();
 					resolve(true);
@@ -232,5 +276,13 @@
 </script>
 
 <style>
-
+	.tishi{
+		height: 50rpx;
+		font-size: 22rpx;
+		color: #333;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #fff;
+	}
 </style>

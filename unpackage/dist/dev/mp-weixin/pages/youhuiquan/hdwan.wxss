@@ -1,0 +1,74 @@
+
+.xiaright{
+	width: 530rpx;
+}
+.xialeft{
+	width: 130rpx;
+	text-align-last: justify;
+}
+.xialist{
+	font-size: 26rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #51565D;
+	margin-top: 20rpx;
+	display: flex;
+}
+.mk2tit{
+	font-size: 28rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: #51565D;
+	margin-bottom: 16rpx;
+}
+.mk2{
+	width: 702rpx;
+	background: #FFFFFF;
+	border-radius: 8rpx;
+	padding: 16rpx 16rpx 30rpx 16rpx;
+	box-sizing: border-box;
+	margin: 20rpx auto;
+}
+.pingti{
+	font-size: 24rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #40A9FF;
+	margin-top: 27rpx;
+	text-align: center;
+}
+.hui{
+	width: 670rpx;
+	height: 1rpx;
+	background-color: #D2D2D2;
+	margin: auto;
+}
+.code{
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #40A9FF;
+	margin-bottom: 30rpx;
+	text-align: center;
+	margin-top: 30rpx;
+}
+.mk1 image{
+	width: 360rpx;
+	height: 360rpx;
+	margin: auto;
+	display: block;
+}
+.mk1{
+	width: 702rpx;
+	height: 581rpx;
+	background: #FFFFFF;
+	border-radius: 8rpx;
+	margin: auto;
+	padding: 30rpx 0 30rpx 0;
+	box-sizing: border-box;
+}
+page{
+	background-color: #F4F7F7;
+	padding-top: 30rpx;
+}
+

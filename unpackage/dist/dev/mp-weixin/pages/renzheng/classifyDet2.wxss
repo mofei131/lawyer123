@@ -1,19 +1,13 @@
 
 .danxuan{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	font-size: 24rpx;
 	font-family: PingFangSC-Regular, PingFang SC;
 	font-weight: 400;
 	color: #5D6168;
 }
 .danxuanleft,.danxuanright{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 }
 .danxuanright{
@@ -29,8 +23,6 @@ page{
 .modtitle{
 	width: 680rpx;
 	margin: 20rpx auto;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 }
 .blue{
@@ -52,8 +44,6 @@ page{
 	margin: auto;
 }
 .intitem{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	height: 108rpx;
 	width: 680rpx;
@@ -122,11 +112,7 @@ fa-icon{
 	margin-right: 20rpx;
 }
 .flex-row{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 }
 

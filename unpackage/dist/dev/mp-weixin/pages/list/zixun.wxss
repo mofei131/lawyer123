@@ -11,8 +11,6 @@
 	height: 44rpx;
 	background: rgb(255,255,255,.34);
 	border-radius: 32rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	margin-left: 15rpx;
 }
@@ -41,8 +39,6 @@
 	margin-left: 23rpx;
 }
 .lawyeritemtop{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 }
 .name{
@@ -51,16 +47,12 @@
 	margin-bottom: 11rpx;
 }
 .seat{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	color: #666;
 	font-size: 24rpx;
 	margin-bottom: 13rpx;
 }
 .field{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	margin-bottom: 13rpx;
 }
@@ -91,12 +83,8 @@
 	background: #E1B12F;
 }
 .other{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	color: #999999;
 	font-size: 20rpx;
 }
@@ -115,11 +103,8 @@
 	margin-left: 10rpx;
 }
 .lawyeritembottom,.zixun_price{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-justify-content: space-around;
-	        justify-content: space-around;
+	justify-content: space-around;
 }
 .lawyeritembottom{
 	width: 710rpx;

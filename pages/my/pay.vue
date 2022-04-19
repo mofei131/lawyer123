@@ -142,7 +142,7 @@
 				})
 			},
 			show(){
-				if(uni.getStorageSync('userInfo').mobile == null){
+				if(!uni.getStorageSync('userInfo').mobile){
 					uni.switchTab({
 					   url:'./mine'
 					});
@@ -181,7 +181,7 @@
 							source_id: this.id
 						}
 					});
-					console.log("之父1")
+					console.log("支付1")
 					console.log(res)
 					if (res.code == -1) {
 						uni.showToast({
@@ -215,10 +215,10 @@
 									},fail(res) {
 										console.log(res);
 										console.log(emitName);
-										if(emitName){
-											// console.log('---'+emitName);
-											uni.$emit(emitName,{ispay:true});
-										}
+										// if(emitName){
+										// 	console.log('---'+emitName);
+										// 	uni.$emit(emitName,{ispay:true});
+										// }
 										
 									}
 								})

@@ -186,7 +186,8 @@
 		}, {
 			"path": "pages/my/fenxiao",
 			"style": {
-				"navigationBarTitleText": "我的分销"
+				"navigationBarTitleText": "我的分销",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/my/guide",
@@ -380,6 +381,54 @@
 			"style": {
 				"navigationBarTitleText": "业务介绍"
 			}
+		},{
+			"path": "pages/youhuiquan/huodong",
+			"style": {
+				"navigationBarTitleText": "活动",
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/youhuiquan/huodongDet",
+			"style": {
+				"navigationBarTitleText": "活动详情"
+			}
+		},{
+			"path": "pages/youhuiquan/hdpay",
+			"style": {
+				"navigationBarTitleText": "立即支付"
+			}
+		},{
+			"path": "pages/youhuiquan/hdnew",
+			"style": {
+				"navigationBarTitleText": "活动",
+				"enablePullDownRefresh":true
+				
+			}
+		},{
+			"path": "pages/youhuiquan/hddet",
+			"style": {
+				"navigationBarTitleText": "活动详情"
+			}
+		},{
+			"path": "pages/youhuiquan/hdwan",
+			"style": {
+				"navigationBarTitleText": "活动详情"
+			}
+		},{
+			"path": "pages/youhuiquan/hdcon",
+			"style": {
+				"navigationBarTitleText": "核销"
+			}
+		},{
+			"path": "pages/my/bandet",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		},{
+			"path": "pages/my/bandet2",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
 		}
     ],
 	"globalStyle": {
@@ -404,10 +453,10 @@
 			"selectedIconPath": "static/images/fotbar21.png",
 			"text": "找律师"
 		}, {
-			"pagePath": "pages/youhuiquan/youhuiquan",
+			"pagePath": "pages/youhuiquan/hdnew",
 			"iconPath": "static/images/fotbar3.png",
 			"selectedIconPath": "static/images/fotbar31.png",
-			"text": "优惠券"
+			"text": "活动"
 		}, {
 			"pagePath": "pages/my/mine",
 			"iconPath": "static/images/fotbar4.png",

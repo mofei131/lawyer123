@@ -1,0 +1,228 @@
+
+.cityinput{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.inputs image{
+	position:absolute;
+	width: 36rpx;
+	height: 36rpx;
+	top: 12rpx;
+	left: 12rpx;
+}
+.inputs input{
+	width: 581rpx;
+	height: 56rpx;
+	background: #FFFFFF;
+	border-radius: 33rpx;
+	border: 1rpx solid #40A9FF;
+	padding:  0 27rpx 0 55rpx;
+	box-sizing: border-box;
+	font-size: 24rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #666666;
+}
+.inputs{
+	position: relative;
+}
+.uni-column{
+	color: #fff;
+}
+.search input{
+	width: 460rpx!important;
+}
+.btnfex{
+	width: 700rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: auto;
+	margin-top: 20rpx;
+}
+.baocun{
+	width: 280rpx;
+	height: 83rpx;
+	background: #3E9FFE;
+	font-size: 32rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	border-radius:14rpx;
+}
+.haibaobox image{
+	width: 520rpx;
+	height: 810rpx;
+	display: block;
+	margin: auto;
+}
+.haibaobox{
+	margin: auto;
+	margin-bottom: 20rpx;
+	margin-top: 30%;
+	margin-bottom: 0;
+}
+.huibox{
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,.3);
+	width: 100%;
+	height: 100%;
+}
+.pshu{
+	display: flex;
+	align-items: flex-end;
+}
+.fan ._span{
+	color: #F5222D;
+}
+.fan{
+	font-size: 16rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #7C7C7C;
+}
+.time{
+	font-size: 16rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #7C7C7C;
+}
+.livot{
+	display: flex;
+	margin-top: 18rpx;
+	justify-content: space-between;
+	align-items: center;
+}
+.shengcheng{
+	width: 150rpx;
+	height: 44rpx;
+	background: #40A9FF;
+	border-radius: 24rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #FFFFFF;
+}
+.jprice{
+	font-size: 14rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #999999;
+	margin-left: 8rpx;
+	text-decoration:line-through;
+}
+.nprice{
+	font-size: 21rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: #F5222D;
+}
+.price{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 6rpx;
+}
+.title{
+	width: 304rpx;
+	display: flex;
+	margin-top: 12rpx;
+	font-size: 22rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #333333;
+	word-break: break-all;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.lfix image{
+	width: 312rpx;
+	/* height: 312rpx; */
+	height: 234rpx;
+}
+.lfix{
+	width: 344rpx;
+	background: #FFFFFF;
+	box-shadow: 0rpx 0rpx 19rpx 0rpx rgba(0, 0, 0, 0.11), 0rpx 0rpx 19rpx 0rpx rgba(0, 0, 0, 0.11);
+	border-radius: 8rpx;
+	padding: 13rpx 16rpx 13rpx 16rpx;
+	box-sizing: border-box;
+	margin-bottom: 15rpx;
+}
+.datalist{
+	width: 702rpx;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: auto;
+}
+.qiea{
+	font-size: 26rpx;
+	font-family: PingFangSC-Semibold, PingFang SC;
+	font-weight: 600;
+	color: #51565D;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.qiel{
+	height: 50rpx;
+	border-bottom: 4rpx solid #40A9FF;
+	font-size: 26rpx;
+	font-family: PingFangSC-Semibold, PingFang SC;
+	font-weight: 600;
+	color: #40A9FF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+page{
+	background: #F4F7F7;
+}
+.qiecard{
+	width: 702rpx;
+	height: 72rpx;
+	background: #FFFFFF;   
+	border-radius: 14rpx;
+	margin: 20rpx auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.swiper image{
+	width: 710rpx;
+	height: 293rpx;
+}
+.swiper{
+	height: 293rpx;
+	width: 710rpx;
+	margin: 18rpx auto;
+	margin-bottom: 0;
+}
+.search{
+	    width: 580rpx!important;
+}
+.dropDown{
+	width: 700rpx!important;
+	margin: auto;
+	top: 20rpx!important;
+}
+.buldi{
+	background-color: #40A9FF;
+	width: 750rpx;
+	height: 93rpx;
+}
+

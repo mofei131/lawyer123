@@ -25,7 +25,7 @@
 			</view>
 			<view class="kong"></view>
 			<view class="imgitem">
-				<view class="imgtitle">请上传自拍或两寸照片</view>
+				<view class="imgtitle">请上传头像</view>
 				<image class="classfiyimg" src="../../static/images/classfiyimg1.png" v-if="zipai == ''" @click="chooseImage(1)"></image>
 				<image class="classfiyimg" :src="zipai" v-else @click="chooseImage(1)"></image>
 			</view>
@@ -61,6 +61,39 @@
 				zipai:'',
 				zheng:'',
 				fan:'',
+			}
+		},
+		onShow() {
+			let that = this
+			if(uni.getStorageSync('rz') == 66){
+				uni.request({
+					url:'https://layer.boyaokj.cn/api/layer/authDetail',
+					method:'GET',
+					data:{
+						user_id:uni.getStorageSync('userInfo').id
+					},
+					success(res) {
+						console.log("认证详情")
+						console.log(res.data.data)
+						let data = res.data.data
+						that.name = data.name
+						that.phone = data.mobile
+						that.index1 = data.gender
+						that.zipai = data.photo
+						uni.showModal({
+							title:'驳回理由',
+							confirmText:'重新编辑',
+							content:data.bohui,
+							success: function (res) {
+								if (res.confirm) {
+										console.log('用户点击确定');
+								} else if (res.cancel) {
+										uni.navigateBack({})
+								}
+						}
+						})
+					}
+				})
 			}
 		},
 		methods:{

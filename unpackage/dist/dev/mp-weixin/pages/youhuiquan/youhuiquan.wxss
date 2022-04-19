@@ -19,9 +19,7 @@
 	color: gray;
 }
 .youhuiquan {
-	-webkit-box-flex: 0;
-	-webkit-flex: 0 0 173rpx;
-	        flex: 0 0 173rpx;
+	flex: 0 0 173rpx;
 	margin: 0 20rpx;
 	margin-bottom: 20rpx;
 }

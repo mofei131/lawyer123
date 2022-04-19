@@ -6,23 +6,24 @@
 		</view>
 		<view class="collect">
 			<view class="intitem">
-				<view class="tips">图文资讯：</view>
-				<input class="gather" type="digit" value="" placeholder="请手动输入图文咨询价格" v-model="chat" placeholder-style="color: #C1C2C3;"/>
+				<view class="tips">图文咨询：</view>
+				<!-- placeholder="请手动输入图文咨询价格" -->
+				<input class="gather" type="digit" value="" :placeholder="qujian1"  v-model="chat" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 		<view class="intitem">
 				<view class="tips">电话咨询：</view>
-				<input class="gather" type="digit" value="" placeholder="请手动输入电话咨询价格" v-model="phone" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" :placeholder="qujian2" v-model="phone" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 		<view class="intitem">
-				<view class="tips">见面资讯：</view>
-				<input class="gather" type="digit" value="" placeholder="请手动输入见面咨询价格" v-model="meet" placeholder-style="color: #C1C2C3;"/>
+				<view class="tips">见面咨询：</view>
+				<input class="gather" type="digit" value="" :placeholder="qujian3" v-model="meet" placeholder-style="color: #C1C2C3;"/>
 			</view>
 		<view class="boder"></view>
 		<view class="intitem">
 				<view class="tips">聘请律师：</view>
-				<input class="gather" type="digit" value="" placeholder="请手动输入受聘价格" v-model="emplay" placeholder-style="color: #C1C2C3;"/>
+				<input class="gather" type="digit" value="" :placeholder="qujian4" v-model="emplay" placeholder-style="color: #C1C2C3;"/>
 			</view>
 			<view class="boder" style="margin-bottom: 10rpx;"></view>
 			<view class="boder"></view>
@@ -38,7 +39,9 @@
 			<view class="boder"></view>
 			<view class="servicepirce" v-for="(item,index) in sevedata" :key="index">
 				<view class="sevname">{{item.service}}：</view>
-				<input type="digit" value="" class="serviceinp" placeholder="请手动输入服务价格" v-model="item.price" placeholder-style="color: #C1C2C3;"/>
+				<!-- qujian5[qujian5.length+index].xian -->
+				<input type="digit" value="" class="serviceinp" :placeholder="qujian5[qujian5.length-1].xian" v-model="item.price" placeholder-style="color: #C1C2C3;" />
+				<!-- :disabled="show" -->
 				<image src="../../static/icon/deleteicon.png" @tap="delect(item.id)"></image>
 			</view>
 			<view class="addmore" @tap="cancel()">
@@ -78,11 +81,19 @@
 				raw:false,
 				ji:'',
 				array1: [],
+				array2: [],
 				index1: 0,
 				molde:false,
 				sevedata:[],
 				zancun:'',
-				zancunid:''
+				zancunid:'',
+				qujian1:'',
+				qujian2:'',
+				qujian3:'',
+				qujian4:'',
+				beicun:[],
+				qujian5:[],
+				show:false
 			}
 		},
 		onLoad(){
@@ -100,7 +111,14 @@
 				url:'https://layer.boyaokj.cn/api/service/getOtherService',
 				success(res) {
 					console.log(res.data.data)
-					that.array1 = res.data.data
+					for(let i in res.data.data){
+						if(i<6){
+							that.array1.push(res.data.data[i])
+							that.array2.push(res.data.data[i])
+						}
+					}
+					// that.array1 = res.data.data
+					that.qujian5 = res.data.data
 					that.zancun = res.data.data[0].name
 					that.zancunid = res.data.data[0].id
 					uni.request({
@@ -110,6 +128,12 @@
 							user_id:uni.getStorageSync('userInfo').user_id
 						},
 						success(res) {
+							console.log('已经设置')
+							console.log(res.data.data.more_service)
+							if(!res.data.data.more_service){
+							}else{
+								that.show = true
+							}
 							that.chat = res.data.data.tuwen
 							that.phone = res.data.data.dianhua
 							that.meet = res.data.data.jianmian
@@ -117,13 +141,39 @@
 							for(let i in res.data.data.case_type){
 								that.cardlist.push(res.data.data.case_type[i].id)
 							}
+							
 							for(let y in res.data.data.more_service){
+								that.qujian5.push(res.data.data.more_service[y])
 								that.sevedata.push({
 									id:res.data.data.more_service[y].service_id,
-									service:that.array1[res.data.data.more_service[y].service_id-4].name,
-									price:res.data.data.more_service[y].price
+									service:that.array2[res.data.data.more_service[y].service_id-4].name,
+									price:res.data.data.more_service[y].price,
+									min:res.data.data.more_service[y].min,
+									max:res.data.data.more_service[y].max,
 								})
+								// that.array1.splice(res.data.data.more_service[y].service_id-4,1)
+								// that.array1 = that.array1.filter(item => item.id !== res.data.data.more_service[y].service_id)
+								console.log('删除已经设置的内容')
+								for(let i in that.array1){
+									if(that.array1[i].id == res.data.data.more_service[y].service_id){
+										that.array1.splice(i,1)
+									}
+								}
+
 							}
+							console.log("显示")
+							console.log(that.qujian5)
+							uni.request({
+								url:'https://layer.boyaokj.cn/api/service/serviceRange',
+								method:'GET',
+								success(res) {
+									that.beicun = res.data.data
+									that.qujian1 = '请输入价格在'+res.data.data[0].min+'到'+res.data.data[0].max+'之间'
+									that.qujian2 = '请输入价格在'+res.data.data[1].min+'到'+res.data.data[1].max+'之间'
+									that.qujian3 = '请输入价格在'+res.data.data[2].min+'到'+res.data.data[2].max+'之间'
+									that.qujian4 = '请输入价格在'+res.data.data[9].min+'到'+res.data.data[9].max+'之间'
+								}
+							})
 						}
 					})
 				}
@@ -133,13 +183,22 @@
 		},
 		methods:{
 			delect(id){
-				console.log(id)
+				let list = this.array2.filter(item => item.id == id);
 				this.sevedata = this.sevedata.filter(item => item.id !== id)
+				this.array1.push(list[0])
+				console.log(this.array1)
 			},
 			toUrl(){
 				if (!this.chat) {
 					uni.showToast({
 						title: '请输入图文咨询价格',
+						icon: 'none',
+					})
+					return
+				}
+				if( parseFloat(this.chat) < parseFloat(this.beicun[0].min) || parseFloat(this.chat) > parseFloat(this.beicun[0].max)){
+					uni.showToast({
+						title: '请输入图文咨询区间价格',
 						icon: 'none',
 					})
 					return
@@ -151,9 +210,23 @@
 					})
 					return
 				}
+				if( parseFloat(this.phone) < parseFloat(this.beicun[1].min) || parseFloat(this.phone) > parseFloat(this.beicun[1].max)){
+					uni.showToast({
+						title: '请输入电话咨询区间价格',
+						icon: 'none',
+					})
+					return
+				}
 				if (!this.meet) {
 					uni.showToast({
 						title: '请输入见面咨询价格',
+						icon: 'none',
+					})
+					return
+				}
+				if( parseFloat(this.meet) < parseFloat(this.beicun[2].min) || parseFloat(this.meet) > parseFloat(this.beicun[2].max)){
+					uni.showToast({
+						title: '请输入见面咨询区间价格',
 						icon: 'none',
 					})
 					return
@@ -164,6 +237,13 @@
 						icon: 'none',
 					})
 					return
+					}
+					if( parseFloat(this.emplay) < parseFloat(this.beicun[9].min) || parseFloat(this.emplay) > parseFloat(this.beicun[9].max)){
+						uni.showToast({
+							title: '请输入受聘区间价格',
+							icon: 'none',
+						})
+						return
 					}
 				let that = this
 				let setting =[
@@ -180,6 +260,13 @@
 						})
 						return
 						}
+						// if (parseFloat(that.sevedata[i].price) < parseFloat(that.qujian5[i].min) || parseFloat(that.sevedata[i].price) > parseFloat(that.qujian5[i].max)) {
+						// 	uni.showToast({
+						// 		title: '请输入自定义服务区间价格',
+						// 		icon: 'none',
+						// 	})
+						// 	return
+						// 	}
 					setting.push({
 						id:that.sevedata[i].id,
 						price:that.sevedata[i].price
@@ -218,24 +305,36 @@
 		} else {
 			that.cardlist.splice(that.cardlist.indexOf(index), 1); //取消
 				}
+			if(that.cardlist.length > 5){
+				that.cardlist.splice(0,1)
+			}
 			},
 			anjianChange1(e) {
 				let that = this
 				this.index1 = e.detail.value;
 				this.zancun = this.array1[e.detail.value].name
 				this.zancunid = this.array1[e.detail.value].id
-				console.log(that.sevedata)
 			},
 			cancel(){
 				this.molde = !this.molde
 			},
 			press(){
 				let that = this
+				// this.array1.splice(this.index1,1)
+				// let arr = this.array1
+				// arr.splice(this.index1,1)
+				// this.array1 = arr
 				this.sevedata.push({
-					service:this.zancun,
-					id:this.zancunid,
+					service:this.array1[this.index1].name,
+					id:this.array1[this.index1].id,
 				})
 				this.molde = !this.molde
+				this.qujian5.push({
+					xian:this.array1[this.index1].min+'到'+this.array1[this.index1].max+'之间',
+					// min:this.array1[this.index1].min,
+					// max:this.array1[this.index1].max
+				})
+				this.array1.splice(this.index1,1)
 			}
 	},
 	}

@@ -17,13 +17,32 @@
 <script>
 	export default {
 		async onLoad(p) {
-			console.log('文章详情获得id:' + p.id);
+			this.id = p.id
+			console.log(p.user_id)
+			if(p.user_id){
+				this.user_id = p.user_id
+			}else{
+				this.user_id = this.$store.state.userInfo.user_id
+			}
+			// if(!uni.getStorageSync('userInfo')){
+			// 	uni.switchTab({
+			// 		url:'../index/index'
+			// 	})
+			// }
+			// if(!p.id){
+			// 	for (var key in p) {
+			// 	    this.id = JSON.parse(key)
+			// 	    }
+			// }
+			// console.log('文章详情获得id:' + p.id);
 			let res = await this.$myRequest({
 				url: 'article/detail',
 				methods: 'GET',
 				data: {
-					id: p.id,
-					user_id: this.$store.state.userInfo.user_id
+					// id: this.id,
+					id:p.id,
+					user_id: this.user_id,
+					// user_id:uni.getStorageSync('userInfo').id
 				}
 			});
 			if (res && res.code == -1) {
@@ -42,10 +61,59 @@
 		data() {
 			return {
 				dataSource: {},
-				zhuanhua:''
+				zhuanhua:'',
+				id:0,
+				user_id:-1
 			}
 		},
+		onShareAppMessage: function () {
+		    var share_title = this.dataSource.title; //名称
+		    var goods_id = this.id;//传的id
+		    var share_path = 'pages/detail/studyDetail?id='+this.id;
+		    // let shareImg = this.dataSource.image;//候展示的图片
+		    console.log('转发地址：' + share_path);
+		    var that = this;
+		    return {
+		      title: share_title,
+					// query: 'id='+this.id+'&user_id='+this.$store.state.userInfo.user_id,
+		      path: share_path,
+		      // imageUrl: shareImg ? shareImg : that.data.share_image,
+		      success: function (res) {
+		        // 转发成功
+		      },
+		      fail: function (res) {
+		        // 转发失败
+		      }
+		    }
+		  },
+		 onShareTimeline: function (res) {
+		    var share_title = this.dataSource.title;
+		    var goods_id = this.id;
+				var share_path = 'pages/detail/studyDetail';
+		    // let shareImg = this.dataSource.image;
+		    console.log('分享id：' + goods_id);
+		    var that = this;
+		    var query = {
+		      data: goods_id
+		    };
+		    query = JSON.stringify(query.data);  //解析一下query
+		    return {
+		      title: share_title,
+		      query: 'id='+this.id+'&user_id='+this.$store.state.userInfo.user_id,
+					path: share_path,
+		      // imageUrl: shareImg ? shareImg : that.data.share_image,
+		      success: function (res) {
+		        // 转发成功
+		      },
+		      fail: function (res) {
+		        // 转发失败
+		      }
+		    }
+		  },
 		methods: {
+			// shareFriendcricle: function() {
+				
+			//  },
 			formatRichText(html) {
 					let newContent = html.replace(/<img[^>]*>/gi, function(match, capture) {
 						match = match.replace(/style="[^"]+"/gi, '').replace(/style='[^']+'/gi, '');

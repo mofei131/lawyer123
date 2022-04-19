@@ -4,13 +4,9 @@
 	margin: auto;
 }
 .listitem {
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	height: 147rpx;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	padding-top: 54rpx;
 	box-sizing: border-box;
 }
@@ -23,8 +19,6 @@
 	font-size: 36rpx;
 }
 .wxpay {
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 }
 .wxpay image {
@@ -42,12 +36,8 @@
 	box-sizing: border-box;
 }
 .paylist {
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 }
 .nowpay button {
 	width: 680rpx;

@@ -57,8 +57,8 @@
 				text: '',
 				user_id: '',
 				currentIndex: '',
-				dataSource: []
-
+				dataSource: [],
+				wid:''
 			}
 		},
 		methods: {
@@ -80,7 +80,7 @@
 				})
 			},
 			search() {
-				this.todetail();
+				this.todetail2();
 			},
 			input(res) {
 				this.name = res;
@@ -95,22 +95,35 @@
 			cancel(res) {
 				
 			},
-
+			// todetail(item1){
+			// 	// console.log(this.name)
+			// 	if(item1){
+			// 		this.cid = item1.id;
+			// 		// this.name = item1.name;
+					
+			// 	}
+			// 	uni.navigateTo({
+			// 		// url: `../list/cooperModuleList?cid=${this.cid}`
+			// 		url: `../list/cooperModuleList?cid=${this.cid}&name=${this.name}`
+			// 	})
+			// },
 			todetail(item1){
 				// console.log(this.name)
 				if(item1){
 					this.cid = item1.id;
 					// this.name = item1.name;
+					uni.navigateTo({
+						// url: `../list/cooperModuleList?cid=${this.cid}`
+						url: `../list/cooperModuleList?cid=${this.cid}&name=0`
+					})
 				}
-				
-				uni.navigateTo({
-					url: `../list/cooperModuleList?cid=${this.cid}&name=${this.name}`
-				})
-				// uni.navigateTo({
-				// 	url:'../list/cooperModuleList?name='+this.name
-				// })
-			}
-
+			},
+			todetail2(){
+					uni.navigateTo({
+						// url: `../list/cooperModuleList?cid=${this.cid}`
+						url: `../list/cooperModuleList?cid=${this.wid}&name=${this.name}`
+					})
+			},
 		}
 	}
 </script>

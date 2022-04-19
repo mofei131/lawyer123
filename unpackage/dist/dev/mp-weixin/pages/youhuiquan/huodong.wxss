@@ -1,0 +1,85 @@
+
+.databox{
+	padding-top: 20rpx;
+}
+.goumai{
+	width: 120rpx;
+	height: 36rpx;
+	background: #40A9FF;
+	border-radius: 4rpx;
+	font-size: 20rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.riqi{
+	font-size: 21rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #999999;
+}
+.dlrbot2{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.dlrbot1{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10rpx;
+	margin-bottom: 10rpx;
+}
+.jiage{
+	font-size: 28rpx;
+	font-family: Helvetica;
+	color: #FF4D4F;
+}
+.shangming{
+	font-size: 21rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #999999;
+	width: 320rpx;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
+}
+.dlright{
+	width: 496rpx;
+	margin-left: 18rpx;
+}
+.datalist{
+	display: flex;
+	width: 710rpx;
+	background: #FFFFFF;
+	border-radius: 14rpx;
+	margin-bottom: 20rpx;
+	padding: 20rpx 17rpx;
+	box-sizing: border-box;
+	margin: auto;
+}
+.iti{
+	height: 56rpx;
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #323232;
+	line-height: 29rpx;
+	display: -webkit-box;
+	overflow: hidden;  
+	-webkit-line-clamp: 2;
+	 -webkit-box-orient: vertical;
+}
+.dlleft image{
+	width: 196rpx;
+	height: 142rpx;
+	border-radius: 7rpx;
+}
+page{
+	background: #F8F8F8;
+}
+

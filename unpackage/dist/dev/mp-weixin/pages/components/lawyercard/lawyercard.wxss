@@ -1,18 +1,13 @@
 
 .fourcard{
 	width: 676rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	margin: auto;
-	-webkit-flex-wrap: wrap;
-	        flex-wrap: wrap;
+	flex-wrap: wrap;
 	border: 0 0 14rpx 14rpx;
 }
 .cardone{
 	/* width: 338rpx; */
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	margin-top: 48rpx;
 	margin-left: 32rpx;
@@ -23,8 +18,6 @@
 	border-radius: 36rpx;
 }
 .head{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 }
 .name{

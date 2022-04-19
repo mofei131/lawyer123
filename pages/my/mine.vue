@@ -8,11 +8,12 @@
 			<view class="username">
 				<view class="name">{{user.name}}</view>
 				<view class="record">
-					<view v-if="user.layer_status == 0">立即认证享更多权益</view>
-					<view v-if="user.layer_status == 1">认证中</view>
+					<view v-if="user.layer_status == 0">立即认证律师享更多权益</view>
+					<view v-if="user.layer_status == 1 || user.layer_status == -2">认证中</view>
 					<view v-if="user.layer_status == 2">已认证</view>
 				</view>
 			</view>
+				<image class="shuaxin" src="http://hlstore.yimetal.cn/2021/lawyer123/shua.png" mode="" @tap="updateUserInfo"></image>
 		</view>
 		<view class="userifom" v-else>
 			<view class="headimg">
@@ -101,7 +102,17 @@
 				<image src="../../static/icon/myrighticon.png" mode=""></image>
 			</view>
 		</view>
-		<view class="functionitem"@tap="toUrl2()" :class="[user.layer_status == 0?'':'buke']">
+		<view class="functionitem"@tap="toUrlrz()" :class="[user.layer_status == -2?'':'buke']" v-if="user.layer_status == -2">
+			<view class="itemleft">
+				<image src="../../static/icon/myicon2.png"></image>
+				<view>律师认证</view>
+			</view>
+			<view class="itemright">
+				<view class="renzheng" >被驳回，请重新认证</view>
+				<image src="../../static/icon/myrighticon.png" mode=""></image>
+			</view>
+		</view>
+		<view class="functionitem"@tap="toUrl2()" :class="[user.layer_status == 0?'':'buke']" v-else>
 			<view class="itemleft">
 				<image src="../../static/icon/myicon2.png"></image>
 				<view>律师认证</view>
@@ -109,6 +120,7 @@
 			<view class="itemright">
 				<view class="renzheng" v-if="user.layer_status == 0">未认证</view>
 				<view class="renzheng" v-if="user.layer_status == 2">已认证</view>
+				<view class="renzheng" v-if="user.layer_status == -2">被驳回，请重新认证</view>
 				<view class="renzheng" v-if="user.layer_status == 1">认证中</view>
 				<image src="../../static/icon/myrighticon.png" mode=""></image>
 			</view>
@@ -148,7 +160,7 @@
 				<view>服务协议</view>
 			</view>
 			<view class="itemright">
-				<view class="kefu" v-if="item.kefu">{{user.kefu}}</view>
+				<view class="kefu" v-if="item.kefu">{{user.kefu}}</view>.
 				<image src="../../static/icon/myrighticon.png" mode=""></image>
 			</view>
 		</view>
@@ -166,14 +178,28 @@
 		<button class="bendi" @tap="saveImgToLocal()">保存到相册</button>
 		</view>
 	</view>
+	<authMode @confirm="authorTap" @backindex="backIndex" ref="authMode"></authMode>
 	</view>
 </template>
 
 <script>
 	import iconlist from '../components/iconlist/iconlist.vue'
+	import authMode from '@/pages/components/authMode/authMode.vue'
+	import {
+		mapState,
+		mapGetters,
+		mapMutations,
+		mapActions
+	} from 'vuex'
 	export default {
 		components:{
-			iconlist
+			iconlist,
+			authMode
+		},
+		computed: {
+			...mapGetters([
+				'getWindowHeight',
+			]),
 		},
 		data() {
 			return {
@@ -221,16 +247,26 @@
 		},
 		onShareAppMessage(res) {
 		      return {
-		        title: '123律师小程序',
+		        title: '123法律小程序', 
 		        path: '/pages/index/index?scene='+uni.getStorageSync('userInfo').user_id
 		      }
 		    },
 				onLoad(){
-					if(uni.getStorageSync('userInfo').mobile == null){
-						this.xian = !this.xian
-					}
+					uni.login({
+						success(res) {
+							uni.setStorageSync('wxcode', res.code)
+						}
+					})
 				},
-				onShow() {
+				async onShow() {
+					let userInfo = uni.getStorageSync('userInfo');
+					console.log(userInfo);
+					if (!userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname) {
+						let res = await this.getWxCode();
+						if (res.hasUserInfo) {
+							this.$refs.authMode.open()
+						}
+					}
 					let that = this
 					let user = uni.getStorageSync('userInfo');
 					uni.request({
@@ -240,9 +276,12 @@
 							user_id:user.user_id
 						},
 						success(res) {
+							console.log(that.$store.state.userInfo.nickname)
 							uni.setStorageSync('userInfo',res.data.data);
 							that.user.name = res.data.data.nickname
 							that.user.headimg = res.data.data.avater
+							// that.user.name = that.$store.state.userInfo.nickname
+							// that.user.headimg = that.$store.state.userInfo.avater
 							that.user.balance = res.data.data.wallet
 							that.user.layer_status = res.data.data.layer_status
 							that.user.busy = res.data.data.layer.busy
@@ -270,17 +309,96 @@
 							user_id:uni.getStorageSync('userInfo').user_id
 						},
 						success(res) {
-							// console.log("二维码")
-							// console.log(res.data.data.url)
 							that.ewmimage = res.data.data.url
 						}
 					})
+					if(!uni.getStorageSync('userInfo').mobile){
+						this.xian = !this.xian
+					}
 				},
 		methods: {
+			updateUserInfo(){
+				 let that =this
+				// 弹出授权框（每次执行都会弹出）
+				uni.getUserProfile({
+						 desc: '刷新信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+						 success: (res) => {
+								console.log("获取用户授权信息：",res)
+								let data = res.userInfo
+								uni.request({
+									url:'https://layer.boyaokj.cn/api/wechat/setUserinfo',
+									method:'GET',
+									data:{
+										nickname:data.nickName,
+										avater:data.avatarUrl,
+										country:data.country,
+										gender:data.gender,
+										province:data.province,
+										city:data.city,
+										user_id:uni.getStorageSync('userInfo').id,
+									},
+									success(red) {
+										console.log(red.data.data)
+										// uni.setStorage({
+										// 	key:'userInfo',
+										// 	data:red.data.data
+										// })
+										console.log(data.nickName)
+										that.user.name = data.nickName
+										that.user.headimg = data.avatarUrl
+									}
+								})
+											},
+											fail(res){
+												uni.showToast({
+														title:"拒绝授权，将无法进入小程序",
+														duration: 1000,
+														icon: 'none'
+												})
+												 console.log("您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!")
+						}         
+				 })
+			},
 			fuxy(){
 				uni.navigateTo({
 					url:'xieyi'
 				})
+			},
+			...mapActions([
+				'getProvinceCity', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+				'getBussinessTypes',
+				'getLawyerLevels', 'getWorkAges', 'getWxCode'
+				// , 'updateUserInfo'
+				
+			]),
+			backIndex() {
+				uni.switchTab({
+					url: '../index/index'
+				})
+			},
+			async authorTap() {
+				let userInfo = uni.getStorageSync('userInfo')
+				console.log("用户信息")
+				console.log(userInfo)
+				if (!userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname) {
+					let isSuccess = await this.updateUserInfo();
+					if (isSuccess) {
+						uni.showToast({
+							title: '授权成功！',
+							success() {
+								uni.switchTab({
+									url:'../index/index'
+								})
+							}
+						})
+						this.$refs.authMode.setDialogFalse();
+					} else {
+						uni.showToast({
+							title: '授权失败，请重新登录！'
+						})
+						this.$refs.authMode.setDialogFalse();
+					}
+				}
 			},
 			//微信小程序保存到相册
 			        handleSetting(e){
@@ -316,41 +434,39 @@
 			        saveImgToLocal:function(e){
 			            let that = this
 			            uni.showModal({
-			                title: '提示',
-			                content: '确定保存到相册吗',
-			                success: function (res) {
-			                    if (res.confirm) {
-			                        uni.downloadFile({
-			                                url: that.ewmimage,//图片地址
-			                                success: (res) =>{
-			                                    if (res.statusCode === 200){
-			                                        uni.saveImageToPhotosAlbum({
-			                                            filePath: res.tempFilePath,
-			                                            success: function() {
-			                                                uni.showToast({
-			                                                    title: "保存成功",
-			                                                    icon: "none"
-			                                                });
-			                                            },
-			                                            fail: function() {
-			                                                uni.showToast({
-			                                                    title: "保存失败",
-			                                                    icon: "none"
-			                                                });
-			                                            }
-			                                        });
-			                                    } 
-			                                }
-			                            })
-			                        
-			                        
-			                    } else if (res.cancel) {
-			                        
-			                    }
-			                }
-			            });
-			            
-			        },
+										title: '提示',
+										content: '确定保存到相册吗',
+										success: function (res) {
+											if (res.confirm) {
+													uni.downloadFile({
+														url: that.ewmimage,//图片地址
+														success: (res) =>{
+															if (res.statusCode === 200){
+																	uni.saveImageToPhotosAlbum({
+																			filePath: res.tempFilePath,
+																			success: function() {
+																					uni.showToast({
+																							title: "保存成功",
+																							icon: "none"
+																					});
+																			},
+																			fail: function() {
+																					uni.showToast({
+																							title: "保存失败",
+																							icon: "none"
+																					});
+																			}
+																	});
+															} 
+													}
+											}) 
+										} else if (res.cancel) {
+												
+										}
+								}
+						});
+						
+				},
 			erm(){
 				this.ewm = !this.ewm
 			},
@@ -411,6 +527,12 @@
 			toPage(url){
 				uni.navigateTo({
 					url:url
+				})
+			},
+			toUrlrz(){
+				uni.setStorageSync('rz',66)
+				uni.navigateTo({
+					url:'../renzheng/classifyDet1'
 				})
 			},
 			getPhoneNumber(e) {
@@ -493,7 +615,7 @@
 		height: 100%;
 		box-sizing: border-box;
 		padding-top: 60%;
-		z-index: 50;
+		z-index: 5;
 	}
 	.huoqu image{
 		width: 200rpx;
@@ -583,6 +705,8 @@
 	.userifom{
 		display: flex;
 		margin-left: 54rpx;
+		align-items: center;
+		position: relative;
 	}
 	.name{
 		color: #FFFFFF;
@@ -826,5 +950,14 @@
 		margin-top: 20rpx;
 		margin-bottom: 12rpx;
 		text-align: center;
+	}
+	.shuaxin{
+		width: 124rpx;
+		height: 45rpx;
+		border-radius: 21rpx;
+		/* background: #59B3FF; */
+		position: absolute;
+		top: 50rpx;
+		right: 40rpx;
 	}
 </style>

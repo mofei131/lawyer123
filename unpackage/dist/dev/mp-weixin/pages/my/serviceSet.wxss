@@ -1,12 +1,8 @@
 
 .servicepirce{
 	height: 60rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	width: 680rpx;
 	margin: auto;
 	margin-top: 13rpx;
@@ -57,11 +53,8 @@
 	box-sizing: border-box;
 }
 .twobtn{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-justify-content: space-around;
-	        justify-content: space-around;
+	justify-content: space-around;
 	margin-top: 78rpx;
 }
 .gather{
@@ -74,9 +67,7 @@
 	color: #51565D;
 	margin: auto;
 	text-align: center;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
+	justify-content: center;
 }
 .ejtitle{
 	font-size: 30rpx;
@@ -111,8 +102,6 @@ page{
 .modtitle{
 	width: 680rpx;
 	margin: 20rpx auto;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 }
 .blue{
@@ -135,8 +124,6 @@ page{
 	padding-bottom: 45rpx;
 }
 .intitem{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	height: 108rpx;
 	width: 680rpx;
@@ -218,14 +205,9 @@ page{
 .labellist{
 	width: 680rpx;
 	margin: auto;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
-	-webkit-flex-wrap: wrap;
-	        flex-wrap: wrap;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 .labelitem{
 	width: 116rpx;
@@ -244,12 +226,9 @@ page{
 	border: 1rpx solid #40A9FF;
 }
 .addmore{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	margin: auto;
-	-webkit-justify-content: space-around;
-	        justify-content: space-around;
+	justify-content: space-around;
 	width: 305rpx;
 	margin-top: 40rpx;
 }

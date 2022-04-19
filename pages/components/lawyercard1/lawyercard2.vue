@@ -273,11 +273,19 @@
 		font-weight: 400;
 		color: #40A9FF;
 		padding: 8rpx;
+		flex-wrap: nowrap;
+		width: 138rpx;
+		display: block;
+	}
+	.serviceBtn text{
+		display: block;
+		text-align: center;
 	}
 
 	.field {
 		display: flex;
 		/* margin-bottom: 13rpx; */
+		flex-wrap: wrap;
 	}
 
 	.label {
@@ -288,6 +296,7 @@
 		    margin-right: 6rpx;
 		    text-align: center;
 		    padding: 5rpx 5rpx 5rpx 5rpx;
+				margin-top: 5rpx;
 	}
 
 	.green {

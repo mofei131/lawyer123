@@ -5,16 +5,10 @@
 	height: 100%;
 	background: rgb(0, 0, 0, 0.5);
 	top: 0;
-	z-index: 5;
-	display: -webkit-box;
-	display: -webkit-flex;
+	z-index: 50;
 	display: flex;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
+	justify-content: center;
+	align-items: center;
 }
 .boxchild {
 	padding: 20rpx 0;
@@ -28,9 +22,7 @@
 	width: 90%;
 	border-radius: 10rpx;
 	z-index: 10;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
+	justify-content: center;
 	margin: auto;
 	/* left: 0; */
 }

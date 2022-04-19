@@ -8,13 +8,9 @@ page{
 	height: 96rpx;
 	background: #FFFFFF;
 	border-radius: 14rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	margin: 20rpx auto;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	padding-left: 27rpx;
 	padding-right: 27rpx;
 	box-sizing: border-box;

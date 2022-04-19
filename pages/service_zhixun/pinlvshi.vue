@@ -66,7 +66,7 @@
 				mone:'',
 				lsdh:'',
 				layer_id:'',
-				show:false
+				show:false,
 			}
 		},
 		onLoad(p) {

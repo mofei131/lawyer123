@@ -72,7 +72,7 @@
 			authMode
 		},
 		async onShow() {
-			let userInfo = this.$store.state.userInfo;
+			let userInfo = uni.getStorageSync('userInfo');
 			console.log(userInfo);
 			if (!userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname) {
 				let res = await this.getWxCode();
@@ -228,12 +228,17 @@
 				console.log(e);
 			},
 			async authorTap() {
-				let userInfo = this.$store.state.userInfo;
+				let userInfo = uni.getStorageSync('userInfo');
 				if (!userInfo || !userInfo.user_id || !userInfo.avater || !userInfo.nickname) {
 					let isSuccess = await this.updateUserInfo();
 					if (isSuccess) {
 						uni.showToast({
-							title: '授权成功！'
+							title: '授权成功！',
+							success() {
+								uni.switchTab({
+									url:'../index/index'
+								})
+							}
 						})
 						this.$refs.authMode.setDialogFalse();
 					} else {

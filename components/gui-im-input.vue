@@ -2,7 +2,7 @@
 	<view>
 		<view class="gui-im-footer" :style="{ paddingBottom: paddingB }">
 			<view class="gui-im-menus graceIMFonts icon-voice" hover-class="gui-tap" v-if="voiceBtnShow" @tap="showRec"></view>
-			<view class="gui-im-menus graceIMFonts icon-photograph" hover-class="gui-tap" @tap="chooseImg" v-if="showImg"></view>
+			<view class="gui-im-menus graceIMFonts icon-photograph" hover-class="gui-tap" @tap="chooseImg"></view>
 			<view class="gui-im-input"><input type="text" v-model="inputMsg" @confirm="sendTextMsg" :cursor-spacing="35" /></view>
 			<view class="gui-items" style="padding:0 12rpx; margin-right:10rpx;" hover-class="gui-tap" @tap="sendTextMsg">发送</view>
 		</view>
@@ -130,13 +130,21 @@ export default {
 		},
 		// 选择图片
 		chooseImg: function() {
+			let that = this
 			uni.chooseImage({
 				count: 1,
 				sizeType: ['compressed'],
 				sourceType: ['album', 'camera'],
 				success: res => {
 					const tempFilePaths = res.tempFilePaths;
-					this.$emit('chooseImage', tempFilePaths[0]);
+					uni.uploadFile({
+						url:'https://layer.boyaokj.cn/api/file/upload',
+						filePath: tempFilePaths[0],
+						name: 'file',
+						success(res) {
+							that.$emit('chooseImage', JSON.parse(res.data).data.url);
+						}
+					})
 				}
 			});
 		}

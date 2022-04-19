@@ -5,8 +5,6 @@ page{
 .modtitle{
 	width: 680rpx;
 	margin: 20rpx auto;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 }
 .blue{
@@ -28,8 +26,6 @@ page{
 	margin: auto;
 }
 .intitem{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 	height: 108rpx;
 	width: 680rpx;

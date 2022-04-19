@@ -3,12 +3,8 @@ page{
 	background: #F8F8F8;
 }
 .guideitem{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	width: 710rpx;
 	height: 80rpx;
 	background: #FFFFFF;

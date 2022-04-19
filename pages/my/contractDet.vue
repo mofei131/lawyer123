@@ -1,11 +1,22 @@
 <template>
 	<view>
 		<view class="contractdet">
-			<!-- <view  v-html="content"></view> -->
-			<image :src="image" mode="widthFix"></image>
+			<view  v-html="content"></view>
+			<!-- <image :src="image" mode="widthFix"></image> -->
 		</view>
 		<!-- <view class="btn" @tap="download">立即下载</view> -->
 		<view class="btn" @tap="copy()">复制下载链接</view>
+		<view class="tanbox" v-if="show">
+					<view class="baibox">
+					<view class="top">
+						<view>合同下载链接已复制到粘贴板</view>
+						<view>您可以直接复制到浏览器下载合同或发给朋友</view>
+					</view>
+					<view class="bottom">
+						<view @tap="zai()">确定</view>
+					</view>
+				</view>
+				</view>
 	</view>
 </template>
 
@@ -19,7 +30,8 @@
 				price:'',
 				id:'',
 				link:'',
-				image:''
+				image:'',
+				show:''
 			}
 		},
 		onLoad(p){
@@ -34,29 +46,34 @@
 				},
 				success(res) {
 					console.log(res.data.data)
-					// that.content = res.data.data.content
+					that.content = res.data.data.content
 					that.link = res.data.data.link
-					that.image = res.data.data.image
+					// that.image = res.data.data.image
 				}
 			})
 		},
 		methods:{
+			zai(){
+				uni.switchTab({
+					url: '../index/index'
+				})
+			},
 			copy(){
+				let that = this
 				uni.setClipboardData({
 					data:this.link,
 					success() {
-						uni.showModal({
-								title: '提示',
-								content: '文件下载链接已复制',
-								showCancel:false,
-								success: function (res) {
-												if (res.confirm) {
-													// uni.navigateBack({
-														
-													// })
-												}
-										}
-							})
+						uni.hideToast()
+						that.show = true
+						// uni.showModal({
+						// 		title: '合同下载链接已复制到粘贴板',
+						// 		content: '您可以直接复制到浏览器下载合同或发给朋友',
+						// 		showCancel:false,
+						// 		success: function (res) {
+						// 						if (res.confirm) {
+						// 						}
+						// 				}
+						// 	})
 					}
 				})
 			},
@@ -97,6 +114,56 @@
 </script>
 
 <style>
+	.bottom view{
+		width: 100%;
+		font-size: 32rpx!important;
+		color: 	#4682B4;
+		border-top: 1rpx solid #e8e8e8;
+		text-align: center;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
+	.bottom{
+		display: flex;
+		height: 100rpx;
+		justify-content: space-between;
+		margin-top: 60rpx;
+	}
+	.top view:nth-child(1){
+		font-size: 32rpx;
+		text-align: center;
+		color: #000;
+		font-weight: bold;
+		padding-top: 80rpx;
+	}
+	.top view:nth-child(2){
+		font-size: 28rpx;
+		text-align: start;
+		color: #333;
+		padding-top: 30rpx;
+		width: 580rpx;
+		margin: auto;
+	}
+	.baibox{
+		width: 660rpx;
+		height: 350rpx;
+		margin: auto;
+		margin-top: 60%!important;
+		background-color: #fff;
+		border-radius: 18rpx;
+		z-index: 100;
+	}
+	.tanbox{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(0,0,0,.2);
+		z-index: 5;
+		margin-top: 0!important;
+	}
 page{
 		background: #F4F7F7;
 	}

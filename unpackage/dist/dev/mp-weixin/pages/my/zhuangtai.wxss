@@ -1,11 +1,7 @@
 
 .left{
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
+	align-items: center;
 }
 .hong{
 	width: 18rpx;
@@ -37,16 +33,10 @@
 	height: 96rpx;
 	background: #FFFFFF;
 	border-radius: 14rpx;
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
+	align-items: center;
 	margin: auto;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	justify-content: space-between;
 	padding: 0 20rpx 0 20rpx;
 	box-sizing: border-box;
 	margin-top: 16rpx;
